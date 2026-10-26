@@ -1,0 +1,6 @@
+{"pose": "left", "saved": ["left-00", "left-01", "left-02", "left-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "right", "saved": ["right-00", "right-01", "right-02", "right-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "near", "saved": ["near-00", "near-01", "near-02", "near-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "far", "saved": ["far-00", "far-01", "far-02", "far-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "tilt_positive", "saved": ["tilt_positive-00", "tilt_positive-01", "tilt_positive-02", "tilt_positive-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "tilt_negative", "saved": ["tilt_negative-00", "tilt_negative-01", "tilt_negative-02", "tilt_negative-03"], "skipped_sync": 1, "skipped_tf": 1}

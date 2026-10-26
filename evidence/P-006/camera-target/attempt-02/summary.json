@@ -1,0 +1,211 @@
+{
+  "status": "FAIL",
+  "frames": 24,
+  "detection_success": 24,
+  "detection_rate": 1.0,
+  "classes": {
+    "left": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 0,
+      "median_t_m": [
+        -0.04276512497419124,
+        -0.1489329323861121,
+        0.464222400554561
+      ],
+      "normal": [
+        -0.05414048758815449,
+        0.29470772514872634,
+        0.9540524955899333
+      ],
+      "tilt_from_fixed_deg": 0.010630823245429416,
+      "rule_pass": false
+    },
+    "right": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 0,
+      "median_t_m": [
+        -0.04276461384888247,
+        -0.14893040114541767,
+        0.46421977538270115
+      ],
+      "normal": [
+        -0.05419277825527424,
+        0.294633384561856,
+        0.9540724875430588
+      ],
+      "tilt_from_fixed_deg": 0.005510802222640347,
+      "rule_pass": false
+    },
+    "near": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 0,
+      "median_t_m": [
+        -0.05991686614949539,
+        -0.045539569579850746,
+        0.43230111368279955
+      ],
+      "normal": [
+        -0.05118415605653623,
+        0.3021588248103376,
+        0.9518824647812438
+      ],
+      "tilt_from_fixed_deg": 0.48645036045370893,
+      "rule_pass": false
+    },
+    "far": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 0,
+      "median_t_m": [
+        -0.05098530325526661,
+        -0.15857457326968577,
+        0.4664182237013645
+      ],
+      "normal": [
+        -0.049024237858460544,
+        0.2940650307668372,
+        0.9545273080339274
+      ],
+      "tilt_from_fixed_deg": 0.2995016425966001,
+      "rule_pass": false
+    },
+    "tilt_positive": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 4,
+      "median_t_m": [
+        -0.028051531681085692,
+        -0.16633487297198668,
+        0.4615229781801461
+      ],
+      "normal": [
+        0.09128499685581089,
+        0.28722281047249903,
+        0.9535041198093029
+      ],
+      "tilt_from_fixed_deg": 8.35437628581454,
+      "rule_pass": true
+    },
+    "tilt_negative": {
+      "frames": 4,
+      "detected": 4,
+      "solved": 4,
+      "accepted": 4,
+      "median_t_m": [
+        -0.03521572268962296,
+        -0.171153509381833,
+        0.44767404574067327
+      ],
+      "normal": [
+        -0.19686361718671463,
+        0.29827339517350604,
+        0.9339580814789452
+      ],
+      "tilt_from_fixed_deg": 8.264330943866046,
+      "rule_pass": true
+    }
+  },
+  "tilt_senses_opposite": true,
+  "origin_range_m": {
+    "x": [
+      -0.05991686614949539,
+      -0.028051531681085692
+    ],
+    "y": [
+      -0.171153509381833,
+      -0.045539569579850746
+    ],
+    "z": [
+      0.43230111368279955,
+      0.4664182237013645
+    ]
+  },
+  "normal_angle_range_deg": [
+    0.005510802222640347,
+    8.35437628581454
+  ],
+  "reprojection_px": {
+    "count": 1296,
+    "mean": 0.4196059638284716,
+    "rmse": 0.5517385794163409,
+    "p95": 1.1977123302238692,
+    "max": 1.7766314700131223
+  },
+  "spacing_abs_error_m": {
+    "count": 2139,
+    "mean": 0.00024690316156082795,
+    "rmse": 0.0003721459635597891,
+    "p95": 0.0007400910409735614,
+    "max": 0.0021388627174938057
+  },
+  "spacing_mean_m": 0.02010959945769051,
+  "plane_rmse_m": {
+    "count": 23,
+    "mean": 0.0005730110483400652,
+    "rmse": 0.0005764945231913468,
+    "p95": 0.0006834160719250519,
+    "max": 0.000695960957063084
+  },
+  "rgb_depth_distance_m": {
+    "count": 23,
+    "mean": 0.0021416610935017085,
+    "rmse": 0.00221252900472491,
+    "p95": 0.0029430769179004945,
+    "max": 0.002956648639870746
+  },
+  "normal_angle_deg": {
+    "count": 23,
+    "mean": 0.8748206413835211,
+    "rmse": 0.9279759083688661,
+    "p95": 1.3298028571457683,
+    "max": 1.36329928026145
+  },
+  "attempt1_reproducibility": {
+    "frames": 12,
+    "duration_sec": 4.005196,
+    "translation_std_m": 1.433e-05,
+    "rotation_std_deg": 0.006735,
+    "pass": true
+  },
+  "full_resolution": true,
+  "identity_tf": false,
+  "thresholds_changed_after_measurement": false,
+  "existing_fixed_data_modified": false,
+  "base_link_transform": 0,
+  "synthetic_transform": 0,
+  "robot_motion": 0,
+  "checks": {
+    "CT-01": true,
+    "CT-02": true,
+    "CT-03": true,
+    "CT-04": true,
+    "CT-05": true,
+    "CT-06": true,
+    "CT-07": true,
+    "CT-08": true,
+    "CT-09": true,
+    "CT-10": true,
+    "CT-11": true,
+    "CT-12": true,
+    "CT-13": true,
+    "CT-14": true,
+    "CT-15": false,
+    "CT-16": true,
+    "CT-17": true,
+    "CT-18": true,
+    "CT-19": true,
+    "CT-20": true,
+    "CT-21": true,
+    "CT-22": true,
+    "CT-23": true,
+    "CT-24": true
+  }
+}
