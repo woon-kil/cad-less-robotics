@@ -1,0 +1,9 @@
+src/robot_controller/CMakeLists.txt
+src/robot_controller/include/robot_controller/capability_adapter.hpp
+src/robot_controller/src/capability_adapter.cpp
+src/robot_controller/test/test_capability_adapter.cpp
+src/dofbot_moveit_dry/CMakeLists.txt
+src/dofbot_moveit_dry/config/capability_search.yaml
+src/dofbot_moveit_dry/src/capability_adapter_dry.cpp
+scripts/validate_capability_adapter.sh
+evidence/P-005/attempt-03/

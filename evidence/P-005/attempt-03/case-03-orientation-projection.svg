@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420">
+<rect width="980" height="420" fill="#f7f4ee"/>
+<text x="24" y="32" font-family="sans-serif" font-size="18" fill="#1c1917">CASE-03 orientation projection</text>
+<line x1="50" y1="300" x2="570" y2="300" stroke="#44403c"/>
+<line x1="50" y1="70" x2="50" y2="300" stroke="#44403c"/>
+<polyline fill="none" stroke="#b45309" stroke-width="2" points="50,300 102,298.927 154,293.156 206,297.227 258,295.414 310,277.366 362,284.155 414,295.086 466,296.84 518,293.315 570,295.057 "/>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="2" points="50,300 102,278.92 154,281.71 206,211.028 258,202.799 310,132.152 362,88.8509 414,70.0471 466,114.901 518,187.601 570,134.208 "/>
+<polyline fill="none" stroke="#44403c" stroke-width="2" points="50,300 102,278.893 154,280.472 206,210.986 258,202.693 310,130.714 362,88.308 414,70 466,114.876 518,187.407 570,134.138 "/>
+<text x="50" y="340" font-family="sans-serif" font-size="13" fill="#b45309">tool axis</text>
+<text x="150" y="340" font-family="sans-serif" font-size="13" fill="#1d4ed8">|roll|</text>
+<text x="230" y="340" font-family="sans-serif" font-size="13" fill="#44403c">full orientation</text>
+<text x="620" y="88" font-family="sans-serif" font-size="13" fill="#1c1917">executable tool axis in desired frame</text>
+<circle cx="790" cy="210" r="110" fill="none" stroke="#d6d3d1"/>
+<circle cx="790" cy="210" r="3" fill="#1c1917"/>
+<circle cx="790" cy="210" r="4" fill="#b45309"/>
+<circle cx="790.29" cy="210.481" r="4" fill="#b45309"/>
+<circle cx="786.458" cy="210.563" r="4" fill="#b45309"/>
+<circle cx="788.616" cy="210.444" r="4" fill="#b45309"/>
+<circle cx="790.425" cy="207.635" r="4" fill="#b45309"/>
+<circle cx="781.603" cy="201.654" r="4" fill="#b45309"/>
+<circle cx="784.522" cy="203.769" r="4" fill="#b45309"/>
+<circle cx="788.695" cy="212.22" r="4" fill="#b45309"/>
+<circle cx="790.579" cy="208.449" r="4" fill="#b45309"/>
+<circle cx="793.063" cy="211.699" r="4" fill="#b45309"/>
+<circle cx="788.584" cy="207.831" r="4" fill="#b45309"/>
+</svg>

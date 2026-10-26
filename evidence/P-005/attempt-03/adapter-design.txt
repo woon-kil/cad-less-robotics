@@ -1,0 +1,12 @@
+DesiredGeometryPose는 P-004 position, quaternion, normal이다. 이 노드는 그 값을 쓰지 않고 읽기만 한다.
+ExecutableRobotPose는 별도 후보다. source index, desired pose, executable joint/FK, position/tool/roll/full error, class를 가진다.
+탐색은 위치 Jacobian의 영공간 격자다. 5관절에서 위치 제약의 남은 자유도는 2다.
+격자 위에서 위치를 damped least squares로 0.5 mm 안에 되돌린 뒤 FK한다.
+seed는 SRDF init, up, down이다. full-pose KDL은 timeout 0의 한 번 시도만 쓰고 난수 재시작을 쓰지 않는다.
+후보 비교는 position tolerance, tool-axis error, full orientation error 순이다. 공정 합격 각도는 정하지 않았다.
+1 deg 이내 full orientation은 EXACT_POSE라는 수치 일치 라벨일 뿐 공정 합격이 아니다.
+null-space reference: position-only Jacobian null motion changes orientation.
+https://robotics.stackexchange.com/questions/23600/redundancy-and-null-space-projection
+https://www.engr.colostate.edu/~aam/pdf/journals/104.pdf
+computeCartesianPath 호출 0
+production motion contract 변경 0

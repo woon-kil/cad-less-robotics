@@ -59,7 +59,22 @@ ament_target_dependencies(ik_feasibility_dry
   urdf
   pluginlib)
 
-install(TARGETS dry_plan_node geometry_motion_dry ik_feasibility_dry
+add_executable(capability_adapter_dry src/capability_adapter_dry.cpp)
+target_link_libraries(capability_adapter_dry
+  robot_controller::waypoint_prep
+  vision_path_generator::polyline_core
+  Eigen3::Eigen)
+ament_target_dependencies(capability_adapter_dry
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  moveit_ros_planning
+  moveit_ros_planning_interface
+  moveit_msgs
+  urdf
+  pluginlib)
+
+install(TARGETS dry_plan_node geometry_motion_dry ik_feasibility_dry capability_adapter_dry
   RUNTIME DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 

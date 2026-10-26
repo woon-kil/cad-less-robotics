@@ -20,7 +20,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-add_library(waypoint_prep SHARED src/waypoint_prep.cpp src/motion_contract.cpp)
+add_library(waypoint_prep SHARED src/waypoint_prep.cpp src/motion_contract.cpp src/capability_adapter.cpp)
 target_include_directories(waypoint_prep PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -57,6 +57,8 @@ if(BUILD_TESTING)
   target_link_libraries(test_waypoint_prep waypoint_prep)
   ament_add_gtest(test_motion_contract test/test_motion_contract.cpp)
   target_link_libraries(test_motion_contract waypoint_prep)
+  ament_add_gtest(test_capability_adapter test/test_capability_adapter.cpp)
+  target_link_libraries(test_capability_adapter waypoint_prep)
 endif()
 
 ament_package()
