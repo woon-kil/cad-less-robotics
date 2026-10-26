@@ -1,0 +1,49 @@
+locked_before_measurement: true
+attempt1_commit: 641eaea9985f9ce200536d9257d7f0c34522b711
+threshold_commit: 7548e1bd6c7c393f61b0e782120a91e40b9cae59
+thresholds_sha256: 303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539
+checkerboard_sha256: 1d17d9e66a5e2f13e61c9d93303561562996faadfac3f03a817d22dbbcaf9853
+attempt1_color_pose_sha256: 4a46797303e8e908d9cb8c3b845bd96ce60447199cb26da7d0cb881c2d6f4dc3
+attempt1_reproducibility_sha256: a8805827177ed2b9f36a73c3df347bc51c6607ea321a3d8596aa693305917d7e
+attempt1_summary_sha256: 6cce005faa72f5cbde8fbed7937060aa7dacd7cd7a1bac9a95e8b953538c8582
+attempt1_frame_0000_sha256: 8e3a38da2b0fb048d86ece0bc25fc54b46e8d907041b9d5f70d6d60ab01f65fe
+attempt1_frame_0011_sha256: 61c5d4be66305a7fb90182fbf5aa7f583e139ae4f7cfa8759ecaa9d268cb80bc
+thresholds_file: evidence/P-006/camera-target/thresholds.yaml
+checkerboard_file: evidence/P-006/camera-target/checkerboard.yaml
+frames_per_pose: 4
+frame_interval_sec: 0.25
+poses: [left, right, near, far, tilt_positive, tilt_negative]
+locked_candidate_alias:
+  tilt_positive: tilt_pos
+  tilt_negative: tilt_neg
+fixed_reference:
+  source: evidence/P-006/camera-target/color-pose.csv
+  samples: 12
+  pose_label: fixed
+  median_t_m: [-0.04281625, -0.14894789, 0.46428018]
+  board_plus_z_in_color: [-0.05421199379988951, 0.2945430344238207, 0.9540992928414992]
+  repeatability_translation_std_m: 1.4332292680393973e-05
+  repeatability_rotation_std_deg: 0.00673503855866625
+separation:
+  lateral_m: 0.020
+  range_m: 0.040
+  tilt_deg: 8.0
+  left: "median tx < fixed tx - lateral_m"
+  right: "median tx > fixed tx + lateral_m"
+  near: "median tz < fixed tz - range_m"
+  far: "median tz > fixed tz + range_m"
+  tilt_positive: "angle between board +Z and the fixed +Z is at least tilt_deg"
+  tilt_negative: "angle is at least tilt_deg and the tilt sense is opposite tilt_positive"
+  basis: "Attempt 1 fixed translation std is 1.433e-5 m and rotation std is 0.0067 deg. 20 mm is one square and about 1400 times that translation noise. 40 mm is two squares. 8 deg is far above the 0.019 deg fixed-pose normal scatter. These floors are not accuracy limits and they do not replace thresholds.yaml."
+optical_axes: "camera_color_optical_frame +X is image right, +Y is image down, +Z is forward. left is smaller X. near is smaller Z."
+metric_scope: "Every Attempt 2 frame is compared with the locked thresholds. The 0.7 development split is not used to drop frames."
+reproducibility_scope: "CT-16 is recomputed from the unchanged Attempt 1 fixed poses only."
+forbidden:
+  - edit thresholds.yaml
+  - edit checkerboard.yaml
+  - relabel frames/0000-0011
+  - delete a failed sample
+  - crop or resize
+  - identity TF
+  - base_link transform
+  - robot motion
