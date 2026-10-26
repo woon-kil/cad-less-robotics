@@ -1,0 +1,12 @@
+$ date
+2026-10-26 13:41:56 KST
+
+$ git rev-parse HEAD
+c227f29acf3abaa849af04276732262fa471a3aa
+
+$ git branch --show-current
+main
+
+$ git status --short
+?? evidence/
+?? scripts/

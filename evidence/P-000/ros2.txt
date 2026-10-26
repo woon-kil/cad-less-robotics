@@ -1,0 +1,18 @@
+Generated: 2026-10-26 13:41:12 KST
+
+$ test -e /opt/ros/humble/setup.bash
+ABSENT /opt/ros/humble/setup.bash
+
+$ source /opt/ros/humble/setup.bash
+(eval):source:42: no such file or directory: /opt/ros/humble/setup.bash
+
+$ printenv ROS_DISTRO
+ROS_DISTRO unset
+
+$ ros2 --help
+(eval):48: command not found: ros2
+
+$ ros2 pkg list | grep moveit
+
+$ ros2 pkg list
+(eval):9: command not found: ros2

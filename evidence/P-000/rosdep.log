@@ -1,0 +1,11 @@
+Generated: 2026-10-26 13:41:13 KST
+
+rosdep dependency resolution NOT EXECUTED
+
+Reason: rosdep is not installed. This host is macOS, not Ubuntu 22.04. rosdep update and rosdep install were not run, so this log does not claim a successful resolution.
+
+$ command -v rosdep
+rosdep not found
+
+$ rosdep --version
+(eval):118: command not found: rosdep

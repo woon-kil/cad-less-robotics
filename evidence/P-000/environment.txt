@@ -1,0 +1,33 @@
+Generated: 2026-10-26 13:41:12 KST
+
+$ date
+2026년 10월 26일 월요일 13시 41분 12초 KST
+
+$ hostname
+woonkilsui-MacBookPro.local
+
+$ uname -m
+arm64
+
+$ uname -a
+Darwin woonkilsui-MacBookPro.local 25.6.0 Darwin Kernel Version 25.6.0: Fri Jul 31 19:17:26 PDT 2026; root:xnu-12377.161.14~5/RELEASE_ARM64_T6041 arm64
+
+$ sw_vers
+ProductName:		macOS
+ProductVersion:		26.6.2
+BuildVersion:		25G83
+
+$ lsb_release -a
+(eval):22: command not found: lsb_release
+
+$ cat /etc/os-release
+[31m[bat error][0m: '/etc/os-release': No such file or directory (os error 2)
+
+$ printenv ROS_DISTRO
+ROS_DISTRO unset
+
+$ test -d /opt/ros/humble
+ABSENT
+
+$ /bin/cat /etc/os-release
+cat: /etc/os-release: No such file or directory

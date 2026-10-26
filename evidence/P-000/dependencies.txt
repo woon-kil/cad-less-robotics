@@ -1,0 +1,61 @@
+Generated: 2026-10-26 13:41:13 KST
+
+## package.xml declared dependencies
+
+$ grep -n depend src/vision_path_generator/package.xml src/robot_controller/package.xml
+src/vision_path_generator/package.xml:10:  <buildtool_depend>ament_cmake</buildtool_depend>
+src/vision_path_generator/package.xml:12:  <depend>rclcpp</depend>
+src/vision_path_generator/package.xml:13:  <depend>sensor_msgs</depend>
+src/vision_path_generator/package.xml:14:  <depend>geometry_msgs</depend>
+src/vision_path_generator/package.xml:15:  <depend>std_msgs</depend>
+src/vision_path_generator/package.xml:16:  <depend>pcl_conversions</depend>
+src/vision_path_generator/package.xml:17:  <depend>tf2</depend>
+src/vision_path_generator/package.xml:18:  <depend>tf2_ros</depend>
+src/vision_path_generator/package.xml:19:  <depend>tf2_sensor_msgs</depend>
+src/vision_path_generator/package.xml:20:  <depend>eigen</depend>
+src/vision_path_generator/package.xml:21:  <build_depend>libpcl-all-dev</build_depend>
+src/vision_path_generator/package.xml:22:  <build_export_depend>libpcl-all-dev</build_export_depend>
+src/vision_path_generator/package.xml:23:  <exec_depend>libpcl-all</exec_depend>
+src/vision_path_generator/package.xml:25:  <test_depend>ament_cmake_gtest</test_depend>
+src/robot_controller/package.xml:10:  <buildtool_depend>ament_cmake</buildtool_depend>
+src/robot_controller/package.xml:12:  <depend>rclcpp</depend>
+src/robot_controller/package.xml:13:  <depend>geometry_msgs</depend>
+src/robot_controller/package.xml:14:  <depend>moveit_ros_planning_interface</depend>
+src/robot_controller/package.xml:15:  <depend>moveit_msgs</depend>
+src/robot_controller/package.xml:16:  <depend>tf2</depend>
+src/robot_controller/package.xml:17:  <depend>tf2_ros</depend>
+src/robot_controller/package.xml:18:  <depend>tf2_geometry_msgs</depend>
+src/robot_controller/package.xml:19:  <depend>trajectory_msgs</depend>
+src/robot_controller/package.xml:20:  <depend>eigen</depend>
+src/robot_controller/package.xml:22:  <exec_depend>launch</exec_depend>
+src/robot_controller/package.xml:23:  <exec_depend>launch_ros</exec_depend>
+src/robot_controller/package.xml:24:  <exec_depend>vision_path_generator</exec_depend>
+src/robot_controller/package.xml:26:  <test_depend>ament_cmake_gtest</test_depend>
+
+## MoveIt 2
+$ ros2 pkg list | grep moveit
+NOT FOUND: ros2 pkg list unavailable
+
+## Eigen3
+$ dpkg -s libeigen3-dev
+(eval):90: command not found: dpkg
+
+$ pkg-config --modversion eigen3
+Package eigen3 was not found in the pkg-config search path.
+Perhaps you should add the directory containing `eigen3.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'eigen3' not found
+
+$ brew list --formula eigen
+Error: No such keg: /opt/homebrew/Cellar/eigen
+
+## PCL
+$ pkg-config --modversion pcl_common
+Package pcl_common was not found in the pkg-config search path.
+Perhaps you should add the directory containing `pcl_common.pc'
+to the PKG_CONFIG_PATH environment variable
+Package 'pcl_common' not found
+
+## rosdep
+$ rosdep --version
+(eval):104: command not found: rosdep

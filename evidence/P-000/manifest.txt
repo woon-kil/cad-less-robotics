@@ -1,0 +1,104 @@
+P-000 evidence manifest
+Host: woonkilsui-MacBookPro.local
+Repository: /Users/woonkil/projects/cad-less-robotics
+
+environment.txt
+
+Generated:
+2026-10-26 13:41:12 KST
+Appended /bin/cat check immediately after the first capture.
+
+Commands:
+date
+hostname
+uname -m
+uname -a
+sw_vers
+lsb_release -a
+cat /etc/os-release
+/bin/cat /etc/os-release
+printenv ROS_DISTRO
+test -d /opt/ros/humble
+
+ros2.txt
+
+Generated:
+2026-10-26 13:41:12 KST
+Appended unpiped `ros2 pkg list` immediately after the first capture.
+
+Commands:
+test -e /opt/ros/humble/setup.bash
+source /opt/ros/humble/setup.bash
+printenv ROS_DISTRO
+ros2 --help
+ros2 pkg list | grep moveit
+ros2 pkg list
+
+compiler.txt
+
+Generated:
+2026-10-26 13:41:12 KST
+
+Commands:
+gcc --version
+g++ --version
+cmake --version
+command -v colcon
+colcon version
+colcon --help
+
+dependencies.txt
+
+Generated:
+2026-10-26 13:41:13 KST
+
+Commands:
+grep -n depend src/vision_path_generator/package.xml src/robot_controller/package.xml
+ros2 pkg list | grep moveit
+dpkg -s libeigen3-dev
+pkg-config --modversion eigen3
+brew list --formula eigen
+pkg-config --modversion pcl_common
+rosdep --version
+
+rosdep.log
+
+Generated:
+2026-10-26 13:41:13 KST
+
+Commands:
+command -v rosdep
+rosdep --version
+
+rosdep update and rosdep install were not executed.
+Marker in the log: rosdep dependency resolution NOT EXECUTED
+
+check_environment.log
+
+Generated:
+2026-10-26 13:40:53 KST
+Re-run:
+2026-10-26 13:41:13 KST
+
+Commands:
+./scripts/check_environment.sh
+
+README.md
+
+Generated:
+2026-10-26 13:41 KST
+
+Commands:
+Written from the command outputs above and check_environment.log.
+Acceptance status was not edited to PASS.
+
+git-status.txt
+
+Generated:
+file header `date` inside git-status.txt, after the other evidence files existed.
+
+Commands:
+date
+git rev-parse HEAD
+git branch --show-current
+git status --short

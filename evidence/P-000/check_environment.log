@@ -1,0 +1,44 @@
+check_environment.sh
+host: woonkilsui-MacBookPro.local
+date: 2026-10-26 13:40:53 KST
+
+PASS        architecture      arm64
+FAIL        Ubuntu 22.04      macOS 26.6.2
+NOT FOUND   ROS setup         /opt/ros/humble/setup.bash
+FAIL        ROS_DISTRO        unset
+NOT FOUND   ROS 2 CLI         ros2
+NOT FOUND   colcon            colcon
+NOT FOUND   CMake             cmake
+FAIL        gcc               Apple clang version 21.0.0 (clang-2100.1.1.101)
+FAIL        g++               Apple clang version 21.0.0 (clang-2100.1.1.101)
+NOT FOUND   MoveIt 2          ros2 pkg list unavailable
+NOT FOUND   Eigen3            libeigen3-dev and eigen3.pc missing
+NOT FOUND   PCL               pcl_common.pc
+NOT FOUND   rosdep            rosdep
+
+counts: PASS=1 FAIL=4 NOT_FOUND=8
+ENVIRONMENT FAIL
+
+Re-run at: 2026-10-26 13:41:13 KST
+$ ./scripts/check_environment.sh
+check_environment.sh
+host: woonkilsui-MacBookPro.local
+date: 2026-10-26 13:41:13 KST
+
+PASS        architecture      arm64
+FAIL        Ubuntu 22.04      macOS 26.6.2
+NOT FOUND   ROS setup         /opt/ros/humble/setup.bash
+FAIL        ROS_DISTRO        unset
+NOT FOUND   ROS 2 CLI         ros2
+NOT FOUND   colcon            colcon
+NOT FOUND   CMake             cmake
+FAIL        gcc               Apple clang version 21.0.0 (clang-2100.1.1.101)
+FAIL        g++               Apple clang version 21.0.0 (clang-2100.1.1.101)
+NOT FOUND   MoveIt 2          ros2 pkg list unavailable
+NOT FOUND   Eigen3            libeigen3-dev and eigen3.pc missing
+NOT FOUND   PCL               pcl_common.pc
+NOT FOUND   rosdep            rosdep
+
+counts: PASS=1 FAIL=4 NOT_FOUND=8
+ENVIRONMENT FAIL
+exit: 1
