@@ -1,0 +1,44 @@
+{
+  "prediction_not_measurement": true,
+  "target_abs_delta_z_m": 0.04,
+  "locked_rule": "near median tz < fixed tz - 0.040 m; far median tz > fixed tz + 0.040 m",
+  "threshold_unchanged": true,
+  "attempt5_minus_0_034581_m_remains_fail": true,
+  "near_along_image_down_m": 0.14070610767802919,
+  "far_along_image_up_m": 0.14070610767802919,
+  "near_along_steepest_m": 0.1380333434859511,
+  "far_along_steepest_m": 0.1380333434859511,
+  "observed": {
+    "most_negative_z": {
+      "attempt": "attempt-03",
+      "stem": "near-t02-01",
+      "pose_label": "near",
+      "delta_z_m": -0.03817020999999998,
+      "s_image_down_m": 0.1503029869123444,
+      "s_image_right_m": 0.09373810295381528
+    },
+    "most_positive_z": {
+      "attempt": "attempt-03",
+      "stem": "far-t01-00",
+      "pose_label": "far",
+      "delta_z_m": 0.010676730000000023,
+      "s_image_down_m": -0.020828704670072473,
+      "s_image_right_m": 0.09239509190887116
+    },
+    "s_image_down_m": {
+      "min": -0.020828704670072473,
+      "max": 0.1503029869123444
+    },
+    "s_image_right_m": {
+      "min": -0.12187623419322399,
+      "max": 0.0939083580976636
+    },
+    "delta_z_m": {
+      "min": -0.03817020999999998,
+      "max": 0.010676730000000023
+    },
+    "attempt5_near_try2_median_delta_z_m": -0.03458101499999999,
+    "far_physical_workspace_limit": true,
+    "far_limit_has_valid_pose": false
+  }
+}

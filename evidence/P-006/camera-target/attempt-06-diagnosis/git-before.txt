@@ -1,0 +1,3 @@
+BASE_COMMIT=6f9e80c7b608eb37258aab65c612ba3a22e481ef
+THIS_COMMIT_SCOPE=evidence/P-006/camera-target/attempt-06-diagnosis
+NEW_CAPTURE=0

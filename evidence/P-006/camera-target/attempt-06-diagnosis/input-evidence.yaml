@@ -1,0 +1,29 @@
+inputs:
+  - path: evidence/P-006/camera-target/color-pose.csv
+    sha256: 4a46797303e8e908d9cb8c3b845bd96ce60447199cb26da7d0cb881c2d6f4dc3
+  - path: evidence/P-006/camera-target/samples.csv
+    sha256: 0b9d9f62e01e1ac90fb7b9d7ba310c1a38e727214334194fbe099a53c79eabac
+  - path: evidence/P-006/camera-target/attempt-02/poses.csv
+    sha256: 94711540f4418e67c752d2f7dfc8fe690622ab3c1dd01ac750e458a627b19050
+  - path: evidence/P-006/camera-target/attempt-02/samples.csv
+    sha256: c0b26d1ecc03ff350d536fda59accec6523929081352dbbb5696213e4eb236df
+  - path: evidence/P-006/camera-target/attempt-03/poses.csv
+    sha256: 8d561a11ad01085b89d855c4e9fcdf65a21d6d5aae67579fb9687ee0831c79b0
+  - path: evidence/P-006/camera-target/attempt-03/samples.csv
+    sha256: 0656d5c3cce5a88539fd528fcc7fe7ed8604a3390094a2c7b3088d010184b80d
+  - path: evidence/P-006/camera-target/attempt-03/diversity-validation.csv
+    sha256: 5342f8f60a37d36e919362a0f28d6ecdae78c26a2e130f2c72c42d3f7ca0f42a
+  - path: evidence/P-006/camera-target/attempt-04/poses.csv
+    sha256: 35a02bc9df9191e40d7ffaf40c269f008030c7da01f1ae7bf238c36b674fc134
+  - path: evidence/P-006/camera-target/attempt-04/samples.csv
+    sha256: dd249b762b98ebe70d301edc1edc71e5717745ae94fbbd9c853311a90c61ca46
+  - path: evidence/P-006/camera-target/attempt-05/poses.csv
+    sha256: 9dd468c4cd38ae7f214053405256b5464a206cde51410a77067fbb381ffae5f5
+  - path: evidence/P-006/camera-target/attempt-05/samples.csv
+    sha256: 38fc7cc1aee0b32a7785c552289e40731230aee52bc9f7af5b7b7730f2c0e52c
+  - path: evidence/P-006/camera-target/attempt-05/diversity-validation.csv
+    sha256: 6073f4a6839a73ca1dfd284f093b18490185ed839690dacde9eff21ae85b2da4
+  - path: evidence/P-006/camera-target/attempt-05/far-physical-limit.txt
+    sha256: 606c3e0e84255bed1f36a1df29a3bbde800286c7905b2906e5c7325524101191
+fixed_reference_m: [-0.04281625, -0.14894789, 0.46428018]
+new_capture: 0

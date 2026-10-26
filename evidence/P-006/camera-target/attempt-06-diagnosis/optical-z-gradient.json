@@ -1,0 +1,34 @@
+{
+  "prediction_not_measurement": true,
+  "image_down_is_camera_plus_y": true,
+  "optical_z_change_per_m": {
+    "image_right": 0.05164977836668057,
+    "image_down": -0.2842804812107376,
+    "steepest_increase": 0.2897850547543331
+  },
+  "optical_z_change_per_100mm": {
+    "image_right": 0.005164977836668057,
+    "image_down": -0.028428048121073763,
+    "steepest_increase": 0.02897850547543331
+  },
+  "image_right_unit_camera": [
+    0.9985470440013196,
+    0.01536558853085652,
+    0.05164977836668057
+  ],
+  "image_down_unit_camera": [
+    0.016005781622179752,
+    0.9586075437619164,
+    -0.2842804812107376
+  ],
+  "steepest_increase_unit_camera": [
+    0.17797582264929027,
+    -0.940398441403077,
+    0.2897850547543331
+  ],
+  "empirical_dz_per_m_image_right": 0.05474598060586805,
+  "empirical_dz_per_m_image_down": -0.28715860072004445,
+  "empirical_rmse_m": 0.00034202461344465447,
+  "partial_dz_per_camera_x": 0.056302780810036125,
+  "partial_dz_per_camera_y": -0.2974957302192202
+}
