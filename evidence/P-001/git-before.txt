@@ -1,0 +1,9 @@
+P-001 session start, before the Humble duration fix:
+9aee0cc49d75e07ec4a53c9ad8809c08fecad8a3
+main
+working tree clean
+
+Server clone immediately before the passing clean build:
+8c4109f4bf0aba037ce641d143b449226fc5d795
+main
+working tree clean

@@ -1,0 +1,247 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+===== CLEAN =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+CLEAN_EXIT:0
+===== COLCON BUILD =====
+Starting >>> vision_path_generator
+Finished <<< vision_path_generator [24.1s]
+Starting >>> robot_controller
+--- stderr: robot_controller
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp: In function ‘void robot_controller::{anonymous}::retime(trajectory_msgs::msg::JointTrajectory&, double)’:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:54: error: no match for ‘operator+’ (operand types are ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} and ‘rclcpp::Duration’)
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                      ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                                                      |
+      |                                                                                      rclcpp::Duration
+In file included from /usr/include/c++/11/bits/stl_algobase.h:67,
+                 from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/string:40,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/stl_iterator.h:585:5: note: candidate: ‘template<class _Iterator> constexpr std::reverse_iterator<_Iterator> std::operator+(typename std::reverse_iterator<_Iterator>::difference_type, const std::reverse_iterator<_Iterator>&)’
+  585 |     operator+(typename reverse_iterator<_Iterator>::difference_type __n,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/stl_iterator.h:585:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘rclcpp::Duration’ is not derived from ‘const std::reverse_iterator<_Iterator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/bits/stl_algobase.h:67,
+                 from /usr/include/c++/11/bits/char_traits.h:39,
+                 from /usr/include/c++/11/string:40,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/stl_iterator.h:1700:5: note: candidate: ‘template<class _Iterator> constexpr std::move_iterator<_IteratorL> std::operator+(typename std::move_iterator<_IteratorL>::difference_type, const std::move_iterator<_IteratorL>&)’
+ 1700 |     operator+(typename move_iterator<_Iterator>::difference_type __n,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/stl_iterator.h:1700:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘rclcpp::Duration’ is not derived from ‘const std::move_iterator<_IteratorL>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6095:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&, const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&)’
+ 6095 |     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6095:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:56,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.tcc:1169:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const _CharT*, const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&)’
+ 1169 |     operator+(const _CharT* __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.tcc:1169:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   mismatched types ‘const _CharT*’ and ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:56,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.tcc:1189:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(_CharT, const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&)’
+ 1189 |     operator+(_CharT __lhs, const basic_string<_CharT, _Traits, _Alloc>& __rhs)
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.tcc:1189:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘rclcpp::Duration’ is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6132:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&, const _CharT*)’
+ 6132 |     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6132:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6148:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&, _CharT)’
+ 6148 |     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs, _CharT __rhs)
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6148:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6160:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&, const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&)’
+ 6160 |     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6160:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6166:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&, std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&)’
+ 6166 |     operator+(const basic_string<_CharT, _Traits, _Alloc>& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6166:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6172:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&, std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&)’
+ 6172 |     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6172:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6194:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(const _CharT*, std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&)’
+ 6194 |     operator+(const _CharT* __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6194:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   mismatched types ‘const _CharT*’ and ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6200:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(_CharT, std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&)’
+ 6200 |     operator+(_CharT __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6200:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘rclcpp::Duration’ is not derived from ‘std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6206:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&, const _CharT*)’
+ 6206 |     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6206:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/c++/11/string:55,
+                 from /ws/cad-less-robotics/src/robot_controller/include/robot_controller/waypoint_prep.hpp:5,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:3:
+/usr/include/c++/11/bits/basic_string.h:6212:5: note: candidate: ‘template<class _CharT, class _Traits, class _Alloc> std::__cxx11::basic_string<_CharT, _Traits, _Allocator> std::operator+(std::__cxx11::basic_string<_CharT, _Traits, _Allocator>&&, _CharT)’
+ 6212 |     operator+(basic_string<_CharT, _Traits, _Alloc>&& __lhs,
+      |     ^~~~~~~~
+/usr/include/c++/11/bits/basic_string.h:6212:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘std::__cxx11::basic_string<_CharT, _Traits, _Allocator>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/eigen3/Eigen/Core:50,
+                 from /usr/include/eigen3/Eigen/Geometry:11,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model.h:46,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model_group.h:40,
+                 from /opt/ros/humble/include/moveit/robot_model/robot_model.h:45,
+                 from /opt/ros/humble/include/moveit/robot_state/robot_state.h:40,
+                 from /opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:7:
+/usr/include/c++/11/complex:332:5: note: candidate: ‘template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&, const std::complex<_Tp>&)’
+  332 |     operator+(const complex<_Tp>& __x, const complex<_Tp>& __y)
+      |     ^~~~~~~~
+/usr/include/c++/11/complex:332:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::complex<_Tp>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/eigen3/Eigen/Core:50,
+                 from /usr/include/eigen3/Eigen/Geometry:11,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model.h:46,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model_group.h:40,
+                 from /opt/ros/humble/include/moveit/robot_model/robot_model.h:45,
+                 from /opt/ros/humble/include/moveit/robot_state/robot_state.h:40,
+                 from /opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:7:
+/usr/include/c++/11/complex:341:5: note: candidate: ‘template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&, const _Tp&)’
+  341 |     operator+(const complex<_Tp>& __x, const _Tp& __y)
+      |     ^~~~~~~~
+/usr/include/c++/11/complex:341:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::complex<_Tp>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/eigen3/Eigen/Core:50,
+                 from /usr/include/eigen3/Eigen/Geometry:11,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model.h:46,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model_group.h:40,
+                 from /opt/ros/humble/include/moveit/robot_model/robot_model.h:45,
+                 from /opt/ros/humble/include/moveit/robot_state/robot_state.h:40,
+                 from /opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:7:
+/usr/include/c++/11/complex:350:5: note: candidate: ‘template<class _Tp> std::complex<_Tp> std::operator+(const _Tp&, const std::complex<_Tp>&)’
+  350 |     operator+(const _Tp& __x, const complex<_Tp>& __y)
+      |     ^~~~~~~~
+/usr/include/c++/11/complex:350:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘rclcpp::Duration’ is not derived from ‘const std::complex<_Tp>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /usr/include/eigen3/Eigen/Core:50,
+                 from /usr/include/eigen3/Eigen/Geometry:11,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model.h:46,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model_group.h:40,
+                 from /opt/ros/humble/include/moveit/robot_model/robot_model.h:45,
+                 from /opt/ros/humble/include/moveit/robot_state/robot_state.h:40,
+                 from /opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:7:
+/usr/include/c++/11/complex:451:5: note: candidate: ‘template<class _Tp> std::complex<_Tp> std::operator+(const std::complex<_Tp>&)’
+  451 |     operator+(const complex<_Tp>& __x)
+      |     ^~~~~~~~
+/usr/include/c++/11/complex:451:5: note:   template argument deduction/substitution failed:
+/ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:103:89: note:   ‘trajectory_msgs::msg::JointTrajectoryPoint_<std::allocator<void> >::_time_from_start_type’ {aka ‘builtin_interfaces::msg::Duration_<std::allocator<void> >’} is not derived from ‘const std::complex<_Tp>’
+  103 |         trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+      |                                                                                         ^
+In file included from /opt/ros/humble/include/rclcpp/rclcpp/clock.hpp:24,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/timer.hpp:27,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/callback_group.hpp:30,
+                 from /opt/ros/humble/include/rclcpp/rclcpp/node.hpp:40,
+                 from /opt/ros/humble/include/moveit/kinematics_base/kinematics_base.h:43,
+                 from /opt/ros/humble/include/moveit/robot_model/joint_model_group.h:42,
+                 from /opt/ros/humble/include/moveit/robot_model/robot_model.h:45,
+                 from /opt/ros/humble/include/moveit/robot_state/robot_state.h:40,
+                 from /opt/ros/humble/include/moveit/move_group_interface/move_group_interface.h:41,
+                 from /ws/cad-less-robotics/src/robot_controller/src/motion_planner_node.cpp:7:
+/opt/ros/humble/include/rclcpp/rclcpp/time.hpp:223:1: note: candidate: ‘rclcpp::Time rclcpp::operator+(const rclcpp::Duration&, const rclcpp::Time&)’
+  223 | operator+(const rclcpp::Duration & lhs, const rclcpp::Time & rhs);
+      | ^~~~~~~~
+/opt/ros/humble/include/rclcpp/rclcpp/time.hpp:223:62: note:   no known conversion for argument 2 from ‘rclcpp::Duration’ to ‘const rclcpp::Time&’
+  223 | operator+(const rclcpp::Duration & lhs, const rclcpp::Time & rhs);
+      |                                         ~~~~~~~~~~~~~~~~~~~~~^~~
+gmake[2]: *** [CMakeFiles/motion_planner_node.dir/build.make:76: CMakeFiles/motion_planner_node.dir/src/motion_planner_node.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:185: CMakeFiles/motion_planner_node.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2
+---
+Failed   <<< robot_controller [9.71s, exited with code 2]
+
+Summary: 1 package finished [33.9s]
+  1 package failed: robot_controller
+  1 package had stderr output: robot_controller
+BUILD_EXIT:2
+SCRIPT_EXIT:0

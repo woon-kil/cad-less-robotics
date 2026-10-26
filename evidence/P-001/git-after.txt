@@ -1,0 +1,11 @@
+$ date
+2026-10-26 14:16:26 KST
+
+$ git rev-parse HEAD
+8c4109f4bf0aba037ce641d143b449226fc5d795
+
+$ git branch --show-current
+main
+
+$ git status --short
+?? evidence/P-001/

@@ -1,0 +1,40 @@
+P-001 evidence manifest
+
+SOURCE_BASE_COMMIT=9aee0cc49d75e07ec4a53c9ad8809c08fecad8a3
+TESTED_COMMIT=8c4109f4bf0aba037ce641d143b449226fc5d795
+EVIDENCE_GENERATED_AT=2026-10-26 14:15 KST
+FINAL_COMMIT=PENDING
+
+environment.txt
+Checker run inside bytesize-robotics-humble before the build.
+Commands: printenv ROS_DISTRO, ./scripts/check_environment.sh
+
+git-before.txt
+Local HEAD before the duration fix, and the server HEAD recorded in build.log before the passing build.
+
+build-first-attempt.log
+First clean colcon build. robot_controller failed at motion_planner_node.cpp:103.
+
+build.log
+Clean colcon build of TESTED_COMMIT. BUILD_EXIT=0.
+
+test-and-result.log
+colcon test and colcon test-result --verbose in one container command.
+
+test.log
+CTest stdout from log/test_2026-10-26_05-14-54 for both packages, plus compiler warning grep of the build stdout logs.
+
+test-result.log
+The test-result section of test-and-result.log.
+
+test-inventory.txt
+Written from the test sources and the executed gtest names in test.log.
+
+safety-invariants.txt
+Written from the current source lines. No behavior was inferred beyond those lines.
+
+changed-files.txt
+The only application source change in this gate.
+
+git-after.txt
+date, git rev-parse HEAD, git branch --show-current, git status --short after these files existed.

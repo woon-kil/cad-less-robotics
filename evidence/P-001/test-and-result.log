@@ -1,0 +1,15 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+===== COLCON TEST =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+Starting >>> vision_path_generator
+Finished <<< vision_path_generator [0.10s]
+Starting >>> robot_controller
+Finished <<< robot_controller [0.09s]
+
+Summary: 2 packages finished [0.38s]
+TEST_EXIT:0
+===== COLCON TEST RESULT =====
+Summary: 17 tests, 0 errors, 0 failures, 0 skipped
+RESULT_EXIT:0
+SCRIPT_EXIT:0

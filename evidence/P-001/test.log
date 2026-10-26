@@ -1,0 +1,130 @@
+===== vision_path_generator test stdout =====
+UpdateCTestConfiguration  from :/ws/cad-less-robotics/build/vision_path_generator/CTestConfiguration.ini
+Parse Config file:/ws/cad-less-robotics/build/vision_path_generator/CTestConfiguration.ini
+   Site: 218f0dac6e37
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261026-0514 - Experimental
+UpdateCTestConfiguration  from :/ws/cad-less-robotics/build/vision_path_generator/CTestConfiguration.ini
+Parse Config file:/ws/cad-less-robotics/build/vision_path_generator/CTestConfiguration.ini
+Test project /ws/cad-less-robotics/build/vision_path_generator
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: test_polyline
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/ws/cad-less-robotics/build/vision_path_generator/test_results/vision_path_generator/test_polyline.gtest.xml" "--package-name" "vision_path_generator" "--output-file" "/ws/cad-less-robotics/build/vision_path_generator/ament_cmake_gtest/test_polyline.txt" "--command" "/ws/cad-less-robotics/build/vision_path_generator/test_polyline" "--gtest_output=xml:/ws/cad-less-robotics/build/vision_path_generator/test_results/vision_path_generator/test_polyline.gtest.xml"
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/ws/cad-less-robotics/build/vision_path_generator':
+1:  - /ws/cad-less-robotics/build/vision_path_generator/test_polyline --gtest_output=xml:/ws/cad-less-robotics/build/vision_path_generator/test_results/vision_path_generator/test_polyline.gtest.xml
+1: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+1: [==========] Running 8 tests from 4 test suites.
+1: [----------] Global test environment set-up.
+1: [----------] 3 tests from Resample
+1: [ RUN      ] Resample.ExactLengthKeepsTwoMillimeterSpacingAndEndpoint
+1: [       OK ] Resample.ExactLengthKeepsTwoMillimeterSpacingAndEndpoint (0 ms)
+1: [ RUN      ] Resample.ShortTailStillReachesEndpoint
+1: [       OK ] Resample.ShortTailStillReachesEndpoint (0 ms)
+1: [ RUN      ] Resample.RejectsNonPositiveSpacing
+1: [       OK ] Resample.RejectsNonPositiveSpacing (0 ms)
+1: [----------] 3 tests from Resample (0 ms total)
+1: 
+1: [----------] 2 tests from Chain
+1: [ RUN      ] Chain.KeepsTheLongerSeparatedCluster
+1: [       OK ] Chain.KeepsTheLongerSeparatedCluster (0 ms)
+1: [ RUN      ] Chain.OrdersAShuffledLineFromAnEndpoint
+1: [       OK ] Chain.OrdersAShuffledLineFromAnEndpoint (0 ms)
+1: [----------] 2 tests from Chain (0 ms total)
+1: 
+1: [----------] 1 test from Smooth
+1: [ RUN      ] Smooth.KeepsEndpointsAndAveragesTheMiddle
+1: [       OK ] Smooth.KeepsEndpointsAndAveragesTheMiddle (0 ms)
+1: [----------] 1 test from Smooth (0 ms total)
+1: 
+1: [----------] 2 tests from Orientation
+1: [ RUN      ] Orientation.ToolAxesFollowNormalAndTangent
+1: [       OK ] Orientation.ToolAxesFollowNormalAndTangent (0 ms)
+1: [ RUN      ] Orientation.FlipsQuaternionToTheSameHemisphere
+1: [       OK ] Orientation.FlipsQuaternionToTheSameHemisphere (0 ms)
+1: [----------] 2 tests from Orientation (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 8 tests from 4 test suites ran. (0 ms total)
+1: [  PASSED  ] 8 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/ws/cad-less-robotics/build/vision_path_generator/test_results/vision_path_generator/test_polyline.gtest.xml'
+1: -- run_test.py: verify result file '/ws/cad-less-robotics/build/vision_path_generator/test_results/vision_path_generator/test_polyline.gtest.xml'
+1/1 Test #1: test_polyline ....................   Passed    0.06 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+gtest    =   0.06 sec*proc (1 test)
+
+Total Test time (real) =   0.06 sec
+===== robot_controller test stdout =====
+UpdateCTestConfiguration  from :/ws/cad-less-robotics/build/robot_controller/CTestConfiguration.ini
+Parse Config file:/ws/cad-less-robotics/build/robot_controller/CTestConfiguration.ini
+   Site: 218f0dac6e37
+   Build name: (empty)
+ Add coverage exclude regular expressions.
+Create new tag: 20261026-0514 - Experimental
+UpdateCTestConfiguration  from :/ws/cad-less-robotics/build/robot_controller/CTestConfiguration.ini
+Parse Config file:/ws/cad-less-robotics/build/robot_controller/CTestConfiguration.ini
+Test project /ws/cad-less-robotics/build/robot_controller
+Constructing a list of tests
+Done constructing a list of tests
+Updating test list for fixtures
+Added 0 tests to meet fixture requirements
+Checking test dependency graph...
+Checking test dependency graph end
+test 1
+    Start 1: test_waypoint_prep
+
+1: Test command: /usr/bin/python3 "-u" "/opt/ros/humble/share/ament_cmake_test/cmake/run_test.py" "/ws/cad-less-robotics/build/robot_controller/test_results/robot_controller/test_waypoint_prep.gtest.xml" "--package-name" "robot_controller" "--output-file" "/ws/cad-less-robotics/build/robot_controller/ament_cmake_gtest/test_waypoint_prep.txt" "--command" "/ws/cad-less-robotics/build/robot_controller/test_waypoint_prep" "--gtest_output=xml:/ws/cad-less-robotics/build/robot_controller/test_results/robot_controller/test_waypoint_prep.gtest.xml"
+1: Test timeout computed to be: 60
+1: -- run_test.py: invoking following command in '/ws/cad-less-robotics/build/robot_controller':
+1:  - /ws/cad-less-robotics/build/robot_controller/test_waypoint_prep --gtest_output=xml:/ws/cad-less-robotics/build/robot_controller/test_results/robot_controller/test_waypoint_prep.gtest.xml
+1: Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+1: [==========] Running 7 tests from 1 test suite.
+1: [----------] Global test environment set-up.
+1: [----------] 7 tests from WaypointPrep
+1: [ RUN      ] WaypointPrep.ApproachLiftsOppositeTheToolZAxis
+1: [       OK ] WaypointPrep.ApproachLiftsOppositeTheToolZAxis (0 ms)
+1: [ RUN      ] WaypointPrep.LimitKeepsEndpointsAndMidpoint
+1: [       OK ] WaypointPrep.LimitKeepsEndpointsAndMidpoint (0 ms)
+1: [ RUN      ] WaypointPrep.HemisphereAlignmentMakesAdjacentDotPositive
+1: [       OK ] WaypointPrep.HemisphereAlignmentMakesAdjacentDotPositive (0 ms)
+1: [ RUN      ] WaypointPrep.DropsPointsCloserThanSeparation
+1: [       OK ] WaypointPrep.DropsPointsCloserThanSeparation (0 ms)
+1: [ RUN      ] WaypointPrep.RejectsAPoseBeyondReach
+1: [       OK ] WaypointPrep.RejectsAPoseBeyondReach (0 ms)
+1: [ RUN      ] WaypointPrep.NormalizesAScaledQuaternion
+1: [       OK ] WaypointPrep.NormalizesAScaledQuaternion (0 ms)
+1: [ RUN      ] WaypointPrep.RejectsNegativeApproach
+1: [       OK ] WaypointPrep.RejectsNegativeApproach (0 ms)
+1: [----------] 7 tests from WaypointPrep (0 ms total)
+1: 
+1: [----------] Global test environment tear-down
+1: [==========] 7 tests from 1 test suite ran. (0 ms total)
+1: [  PASSED  ] 7 tests.
+1: -- run_test.py: return code 0
+1: -- run_test.py: inject classname prefix into gtest result file '/ws/cad-less-robotics/build/robot_controller/test_results/robot_controller/test_waypoint_prep.gtest.xml'
+1: -- run_test.py: verify result file '/ws/cad-less-robotics/build/robot_controller/test_results/robot_controller/test_waypoint_prep.gtest.xml'
+1/1 Test #1: test_waypoint_prep ...............   Passed    0.05 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Label Time Summary:
+gtest    =   0.05 sec*proc (1 test)
+
+Total Test time (real) =   0.05 sec
+===== build stdout warnings =====
+-- vision --
+NO_COMPILER_WARNING
+-- robot --
+NO_COMPILER_WARNING

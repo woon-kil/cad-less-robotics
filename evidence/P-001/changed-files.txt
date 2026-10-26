@@ -1,0 +1,12 @@
+File:
+src/robot_controller/src/motion_planner_node.cpp
+Original problem:
+retime()가 builtin_interfaces::msg::Duration에 rclcpp::Duration을 더해 robot_controller 컴파일이 실패했다.
+Root cause:
+API_COMPATIBILITY. Humble JointTrajectoryPoint.time_from_start는 builtin_interfaces::Duration이다. 그 타입에는 rclcpp::Duration을 더하는 operator+가 없다.
+Change:
+이전 시각을 rclcpp::Duration으로 바꾼 뒤 dt를 더하고, 그 결과를 time_from_start에 다시 넣는다.
+Why required for Humble:
+이 한 줄이 없으면 robot_controller가 빌드되지 않는다.
+Behavioral impact:
+더하는 시간과 순서는 같다. 경로 추출, 웨이포인트 의미, 계획 그룹, 안전 기본값은 바꾸지 않았다.

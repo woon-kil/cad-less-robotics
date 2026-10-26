@@ -1,0 +1,25 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+From https://github.com/woon-kil/cad-less-robotics
+ * branch            main       -> FETCH_HEAD
+   9aee0cc..8c4109f  main       -> origin/main
+Updating 9aee0cc..8c4109f
+Fast-forward
+ src/robot_controller/src/motion_planner_node.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+===== GIT =====
+8c4109f4bf0aba037ce641d143b449226fc5d795
+===== CLEAN BUILD =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+not found: "/ws/cad-less-robotics/install/robot_controller/share/robot_controller/local_setup.bash"
+CLEAN_EXIT:0
+Starting >>> vision_path_generator
+[0.217s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/ws/cad-less-robotics/install/vision_path_generator' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.217s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/ws/cad-less-robotics/install/vision_path_generator' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+Finished <<< vision_path_generator [24.0s]
+Starting >>> robot_controller
+Finished <<< robot_controller [14.4s]
+
+Summary: 2 packages finished [38.5s]
+BUILD_EXIT:0
+SCRIPT_EXIT:0

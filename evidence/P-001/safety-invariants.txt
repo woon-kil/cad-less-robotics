@@ -1,0 +1,65 @@
+Invariant:
+S-01 execute_trajectory 기본값은 false
+Source file:
+src/robot_controller/src/motion_planner_node.cpp
+src/robot_controller/launch/system_bringup.launch.py
+Relevant parameter/function:
+declare_parameter execute_trajectory false (line 122)
+member execute_trajectory_ false (line 434)
+launch default_value false (line 21)
+planAndMaybeExecute returns before group->execute when the flag is false (line 343)
+Observed default/behavior:
+기본값은 false다. false이면 궤적을 실행하지 않고 반환한다.
+Result:
+PASS
+
+Invariant:
+S-02 TF가 없으면 실행을 허용하지 않는다
+Source file:
+src/robot_controller/src/motion_planner_node.cpp
+src/vision_path_generator/src/path_extractor_node.cpp
+Relevant parameter/function:
+transformPoses (line 378). TF 예외 시 false를 반환하고 "실행하지 않습니다"를 로그한다 (line 397).
+planAndMaybeExecute는 transformPoses가 false면 반환한다 (line 279).
+vision require_transform 기본값 true (line 51, member line 252). TF 예외 시 포즈를 발행하지 않는다 (line 226).
+Observed default/behavior:
+기본 경로에서는 TF 실패가 실행으로 이어지지 않는다. require_transform을 false로 둔 경우에만 vision 노드가 원본 프레임 포즈를 경고와 함께 발행한다. 그 기본값은 true이고 이번 Gate에서 바꾸지 않았다.
+Result:
+PASS
+
+Invariant:
+S-03 stale pose 검사는 남아 있다
+Source file:
+src/robot_controller/src/motion_planner_node.cpp
+Relevant parameter/function:
+max_pose_age_sec 기본값 3.0 (line 128)
+freshEnough (line 358). 스탬프가 0이거나 나이가 한계를 넘으면 false.
+planAndMaybeExecute는 freshEnough가 false면 반환한다 (line 275).
+Observed default/behavior:
+스탬프 없음과 오래된 포즈는 실행 전에 거부한다. max_pose_age_sec가 0 이하이면 검사를 건너뛰는 분기는 있다. 기본값은 3.0이다.
+Result:
+PASS
+
+Invariant:
+S-04 joint state가 없으면 진행하지 않는다
+Source file:
+src/robot_controller/src/motion_planner_node.cpp
+Relevant parameter/function:
+getCurrentState(1.0) (line 307). 실패하면 반환한다.
+Observed default/behavior:
+현재 관절 상태를 못 가져오면 Cartesian 계획과 execute에 들어가지 않는다.
+Result:
+PASS
+
+Invariant:
+S-05 관절 속도 한계를 넘기면 실행하지 않는다
+Source file:
+src/robot_controller/src/motion_planner_node.cpp
+Relevant parameter/function:
+fallback_joint_velocity 기본값 0.4 (line 133)
+prepareTiming (line 405). withinJointVelocity가 실패하면 retime하고, 다시 실패하면 false.
+planAndMaybeExecute는 prepareTiming이 false면 반환한다 (line 331). 그 반환은 execute보다 앞이다.
+Observed default/behavior:
+속도 상한 안으로 시간을 맞추지 못하면 실행하지 않는다.
+Result:
+PASS

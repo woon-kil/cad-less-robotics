@@ -1,0 +1,28 @@
+Container: bytesize-robotics-humble
+Host id inside container: 218f0dac6e37
+Date: 2026-10-26 05:12:32 UTC
+
+$ printenv ROS_DISTRO
+humble
+
+$ ./scripts/check_environment.sh
+check_environment.sh
+host: 218f0dac6e37
+date: 2026-10-26 05:12:32 UTC
+
+PASS        architecture      x86_64
+PASS        Ubuntu 22.04      ubuntu 22.04
+PASS        ROS_DISTRO        humble
+PASS        ROS 2 CLI         ros2 --help
+PASS        colcon            colcon --help ok
+PASS        CMake             cmake version 3.22.1
+PASS        gcc               gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+PASS        g++               g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+PASS        MoveIt 2          26 packages from ros2 pkg list
+PASS        Eigen3            libeigen3-dev 3.4.0-2ubuntu2
+PASS        PCL               pcl_common 1.12.1
+PASS        rosdep            0.27.0
+
+counts: PASS=12 FAIL=0 NOT_FOUND=0
+ENVIRONMENT PASS
+CHECK_EXIT:0
