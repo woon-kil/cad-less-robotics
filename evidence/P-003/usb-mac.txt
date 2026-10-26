@@ -1,0 +1,16 @@
+Host: this Mac (darwin)
+Command: ioreg -p IOUSB -l
+When: 2026-10-26 14:53 KST
+Orbbec device: present
+Vendor:product: 2bc5:0804
+Product name: Orbbec Gemini 335L
+UsbLinkSpeed: 5000000000 (5 Gbps, USB 3 SuperSpeed)
+USB 2 fallback: no. 480 Mbps was not the negotiated link for this device.
+
+Path is through hubs, not a direct root port:
+- 05e3:0625 USB3.2 Hub, UsbLinkSpeed 10000000000
+- 05e3:0626 USB3.1 Hub, UsbLinkSpeed 5000000000
+- 2bc5:0804 Orbbec Gemini 335L, UsbLinkSpeed 5000000000
+
+Serial number: not recorded.
+This Mac is not the P-003 ROS 2 Humble host. The P620 lsusb result in usb.txt is unchanged: no 2bc5 device there.

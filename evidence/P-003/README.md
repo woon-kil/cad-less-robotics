@@ -8,6 +8,7 @@ FINAL_COMMIT=PENDING
 Status: BLOCKED
 
 p620 `lsusb`에 Orbbec vendor `2bc5`가 없다. Gemini 335L 공식 product id는 `0804`이다.
+같은 시각 이후 이 맥의 IOUSB에는 `2bc5:0804` Orbbec Gemini 335L이 있고 link는 5 Gbps이다. 허브 `05e3:0626` 뒤에 있다. 맥은 Humble 검증 호스트가 아니라서 wrapper는 실행하지 않았다.
 USB 3.x root hub(10000M)는 Bus 002, 004, 006, 008에 있고 자식 장치가 없다.
 연결된 주변장치는 Bus 003의 Realtek USB 오디오 둘뿐이고 속도는 480M이다.
 
