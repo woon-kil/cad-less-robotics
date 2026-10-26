@@ -1,0 +1,4 @@
+{"pose": "near", "try_index": 1, "saved": ["near-t01-00", "near-t01-01", "near-t01-02", "near-t01-03"], "skipped_sync": 1, "skipped_tf": 1}
+{"pose": "near", "try_index": 2, "saved": ["near-t02-00", "near-t02-01", "near-t02-02", "near-t02-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "near", "try_index": 3, "saved": ["near-t03-00", "near-t03-01", "near-t03-02", "near-t03-03"], "skipped_sync": 0, "skipped_tf": 0}
+{"pose": "far", "try_index": 1, "saved": ["far-t01-00", "far-t01-01", "far-t01-02", "far-t01-03"], "skipped_sync": 0, "skipped_tf": 0}

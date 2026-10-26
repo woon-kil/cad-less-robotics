@@ -1,0 +1,17 @@
+stem,pose_label,try_index,split,color_stamp,depth_stamp,stamp_delta_sec,detection_success,corner_count,color_frame,depth_frame,color_width,color_height,depth_width,depth_height,tf_reason
+far-t01-00,far,1,diversity,1793014832.325815916,1793014832.325835943,0.000020,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+far-t01-01,far,1,diversity,1793014832.692909002,1793014832.692928076,0.000019,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+far-t01-02,far,1,diversity,1793014833.060002089,1793014833.060020924,0.000019,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+far-t01-03,far,1,diversity,1793014833.427094936,1793014833.427114010,0.000019,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t01-00,near,1,diversity,1793014568.753952980,1793014568.753973961,0.000021,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,lookup_failed
+near-t01-01,near,1,diversity,1793014569.087677956,1793014569.087697029,0.000019,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t01-02,near,1,diversity,1793014569.454775095,1793014569.454793930,0.000019,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t01-03,near,1,diversity,1793014569.821871042,1793014569.821891069,0.000020,0,0,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t02-00,near,2,diversity,1793014629.958194971,1793014629.958214045,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t02-01,near,2,diversity,1793014630.325279951,1793014630.325299025,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t02-02,near,2,diversity,1793014630.692331076,1793014630.692352057,0.000021,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t02-03,near,2,diversity,1793014631.059341908,1793014631.059360981,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t03-00,near,3,diversity,1793014684.086941004,1793014684.086960077,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t03-01,near,3,diversity,1793014684.454025030,1793014684.454045057,0.000020,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t03-02,near,3,diversity,1793014684.821109056,1793014684.821130037,0.000021,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok
+near-t03-03,near,3,diversity,1793014685.188194036,1793014685.188213110,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame,1280,720,848,480,ok

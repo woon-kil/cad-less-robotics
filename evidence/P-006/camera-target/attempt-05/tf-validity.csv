@@ -1,0 +1,17 @@
+stem,pose_label,try_index,tf_valid,reason
+far-t01-00,far,1,1,ok
+far-t01-01,far,1,1,ok
+far-t01-02,far,1,1,ok
+far-t01-03,far,1,1,ok
+near-t01-00,near,1,0,lookup_failed
+near-t01-01,near,1,1,ok
+near-t01-02,near,1,1,ok
+near-t01-03,near,1,1,ok
+near-t02-00,near,2,1,ok
+near-t02-01,near,2,1,ok
+near-t02-02,near,2,1,ok
+near-t02-03,near,2,1,ok
+near-t03-00,near,3,1,ok
+near-t03-01,near,3,1,ok
+near-t03-02,near,3,1,ok
+near-t03-03,near,3,1,ok

@@ -1,0 +1,10 @@
+2026-10-26T20:36:07+09:00 near try=1 choice=촬영
+2026-10-26T20:36:14+09:00 FEEDBACK pose=near try=1 solved=0 delta_x_m= delta_y_m= delta_z_m= rule=FAIL
+2026-10-26T20:37:07+09:00 near retry_choice=추가 촬영
+2026-10-26T20:37:12+09:00 FEEDBACK pose=near try=2 solved=4 delta_x_m=0.06060333 delta_y_m=0.12671368 delta_z_m=-0.03458102 rule=FAIL
+2026-10-26T20:38:02+09:00 near retry_choice=추가 촬영
+2026-10-26T20:38:06+09:00 FEEDBACK pose=near try=3 solved=4 delta_x_m=0.06700388 delta_y_m=0.07530457 delta_z_m=-0.01923174 rule=FAIL
+2026-10-26T20:40:30+09:00 far try=1 choice=촬영
+2026-10-26T20:40:38+09:00 FEEDBACK pose=far try=1 solved=0 delta_x_m= delta_y_m= delta_z_m= rule=FAIL
+2026-10-26T20:41:08+09:00 far retry_choice=받침에 닿음
+2026-10-26T20:41:08+09:00 FAR_PHYSICAL_WORKSPACE_LIMIT
