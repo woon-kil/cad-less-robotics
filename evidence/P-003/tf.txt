@@ -1,0 +1,4 @@
+Camera internal TF: NOT MEASURED
+Robot-base TF created: NO
+Identity camera TF created: NO
+Hand-eye calibration: not performed

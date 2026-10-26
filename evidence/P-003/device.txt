@@ -1,0 +1,8 @@
+Camera: Orbbec Gemini 335L
+Host detection: FAIL
+Vendor/product seen: none
+Expected: 2bc5:0804 (Gemini_335L in orbbec_camera/scripts/99-obsensor-libusb.rules at v2-main c153462)
+Serial: not read
+Firmware: not read
+Connection: not present on p620 USB
+Container detection: NOT EXECUTED

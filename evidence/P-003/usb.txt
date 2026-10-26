@@ -1,0 +1,40 @@
+Host: p620
+Command: lsusb; lsusb -t
+When: 2026-10-26 14:51 KST
+Orbbec vendor expected from official udev rule: 2bc5
+Gemini 335L product id in that rule: 0804
+Orbbec device count: 0
+
+===== LSUSB =====
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
+Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+===== LSUSB -T =====
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M
+/:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
+    |__ Port 001: Dev 002, If 0, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 1, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 2, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 3, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 0, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 1, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 2, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 3, Class=Audio, Driver=snd-usb-audio, 480M
+/:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
+/:  Bus 005.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
+/:  Bus 006.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
+/:  Bus 007.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
+/:  Bus 008.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M
+
+USB 3.x root hubs exist (Bus 002, 004, 006, 008 at 10000M) and have no child devices.
+The only enumerated peripherals are Realtek USB audio on Bus 003 at 480M.
+Negotiated camera speed: NOT MEASURED. The camera was not enumerated.

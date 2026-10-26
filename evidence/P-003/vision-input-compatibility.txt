@@ -1,0 +1,7 @@
+Existing default input_topic: /camera/depth/points
+Existing default output_topic: /vision/camera/points
+Source: src/vision_path_generator/src/camera_node.cpp
+Actual Gemini topic: NOT MEASURED
+Result: NOT EXECUTED
+Forwarding test: NOT EXECUTED
+No topic name was written into C++ source.

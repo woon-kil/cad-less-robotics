@@ -1,0 +1,4 @@
+Detected firmware: NOT READ
+Official recommended firmware: 1.8.10
+Source: OrbbecSDK_ROS2 release v2.10.6 supported-device table, Gemini 335L
+Decision: no firmware update. The device was not enumerated, so nothing was read or written.

@@ -1,0 +1,2 @@
+NOT MEASURED
+Reason: no PointCloud2 publisher was started.

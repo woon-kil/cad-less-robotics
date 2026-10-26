@@ -1,0 +1,4 @@
+NOT MEASURED
+Duration: 0
+Messages: 0
+Reason: no stream. A single missing device is not reported as a rate.

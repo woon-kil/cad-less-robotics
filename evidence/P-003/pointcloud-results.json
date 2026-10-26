@@ -1,0 +1,17 @@
+{
+  "device": "Gemini 335L",
+  "host_detected": false,
+  "expected_usb_id": "2bc5:0804",
+  "topic": null,
+  "frame_id": null,
+  "width": null,
+  "height": null,
+  "fields": [],
+  "finite_points": null,
+  "finite_ratio": null,
+  "mean_hz": null,
+  "duration_sec": 0,
+  "messages": 0,
+  "disconnects": null,
+  "note": "Host USB enumeration found no Orbbec device. Stream fields were not measured."
+}

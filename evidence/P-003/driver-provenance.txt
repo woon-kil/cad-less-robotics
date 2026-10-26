@@ -1,0 +1,20 @@
+Observed, not cloned and not built.
+
+Repository: https://github.com/orbbec/OrbbecSDK_ROS2
+Branch/tag: v2-main
+Commit: c153462518ad674650bafa4464fda72c27ab797a
+Commit date: 2026-10-08T07:19:48Z
+Commit message: fix: correct Gemini 335Le bottom screw frame typo (#224)
+Launch file present on that branch: orbbec_camera/launch/gemini_330_series.launch.py
+enable_point_cloud default in that launch file: true
+udev script: orbbec_camera/scripts/install_udev_rules.sh
+udev rules: orbbec_camera/scripts/99-obsensor-libusb.rules
+Gemini 335L product id in that file: 0804
+Vendor id: 2bc5
+
+Release v2.10.6 (tag commit 2961565, 2026-09-30) supported-device table:
+Gemini 335L recommended firmware 1.8.10
+Launch file gemini_330_series.launch.py
+Source: https://github.com/orbbec/OrbbecSDK_ROS2/releases
+
+Wrapper was not built because the camera was absent on the host.

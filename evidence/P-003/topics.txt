@@ -1,0 +1,2 @@
+NOT MEASURED
+Reason: camera launch was not started.

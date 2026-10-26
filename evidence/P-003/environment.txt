@@ -1,0 +1,11 @@
+Gate stop: host USB detection failed. Container camera work was not started.
+Host: p620
+Host OS: Ubuntu 24.04 (unchanged)
+Official container: bytesize-robotics-humble (not used for the camera)
+Ubuntu in container: 22.04
+ROS in container: humble
+Camera: not visible to lsusb
+DOFBOT: not connected
+Robot execution: 0
+MoveIt execution: 0
+Camera to robot TF: not created
