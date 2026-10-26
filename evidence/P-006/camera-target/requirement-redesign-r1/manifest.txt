@@ -1,0 +1,12 @@
+ea16a15d92ddcdf7286ab31f512b046bf20634c4f94a34ef22fc5bc3140cd89e  evidence/P-006/camera-target/requirement-redesign-r1/attempt-history.md
+59fe74621153f51dc95ca4fde843f34ce6e0c78f684ae70e25994537192e6375  evidence/P-006/camera-target/requirement-redesign-r1/git-after.txt
+452d4c53eb60ac166ee73c4b71f8b3f22ca01ab6178bcb700110f3c6e9895aa7  evidence/P-006/camera-target/requirement-redesign-r1/git-before.txt
+e94b58bfd26088d8cf7da76d2d4c1ff0870e570dc2968608568928e97b538a2d  evidence/P-006/camera-target/requirement-redesign-r1/legacy-requirement.md
+2fc783a9e2a02b0e2857ab1ff3b8fbbbfca0e569201ae1e3ae08ea61e7be686f  evidence/P-006/camera-target/requirement-redesign-r1/next-gate.md
+5bdca02d1aa9587799238b62018be834a962472a0350d09fbcfa355004cb18d2  evidence/P-006/camera-target/requirement-redesign-r1/README.md
+0b88e0f55c92429b7c3ede9c43cb31e3c0279e7b0cf2bac4a462a3f6043bd573  evidence/P-006/camera-target/requirement-redesign-r1/requirement-traceability.md
+86aea76f4328c738a3bd8d6c751433fdb75231add1147e4a6fe5a5f4fbdb4776  evidence/P-006/camera-target/requirement-redesign-r1/revised-validation-concept.md
+038bf55757d976f3e7fce8ea86ddfdd9c98561af16d0fe0acb0b476184704c38  evidence/P-006/camera-target/requirement-redesign-r1/roi-definition.md
+c3e6f955c71cb2b877a1bec754f5f397380ca09ee782a1318667d7292d3d91bd  evidence/P-006/camera-target/requirement-redesign-r1/sensor-role.md
+5bd28fdecde7032b8837cb9acdee0d4b7e5bb3ec70523485e8617bbe0d9ee0f0  evidence/P-006/camera-target/requirement-redesign-r1/summary.json
+082256f6055b213b6552955d6a3cb7a4d74bbffd2b1c6d95e5cf9301c3f2c339  evidence/P-006/camera-target/requirement-redesign-r1/workcell-constraint.md
