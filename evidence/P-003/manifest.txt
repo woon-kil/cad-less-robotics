@@ -2,6 +2,7 @@ evidence/P-003/README.md
 evidence/P-003/environment.txt
 evidence/P-003/device.txt
 evidence/P-003/usb.txt
+evidence/P-003/usb-mac.txt
 evidence/P-003/driver-provenance.txt
 evidence/P-003/driver-build.log
 evidence/P-003/firmware.txt
