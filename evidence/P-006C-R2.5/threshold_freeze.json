@@ -1,0 +1,12 @@
+{
+  "status": "FROZEN_BEFORE_CAPTURE",
+  "commit": null,
+  "commit_recorded_after_freeze": true,
+  "thresholds_changed_after_freeze": false,
+  "capture_performed_before_freeze": false,
+  "source_evidence_hashes": {
+    "sensor_thresholds": "303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539",
+    "checkerboard_yaml": "1d17d9e66a5e2f13e61c9d93303561562996faadfac3f03a817d22dbbcaf9853",
+    "r2_physical_task_roi": "b9c453a8646a16b50fe428dc2efee5a7a4ba6d579f2c37fde7459cb2cadf6055"
+  }
+}

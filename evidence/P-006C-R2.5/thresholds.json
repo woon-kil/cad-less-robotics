@@ -1,0 +1,38 @@
+{
+  "frozen_before_capture": true,
+  "changed_after_results": false,
+  "sensor_thresholds_sha256": "303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539",
+  "sensor_thresholds_changed": false,
+  "scale_policy": "rigid_fixed_1.0",
+  "similarity_allowed": false,
+  "reflection_policy": "det가 음수면 FAIL이다. 반사를 회전으로 뒤집지 않는다.",
+  "outlier_policy": "검출 실패, 코너 수가 54가 아님, solvePnP 실패, tvec z<=0, 반사, identity TF, TF lookup 실패, depth frame 불일치, 유효 depth 코너 40 미만만 거절한다. 잔차가 크다는 이유로 샘플을 지우지 않는다.",
+  "sample_definition": "REG_A, REG_B, REG_C 각각을 하나의 registration sample로 본다. 한 배치의 프레임은 그 sample의 반복이다. spread는 세 placement transform과 그 평균 사이의 차이다.",
+  "registration_consistency": {
+    "translation_spread_m_max": 0.005,
+    "rotation_spread_deg_max": 3.0
+  },
+  "validation": {
+    "position_rmse_m_max": 0.005,
+    "position_p95_m_max": 0.008,
+    "position_max_m_max": 0.012,
+    "plane_z_rmse_m_max": 0.005,
+    "plane_z_abs_max_m": 0.010,
+    "normal_mean_deg_max": 3.0,
+    "normal_max_deg_max": 5.0,
+    "normal_angle": "board +Z와 workplane +Z의 방향각. 부호 없는 예각으로 접지 않는다."
+  },
+  "numerical": {
+    "determinant_abs_error_max": 1e-6,
+    "orthogonality_max_abs": 1e-6,
+    "inverse_consistency_max_abs": 1e-6
+  },
+  "placement_preconditions": {
+    "reg_min_pairwise_distance_m": 0.1,
+    "reg_min_triangle_area_m2": 0.004,
+    "val_min_distance_from_reg_m": 0.05,
+    "min_accepted_frames": 3,
+    "frames_per_placement": 4
+  },
+  "basis": "게이트 지시서 19절의 초기값이다. 이번 캡처 결과를 보고 정하지 않았다. datasheet의 2 m 정확도를 작업 거리로 환산한 값도 아니다. P-006C sensor threshold를 대체하지 않는다. 배치 간격과 삼각형 면적은 일직선 배치를 거절하는 사전 조건이다."
+}

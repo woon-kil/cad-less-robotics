@@ -1,0 +1,11 @@
+{
+  "registration_positions": ["REG_A", "REG_B", "REG_C"],
+  "validation_positions": ["VAL_A", "VAL_B", "VAL_C"],
+  "validation_required": ["VAL_A", "VAL_B"],
+  "fit_excludes_validation": true,
+  "frames_per_placement": 4,
+  "min_accepted_frames": 3,
+  "captures": [],
+  "capture_performed": false,
+  "names_are_not_reachability": true
+}

@@ -1,0 +1,10 @@
+{
+  "source": "evidence/P-006C-R2/captures/center-t01-00-color.png",
+  "role": "CONVENTION_ILLUSTRATION_NOT_AN_ANCHOR",
+  "workplane_xy": "UNRESOLVED",
+  "r2_evidence_modified": false,
+  "detected": true,
+  "cols": 6,
+  "rows": 9,
+  "origin": "corner 0 after canonicalize"
+}

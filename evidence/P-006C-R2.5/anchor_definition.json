@@ -1,0 +1,79 @@
+{
+  "status": "OPERATOR_ANCHOR_REQUIRED",
+  "coordinates_recorded": false,
+  "numeric_anchor_proposed": false,
+  "frame": "workplane_roi_frame",
+  "same_as_r2": "evidence/P-006C-R2/physical_task_roi.json",
+  "r2_physical_task_roi_sha256": "b9c453a8646a16b50fe428dc2efee5a7a4ba6d579f2c37fde7459cb2cadf6055",
+  "origin": "left robot-side tabletop corner",
+  "axis": {
+    "x": "right",
+    "y": "robot_side_to_camera_side",
+    "z": "up_from_workplane"
+  },
+  "units": "meter",
+  "not_base_link": true,
+  "not_camera_frame": true,
+  "not_t_base_camera": true,
+  "checkerboard_frame": {
+    "name": "checkerboard_frame",
+    "origin": "canonicalize 이후 corner index 0. object point (0, 0, 0)",
+    "plus_x": "같은 row에서 column index가 증가하는 방향",
+    "plus_y": "다음 row 방향",
+    "plus_z": "plus_x cross plus_y",
+    "order_rule": "findChessboardCorners는 (6, 9)를 먼저 시도하고 이어서 (9, 6)을 시도한다. row-major다. 첫 row의 둘째 코너가 첫째보다 이미지 x가 작으면 grid를 180도 돌리고 object 축을 새 첫 row에 묶는다.",
+    "source": "evidence/P-006/camera-target/checkerboard.yaml",
+    "hidden_opencv_dependency": false,
+    "printed_mark": false,
+    "note": "180도 규칙은 이미지 x로 시작 코너를 고른다. 종이에 인쇄된 고정 마크가 아니다. 배치마다 overlay의 origin을 확인하기 전에는 그 점을 workplane 좌표로 확정하지 않는다."
+  },
+  "paper_outer_mm": [210, 285],
+  "square_size_mm": 20.0,
+  "squares": [7, 10],
+  "internal_corners": [6, 9],
+  "pattern_span_mm": {
+    "square_extent": [140, 200],
+    "internal_corner_extent": [100, 160],
+    "note": "140과 200은 칸 수에 20 mm를 곱한 값이다. 100과 160은 internal corner 사이 간격이다. 어느 종이 변이 140 mm 쪽인지는 별도 실측이 아니다."
+  },
+  "paper_margin_from_origin_m": {
+    "minus_x": null,
+    "plus_x": null,
+    "minus_y": null,
+    "plus_y": null,
+    "status": "UNMEASURED",
+    "how": "overlay가 가리킨 origin에서 보드 +X, -X, +Y, -Y 방향으로 종이 가장자리까지 자로 잰다. 픽셀로 환산하지 않는다."
+  },
+  "alignment": {
+    "board_plus_x": "workplane +X",
+    "board_plus_y": "workplane +Y",
+    "board_plus_z": "workplane +Z",
+    "yaw_deg": null,
+    "operator_confirmed": false,
+    "how": "보드를 작업면에 평평하게 두고 +X를 오른쪽, +Y를 DOFBOT에서 카메라 쪽으로 직각자나 줄자로 맞춘다. 확인 후에만 yaw_deg를 적는다. 코드가 0으로 채우지 않는다."
+  },
+  "anchors": {
+    "REG_A": null,
+    "REG_B": null,
+    "REG_C": null,
+    "VAL_A": null,
+    "VAL_B": null,
+    "VAL_C": null
+  },
+  "anchor_schema": {
+    "x_m": "workplane_roi_frame origin corner의 실측 X",
+    "y_m": "같은 점의 실측 Y",
+    "z_m": "같은 점의 실측 Z. 테이블 접촉면을 0으로 쓸지는 운영자가 적는다."
+  },
+  "roi_feasibility": {
+    "physical_task_roi_mm": {"x": [0, 400], "y": [300, 800]},
+    "paper_size_fits_roi_rectangle": true,
+    "reason": "210 mm와 285 mm는 둘 다 ROI의 400 mm, 500 mm보다 작다. 축에 맞으면 종이 사각형은 ROI 안에 들어갈 수 있다.",
+    "coordinate_proposed": false,
+    "camera_visibility_of_future_anchor": "UNRESOLVED",
+    "why_no_coordinate": "origin은 종이 모서리가 아니다. origin에서 종이 가장자리까지의 여백이 측정되지 않았다. 패턴이 종이 중앙이라는 가정으로 35 mm나 42.5 mm를 만들지 않는다. R2의 다섯 위치는 카메라가 보드를 본 증거이지만 workplane 좌표가 없어 이 앵커의 가시성으로 쓰지 않는다."
+  },
+  "robot_reachable_roi": "UNVERIFIED_P007_NOT_OPEN",
+  "process_roi": "NOT_CONFIRMED",
+  "T_base_camera": null
+}

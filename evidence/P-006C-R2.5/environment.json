@@ -1,0 +1,20 @@
+{
+  "camera": "Gemini 335L",
+  "mount": "camera-side LED structure",
+  "robot": "DOFBOT on robot-side",
+  "moved_during_gate": false,
+  "capture_performed": false,
+  "topics": {
+    "color": "/camera/color/image_raw",
+    "depth": "/camera/depth/image_raw",
+    "color_info": "/camera/color/camera_info",
+    "depth_info": "/camera/depth/camera_info"
+  },
+  "canonical_camera_frame": "camera_depth_optical_frame",
+  "color_frame": "camera_color_optical_frame",
+  "tf_lookup": "lookup_transform(camera_depth_optical_frame, camera_color_optical_frame)",
+  "tf_meaning": "p_depth = T_depth_color * p_color",
+  "identity_fallback": false,
+  "synthetic_tf": false,
+  "T_base_camera": null
+}

@@ -1,0 +1,22 @@
+{
+  "status": "NOT_COMPUTED",
+  "name": "T_workplane_camera_depth",
+  "source_frame": "camera_depth_optical_frame",
+  "target_frame": "workplane_roi_frame",
+  "direction": "p_workplane = T_workplane_camera_depth * p_camera_depth",
+  "matrix": null,
+  "translation_m": null,
+  "quaternion_xyzw": null,
+  "rotation_matrix": null,
+  "determinant": null,
+  "orthogonality_error": null,
+  "inverse_consistency_error": null,
+  "scale_policy": "rigid_fixed_1.0",
+  "similarity_used": false,
+  "reflection_flipped": false,
+  "registration_sample_count": 0,
+  "validation_sample_count": 0,
+  "threshold_freeze_commit": null,
+  "T_base_camera": null,
+  "reason": "OPERATOR_ANCHOR_REQUIRED"
+}
