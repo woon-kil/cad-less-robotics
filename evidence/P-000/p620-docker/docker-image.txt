@@ -1,0 +1,28 @@
+Dockerfile: docker/humble/Dockerfile
+Base image: ros:humble-ros-base-jammy
+Base RepoDigest: sha256:566b87e6dfc48392189a9c32e594e84060fa9948de93b04e536f39475a1f6963
+Resulting tag: cad-less-robotics:humble-p000
+Build timestamp: 2026-10-26T14:08:57.354927327+09:00
+
+===== IMAGE =====
+Id=sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1
+Created=2026-10-26T14:08:57.354927327+09:00
+Os=linux
+Architecture=amd64
+Size=941608312
+Entrypoint=["/cad-less-entrypoint.sh"]
+Cmd=["bash"]
+RepoDigests=["cad-less-robotics@sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1"]
+Name=/bytesize-robotics-humble
+Image=cad-less-robotics:humble-p000
+ImageId=sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1
+Status=running
+StartedAt=2026-10-26T05:09:15.764990678Z
+Privileged=false
+NetworkMode=bridge
+Binds=["bytesize-robotics-humble-build:/ws/cad-less-robotics/build","bytesize-robotics-humble-install:/ws/cad-less-robotics/install","bytesize-robotics-humble-log:/ws/cad-less-robotics/log","/home/woonkil/cad-less-robotics:/ws/cad-less-robotics"]
+Devices=[]
+DeviceRequests=null
+===== IMAGE FILE PC =====
+lrwxrwxrwx 1 root root 18 Oct 26 05:08 /usr/lib/x86_64-linux-gnu/pkgconfig/pcl_common.pc -> pcl_common-1.12.pc
+1.12.1

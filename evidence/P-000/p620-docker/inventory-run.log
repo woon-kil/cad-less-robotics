@@ -1,0 +1,181 @@
+===== SCRIPT CHECK =====
+===== CONTAINER CHECKS =====
+$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+$ uname -m
+x86_64
+$ printenv ROS_DISTRO
+humble
+$ which
+/opt/ros/humble/bin/ros2
+/usr/bin/colcon
+/usr/bin/cmake
+/usr/bin/gcc
+/usr/bin/g++
+/usr/bin/rosdep
+$ gcc --version
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+$ g++ --version
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+$ cmake --version
+cmake version 3.22.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+$ rosdep --version
+0.27.0
+$ ros2 pkg list | grep ^moveit
+moveit
+moveit_common
+moveit_configs_utils
+moveit_core
+moveit_kinematics
+moveit_msgs
+moveit_planners
+moveit_planners_chomp
+moveit_planners_ompl
+moveit_plugins
+moveit_ros
+moveit_ros_benchmarks
+moveit_ros_move_group
+moveit_ros_occupancy_map_monitor
+moveit_ros_planning
+moveit_ros_planning_interface
+moveit_ros_robot_interaction
+moveit_ros_visualization
+moveit_ros_warehouse
+moveit_setup_app_plugins
+moveit_setup_assistant
+moveit_setup_controllers
+moveit_setup_core_plugins
+moveit_setup_framework
+moveit_setup_srdf_plugins
+moveit_simple_controller_manager
+$ dpkg -s libeigen3-dev
+Package: libeigen3-dev
+Status: install ok installed
+Version: 3.4.0-2ubuntu2
+$ pkg-config --modversion pcl_common
+1.12.1
+pcl_exit:0
+$ ./scripts/check_environment.sh
+check_environment.sh
+host: 218f0dac6e37
+date: 2026-10-26 05:09:16 UTC
+
+PASS        architecture      x86_64
+PASS        Ubuntu 22.04      ubuntu 22.04
+PASS        ROS_DISTRO        humble
+PASS        ROS 2 CLI         ros2 --help
+PASS        colcon            colcon --help ok
+PASS        CMake             cmake version 3.22.1
+PASS        gcc               gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+PASS        g++               g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+PASS        MoveIt 2          26 packages from ros2 pkg list
+PASS        Eigen3            libeigen3-dev 3.4.0-2ubuntu2
+PASS        PCL               pcl_common 1.12.1
+PASS        rosdep            0.27.0
+
+counts: PASS=12 FAIL=0 NOT_FOUND=0
+ENVIRONMENT PASS
+CHECK_EXIT:0
+$ rosdep update
+reading in sources list data from /etc/ros/rosdep/sources.list.d
+Hit https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/osx-homebrew.yaml
+Hit https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/base.yaml
+Hit https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/python.yaml
+Hit https://raw.githubusercontent.com/ros/rosdistro/master/rosdep/ruby.yaml
+Hit https://raw.githubusercontent.com/ros/rosdistro/master/releases/fuerte.yaml
+Query rosdistro index https://raw.githubusercontent.com/ros/rosdistro/master/index-v4.yaml
+Skip end-of-life distro "ardent"
+Skip end-of-life distro "bouncy"
+Skip end-of-life distro "crystal"
+Skip end-of-life distro "dashing"
+Skip end-of-life distro "eloquent"
+Skip end-of-life distro "foxy"
+Skip end-of-life distro "galactic"
+Skip end-of-life distro "groovy"
+Add distro "humble"
+Skip end-of-life distro "hydro"
+Skip end-of-life distro "indigo"
+Skip end-of-life distro "iron"
+Skip end-of-life distro "jade"
+Add distro "jazzy"
+Add distro "kilted"
+Skip end-of-life distro "kinetic"
+Skip end-of-life distro "lunar"
+Add distro "lyrical"
+Skip end-of-life distro "melodic"
+Skip end-of-life distro "noetic"
+Add distro "rolling"
+updated cache in /root/.ros/rosdep/sources.cache
+ROSDEP_UPDATE_EXIT:0
+$ rosdep install --from-paths . --ignore-src -r -y
+#All required rosdeps installed successfully
+ROSDEP_INSTALL_EXIT:0
+colcon build was not invoked
+build:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 26 05:07 .
+drwxrwxr-x 12 1000 1000 4096 Oct 26 05:07 ..
+
+install:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 26 05:07 .
+drwxrwxr-x 12 1000 1000 4096 Oct 26 05:07 ..
+
+log:
+total 8
+drwxr-xr-x  2 root root 4096 Oct 26 05:07 .
+drwxrwxr-x 12 1000 1000 4096 Oct 26 05:07 ..
+SCRIPT_EXIT:0
+===== IMAGE =====
+Id=sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1
+Created=2026-10-26T14:08:57.354927327+09:00
+Os=linux
+Architecture=amd64
+Size=941608312
+Entrypoint=["/cad-less-entrypoint.sh"]
+Cmd=["bash"]
+RepoDigests=["cad-less-robotics@sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1"]
+Name=/bytesize-robotics-humble
+Image=cad-less-robotics:humble-p000
+ImageId=sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1
+Status=running
+StartedAt=2026-10-26T05:09:15.764990678Z
+Privileged=false
+NetworkMode=bridge
+Binds=["bytesize-robotics-humble-build:/ws/cad-less-robotics/build","bytesize-robotics-humble-install:/ws/cad-less-robotics/install","bytesize-robotics-humble-log:/ws/cad-less-robotics/log","/home/woonkil/cad-less-robotics:/ws/cad-less-robotics"]
+Devices=[]
+DeviceRequests=null
+===== IMAGE FILE PC =====
+lrwxrwxrwx 1 root root 18 Oct 26 05:08 /usr/lib/x86_64-linux-gnu/pkgconfig/pcl_common.pc -> pcl_common-1.12.pc
+1.12.1
+===== HOST AFTER =====
+bytesize-robotics-humble|218f0dac6e37|Up 9 seconds|10 seconds ago|cad-less-robotics:humble-p000
+hermes-bridge|fc695f0fbc92|Up 3 days|5 months ago|a09657dc036f
+open-webui|64c0e4bcfced|Up 3 days (healthy)|5 months ago|ghcr.io/open-webui/open-webui:latest
+ollama|acc9433c035a|Up 3 days|5 months ago|ollama/ollama:latest
+===== JAZZY AFTER =====
+drwxr-xr-x 9 root root 4096 Oct 15 09:49 /opt/ros/jazzy
+-rw-r--r-- 1 root root  349 Jan 22  2026 /opt/ros/jazzy/setup.bash
+2026-01-22 02:23:01.000000000 +0900 /opt/ros/jazzy/setup.bash
+===== SERVER GIT =====
+origin	https://github.com/woon-kil/cad-less-robotics.git (fetch)
+origin	https://github.com/woon-kil/cad-less-robotics.git (push)
+main
+cdd8d2b00df651f4aa9e35254c06a76301214cb9
+===== USB =====
+ls: cannot access '/dev/ttyUSB*': No such file or directory
+ls: cannot access '/dev/ttyACM*': No such file or directory
+===== END =====

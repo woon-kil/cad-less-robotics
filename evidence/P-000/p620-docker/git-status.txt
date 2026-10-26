@@ -1,0 +1,11 @@
+$ date
+2026-10-26 14:10:31 KST
+
+$ git rev-parse HEAD
+cdd8d2b00df651f4aa9e35254c06a76301214cb9
+
+$ git branch --show-current
+main
+
+$ git status --short
+?? evidence/P-000/p620-docker/

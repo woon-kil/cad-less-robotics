@@ -1,0 +1,45 @@
+P-000 p620-docker evidence manifest
+
+SOURCE_BASE_COMMIT=cdd8d2b00df651f4aa9e35254c06a76301214cb9
+EVIDENCE_GENERATED_AT=2026-10-26 14:09 KST
+EVIDENCE_COMMIT=PENDING
+
+host-environment.txt
+Generated: 2026-10-26 14:09:49 KST
+Commands on p620:
+date
+lsb_release -a
+uname -m
+uname -a
+ls -ld /opt/ros /opt/ros/*
+stat -c %y /opt/ros/jazzy/setup.bash
+docker --version
+docker ps
+nvidia-smi --query-gpu=name,driver_version --format=csv,noheader
+
+inventory-run.log
+Generated: 2026-10-26 14:09 KST
+Commands: scripts/run_humble_dev.sh inside /home/woonkil/cad-less-robotics, then docker image inspect, docker inspect, docker run --rm pkg-config, docker ps, jazzy stat, git status, ls /dev/ttyUSB* /dev/ttyACM*
+
+container-environment.txt
+dependencies.txt
+check-environment.log
+rosdep.log
+docker-image.txt
+Extracted from inventory-run.log. Checker and rosdep text was not rewritten.
+
+first-check-environment.log
+The failed PCL check from the image built at fa19b63655bdf531bef9eed759f758f49bf99071, before the pkg-config links.
+
+git-status.txt
+Commands after these files existed:
+date
+git rev-parse HEAD
+git branch --show-current
+git status --short
+
+Server clone recorded in inventory-run.log:
+/home/woonkil/cad-less-robotics
+main
+cdd8d2b00df651f4aa9e35254c06a76301214cb9
+working tree clean at evidence generation

@@ -1,0 +1,36 @@
+Generated: 2026-10-26 14:09:49 KST
+
+$ lsb_release -a
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+
+$ uname -m
+x86_64
+
+$ uname -a
+Linux p620 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+$ ls -ld /opt/ros /opt/ros/*
+drwxr-xr-x 3 root root 4096 Oct 15 09:48 /opt/ros
+drwxr-xr-x 9 root root 4096 Oct 15 09:49 /opt/ros/jazzy
+
+$ stat -c %y /opt/ros/jazzy/setup.bash
+2026-01-22 02:23:01.000000000 +0900 /opt/ros/jazzy/setup.bash
+
+$ docker --version
+Docker version 29.4.3, build 055a478
+
+$ docker ps
+bytesize-robotics-humble|218f0dac6e37|Up 33 seconds|34 seconds ago|cad-less-robotics:humble-p000
+hermes-bridge|fc695f0fbc92|Up 3 days|5 months ago|a09657dc036f
+open-webui|64c0e4bcfced|Up 3 days (healthy)|5 months ago|ghcr.io/open-webui/open-webui:latest
+ollama|acc9433c035a|Up 3 days|5 months ago|ollama/ollama:latest
+
+$ nvidia-smi --query-gpu=name,driver_version --format=csv,noheader
+NVIDIA GeForce RTX 3090, 595.99.02
+
+$ stat -c '%y %n' /home/woonkil/isaacsim /home/woonkil/.nvidia-omniverse
+2026-10-15 11:01:03.050413023 +0900 /home/woonkil/isaacsim
+2026-10-23 12:35:36.679213124 +0900 /home/woonkil/.nvidia-omniverse

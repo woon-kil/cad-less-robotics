@@ -1,0 +1,16 @@
+First image, before the unversioned PCL pkg-config links.
+Container host at that time: 8820f63b40fc
+Command: ./scripts/check_environment.sh
+Date: 2026-10-26 05:07:38 UTC
+
+NOT FOUND   PCL               pcl_common.pc
+counts: PASS=11 FAIL=0 NOT_FOUND=1
+ENVIRONMENT FAIL
+CHECK_EXIT:1
+
+pkg-config --modversion pcl_common
+Package pcl_common was not found in the pkg-config search path.
+No package 'pcl_common' found
+
+libpcl-dev was installed. Its file name was pcl_common-1.12.pc, not pcl_common.pc.
+This attempt is not PASS.
