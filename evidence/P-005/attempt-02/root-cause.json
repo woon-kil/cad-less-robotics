@@ -1,0 +1,16 @@
+{
+  "status": "DIAGNOSIS_COMPLETE",
+  "same_label_set": true,
+  "cases": [
+    {"case_id": "CASE-01", "focus_source_index": 62, "direct_ik_failed": true, "sequence_init_0_005": "SFFFFFFFFFF", "delta_position_m": 0.0020000000000000404, "delta_tool_z_deg": 0, "delta_orientation_deg": 0, "delta_roll_deg": 0, "full_pose_0_005_clear": false, "full_pose_1_0_clear": false, "position_kdl": true, "position_dls": true, "roll_clear": false, "tool_axis_5deg": false, "position_and_tool_axis_reachable_full_quaternion_unreachable": false, "labels": ["TOOL_AXIS_INFEASIBLE"], "primary": "TOOL_AXIS_INFEASIBLE"},
+    {"case_id": "CASE-02", "focus_source_index": 313, "direct_ik_failed": true, "sequence_init_0_005": "SFFFFFFFFFF", "delta_position_m": 0.0018649753602956276, "delta_tool_z_deg": 7.8663038540358468, "delta_orientation_deg": 21.671022246536552, "delta_roll_deg": 20.176961503742032, "full_pose_0_005_clear": false, "full_pose_1_0_clear": false, "position_kdl": true, "position_dls": true, "roll_clear": false, "tool_axis_5deg": false, "position_and_tool_axis_reachable_full_quaternion_unreachable": false, "labels": ["TOOL_AXIS_INFEASIBLE"], "primary": "TOOL_AXIS_INFEASIBLE"},
+    {"case_id": "CASE-03", "focus_source_index": 573, "direct_ik_failed": true, "sequence_init_0_005": "SFFFFFFFFFF", "delta_position_m": 0.0019654428145425588, "delta_tool_z_deg": 0, "delta_orientation_deg": 9.5189080733156448, "delta_roll_deg": -9.5189080733157745, "full_pose_0_005_clear": false, "full_pose_1_0_clear": false, "position_kdl": true, "position_dls": true, "roll_clear": false, "tool_axis_5deg": false, "position_and_tool_axis_reachable_full_quaternion_unreachable": false, "labels": ["TOOL_AXIS_INFEASIBLE"], "primary": "TOOL_AXIS_INFEASIBLE"}
+  ],
+  "production_geometry_changed": false,
+  "production_motion_contract_changed": false,
+  "vendor_kinematics_yaml_modified": false,
+  "camera_robot_calibration": 0,
+  "fake_tf": 0,
+  "execute_calls": 0,
+  "controller_sends": 0
+}

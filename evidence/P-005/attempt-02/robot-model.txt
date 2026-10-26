@@ -1,0 +1,15 @@
+planning_group arm_group
+active_joint_count 5
+variable_count 5
+active_joint_names Arm1_Joint Arm2_Joint Arm3_Joint Arm4_Joint Arm5_Joint
+variable_names Arm1_Joint Arm2_Joint Arm3_Joint Arm4_Joint Arm5_Joint
+end_link Arm5_Link
+solver_group arm_group
+solver_base base_link
+solver_tip Arm5_Link
+solver_joint_names Arm1_Joint Arm2_Joint Arm3_Joint Arm4_Joint Arm5_Joint
+jacobian_linear_row 0
+init_collision no
+named_state init Arm1_Joint=0 Arm2_Joint=1.2062999999999999 Arm3_Joint=-1.5 Arm4_Joint=-1.3104 Arm5_Joint=0 collision no
+named_state up Arm1_Joint=0 Arm2_Joint=0 Arm3_Joint=0 Arm4_Joint=0 Arm5_Joint=0 collision no
+named_state down Arm1_Joint=0 Arm2_Joint=-1.5700000000000001 Arm3_Joint=0 Arm4_Joint=0 Arm5_Joint=0 collision no

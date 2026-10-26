@@ -1,0 +1,5 @@
+CASE-01 max_abs_diff 0 residual_m 1.6682288744501365e-16 scale 1
+CASE-02 max_abs_diff 0 residual_m 1.7785833524368904e-16 scale 1
+CASE-03 max_abs_diff 0 residual_m 1.2412746526935133e-16 scale 1
+threshold_m 1e-9
+match yes

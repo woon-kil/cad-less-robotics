@@ -1,0 +1,18 @@
+vendor_file /ws/cad-less-robotics/third_party/dofbot-pro-cache/dofbot_pro_moveit/config/kinematics.yaml
+vendor_text_begin
+arm_group:
+  kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+  kinematics_solver_search_resolution: 0.0050000000000000001
+  kinematics_solver_timeout: 0.0050000000000000001vendor_text_end
+runtime_solver kdl_kinematics_plugin/KDLKinematicsPlugin
+runtime_parameter_timeout_s 0.0050000000000000001
+runtime_parameter_search_resolution 0.0050000000000000001
+runtime_group_default_ik_timeout_s 0.0050000000000000001
+runtime_position_only_ik_on_production_solver no
+runtime_max_solver_iterations_parameter absent_code_default_500
+runtime_epsilon_parameter absent_code_default_1e-5
+kdl_failure_code_note Humble KDL searchPositionIK sets TIMED_OUT when the search loop ends without a solution, including when CartToJnt cannot reach the target. The timeout sweep, not the error name, separates IK_TIMEOUT from an exhausted search.
+source https://raw.githubusercontent.com/moveit/moveit2/humble/moveit_kinematics/kdl_kinematics_plugin/src/kdl_kinematics_plugin.cpp
+production_yaml_modified no
+diagnostic_position_only_kdl yes
+diagnostic_position_only_written_to_vendor_yaml no

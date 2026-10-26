@@ -1,0 +1,5 @@
+ M src/dofbot_moveit_dry/CMakeLists.txt
+ M src/dofbot_moveit_dry/package.xml
+?? evidence/P-005/attempt-02/
+?? scripts/validate_ik_feasibility.sh
+?? src/dofbot_moveit_dry/src/ik_feasibility_dry.cpp

@@ -16,6 +16,8 @@ find_package(moveit_ros_planning REQUIRED)
 find_package(moveit_ros_planning_interface REQUIRED)
 find_package(moveit_msgs REQUIRED)
 find_package(urdf REQUIRED)
+find_package(geometry_msgs REQUIRED)
+find_package(pluginlib REQUIRED)
 find_package(robot_controller REQUIRED)
 find_package(vision_path_generator REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -42,7 +44,22 @@ ament_target_dependencies(geometry_motion_dry
   moveit_msgs
   urdf)
 
-install(TARGETS dry_plan_node geometry_motion_dry
+add_executable(ik_feasibility_dry src/ik_feasibility_dry.cpp)
+target_link_libraries(ik_feasibility_dry
+  robot_controller::waypoint_prep
+  vision_path_generator::polyline_core
+  Eigen3::Eigen)
+ament_target_dependencies(ik_feasibility_dry
+  rclcpp
+  sensor_msgs
+  geometry_msgs
+  moveit_ros_planning
+  moveit_ros_planning_interface
+  moveit_msgs
+  urdf
+  pluginlib)
+
+install(TARGETS dry_plan_node geometry_motion_dry ik_feasibility_dry
   RUNTIME DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY config DESTINATION share/${PROJECT_NAME})
 

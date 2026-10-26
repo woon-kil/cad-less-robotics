@@ -1,0 +1,80 @@
+[INFO] [1793000932.539520318] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.0013045 seconds
+[INFO] [1793000932.539593606] [moveit_robot_model.robot_model]: Loading robot model 'DOFBOT_Pro-V24'...
+[INFO] [1793000932.539600309] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1793000933.636740179] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1793000936.645784816] [moveit.ros_planning_interface.moveit_cpp]: Listening to '/joint_states' for joint states
+[INFO] [1793000936.646097237] [moveit_ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
+[INFO] [1793000936.649232260] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/attached_collision_object' for attached collision objects
+[INFO] [1793000936.649898842] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on '/dofbot_dry_plan/monitored_planning_scene'
+[INFO] [1793000936.649994423] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1793000936.650134458] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/publish_planning_scene'
+[INFO] [1793000936.650146360] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1793000936.650279743] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1793000936.650521159] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1793000936.650649552] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1793000936.650658239] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1793000949.978649269] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[INFO] [1793000949.986620365] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[INFO] [1793000949.988353615] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[INFO] [1793000949.988365808] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[INFO] [1793000949.988371098] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[INFO] [1793000949.988382460] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[INFO] [1793000949.988394142] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.010000
+[INFO] [1793000949.988399622] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1793000949.988409511] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[INFO] [1793000949.988414400] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[INFO] [1793000949.988418929] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[INFO] [1793000949.988423277] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[WARN] [1793000949.990793853] [moveit_ros.trajectory_execution_manager]: Parameter '~moveit_controller_manager' is not specified but only one matching plugin was found: 'moveit_simple_controller_manager/MoveItSimpleControllerManager'. Using that one.
+[ERROR] [1793000949.997377834] [moveit.plugins.moveit_simple_controller_manager]: No controller_names specified.
+[INFO] [1793000949.997480628] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1793000949.997487281] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1793000949.997758164] [moveit_ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[WARN] [1793000950.001509744] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1793000950.001555911] [moveit_kinematics_base.kinematics_base]: Using position only ik
+[INFO] [1793000950.002178790] [ik_feasibility_dry]: CASE-01 local 0 source 61 full_pose/0.005 IK_FOUND_CLEAR
+[INFO] [1793000950.017070223] [ik_feasibility_dry]: CASE-01 local 1 source 62 full_pose/0.005 NO_IK
+[INFO] [1793000950.023759012] [ik_feasibility_dry]: CASE-01 local 2 source 63 full_pose/0.005 NO_IK
+[INFO] [1793000950.028809831] [ik_feasibility_dry]: CASE-01 local 3 source 64 full_pose/0.005 NO_IK
+[INFO] [1793000950.037627178] [ik_feasibility_dry]: CASE-01 local 4 source 65 full_pose/0.005 NO_IK
+[INFO] [1793000950.044867821] [ik_feasibility_dry]: CASE-01 local 5 source 66 full_pose/0.005 NO_IK
+[INFO] [1793000950.050210472] [ik_feasibility_dry]: CASE-01 local 6 source 67 full_pose/0.005 NO_IK
+[INFO] [1793000950.056030016] [ik_feasibility_dry]: CASE-01 local 7 source 68 full_pose/0.005 NO_IK
+[INFO] [1793000950.061329736] [ik_feasibility_dry]: CASE-01 local 8 source 69 full_pose/0.005 NO_IK
+[INFO] [1793000950.066402156] [ik_feasibility_dry]: CASE-01 local 9 source 70 full_pose/0.005 NO_IK
+[INFO] [1793000950.071699672] [ik_feasibility_dry]: CASE-01 local 10 source 71 full_pose/0.005 NO_IK
+[INFO] [1793000980.046939734] [ik_feasibility_dry]: CASE-01 focus 62 primary TOOL_AXIS_INFEASIBLE
+[INFO] [1793000980.047216618] [ik_feasibility_dry]: CASE-02 local 0 source 312 full_pose/0.005 IK_FOUND_CLEAR
+[INFO] [1793000980.057797642] [ik_feasibility_dry]: CASE-02 local 1 source 313 full_pose/0.005 NO_IK
+[INFO] [1793000980.062832671] [ik_feasibility_dry]: CASE-02 local 2 source 314 full_pose/0.005 NO_IK
+[INFO] [1793000980.068435164] [ik_feasibility_dry]: CASE-02 local 3 source 315 full_pose/0.005 NO_IK
+[INFO] [1793000980.075720412] [ik_feasibility_dry]: CASE-02 local 4 source 316 full_pose/0.005 NO_IK
+[INFO] [1793000980.085138034] [ik_feasibility_dry]: CASE-02 local 5 source 317 full_pose/0.005 NO_IK
+[INFO] [1793000980.092464149] [ik_feasibility_dry]: CASE-02 local 6 source 318 full_pose/0.005 NO_IK
+[INFO] [1793000980.100313815] [ik_feasibility_dry]: CASE-02 local 7 source 319 full_pose/0.005 NO_IK
+[INFO] [1793000980.105364794] [ik_feasibility_dry]: CASE-02 local 8 source 320 full_pose/0.005 NO_IK
+[INFO] [1793000980.110739365] [ik_feasibility_dry]: CASE-02 local 9 source 321 full_pose/0.005 NO_IK
+[INFO] [1793000980.115949786] [ik_feasibility_dry]: CASE-02 local 10 source 322 full_pose/0.005 NO_IK
+[INFO] [1793001010.057548747] [ik_feasibility_dry]: CASE-02 focus 313 primary TOOL_AXIS_INFEASIBLE
+[INFO] [1793001010.057810953] [ik_feasibility_dry]: CASE-03 local 0 source 572 full_pose/0.005 IK_FOUND_CLEAR
+[INFO] [1793001010.068963039] [ik_feasibility_dry]: CASE-03 local 1 source 573 full_pose/0.005 NO_IK
+[INFO] [1793001010.077872379] [ik_feasibility_dry]: CASE-03 local 2 source 574 full_pose/0.005 NO_IK
+[INFO] [1793001010.085535402] [ik_feasibility_dry]: CASE-03 local 3 source 575 full_pose/0.005 NO_IK
+[INFO] [1793001010.091163252] [ik_feasibility_dry]: CASE-03 local 4 source 576 full_pose/0.005 NO_IK
+[INFO] [1793001010.096984669] [ik_feasibility_dry]: CASE-03 local 5 source 577 full_pose/0.005 NO_IK
+[INFO] [1793001010.102961901] [ik_feasibility_dry]: CASE-03 local 6 source 578 full_pose/0.005 NO_IK
+[INFO] [1793001010.108889689] [ik_feasibility_dry]: CASE-03 local 7 source 579 full_pose/0.005 NO_IK
+[INFO] [1793001010.116724436] [ik_feasibility_dry]: CASE-03 local 8 source 580 full_pose/0.005 NO_IK
+[INFO] [1793001010.125230464] [ik_feasibility_dry]: CASE-03 local 9 source 581 full_pose/0.005 NO_IK
+[INFO] [1793001010.134490217] [ik_feasibility_dry]: CASE-03 local 10 source 582 full_pose/0.005 NO_IK
+[INFO] [1793001040.105905113] [ik_feasibility_dry]: CASE-03 focus 573 primary TOOL_AXIS_INFEASIBLE
+[INFO] [1793001040.109513592] [moveit.ros_planning_interface.moveit_cpp]: Deleting MoveItCpp
+[INFO] [1793001040.109729000] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1793001040.109748036] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping world geometry monitor
+[INFO] [1793001040.109757794] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping planning scene monitor
+P-005 ATTEMPT #2 DIAGNOSIS COMPLETE
+CASE-01 TOOL_AXIS_INFEASIBLE SFFFFFFFFFF
+CASE-02 TOOL_AXIS_INFEASIBLE SFFFFFFFFFF
+CASE-03 TOOL_AXIS_INFEASIBLE SFFFFFFFFFF
+Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+         at line 127 in ./src/class_loader.cpp

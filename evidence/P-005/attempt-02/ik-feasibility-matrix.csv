@@ -1,0 +1,16 @@
+case_id,source_index,query,timeout_s,seed,result,solve_time_s,limit_violations,colliding,fk_position_error_m,fk_tool_axis_error_deg,fk_orientation_error_deg,detail
+CASE-01,62,full_pose,0.005,init,FAIL,,,,,,,SFFFFFFFFFF
+CASE-01,62,full_pose,1.0,any_tested_seed,FAIL,,,,,,,TOOL_AXIS_INFEASIBLE
+CASE-01,62,position_only,1.0,kdl_or_dls,SUCCESS,,,,,,,kdl=yes dls=yes
+CASE-01,62,tool_axis_fixed_roll_free,0.1,init_or_previous,FAIL,,,,,,,
+CASE-01,62,tool_axis_tol_5deg_roll_free,0.1,init,FAIL,,,,,,,coarse_sample
+CASE-02,313,full_pose,0.005,init,FAIL,,,,,,,SFFFFFFFFFF
+CASE-02,313,full_pose,1.0,any_tested_seed,FAIL,,,,,,,TOOL_AXIS_INFEASIBLE
+CASE-02,313,position_only,1.0,kdl_or_dls,SUCCESS,,,,,,,kdl=yes dls=yes
+CASE-02,313,tool_axis_fixed_roll_free,0.1,init_or_previous,FAIL,,,,,,,
+CASE-02,313,tool_axis_tol_5deg_roll_free,0.1,init,FAIL,,,,,,,coarse_sample
+CASE-03,573,full_pose,0.005,init,FAIL,,,,,,,SFFFFFFFFFF
+CASE-03,573,full_pose,1.0,any_tested_seed,FAIL,,,,,,,TOOL_AXIS_INFEASIBLE
+CASE-03,573,position_only,1.0,kdl_or_dls,SUCCESS,,,,,,,kdl=yes dls=yes
+CASE-03,573,tool_axis_fixed_roll_free,0.1,init_or_previous,FAIL,,,,,,,
+CASE-03,573,tool_axis_tol_5deg_roll_free,0.1,init,FAIL,,,,,,,coarse_sample
