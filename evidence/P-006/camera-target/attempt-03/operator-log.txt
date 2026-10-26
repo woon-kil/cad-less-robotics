@@ -1,0 +1,13 @@
+2026-10-26T19:59:13+09:00 left try=1 choice=촬영
+2026-10-26T19:59:16+09:00 FEEDBACK pose=left try=1 solved=4 delta_x_m=-0.12164688 delta_y_m=-0.00971920 delta_z_m=-0.00488101 rule=PASS
+2026-10-26T20:00:13+09:00 right try=1 choice=촬영
+2026-10-26T20:00:16+09:00 FEEDBACK pose=right try=1 solved=4 delta_x_m=0.09100535 delta_y_m=-0.00776219 delta_z_m=0.00705207 rule=PASS
+2026-10-26T20:01:02+09:00 near try=1 choice=촬영
+2026-10-26T20:01:05+09:00 FEEDBACK pose=near try=1 solved=4 delta_x_m=0.09377647 delta_y_m=0.10176747 delta_z_m=-0.02527082 rule=FAIL
+2026-10-26T20:02:14+09:00 near retry_choice=추가 촬영
+2026-10-26T20:02:18+09:00 FEEDBACK pose=near try=2 solved=4 delta_x_m=0.09364278 delta_y_m=0.14391907 delta_z_m=-0.03812518 rule=FAIL
+2026-10-26T20:03:07+09:00 near retry_choice=추가 촬영
+2026-10-26T20:03:10+09:00 FEEDBACK pose=near try=3 solved=4 delta_x_m=0.09315708 delta_y_m=0.06459021 delta_z_m=-0.01428068 rule=FAIL
+2026-10-26T20:04:16+09:00 far try=1 choice=촬영
+2026-10-26T20:04:19+09:00 FEEDBACK pose=far try=1 solved=4 delta_x_m=0.09228725 delta_y_m=-0.02009901 delta_z_m=0.01064682 rule=FAIL
+2026-10-26T20:04:26+09:00 far retry_choice=이 자세 종료

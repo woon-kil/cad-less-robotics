@@ -1,0 +1,163 @@
+{
+  "status": "FAIL",
+  "frames": 24,
+  "detection_success": 24,
+  "detection_rate": 1.0,
+  "tf_valid": 23,
+  "tf_invalid": 1,
+  "tf_reasons": {
+    "lookup_failed": 1,
+    "ok": 23
+  },
+  "identity_substitution": 0,
+  "classes": {
+    "left": {
+      "captured": 4,
+      "detected": 4,
+      "accepted": 4,
+      "rule_pass": true,
+      "delta_m": [
+        -0.12164687883111686,
+        -0.00971920250586819,
+        -0.004881006808795274
+      ]
+    },
+    "right": {
+      "captured": 4,
+      "detected": 4,
+      "accepted": 4,
+      "rule_pass": true,
+      "delta_m": [
+        0.09100535043427227,
+        -0.007762185694980744,
+        0.00705207215355641
+      ]
+    },
+    "near": {
+      "captured": 12,
+      "detected": 12,
+      "accepted": 0,
+      "rule_pass": false,
+      "delta_m": [
+        0.09364277657337464,
+        0.14391907229937378,
+        -0.038125183967371246
+      ]
+    },
+    "far": {
+      "captured": 4,
+      "detected": 4,
+      "accepted": 0,
+      "rule_pass": false,
+      "delta_m": [
+        0.09228725001392019,
+        -0.020099014056088188,
+        0.010646818095015831
+      ]
+    }
+  },
+  "tilts": {
+    "tilt_positive": {
+      "solved": 4,
+      "tilt_deg": 8.354376344778919,
+      "pass": true
+    },
+    "tilt_negative": {
+      "solved": 4,
+      "tilt_deg": 8.264331037813434,
+      "pass": true
+    }
+  },
+  "between_tilt_deg": 16.61793382594954,
+  "origin_range_m": {
+    "x": [
+      -0.16446312883111686,
+      0.050826526573374636
+    ],
+    "z": [
+      0.42615499603262874,
+      0.4749269980950158
+    ]
+  },
+  "normal_angle_range_deg": [
+    8.264331037813434,
+    8.354376344778919
+  ],
+  "reprojection_px": {
+    "count": 1296,
+    "mean": 0.34860988291007455,
+    "rmse": 0.3959442704699505,
+    "p95": 0.6792312913425597,
+    "max": 0.8949187104806418
+  },
+  "spacing_abs_error_m": {
+    "count": 2139,
+    "mean": 0.00023882662110961289,
+    "rmse": 0.00032466944446283983,
+    "p95": 0.0006605402801027796,
+    "max": 0.0014424727004364868
+  },
+  "spacing_mean_m": 0.020118407410004677,
+  "plane_rmse_m": {
+    "count": 23,
+    "mean": 0.0005551869333081091,
+    "rmse": 0.0005556398726100652,
+    "p95": 0.0005906880061840492,
+    "max": 0.0006024060394372663
+  },
+  "rgb_depth_distance_m": {
+    "count": 23,
+    "mean": 0.002043679751388617,
+    "rmse": 0.00215936793603606,
+    "p95": 0.003403193613172651,
+    "max": 0.003409015173541757
+  },
+  "normal_angle_deg": {
+    "count": 23,
+    "mean": 0.8936353498930434,
+    "rmse": 0.9011389147933632,
+    "p95": 1.033540114504042,
+    "max": 1.0733730023407888
+  },
+  "attempt1_reproducibility": {
+    "frames": 12,
+    "duration_sec": 4.005196,
+    "translation_std_m": 1.433e-05,
+    "rotation_std_deg": 0.006735,
+    "pass": true
+  },
+  "full_resolution": true,
+  "thresholds_changed_after_measurement": false,
+  "diversity_rule_changed": false,
+  "existing_evidence_modified": false,
+  "base_link_transform": 0,
+  "synthetic_transform": 0,
+  "robot_motion": 0,
+  "checks": {
+    "CT-01": true,
+    "CT-02": true,
+    "CT-03": true,
+    "CT-04": true,
+    "CT-05": true,
+    "CT-06": true,
+    "CT-07": true,
+    "CT-08": true,
+    "CT-09": true,
+    "CT-10": true,
+    "CT-11": true,
+    "CT-12": true,
+    "CT-13": true,
+    "CT-14": true,
+    "CT-15": false,
+    "CT-16": true,
+    "CT-17": true,
+    "CT-18": true,
+    "CT-19": true,
+    "CT-20": true,
+    "CT-21": true,
+    "CT-22": true,
+    "CT-23": true,
+    "CT-24": true
+  },
+  "regression_passed": true
+}
