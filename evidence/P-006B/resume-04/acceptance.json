@@ -1,0 +1,27 @@
+{
+  "gate": "P-006B-R4",
+  "verdict": "DIAGNOSIS PASS",
+  "closed": true,
+  "verdict_reason": "저장된 서보 중위 편차의 숫자는 읽기 전용 API가 없다. 상태 함수는 직전 설정의 0/1/2만 돌려주고 호출 전에 레지스터에 쓴다. H0는 벤더 소프트웨어 convention으로 채택하고, 이 기기의 저장값과 정밀 보정은 검증하지 않는다.",
+  "checks": [
+    {"id": "R4-01", "result": "PASS", "note": "I2C를 열지 않았다."},
+    {"id": "R4-02", "result": "PASS", "note": "Arm_Lib SHA-256이 resume-02와 같다."},
+    {"id": "R4-03", "result": "PASS", "note": "0x1c는 저장 또는 삭제다."},
+    {"id": "R4-04", "result": "PASS", "note": "0x1b 반환은 직전 설정 상태다."},
+    {"id": "R4-05", "result": "PASS", "note": "offset_state를 호출하지 않았다."},
+    {"id": "R4-06", "result": "PASS", "note": "저장 숫자를 읽는 함수가 없다."},
+    {"id": "R4-07", "result": "PASS", "note": "APP 명령 07은 write6(90, 90, 90, 90, 90, 180)이다. 실행하지 않았다."},
+    {"id": "R4-08", "result": "PASS", "note": "공식 Middle 설명은 upright다."},
+    {"id": "R4-09", "result": "PASS", "note": "xyz 오프셋과 서보 중위를 분리했다."},
+    {"id": "R4-10", "result": "PASS", "note": "H0는 VENDOR_DEFINED_SOFTWARE_CONVENTION, P3."},
+    {"id": "R4-11", "result": "PASS", "note": "H2는 UNSUPPORTED_ALTERNATIVE."},
+    {"id": "R4-12", "result": "PASS", "note": "이 기기의 저장 중위는 NOT_VERIFIED."},
+    {"id": "R4-13", "result": "PASS", "note": "정밀 관절 보정은 NOT_VALIDATED."},
+    {"id": "R4-14", "result": "PASS", "note": "resume-03을 고치지 않았다."},
+    {"id": "R4-15", "result": "PASS", "note": "R3A는 CANCELLED이고 촬영하지 않았다."},
+    {"id": "R4-16", "result": "PASS", "note": "P-006C를 고치지 않았다."},
+    {"id": "R4-17", "result": "PASS", "note": "P-007을 열지 않았다."},
+    {"id": "R4-18", "result": "PASS", "note": "T_base_camera를 계산하지 않았다."},
+    {"id": "R4-19", "result": "PASS", "note": "기동 시 회전은 문서로만 기록했다."}
+  ]
+}

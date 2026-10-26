@@ -1,0 +1,12 @@
+{
+  "gate": "P-006B-R3A",
+  "verdict": "CANCELLED",
+  "closed": true,
+  "executed": false,
+  "verdict_reason": "H0와 H2를 사진으로 나누기 전에, 벤더 코드와 공식 중위 정의가 H0 쪽으로 모였다. 촬영과 컨트롤러 재조회를 하지 않았다.",
+  "resume_03_rewritten": false,
+  "photos_taken": false,
+  "controller_reread": false,
+  "servo_commands": 0,
+  "p007_started": false
+}

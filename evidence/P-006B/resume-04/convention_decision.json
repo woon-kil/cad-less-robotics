@@ -1,0 +1,50 @@
+{
+  "h0": {
+    "formula": "q_urdf_rad = (q_library_deg - 90) * pi/180",
+    "applies_to": ["Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint", "Arm5_Joint"],
+    "status": "VENDOR_DEFINED_SOFTWARE_CONVENTION",
+    "grade": "P3",
+    "not": "P4",
+    "this_unit_stored_neutral": "NOT_VERIFIED",
+    "precision_joint_calibration": "NOT_VALIDATED",
+    "label": "H0 VENDOR JOINT CONVENTION — SOFTWARE AND VENDOR NEUTRAL DEFINITION",
+    "explicitly_not": "PRECISION JOINT CALIBRATION — NOT VALIDATED"
+  },
+  "h1": {
+    "formula": "q_urdf_rad = q_library_deg * pi/180",
+    "status": "REJECTED_BY_R3_JOINT_LIMIT",
+    "evidence": "evidence/P-006B/resume-03/"
+  },
+  "h2": {
+    "formula": "q_urdf_rad = -(q_library_deg - 90) * pi/180",
+    "status": "UNSUPPORTED_ALTERNATIVE",
+    "vendor_source": null
+  },
+  "center_pose_library_deg": {
+    "source": "YahboomArm.py cmd 07",
+    "values": [90, 90, 90, 90, 90, 180],
+    "id6": "gripper closed command in the same call, not Arm6_Joint",
+    "physical_meaning_in_vendor_docs": "upright / center",
+    "urdf_arm_joints_at_library_90": 0
+  },
+  "servo_neutral_calibration": {
+    "what_it_stores": "MCU에 남기는 서보별 중위 편차",
+    "stored_value_read_api": "ABSENT",
+    "this_unit_value": "NOT_READ"
+  },
+  "workspace_offset": {
+    "file": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/config/offset_value.yaml",
+    "kind": "vision xyz meters",
+    "same_as_servo_neutral": false,
+    "lesson": "https://www.yahboom.net/study/DOFBOT-Pro/12502/"
+  },
+  "motion_classes_for_later_bringup": [
+    "user-commanded motion",
+    "vendor startup motion",
+    "service startup motion",
+    "calibration motion",
+    "MoveIt commanded motion"
+  ],
+  "p006": "NOT PASS",
+  "p007": "NOT OPEN"
+}

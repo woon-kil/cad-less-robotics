@@ -1,0 +1,116 @@
+{
+  "arm_lib": {
+    "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+    "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+    "bytes": 17739,
+    "matches_resume_02": true,
+    "class": "Arm_Device",
+    "offset_functions": [
+      {
+        "name": "Arm_serial_servo_write_offset_switch",
+        "line": 78,
+        "register": "0x1c",
+        "address": "0x15",
+        "behavior": "id 1-6이면 그 id를 쓴다. id 0이면 0x00을 쓴다. 반환값은 없다.",
+        "installed_comment": "id 1-6은 중위 편차를 설정하고, id 0은 초기값으로 되돌린다.",
+        "classification": "SAVE_OR_CLEAR",
+        "returns_stored_deviation": false,
+        "called": false
+      },
+      {
+        "name": "Arm_serial_servo_write_offset_state",
+        "line": 89,
+        "register": "0x1b",
+        "write_before_read": "0x01",
+        "behavior": "0x1b에 0x01을 쓴 뒤 같은 레지스터의 바이트를 읽어 반환한다.",
+        "installed_comment": "0은 해당 서보 ID를 찾지 못함, 1은 성공, 2는 범위를 넘음.",
+        "classification": "LAST_OPERATION_STATUS",
+        "returns_stored_deviation": false,
+        "called": false,
+        "not_called_because": "조회 전에 레지스터에 쓴다. 반환도 저장 각도가 아니다."
+      }
+    ],
+    "readers": [
+      {
+        "name": "Arm_serial_servo_read",
+        "line": 189,
+        "returns": "current library degree",
+        "register": "0x30+id",
+        "returns_stored_deviation": false
+      },
+      {
+        "name": "Arm_serial_servo_read_any",
+        "line": 218,
+        "returns_stored_deviation": false
+      }
+    ],
+    "stored_deviation_reader": null
+  },
+  "app": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+    "sha256": "adc754ae275be8e0004fa4c34d95fa7432d7050d9dfaa911b2dfde64e6efb19e",
+    "bytes": 42166,
+    "executed_by_this_gate": false,
+    "commands": [
+      {
+        "cmd": "07",
+        "line": 385,
+        "comment": "归中舵机位置",
+        "call": "Arm_serial_servo_write6(90, 90, 90, 90, 90, 180, 1000)",
+        "moves_arm": true,
+        "called": false
+      },
+      {
+        "cmd": "09",
+        "line": 399,
+        "call": "Arm_serial_set_torque",
+        "called": false
+      },
+      {
+        "cmd": "0A",
+        "line": 402,
+        "comment": "设置舵机中值",
+        "call": "Arm_serial_servo_write_offset_switch then Arm_serial_servo_write_offset_state",
+        "socket_payload": "id와 state를 담은 설정 상태",
+        "returns_stored_deviation": false,
+        "called": false
+      }
+    ]
+  },
+  "notebook": {
+    "path": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb",
+    "sha256": "9bf64e78ce3d5c1990e6022c81ba89331c0d8aaba19eb66cd46c1f49e0d26b47",
+    "bytes": 4068,
+    "matches_resume_02": true,
+    "executed": false,
+    "contains_servo_read": false
+  },
+  "tree_search": {
+    "roots": [
+      "/home/jetson/dofbot_pro",
+      "/home/jetson/dofbot_pro_ws/src"
+    ],
+    "excluded_dirs": ["build", "install", "log", "__pycache__", ".git"],
+    "suffixes": [".py", ".cpp", ".h", ".hpp", ".ipynb"],
+    "needles": ["write_offset", "0x1b", "0x1c", "offset_state", "read_offset", "ANGLE_OFFSET"],
+    "angle_offset_hits": 0,
+    "read_offset_hits": 0,
+    "servo_protocol_hits": [
+      "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py",
+      "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb",
+      "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/Dofbot_Calibration-checkpoint.ipynb"
+    ],
+    "token_false_positives": [
+      {
+        "path": "/home/jetson/dofbot_pro/dofbot_opencv/scripts/4.image/06_Gaussian_mean_filtering.ipynb",
+        "reason": "PNG base64 안에 0x1b 문자열이 있다."
+      },
+      {
+        "path": "/home/jetson/dofbot_pro_ws/src/OrbbecSDK_ROS2-main/orbbec_camera/include/magic_enum/magic_enum.hpp",
+        "reason": "상수 테이블의 16진수다."
+      }
+    ]
+  }
+}

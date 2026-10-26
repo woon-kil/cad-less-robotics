@@ -1,0 +1,44 @@
+{
+  "fetched_at": "2026-10-26",
+  "fetched": [
+    {
+      "url": "https://www.yahboom.net/study/DOFBOT-Pro/12506/",
+      "used_for": "Middle은 팔을 세운 상태다. 초기화가 끝나면 팔이 initial posture로 회전한다. 캘리브레이션은 세운 상태와 닫힌 그리퍼를 확인한 뒤 저장한다."
+    },
+    {
+      "url": "https://www.yahboom.net/study/DOFBOT-Pro/12502/",
+      "used_for": "작업 공간 xyz 오프셋은 서보 중위와 다른 보정이다. 비교 위치는 (0, 0.181, -0.01)이다."
+    }
+  ],
+  "fetch_failed": [
+    {
+      "url": "https://www.yahboom.net/public/upload/upload-html/1768294209/2.%20Calibrate%20the%20Robotic%20Arm.html",
+      "result": "timeout"
+    },
+    {
+      "url": "https://www.yahboom.net/public/upload/upload-html/1777290469/2.Calibrate%20the%20Robotic%20Arm.html",
+      "result": "404"
+    },
+    {
+      "url": "https://www.yahboom.net/public/upload/upload-html/1730714141/2.%20Calibrate%20the%20Robotic%20Arm.html",
+      "result": "404"
+    }
+  ],
+  "search_excerpt_only": [
+    {
+      "url": "https://www.yahboom.net/public/upload/upload-html/1777290469/2.Calibrate%20the%20Robotic%20Arm.html",
+      "note": "본문 fetch는 404였다. 검색 발췌는 write_offset_switch가 현재 각을 저장하고, write_offset_state가 0/1/2 상태를 돌려주며, 조정 결과가 upright라고 적는다. 레지스터 판정에는 쓰지 않았다."
+    }
+  ],
+  "installed_files_reread": [
+    "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+    "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+    "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb"
+  ],
+  "not_used_as_this_robot_api": [
+    {
+      "name": "Lobot LOBOT_SERVO_ANGLE_OFFSET_READ",
+      "reason": "다른 시리얼 서보 프로토콜이다. 설치 트리의 ANGLE_OFFSET 검색은 0건이다."
+    }
+  ]
+}
