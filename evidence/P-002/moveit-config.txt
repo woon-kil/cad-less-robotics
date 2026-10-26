@@ -1,0 +1,13 @@
+used_for_planning:
+  URDF dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+  SRDF dofbot_pro_moveit/config/DOFBOT_Pro-V24.srdf
+  kinematics.yaml
+  joint_limits.yaml
+not_launched:
+  demo.launch.py
+  spawn_controllers.launch.py
+  DOFBOT_Pro-V24.urdf.xacro FakeSystem ros2_control
+  moveit_controllers.yaml FollowJointTrajectory
+adapter: src/dofbot_moveit_dry MoveItCpp plan only
+collision_adapter: FixStartStateCollision omitted
+execute_trajectory: false

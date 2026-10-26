@@ -1,0 +1,10 @@
+srdf DOFBOT_Pro-V24
+group arm_group joint:Arm1_Joint joint:Arm2_Joint joint:Arm3_Joint joint:Arm4_Joint joint:Arm5_Joint
+group grip_group link:rlink1 link:rlink2 link:rlink3
+end_effector name=gripper parent_link=Arm5_Link group=grip_group
+state arm_group up Arm1_Joint=0 Arm2_Joint=0 Arm3_Joint=0 Arm4_Joint=0 Arm5_Joint=0
+state arm_group down Arm1_Joint=0 Arm2_Joint=-1.57 Arm3_Joint=0 Arm4_Joint=0 Arm5_Joint=0
+state arm_group init Arm1_Joint=0 Arm2_Joint=1.2063 Arm3_Joint=-1.5 Arm4_Joint=-1.3104 Arm5_Joint=0
+state grip_group open grip_joint=-0.0796
+state grip_group close grip_joint=-1.4939
+disable_collisions 78

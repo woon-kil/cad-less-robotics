@@ -1,0 +1,91 @@
+Robot model source:
+Repository: https://github.com/atticusrussell/ballbot
+Branch/tag: humble
+Commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+URDF/xacro: third_party/dofbot-pro/New_Code/Orin/DofbotPro_source/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+SRDF: third_party/dofbot-pro/New_Code/Orin/DofbotPro_source/dofbot_pro_ws/src/dofbot_pro_moveit/config/DOFBOT_Pro-V24.srdf
+MoveIt config: third_party/dofbot-pro/New_Code/Orin/DofbotPro_source/dofbot_pro_ws/src/dofbot_pro_moveit
+License: dofbot_pro_moveit package.xml BSD (maintainer yahboom@163.com). dofbot_pro_description package.xml license tag is TODO.
+Official git: https://github.com/YahboomTechnology/DOFBOT-Pro commit 57cc4369af73d65188d33e49227650c789779a7e has course PDFs and no URDF. GitHub license SPDX is unset.
+robot_sources: ~/robot_sources/mycobot_ros2 only. DOFBOT model was not there and that tree was not modified.
+ballbot commit message: Drive downloads of the Yahboom Pro hardware reference and Orin ROS 2 stack.
+Hardware folder URDF vs description URDF: DIFFERENT
+Hardware vs description joint check: arm joint type, parent, child, limits, and origins match. The only joint-field text difference is Gripping_point_Joint origin xyz `0 0.09 0` versus `0 0.09 0.00`. Planning used the description URDF that dofbot_pro_moveit includes.
+Mesh bytes: ballbot stores Git LFS pointers and the LFS server returned 404. Each mesh was fetched from chrisantuseze/dofbot-controller commit 142457e307670a4080267bdf6565cde19ff962cc dofbot_pro_v24/meshes only after its sha256 matched the ballbot LFS oid. URDF and SRDF still come from the ballbot snapshot, not from that mirror.
+Vendor files are downloaded into third_party/dofbot-pro-cache and are not committed.
+description package.xml excerpt:
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>dofbot_pro_description</name>
+  <version>0.0.0</version>
+  <description>TODO: Package description</description>
+  <maintainer email="jetson@todo.todo">jetson</maintainer>
+  <license>TODO: License declaration</license>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
+
+moveit package.xml excerpt:
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>dofbot_pro_moveit</name>
+  <version>0.3.0</version>
+  <description>
+     An automatically generated package with all the configuration and launch files for using the DOFBOT_Pro-V24 with the MoveIt Motion Planning Framework
+  </description>
+  <maintainer email="yahboom@163.com">yahboom</maintainer>
+
+  <license>BSD</license>
+
+  <url type="website">http://moveit.ros.org/</url>
+  <url type="bugtracker">https://github.com/ros-planning/moveit2/issues</url>
+  <url type="repository">https://github.com/ros-planning/moveit2</url>
+
+  <author email="yahboom@163.com">yahboom</author>
+
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_kinematics</exec_depend>
+  <exec_depend>moveit_planners</exec_depend>
+  <exec_depend>moveit_simple_controller_manager</exec_depend>
+  <exec_depend>joint_state_publisher</exec_depend>
+  <exec_depend>joint_state_publisher_gui</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <!-- The next 2 packages are required for the gazebo simulation.
+       We don't include them by default to prevent installing gazebo and all its dependencies. -->
+  <!-- <exec_depend>joint_trajectory_controller</exec_depend> -->
+  <!-- <exec_depend>gazebo_ros_control</exec_depend> -->
+  <exec_depend>controller_manager</exec_depend>
+  <exec_depend>dofbot_pro_description</exec_depend>
+  <exec_depend>moveit_configs_utils</exec_depend>
+  <exec_depend>moveit_ros_move_group</exec_depend>
+  <exec_depend>moveit_ros_visualization</exec_depend>
+  <exec_depend>moveit_ros_warehouse</exec_depend>
+  <exec_depend>moveit_setup_assistant</exec_depend>
+  <exec_depend>robot_state_publisher</exec_depend>
+  <exec_depend>rviz2</exec_depend>
+  <exec_depend>rviz_common</exec_depend>
+  <exec_depend>rviz_default_plugins</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>warehouse_ros_mongo</exec_depend>
+  <exec_depend>xacro</exec_depend>
+  <test_depend>ament_lint_auto</test_depend>
+  <test_depend>ament_lint_common</test_depend>
+  <depend>graph_msgs</depend>
+
+  <export>
+      <build_type>ament_cmake</build_type>
+  </export>
+</package>
+

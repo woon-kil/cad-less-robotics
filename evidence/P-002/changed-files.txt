@@ -1,0 +1,9 @@
+src/dofbot_moveit_dry/package.xml
+src/dofbot_moveit_dry/CMakeLists.txt
+src/dofbot_moveit_dry/config/dry_plan.yaml
+src/dofbot_moveit_dry/src/dry_plan_node.cpp
+scripts/validate_dofbot_moveit.sh
+.gitignore
+
+robot_controller was not modified. planning_group and end_effector_link already match the SRDF.
+Vendor URDF, SRDF, and meshes are not committed. scripts/validate_dofbot_moveit.sh downloads them into third_party/dofbot-pro-cache.

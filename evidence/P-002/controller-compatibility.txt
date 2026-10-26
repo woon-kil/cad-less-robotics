@@ -1,0 +1,12 @@
+planning_group: arm_group
+code_default: arm_group
+srdf_group_present: True
+srdf_joints: Arm1_Joint Arm2_Joint Arm3_Joint Arm4_Joint Arm5_Joint
+end_effector_link: Arm5_Link
+srdf_end_effector_parent_link: Arm5_Link
+planning_chain_tip: Arm5_Link
+process_tcp_claimed: false
+Gripping_point_Link: fixed child of Arm5_Link in the URDF. Not used as a calibrated TCP.
+grip_group: present and separate from arm_group. robot_controller gripper controller was not added.
+execute_trajectory_code_default: false
+Result: MATCH

@@ -1,0 +1,7 @@
+SOURCE_BASE_COMMIT=ce3ace9e923bfa365630feffc397db9dfb4468f3
+TESTED_COMMIT=ee8fd01e1246a8aa96980d614477ea2fbc2b9320
+EVIDENCE_GENERATED_AT=2026-10-26 14:32 KST
+FINAL_COMMIT=PENDING
+working_tree=P-002 sources and evidence added on top of ce3ace9
+The validation ran in bytesize-robotics-humble before these commits existed.
+The tested sources are the files in the code commit. This evidence commit does not change the planner.

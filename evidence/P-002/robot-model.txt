@@ -1,0 +1,33 @@
+robot DOFBOT_Pro-V24
+
+links
+  base_link
+  Arm1_Link
+  Arm2_Link
+  Arm3_Link
+  Arm4_Link
+  DaBai_DCW2_Link
+  Arm5_Link
+  rlink1
+  rlink2
+  llink1
+  llink2
+  rlink3
+  llink3
+  Gripping_point_Link
+
+joints
+name type parent child lower upper velocity
+Arm1_Joint revolute base_link Arm1_Link -1.5708 1.5708 1
+Arm2_Joint revolute Arm1_Link Arm2_Link -1.5708 1.5708 1
+Arm3_Joint revolute Arm2_Link Arm3_Link -1.5708 1.5708 1
+Arm4_Joint revolute Arm3_Link Arm4_Link -1.5708 1.5708 1
+DaBai_DCW2_Joint fixed Arm4_Link DaBai_DCW2_Link - - -
+Arm5_Joint revolute Arm4_Link Arm5_Link -1.5708 3.1416 1
+grip_joint revolute Arm5_Link rlink1 -1.6 0 1
+rlink_joint2 continuous rlink1 rlink2 - - -
+llink_joint1 continuous Arm5_Link llink1 - - -
+llink_joint2 continuous llink1 llink2 - - -
+rlink_joint3 continuous Arm5_Link rlink3 - - -
+llink_joint3 continuous Arm5_Link llink3 - - -
+Gripping_point_Joint fixed Arm5_Link Gripping_point_Link - - -

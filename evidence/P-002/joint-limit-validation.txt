@@ -1,0 +1,7 @@
+position_margin_rad 1e-06
+velocity_margin_rad_s 0.0001
+position_limit_violations 0
+velocity_limit_violations 0
+CASE-01 position_violations 0 velocity_violations 0 velocity_timed yes
+CASE-02 position_violations 0 velocity_violations 0 velocity_timed yes
+CASE-03 position_violations 0 velocity_violations 0 velocity_timed yes

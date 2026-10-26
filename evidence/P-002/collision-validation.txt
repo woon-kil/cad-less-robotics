@@ -1,0 +1,7 @@
+collision_checking_disabled false
+collision_links 14
+self_collision_pairs_checked 13
+collision_invalid_cases 0
+CASE-01 start clear goal clear trajectory_collision_points 0
+CASE-02 start clear goal clear trajectory_collision_points 0
+CASE-03 start clear goal clear trajectory_collision_points 0

@@ -1,0 +1,4 @@
+SOURCE_BASE_COMMIT=ce3ace9e923bfa365630feffc397db9dfb4468f3
+branch=main
+working_tree=clean at P-002 start
+remote=https://github.com/woon-kil/cad-less-robotics.git

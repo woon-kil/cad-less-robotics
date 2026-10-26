@@ -1,0 +1,12 @@
+Container: bytesize-robotics-humble
+Ubuntu: 22.04
+ROS_DISTRO: humble
+MoveIt: ros-humble-moveit 2.5.10-1jammy.20261006.203658
+Architecture: x86_64
+Host: p620
+Image: cad-less-robotics:humble-p000
+GPU passthrough: not used
+DOFBOT hardware: not connected
+Gemini 335L: not connected
+execute_trajectory: false
+Executions: 0
