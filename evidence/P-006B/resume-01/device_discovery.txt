@@ -1,0 +1,40 @@
+P-006B resume-01 device discovery
+scan_host: p620
+scan_at: 2026-10-26T23:12:48+09:00
+
+lsusb
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 014: ID 2bc5:0804 Orbbec 3D Technology International, Inc Orbbec Gemini 335L
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
+Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+/dev/ttyUSB* : absent
+/dev/ttyACM* : absent
+/dev/serial/by-id : absent
+lsmod ch341/cp210/ftdi/cdc_acm/usbserial : no match
+lsusb -d 1a86:7523 : absent
+lsusb -d 10c4:ea60 : absent
+lsusb -d 0483:5740 : absent
+
+DOFBOT transport, measured on the robot board 192.168.0.94
+SSH banner: SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10
+hostname: yahboom
+login: jetson
+OS: Ubuntu 22.04.5 LTS
+Tegra: R36 revision 4.3, aarch64, BOARD generic
+servo device node: /dev/i2c-7
+servo controller address: 0x15
+userspace library: Arm_Lib 1.0.3, class Arm_Device, default bus 7
+pre-existing process YahboomArm.pyc already held /dev/i2c-7
+arm_driver process: not running
+/dev/tty* servo node on the Orin: not observed for this read path
+
+Gemini 335L on p620 is the camera. It is not the arm transport.
+No camera serial string was copied into this file.

@@ -1,0 +1,27 @@
+{
+  "gate": "P-006B",
+  "resume": "resume-01",
+  "captured_at": "2026-10-26T23:15:46+09:00",
+  "base_commit": "4ecf1bceb44c98fcf2639d0e92135e25aab50edd",
+  "operator_host": "macOS darwin",
+  "usb_scan_host": "p620",
+  "usb_scan_at": "2026-10-26T23:12:48+09:00",
+  "robot_host": {
+    "address": "192.168.0.94",
+    "ssh_banner": "SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.10",
+    "hostname": "yahboom",
+    "login_user": "jetson",
+    "os": "Ubuntu 22.04.5 LTS",
+    "tegra": "# R36 (release), REVISION: 4.3, GCID: 38968081, BOARD: generic, EABI: aarch64, DATE: Wed Jan  8 01:49:37 UTC 2025",
+    "board_statement": "Jetson Orin Nano",
+    "board_statement_source": "operator",
+    "board_corroboration": "L4T R36 and Ubuntu 22.04 match an Orin-class image. Login hostname is yahboom."
+  },
+  "shell": "bash --noprofile --norc",
+  "ros_joint_states_used": false,
+  "motion_commands": 0,
+  "camera_or_led_or_robot_moved_by_this_gate": false,
+  "p006c_r2_modified": false,
+  "p006c_r25_modified": false,
+  "p007_started": false
+}

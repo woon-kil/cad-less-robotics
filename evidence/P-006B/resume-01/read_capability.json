@@ -1,0 +1,11 @@
+{
+  "classification": "CONTROLLER_REPORTED_STATE",
+  "true_joint_feedback": false,
+  "reason": "DOFBOT Pro 강좌는 Arm_serial_servo_read를 버스 서보의 현재 각도라고 적는다. 구현은 컨트롤러 레지스터 0x30+id의 워드를 각도로 환산해 반환한다. 이 값이 마지막 명령의 메아리인지, 서보 내부 위치 센서인지는 움직임을 만들지 않는 이번 측정으로 가르지 못했다.",
+  "encoder_proven": false,
+  "command_echo_ruled_out": false,
+  "read_api_present": true,
+  "command_api_separate": true,
+  "command_api_called": false,
+  "lesson_url": "https://www.yahboom.net/study/DOFBOT-Pro/12622"
+}

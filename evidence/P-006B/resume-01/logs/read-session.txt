@@ -1,0 +1,19 @@
+P-006B resume-01 read session
+host: yahboom (192.168.0.94)
+start: 2026-10-26T23:15:28.471239+09:00
+end: 2026-10-26T23:15:46.105197+09:00
+shell: bash --noprofile --norc
+python: import Arm_Device, construct Arm_Device(), call Arm_serial_servo_read only
+rounds: 100
+servo ids: 1 2 3 4 5 6
+samples: 600
+errors: 0
+position write calls: 0
+gripper write calls: 0
+reset/home/init calls: 0
+arm_driver: not started
+/TargetAngle: not published
+MoveIt: not started
+notebook 04.read_servo.ipynb: not executed
+YahboomArm.pyc: already running before this session, not started or stopped here
+bus: /dev/i2c-7 closed by this process after the reads

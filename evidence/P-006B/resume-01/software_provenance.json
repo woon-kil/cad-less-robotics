@@ -1,0 +1,60 @@
+{
+  "sku": "DOFBOT Pro",
+  "board": "Jetson Orin Nano",
+  "model_reference": {
+    "name": "P-002 kinematic model",
+    "description": "Yahboom DOFBOT Pro course-family ROS model snapshot",
+    "pinned_source": "atticusrussell/ballbot",
+    "pinned_commit": "906da9f9120c056dd0c8766fe1a72e72a086061c",
+    "not": "official Yahboom URDF directly from official repo",
+    "planning_group": "arm_group",
+    "joints": ["Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint", "Arm5_Joint"],
+    "planning_end_link": "Arm5_Link",
+    "gripper_link": "Gripping_point_Link is a fixed child of Arm5_Link",
+    "arm6_joint": "absent"
+  },
+  "read_api": {
+    "package": "Arm_Lib",
+    "version": "1.0.3",
+    "import_path": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg",
+    "class": "Arm_Device",
+    "function": "Arm_serial_servo_read",
+    "tree_copy": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+    "tree_copy_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+    "egg_member": "Arm_Lib/Arm_Lib.py",
+    "egg_member_sha256_prefix": "edfcae726658ce93",
+    "egg_member_uncompressed_size": 17739,
+    "robot_git_commit": null,
+    "robot_git_status": "NO_GIT",
+    "lesson_url": "https://www.yahboom.net/study/DOFBOT-Pro/12622",
+    "lesson_title": "4. Read Servo Angle",
+    "notebook": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/04.read_servo.ipynb",
+    "notebook_executed": false
+  },
+  "command_api_not_used": {
+    "functions": [
+      "Arm_serial_servo_write",
+      "Arm_serial_servo_write6",
+      "Arm_serial_servo_write6_array",
+      "Arm_serial_set_torque",
+      "Arm_reset"
+    ],
+    "ros_driver": "dofbot_pro_driver arm_driver",
+    "ros_topic": "/TargetAngle",
+    "ros_type": "dofbot_pro_interface/ArmJoint",
+    "ros_lesson_url": "https://www.yahboom.net/study/DOFBOT-Pro/12551",
+    "moveit_driver_lesson_url": "https://www.yahboom.net/study/DOFBOT-Pro/12568",
+    "reason": "이 경로들은 목표 각도를 서보에 쓴다. 이번 Gate에서 시작하거나 publish하지 않았다."
+  },
+  "protocol": {
+    "transport": "I2C",
+    "bus": 7,
+    "address": "0x15",
+    "read_register": "0x30 + servo_id",
+    "read_request_value": "0x00",
+    "position_registers_not_used": ["0x10+id", "0x17", "0x19", "0x1c", "0x1d", "0x1e"],
+    "ids": "1 bottom through 6 top, per the DOFBOT Pro lesson",
+    "vendor_angle_range": "id 5 is 0-270 degrees in the lesson; other ids are 0-180 degrees"
+  },
+  "other_sku_code_used": false
+}

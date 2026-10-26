@@ -1,0 +1,32 @@
+{
+  "gate": "P-006B",
+  "resume": "resume-01",
+  "verdict": "DIAGNOSIS PASS",
+  "verdict_reason": "Orin I2C에서 컨트롤러 보고 각도를 움직임 없이 읽었다. 그 값은 P-002 관절 라디안이 아니고, 채널과 URDF 관절의 동일성·부호·영점은 증명되지 않았다. calibration reference로 쓰기에는 부족하다.",
+  "checks": [
+    {"id": "P006B-R01", "result": "PASS", "note": "p620 USB 스캔과 Orin I2C 정체를 기록했다. DOFBOT USB 시리얼은 없다."},
+    {"id": "P006B-R02", "result": "PASS", "note": "경로는 192.168.0.94 SSH 다음 Orin /dev/i2c-7 주소 0x15다."},
+    {"id": "P006B-R03", "result": "PASS", "note": "설치된 Arm_Lib 1.0.3과 DOFBOT Pro 읽기 강좌를 기록했다."},
+    {"id": "P006B-R04", "result": "PASS", "note": "import와 생성자, 읽기 함수를 호출 전에 읽었다."},
+    {"id": "P006B-R05", "result": "PASS", "note": "import, 생성, 조회 레지스터에는 초기 자세 명령이 없다. 쓰기 셀은 실행하지 않았다."},
+    {"id": "P006B-R06", "result": "PASS", "note": "CONTROLLER_REPORTED_STATE"},
+    {"id": "P006B-R07", "result": "PASS", "note": "채널 대응 상태는 UNVERIFIED로 기록했다."},
+    {"id": "P006B-R08", "result": "PASS", "note": "반환 단위는 라이브러리 정수 각도다. 펄스는 반환되지 않았다."},
+    {"id": "P006B-R09", "result": "PASS", "note": "URDF radian scale은 UNRESOLVED다."},
+    {"id": "P006B-R10", "result": "PASS", "note": "URDF sign은 UNRESOLVED다."},
+    {"id": "P006B-R11", "result": "PASS", "note": "zero offset은 UNRESOLVED다."},
+    {"id": "P006B-R12", "result": "PASS", "note": "PHYSICAL_ARM1_ZERO_TO_URDF_ZERO = UNRESOLVED"},
+    {"id": "P006B-R13", "result": "PASS", "note": "100라운드, 채널 6개, 샘플 600."},
+    {"id": "P006B-R14", "result": "PASS", "note": "통신 오류 0, 연속 점프 0, 채널마다 값이 하나다."},
+    {"id": "P006B-R15", "result": "PASS", "note": "calibrated joint state라고 적지 않았다."},
+    {"id": "P006B-R16", "result": "PASS", "note": "servo position command 0"},
+    {"id": "P006B-R17", "result": "PASS", "note": "gripper command 0"},
+    {"id": "P006B-R18", "result": "PASS", "note": "homing, reset, init pose command 0"},
+    {"id": "P006B-R19", "result": "PASS", "note": "MoveIt execution 0"},
+    {"id": "P006B-R20", "result": "PASS", "note": "T_base_camera 계산 0"},
+    {"id": "P006B-R21", "result": "PASS", "note": "fake/identity TF 0"},
+    {"id": "P006B-R22", "result": "PASS", "note": "camera, LED, robot relocation 0"},
+    {"id": "P006B-R23", "result": "PASS", "note": "P-006C-R2와 R2.5 evidence를 수정하지 않았다."},
+    {"id": "P006B-R24", "result": "PASS", "note": "P-007을 시작하지 않았다."}
+  ]
+}

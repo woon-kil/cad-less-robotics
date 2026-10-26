@@ -1,0 +1,24 @@
+{
+  "formula": "q_urdf = sign * q_hw + offset",
+  "sign": "UNRESOLVED",
+  "offset": "UNRESOLVED",
+  "scale_to_urdf_radian": "UNRESOLVED",
+  "hardware_zero_known": false,
+  "urdf_zero_known_as_physical_pose": false,
+  "per_joint": {
+    "Arm1_Joint": {"hardware_zero": "UNRESOLVED", "urdf_zero_alignment": "UNRESOLVED", "sign": "UNRESOLVED", "offset": "UNRESOLVED"},
+    "Arm2_Joint": {"hardware_zero": "UNRESOLVED", "urdf_zero_alignment": "UNRESOLVED", "sign": "UNRESOLVED", "offset": "UNRESOLVED"},
+    "Arm3_Joint": {"hardware_zero": "UNRESOLVED", "urdf_zero_alignment": "UNRESOLVED", "sign": "UNRESOLVED", "offset": "UNRESOLVED"},
+    "Arm4_Joint": {"hardware_zero": "UNRESOLVED", "urdf_zero_alignment": "UNRESOLVED", "sign": "UNRESOLVED", "offset": "UNRESOLVED"},
+    "Arm5_Joint": {"hardware_zero": "UNRESOLVED", "urdf_zero_alignment": "UNRESOLVED", "sign": "UNRESOLVED", "offset": "UNRESOLVED"}
+  },
+  "gripper_servo_id_6": {"model_joint": null, "zero": "UNRESOLVED"},
+  "PHYSICAL_ARM1_ZERO_TO_URDF_ZERO": "UNRESOLVED",
+  "arm1_note": "P-006A의 축 대응과 +Z 일관성은 유지한다. 이번 읽기는 servo id 1의 보고 각도 86도를 줬을 뿐, 그 각도가 URDF Arm1_Joint 0 rad와 같은 자세인지는 보여 주지 않는다.",
+  "raw_unit": {
+    "returned_unit": "integer degree after Arm_Lib conversion",
+    "pulse_unit_in_source": "id 5 uses 380-3700 for 0-270 degrees; other ids use 900-3100 for 0-180 degrees",
+    "pulse_captured": false,
+    "urdf_radian_created": false
+  }
+}

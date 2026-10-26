@@ -1,0 +1,24 @@
+{
+  "scan_host": "p620",
+  "scan_at": "2026-10-26T23:12:48+09:00",
+  "dofbot_usb_serial": "ABSENT",
+  "ttyUSB": [],
+  "ttyACM": [],
+  "serial_by_id": "ABSENT",
+  "serial_kernel_modules": [],
+  "probed_usb_ids_absent": ["1a86:7523", "10c4:ea60", "0483:5740"],
+  "devices": [
+    {"bus": "001", "device": "001", "vid_pid": "1d6b:0002", "product": "Linux Foundation 2.0 root hub"},
+    {"bus": "002", "device": "001", "vid_pid": "1d6b:0003", "product": "Linux Foundation 3.0 root hub"},
+    {"bus": "002", "device": "014", "vid_pid": "2bc5:0804", "product": "Orbbec Gemini 335L", "role": "camera_not_arm", "serial": "REDACTED_NOT_RECORDED"},
+    {"bus": "003", "device": "001", "vid_pid": "1d6b:0002", "product": "Linux Foundation 2.0 root hub"},
+    {"bus": "003", "device": "002", "vid_pid": "17aa:104d", "product": "Realtek USB Audio Front"},
+    {"bus": "003", "device": "003", "vid_pid": "17aa:1046", "product": "Realtek USB Audio Rear"},
+    {"bus": "004", "device": "001", "vid_pid": "1d6b:0003", "product": "Linux Foundation 3.0 root hub"},
+    {"bus": "005", "device": "001", "vid_pid": "1d6b:0002", "product": "Linux Foundation 2.0 root hub"},
+    {"bus": "006", "device": "001", "vid_pid": "1d6b:0003", "product": "Linux Foundation 3.0 root hub"},
+    {"bus": "007", "device": "001", "vid_pid": "1d6b:0002", "product": "Linux Foundation 2.0 root hub"},
+    {"bus": "008", "device": "001", "vid_pid": "1d6b:0003", "product": "Linux Foundation 3.0 root hub"}
+  ],
+  "interpretation": "DOFBOT Pro의 서보 버스는 p620 USB 시리얼 장치가 아니다. 서보 컨트롤러는 로봇에 탑재된 Jetson의 I2C에 있다."
+}

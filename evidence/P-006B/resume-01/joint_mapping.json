@@ -1,0 +1,16 @@
+{
+  "status": "UNVERIFIED",
+  "motion_check": "NOT_PERFORMED",
+  "vendor_order_source": "https://www.yahboom.net/study/DOFBOT-Pro/12622",
+  "vendor_order": "id 1 is the bottom servo and ids increase upward. id 6 is the top servo.",
+  "channels": [
+    {"servo_id": 1, "model_joint": "Arm1_Joint", "model_status": "UNVERIFIED", "vendor_note": "bottom servo", "library_angle_flip": false, "vendor_range_deg": "0-180"},
+    {"servo_id": 2, "model_joint": "Arm2_Joint", "model_status": "UNVERIFIED", "vendor_note": "next upward", "library_angle_flip": true, "vendor_range_deg": "0-180"},
+    {"servo_id": 3, "model_joint": "Arm3_Joint", "model_status": "UNVERIFIED", "vendor_note": "next upward", "library_angle_flip": true, "vendor_range_deg": "0-180"},
+    {"servo_id": 4, "model_joint": "Arm4_Joint", "model_status": "UNVERIFIED", "vendor_note": "next upward", "library_angle_flip": true, "vendor_range_deg": "0-180"},
+    {"servo_id": 5, "model_joint": "Arm5_Joint", "model_status": "UNVERIFIED", "vendor_note": "next upward", "library_angle_flip": false, "vendor_range_deg": "0-270"},
+    {"servo_id": 6, "model_joint": null, "model_status": "NOT_A_P002_JOINT", "vendor_note": "top servo, gripper channel", "library_angle_flip": false, "vendor_range_deg": "0-180"}
+  ],
+  "arm6_joint": "P-002 모델에 없다. servo id 6을 Arm6_Joint로 두지 않는다.",
+  "library_flip_meaning": "id 2, 3, 4는 읽기 환산 뒤 180에서 뺀 값을 반환한다. 이것은 라이브러리 내부 보정이며 URDF 축 부호가 증명된 것은 아니다."
+}
