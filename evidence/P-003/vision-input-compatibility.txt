@@ -1,7 +1,9 @@
-Existing default input_topic: /camera/depth/points
-Existing default output_topic: /vision/camera/points
-Source: src/vision_path_generator/src/camera_node.cpp
-Actual Gemini topic: NOT MEASURED
-Result: NOT EXECUTED
-Forwarding test: NOT EXECUTED
-No topic name was written into C++ source.
+Existing default: /camera/depth/points
+Actual topic: /camera/depth/points
+Type: sensor_msgs/msg/PointCloud2
+frame_id: camera_depth_optical_frame
+fields: ['x', 'y', 'z']
+Result: MATCH
+Forwarding test: PASS
+Relay input parameter: /camera/depth/points
+Relay output: /vision/camera/points

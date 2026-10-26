@@ -2,6 +2,7 @@ build/
 install/
 log/
 third_party/dofbot-pro-cache/
+third_party/OrbbecSDK_ROS2/
 .DS_Store
 *.user
 .idea/

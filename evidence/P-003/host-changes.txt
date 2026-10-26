@@ -1,6 +1,10 @@
-udev: not installed. /etc/udev/rules.d contains only ubuntu--vg-ubuntu--lv.rules. No Orbbec rule was added.
-Host ROS Jazzy: unchanged
-Isaac / NVIDIA / existing containers: unchanged
-Docker privileged or /dev bind: not used
-sudo ROS node: not used
-Firmware update: not performed
+udev: not installed. /etc/udev/rules.d has only ubuntu--vg-ubuntu--lv.rules.
+The camera opened as container root with a single --device node, so the official 99-obsensor-libusb.rules was not copied.
+privileged: false
+/dev bind: no
+Device passed at the 35s measurement: /dev/bus/usb/002/003
+Firmware write: no
+Host Ubuntu 24.04, Jazzy, Isaac, NVIDIA: unchanged
+Protected containers still running: hermes-bridge, open-webui, ollama
+P-000 container bytesize-robotics-humble: still running, image cad-less-robotics:humble-p000, privileged false, no USB device
+ROS nodes were not started with sudo.

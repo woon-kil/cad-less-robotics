@@ -1,5 +1,4 @@
-SOURCE_BASE_COMMIT=8c070d08bba3f4b43ae0425ad50b76f3acf91121
 TESTED_COMMIT=NONE
-EVIDENCE_GENERATED_AT=2026-10-26 14:51 KST
 FINAL_COMMIT=PENDING
-Camera software was not built or run.
+Working tree at evidence write: camera image, camera run script, probe, validator, evidence.
+third_party/OrbbecSDK_ROS2 is gitignored.

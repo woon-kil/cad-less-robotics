@@ -1,3 +1,6 @@
-evidence/P-003/*
-No package, Dockerfile, udev, or container change.
-Wrapper build and camera launch were not started.
+.gitignore
+docker/humble/Dockerfile.camera
+scripts/run_humble_camera.sh
+scripts/validate_gemini_pointcloud.sh
+scripts/pointcloud_probe.py
+evidence/P-003/

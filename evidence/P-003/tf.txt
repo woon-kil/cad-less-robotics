@@ -1,4 +1,8 @@
-Camera internal TF: NOT MEASURED
+Camera TF frames:
+camera_depth_frame -> camera_color_frame
+camera_color_frame -> camera_color_optical_frame
+camera_depth_frame -> camera_depth_optical_frame
+camera_link -> camera_depth_frame
 Robot-base TF created: NO
-Identity camera TF created: NO
-Hand-eye calibration: not performed
+Identity camera to robot TF created by this gate: NO
+QoS: /tf_static TRANSIENT_LOCAL, /tf VOLATILE

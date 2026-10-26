@@ -1,0 +1,38 @@
+# P-000 이미지 위에 Orbbec 공식 README의 Humble 의존성만 올린다.
+# 베이스는 cad-less-robotics:humble-p000 이고, P-000 Dockerfile은 바꾸지 않는다.
+# 호스트 Jazzy에는 설치하지 않는다.
+FROM cad-less-robotics:humble-p000
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    libgflags-dev \
+    nlohmann-json3-dev \
+    ros-humble-image-transport \
+    ros-humble-image-transport-plugins \
+    ros-humble-compressed-image-transport \
+    ros-humble-image-publisher \
+    ros-humble-camera-info-manager \
+    ros-humble-diagnostic-updater \
+    ros-humble-diagnostic-msgs \
+    ros-humble-statistics-msgs \
+    ros-humble-xacro \
+    ros-humble-backward-ros \
+    ros-humble-rclpy \
+    ros-humble-message-filters \
+    ros-humble-rclcpp-components \
+    ros-humble-tf2-ros \
+    ros-humble-tf2-sensor-msgs \
+    ros-humble-geometry-msgs \
+    libeigen3-dev \
+    libyaml-cpp-dev \
+    python3-psutil \
+    python3-tabulate \
+    python3-yaml \
+    libdw-dev \
+    libssl-dev \
+    mesa-utils \
+    libgl1 \
+    libgoogle-glog-dev \
+    python3-numpy \
+    && rm -rf /var/lib/apt/lists/*

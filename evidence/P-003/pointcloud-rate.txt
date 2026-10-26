@@ -1,4 +1,49 @@
-NOT MEASURED
-Duration: 0
-Messages: 0
-Reason: no stream. A single missing device is not reported as a rate.
+{
+  "device": "Gemini 335L",
+  "topic": "/camera/depth/points",
+  "frame_id": "camera_depth_optical_frame",
+  "frame_ids": [
+    "camera_depth_optical_frame"
+  ],
+  "frame_id_changes": 0,
+  "width": 262790,
+  "height": 1,
+  "is_bigendian": false,
+  "point_step": 16,
+  "row_step": 4204640,
+  "is_dense": true,
+  "fields": [
+    {
+      "name": "x",
+      "offset": 0,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "y",
+      "offset": 4,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "z",
+      "offset": 8,
+      "datatype": 7,
+      "count": 1
+    }
+  ],
+  "finite_points": 275746263,
+  "total_points": 275746263,
+  "finite_ratio": 1.0,
+  "zero_size_messages": 0,
+  "messages": 1047,
+  "duration_sec": 34.86465731897624,
+  "mean_hz": 30.001728983886498,
+  "min_interval_sec": 0.006299970031250268,
+  "max_interval_sec": 0.04272055998444557,
+  "stddev_interval_sec": 0.0016351445199632635,
+  "stamp_backwards": 0,
+  "disconnects": 0,
+  "disconnect_gap_sec": 2.0,
+  "qos_reliability": "reliable"
+}

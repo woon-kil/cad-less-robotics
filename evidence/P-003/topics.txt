@@ -1,2 +1,14 @@
-NOT MEASURED
-Reason: camera launch was not started.
+/camera/color/camera_info [sensor_msgs/msg/CameraInfo]
+/camera/color/image_raw [sensor_msgs/msg/Image]
+/camera/color/image_raw/compressed [sensor_msgs/msg/CompressedImage]
+/camera/color/metadata [orbbec_camera_msgs/msg/Metadata]
+/camera/depth/camera_info [sensor_msgs/msg/CameraInfo]
+/camera/depth/image_raw [sensor_msgs/msg/Image]
+/camera/depth/image_raw/compressedDepth [sensor_msgs/msg/CompressedImage]
+/camera/depth/metadata [orbbec_camera_msgs/msg/Metadata]
+/camera/depth/points [sensor_msgs/msg/PointCloud2]
+/camera/depth_filters/status [orbbec_camera_msgs/msg/DepthFiltersStatus]
+/camera/device_status [orbbec_camera_msgs/msg/DeviceStatus]
+/diagnostics [diagnostic_msgs/msg/DiagnosticArray]
+/parameter_events [rcl_interfaces/msg/ParameterEvent]
+/rosout [rcl_interfaces/msg/Log]

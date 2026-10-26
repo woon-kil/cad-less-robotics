@@ -1,9 +1,15 @@
-Camera: Orbbec Gemini 335L
-Host detection: FAIL
-Vendor/product seen: none
-Expected: 2bc5:0804 (Gemini_335L in orbbec_camera/scripts/99-obsensor-libusb.rules at v2-main c153462)
-Serial: not read
-Firmware: not read
-Connection: present on the Mac USB tree, absent on p620
-Mac link: 2bc5:0804 at 5 Gbps through Genesys USB 3 hubs. See usb-mac.txt.
-Container detection: NOT EXECUTED
+[INFO] [1792995043.267179750] [list_device_node]: name: Orbbec Gemini 335L
+[INFO] [1792995043.267216810] [list_device_node]: pid: 0x0804
+[INFO] [1792995043.267221068] [list_device_node]: serial: SERIAL_REDACTED
+[INFO] [1792995043.267224534] [list_device_node]: connection: USB3.2
+[INFO] [1792995043.267227700] [list_device_node]: firmware version: 1.4.60
+[INFO] [1792995043.267230786] [list_device_node]: usb port: 2-1
+[INFO] [1792995043.267235956] [list_device_node]: device_preset count: 7
+[INFO] [1792995043.267239222] [list_device_node]:   - Default
+[INFO] [1792995043.267242067] [list_device_node]:   - Hand
+[INFO] [1792995043.267244913] [list_device_node]:   - High Accuracy
+[INFO] [1792995043.267247798] [list_device_node]:   - High Density
+[INFO] [1792995043.267250613] [list_device_node]:   - Medium Density
+[INFO] [1792995043.267253409] [list_device_node]:   - Factory Calib
+[INFO] [1792995043.267256114] [list_device_node]:   - Custom
+

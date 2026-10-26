@@ -1,20 +1,17 @@
-Observed, not cloned and not built.
-
 Repository: https://github.com/orbbec/OrbbecSDK_ROS2
-Branch/tag: v2-main
+Branch: v2-main
 Commit: c153462518ad674650bafa4464fda72c27ab797a
-Commit date: 2026-10-08T07:19:48Z
-Commit message: fix: correct Gemini 335Le bottom screw frame typo (#224)
-Launch file present on that branch: orbbec_camera/launch/gemini_330_series.launch.py
-enable_point_cloud default in that launch file: true
-udev script: orbbec_camera/scripts/install_udev_rules.sh
-udev rules: orbbec_camera/scripts/99-obsensor-libusb.rules
-Gemini 335L product id in that file: 0804
-Vendor id: 2bc5
-
-Release v2.10.6 (tag commit 2961565, 2026-09-30) supported-device table:
-Gemini 335L recommended firmware 1.8.10
-Launch file gemini_330_series.launch.py
-Source: https://github.com/orbbec/OrbbecSDK_ROS2/releases
-
-Wrapper was not built because the camera was absent on the host.
+Commit subject: fix: correct Gemini 335Le bottom screw frame typo (#224)
+package.xml version: 2.10.6
+ROS wrapper version reported at runtime: 2.10.6
+SDK version reported at runtime: 2.10.6
+Vendored library: orbbec_camera/SDK/x64/lib/libOrbbecSDK.so.2.10.6 (16457744 bytes, not a Git LFS pointer)
+Launch: orbbec_camera/launch/gemini_330_series.launch.py
+Launch defaults used: camera_name=camera, enable_point_cloud=true, enable_colored_point_cloud=false, point_cloud_qos=default, uvc_backend=libuvc
+Runtime point cloud QoS: RELIABLE / VOLATILE
+Clone path: third_party/OrbbecSDK_ROS2 (gitignored, not committed)
+Image: cad-less-robotics:humble-p003
+Image id: sha256:737d85dcdae054e8f0525bad03038e8d6c493c2ee5572afaa30c93f77d3e54a4
+Base: cad-less-robotics:humble-p000 sha256:1c3a923deb9b78fbeaad04acc5fff5a07a6908ddb5f4f81813ebd9637e271ce1
+Cold build: orbbec_camera_msgs, vision_path_generator, orbbec_camera finished in 1min 26s
+Measurement-run build log: driver-build.log (already installed, 0.80s)

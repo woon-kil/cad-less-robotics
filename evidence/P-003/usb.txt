@@ -1,40 +1,18 @@
 Host: p620
-Command: lsusb; lsusb -t
-When: 2026-10-26 14:51 KST
-Orbbec vendor expected from official udev rule: 2bc5
-Gemini 335L product id in that rule: 0804
-Orbbec device count: 0
+When: 2026-10-26 15:13 KST
+Command: lsusb -d 2bc5:0804; lsusb -t; sysfs idVendor
 
-===== LSUSB =====
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
-Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
-Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
-Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
-Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 004: ID 2bc5:0804 Orbbec 3D Technology International, Inc Orbbec Gemini 335L
+Parent: Bus 002 root hub xhci_hcd, 10000M
+Port: 001, no extra hub
+Interfaces: 6 Video (uvcvideo) + 1 HID (usbhid)
+Negotiated speed: 5000M
+sysfs: 2-1 speed=5000 product=Orbbec Gemini 335L
+USB 2 fallback: no
 
-===== LSUSB -T =====
-/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
-/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M
-/:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
-    |__ Port 001: Dev 002, If 0, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 001: Dev 002, If 1, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 001: Dev 002, If 2, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 001: Dev 002, If 3, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 006: Dev 003, If 0, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 006: Dev 003, If 1, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 006: Dev 003, If 2, Class=Audio, Driver=snd-usb-audio, 480M
-    |__ Port 006: Dev 003, If 3, Class=Audio, Driver=snd-usb-audio, 480M
-/:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
-/:  Bus 005.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
-/:  Bus 006.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
-/:  Bus 007.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
-/:  Bus 008.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M
+같은 포트에서 컨테이너를 다시 만들 때마다 디바이스 번호만 바뀌었다.
+002/002 (최초 검출) → 002/003 (35초 측정 컨테이너) → 002/004 (TF 재확인).
+속도는 계속 5000M이고, 접근은 그 시점의 /dev/bus/usb/002/00N 하나뿐이었다.
+/dev 전체 마운트나 --privileged 로 넓히지 않았다.
 
-USB 3.x root hubs exist (Bus 002, 004, 006, 008 at 10000M) and have no child devices.
-The only enumerated peripherals are Realtek USB audio on Bus 003 at 480M.
-Negotiated camera speed: NOT MEASURED. The camera was not enumerated.
+이전 기록(카메라가 이 호스트에 없던 lsusb)은 git 이력 131e188 의 usb.txt 에 있다.

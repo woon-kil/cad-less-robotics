@@ -13,4 +13,4 @@ Path is through hubs, not a direct root port:
 - 2bc5:0804 Orbbec Gemini 335L, UsbLinkSpeed 5000000000
 
 Serial number: not recorded.
-This Mac is not the P-003 ROS 2 Humble host. The P620 lsusb result in usb.txt is unchanged: no 2bc5 device there.
+This Mac is not the P-003 ROS 2 Humble host. 이후 P620 측정은 usb.txt 에 있다.

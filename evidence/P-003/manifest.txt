@@ -18,3 +18,5 @@ evidence/P-003/git-before.txt
 evidence/P-003/git-after.txt
 evidence/P-003/changed-files.txt
 evidence/P-003/manifest.txt
+evidence/P-003/relay.log
+evidence/P-003/relay-once.txt

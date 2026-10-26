@@ -1,4 +1,5 @@
-Detected firmware: NOT READ
-Official recommended firmware: 1.8.10
-Source: OrbbecSDK_ROS2 release v2.10.6 supported-device table, Gemini 335L
-Decision: no firmware update. The device was not enumerated, so nothing was read or written.
+Detected firmware: 1.4.60
+Recommended by OrbbecSDK_ROS2 release v2.10.6 for Gemini 335L: 1.8.10
+Read path: ros2 run orbbec_camera list_devices_node
+Also printed by gemini_330_series.launch.py: Firmware version 1.4.60, ISP firmware 20241125, ISP needed 20241125
+Decision: no update. The PointCloud2 stream met the P-003 measurement bar, so firmware was not flashed.

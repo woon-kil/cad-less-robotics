@@ -1,2 +1,8 @@
-NOT EXECUTED
-Reason: host lsusb did not show vendor 2bc5. Container build was not started.
+Starting >>> orbbec_camera_msgs
+Starting >>> vision_path_generator
+Finished <<< vision_path_generator [0.20s]
+Finished <<< orbbec_camera_msgs [0.40s]
+Starting >>> orbbec_camera
+Finished <<< orbbec_camera [0.24s]
+
+Summary: 3 packages finished [0.80s]
