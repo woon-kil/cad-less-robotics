@@ -1,0 +1,21 @@
+target: CHECKERBOARD
+squares: [7, 10]
+inner_corners: [6, 9]
+square_size_mm: 20.0
+square_size_m: 0.0200
+status: PHYSICALLY VERIFIED
+opencv_pattern: "Size(cols, rows) tried as (6, 9) then (9, 6). Both are the same 54 inner corners."
+frame: checkerboard_frame
+origin: "detected corner 0 after the locked 180 degree rule"
+plus_x: "from corner 0 toward the next corner in the same OpenCV row"
+plus_y: "from corner 0 toward the next row"
+plus_z: "plus_x cross plus_y. On a board facing the camera with +X to image right and +Y to image down, +Z points toward the camera."
+order_rule: "findChessboardCorners row-major, left to right. If the second corner has a smaller image x than the first, rotate the grid 180 degrees and keep the object axes tied to the new first row."
+object_plane: "z = 0, x = column * 0.0200 m, y = row * 0.0200 m"
+solve_pnp: SOLVEPNP_ITERATIVE
+transform: "p_color = T_color_checkerboard * p_checkerboard"
+depth_transform: "p_depth = T_depth_color * T_color_checkerboard * p_checkerboard"
+not_base_link: true
+board_pose_in_base: null
+T_base_target: null
+T_base_camera: null

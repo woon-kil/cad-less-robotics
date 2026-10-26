@@ -1,0 +1,62 @@
+locked_before_measurement: true
+changed_after_measurement: false
+queried_on: 2026-10-26
+basis:
+  datasheet: https://www.orbbec.com/wp-content/uploads/2025/06/Gemini-330-series-Datasheet-V1.6.pdf
+  product: https://www.orbbec.com/products/stereo-vision-camera/gemini-335l/
+  spatial_precision: "Gemini 335L table 5-1-1, spatial precision ≤ 0.8% at 2 m, 1280x800, 90% x 90% ROI"
+  depth_accuracy: "same table, depth accuracy ≤ ±1% at 2 m"
+  temporal_precision: "same table, temporal precision ≤ 0.4% at 2 m"
+  ideal_range_m: [0.25, 6.0]
+operating_distance_m: [0.30, 1.20]
+detection:
+  inner_corners_a: [6, 9]
+  inner_corners_b: [9, 6]
+  required_corners: 54
+  square_m: 0.0200
+  acceptance_detection_rate_min: 0.80
+subpixel:
+  window: 11
+  zero_zone: -1
+  max_iterations: 30
+  epsilon: 0.001
+reprojection_px:
+  mean_max: 0.50
+  rmse_max: 0.80
+  p95_max: 1.50
+  max_max: 3.00
+  basis: "잔차 단위는 컬러 픽셀 하나다. cornerSubPix 종료 조건은 잔차 한도가 아니다."
+depth_plane:
+  rmse_m_max: 0.008
+  rmse_basis: "0.8% of 1.0 m. 2 m 사양의 16 mm를 책상 거리 한도로 쓰지 않는다."
+  valid_samples_min: 200
+  valid_corner_depths_min: 40
+  rgb_depth_distance_m_max: 0.010
+  distance_basis: "depth accuracy ±1% of 1.0 m"
+  normal_angle_deg_max: 5.0
+  normal_basis: "atan(0.008 m / 0.120 m) = 3.81 deg on the 6-square inner span, rounded to 5 deg"
+spacing:
+  nominal_m: 0.0200
+  rmse_m_max: 0.002
+  p95_abs_m_max: 0.003
+  max_abs_m_max: 0.004
+  basis: "인접 코너 간격은 공통 깊이 바이어스가 빠지는 차분이다. 1 m에서 시야각 약 90 deg, 가로 1280 px이면 픽셀 크기는 약 1.6 mm다."
+reproducibility:
+  min_frames: 10
+  min_duration_sec: 2.0
+  translation_std_m_max: 0.002
+  rotation_std_deg_max: 1.0
+  basis: "0.4% of 1 m temporal bound is 4 mm. The static-board limit is half of that. 1 deg is atan(2 mm / 120 mm)."
+diversity:
+  min_distinct_poses: 5
+  candidate_labels: [center, left, right, near, far, tilt_pos, tilt_neg]
+split:
+  development_fraction: 0.7
+  validation_min_frames: 3
+  acceptance_uses: validation
+sync:
+  max_color_depth_stamp_delta_sec: 0.05
+depth_unit:
+  encoding_expected: 16UC1
+  meters_per_count: 0.001
+  source: "orbbec_camera ob_camera_node.cpp multiplies the depth image by DepthFrame::getValueScale() before publish. 1 mm precision leaves the image in millimeters."
