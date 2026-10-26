@@ -94,4 +94,42 @@ ErrorSummary summarizeErrors(const std::vector<double>& values);
 
 JointStep jointStep(const std::vector<double>& from, const std::vector<double>& to);
 
+// Attempt #1과 같은 Cartesian 합격 분율. 이번 단계에서 내리지 않는다.
+constexpr double kMinCartesianFraction = 0.95;
+
+constexpr char kPlanningFeasible[] = "PLANNING_FEASIBLE";
+constexpr char kPlanningInfeasible[] = "PLANNING_INFEASIBLE";
+constexpr char kProcessFidelityNotYetAccepted[] = "PROCESS_FIDELITY_NOT_YET_ACCEPTED";
+
+struct SealedProjection {
+  MotionPose desired;
+  MotionPose projected;
+  OrientationMetrics metrics;
+  std::size_t source_index{0};
+  std::vector<double> joints;
+  std::string capability_class;
+};
+
+struct PlanningAttachment {
+  SealedProjection projection;
+  double fraction{0.0};
+  int trajectory_points{0};
+  std::string planning_feasibility;
+  std::string process_fidelity;
+};
+
+bool poseFieldsEqual(const MotionPose& lhs, const MotionPose& rhs);
+
+// FK로 만든 projected pose를 desired와 분리해 봉인한다. desired 인자는 바꾸지 않는다.
+SealedProjection sealProjection(
+    const MotionPose& desired, const MotionPose& fk_pose, const std::vector<double>& joints,
+    const char* capability_class);
+
+std::vector<MotionPose> projectedPlanningTargets(const std::vector<SealedProjection>& sealed);
+
+// fraction을 적어도 fidelity metric과 상태 문자열은 바꾸지 않는다.
+PlanningAttachment attachPlanning(
+    const SealedProjection& sealed, double fraction, int trajectory_points, bool collision_clear,
+    bool limits_clear, bool velocity_clear, double min_fraction);
+
 }  // namespace robot_controller

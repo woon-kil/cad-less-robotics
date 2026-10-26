@@ -180,6 +180,49 @@ ErrorSummary summarizeErrors(const std::vector<double>& values) {
   return summary;
 }
 
+bool poseFieldsEqual(const MotionPose& lhs, const MotionPose& rhs) {
+  return lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z && lhs.qx == rhs.qx && lhs.qy == rhs.qy &&
+         lhs.qz == rhs.qz && lhs.qw == rhs.qw && lhs.nx == rhs.nx && lhs.ny == rhs.ny && lhs.nz == rhs.nz &&
+         lhs.source_index == rhs.source_index;
+}
+
+SealedProjection sealProjection(
+    const MotionPose& desired, const MotionPose& fk_pose, const std::vector<double>& joints,
+    const char* capability_class) {
+  SealedProjection sealed;
+  sealed.desired = desired;
+  sealed.projected = fk_pose;
+  sealed.projected.source_index = desired.source_index;
+  sealed.source_index = desired.source_index;
+  sealed.joints = joints;
+  sealed.capability_class = capability_class == nullptr ? "" : capability_class;
+  sealed.metrics = measureCapability(sealed.desired, sealed.projected);
+  return sealed;
+}
+
+std::vector<MotionPose> projectedPlanningTargets(const std::vector<SealedProjection>& sealed) {
+  std::vector<MotionPose> targets;
+  targets.reserve(sealed.size());
+  for (const auto& item : sealed) {
+    targets.push_back(item.projected);
+  }
+  return targets;
+}
+
+PlanningAttachment attachPlanning(
+    const SealedProjection& sealed, double fraction, int trajectory_points, bool collision_clear,
+    bool limits_clear, bool velocity_clear, double min_fraction) {
+  PlanningAttachment attachment;
+  attachment.projection = sealed;
+  attachment.fraction = fraction;
+  attachment.trajectory_points = trajectory_points;
+  const bool fraction_ok = fraction + 1e-9 >= min_fraction && trajectory_points >= 2;
+  attachment.planning_feasibility =
+      (fraction_ok && collision_clear && limits_clear && velocity_clear) ? kPlanningFeasible : kPlanningInfeasible;
+  attachment.process_fidelity = kProcessFidelityNotYetAccepted;
+  return attachment;
+}
+
 JointStep jointStep(const std::vector<double>& from, const std::vector<double>& to) {
   JointStep step;
   if (from.size() != to.size() || from.empty()) {

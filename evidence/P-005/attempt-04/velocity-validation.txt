@@ -1,0 +1,12 @@
+max_joint_velocity_rad_s 0.40000000000000002
+time_parameterization attempt_1_cap
+execute_if_over_cap no
+run 1 CASE-01 max_joint_velocity 0 velocity_violations 0
+run 1 CASE-02 max_joint_velocity 0 velocity_violations 0
+run 1 CASE-03 max_joint_velocity 0.13147844798149794 velocity_violations 0
+run 2 CASE-01 max_joint_velocity 0 velocity_violations 0
+run 2 CASE-02 max_joint_velocity 0 velocity_violations 0
+run 2 CASE-03 max_joint_velocity 0.13147844798149794 velocity_violations 0
+run 3 CASE-01 max_joint_velocity 0 velocity_violations 0
+run 3 CASE-02 max_joint_velocity 0 velocity_violations 0
+run 3 CASE-03 max_joint_velocity 0.13147844798149794 velocity_violations 0

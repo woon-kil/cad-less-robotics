@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+<rect width="980" height="360" fill="#f7f4ee"/>
+<text x="24" y="32" font-family="sans-serif" font-size="18" fill="#1c1917">desired versus projected orientation error</text>
+<polyline fill="none" stroke="#b45309" stroke-width="2" points="40,300 68,299.856 96,277.592 124,275.036 152,277.252 180,278.2 208,275.342 236,276.79 264,277.672 292,279.755 320,279.924 "/>
+<polyline fill="none" stroke="#b45309" stroke-width="1" stroke-dasharray="4 3" points="40,300 68,297.219 96,284.555 124,278.139 152,249.653 180,217.738 208,206.902 236,206.856 264,219.538 292,229.899 320,242.295 "/>
+<text x="40" y="340" font-family="sans-serif" font-size="13" fill="#b45309">CASE-01 tool / |roll|</text>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="2" points="360,300 388,298.686 416,292.077 444,280.215 472,280.589 500,282.861 528,281.779 556,282.708 584,287.134 612,299.381 640,282.157 "/>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="4 3" points="360,300 388,283.493 416,267.039 444,252.052 472,249.352 500,234.398 528,254.76 556,254.536 584,269.956 612,272.37 640,288.058 "/>
+<text x="360" y="340" font-family="sans-serif" font-size="13" fill="#1d4ed8">CASE-02 tool / |roll|</text>
+<polyline fill="none" stroke="#44403c" stroke-width="2" points="680,300 708,299.707 736,298.132 764,299.243 792,298.748 820,293.822 848,295.675 876,298.659 904,299.137 932,298.175 960,298.651 "/>
+<polyline fill="none" stroke="#44403c" stroke-width="1" stroke-dasharray="4 3" points="680,300 708,295.972 736,296.505 764,282.999 792,281.426 820,267.927 848,259.653 876,256.059 904,264.63 932,278.522 960,268.32 "/>
+<text x="680" y="340" font-family="sans-serif" font-size="13" fill="#44403c">CASE-03 tool / |roll|</text>
+</svg>

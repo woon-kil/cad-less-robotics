@@ -134,6 +134,52 @@ TEST(CapabilityAdapter, CalculatesContinuityAndPercentiles) {
   EXPECT_NEAR(summary.p95, 9.5, 1e-12);
 }
 
+TEST(CapabilityAdapter, SealsDesiredAndProjectedSeparately) {
+  auto desired = identityPose();
+  desired.source_index = 62;
+  desired.x = 0.2;
+  desired.qw = 1.0;
+  const auto before = desired;
+  const auto fk = poseFrom(Eigen::Quaterniond(Eigen::AngleAxisd(0.4, Eigen::Vector3d::UnitX())), 0.2004);
+  const auto sealed = robot_controller::sealProjection(desired, fk, {0.1, 0.2, 0.3, 0.4, 0.5}, "NEAR_POSE");
+  EXPECT_TRUE(robot_controller::poseFieldsEqual(desired, before));
+  EXPECT_TRUE(robot_controller::poseFieldsEqual(sealed.desired, before));
+  EXPECT_EQ(sealed.source_index, 62u);
+  EXPECT_EQ(sealed.projected.source_index, 62u);
+  EXPECT_NEAR(sealed.projected.x, 0.2004, 1e-12);
+  EXPECT_GT(std::abs(sealed.projected.qx - desired.qx) + std::abs(sealed.projected.qw - desired.qw), 0.01);
+  const auto metrics = robot_controller::measureCapability(before, sealed.projected);
+  EXPECT_NEAR(sealed.metrics.position_error_m, metrics.position_error_m, 1e-12);
+  EXPECT_NEAR(sealed.metrics.tool_axis_error_deg, metrics.tool_axis_error_deg, 1e-9);
+  EXPECT_NEAR(sealed.metrics.roll_error_deg, metrics.roll_error_deg, 1e-9);
+  EXPECT_NEAR(sealed.metrics.full_orientation_error_deg, metrics.full_orientation_error_deg, 1e-9);
+  const auto targets = robot_controller::projectedPlanningTargets({sealed});
+  ASSERT_EQ(targets.size(), 1u);
+  EXPECT_TRUE(robot_controller::poseFieldsEqual(targets.front(), sealed.projected));
+  EXPECT_FALSE(robot_controller::poseFieldsEqual(targets.front(), sealed.desired));
+}
+
+TEST(CapabilityAdapter, PlanningSuccessDoesNotAcceptProcessFidelity) {
+  auto desired = identityPose();
+  desired.source_index = 63;
+  const auto fk = poseFrom(Eigen::Quaterniond(Eigen::AngleAxisd(25.0 * 3.14159265358979323846 / 180.0, Eigen::Vector3d::UnitX())), 0.0);
+  const auto sealed = robot_controller::sealProjection(desired, fk, {1.0, 0.0, 0.0, 0.0, 0.0}, "NEAR_POSE");
+  const auto before_tool = sealed.metrics.tool_axis_error_deg;
+  EXPECT_GT(before_tool, 20.0);
+  const auto attached = robot_controller::attachPlanning(sealed, 1.0, 20, true, true, true, robot_controller::kMinCartesianFraction);
+  EXPECT_EQ(attached.planning_feasibility, robot_controller::kPlanningFeasible);
+  EXPECT_EQ(attached.process_fidelity, robot_controller::kProcessFidelityNotYetAccepted);
+  EXPECT_NEAR(attached.projection.metrics.tool_axis_error_deg, before_tool, 1e-12);
+  EXPECT_NEAR(sealed.metrics.tool_axis_error_deg, before_tool, 1e-12);
+  EXPECT_TRUE(robot_controller::poseFieldsEqual(attached.projection.desired, desired));
+  const auto rejected = robot_controller::attachPlanning(sealed, 1.0 / 11.0, 2, true, true, true, robot_controller::kMinCartesianFraction);
+  EXPECT_EQ(rejected.planning_feasibility, robot_controller::kPlanningInfeasible);
+  EXPECT_EQ(rejected.process_fidelity, robot_controller::kProcessFidelityNotYetAccepted);
+  EXPECT_NEAR(rejected.projection.metrics.tool_axis_error_deg, before_tool, 1e-12);
+  const auto colliding = robot_controller::attachPlanning(sealed, 1.0, 20, false, true, true, robot_controller::kMinCartesianFraction);
+  EXPECT_EQ(colliding.planning_feasibility, robot_controller::kPlanningInfeasible);
+}
+
 TEST(CapabilityAdapter, PositionJacobianNullspaceDoesNotMovePosition) {
   double jacobian[15] = {1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0};
   const auto basis = robot_controller::positionNullBasis(jacobian);

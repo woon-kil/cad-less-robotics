@@ -1,0 +1,12 @@
+collision_checking_disabled false
+validity_callback same_as_attempt_1
+global_reference_frame true
+run 1 CASE-01 start clear trajectory_collision_states 0
+run 1 CASE-02 start clear trajectory_collision_states 0
+run 1 CASE-03 start clear trajectory_collision_states 0
+run 2 CASE-01 start clear trajectory_collision_states 0
+run 2 CASE-02 start clear trajectory_collision_states 0
+run 2 CASE-03 start clear trajectory_collision_states 0
+run 3 CASE-01 start clear trajectory_collision_states 0
+run 3 CASE-02 start clear trajectory_collision_states 0
+run 3 CASE-03 start clear trajectory_collision_states 0
