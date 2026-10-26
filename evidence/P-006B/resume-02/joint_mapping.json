@@ -1,0 +1,18 @@
+{
+  "status": "VERIFIED_BY_VENDOR_PROVENANCE",
+  "hardware_motion_check": "NOT_PERFORMED",
+  "grade": "P3",
+  "evidence": [
+    "arm_driver.py read_current_joint reads id i+1 into cur_joints[i]",
+    "arm_driver.py joint name list is Arm1_Joint through Arm5_Joint then grip_joint",
+    "installed URDF uses those same joint names"
+  ],
+  "channels": [
+    {"servo_id": 1, "model_joint": "Arm1_Joint"},
+    {"servo_id": 2, "model_joint": "Arm2_Joint"},
+    {"servo_id": 3, "model_joint": "Arm3_Joint"},
+    {"servo_id": 4, "model_joint": "Arm4_Joint"},
+    {"servo_id": 5, "model_joint": "Arm5_Joint"},
+    {"servo_id": 6, "model_joint": "grip_joint", "not": "Arm6_Joint"}
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "grades": {
+    "channel_to_joint_name": "P3",
+    "library_pulse_to_degree": "P2",
+    "library_inversion_id_2_3_4": "P2",
+    "model_scale_pi_over_180": "P3",
+    "model_sign_plus_one": "P3",
+    "model_offset_minus_90_deg": "P3",
+    "physical_pose_equals_urdf_zero": "P0",
+    "stored_servo_median_offset": "P0",
+    "id6_is_arm6": "rejected"
+  },
+  "p4_created": false,
+  "reason": "이번 Gate는 동작을 만들지 않았다. resume-01의 읽기 값은 convention 근거로 쓰지 않았다."
+}

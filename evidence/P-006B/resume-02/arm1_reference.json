@@ -1,0 +1,16 @@
+{
+  "PHYSICAL_ARM1_ZERO_TO_URDF_ZERO": "UNRESOLVED",
+  "grade_physical": "P0",
+  "controller_id1_to_urdf_arm1": {
+    "software_claim": "q_urdf = (q_library_deg - 90) * pi/180 about URDF axis 0 0 1",
+    "status": "CANDIDATE",
+    "grade": "P3"
+  },
+  "physical_yaw_to_urdf_zero": {
+    "status": "UNRESOLVED",
+    "grade": "P0",
+    "kept_from_p006a": "rotation centerline matches base_link X=Y=0 and physical +Z is consistent. Yaw zero was already unresolved."
+  },
+  "current_id1_reading_deg": 86,
+  "current_reading_used": false
+}

@@ -1,0 +1,17 @@
+{
+  "algorithm": "sha256",
+  "files": [
+    {"path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py", "bytes": 17739, "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c"},
+    {"path": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg", "bytes": 9887, "sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/config/offset_value.yaml", "bytes": 57, "sha256": "5e4ecffa99059f07fc125a72bcfb7c1738d3b0c05bf2809607741a9962b480f7"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_apriltag/param/offset_value.yaml", "bytes": 95, "sha256": "bba855e782563ec1b0ae7ba685b10996b3001bcb7aee5980f0b6485578031b03"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_moveit/config/initial_positions.yaml", "bytes": 189, "sha256": "738241e58dc18684c6631c2c96676ad5904bd8459ed48630ee87676148ec95e3"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf", "bytes": 19234, "sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_moveit/config/DOFBOT_Pro-V24.srdf", "bytes": 9204, "sha256": "5c355b844eca2ba277e5df204b59b6d8886768b48e11701d17a23491bdffc1ee"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_info/src/kinemarics_dofbotpro.cpp", "bytes": 4420, "sha256": "ffad369789acd270b2d20baed38f76a1722695f31c6328f8c92d7d23621765ba"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_info/include/dofbot_pro_info/kinemarics_dofbotpro.h", "bytes": 1508, "sha256": "69b3aa2cbb36035670df8bb95ca90d32112ca692ccd16bde10923ed657804f8a"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py", "bytes": 4242, "sha256": "165be840fbd92950b8da38478e4903d7732f789626423635fc6d0b3e3e3e4c53"},
+    {"path": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb", "bytes": 4068, "sha256": "9bf64e78ce3d5c1990e6022c81ba89331c0d8aaba19eb66cd46c1f49e0d26b47"},
+    {"path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_apriltag/dofbot_pro_apriltag/calibrate_offset.py", "bytes": 10939, "sha256": "25dc2a51abb895baf93cb664b74cd4d7003d567bce31dbb26dbf27304ced9295"}
+  ]
+}

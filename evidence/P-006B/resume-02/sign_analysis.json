@@ -1,0 +1,15 @@
+{
+  "formula_sign": "+1",
+  "status": "CANDIDATE",
+  "grade": "P3",
+  "hardware_status": "UNRESOLVED",
+  "per_joint": {
+    "Arm1_Joint": {"sign": "+1", "status": "CANDIDATE"},
+    "Arm2_Joint": {"sign": "+1", "status": "CANDIDATE"},
+    "Arm3_Joint": {"sign": "+1", "status": "CANDIDATE"},
+    "Arm4_Joint": {"sign": "+1", "status": "CANDIDATE"},
+    "Arm5_Joint": {"sign": "+1", "status": "CANDIDATE"}
+  },
+  "why_not_minus_from_library_flip": "Arm_Lib의 180-minus는 id 2, 3, 4의 라이브러리 각도를 만들 때 이미 적용된다. 운동학 코드와 arm_driver는 그 각도에 다시 음수를 곱하지 않고 (q_deg - 90) * pi/180 만 한다.",
+  "axis_relation": "양수 URDF 관절값은 그 관절의 URDF axis 양의 방향이다. Arm1은 +Z, Arm2~Arm4는 +X, Arm5는 +Y다. 실험실 좌표에서 그 방향이 맞는지는 이번 Gate에서 측정하지 않았다."
+}

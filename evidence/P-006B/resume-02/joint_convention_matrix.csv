@@ -1,0 +1,17 @@
+field,ID1,ID2,ID3,ID4,ID5,ID6
+controller_role,bottom servo,next servo,next servo,next servo,next servo,top servo gripper
+candidate_model_joint,Arm1_Joint,Arm2_Joint,Arm3_Joint,Arm4_Joint,Arm5_Joint,grip_joint
+mapping_status,VERIFIED_BY_VENDOR_PROVENANCE,VERIFIED_BY_VENDOR_PROVENANCE,VERIFIED_BY_VENDOR_PROVENANCE,VERIFIED_BY_VENDOR_PROVENANCE,VERIFIED_BY_VENDOR_PROVENANCE,NOT_ARM6
+raw_range,900-3100,900-3100,900-3100,900-3100,380-3700,900-3100
+library_angle_range_deg,0-180,0-180,0-180,0-180,0-270,0-180
+read_inversion,none,180-minus,180-minus,180-minus,none,none
+physical_axis_evidence,P-006A +Z consistent; yaw zero unresolved,not measured,not measured,not measured,not measured,not measured
+urdf_axis,0 0 1,1 0 0,1 0 0,1 0 0,0 1 0,0 0 -1
+controller_neutral,software uses 90 deg as URDF 0,software uses 90 deg as URDF 0,software uses 90 deg as URDF 0,software uses 90 deg as URDF 0,software uses 90 deg as URDF 0,driver remaps 30-180 before the same subtract
+physical_neutral,UNRESOLVED,UNRESOLVED,UNRESOLVED,UNRESOLVED,UNRESOLVED,UNRESOLVED
+urdf_zero,0 rad about axis,0 rad about axis,0 rad about axis,0 rad about axis,0 rad about axis,N/A for Arm joint
+candidate_sign,+1,+1,+1,+1,+1,N/A
+candidate_offset_deg,-90,-90,-90,-90,-90,N/A
+offset_status,CANDIDATE,CANDIDATE,CANDIDATE,CANDIDATE,CANDIDATE,N/A
+confidence,P3 software formula; P0 physical pose,P3 software formula; P0 physical pose,P3 software formula; P0 physical pose,P3 software formula; P0 physical pose,P3 software formula; P0 physical pose,P2 gripper name only
+provenance,arm_driver.py names and kinemarics.cpp lines 46 and 88-92,same pair of files,same pair of files,same pair of files,same pair plus Arm5 URDF limit,arm_driver.py grip_joint and interp

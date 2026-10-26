@@ -1,0 +1,27 @@
+{
+  "host": "yahboom",
+  "trees": [
+    {"path": "/home/jetson/dofbot_pro", "text_files_counted": 107},
+    {"path": "/home/jetson/dofbot_pro_ws/src", "text_files_counted": 357},
+    {"path": "/home/jetson/software", "text_files_counted": 16},
+    {"path": "/home/jetson/colcon_ws/src", "text_files_counted": 89}
+  ],
+  "packages_relevant": [
+    "dofbot_pro_description",
+    "dofbot_pro_moveit",
+    "dofbot_pro_driver",
+    "dofbot_pro_info",
+    "dofbot_pro_apriltag",
+    "Arm_Lib"
+  ],
+  "kinematics": {
+    "header": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_info/include/dofbot_pro_info/kinemarics_dofbotpro.h",
+    "source": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_info/src/kinemarics_dofbotpro.cpp",
+    "solver": "KDL FK/IK on DOFBOT_Pro-V24.urdf",
+    "method_body": "dofbot_getFK and dofbot_getIK are declared and called. Their function bodies are not in kinemarics_dofbotpro.cpp. The degree conversion is in the service callback in that file."
+  },
+  "urdf": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf",
+  "driver": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py",
+  "calibration_notebook": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb",
+  "not_executed": ["Dofbot_Calibration.ipynb", "arm_driver.py", "04.read_servo.ipynb"]
+}

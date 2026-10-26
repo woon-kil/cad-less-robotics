@@ -1,0 +1,17 @@
+{
+  "gate": "P-006B-R2",
+  "base_commit": "4e2133c0e605472568e78db273c9753d21213052",
+  "investigated_at": "2026-10-26T23:25:00+09:00",
+  "robot_host": "yahboom",
+  "robot_address": "192.168.0.94",
+  "method": "read-only file inspection over SSH",
+  "arm_device_constructed": false,
+  "servo_write_calls": 0,
+  "calibration_executed": false,
+  "moveit_executed": false,
+  "target_angle_published": false,
+  "current_read_values_used_for_offset": false,
+  "p006c_modified": false,
+  "p007_started": false,
+  "local_pinned_urdf_checkout": "absent on the Mac worktree; comparison uses the P-002 recorded joint extract and the URDF installed on the Orin"
+}

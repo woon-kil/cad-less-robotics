@@ -1,0 +1,14 @@
+{
+  "status": "VERIFIED",
+  "grade": "P3",
+  "scale": "pi/180",
+  "applies_to": ["Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint", "Arm5_Joint"],
+  "meaning": "라이브러리 정수 각도를 radian으로 바꾸는 계수다. 그 앞에 -90도 이동이 따로 있다.",
+  "extra_servo_scale_after_library_degree": false,
+  "pulse_scale": "Arm_Lib 안에서만 쓰이고, 운동학 식은 펄스를 다시 스케일하지 않는다.",
+  "evidence": [
+    "kinemarics_dofbotpro.cpp DE2RA = pi/180 and RA2DE = 180/pi",
+    "arm_driver.py multiplies the shifted degree array by pi/180",
+    "URDF limits match the shifted library ranges"
+  ]
+}

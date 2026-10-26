@@ -1,0 +1,19 @@
+{
+  "formula": "q_model_rad = sign * (q_library_deg * pi/180) + offset_rad",
+  "vendor_formula": "q_model_rad = (q_library_deg - 90) * pi/180",
+  "equivalent": {"sign": "+1", "offset_rad": "-pi/2", "offset_deg": -90},
+  "status": "CANDIDATE",
+  "grade": "P3",
+  "physical_pose_match": "UNRESOLVED",
+  "derived_from_current_readings": false,
+  "ignored_readings_deg": [86, 150, 0, 18, 93],
+  "per_joint": {
+    "Arm1_Joint": {"offset_deg": -90, "status": "CANDIDATE"},
+    "Arm2_Joint": {"offset_deg": -90, "status": "CANDIDATE"},
+    "Arm3_Joint": {"offset_deg": -90, "status": "CANDIDATE"},
+    "Arm4_Joint": {"offset_deg": -90, "status": "CANDIDATE"},
+    "Arm5_Joint": {"offset_deg": -90, "status": "CANDIDATE"}
+  },
+  "support": "FK와 IK가 같은 90도 이동을 서로 반대로 적는다. arm_driver의 관절 상태 식도 같다. Arm1~Arm4 URDF 한계 ±1.5708과 Arm5 한계 -1.5708~3.1416은 라이브러리 범위에서 90도를 뺀 구간과 맞다.",
+  "not_verified_because": "컨트롤러 90도가 실제 URDF 0 자세와 같다는 하드웨어 관측은 없다. 서보 내부에 저장된 중위 편차도 읽지 않았다."
+}
