@@ -1,0 +1,39 @@
+# Humble plan-only adapter.
+# 로봇 형상·조인트 한계는 벤더 URDF/SRDF/joint_limits.yaml을 그대로 붙인다.
+# FixStartStateCollision은 넣지 않는다. 충돌 시작 상태를 고쳐 PASS시키지 않기 위해서다.
+# demo.launch.py와 ros2_control FakeSystem은 실행 경로라 여기서 띄우지 않는다.
+execute_trajectory: false
+planning_scene_monitor_options:
+  name: planning_scene_monitor
+  robot_description: robot_description
+  joint_state_topic: /joint_states
+  attached_collision_object_topic: /dofbot_dry_plan/attached_collision_object
+  publish_planning_scene_topic: /dofbot_dry_plan/publish_planning_scene
+  monitored_planning_scene_topic: /dofbot_dry_plan/monitored_planning_scene
+  wait_for_initial_state_timeout: 5.0
+planning_pipelines:
+  pipeline_names: [ompl]
+  namespace: ""
+ompl:
+  planning_plugin: ompl_interface/OMPLPlanner
+  request_adapters: >-
+    default_planner_request_adapters/AddTimeOptimalParameterization
+    default_planner_request_adapters/FixWorkspaceBounds
+    default_planner_request_adapters/FixStartStateBounds
+    default_planner_request_adapters/FixStartStatePathConstraints
+  start_state_max_bounds_error: 0.01
+  planner_configs:
+    RRTConnect:
+      type: geometric::RRTConnect
+      range: 0.0
+  arm_group:
+    planner_configs:
+      - RRTConnect
+    longest_valid_segment_fraction: 0.01
+plan_request_params:
+  planning_attempts: 5
+  planning_pipeline: ompl
+  planner_id: RRTConnect
+  max_velocity_scaling_factor: 1.0
+  max_acceleration_scaling_factor: 1.0
+  planning_time: 5.0

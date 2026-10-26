@@ -1,6 +1,7 @@
 build/
 install/
 log/
+third_party/dofbot-pro-cache/
 .DS_Store
 *.user
 .idea/
