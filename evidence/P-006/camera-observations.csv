@@ -1,0 +1,1 @@
+sample_id,timestamp,camera_frame,detected,position_x_m,position_y_m,position_z_m,qx,qy,qz,qw,quality

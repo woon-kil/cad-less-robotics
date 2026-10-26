@@ -1,0 +1,6 @@
+static_tf_published: no
+production_tf: no
+identity_tf: no
+fake_tf: no
+frames: camera_depth_optical_frame, base_link
+result: candidate TF 없음

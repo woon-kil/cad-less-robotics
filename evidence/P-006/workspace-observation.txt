@@ -1,0 +1,5 @@
+applied_transform: none
+points_tested: 0
+reason: T_base_camera가 없다. P-004 점을 base_link로 옮기지 않았다.
+reachability_adjustment: 0
+synthetic_placement_used: 0

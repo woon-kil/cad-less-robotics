@@ -1,0 +1,3 @@
+status: NOT_MEASURED
+candidate_name: MEASURED_EXTRINSIC_CALIBRATION
+# 실측하지 않은 rows, columns, square size, marker size, dictionary, printed size는 적지 않는다.

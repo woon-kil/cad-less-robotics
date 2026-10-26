@@ -1,0 +1,12 @@
+status: NOT_SOLVED
+candidate_name: MEASURED_EXTRINSIC_CALIBRATION
+parent_frame: base_link
+child_frame: camera_depth_optical_frame
+direction: T_base_camera
+meaning: p_base = T_base_camera * p_camera
+translation_m: null
+quaternion_xyzw: null
+published_static_tf: false
+synthetic_placement_used: false
+identity_tf: false
+reachability_adjustment: false

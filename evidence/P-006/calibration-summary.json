@@ -1,0 +1,26 @@
+{
+  "status": "BLOCKED",
+  "candidate_name": "MEASURED_EXTRINSIC_CALIBRATION",
+  "direction": "T_base_camera",
+  "meaning": "p_base = T_base_camera * p_camera",
+  "parent_frame": "base_link",
+  "child_frame": "camera_depth_optical_frame",
+  "translation_m": null,
+  "quaternion_xyzw": null,
+  "samples": {"total": 0, "fit": 0, "validation": 0},
+  "acceptance_threshold": "NOT_FIXED",
+  "threshold_relaxed_after_measurement": 0,
+  "synthetic_placement_used": 0,
+  "identity_tf": 0,
+  "fake_tf": 0,
+  "static_tf_published": 0,
+  "p004_points_transformed": 0,
+  "reachability_adjustment": 0,
+  "robot_trajectory_execution": 0,
+  "p005_trajectory_execution": 0,
+  "controller_sends": 0,
+  "blocking": [
+    "DOFBOT serial and base reference were not observed",
+    "calibration target specification was not measured"
+  ]
+}

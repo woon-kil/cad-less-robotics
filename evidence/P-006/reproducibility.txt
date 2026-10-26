@@ -1,0 +1,4 @@
+solve_repeats: 0
+translation_variation_m: not_computed
+rotation_variation_deg: not_computed
+reason: solve 전에 멈춤

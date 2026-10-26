@@ -1,0 +1,33 @@
+When: 2026-10-26 17:46 KST
+Host: p620
+
+Gemini
+  product: Orbbec Gemini 335L
+  vid_pid: 2bc5:0804
+  serial: SERIAL_REDACTED
+  firmware: 1.4.60
+  connection: USB3.2
+  usb_port: 2-1
+  negotiated_speed: 5000M
+  parent: Bus 002 root hub xhci_hcd 10000M, Port 001, no extra hub
+  interfaces: 6 Video (uvcvideo) + 1 HID (usbhid)
+  usb2_fallback: no
+  read_path: ros2 run orbbec_camera list_devices_node
+  color_or_depth_stream: not started
+
+DOFBOT
+  project_model: DOFBOT Pro
+  observed_on_p620: no
+  ttyUSB: none
+  ttyACM: none
+  serial_by_id: none
+  base_physical_mounting: not observed
+  camera_mounting_method: not observed
+
+Calibration target
+  type: not identified
+  rows_columns: not measured
+  square_size: not measured
+  marker_size: not measured
+  dictionary: not measured
+  printed_physical_size: not measured
