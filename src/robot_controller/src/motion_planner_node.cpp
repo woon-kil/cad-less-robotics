@@ -99,8 +99,10 @@ void retime(trajectory_msgs::msg::JointTrajectory& trajectory, double max_veloci
   for (std::size_t index = 1; index < trajectory.points.size(); ++index) {
     const double delta = jointDelta(trajectory.points[index - 1], trajectory.points[index]);
     const double dt = std::max(delta / max_velocity, 0.05);
+    // Humble에서 time_from_start는 builtin_interfaces::Duration이라 그대로 더할 수 없다.
     trajectory.points[index].time_from_start =
-        trajectory.points[index - 1].time_from_start + rclcpp::Duration::from_seconds(dt);
+        rclcpp::Duration(trajectory.points[index - 1].time_from_start) +
+        rclcpp::Duration::from_seconds(dt);
   }
 }
 
