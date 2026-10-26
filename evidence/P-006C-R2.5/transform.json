@@ -16,7 +16,7 @@
   "reflection_flipped": false,
   "registration_sample_count": 0,
   "validation_sample_count": 0,
-  "threshold_freeze_commit": null,
+  "threshold_freeze_commit": "b9f710c3648d87c05a434626718408d39b6f03a7",
   "T_base_camera": null,
   "reason": "OPERATOR_ANCHOR_REQUIRED"
 }

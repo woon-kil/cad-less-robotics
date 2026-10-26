@@ -1,6 +1,6 @@
 {
   "status": "FROZEN_BEFORE_CAPTURE",
-  "commit": null,
+  "commit": "b9f710c3648d87c05a434626718408d39b6f03a7",
   "commit_recorded_after_freeze": true,
   "thresholds_changed_after_freeze": false,
   "capture_performed_before_freeze": false,
