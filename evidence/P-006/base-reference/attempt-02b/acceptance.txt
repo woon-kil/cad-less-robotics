@@ -1,0 +1,13 @@
+AR-01 FAIL  새 근접 사진 파일이 요청과 작업 트리에 없다
+AR-02 FAIL  실물 Arm1_Joint를 mechanical chain으로 식별하지 못했다
+AR-03 FAIL  실물 Arm1 rotation axis를 정의하지 않았다
+AR-04 FAIL  A_AXIS landmark를 만들지 않았다
+AR-05 FAIL  A_AXIS와 base_link x=0/y=0의 실물 대응을 기록하지 않았다
+AR-06 FAIL  annotation을 만들지 않았다
+AR-07 PASS  사진 pixel에서 mm를 계산하지 않았다
+AR-08 PASS  robot motion 0
+AR-09 PASS  controller send 0
+AR-10 PASS  T_base_target 계산 0
+AR-11 PASS  T_base_camera 계산 0
+AR-12 PASS  fake, identity, synthetic transform 0
+OVERALL FAIL

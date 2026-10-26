@@ -1,0 +1,3 @@
+BASE_COMMIT=533347a849a2f218e767cb4cf8054fa1ab8adbd4
+WORKING_TREE=untracked evidence/P-006A and capture scripts stay outside this commit
+THIS_COMMIT_SCOPE=evidence/P-006/base-reference/attempt-02b

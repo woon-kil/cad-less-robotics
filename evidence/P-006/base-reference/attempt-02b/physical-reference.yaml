@@ -1,0 +1,34 @@
+status: FAIL
+urdf_repository: atticusrussell/ballbot
+urdf_commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+urdf: DOFBOT_Pro-V24.urdf
+arm1_origin_xyz_m: [0.0, 0.0, 0.0895]
+arm1_origin_rpy_rad: [0.0, 0.0, 0.0]
+arm1_axis_xyz: [0.0, 0.0, 1.0]
+new_closeup_photo: null
+original_photo_modified: false
+prior_photo_deleted: false
+arm1_physical_component: NOT IDENTIFIED
+A_AXIS: null
+A_xy: null
+A_AXIS_matches_base_xy_origin: NOT VERIFIED
+plus_z_status: NOT VERIFIED
+plus_x_status: NOT PHYSICALLY VERIFIED
+plus_y_status: NOT PHYSICALLY VERIFIED
+z0_status: NOT PHYSICALLY VERIFIED
+checkerboard:
+  target_type: CHECKERBOARD
+  squares: [7, 10]
+  inner_corners: [6, 9]
+  square_size_mm: 20.0
+  square_size_m: 0.0200
+  status: PHYSICALLY VERIFIED
+  origin_C: null
+T_base_target: null
+T_base_camera: null
+pixel_to_mm: 0
+robot_motion: 0
+controller_send: 0
+synthetic_transform: 0
+fake_tf: 0
+extrinsic_solve: 0
