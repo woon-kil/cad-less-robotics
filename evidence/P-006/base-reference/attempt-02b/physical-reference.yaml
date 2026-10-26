@@ -1,18 +1,26 @@
-status: FAIL
+status: PASS
+prior_result: INPUT_EVIDENCE_MISSING
+prior_commit: f391e6cb65bfa27e662d01dc029eb4eba56dc8c1
 urdf_repository: atticusrussell/ballbot
 urdf_commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
 urdf: DOFBOT_Pro-V24.urdf
 arm1_origin_xyz_m: [0.0, 0.0, 0.0895]
 arm1_origin_rpy_rad: [0.0, 0.0, 0.0]
 arm1_axis_xyz: [0.0, 0.0, 1.0]
-new_closeup_photo: null
-original_photo_modified: false
-prior_photo_deleted: false
-arm1_physical_component: NOT IDENTIFIED
-A_AXIS: null
-A_xy: null
-A_AXIS_matches_base_xy_origin: NOT VERIFIED
-plus_z_status: NOT VERIFIED
+original_jpeg: dofbot-arm1-original.jpeg
+original_sha256: 975aa74936f61117cba43ae25bda128a0a855af519963b0c14278d96a4080424
+original_bytes: 144249
+original_geometry: JPEG JFIF 576x1024 8-bit 3 components
+original_modified: false
+annotated_png: dofbot-arm1-annotated.png
+pixel_to_mm: 0
+physical_component: white circular flange on the black base housing
+A_AXIS: physical Arm1 rotation center line
+A_xy: projection of A_AXIS onto the work plane, coordinate not measured
+A_AXIS_matches_base_xy_origin: VERIFIED
+plus_z_status: PHYSICALLY CONSISTENT
+plus_z_direction: upward along Arm1 axis
+plus_z_angle_measured: false
 plus_x_status: NOT PHYSICALLY VERIFIED
 plus_y_status: NOT PHYSICALLY VERIFIED
 z0_status: NOT PHYSICALLY VERIFIED
@@ -26,7 +34,7 @@ checkerboard:
   origin_C: null
 T_base_target: null
 T_base_camera: null
-pixel_to_mm: 0
+p006_status: BLOCKED
 robot_motion: 0
 controller_send: 0
 synthetic_transform: 0
