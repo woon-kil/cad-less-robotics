@@ -1,0 +1,20 @@
+frame_id: workplane_roi_frame
+assigned: false
+origin:
+  status: OPERATOR_MEASUREMENT_REQUIRED
+  point_mm: null
+  physical_feature: null
+  reason: null
+  photo: null
+axes:
+  x: "카메라·로봇 설치 쪽에 서서 테이블 열린 끝을 볼 때 오른쪽이 +X. 작업면 좌우."
+  y: "같은 시선에서 설치 반대쪽, opposite_side 방향이 +Y. 작업면 앞뒤."
+  z: "작업면 위쪽 normal. 바닥 반대. camera optical +Z가 아니고 base_link +Z도 아니다."
+not_base_link: true
+not_camera_frame: true
+not_t_base_camera: true
+handedness: right
+measurement_instrument: "줄자 또는 자. 픽셀 환산 금지."
+known_reference_not_roi:
+  checkerboard_square_m: 0.0200
+  note: "검증된 사각형 한 변이다. 테이블 ROI의 폭이나 길이가 아니다."

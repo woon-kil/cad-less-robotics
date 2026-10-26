@@ -1,0 +1,23 @@
+{
+  "status": "OPERATOR_MEASUREMENT_REQUIRED",
+  "gate": "P-006C-R2",
+  "closed": false,
+  "legacy_p006c": "BLOCKED",
+  "p006": "NOT_CLOSED",
+  "p007": "NOT_OPEN",
+  "r3_started": false,
+  "camera_movement": 0,
+  "robot_movement": 0,
+  "controller_command": 0,
+  "t_base_camera": 0,
+  "synthetic_transform": 0,
+  "threshold_change": 0,
+  "pixel_to_mm": 0,
+  "legacy_evidence_modified": 0,
+  "optical_z_40mm_reused": false,
+  "hardware_validated_reachability": false,
+  "model_predicted_task_reachability": false,
+  "metric_values_assigned": false,
+  "frame_id": "workplane_roi_frame",
+  "origin_assigned": false
+}

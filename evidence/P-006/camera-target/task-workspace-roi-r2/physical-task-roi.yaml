@@ -1,0 +1,16 @@
+name: PHYSICAL_TASK_ROI
+status: OPERATOR_MEASUREMENT_REQUIRED
+shape: null
+width_m: null
+length_m: null
+area_m2: null
+center_m: null
+boundaries_m:
+  left: null
+  right: null
+  robot_side: null
+  opposite_side: null
+polygon_m: null
+includes_entire_table: false
+includes_installation_collision: false
+note: "향후 object observation, point cloud, geometry extraction, path generation, robot processing에 쓸 배치 영역만. 테이블 전체가 아니다."

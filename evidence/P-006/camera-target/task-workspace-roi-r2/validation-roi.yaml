@@ -1,0 +1,15 @@
+name: VALIDATION_ROI
+definition: PHYSICAL_TASK_ROI intersect CAMERA_VISIBLE_ROI
+status: OPERATOR_MEASUREMENT_REQUIRED
+shape: null
+width_m: null
+length_m: null
+area_m2: null
+center_m: null
+boundaries_m:
+  left: null
+  right: null
+  robot_side: null
+  opposite_side: null
+polygon_m: null
+used_optical_z_40mm_rule: false

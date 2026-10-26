@@ -1,0 +1,14 @@
+8ac4f131d8d839354dfc575396801fc277cd8408ac64d38d0feca2f404fb6a54  evidence/P-006/camera-target/task-workspace-roi-r2/acceptance.txt
+be60c63a8b378a95931271d1dc371a8897e31145c7fde78a49862c6771526999  evidence/P-006/camera-target/task-workspace-roi-r2/boundary-rationale.md
+511230a46bd71d71e5942ba64ed9930a2f29e4a7ac707479f011a2a1f8f769ae  evidence/P-006/camera-target/task-workspace-roi-r2/camera-visible-roi.yaml
+ff20c395cba158d5acc5f3a808ebc99925e1b18cbe899dd30dcc6a8a2d8934bb  evidence/P-006/camera-target/task-workspace-roi-r2/frame-definition.yaml
+59fe74621153f51dc95ca4fde843f34ce6e0c78f684ae70e25994537192e6375  evidence/P-006/camera-target/task-workspace-roi-r2/git-after.txt
+dd58a745b88cc8fd44f6e986dcf5ef2d27ec1dc8327f0639be53437bc983c1bb  evidence/P-006/camera-target/task-workspace-roi-r2/git-before.txt
+096af916dbbd2fb58e2ccfa7f635880ef3f1b8f09d7f400c39f77f994d8db054  evidence/P-006/camera-target/task-workspace-roi-r2/measurement-log.csv
+303ca4b8988c4552782ece9e248c210991ff5975ce9a00c5ab4516add62cffde  evidence/P-006/camera-target/task-workspace-roi-r2/physical-task-roi.yaml
+8322654c99d927bf9b3edcd0a4ac416c141dc82c557a1b38250c120429c9c9af  evidence/P-006/camera-target/task-workspace-roi-r2/r3-validation-points.yaml
+3dbde7366d80225b32ef8758c750e5d57e3a6ef0d492098d7958b9c020d263ed  evidence/P-006/camera-target/task-workspace-roi-r2/README.md
+f8302b50209422a550119247bbfe6ca5ffbd94cb3d162e1973cb4b329cec5cde  evidence/P-006/camera-target/task-workspace-roi-r2/requirement-traceability.md
+57cb29448b987d6ec3a93c6be3e6c79b44175f16be54c5ccf0c7ac4d1f0aca21  evidence/P-006/camera-target/task-workspace-roi-r2/summary.json
+ced96c7b1b601c3d70a3167c5f11590f13048f3db8f19387cec822e03e3450d2  evidence/P-006/camera-target/task-workspace-roi-r2/validation-roi.yaml
+ad9acbe4add688a191685de7867d1c3276ea3b6cfbee96671e5b7324ed3845de  evidence/P-006/camera-target/task-workspace-roi-r2/visibility-observations.csv

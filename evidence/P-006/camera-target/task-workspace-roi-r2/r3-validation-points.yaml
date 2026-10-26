@@ -1,0 +1,15 @@
+status: OPERATOR_MEASUREMENT_REQUIRED
+derived_from: VALIDATION_ROI
+executed: false
+used_optical_z_40mm_rule: false
+margin:
+  status: NOT_COMPUTED
+  rule: "점은 ROI 경계 위에 두지 않는다. 체크보드 시트 전체가 VALIDATION_ROI와 depth가 유효한 영역 안에 들어가게 안쪽으로 둔다. 시트 외곽 mm와 ROI mm가 둘 다 있기 전에 여유를 계산하지 않는다."
+  checkerboard_sheet_width_m: null
+  checkerboard_sheet_height_m: null
+points_m:
+  center: null
+  left: null
+  right: null
+  robot_side: null
+  opposite_side: null

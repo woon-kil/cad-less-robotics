@@ -1,0 +1,4 @@
+BASE_COMMIT=2c24d275453d55a97de47a7e85c30590912bc877
+THIS_COMMIT_SCOPE=evidence/P-006/camera-target/task-workspace-roi-r2
+NEW_CAPTURE=0
+PIXEL_TO_MM=0

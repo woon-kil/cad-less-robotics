@@ -1,0 +1,13 @@
+item,frame,what,instrument,value_mm,status,rationale
+M1,workplane_roi_frame,반복 가능한 원점의 물리 특징과 사진 파일명,육안과 사진,,OPERATOR_MEASUREMENT_REQUIRED,모서리처럼 다시 찾을 수 있는 점. 종이 모서리와 픽셀은 원점이 아니다.
+M2,workplane_roi_frame,left 경계의 X,줄자,,OPERATOR_MEASUREMENT_REQUIRED,물체를 두는 작업 영역의 왼쪽 끝과 그 이유
+M3,workplane_roi_frame,right 경계의 X,줄자,,OPERATOR_MEASUREMENT_REQUIRED,물체를 두는 작업 영역의 오른쪽 끝과 그 이유
+M4,workplane_roi_frame,robot_side 경계의 Y,줄자,,OPERATOR_MEASUREMENT_REQUIRED,설치물과 충돌하지 않는 로봇 쪽 끝과 그 이유
+M5,workplane_roi_frame,opposite_side 경계의 Y,줄자,,OPERATOR_MEASUREMENT_REQUIRED,작업으로 쓸 반대쪽 끝과 그 이유
+M6,workplane_roi_frame,사각형이 아니면 꼭짓점 x y를 순서대로,줄자,,OPERATOR_MEASUREMENT_REQUIRED,없으면 비운다
+M7,workplane_roi_frame,체크보드 시트 외곽 가로,자,,OPERATOR_MEASUREMENT_REQUIRED,20 mm 칸 간격이 아니다. 여유 계산용
+M8,workplane_roi_frame,체크보드 시트 외곽 세로,자,,OPERATOR_MEASUREMENT_REQUIRED,20 mm 칸 간격이 아니다. 여유 계산용
+M9,workplane_roi_frame,color와 depth가 함께 유효한 left X,줄자와 고정 카메라,,OPERATOR_MEASUREMENT_REQUIRED,RGB만으로 depth 경계를 만들지 않는다
+M10,workplane_roi_frame,color와 depth가 함께 유효한 right X,줄자와 고정 카메라,,OPERATOR_MEASUREMENT_REQUIRED,RGB만으로 depth 경계를 만들지 않는다
+M11,workplane_roi_frame,color와 depth가 함께 유효한 robot_side Y,줄자와 고정 카메라,,OPERATOR_MEASUREMENT_REQUIRED,가리는 구조물 이름을 같이 적는다
+M12,workplane_roi_frame,color와 depth가 함께 유효한 opposite_side Y,줄자와 고정 카메라,,OPERATOR_MEASUREMENT_REQUIRED,가리는 구조물 이름을 같이 적는다

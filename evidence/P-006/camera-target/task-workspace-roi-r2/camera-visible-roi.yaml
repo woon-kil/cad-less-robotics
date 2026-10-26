@@ -1,0 +1,19 @@
+name: CAMERA_VISIBLE_ROI
+status: OPERATOR_MEASUREMENT_REQUIRED
+shape: null
+width_m: null
+length_m: null
+area_m2: null
+center_m: null
+boundaries_m:
+  left: null
+  right: null
+  robot_side: null
+  opposite_side: null
+polygon_m: null
+color_visible: null
+depth_usable: null
+occlusion: null
+pixel_scale_used: false
+new_calibration: false
+note: "RGB가 보인다는 사실만으로 depth ROI를 선언하지 않는다. 경계 mm는 작업면의 자 또는 줄자 값이다."

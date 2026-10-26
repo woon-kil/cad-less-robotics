@@ -1,0 +1,5 @@
+observation_id,source,kind,statement,metric_mm,status
+V1,evidence/P-006/camera-target/attempt-05/frames/far-t01-00-color.png,qualitative,컬러 프레임 안에 작업면과 카메라 받침이 보인다. 용지와 받침 사이에 면이 보인다.,,NOT_A_MEASUREMENT
+V2,evidence/P-006/camera-target/attempt-05/frames/near-t01-00-color.png,qualitative,컬러 프레임 안에 체크보드 용지가 있고 이미지 경계에 잘리지 않았다.,,NOT_A_MEASUREMENT
+V3,evidence/P-006/camera-target/attempt-05/far-physical-limit.txt,operator_event,far 촬영이 받침 한계로 중단됐다. 그 프레임의 포즈는 없다.,,NOT_A_MEASUREMENT
+V4,this-gate,depth,이번 게이트에서 RGB-D로 작업면 depth 유효 경계를 새로 재지 않았다.,,OPERATOR_MEASUREMENT_REQUIRED
