@@ -1,0 +1,61 @@
+locked_before_measurement: true
+attempt1_commit: 641eaea9985f9ce200536d9257d7f0c34522b711
+threshold_commit: 7548e1bd6c7c393f61b0e782120a91e40b9cae59
+diversity_rule_commit: 5c987bfca178f06c88c6aeaf218edff9ac6f31f3
+attempt2_commit: 29869c0c11b93f4b3e7a8ef722559822b2d37bb7
+attempt3_commit: ed8c658db223ff8dd8ac375f4527503eda04286b
+attempt4_commit: 1669e1f0cf0380c33c7d23e8db1752cad61722eb
+thresholds_sha256: 303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539
+checkerboard_sha256: 1d17d9e66a5e2f13e61c9d93303561562996faadfac3f03a817d22dbbcaf9853
+attempt1_color_pose_sha256: 4a46797303e8e908d9cb8c3b845bd96ce60447199cb26da7d0cb881c2d6f4dc3
+attempt1_reproducibility_sha256: a8805827177ed2b9f36a73c3df347bc51c6607ea321a3d8596aa693305917d7e
+attempt1_summary_sha256: 6cce005faa72f5cbde8fbed7937060aa7dacd7cd7a1bac9a95e8b953538c8582
+attempt1_frame_0000_sha256: 8e3a38da2b0fb048d86ece0bc25fc54b46e8d907041b9d5f70d6d60ab01f65fe
+attempt1_frame_0011_sha256: 61c5d4be66305a7fb90182fbf5aa7f583e139ae4f7cfa8759ecaa9d268cb80bc
+attempt2_plan_sha256: 75db25998f34b3d9b402b2ee21b001f3359fe1f7f47e074ec1c29f4e66f85176
+attempt2_diversity_sha256: ff9cecd64b9050c65dfa5a2233a34500ce34dfaa8d6ef9a8aeb3794ad05ae656
+attempt2_poses_sha256: 94711540f4418e67c752d2f7dfc8fe690622ab3c1dd01ac750e458a627b19050
+attempt2_summary_sha256: a4690975f3e5600a82f30872ff8ba3030599acff8fbdb5670b17f2a446fb339d
+attempt2_tilt_positive_sha256: 969d21166fe94f30d37bec557791c84853c37eb820af2a1f0e50561a03d4ad09
+attempt2_tilt_negative_sha256: 8233899e53f5470313540718d7a98c4edf2a52911813e0cdc0cbc31e36f37f9e
+attempt3_plan_sha256: 64096771bced6890dc318f9ee6d2f62545293abb36df79ca88f1ab886669eb5c
+attempt3_diversity_sha256: 5342f8f60a37d36e919362a0f28d6ecdae78c26a2e130f2c72c42d3f7ca0f42a
+attempt3_poses_sha256: 8d561a11ad01085b89d855c4e9fcdf65a21d6d5aae67579fb9687ee0831c79b0
+attempt3_summary_sha256: b19c4d74953459a5b51507a8f4b45649043de0c6c587de60671e5182d7ba4435
+attempt3_left_sha256: a4f56b05d43624d366ea9590371033cd04e6c1c5a33a149829a4bf932866f0db
+attempt3_right_sha256: 0fc299bab0d5911a859781dddf79c3d52a61f5059ebdea4e8fdb84f1dd9cfa74
+attempt4_plan_sha256: 62523966c606c587f4ffaed1795d02a1d89ac565f518397f4f80acb14bb02b51
+attempt4_diversity_sha256: 061c13a83b3b07b2ad16e360e32fcb439cbd49a267be5347c570845ae63361bc
+attempt4_poses_sha256: 35a02bc9df9191e40d7ffaf40c269f008030c7da01f1ae7bf238c36b674fc134
+attempt4_summary_sha256: 6794873e984433ec340bc1456e4d4c62b70709764d9dd98b6e75f38d335e34b8
+attempt4_near_sha256: 4d2dc78bd6b7060c5c714b1df8cf50636f63b26d104c2bb080ea984e926893dc
+attempt4_far_sha256: 062488dbbc9ea9ff09587fef1988840cf4152b214de25ec80608ed6dd05467cc
+recapture_poses: [near, far]
+reused_lateral: [left, right]
+reused_lateral_source: attempt-03
+reused_tilts: [tilt_positive, tilt_negative]
+reused_tilts_source: attempt-02
+attempt2_left_right_rule_pass_remains: 0
+frames_per_try: 4
+max_tries: 3
+fixed_reference:
+  median_t_m: [-0.04281625, -0.14894789, 0.46428018]
+  board_plus_z_in_color: [-0.05421199379988951, 0.2945430344238207, 0.9540992928414992]
+separation:
+  lateral_m: 0.020
+  range_m: 0.040
+  tilt_deg: 8.0
+  near: "median tz < fixed tz - range_m"
+  far: "median tz > fixed tz + range_m"
+  left: "median tx < fixed tx - lateral_m"
+  right: "median tx > fixed tx + lateral_m"
+  note: "Strict inequalities stay as locked. Travel distance and the 50 mm margin are not acceptance."
+operator_direction:
+  near: "image down on a coplanar extension, past the Attempt 3 plank edge"
+  far: "image up toward the camera body, about 150 mm of workspace from the fixed pose"
+  pass_metric: "camera_color_optical_frame delta Z only"
+identity_tf: forbidden
+camera_movement: forbidden
+robot_movement: forbidden
+support_height_change: forbidden
+far_stop: "If the board hits a fixed structure and delta Z is still not greater than 0.040 m, record FAR_PHYSICAL_WORKSPACE_LIMIT and stop. Do not move the camera."
