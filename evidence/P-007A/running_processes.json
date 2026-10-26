@@ -1,0 +1,43 @@
+{
+  "started_by_this_gate": [],
+  "killed_by_this_gate": [],
+  "observed": [
+    {
+      "pid": 2264,
+      "user": "jetson",
+      "ppid": 2260,
+      "cmd": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py",
+      "parent_cmd": "/bin/sh -c python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+    },
+    {
+      "pid": 3022,
+      "user": "jetson",
+      "ppid": 3021,
+      "cmd": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc",
+      "ancestor": "gnome-terminal-server pid 2969"
+    },
+    {
+      "pid": 3047,
+      "user": "jetson",
+      "cmd": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py"
+    },
+    {
+      "pid": 3072,
+      "user": "jetson",
+      "cmd": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py"
+    },
+    {
+      "pid": 3103,
+      "user": "jetson",
+      "cmd": "/home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot",
+      "spawned_by": "YahboomArm pid 3022 via ros2 run"
+    },
+    {
+      "pid": 1090,
+      "user_not_recorded": true,
+      "cmd": "/usr/bin/python3 /usr/local/bin/jupyter-lab --ip=0.0.0.0 --no-browser"
+    }
+  ],
+  "arm_driver": "not running",
+  "ipykernel": "not running"
+}

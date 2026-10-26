@@ -1,0 +1,38 @@
+{
+  "device": "/dev/i2c-7",
+  "node": "crw-rw---- 1 root i2c 89, 7",
+  "address_used_by_read": "0x15",
+  "holders": [
+    {
+      "pid": 2264,
+      "cmd": "yahboom_oled.py",
+      "fd_count": 1,
+      "servo_command_found": false,
+      "role": "same bus, display script"
+    },
+    {
+      "pid": 3022,
+      "cmd": "YahboomArm.pyc",
+      "fd_count": 24,
+      "servo_command_found": true,
+      "role": "APP backend. handlers call write6 and offset_switch. main itself only buzzes."
+    },
+    {
+      "pid": 3072,
+      "cmd": "joystick.py",
+      "fd_count": 1,
+      "servo_command_found": true,
+      "role": "Robot_Controller on 0x15. main calls move_init_pose before the input loop. stick events call arm_move_1."
+    },
+    {
+      "pid": 3091,
+      "cmd": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot",
+      "fd_count": 1,
+      "note": "parent shell inherited a descriptor. the kinematics binary pid 3103 was not in the i2c fd list."
+    }
+  ],
+  "concurrent_motion_capable_on_0x15": ["YahboomArm.pyc", "joystick.py"],
+  "this_gate_opened_additional_smbus_for_read": true,
+  "kernel_serializes_each_ioctl": true,
+  "exclusive_lock": false
+}

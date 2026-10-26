@@ -1,0 +1,105 @@
+{
+  "captured_at_start": "2026-10-26T22:58:21.456+08:00",
+  "captured_at_end": "2026-10-26T22:58:24.220+08:00",
+  "device_timezone": "+08:00",
+  "rounds": 100,
+  "channels": 6,
+  "sample_count": 600,
+  "successful_reads": 600,
+  "communication_error_count": 0,
+  "empty_count": 0,
+  "api": "Arm_Device.Arm_serial_servo_read",
+  "classification": "CONTROLLER_REPORTED_STATE",
+  "not": "measured_joint_state",
+  "latency_s": {
+    "mean": 0.0045899,
+    "p95": 0.006036,
+    "max": 0.006072
+  },
+  "per_servo": {
+    "1": {
+      "joint_name": "Arm1_Joint",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 86,
+      "max": 86,
+      "mean": 86.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        86
+      ],
+      "max_consecutive_abs_delta": 0
+    },
+    "2": {
+      "joint_name": "Arm2_Joint",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 150,
+      "max": 150,
+      "mean": 150.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        150
+      ],
+      "max_consecutive_abs_delta": 0
+    },
+    "3": {
+      "joint_name": "Arm3_Joint",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 0,
+      "max": 0,
+      "mean": 0.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        0
+      ],
+      "max_consecutive_abs_delta": 0
+    },
+    "4": {
+      "joint_name": "Arm4_Joint",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 18,
+      "max": 18,
+      "mean": 18.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        18
+      ],
+      "max_consecutive_abs_delta": 0
+    },
+    "5": {
+      "joint_name": "Arm5_Joint",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 93,
+      "max": 93,
+      "mean": 93.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        93
+      ],
+      "max_consecutive_abs_delta": 0
+    },
+    "6": {
+      "joint_name": "grip_library",
+      "samples": 100,
+      "none_count": 0,
+      "error_count": 0,
+      "min": 178,
+      "max": 178,
+      "mean": 178.0,
+      "sample_stdev": 0.0,
+      "unique": [
+        178
+      ],
+      "max_consecutive_abs_delta": 0
+    }
+  }
+}

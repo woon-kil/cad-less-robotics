@@ -1,0 +1,69 @@
+{
+  "systemd_user_motion_units": [],
+  "systemd_system": {
+    "yahboom_oled.service": {
+      "state": "active",
+      "exec": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py",
+      "servo_write_in_keyword_scan": false
+    },
+    "jupyterlab.service": {
+      "state": "active",
+      "process": "/usr/local/bin/jupyter-lab --ip=0.0.0.0 --no-browser",
+      "ipykernel_running": false,
+      "note": "노트북 커널은 없었다. 서버가 떠 있으면 나중에 커널을 열 수 있다."
+    },
+    "docker.service": {
+      "enabled": true,
+      "running_container_names": []
+    },
+    "arm_driver_unit": null
+  },
+  "cron": "no crontab for jetson",
+  "rc_local": false,
+  "desktop_autostart": [
+    {
+      "file": "/home/jetson/.config/autostart/bash.desktop",
+      "exec": "bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh",
+      "starts": [
+        "YahboomArm.pyc",
+        "yb-discover.py",
+        "joystick.py"
+      ],
+      "direct_write6": false
+    },
+    {
+      "file": "/home/jetson/.config/autostart/bash-1.desktop",
+      "exec": "bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh",
+      "file_exists": false
+    }
+  ],
+  "start_app_sh": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh",
+    "sources_ros": true,
+    "calls_write6_itself": false
+  },
+  "known_motion_on_process_start": [
+    {
+      "file": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py",
+      "line": 320,
+      "call": "Robot_Controller.move_init_pose",
+      "downstream": "Arm_serial_servo_write6_array(P_LOOK_AT)",
+      "P_LOOK_AT": [90, 164, 18, 0, 90, 30],
+      "executed_by_p007a": false
+    },
+    {
+      "file": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "main": "buzzer three times, then Flask on port 6500",
+      "main_write6": false,
+      "later_handlers_can_write6": true
+    },
+    {
+      "file": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py",
+      "constructor_write6": [90, 90, 90, 0, 90, 30, 3000],
+      "autostart": false,
+      "running": false,
+      "executed_by_p007a": false
+    }
+  ],
+  "power_on_vendor_doc": "APP 문서는 초기화가 끝나면 팔이 initial posture로 회전한다고 적는다. 이번 게이트는 전원을 끄거나 켜지 않았다."
+}

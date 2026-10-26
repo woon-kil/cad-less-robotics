@@ -1,0 +1,6 @@
+{
+  "status": "CLEARANCE_REQUIRES_OPERATOR_CONFIRMATION",
+  "observed_by_this_session": false,
+  "objects_not_moved": ["person", "cable", "Gemini", "LED frame", "table fixture", "loose object"],
+  "reason": "이 세션은 작업대를 보지 않았다. 사진을 새로 받지 않았고 물체 이동을 지시하지 않았다."
+}

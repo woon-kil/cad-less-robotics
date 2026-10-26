@@ -1,0 +1,12 @@
+{
+  "checked_before_read": true,
+  "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+  "bytes": 17739,
+  "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "matches_p006b": true,
+  "package": "Arm_Lib 1.0.3",
+  "read_function": "Arm_serial_servo_read",
+  "read_register": "0x30+id",
+  "action_on_mismatch": "not reached",
+  "arm_driver_imported": false
+}

@@ -1,0 +1,28 @@
+{
+  "status": "DRAFT_NOT_APPROVED_FOR_EXECUTION",
+  "p007b": "NOT OPEN",
+  "allowed_joints": "선택하지 않음",
+  "initial_candidate_library_deg": {"ID1": 86, "ID2": 150, "ID3": 0, "ID4": 18, "ID5": 93, "ID6": 178},
+  "initial_candidate_urdf_rad": {
+    "Arm1_Joint": -0.06981317007977318,
+    "Arm2_Joint": 1.0471975511965976,
+    "Arm3_Joint": -1.5707963267948966,
+    "Arm4_Joint": -1.2566370614359172,
+    "Arm5_Joint": 0.05235987755982988
+  },
+  "urdf_limits": "P-002 robot-model.txt",
+  "proposed_identification_delta": "UNSELECTED",
+  "maximum_command_velocity": "UNSELECTED",
+  "maximum_command_duration": "UNSELECTED",
+  "stop_mechanism": "see stop_path_analysis.md. none tested in this gate",
+  "communication_failure_behavior": "UNTESTED. do not retry with a position write.",
+  "operator_clear_zone": "CLEARANCE_REQUIRES_OPERATOR_CONFIRMATION",
+  "preconditions_before_any_future_motion": [
+    "YahboomArm.pyc와 joystick.py가 0x15에 쓰지 않는 상태가 먼저 필요하다.",
+    "arm_driver.py를 실행하지 않는다. 생성자가 write6을 호출한다.",
+    "데스크탑 자동시작 start_app.sh는 재로그인 때 그 프로세스를 다시 띄운다.",
+    "jupyter-lab 서버가 떠 있다. 커널은 없었지만 노트북 실행은 막아야 한다.",
+    "전원 스위치 접근과 작업대 비움은 운영자 확인이 없다.",
+    "관절과 델타와 속도는 이 게이트에서 고르지 않았다."
+  ]
+}

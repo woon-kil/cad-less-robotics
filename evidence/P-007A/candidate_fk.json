@@ -1,0 +1,67 @@
+{
+  "name": "candidate_fk",
+  "frame": "base_link",
+  "not": [
+    "measured TCP",
+    "actual TCP",
+    "calibrated TCP"
+  ],
+  "convention": "q_urdf = (q_library_deg - 90) * pi/180",
+  "convention_status": "VENDOR_DEFINED_CONVENTION",
+  "precision_hardware_calibration": "NOT_VALIDATED",
+  "input_library_deg": [
+    86,
+    150,
+    0,
+    18,
+    93
+  ],
+  "links": [
+    {
+      "link": "Arm1_Link",
+      "xyz_m": [
+        0.0,
+        0.0,
+        0.0895
+      ]
+    },
+    {
+      "link": "Arm2_Link",
+      "xyz_m": [
+        0.0,
+        0.0,
+        0.1224999999999998
+      ]
+    },
+    {
+      "link": "Arm3_Link",
+      "xyz_m": [
+        -0.005553701498180669,
+        -0.07153705875047323,
+        0.16392499999999802
+      ]
+    },
+    {
+      "link": "Arm4_Link",
+      "xyz_m": [
+        -0.002713917775843423,
+        -0.030209480144772684,
+        0.23567520470353892
+      ]
+    },
+    {
+      "link": "Arm5_Link",
+      "xyz_m": [
+        0.0026495366013264306,
+        0.04649149088623413,
+        0.22153013131931953
+      ]
+    }
+  ],
+  "gripping_point_xyz_m": [
+    0.008790428069887096,
+    0.13431033029680978,
+    0.20281807914562994
+  ],
+  "model": "P-002 field extract of DOFBOT_Pro-V24, not a new URDF hash"
+}

@@ -1,0 +1,81 @@
+{
+  "source": "P-002 robot-model.txt limits",
+  "checks": [
+    {
+      "joint": "Arm1_Joint",
+      "field": "candidate_urdf_joint_state",
+      "library_deg": 86,
+      "q_rad": -0.06981317007977318,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "margin_to_lower": 1.5009868299202267,
+      "margin_to_upper": 1.6406131700797733,
+      "finite": true,
+      "status": "within_limits",
+      "violation_rad": 0.0,
+      "rounds_checked": 100,
+      "all_rounds_identical": true
+    },
+    {
+      "joint": "Arm2_Joint",
+      "field": "candidate_urdf_joint_state",
+      "library_deg": 150,
+      "q_rad": 1.0471975511965976,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "margin_to_lower": 2.6179975511965976,
+      "margin_to_upper": 0.5236024488034023,
+      "finite": true,
+      "status": "within_limits",
+      "violation_rad": 0.0,
+      "rounds_checked": 100,
+      "all_rounds_identical": true
+    },
+    {
+      "joint": "Arm3_Joint",
+      "field": "candidate_urdf_joint_state",
+      "library_deg": 0,
+      "q_rad": -1.5707963267948966,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "margin_to_lower": 3.673205103416066e-06,
+      "margin_to_upper": 3.1415963267948968,
+      "finite": true,
+      "status": "within_limits",
+      "violation_rad": 0.0,
+      "rounds_checked": 100,
+      "all_rounds_identical": true
+    },
+    {
+      "joint": "Arm4_Joint",
+      "field": "candidate_urdf_joint_state",
+      "library_deg": 18,
+      "q_rad": -1.2566370614359172,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "margin_to_lower": 0.3141629385640827,
+      "margin_to_upper": 2.8274370614359174,
+      "finite": true,
+      "status": "within_limits",
+      "violation_rad": 0.0,
+      "rounds_checked": 100,
+      "all_rounds_identical": true
+    },
+    {
+      "joint": "Arm5_Joint",
+      "field": "candidate_urdf_joint_state",
+      "library_deg": 93,
+      "q_rad": 0.05235987755982988,
+      "lower": -1.5708,
+      "upper": 3.1416,
+      "margin_to_lower": 1.62315987755983,
+      "margin_to_upper": 3.08924012244017,
+      "finite": true,
+      "status": "within_limits",
+      "violation_rad": 0.0,
+      "rounds_checked": 100,
+      "all_rounds_identical": true
+    }
+  ],
+  "precision_calibration": "NOT_VALIDATED"
+}
