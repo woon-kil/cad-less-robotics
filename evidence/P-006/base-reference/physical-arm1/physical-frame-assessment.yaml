@@ -1,0 +1,42 @@
+status: INCOMPLETE
+urdf_commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+urdf: DOFBOT_Pro-V24.urdf
+source_photo: evidence/P-006A/gemini-color.png
+source_photo_shows_arm_chain: false
+annotation_png: null
+annotation_reason: arm chain is not in the frame
+physical_arm1_joint: NOT IDENTIFIED
+physical_arm1_confidence: none
+physical_arm1_axis_defined: false
+base_link_xy_from_arm1_axis: NOT VERIFIED
+base_link_plus_z_result: NOT VERIFIED
+plus_z_parallel_to_work_surface_normal: NOT VERIFIED
+plus_z_points_above_work_surface: NOT VERIFIED
+plus_x_status: NOT PHYSICALLY VERIFIED
+plus_y_status: NOT PHYSICALLY VERIFIED
+z0_status: NOT PHYSICALLY VERIFIED
+z0_is_mesh_outer_face: false
+largest_round_body_is_arm1: false
+model_only:
+  arm1_axis_xyz: [0.0, 0.0, 1.0]
+  arm1_origin_xyz_m: [0.0, 0.0, 0.0895]
+  arm1_link_radius_m: 0.0275
+  arm1_link_z_m: [0.0, 0.0435]
+  base_upper_body_radius_m: 0.040
+  base_low_extension_y_m: [-0.22149640321731567, 0.07850000262260437]
+  base_low_extension_z_crosses_zero: true
+checkerboard:
+  squares: [7, 10]
+  inner_corners: [6, 9]
+  square_size_mm: 20.0
+  square_size_m: 0.0200
+  status: PHYSICALLY VERIFIED
+  board_origin: null
+  T_base_target: null
+T_base_camera: null
+robot_motion: 0
+controller_send: 0
+synthetic_transform: 0
+fake_tf: 0
+extrinsic_solve: 0
+pixel_to_mm: false

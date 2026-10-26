@@ -1,0 +1,3 @@
+BASE_COMMIT=9e268a8bbb103f8a2ec15435dde4550bc083f316
+WORKING_TREE=untracked evidence/P-006A and capture scripts stay outside this commit
+THIS_COMMIT_SCOPE=evidence/P-006/base-reference/physical-arm1
