@@ -1,0 +1,28 @@
+{
+  "A_command_result": {
+    "api": "Arm_serial_servo_write_offset_state",
+    "meaning": "직전 중위 설정의 0/1/2",
+    "this_unit": "NOT_READ"
+  },
+  "B_calibration_state": {
+    "api": null,
+    "meaning": "지금 서보가 캘리브레이션된 상태인지의 독립 플래그는 없다.",
+    "this_unit": "NO_API"
+  },
+  "C_stored_offset_value": {
+    "api": null,
+    "meaning": "MCU가 보유한 neutral deviation 숫자",
+    "this_unit": "NO_READ_PATH"
+  },
+  "back_solved_from_library_degrees": false,
+  "ignored_library_degrees": [86, 150, 0, 18, 93],
+  "h0_software_convention": {
+    "formula": "q_urdf = (q_library_deg - 90) * pi/180",
+    "status": "VENDOR_DEFINED_CONVENTION",
+    "discarded_because_value_unread": false
+  },
+  "h2": "UNSUPPORTED_ALTERNATIVE",
+  "precision_joint_calibration": "NOT_VALIDATED",
+  "servo_neutral_of_this_unit": "NOT_VERIFIED",
+  "vision_xyz_offset_in_scope": false
+}

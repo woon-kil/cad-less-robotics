@@ -1,0 +1,16 @@
+{
+  "question": "현재 MCU에 저장된 servo neutral 상태 또는 편차 숫자를 로봇 상태를 바꾸지 않고 읽을 수 있는가?",
+  "decision": "NO_READ_PATH",
+  "QUERY_APPROVED_BY_STATIC_ANALYSIS": false,
+  "hardware_query_performed": false,
+  "undocumented_register_probe": 0,
+  "why_not_safe_read_available": "저장 편차 숫자를 반환하는 함수와 0x1c 읽기가 없다.",
+  "why_not_status_only_execution": "0x1b는 직전 설정의 0/1/2만 돌려준다. 지속 상태나 저장 숫자가 아니다. 조회 전 write의 무부작용이 증명되지 않아 실행 조건도 충족하지 않는다.",
+  "why_not_unknown_blocked": "없는 것은 저장값 읽기 경로다. 관련 API의 버스 순서는 설치 소스로 읽혔다.",
+  "blockers": [
+    "0x1c write는 저장 또는 삭제다.",
+    "0x1b write의 EEPROM 또는 calibration trigger 가능성이 소스만으로 배제되지 않는다.",
+    "토크, 위치, reset 레지스터는 조회 경로가 아니다."
+  ],
+  "angle_read_distinguished": "0x30+id의 조회 write는 resume-01에서 현재 각 읽기로 이미 분리했다. 그 패턴을 0x1b에 자동으로 옮기지 않는다. 0x1b는 중위 설정 직후에만 호출되도록 노트북과 APP이 짜여 있다."
+}

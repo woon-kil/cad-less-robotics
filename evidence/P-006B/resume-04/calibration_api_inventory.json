@@ -1,0 +1,106 @@
+{
+  "address": "0x15",
+  "bus": 7,
+  "queried_on_hardware": false,
+  "apis": [
+    {
+      "function": "Arm_serial_servo_write_offset_switch",
+      "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "line": 78,
+      "register": "0x1c",
+      "bus_operation": "write_byte_data",
+      "sequence": "id가 1에서 6이면 그 id를 쓴다. id가 0이면 0x00을 쓰고 0.5초 기다린다. 읽기는 없다.",
+      "payload": "servo id 또는 0x00. 편차 숫자가 아니다.",
+      "return_value": null,
+      "information_class": "none",
+      "classification": "STATE_MUTATING_WRITE",
+      "side_effect": "벤더 문서는 MCU가 해당 서보의 현재 각을 읽어 범위 안이면 저장한다고 한다. id 0은 저장 편차를 지운다.",
+      "persistence": "VENDOR_DOCUMENTED_SAVE",
+      "called": false
+    },
+    {
+      "function": "Arm_serial_servo_write_offset_state",
+      "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "line": 89,
+      "register": "0x1b",
+      "bus_operation": "write_byte_data then read_byte_data",
+      "sequence": "0x1b에 상수 0x01을 쓴 뒤 1 ms 후 같은 레지스터의 바이트를 읽는다.",
+      "payload": "0x01. id도 편차 숫자도 아니다.",
+      "return_value": "0, 1, 2 또는 통신 실패 시 None",
+      "return_meaning_from_source_comment": "0은 해당 서보 ID를 찾지 못함, 1은 설정 성공, 2는 범위 초과",
+      "information_class": "A_COMMAND_RESULT",
+      "not_information_class": ["B_CALIBRATION_STATE", "C_STORED_OFFSET_VALUE"],
+      "classification": "READ_WITH_QUERY_WRITE",
+      "side_effect": "주석과 공식 설명은 직전 설정의 상태 조회다. 0x01 write가 EEPROM이나 중위 저장을 건드리지 않는다는 증명은 없다.",
+      "called": false
+    },
+    {
+      "function": "Arm_serial_servo_read",
+      "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "line": 189,
+      "register": "0x30+id",
+      "bus_operation": "write_byte_data 0x00 then read_word_data",
+      "sequence": "조회 바이트를 쓴 뒤 펄스 워드를 읽어 라이브러리 각도로 바꾼다.",
+      "return_value": "current library degree",
+      "information_class": "CURRENT_LIBRARY_ANGLE",
+      "classification": "READ_WITH_QUERY_WRITE",
+      "returns_stored_neutral": false,
+      "called_in_r4": false,
+      "prior_safe_use": "evidence/P-006B/resume-01/"
+    },
+    {
+      "function": "YahboomArm command 07",
+      "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "line": 385,
+      "register": "0x1e then 0x1d via write6",
+      "bus_operation": "position write",
+      "sequence": "Arm_serial_servo_write6(90, 90, 90, 90, 90, 180, 1000)",
+      "return_value": null,
+      "information_class": "none",
+      "classification": "MOTION_CAPABLE",
+      "called": false
+    },
+    {
+      "function": "YahboomArm command 09",
+      "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "line": 399,
+      "register": "0x1A via set_torque",
+      "classification": "STATE_MUTATING_WRITE",
+      "side_effect": "토크를 켜거나 끈다.",
+      "called": false
+    },
+    {
+      "function": "YahboomArm command 0A",
+      "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "line": 402,
+      "sequence": "write_offset_switch 후 write_offset_state. 소켓에는 id와 state만 보낸다.",
+      "return_value": "setting status byte",
+      "information_class": "A_COMMAND_RESULT",
+      "classification": "STATE_MUTATING_WRITE",
+      "called": false
+    },
+    {
+      "function": "Dofbot_Calibration.ipynb",
+      "path": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb",
+      "sequence": "write6으로 중위 이동, torque off, offset_switch, offset_state, torque on. id 0 삭제는 주석.",
+      "classification": "MOTION_CAPABLE",
+      "contains_servo_read": false,
+      "executed": false
+    },
+    {
+      "function": "Arm_Calibration.calibration_map",
+      "path": "/home/jetson/colcon_ws/src/dofbot_color_identify/scripts/Calibration.py",
+      "line": 28,
+      "sequence": "write6_array로 관절을 움직인 뒤 영상 지도를 다룬다.",
+      "classification": "MOTION_CAPABLE",
+      "scope": "vision workspace, not servo neutral value",
+      "executed": false
+    }
+  ],
+  "absent": [
+    "read_offset",
+    "stored neutral degree reader",
+    "0x1c read",
+    "ANGLE_OFFSET in the DOFBOT Pro trees searched in the first pass"
+  ]
+}

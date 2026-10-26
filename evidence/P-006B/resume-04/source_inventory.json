@@ -1,0 +1,65 @@
+{
+  "investigated_at": "2026-10-26T23:47:00+09:00",
+  "method": "static file read",
+  "arm_device_constructed": false,
+  "i2c_opened": false,
+  "files": [
+    {
+      "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "role": "installed controller API",
+      "bytes": 17739,
+      "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+      "matches_resume_02": true,
+      "package": "Arm_Lib 1.0.3"
+    },
+    {
+      "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "role": "APP command dispatcher",
+      "bytes": 42166,
+      "sha256": "adc754ae275be8e0004fa4c34d95fa7432d7050d9dfaa911b2dfde64e6efb19e",
+      "executed_by_this_gate": false
+    },
+    {
+      "path": "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb",
+      "role": "servo neutral procedure notebook",
+      "bytes": 4068,
+      "sha256": "9bf64e78ce3d5c1990e6022c81ba89331c0d8aaba19eb66cd46c1f49e0d26b47",
+      "matches_resume_02": true,
+      "executed": false
+    },
+    {
+      "path": "/home/jetson/colcon_ws/src/dofbot_color_identify/scripts/Calibration.py",
+      "role": "vision map and HSV helper",
+      "bytes": 9349,
+      "sha256": "3edc149535dbe836377594f529c6fc8f7aa019844f27d5db3d017cb4c03b5361",
+      "servo_neutral_reader": false,
+      "contains_motion_call": "Arm_serial_servo_write6_array at line 28",
+      "executed": false
+    },
+    {
+      "path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py",
+      "role": "ROS driver",
+      "keyword_hits_for_offset_or_0x1c": 0,
+      "executed": false,
+      "sha256_resume_02": "165be840fbd92950b8da38478e4903d7732f789626423635fc6d0b3e3e3e4c53"
+    },
+    {
+      "path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_info/src/kinemarics_dofbotpro.cpp",
+      "role": "FK/IK degree shift",
+      "keyword_hits_for_offset_or_0x1c": 0,
+      "sha256_resume_02": "ffad369789acd270b2d20baed38f76a1722695f31c6328f8c92d7d23621765ba"
+    }
+  ],
+  "keyword_scan": {
+    "words": ["offset", "calibration", "deviation", "middle", "neutral", "read_offset", "write_offset", "offset_switch", "0x1c", "0x1b", "calibrat"],
+    "read_offset_matches_in_arm_lib": 0,
+    "servo_neutral_callers": [
+      "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+      "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+      "/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb"
+    ]
+  },
+  "not_found": [
+    "APP import path Calibration.py is not under APP_DOFBOT_PRO. The vision module is colcon_ws dofbot_color_identify scripts/Calibration.py."
+  ]
+}

@@ -21,6 +21,14 @@
   "t_base_camera_computed": false,
   "p006c_modified": false,
   "resume_03_modified": false,
+  "resume_01_modified": false,
+  "resume_02_modified": false,
   "p007_started": false,
-  "credentials_recorded": false
+  "credentials_recorded": false,
+  "supplement_at": "2026-10-26T23:47:00+09:00",
+  "prior_r4_commit": "00842d8b4fcf2de71122086700d86132b8da39a0",
+  "QUERY_APPROVED_BY_STATIC_ANALYSIS": false,
+  "hardware_query_performed": false,
+  "undocumented_register_probe": 0,
+  "decision": "NO_READ_PATH"
 }
