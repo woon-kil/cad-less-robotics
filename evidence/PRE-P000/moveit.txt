@@ -1,0 +1,6 @@
+===== MOVEIT =====
+
+===== MOVEIT: /opt/ros/jazzy =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+----- jazzy share moveit -----
+NO moveit DIRECTORIES UNDER /opt/ros/jazzy/share

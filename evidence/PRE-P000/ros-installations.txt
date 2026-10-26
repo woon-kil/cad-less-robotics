@@ -1,0 +1,17 @@
+===== /opt/ros =====
+total 12
+drwxr-xr-x 3 root root 4096 Oct 15 09:48 .
+drwxr-xr-x 4 root root 4096 Oct 15 09:48 ..
+drwxr-xr-x 9 root root 4096 Oct 15 09:49 jazzy
+===== SETUP.BASH =====
+/opt/ros/jazzy/setup.bash
+===== CURRENT ROS ENV =====
+===== ROS INSTALLATIONS =====
+
+===== ROS INSTALLATION: /opt/ros/jazzy =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+ROS_DISTRO=jazzy
+ROS_VERSION=2
+ROS_PYTHON_VERSION=3
+/opt/ros/jazzy/bin/ros2
+287

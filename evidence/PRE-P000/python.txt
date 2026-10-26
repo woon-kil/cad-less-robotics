@@ -1,0 +1,9 @@
+===== PYTHON =====
+/usr/bin/python3
+Python 3.12.3
+----- pip -----
+/usr/bin/python3: No module named pip
+pip_exit:1
+----- conda info -----
+bash: line 14: conda: command not found
+conda_exit:127

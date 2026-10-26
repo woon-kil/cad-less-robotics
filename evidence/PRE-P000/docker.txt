@@ -1,0 +1,20 @@
+===== DOCKER =====
+/usr/bin/docker
+Docker version 29.4.3, build 055a478
+CONTAINER ID   IMAGE                                  COMMAND                   CREATED        STATUS                PORTS                                             NAMES
+fc695f0fbc92   a09657dc036f                           "/usr/bin/tini -g --…"   5 months ago   Up 3 days             127.0.0.1:8642->8642/tcp                          hermes-bridge
+64c0e4bcfced   ghcr.io/open-webui/open-webui:latest   "bash start.sh"           5 months ago   Up 3 days (healthy)   0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp       open-webui
+acc9433c035a   ollama/ollama:latest                   "/bin/ollama serve"       5 months ago   Up 3 days             0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp   ollama
+IMAGE                                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest                          5b10f432ef3d       13.1MB         3.95MB        
+ghcr.io/open-webui/open-webui:latest   74093dadc9c6        6.7GB         1.72GB   U    
+nousresearch/hermes-agent:main         a09657dc036f       4.77GB         1.13GB   U    
+nvidia/cuda:12.4.1-base-ubuntu22.04    0f6bfcbf267e        348MB         91.8MB        
+ollama/ollama:latest                   9b519ed11930       10.6GB         4.01GB   U    
+robovision-inspector:phase0            fe453e86cb5d       4.59GB          990MB        
+ros:jazzy                              066420e07f60       1.32GB          324MB        
+ubuntu:22.04                           5ec03bb3441e        119MB         31.7MB        
+----- nvidia container toolkit -----
+Package: nvidia-container-toolkit
+Status: install ok installed
+Version: 1.19.0-1

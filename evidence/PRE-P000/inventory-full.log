@@ -1,0 +1,231 @@
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+===== HOST =====
+Mon Oct 26 13:47:35 KST 2026
+p620
+woonkil
+/home/woonkil
+x86_64
+Linux p620 6.8.0-147-generic #147-Ubuntu SMP PREEMPT_DYNAMIC Thu Sep 24 11:33:16 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+Distributor ID:	Ubuntu
+Description:	Ubuntu 24.04.4 LTS
+Release:	24.04
+Codename:	noble
+PRETTY_NAME="Ubuntu 24.04.4 LTS"
+NAME="Ubuntu"
+VERSION_ID="24.04"
+VERSION="24.04.4 LTS (Noble Numbat)"
+VERSION_CODENAME=noble
+ID=ubuntu
+ID_LIKE=debian
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+UBUNTU_CODENAME=noble
+LOGO=ubuntu-logo
+===== /opt/ros =====
+total 12
+drwxr-xr-x 3 root root 4096 Oct 15 09:48 .
+drwxr-xr-x 4 root root 4096 Oct 15 09:48 ..
+drwxr-xr-x 9 root root 4096 Oct 15 09:49 jazzy
+===== SETUP.BASH =====
+/opt/ros/jazzy/setup.bash
+===== CURRENT ROS ENV =====
+===== ROS INSTALLATIONS =====
+
+===== ROS INSTALLATION: /opt/ros/jazzy =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+ROS_DISTRO=jazzy
+ROS_VERSION=2
+ROS_PYTHON_VERSION=3
+/opt/ros/jazzy/bin/ros2
+287
+===== MOVEIT =====
+
+===== MOVEIT: /opt/ros/jazzy =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+===== BUILD TOOLS =====
+/usr/bin/gcc
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+/usr/bin/g++
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+/usr/bin/cmake
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+/usr/bin/make
+GNU Make 4.3
+Built for x86_64-pc-linux-gnu
+Copyright (C) 1988-2020 Free Software Foundation, Inc.
+/usr/bin/colcon
+colcon: FOUND
+/usr/bin/rosdep
+0.27.0
+===== EIGEN =====
+Package: libeigen3-dev
+Status: install ok installed
+Version: 3.4.0-4build0.1
+drwxr-xr-x 4 root root 4096 Oct 15 09:47 /usr/include/eigen3
+===== PCL =====
+1.14.0
+Package: libpcl-dev
+Status: install ok installed
+Version: 1.14.0+dfsg-1
+===== OPEN3D =====
+Open3D: NOT FOUND
+ModuleNotFoundError No module named 'open3d'
+===== PYTHON =====
+/usr/bin/python3
+Python 3.12.3
+===== NVIDIA =====
+Mon Oct 26 13:47:36 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 595.99.02              Driver Version: 595.99.02      CUDA Version: 13.2     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 3090        Off |   00000000:61:00.0 Off |                  N/A |
+|  0%   29C    P8             13W /  370W |       1MiB /  24576MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+===== DOCKER =====
+/usr/bin/docker
+Docker version 29.4.3, build 055a478
+CONTAINER ID   IMAGE                                  COMMAND                   CREATED        STATUS                PORTS                                             NAMES
+fc695f0fbc92   a09657dc036f                           "/usr/bin/tini -g --…"   5 months ago   Up 3 days             127.0.0.1:8642->8642/tcp                          hermes-bridge
+64c0e4bcfced   ghcr.io/open-webui/open-webui:latest   "bash start.sh"           5 months ago   Up 3 days (healthy)   0.0.0.0:3000->8080/tcp, [::]:3000->8080/tcp       open-webui
+acc9433c035a   ollama/ollama:latest                   "/bin/ollama serve"       5 months ago   Up 3 days             0.0.0.0:11434->11434/tcp, [::]:11434->11434/tcp   ollama
+IMAGE                                  ID             DISK USAGE   CONTENT SIZE   EXTRA
+alpine:latest                          5b10f432ef3d       13.1MB         3.95MB        
+ghcr.io/open-webui/open-webui:latest   74093dadc9c6        6.7GB         1.72GB   U    
+nousresearch/hermes-agent:main         a09657dc036f       4.77GB         1.13GB   U    
+nvidia/cuda:12.4.1-base-ubuntu22.04    0f6bfcbf267e        348MB         91.8MB        
+ollama/ollama:latest                   9b519ed11930       10.6GB         4.01GB   U    
+robovision-inspector:phase0            fe453e86cb5d       4.59GB          990MB        
+ros:jazzy                              066420e07f60       1.32GB          324MB        
+ubuntu:22.04                           5ec03bb3441e        119MB         31.7MB        
+===== HOME =====
+total 220
+drwxr-x--- 31 woonkil woonkil  4096 Oct 23 10:59 .
+drwxr-xr-x  3 root    root     4096 May 13 21:03 ..
+-rw-------  1 woonkil woonkil  2200 Oct 16 00:38 .bash_history
+-rw-r--r--  1 woonkil woonkil   220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 woonkil woonkil  3771 Mar 31  2024 .bashrc
+drwx------  9 woonkil woonkil  4096 Oct 15 12:18 .cache
+drwx------  2 woonkil woonkil  4096 May 15 19:30 .cloudflared
+drwx------  5 woonkil woonkil  4096 Aug 16 13:49 .config
+drwx------  3 woonkil woonkil  4096 Aug 29 21:40 .docker
+drwxrwxr-x  4 woonkil woonkil  4096 May 22 14:13 .local
+drwx------  3 woonkil woonkil  4096 Aug 16 13:48 .nv
+drwxr-xr-x  4 woonkil woonkil  4096 Oct 23 12:35 .nvidia-omniverse
+-rw-r--r--  1 woonkil woonkil   807 Mar 31  2024 .profile
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 15 09:51 .ros
+drwx------  2 woonkil woonkil  4096 May 24 14:49 .ssh
+-rw-r--r--  1 woonkil woonkil     0 May 13 21:10 .sudo_as_admin_successful
+drwxrwxr-x  3 woonkil woonkil  4096 May 29 12:26 .terminfo
+-rw-rw-r--  1 woonkil woonkil   871 May 22 16:45 52nvidia-hold.conf
+drwxrwxr-x  2 woonkil woonkil  4096 Oct 15 12:18 Downloads
+drwx------  2 woonkil woonkil  4096 May 23 09:22 archive
+-rwxr-xr-x  1 woonkil woonkil  1157 Oct 15 09:23 check_workstation.sh
+-rwxrwxr-x  1 woonkil woonkil  1256 May 14 09:46 install_cloudflared_service.sh
+-rwxrwxr-x  1 woonkil woonkil  4733 May 14 23:12 install_recommended_models.sh
+-rwxr-xr-x  1 woonkil woonkil 15198 Oct 15 09:23 install_ros_jazzy.sh
+-rw-rw-r--  1 woonkil woonkil  2426 May 20 11:12 iptables-before-ollama-2026-05-20-021239.rules
+drwxrwxr-x 20 woonkil woonkil  4096 Oct 15 11:01 isaacsim
+-rwxrwxr-x  1 woonkil woonkil  8030 May 14 22:30 llm_bench.py
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 09:52 log
+drwxr-xr-x 13 woonkil woonkil  4096 Oct 22 21:31 maintenance-agentic-twin
+-rw-------  1 woonkil woonkil     0 May 17 00:09 nohup.out
+-rwxrwxr-x  1 woonkil woonkil   933 May 14 21:39 power_check.sh
+-rwxrwxr-x  1 woonkil woonkil  2090 May 14 21:42 power_load_test.sh
+drwxrwxr-x  4 woonkil woonkil  4096 Aug 29 21:39 projects
+-rwxrwxr-x  1 woonkil woonkil  2436 May 13 23:06 pull_all_models.sh
+-rwxr-xr-x  1 woonkil woonkil   560 May 15 19:23 restore-tunnel.sh
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 12:27 robot_sources
+drwxrwxr-x  5 woonkil woonkil  4096 May 22 13:55 services
+-rwxrwxr-x  1 woonkil woonkil   920 May 14 08:55 setup_cloudflared.sh
+-rwxrwxr-x  1 woonkil woonkil  2611 May 13 22:28 setup_docker_ollama.sh
+-rwxrwxr-x  1 woonkil woonkil  1303 May 14 23:24 temp_block_ingress.sh
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 12:43 twinbot_i001a
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 12:59 twinbot_i001b
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:32 twinbot_i001c
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:39 twinbot_i002
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:48 twinbot_i003
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 15 14:01 twinbot_i004
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 16:53 twinbot_r002
+drwxrwxr-x  8 woonkil woonkil  4096 Oct 15 21:04 twinbot_r003
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 20:07 twinbot_r003_venv
+drwxrwxr-x  6 woonkil woonkil  4096 Oct 15 16:26 twinbot_ws
+-rwxrwxr-x  1 woonkil woonkil   774 May 14 09:49 update_cloudflared_config.sh
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 23 13:08 work
+===== WORKSPACE CANDIDATES =====
+ABSENT /home/woonkil/ros2_ws
+ABSENT /home/woonkil/catkin_ws
+ABSENT /home/woonkil/colcon_ws
+PRESENT /home/woonkil/isaacsim
+drwxrwxr-x 20 woonkil woonkil 4096 Oct 15 11:01 /home/woonkil/isaacsim
+ABSENT /home/woonkil/IsaacSim
+ABSENT /home/woonkil/moveit_ws
+ABSENT /home/woonkil/robot_ws
+ABSENT /home/woonkil/workspace
+ABSENT /home/woonkil/workspaces
+===== ISAAC SIM =====
+/home/woonkil/.nvidia-omniverse
+/home/woonkil/isaacsim
+===== REPOSITORY =====
+PROJECT REPOSITORY: NOT PRESENT
+===== USB =====
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
+Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+===== END =====
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+bash: warning: setlocale: LC_ALL: cannot change locale (ko_KR.UTF-8)
+===== CLARIFY =====
+clang: NOT FOUND
+ninja: NOT FOUND
+nvcc: NOT FOUND
+conda: NOT FOUND
+----- pip -----
+/usr/bin/python3: No module named pip
+pip_exit:1
+----- conda info -----
+bash: line 14: conda: command not found
+conda_exit:127
+----- serial -----
+ls: cannot access '/dev/ttyUSB*': No such file or directory
+ls: cannot access '/dev/ttyACM*': No such file or directory
+serial_exit:2
+----- nvidia container toolkit -----
+Package: nvidia-container-toolkit
+Status: install ok installed
+Version: 1.19.0-1
+----- jazzy share moveit -----
+NO moveit DIRECTORIES UNDER /opt/ros/jazzy/share
+===== CLARIFY END =====

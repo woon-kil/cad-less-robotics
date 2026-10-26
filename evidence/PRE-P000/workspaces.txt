@@ -1,0 +1,70 @@
+===== HOME =====
+total 220
+drwxr-x--- 31 woonkil woonkil  4096 Oct 23 10:59 .
+drwxr-xr-x  3 root    root     4096 May 13 21:03 ..
+-rw-------  1 woonkil woonkil  2200 Oct 16 00:38 .bash_history
+-rw-r--r--  1 woonkil woonkil   220 Mar 31  2024 .bash_logout
+-rw-r--r--  1 woonkil woonkil  3771 Mar 31  2024 .bashrc
+drwx------  9 woonkil woonkil  4096 Oct 15 12:18 .cache
+drwx------  2 woonkil woonkil  4096 May 15 19:30 .cloudflared
+drwx------  5 woonkil woonkil  4096 Aug 16 13:49 .config
+drwx------  3 woonkil woonkil  4096 Aug 29 21:40 .docker
+drwxrwxr-x  4 woonkil woonkil  4096 May 22 14:13 .local
+drwx------  3 woonkil woonkil  4096 Aug 16 13:48 .nv
+drwxr-xr-x  4 woonkil woonkil  4096 Oct 23 12:35 .nvidia-omniverse
+-rw-r--r--  1 woonkil woonkil   807 Mar 31  2024 .profile
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 15 09:51 .ros
+drwx------  2 woonkil woonkil  4096 May 24 14:49 .ssh
+-rw-r--r--  1 woonkil woonkil     0 May 13 21:10 .sudo_as_admin_successful
+drwxrwxr-x  3 woonkil woonkil  4096 May 29 12:26 .terminfo
+-rw-rw-r--  1 woonkil woonkil   871 May 22 16:45 52nvidia-hold.conf
+drwxrwxr-x  2 woonkil woonkil  4096 Oct 15 12:18 Downloads
+drwx------  2 woonkil woonkil  4096 May 23 09:22 archive
+-rwxr-xr-x  1 woonkil woonkil  1157 Oct 15 09:23 check_workstation.sh
+-rwxrwxr-x  1 woonkil woonkil  1256 May 14 09:46 install_cloudflared_service.sh
+-rwxrwxr-x  1 woonkil woonkil  4733 May 14 23:12 install_recommended_models.sh
+-rwxr-xr-x  1 woonkil woonkil 15198 Oct 15 09:23 install_ros_jazzy.sh
+-rw-rw-r--  1 woonkil woonkil  2426 May 20 11:12 iptables-before-ollama-2026-05-20-021239.rules
+drwxrwxr-x 20 woonkil woonkil  4096 Oct 15 11:01 isaacsim
+-rwxrwxr-x  1 woonkil woonkil  8030 May 14 22:30 llm_bench.py
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 09:52 log
+drwxr-xr-x 13 woonkil woonkil  4096 Oct 22 21:31 maintenance-agentic-twin
+-rw-------  1 woonkil woonkil     0 May 17 00:09 nohup.out
+-rwxrwxr-x  1 woonkil woonkil   933 May 14 21:39 power_check.sh
+-rwxrwxr-x  1 woonkil woonkil  2090 May 14 21:42 power_load_test.sh
+drwxrwxr-x  4 woonkil woonkil  4096 Aug 29 21:39 projects
+-rwxrwxr-x  1 woonkil woonkil  2436 May 13 23:06 pull_all_models.sh
+-rwxr-xr-x  1 woonkil woonkil   560 May 15 19:23 restore-tunnel.sh
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 12:27 robot_sources
+drwxrwxr-x  5 woonkil woonkil  4096 May 22 13:55 services
+-rwxrwxr-x  1 woonkil woonkil   920 May 14 08:55 setup_cloudflared.sh
+-rwxrwxr-x  1 woonkil woonkil  2611 May 13 22:28 setup_docker_ollama.sh
+-rwxrwxr-x  1 woonkil woonkil  1303 May 14 23:24 temp_block_ingress.sh
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 12:43 twinbot_i001a
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 12:59 twinbot_i001b
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:32 twinbot_i001c
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:39 twinbot_i002
+drwxrwxr-x  3 woonkil woonkil  4096 Oct 15 13:48 twinbot_i003
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 15 14:01 twinbot_i004
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 16:53 twinbot_r002
+drwxrwxr-x  8 woonkil woonkil  4096 Oct 15 21:04 twinbot_r003
+drwxrwxr-x  5 woonkil woonkil  4096 Oct 15 20:07 twinbot_r003_venv
+drwxrwxr-x  6 woonkil woonkil  4096 Oct 15 16:26 twinbot_ws
+-rwxrwxr-x  1 woonkil woonkil   774 May 14 09:49 update_cloudflared_config.sh
+drwxrwxr-x  4 woonkil woonkil  4096 Oct 23 13:08 work
+===== WORKSPACE CANDIDATES =====
+ABSENT /home/woonkil/ros2_ws
+ABSENT /home/woonkil/catkin_ws
+ABSENT /home/woonkil/colcon_ws
+PRESENT /home/woonkil/isaacsim
+drwxrwxr-x 20 woonkil woonkil 4096 Oct 15 11:01 /home/woonkil/isaacsim
+ABSENT /home/woonkil/IsaacSim
+ABSENT /home/woonkil/moveit_ws
+ABSENT /home/woonkil/robot_ws
+ABSENT /home/woonkil/workspace
+ABSENT /home/woonkil/workspaces
+===== ISAAC SIM =====
+/home/woonkil/.nvidia-omniverse
+/home/woonkil/isaacsim
+===== REPOSITORY =====
+PROJECT REPOSITORY: NOT PRESENT

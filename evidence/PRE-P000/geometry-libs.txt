@@ -1,0 +1,13 @@
+===== EIGEN =====
+Package: libeigen3-dev
+Status: install ok installed
+Version: 3.4.0-4build0.1
+drwxr-xr-x 4 root root 4096 Oct 15 09:47 /usr/include/eigen3
+===== PCL =====
+1.14.0
+Package: libpcl-dev
+Status: install ok installed
+Version: 1.14.0+dfsg-1
+===== OPEN3D =====
+Open3D: NOT FOUND
+ModuleNotFoundError No module named 'open3d'
