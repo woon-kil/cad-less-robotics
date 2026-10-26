@@ -1,0 +1,66 @@
+{
+  "frames": 12,
+  "detection_success": 12,
+  "detection_rate": 1.0,
+  "distinct_poses": [
+    "fixed"
+  ],
+  "reprojection_validation_px": {
+    "count": 216,
+    "mean": 0.22414008166203933,
+    "rmse": 0.25017064425427665,
+    "p95": 0.44073901695625606,
+    "max": 0.5065466344775281
+  },
+  "spacing_abs_error_m": {
+    "count": 372,
+    "mean": 0.00023170682965918207,
+    "rmse": 0.0003253364884371792,
+    "p95": 0.0006873766143798395,
+    "max": 0.0013810139012235163
+  },
+  "plane_rmse_m": {
+    "count": 4,
+    "mean": 0.0005163088305916624,
+    "rmse": 0.0005163377600540252,
+    "p95": 0.0005225995495950769,
+    "max": 0.0005230457254262224
+  },
+  "rgb_depth_distance_m": {
+    "count": 4,
+    "mean": 0.0015796722152044283,
+    "rmse": 0.0015802517442622685,
+    "p95": 0.0016283901292922264,
+    "max": 0.0016317241497878915
+  },
+  "normal_angle_deg": {
+    "count": 4,
+    "mean": 0.5538615028684085,
+    "rmse": 0.5543074463077221,
+    "p95": 0.583152178360286,
+    "max": 0.5873161987080323
+  },
+  "translation_std_m": 1.4332292680393973e-05,
+  "rotation_std_deg": 0.00673503855866625,
+  "duration_sec": 4.00519585609436,
+  "thresholds_changed_after_measurement": false,
+  "base_link_transform": 0,
+  "synthetic_transform": 0,
+  "robot_motion": 0,
+  "checks": {
+    "CT-04": true,
+    "CT-05": true,
+    "CT-06": true,
+    "CT-08": true,
+    "CT-09": true,
+    "CT-10": true,
+    "CT-11": true,
+    "CT-12": true,
+    "CT-13": true,
+    "CT-14": true,
+    "CT-15": false,
+    "CT-16": true,
+    "CT-17": true,
+    "CT-18": true
+  }
+}

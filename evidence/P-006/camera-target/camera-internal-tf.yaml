@@ -1,0 +1,13 @@
+direction: p_depth = T_depth_color * p_color
+source: tf2 lookup_transform(depth_frame, color_frame)
+parent: camera_depth_optical_frame
+child: camera_color_optical_frame
+translation_m:
+- 0.02380398750305176
+- -3.868519095704542e-06
+- -0.00024192810058594472
+quaternion_xyzw:
+- 0.00023462735471305177
+- 0.0013354254224321462
+- -0.004136464569786975
+- 0.9999905255800219

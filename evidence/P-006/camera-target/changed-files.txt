@@ -1,0 +1,2 @@
+evidence/P-006/camera-target/
+scripts/p006c_inside.sh

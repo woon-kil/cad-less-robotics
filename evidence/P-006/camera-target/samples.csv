@@ -1,0 +1,13 @@
+index,pose_label,split,color_stamp,depth_stamp,stamp_delta_sec,detection_success,corner_count,color_frame,depth_frame
+0,fixed,development,1793010748.174868107,1793010748.174886942,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame
+1,fixed,development,1793010748.508641958,1793010748.542037010,0.033395,1,54,camera_color_optical_frame,camera_depth_optical_frame
+2,fixed,development,1793010748.875787973,1793010748.909183979,0.033396,1,54,camera_color_optical_frame,camera_depth_optical_frame
+3,fixed,development,1793010749.243005991,1793010749.276410103,0.033404,1,54,camera_color_optical_frame,camera_depth_optical_frame
+4,fixed,development,1793010749.610258102,1793010749.643660069,0.033402,1,54,camera_color_optical_frame,camera_depth_optical_frame
+5,fixed,development,1793010749.977440119,1793010749.977458000,0.000018,1,54,camera_color_optical_frame,camera_depth_optical_frame
+6,fixed,development,1793010750.344686985,1793010750.344705105,0.000018,1,54,camera_color_optical_frame,camera_depth_optical_frame
+7,fixed,development,1793010750.711930037,1793010750.711951017,0.000021,1,54,camera_color_optical_frame,camera_depth_optical_frame
+8,fixed,validation,1793010751.079020023,1793010751.079037905,0.000018,1,54,camera_color_optical_frame,camera_depth_optical_frame
+9,fixed,validation,1793010751.445939064,1793010751.445957899,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame
+10,fixed,validation,1793010751.812932014,1793010751.812951088,0.000019,1,54,camera_color_optical_frame,camera_depth_optical_frame
+11,fixed,validation,1793010752.180063963,1793010752.180082083,0.000018,1,54,camera_color_optical_frame,camera_depth_optical_frame

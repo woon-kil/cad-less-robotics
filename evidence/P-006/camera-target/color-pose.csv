@@ -1,0 +1,13 @@
+index,split,tx_m,ty_m,tz_m,qx,qy,qz,qw,reproj_rmse_px,convention
+0,development,-0.04281560,-0.14894827,0.46428585,-0.14888059,-0.02841735,-0.00624281,0.98842706,0.250161,p_color = T_color_checkerboard * p_checkerboard
+1,development,-0.04281329,-0.14895692,0.46428460,-0.14871848,-0.02831359,-0.00623385,0.98845450,0.249960,p_color = T_color_checkerboard * p_checkerboard
+2,development,-0.04281472,-0.14895685,0.46429657,-0.14873492,-0.02837661,-0.00623303,0.98845022,0.250650,p_color = T_color_checkerboard * p_checkerboard
+3,development,-0.04281979,-0.14894073,0.46427428,-0.14889665,-0.02842737,-0.00625498,0.98842428,0.247583,p_color = T_color_checkerboard * p_checkerboard
+4,development,-0.04281512,-0.14893808,0.46428134,-0.14893993,-0.02825452,-0.00623332,0.98842285,0.248719,p_color = T_color_checkerboard * p_checkerboard
+5,development,-0.04281948,-0.14895075,0.46426804,-0.14875769,-0.02830909,-0.00623068,0.98844875,0.242721,p_color = T_color_checkerboard * p_checkerboard
+6,development,-0.04282045,-0.14895446,0.46427902,-0.14882416,-0.02851617,-0.00624112,0.98843272,0.245910,p_color = T_color_checkerboard * p_checkerboard
+7,development,-0.04281690,-0.14894602,0.46428472,-0.14884543,-0.02833665,-0.00623359,0.98843473,0.252166,p_color = T_color_checkerboard * p_checkerboard
+8,validation,-0.04281335,-0.14895461,0.46427610,-0.14875262,-0.02848786,-0.00622981,0.98844438,0.250805,p_color = T_color_checkerboard * p_checkerboard
+9,validation,-0.04282140,-0.14894559,0.46428280,-0.14876488,-0.02820592,-0.00624715,0.98845051,0.249515,p_color = T_color_checkerboard * p_checkerboard
+10,validation,-0.04281732,-0.14893773,0.46423800,-0.14884167,-0.02835363,-0.00623080,0.98843483,0.250840,p_color = T_color_checkerboard * p_checkerboard
+11,validation,-0.04281013,-0.14894751,0.46426184,-0.14882526,-0.02834293,-0.00621244,0.98843772,0.249519,p_color = T_color_checkerboard * p_checkerboard

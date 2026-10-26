@@ -1,0 +1,26 @@
+CT-01 PASS  Gemini 335L 2bc5:0804 firmware 1.4.60 USB3.2 5000M
+CT-02 PASS  7x10 squares, 20.0 mm, 54 inner corners detected
+CT-03 PASS  OpenCV pattern 6x9 inner corners
+CT-04 PASS
+CT-05 PASS
+CT-06 PASS
+CT-07 PASS  checkerboard_frame is not base_link. +X is the first OpenCV row, +Z is +X cross +Y
+CT-08 PASS
+CT-09 PASS
+CT-10 PASS
+CT-11 PASS
+CT-12 PASS
+CT-13 PASS
+CT-14 PASS
+CT-15 FAIL
+CT-16 PASS
+CT-17 PASS
+CT-18 PASS
+CT-19 PASS  base_link transform 0
+CT-20 PASS  synthetic transform 0
+CT-21 PASS  fake/identity TF 0
+CT-22 PASS  robot motion 0
+CT-23 PASS  controller command 0
+CT-24 PASS  vision_path_generator 17, robot_controller 7+8+19, fail 0
+OVERALL FAIL
+FAILED_ITEM CT-15 one fixed pose only

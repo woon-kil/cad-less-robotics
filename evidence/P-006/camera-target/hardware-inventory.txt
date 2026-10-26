@@ -1,0 +1,42 @@
+observed_at: 2026-10-26T19:32:22+09:00
+firmware: 1.4.60
+usb_connection: USB3.2
+usb_speed: 5000M
+serial: SERIAL_REDACTED
+same_device_as_p003: vid_pid 2bc5:0804 and usb port 2-1
+
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 008: ID 2bc5:0804 Orbbec 3D Technology International, Inc Orbbec Gemini 335L
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
+Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+/:  Bus 001.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
+/:  Bus 002.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M
+    |__ Port 001: Dev 008, If 0, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 1, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 2, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 3, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 4, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 5, Class=Video, Driver=uvcvideo, 5000M
+    |__ Port 001: Dev 008, If 6, Class=Human Interface Device, Driver=usbhid, 5000M
+/:  Bus 003.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
+    |__ Port 001: Dev 002, If 0, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 1, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 2, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 001: Dev 002, If 3, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 0, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 1, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 2, Class=Audio, Driver=snd-usb-audio, 480M
+    |__ Port 006: Dev 003, If 3, Class=Audio, Driver=snd-usb-audio, 480M
+/:  Bus 004.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
+/:  Bus 005.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/6p, 480M
+/:  Bus 006.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/4p, 10000M
+/:  Bus 007.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 480M
+/:  Bus 008.Port 001: Dev 001, Class=root_hub, Driver=xhci_hcd/2p, 10000M

@@ -1,0 +1,6 @@
+colcon test --packages-select vision_path_generator robot_controller
+vision_path_generator: 17 passed, failed 0
+robot_controller test_waypoint_prep: 7 passed
+robot_controller test_motion_contract: 8 passed
+robot_controller test_capability_adapter: 19 passed
+total passed 51, failed 0, skipped 0
