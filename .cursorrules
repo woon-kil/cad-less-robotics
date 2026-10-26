@@ -1,0 +1,12 @@
+# CAD-less robotics (ROS 2 Humble)
+
+이 저장소 루트가 colcon 워크스페이스다. 타깃은 Ubuntu 22.04 + ROS 2 Humble이고, macOS는 편집 환경이다.
+
+- 주석과 문서는 한글로 작성한다. 토픽·타입·API 이름은 영어 그대로 둔다.
+- C++17, ROS 2 스타일(들여쓰기 2칸). Python은 4칸.
+- 점군 파이프라인 순서는 고정이다. VoxelGrid → StatisticalOutlierRemoval → RANSAC 평면 제거 → 법선·컨투어. 순서를 바꾸거나 단계를 건너뛰지 않는다.
+- 특정 스캔 한 장을 통과시키기 위한 하드코딩을 넣지 않는다. 동작 차이는 ROS 파라미터로만 연다.
+- 로봇 조인트 이름과 플래닝 그룹은 코드에 박지 말고 파라미터로 읽는다. 기본값은 Yahboom DOFBOT Pro MoveIt 2 문서의 `arm_group`, `Arm1_Joint`–`Arm5_Joint`다. 확인되지 않은 `Arm6_Joint`를 만들지 않는다.
+- 포인트 단위는 미터다. 프레임이 계획 프레임과 다르면 TF가 있을 때만 포즈를 만든다. TF 실패 시 실행하지 않는다.
+- Cartesian 분율이 전체 경로에 못 미치면 `execute`를 호출하지 않는다.
+- MoveIt `execute` 외에 컨트롤러 토픽으로 JointTrajectory를 직접 발행하지 않는다.

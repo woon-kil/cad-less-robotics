@@ -1,0 +1,37 @@
+# Yahboom DOFBOT Pro MoveIt 2 문서의 팔 관절만 적었다.
+# Arm1_Joint–Arm5_Joint. 그리퍼 조인트 이름은 그 문서에 없어 넣지 않는다.
+# 벤더 드라이버가 컨트롤러를 이미 띄우면 이 파일을 중복 로드하지 않는다.
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    arm_group_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+arm_group_controller:
+  ros__parameters:
+    joints:
+      - Arm1_Joint
+      - Arm2_Joint
+      - Arm3_Joint
+      - Arm4_Joint
+      - Arm5_Joint
+    command_interfaces:
+      - position
+    state_interfaces:
+      - position
+      - velocity
+    state_publish_rate: 50.0
+    action_monitor_rate: 20.0
+    allow_partial_joints_goal: false
+    constraints:
+      stopped_velocity_tolerance: 0.02
+      goal_time: 0.0
+      Arm1_Joint: {trajectory: 0.2, goal: 0.05}
+      Arm2_Joint: {trajectory: 0.2, goal: 0.05}
+      Arm3_Joint: {trajectory: 0.2, goal: 0.05}
+      Arm4_Joint: {trajectory: 0.2, goal: 0.05}
+      Arm5_Joint: {trajectory: 0.2, goal: 0.05}

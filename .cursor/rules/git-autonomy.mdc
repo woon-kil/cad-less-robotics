@@ -1,0 +1,26 @@
+---
+description: Git autonomy — cad-less-robotics
+alwaysApply: true
+---
+
+# Git autonomy — cad-less-robotics
+
+워크스페이스: **`cad-less-robotics`**
+
+- **글로벌:** `~/.cursor/rules/git-autonomy.mdc`
+- **프로젝트:** `.cursor/rules/git-autonomy.mdc` (본 파일)
+
+**원격:** GitHub **public** (`private: false`). 비공개로 바꾸지 않는다.
+
+**이 프로젝트 push:** `git push origin main` (작업 완료 직후, 확인 없음).
+
+**트리거:** 「자율 커밋」, 「자율 푸시」, 「자율 커밋 푸시」, 「커밋」, 「푸시」, 「진행」
+
+**커밋 전:**
+- C++·패키지·런치 변경이고 그 호스트에 ROS 2 Humble이 있으면 `colcon test --packages-select vision_path_generator robot_controller` 통과
+- Humble이 없는 호스트에서는 colcon 부재를 테스트 실패로 보지 않는다
+- 문서·규칙만이면 정합으로 충분
+
+**금지:** `.env`/시크릿, `--force`, 검증 실패, 미측정 하드웨어 PASS, 가짜 성능 숫자
+
+**MD 커밋:** `docs/`·`README.md`·`AGENTS.md`·`.cursor/rules/`·`.cursorrules` **커밋 대상**
