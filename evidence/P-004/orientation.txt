@@ -1,0 +1,8 @@
+tool_axis +Z
+approach tool +Z follows the negated outward surface normal
+roll path tangent projected orthogonal to tool +Z
+invalid_quaternion 0
+quaternion_sign_flips 0
+mean_error_deg 8.8802608079660582e-09
+p95_error_deg 0
+max_error_deg 8.5377364625159387e-07

@@ -1,0 +1,26 @@
+P-004 evidence files. artifacts/snapshot.pcd is gitignored.
+
+README.md 3591
+changed-files.txt 2015
+determinism.txt 354
+environment.txt 379
+filtering.txt 166
+geometry-results.json 2994
+git-after.txt 262
+git-before.txt 177
+input-cloud.txt 407
+manifest.txt 528
+normals.txt 250
+orientation.txt 259
+parameters.yaml 427
+path-node.log 569
+path.svg 378156
+path.txt 148
+plane.txt 264
+regression-test.log 8419
+spacing.txt 339
+timing.txt 193
+waypoints-run2.csv 154318
+waypoints-run3.csv 154318
+waypoints-topic.txt 204
+waypoints.csv 154318

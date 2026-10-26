@@ -1,0 +1,35 @@
+.gitignore
+  evidence/P-004/artifacts/ 를 제외한다. raw PCD는 SHA256과 서버 경로만 남긴다.
+
+README.md
+  P-004 waypoint는 camera_depth_optical_frame의 camera-frame 6D geometry waypoints이며, camera→base 보정이 없어 로봇 실행 대상이 아님을 적는다.
+
+src/vision_path_generator/include/vision_path_generator/polyline.hpp
+  Waypoint에 orientation을 만든 outward normal을 보관한다. 툴 +Z는 그 반대다.
+
+src/vision_path_generator/include/vision_path_generator/path_extractor.hpp
+  단계별 점수, 평면 계수, 법선 통계, 경로 길이, 단계 시간, voxel_index_fallback을 ExtractResult에 둔다.
+
+src/vision_path_generator/src/path_extractor.cpp
+  기존 Voxel → Outlier → RANSAC → 법선 → boundary 순서는 유지한다.
+  PCL 1.12 VoxelGrid가 dx*dy*dz int32 overflow로 입력을 그대로 돌려주는 경우에만, 같은 2 mm leaf의 64-bit leaf-key centroid로 내린다.
+  leaf 크기와 단계 순서는 바꾸지 않았다.
+  RANSAC seed는 PCL 기본 12345 그대로다. 3회 결과가 같아서 새 seed를 넣지 않았다.
+  연속 법선 sign을 경로 전체로 전파하는 수정은 넣지 않았다. 그 전파는 673개 중 354개의 방향을 뒤집는다.
+
+src/vision_path_generator/src/geometry_report.cpp
+  고정 snapshot에 boundary 모드를 3회 실행하고 JSON, CSV, 단계 텍스트를 쓴다.
+
+src/vision_path_generator/CMakeLists.txt
+  geometry_report 실행 파일을 추가한다.
+
+scripts/capture_gemini_snapshot.py
+  /camera/depth/points의 첫 비어 있지 않은 프레임을 binary PCD와 metadata로 저장한다.
+
+scripts/check_waypoint_topic.py
+  같은 PCD를 /vision/camera/points로 다시 발행하고 /vision/waypoints와 CSV를 비교한다.
+
+scripts/validate_gemini_geometry.sh
+  카메라 컨테이너에서 capture와 geometry_report를, Humble 컨테이너에서 기존 gtest를 돌리는 절차다.
+
+새 unit test는 없다. 기존 gtest는 vision_path_generator 8, robot_controller 7이다.

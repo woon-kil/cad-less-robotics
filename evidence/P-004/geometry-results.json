@@ -1,0 +1,102 @@
+{
+  "status": "FAIL",
+  "frame": "camera_depth_optical_frame",
+  "error": "",
+  "input": {
+    "topic": "/camera/depth/points",
+    "frame_id": "camera_depth_optical_frame",
+    "stamp_sec": 1792995971,
+    "stamp_nanosec": 582898000,
+    "width": 254957,
+    "height": 1,
+    "fields": "x:7:1,y:7:1,z:7:1",
+    "sha256": "09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60",
+    "loaded_points": 254957,
+    "finite_points": 254957
+  },
+  "filtering": {
+    "input": 254957,
+    "finite": 254957,
+    "after_voxel": 128602,
+    "voxel_index_fallback": true,
+    "after_outlier": 128132,
+    "plane_inliers": 41208,
+    "after_plane_removal": 86924,
+    "after_height": 84348,
+    "surface_points": 31555
+  },
+  "plane": {
+    "valid": true,
+    "oriented_toward_object": true,
+    "a": 0.0492518294983528,
+    "b": -0.16704475008147307,
+    "c": -0.98471839058752397,
+    "d": 0.97604728613193159,
+    "inliers": 41208,
+    "inlier_ratio": 0.32160584397340242,
+    "remaining": 86924
+  },
+  "normals": {
+    "count": 31555,
+    "finite": 31555,
+    "invalid": 0,
+    "length_mean": 1.0000000000539628,
+    "length_min": 0.99999995164238398,
+    "length_max": 1.0000000482588003,
+    "surface_nan_coordinates": 0,
+    "surface_inf_coordinates": 0,
+    "consecutive_negative_dots": 19,
+    "hemisphere_violations": 0
+  },
+  "path": {
+    "mode": "boundary",
+    "requested_mode": "boundary",
+    "raw_points": 573,
+    "length_m": 1.7537877446544481,
+    "closed": false,
+    "endpoint_gap_m": 0.36898717185540247
+  },
+  "spacing": {
+    "target_spacing_m": 0.002,
+    "internal_segment_count": 671,
+    "mean_spacing_m": 0.0019526813438595124,
+    "std_spacing_m": 0.00013261315421247513,
+    "min_spacing_m": 0.00040948138113350887,
+    "max_spacing_m": 0.0020000000000001093,
+    "mean_abs_error_m": 4.7318656140493937e-05,
+    "max_abs_error_m": 0.0015905186188664912,
+    "remainder_m": 0.0013357134610460935,
+    "mean_error_within_0_25mm": true
+  },
+  "orientation": {
+    "tool_axis": "+Z",
+    "approach": "tool +Z equals the negated outward surface normal",
+    "roll": "path tangent projected onto the plane perpendicular to tool +Z",
+    "invalid_quaternion": 0,
+    "zero_quaternion": 0,
+    "bad_norm": 0,
+    "non_finite": 0,
+    "quaternion_sign_flips": 0,
+    "mean_error_deg": 8.8802608079660582e-09,
+    "p95_error_deg": 0,
+    "max_error_deg": 8.5377364625159387e-07,
+    "recorded": true
+  },
+  "determinism": {
+    "runs": 3,
+    "equal": true,
+    "waypoint_counts": [673, 673, 673],
+    "path_lengths_m": [1.7537877446544481, 1.7537877446544481, 1.7537877446544481],
+    "fingerprints_equal": true
+  },
+  "timing_ms": {
+    "voxel_ms": 41.080424000000001,
+    "outlier_ms": 335.44306499999999,
+    "plane_ms": 193.063929,
+    "normal_ms": 69.688162000000005,
+    "path_ms": 267.13504899999998,
+    "waypoint_ms": 3.4173439999999999,
+    "total_ms": 1290.8763670000001,
+    "run_totals_ms": [1290.8763670000001, 1284.0661130000001, 1287.4146840000001]
+  }
+}

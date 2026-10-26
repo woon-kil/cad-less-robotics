@@ -1,0 +1,10 @@
+normal_count 31555
+finite_normals 31555
+invalid_normals 0
+normal_length_mean 1.0000000000539628
+normal_length_min 0.99999995164238398
+normal_length_max 1.0000000482588003
+surface_nan 0
+surface_inf 0
+unexpected_normal_flips 19
+hemisphere_violations 0

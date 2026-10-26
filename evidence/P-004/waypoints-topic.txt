@@ -1,0 +1,9 @@
+topic /vision/waypoints
+type geometry_msgs/msg/PoseArray
+input_subscription_count 1
+frame_id camera_depth_optical_frame
+waypoint_count 673
+csv_count 673
+mismatched_poses 0
+same_frame true
+comparison PASS

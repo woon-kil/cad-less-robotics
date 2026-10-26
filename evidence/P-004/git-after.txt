@@ -1,0 +1,4 @@
+TESTED_COMMIT=NONE
+FINAL_COMMIT=PENDING
+Working tree at evidence write: geometry instrumentation, voxel leaf-key fallback, geometry_report, snapshot capture and topic check scripts, P-004 evidence.
+Raw snapshot.pcd is gitignored under evidence/P-004/artifacts/.

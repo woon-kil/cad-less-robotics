@@ -1,0 +1,12 @@
+Host: p620
+Container: bytesize-robotics-camera
+Image: cad-less-robotics:humble-p003
+ROS_DISTRO: humble
+Snapshot topic: /camera/depth/points
+Path mode: boundary
+Waypoint frame: camera_depth_optical_frame
+MoveIt planning: 0
+Robot execution: 0
+Camera to robot TF created by this gate: 0
+Regression container: bytesize-robotics-humble
+Regression image: cad-less-robotics:humble-p000

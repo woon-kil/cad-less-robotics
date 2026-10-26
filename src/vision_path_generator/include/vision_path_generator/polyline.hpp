@@ -21,6 +21,8 @@ struct Quat {
 struct Waypoint {
   Vec3 position;
   Quat orientation;
+  // orientation을 만들 때 쓴 표면 밖 법선. 툴 +Z는 이 벡터의 반대다.
+  Vec3 normal;
 };
 
 inline Vec3 operator+(const Vec3& a, const Vec3& b) {

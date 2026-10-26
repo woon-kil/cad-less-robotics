@@ -1,0 +1,10 @@
+target_spacing_m 0.002
+internal_segment_count 671
+mean_spacing_m 0.0019526813438595124
+std_spacing_m 0.00013261315421247513
+min_spacing_m 0.00040948138113350887
+max_spacing_m 0.0020000000000001093
+mean_abs_error_m 4.7318656140493937e-05
+max_abs_error_m 0.0015905186188664912
+remainder_m 0.0013357134610460935
+mean_error_within_0_25mm true

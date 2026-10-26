@@ -1,0 +1,4 @@
+[INFO] [1792996280.589550852] [path_extractor_node]: 경로 추출 시작. target=base_link mode=boundary spacing=0.002 require_tf=false
+[WARN] [1792996281.709226990] [path_extractor_node]: TF 없이 camera_depth_optical_frame 프레임 포즈를 발행합니다. 로봇 실행 전에는 계획 프레임과 연결해야 합니다.
+[WARN] [1792996282.704810359] [path_extractor_node]: 이전 점군을 처리 중이라 이번 프레임을 버립니다.
+[INFO] [1792996283.028408354] [path_extractor_node]: waypoints=673 method=boundary frame=camera_depth_optical_frame

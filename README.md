@@ -4,6 +4,8 @@ CAD 없이 뎁스 카메라 포인트 클라우드에서 3D 작업 경로를 만
 
 하드웨어 드라이버, URDF, MoveIt 설정 패키지는 Yahboom DOFBOT Pro 워크스페이스를 그대로 쓴다. 여기서 만드는 것은 점군에서 웨이포인트를 뽑는 노드와, 그 포즈를 Cartesian 궤적으로 실행하는 노드다.
 
+`/vision/waypoints`의 P-004 결과는 `camera_depth_optical_frame` 기준의 camera-frame 6D geometry waypoints다. camera→base 보정이 없으므로 로봇이 실행할 waypoint가 아니다.
+
 ## 데이터 흐름
 
 1. Orbbec 드라이버가 `sensor_msgs/PointCloud2`를 발행한다. `camera_node`가 필드를 확인한 뒤 `/vision/camera/points`로 넘긴다.

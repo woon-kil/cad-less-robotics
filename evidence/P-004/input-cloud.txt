@@ -1,0 +1,15 @@
+camera Gemini 335L
+topic /camera/depth/points
+frame_id camera_depth_optical_frame
+stamp_sec 1792995971
+stamp_nanosec 582898000
+width 254957
+height 1
+point_count 254957
+finite_count 254957
+fields x:7:1,y:7:1,z:7:1
+sha256 09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60
+artifact /home/woonkil/cad-less-robotics/evidence/P-004/artifacts/snapshot.pcd
+git_commit no
+geometry_exit 3
+topic_exit 0

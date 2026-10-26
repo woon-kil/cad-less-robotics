@@ -3,6 +3,7 @@ install/
 log/
 third_party/dofbot-pro-cache/
 third_party/OrbbecSDK_ROS2/
+evidence/P-004/artifacts/
 .DS_Store
 *.user
 .idea/

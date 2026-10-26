@@ -15,13 +15,16 @@
 #include <Eigen/Dense>
 
 #include <algorithm>
+#include <chrono>
 #include <cmath>
 #include <cstddef>
 #include <cstdint>
 #include <limits>
+#include <map>
 #include <memory>
 #include <stdexcept>
 #include <string>
+#include <tuple>
 #include <utility>
 #include <vector>
 
@@ -29,6 +32,79 @@ namespace vision_path_generator {
 namespace {
 
 constexpr double kRightAngle = 1.5707963267948966;
+
+struct StageClock {
+  using Clock = std::chrono::steady_clock;
+  Clock::time_point origin{Clock::now()};
+  Clock::time_point mark{origin};
+
+  double lap() {
+    const auto now = Clock::now();
+    const double elapsed = std::chrono::duration<double, std::milli>(now - mark).count();
+    mark = now;
+    return elapsed;
+  }
+
+  double total() const {
+    return std::chrono::duration<double, std::milli>(Clock::now() - origin).count();
+  }
+};
+
+double polylineLength(const std::vector<Vec3>& polyline) {
+  double length = 0.0;
+  for (std::size_t index = 1; index < polyline.size(); ++index) {
+    length += norm(polyline[index] - polyline[index - 1]);
+  }
+  return length;
+}
+
+void recordNormalStats(const pcl::PointCloud<pcl::Normal>& normals, ExtractResult& result) {
+  result.normal_count = normals.size();
+  result.finite_normals = 0;
+  result.invalid_normals = 0;
+  double sum = 0.0;
+  result.normal_length_min = std::numeric_limits<double>::infinity();
+  result.normal_length_max = 0.0;
+  for (const auto& normal : normals.points) {
+    const double x = normal.normal_x;
+    const double y = normal.normal_y;
+    const double z = normal.normal_z;
+    if (!std::isfinite(x) || !std::isfinite(y) || !std::isfinite(z)) {
+      ++result.invalid_normals;
+      continue;
+    }
+    const double length = std::sqrt((x * x) + (y * y) + (z * z));
+    if (length < 1e-6) {
+      ++result.invalid_normals;
+      continue;
+    }
+    ++result.finite_normals;
+    sum += length;
+    result.normal_length_min = std::min(result.normal_length_min, length);
+    result.normal_length_max = std::max(result.normal_length_max, length);
+  }
+  if (result.finite_normals == 0) {
+    result.normal_length_min = 0.0;
+    result.normal_length_mean = 0.0;
+    return;
+  }
+  result.normal_length_mean = sum / static_cast<double>(result.finite_normals);
+}
+
+void recordSurfaceFinite(const pcl::PointCloud<pcl::PointXYZ>& cloud, ExtractResult& result) {
+  result.surface_nan = 0;
+  result.surface_inf = 0;
+  for (const auto& point : cloud.points) {
+    const double values[3] = {point.x, point.y, point.z};
+    for (const double value : values) {
+      if (std::isnan(value)) {
+        ++result.surface_nan;
+      } else if (std::isinf(value)) {
+        ++result.surface_inf;
+      }
+    }
+  }
+}
 
 struct Plane {
   Eigen::Vector3d normal{0.0, 0.0, 1.0};
@@ -91,8 +167,83 @@ pcl::PointCloud<pcl::PointXYZ>::Ptr removeNonFinite(const pcl::PointCloud<pcl::P
   return output;
 }
 
-pcl::PointCloud<pcl::PointXYZ>::Ptr voxelize(
+bool voxelDenseIndexFits(const pcl::PointCloud<pcl::PointXYZ>& cloud, float leaf) {
+  if (cloud.empty() || !(leaf > 0.f)) {
+    return true;
+  }
+  float min_x = std::numeric_limits<float>::infinity();
+  float min_y = min_x;
+  float min_z = min_x;
+  float max_x = -min_x;
+  float max_y = max_x;
+  float max_z = max_x;
+  for (const auto& point : cloud.points) {
+    min_x = std::min(min_x, point.x);
+    min_y = std::min(min_y, point.y);
+    min_z = std::min(min_z, point.z);
+    max_x = std::max(max_x, point.x);
+    max_y = std::max(max_y, point.y);
+    max_z = std::max(max_z, point.z);
+  }
+  const double inverse = 1.0 / static_cast<double>(leaf);
+  const auto dx = static_cast<std::int64_t>((static_cast<double>(max_x) - min_x) * inverse) + 1;
+  const auto dy = static_cast<std::int64_t>((static_cast<double>(max_y) - min_y) * inverse) + 1;
+  const auto dz = static_cast<std::int64_t>((static_cast<double>(max_z) - min_z) * inverse) + 1;
+  const auto limit = static_cast<std::int64_t>(std::numeric_limits<std::int32_t>::max());
+  if (dx <= 0 || dy <= 0 || dz <= 0 || dx > limit / dy) {
+    return false;
+  }
+  return (dx * dy) <= limit / dz;
+}
+
+pcl::PointCloud<pcl::PointXYZ>::Ptr voxelizeByLeafKey(
     const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& input, float leaf) {
+  auto output = makeCloud();
+  float min_x = std::numeric_limits<float>::infinity();
+  float min_y = min_x;
+  float min_z = min_x;
+  for (const auto& point : input->points) {
+    min_x = std::min(min_x, point.x);
+    min_y = std::min(min_y, point.y);
+    min_z = std::min(min_z, point.z);
+  }
+  struct Sum {
+    double x{0.0};
+    double y{0.0};
+    double z{0.0};
+    int count{0};
+  };
+  std::map<std::tuple<int, int, int>, Sum> bins;
+  const double inverse = 1.0 / static_cast<double>(leaf);
+  for (const auto& point : input->points) {
+    const auto key = std::make_tuple(
+        static_cast<int>(std::floor((static_cast<double>(point.x) - min_x) * inverse)),
+        static_cast<int>(std::floor((static_cast<double>(point.y) - min_y) * inverse)),
+        static_cast<int>(std::floor((static_cast<double>(point.z) - min_z) * inverse)));
+    auto& sum = bins[key];
+    sum.x += point.x;
+    sum.y += point.y;
+    sum.z += point.z;
+    ++sum.count;
+  }
+  output->reserve(bins.size());
+  for (const auto& item : bins) {
+    const auto& sum = item.second;
+    const double scale = 1.0 / static_cast<double>(sum.count);
+    output->push_back(pcl::PointXYZ(
+        static_cast<float>(sum.x * scale), static_cast<float>(sum.y * scale),
+        static_cast<float>(sum.z * scale)));
+  }
+  finalize(*output);
+  return output;
+}
+
+pcl::PointCloud<pcl::PointXYZ>::Ptr voxelize(
+    const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& input, float leaf, bool& index_fallback) {
+  index_fallback = !voxelDenseIndexFits(*input, leaf);
+  if (index_fallback) {
+    return voxelizeByLeafKey(input, leaf);
+  }
   auto output = makeCloud();
   pcl::VoxelGrid<pcl::PointXYZ> filter;
   filter.setInputCloud(input);
@@ -378,7 +529,9 @@ std::vector<Waypoint> buildWaypoints(
   pcl::KdTreeFLANN<pcl::PointXYZ> tree;
   tree.setInputCloud(cloud);
   std::vector<Quat> orientations;
+  std::vector<Vec3> used_normals;
   orientations.reserve(samples.size());
+  used_normals.reserve(samples.size());
   std::size_t missing_normals = 0;
   for (std::size_t index = 0; index < samples.size(); ++index) {
     Vec3 tangent = (index + 1 < samples.size()) ? samples[index + 1] - samples[index]
@@ -401,7 +554,9 @@ std::vector<Waypoint> buildWaypoints(
     } else {
       ++missing_normals;
     }
-    orientations.push_back(orientationFromTangentAndNormal(tangent, Vec3{normal.x(), normal.y(), normal.z()}));
+    const Vec3 used{normal.x(), normal.y(), normal.z()};
+    used_normals.push_back(used);
+    orientations.push_back(orientationFromTangentAndNormal(tangent, used));
   }
   if (missing_normals * 2 > samples.size()) {
     error = "법선 추정에 실패했습니다.";
@@ -411,7 +566,7 @@ std::vector<Waypoint> buildWaypoints(
   std::vector<Waypoint> waypoints;
   waypoints.reserve(samples.size());
   for (std::size_t index = 0; index < samples.size(); ++index) {
-    waypoints.push_back(Waypoint{samples[index], orientations[index]});
+    waypoints.push_back(Waypoint{samples[index], orientations[index], used_normals[index]});
   }
   return waypoints;
 }
@@ -438,73 +593,100 @@ PathExtractor::PathExtractor(ExtractParams params) : params_(std::move(params)) 
 
 ExtractResult PathExtractor::extract(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& cloud) const {
   ExtractResult result;
+  StageClock stages;
   result.filtered = makeCloud();
   result.object = makeCloud();
+  auto finish = [&]() {
+    result.total_ms = stages.total();
+    return result;
+  };
   if (!cloud) {
     result.error = "입력 포인트 클라우드가 없습니다.";
-    return result;
+    return finish();
   }
   result.input_points = cloud->size();
 
   try {
     auto finite = removeNonFinite(*cloud);
+    result.finite_points = finite->size();
+    stages.lap();
     if (finite->size() <= static_cast<std::size_t>(params_.sor_mean_k)) {
       result.error = "유효 점이 SOR mean_k 이하입니다.";
-      return result;
+      return finish();
     }
-    auto voxel = voxelize(finite, params_.voxel_leaf_size);
+    auto voxel = voxelize(finite, params_.voxel_leaf_size, result.voxel_index_fallback);
+    result.voxel_ms = stages.lap();
     result.voxel_points = voxel->size();
     if (voxel->size() <= static_cast<std::size_t>(params_.sor_mean_k)) {
       result.error = "다운샘플 후 점이 SOR mean_k 이하입니다.";
       result.filtered = voxel;
-      return result;
+      return finish();
     }
     auto denoised = removeOutliers(voxel, params_.sor_mean_k, params_.sor_stddev);
+    result.outlier_ms = stages.lap();
     result.sor_points = denoised->size();
     result.filtered = denoised;
     if (denoised->size() < 10) {
       result.error = "노이즈 제거 후 점이 부족합니다.";
-      return result;
+      return finish();
     }
 
     Plane plane;
     pcl::PointIndices::Ptr inliers(new pcl::PointIndices);
     if (!fitPlane(denoised, params_, plane, inliers, result.error)) {
-      return result;
+      result.plane_ms = stages.lap();
+      return finish();
     }
+    result.plane_ms = stages.lap();
+    result.plane_valid = true;
     result.plane_inliers = inliers->indices.size();
     result.plane_inlier_ratio =
         static_cast<double>(result.plane_inliers) / static_cast<double>(denoised->size());
-    if (result.plane_inlier_ratio > params_.max_plane_inlier_ratio) {
-      result.error = "장면의 대부분이 평면입니다. 제품이 없거나 RANSAC 거리가 너무 큽니다.";
-      return result;
-    }
-
     auto without_plane = extractIndices(denoised, inliers, true);
+    result.plane_remaining = without_plane->size();
+    if (result.plane_inlier_ratio > params_.max_plane_inlier_ratio) {
+      result.plane_a = plane.normal.x();
+      result.plane_b = plane.normal.y();
+      result.plane_c = plane.normal.z();
+      result.plane_d = plane.d;
+      result.error = "장면의 대부분이 평면입니다. 제품이 없거나 RANSAC 거리가 너무 큽니다.";
+      return finish();
+    }
     if (without_plane->empty()) {
       result.error = "평면 제거 후 점이 남지 않았습니다.";
-      return result;
+      return finish();
     }
     orientTowardObject(plane, *without_plane);
+    result.plane_oriented = true;
+    result.plane_a = plane.normal.x();
+    result.plane_b = plane.normal.y();
+    result.plane_c = plane.normal.z();
+    result.plane_d = plane.d;
     auto above = keepAbove(*without_plane, plane, params_.min_height);
+    result.height_points = above->size();
+    recordSurfaceFinite(*above, result);
     if (above->size() < static_cast<std::size_t>(params_.min_cluster_size)) {
       result.object = above;
       result.object_points = above->size();
       result.error = "높이 필터 후 제품 점이 min_cluster_size보다 적습니다.";
-      return result;
+      return finish();
     }
     auto object = largestCluster(above, params_, result.error);
     result.object = object;
     result.object_points = object->size();
+    recordSurfaceFinite(*object, result);
     if (!result.error.empty()) {
-      return result;
+      return finish();
     }
 
+    stages.lap();
     auto normals = estimateNormals(object, params_, result.error);
+    result.normal_ms = stages.lap();
     if (!normals) {
-      return result;
+      return finish();
     }
     alignNormals(*normals, plane);
+    recordNormalStats(*normals, result);
 
     std::vector<Vec3> polyline;
     if (params_.path_mode != "crest") {
@@ -517,23 +699,32 @@ ExtractResult PathExtractor::extract(const pcl::PointCloud<pcl::PointXYZ>::Const
       polyline = crestChain(*object, plane, params_);
       result.method = params_.path_mode == "crest" ? "crest" : "crest_fallback";
     }
+    result.path_ms = stages.lap();
+    result.raw_path_points = polyline.size();
+    result.raw_path_length = polylineLength(polyline);
+    result.path_closed = false;
+    if (polyline.size() >= 2) {
+      result.endpoint_gap = norm(polyline.front() - polyline.back());
+    }
     if (result.method.empty()) {
       result.error = "경계 컨투어 포인트가 부족합니다.";
-      return result;
+      return finish();
     }
 
     auto sampled = finishPolyline(std::move(polyline), params_, result.error);
     if (!result.error.empty()) {
-      return result;
+      result.waypoint_ms = stages.lap();
+      return finish();
     }
     result.waypoints = buildWaypoints(sampled, object, normals, plane, result.error);
+    result.waypoint_ms = stages.lap();
     if (!result.error.empty()) {
       result.waypoints.clear();
     }
   } catch (const std::exception& ex) {
     result.error = ex.what();
   }
-  return result;
+  return finish();
 }
 
 }  // namespace vision_path_generator
