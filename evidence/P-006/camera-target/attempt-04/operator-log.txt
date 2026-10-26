@@ -1,0 +1,12 @@
+2026-10-26T20:15:56+09:00 near try=1 choice=촬영
+2026-10-26T20:15:59+09:00 FEEDBACK pose=near try=1 solved=4 delta_x_m=0.05774177 delta_y_m=0.09346626 delta_z_m=-0.02470849 rule=FAIL
+2026-10-26T20:17:10+09:00 near retry_choice=추가 촬영
+2026-10-26T20:17:15+09:00 FEEDBACK pose=near try=2 solved=4 delta_x_m=0.04608359 delta_y_m=0.06053021 delta_z_m=-0.01569344 rule=FAIL
+2026-10-26T20:17:54+09:00 near retry_choice=추가 촬영
+2026-10-26T20:17:57+09:00 FEEDBACK pose=near try=3 solved=4 delta_x_m=0.04722126 delta_y_m=0.08053505 delta_z_m=-0.02159090 rule=FAIL
+2026-10-26T20:19:25+09:00 far try=1 choice=촬영
+2026-10-26T20:19:28+09:00 FEEDBACK pose=far try=1 solved=4 delta_x_m=0.03585717 delta_y_m=-0.00579967 delta_z_m=0.00298093 rule=FAIL
+2026-10-26T20:20:11+09:00 far retry_choice=추가 촬영
+2026-10-26T20:20:16+09:00 FEEDBACK pose=far try=2 solved=4 delta_x_m=0.03942759 delta_y_m=0.01271480 delta_z_m=-0.00219911 rule=FAIL
+2026-10-26T20:20:58+09:00 far retry_choice=추가 촬영
+2026-10-26T20:21:01+09:00 FEEDBACK pose=far try=3 solved=4 delta_x_m=0.03935750 delta_y_m=0.00140557 delta_z_m=0.00114647 rule=FAIL
