@@ -1,0 +1,32 @@
+status: INCOMPLETE
+classification: MODEL-DEFINED / PHYSICAL ALIGNMENT REQUIRED
+a_axis_prior: PASS
+a_axis_changed: false
+plus_z_prior: PHYSICALLY CONSISTENT
+plus_z_changed: false
+urdf_commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+urdf: DOFBOT_Pro-V24.urdf
+arm2_parent: Arm1_Link
+arm2_child: Arm2_Link
+arm2_origin_xyz_m: [0.0, 0.0, 0.0329999999999998]
+arm2_origin_rpy_rad: [0.0, 0.0, 0.0]
+arm2_axis_xyz: [1.0, 0.0, 0.0]
+arm2_origin_xy_component_m: [0.0, 0.0]
+arm2_origin_in_base_at_arm1_zero_m: [0.0, 0.0, 0.1224999999999998]
+zero_configuration_reach_direction: base +Z
+base_plus_x_model: Arm2 hinge axis at Arm1 angle 0
+base_plus_y_model: right-handed axis, +Z cross +X
+current_arm1_yaw_known_zero: false
+hardware_zero_mark_in_repository: false
+srdf_named_states_with_arm1_zero:
+  - up
+  - down
+  - init
+measurement_frame_is_base_link: false
+pixel_to_mm: 0
+robot_motion: 0
+controller_send: 0
+T_base_target: null
+T_base_camera: null
+base_link_z0: NOT PHYSICALLY VERIFIED
+checkerboard_origin_C: null

@@ -1,0 +1,12 @@
+XY-01 PASS  A_AXIS의 기존 PASS를 유지했다
+XY-02 PASS  Arm2_Joint origin xyz는 0 0 0.0329999999999998 이다
+XY-03 PASS  Arm1 각 0에서 그 원점의 XY는 0 0 이고 힌지 축은 +X 다
+XY-04 PASS  모델의 +X는 어깨 힌지 축, +Y는 오른손 축으로 설명했다
+XY-05 PASS  현재 팔 방향을 zero라고 가정하지 않았다
+XY-06 PASS  하드웨어 zero/home 표시는 repository에 없고 SRDF 숫자 0만 있다
+XY-07 PASS  pixel에서 mm를 계산하지 않았다
+XY-08 PASS  robot motion 0
+XY-09 PASS  T_base_target 0
+XY-10 PASS  T_base_camera 0
+OVERALL INCOMPLETE
+CLASSIFICATION MODEL-DEFINED / PHYSICAL ALIGNMENT REQUIRED
