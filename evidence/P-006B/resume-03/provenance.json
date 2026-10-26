@@ -1,0 +1,7 @@
+{
+  "new_p4_convention": [],
+  "new_p4_calibration": [],
+  "h0_software_grade_unchanged": "P3",
+  "physical_cross_check": "P0",
+  "reason": "컨트롤러 각도는 다시 읽었다. 팔 링크를 보는 동기 사진은 없다. convention을 하드웨어로 확인하지 않았다."
+}

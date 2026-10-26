@@ -1,0 +1,13 @@
+{
+  "arm_links_visible": false,
+  "current_synchronized_images": 0,
+  "gemini_node_publishing": false,
+  "fixed_view_sources": [
+    "evidence/P-006A/gemini-color.png",
+    "evidence/P-006C-R2/captures/robot_side-t01-00-color.png",
+    "evidence/P-006C-R2/captures/camera_side-t01-00-color.png"
+  ],
+  "fixed_view_finding": "같은 Gemini 시야는 작업대와 체커보드를 본다. Arm1부터 그리퍼까지의 링크 체인은 프레임에 없다. 이 파일들은 이번 읽기와 동기화된 스냅샷이 아니다.",
+  "phone_photo_used": false,
+  "pixel_to_mm_registration": false
+}

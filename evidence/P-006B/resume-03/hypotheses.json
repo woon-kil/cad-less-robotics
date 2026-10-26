@@ -1,0 +1,28 @@
+{
+  "H0": {
+    "definition": "q_rad = (library_deg - 90) * pi/180",
+    "fk_grip_m": [
+      0.008790428069887096,
+      0.13431033029680978,
+      0.20281807914562994
+    ]
+  },
+  "H1": {
+    "definition": "q_rad = library_deg * pi/180",
+    "fk_grip_m": [
+      0.1153834149312215,
+      -0.008669859496144267,
+      -0.1859219604580933
+    ]
+  },
+  "H2": {
+    "definition": "q_rad = -(library_deg - 90) * pi/180",
+    "fk_grip_m": [
+      0.008728064368365158,
+      -0.13341848781481136,
+      0.19861204446281536
+    ]
+  },
+  "physical_ranking": "NOT_PERFORMED",
+  "reason": "No image shows the arm links, so H0 is not shown to explain the pose better than H2."
+}

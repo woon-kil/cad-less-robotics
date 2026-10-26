@@ -1,0 +1,19 @@
+{
+  "gate": "P-006B-R3",
+  "base_commit": "181df62be2eefd6f86d9401356a61602d6a1a4a2",
+  "read_at": "2026-10-26T23:33:58+09:00",
+  "robot_host": "yahboom",
+  "robot_address": "192.168.0.94",
+  "read_api": "Arm_serial_servo_read",
+  "servo_write_calls": 0,
+  "arm_driver_started": false,
+  "calibration_register_read": false,
+  "calibration_register_status": "NOT_READ — SAFETY/PROTOCOL NOT ESTABLISHED",
+  "moveit_executed": false,
+  "target_angle_published": false,
+  "robot_camera_led_moved": false,
+  "pixel_registration": false,
+  "t_base_camera_computed": false,
+  "p006c_modified": false,
+  "p007_started": false
+}

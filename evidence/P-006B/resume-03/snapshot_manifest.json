@@ -1,0 +1,50 @@
+{
+  "sets": [
+    {
+      "set_index": 0,
+      "read_start": "2026-10-26T23:33:58.670354+09:00",
+      "read_end": "2026-10-26T23:33:58.793393+09:00",
+      "library_degree": {
+        "ID1": 86,
+        "ID2": 150,
+        "ID3": 0,
+        "ID4": 18,
+        "ID5": 93,
+        "ID6": 178
+      },
+      "image": null,
+      "image_reason": "fixed Gemini frames do not show the arm links"
+    },
+    {
+      "set_index": 1,
+      "read_start": "2026-10-26T23:33:59.217897+09:00",
+      "read_end": "2026-10-26T23:33:59.339834+09:00",
+      "library_degree": {
+        "ID1": 86,
+        "ID2": 150,
+        "ID3": 0,
+        "ID4": 18,
+        "ID5": 93,
+        "ID6": 178
+      },
+      "image": null,
+      "image_reason": "fixed Gemini frames do not show the arm links"
+    },
+    {
+      "set_index": 2,
+      "read_start": "2026-10-26T23:33:59.764344+09:00",
+      "read_end": "2026-10-26T23:33:59.886812+09:00",
+      "library_degree": {
+        "ID1": 86,
+        "ID2": 150,
+        "ID3": 0,
+        "ID4": 18,
+        "ID5": 93,
+        "ID6": 178
+      },
+      "image": null,
+      "image_reason": "fixed Gemini frames do not show the arm links"
+    }
+  ],
+  "synchronized_arm_image_sets": 0
+}

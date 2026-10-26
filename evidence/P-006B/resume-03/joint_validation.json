@@ -1,0 +1,12 @@
+{
+  "method_limit": "정적 사진이 없어 링크 방향은 판정하지 않는다. 한계 위반만 가설 비교에 쓴다.",
+  "joints": {
+    "Arm1_Joint": {"status": "INSUFFICIENT_VISIBILITY", "verified": false, "note": "후보가 약 -4도라 사진으로도 부호를 확정하지 않는다. 이번엔 사진 자체가 없다."},
+    "Arm2_Joint": {"status": "INSUFFICIENT_VISIBILITY", "verified": false},
+    "Arm3_Joint": {"status": "INSUFFICIENT_VISIBILITY", "verified": false},
+    "Arm4_Joint": {"status": "INSUFFICIENT_VISIBILITY", "verified": false},
+    "Arm5_Joint": {"status": "INSUFFICIENT_VISIBILITY", "verified": false}
+  },
+  "p4_convention": [],
+  "p4_calibration": []
+}

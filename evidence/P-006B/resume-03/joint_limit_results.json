@@ -1,0 +1,143 @@
+{
+  "H0": [
+    {
+      "joint": "Arm1_Joint",
+      "q_rad": -0.06981317007977318,
+      "q_deg": -4.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm2_Joint",
+      "q_rad": 1.0471975511965976,
+      "q_deg": 59.99999999999999,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm3_Joint",
+      "q_rad": -1.5707963267948966,
+      "q_deg": -90.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm4_Joint",
+      "q_rad": -1.2566370614359172,
+      "q_deg": -72.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm5_Joint",
+      "q_rad": 0.05235987755982988,
+      "q_deg": 3.0,
+      "lower": -1.5708,
+      "upper": 3.1416,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    }
+  ],
+  "H1": [
+    {
+      "joint": "Arm1_Joint",
+      "q_rad": 1.5009831567151233,
+      "q_deg": 86.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm2_Joint",
+      "q_rad": 2.6179938779914944,
+      "q_deg": 150.00000000000003,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "limit_violation",
+      "violation_rad": 1.0471938779914944
+    },
+    {
+      "joint": "Arm3_Joint",
+      "q_rad": 0.0,
+      "q_deg": 0.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm4_Joint",
+      "q_rad": 0.3141592653589793,
+      "q_deg": 18.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm5_Joint",
+      "q_rad": 1.6231562043547263,
+      "q_deg": 92.99999999999999,
+      "lower": -1.5708,
+      "upper": 3.1416,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    }
+  ],
+  "H2": [
+    {
+      "joint": "Arm1_Joint",
+      "q_rad": 0.06981317007977318,
+      "q_deg": 4.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm2_Joint",
+      "q_rad": -1.0471975511965976,
+      "q_deg": -59.99999999999999,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm3_Joint",
+      "q_rad": 1.5707963267948966,
+      "q_deg": 90.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm4_Joint",
+      "q_rad": 1.2566370614359172,
+      "q_deg": 72.0,
+      "lower": -1.5708,
+      "upper": 1.5708,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    },
+    {
+      "joint": "Arm5_Joint",
+      "q_rad": -0.05235987755982988,
+      "q_deg": -3.0,
+      "lower": -1.5708,
+      "upper": 3.1416,
+      "status": "within_limits",
+      "violation_rad": 0.0
+    }
+  ]
+}

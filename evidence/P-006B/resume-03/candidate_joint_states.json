@@ -1,0 +1,20 @@
+{
+  "source_reads": "fresh Arm_serial_servo_read, three sets",
+  "assumed_from_resume_01": false,
+  "library_degree": {
+    "ID1": 86,
+    "ID2": 150,
+    "ID3": 0,
+    "ID4": 18,
+    "ID5": 93,
+    "ID6": 178
+  },
+  "H0_q_rad": {
+    "Arm1_Joint": -0.06981317007977318,
+    "Arm2_Joint": 1.0471975511965976,
+    "Arm3_Joint": -1.5707963267948966,
+    "Arm4_Joint": -1.2566370614359172,
+    "Arm5_Joint": 0.05235987755982988
+  },
+  "note": "ID6 is the gripper channel and is not an Arm joint input."
+}
