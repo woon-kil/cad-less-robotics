@@ -1,0 +1,11 @@
+target: CHECKERBOARD
+squares_x: 7
+squares_y: 10
+inner_corners_x: 6
+inner_corners_y: 9
+square_size_mm: 20.0
+square_size_m: 0.0200
+status: PHYSICALLY VERIFIED
+board_pose: null
+T_base_target: null
+pixel_measurement: false

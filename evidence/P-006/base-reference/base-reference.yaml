@@ -1,0 +1,30 @@
+source_commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+urdf_sha256: b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28
+link: base_link
+visual_origin_xyz: [0.0, 0.0, 0.0]
+visual_origin_rpy: [0.0, 0.0, 0.0]
+collision_origin_xyz: [0.0, 0.0, 0.0]
+collision_origin_rpy: [0.0, 0.0, 0.0]
+inertial_origin_xyz: [-8.03990775049002e-05, -0.047909102545025, 0.0178929922479837]
+inertial_origin_rpy: [0.0, 0.0, 0.0]
+mesh: package://dofbot_pro_description/meshes/base_link.STL
+mesh_scale_element: absent
+mesh_sha256: 8a6de5576fbd277ffc2d9dbb772bde91d13a7862e93a699e239a1ca3a5fe96ce
+first_movable_child_joint: Arm1_Joint
+arm1_parent: base_link
+arm1_child: Arm1_Link
+arm1_type: revolute
+arm1_origin_xyz_m: [0.0, 0.0, 0.0895]
+arm1_origin_rpy_rad: [0.0, 0.0, 0.0]
+arm1_axis_xyz: [0.0, 0.0, 1.0]
+T_base_Arm1Joint:
+  translation_m: {x: 0.0, y: 0.0, z: 0.0895}
+  rpy_rad: {roll: 0.0, pitch: 0.0, yaw: 0.0}
+  axis_xyz: {x: 0.0, y: 0.0, z: 1.0}
+base_plate_height_correspondence: NOT PHYSICALLY VERIFIED
+plus_x_physical_edge: NOT PHYSICALLY VERIFIED
+plus_y_physical_edge: NOT PHYSICALLY VERIFIED
+plus_z_is_arm1_axis_in_urdf: true
+extrinsic_solve: false
+T_base_camera: null
+T_base_target: null

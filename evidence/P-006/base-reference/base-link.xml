@@ -1,0 +1,40 @@
+<link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-8.03990775049002E-05 -0.047909102545025 0.0178929922479837"
+        rpy="0 0 0" />
+      <mass
+        value="0.226715356738094" />
+      <inertia
+        ixx="0.000941235900529474"
+        ixy="1.96595690487739E-07"
+        ixz="-1.92013763256786E-08"
+        iyy="0.000320658126022968"
+        iyz="4.70777587170016E-07"
+        izz="0.00124091439723775" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dofbot_pro_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://dofbot_pro_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>

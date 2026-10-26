@@ -1,0 +1,12 @@
+order,name,kind,parent,child,origin_xyz,origin_rpy,axis_xyz
+0,base_link,link,,,,
+1,Arm1_Joint,revolute,base_link,Arm1_Link,0 0 0.0895,0 0 0,0 0 1
+2,Arm1_Link,link,,,,
+3,Arm2_Joint,revolute,Arm1_Link,Arm2_Link,0 0 0.0329999999999998,0 0 0,1 0 0
+4,Arm2_Link,link,,,,
+5,Arm3_Joint,revolute,Arm2_Link,Arm3_Link,-0.000549999999999828 0 0.0828499999999964,0 0 0,1 0 0
+6,Arm3_Link,link,,,,
+7,Arm4_Joint,revolute,Arm3_Link,Arm4_Link,-5.0000000000161E-05 0 0.0828500000000002,1.57079632679386 0 0,1 0 0
+8,Arm4_Link,link,,,,
+9,Arm5_Joint,revolute,Arm4_Link,Arm5_Link,0 0.0781490000000018 0.00215000000000008,0 0 0,0 1 0
+10,Arm5_Link,link,,,,

@@ -1,0 +1,16 @@
+model_source: Yahboom DOFBOT Pro course-family ROS model snapshot
+repository: https://github.com/atticusrussell/ballbot
+branch: humble
+commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+urdf_in_snapshot: third_party/dofbot-pro/New_Code/Orin/DofbotPro_source/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+local_file: third_party/dofbot-pro-cache/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+local_sha256: b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28
+local_bytes: 19234
+official_yahboom_repo: https://github.com/YahboomTechnology/DOFBOT-Pro
+official_commit_checked_in_P-002: 57cc4369af73d65188d33e49227650c789779a7e
+official_urdf: not found in that commit
+prior_record: evidence/P-002/model-provenance.txt
+mesh_file: third_party/dofbot-pro-cache/src/dofbot_pro_description/meshes/base_link.STL
+mesh_sha256: 8a6de5576fbd277ffc2d9dbb772bde91d13a7862e93a699e239a1ca3a5fe96ce
+mesh_provenance: bytes match the ballbot Git LFS oid via chrisantuseze/dofbot-controller 142457e307670a4080267bdf6565cde19ff962cc. URDF text is the ballbot snapshot, not that mirror.
+replaced_urdf: no

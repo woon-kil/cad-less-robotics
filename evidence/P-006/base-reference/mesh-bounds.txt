@@ -1,0 +1,17 @@
+file: base_link.STL
+format: binary
+triangles: 128060
+vertices: 384180
+sha256: 8a6de5576fbd277ffc2d9dbb772bde91d13a7862e93a699e239a1ca3a5fe96ce
+frame: URDF visual origin. visual xyz is 0 0 0 and the URDF has no scale element.
+xmin_m: -0.09249952435493469
+xmax_m: 0.09245279431343079
+ymin_m: -0.22149640321731567
+ymax_m: 0.07850000262260437
+zmin_m: -0.014999999664723873
+zmax_m: 0.09780000150203705
+origin_inside_aabb: yes
+arm1_joint_z_m: 0.0895
+arm1_below_zmax_m: 0.008300001502037048
+arm1_above_zmin_m: 0.10449999966472387
+plate_correspondence: NOT PHYSICALLY VERIFIED

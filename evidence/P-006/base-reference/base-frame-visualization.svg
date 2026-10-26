@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="520" viewBox="0 0 980 520">
+  <rect width="980" height="520" fill="#f7f4ee"/>
+  <text x="28" y="36" font-family="sans-serif" font-size="18" fill="#1c1917">base_link mesh AABB, Y horizontal, Z vertical</text>
+  <text x="28" y="58" font-family="sans-serif" font-size="13" fill="#44403c">URDF frame only. The plate correspondence is not physically verified.</text>
+  <rect x="45.6" y="163.5" width="480" height="180.5" fill="#e7e5e4" stroke="#44403c"/>
+  <line x1="400" y1="140" x2="400" y2="380" stroke="#d6d3d1"/>
+  <line x1="30" y1="320" x2="620" y2="320" stroke="#d6d3d1"/>
+  <line x1="400" y1="320" x2="520" y2="320" stroke="#15803d" stroke-width="4"/>
+  <polygon points="520,320 508,314 508,326" fill="#15803d"/>
+  <line x1="400" y1="320" x2="400" y2="150" stroke="#1d4ed8" stroke-width="4"/>
+  <polygon points="400,150 394,162 406,162" fill="#1d4ed8"/>
+  <circle cx="400" cy="320" r="5" fill="#1c1917"/>
+  <circle cx="400" cy="176.8" r="6" fill="#1d4ed8"/>
+  <text x="528" y="324" font-family="sans-serif" font-size="14" fill="#15803d">+Y</text>
+  <text x="410" y="146" font-family="sans-serif" font-size="14" fill="#1d4ed8">+Z</text>
+  <text x="412" y="168" font-family="sans-serif" font-size="13" fill="#1d4ed8">Arm1_Joint z=0.0895 m</text>
+  <text x="660" y="180" font-family="sans-serif" font-size="16" fill="#b91c1c">+X toward the viewer</text>
+  <circle cx="700" cy="210" r="16" fill="none" stroke="#b91c1c" stroke-width="3"/>
+  <circle cx="700" cy="210" r="3" fill="#b91c1c"/>
+  <text x="28" y="430" font-family="sans-serif" font-size="14" fill="#1c1917">Gray box is the base_link.STL vertex AABB in this same frame.</text>
+  <text x="28" y="454" font-family="sans-serif" font-size="14" fill="#1c1917">Y is asymmetric about the origin. X is nearly symmetric and is not drawn as an edge.</text>
+  <text x="28" y="478" font-family="sans-serif" font-size="14" fill="#1c1917">RViz was not captured.</text>
+</svg>

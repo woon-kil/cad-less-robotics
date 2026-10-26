@@ -1,0 +1,18 @@
+<joint
+    name="Arm1_Joint"
+    type="revolute">
+    <origin
+      xyz="0 0 0.0895"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="Arm1_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.5708"
+      upper="1.5708"
+      effort="100"
+      velocity="1" />
+  </joint>
