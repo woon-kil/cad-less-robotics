@@ -23,6 +23,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     ros-humble-moveit \
     && rm -rf /var/lib/apt/lists/*
 
+# jammy libpcl-dev는 pcl_common-1.12.pc처럼 버전 접미사를 붙인다.
+# 상위 PCL과 환경 검사는 접미사 없는 모듈 이름을 조회한다.
+RUN set -eu; \
+    for f in $(dpkg -L libpcl-dev | grep '/pkgconfig/.*\.pc$'); do \
+      dir="$(dirname "$f")"; \
+      name="$(basename "$f" .pc)"; \
+      short="$(printf '%s\n' "$name" | sed -E 's/-[0-9]+(\.[0-9]+)*$//')"; \
+      if [ "$short" != "$name" ] && [ ! -e "${dir}/${short}.pc" ]; then \
+        ln -s "$(basename "$f")" "${dir}/${short}.pc"; \
+      fi; \
+    done
+
 # base 이미지가 rosdep을 이미 초기화한다. 없을 때만 init 하고, 기존 DB는 지우지 않는다.
 RUN if [ ! -f /etc/ros/rosdep/sources.list.d/20-default.list ]; then \
       rosdep init; \
