@@ -1,0 +1,14 @@
+normal_count 31555
+finite_normals 31555
+invalid_normals 0
+normal_length_mean 1.0000000000539628
+normal_length_min 0.99999995164238398
+normal_length_max 1.0000000482588003
+surface_nan 0
+surface_inf 0
+unexpected_normal_flips 3
+hemisphere_violations 0
+min_adjacent_dot -0.83315405710049384
+mean_adjacent_dot 0.96761339946784186
+p05_adjacent_dot 0.87783059085951431
+max_adjacent_angle_deg 146.42411244447976

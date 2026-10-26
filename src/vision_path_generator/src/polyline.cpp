@@ -180,6 +180,22 @@ std::vector<Vec3> smoothOpenPolyline(const std::vector<Vec3>& input, int passes)
   return current;
 }
 
+Vec3 orientNormalTowardsViewpoint(const Vec3& point, const Vec3& normal, const Vec3& viewpoint) {
+  if (!finite(point) || !finite(normal) || !finite(viewpoint)) {
+    return Vec3{};
+  }
+  const double length = norm(normal);
+  if (length < 1e-9) {
+    return Vec3{};
+  }
+  Vec3 unit = normal * (1.0 / length);
+  const Vec3 to_viewpoint = viewpoint - point;
+  if (dot(unit, to_viewpoint) < 0.0) {
+    unit = unit * -1.0;
+  }
+  return unit;
+}
+
 Quat orientationFromTangentAndNormal(const Vec3& tangent_in, const Vec3& outward_normal_in) {
   Eigen::Vector3d tool_z(outward_normal_in.x, outward_normal_in.y, outward_normal_in.z);
   if (tool_z.norm() < 1e-9) {

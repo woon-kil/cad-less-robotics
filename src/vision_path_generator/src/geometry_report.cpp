@@ -32,6 +32,8 @@ struct SpacingStats {
   double max_abs_error{0.0};
   bool has_remainder{false};
   double remainder{0.0};
+  std::size_t outlier_index{0};
+  double outlier_gap{0.0};
 };
 
 struct OrientationStats {
@@ -46,6 +48,10 @@ struct OrientationStats {
   double p95_error_deg{0.0};
   double max_error_deg{0.0};
   bool recorded{false};
+  double min_adjacent_dot{0.0};
+  double mean_adjacent_dot{0.0};
+  double p05_adjacent_dot{0.0};
+  double max_adjacent_angle_deg{0.0};
 };
 
 std::map<std::string, std::string> readMeta(const std::string& path) {
@@ -137,13 +143,18 @@ SpacingStats spacingOf(const std::vector<vision_path_generator::Waypoint>& waypo
   stats.min = internal.front();
   stats.max = internal.front();
   stats.max_abs_error = 0.0;
-  for (const double gap : internal) {
+  for (std::size_t index = 0; index < internal.size(); ++index) {
+    const double gap = internal[index];
     sum += gap;
     const double abs_error = std::abs(gap - kTargetSpacing);
     abs_sum += abs_error;
     stats.min = std::min(stats.min, gap);
     stats.max = std::max(stats.max, gap);
-    stats.max_abs_error = std::max(stats.max_abs_error, abs_error);
+    if (abs_error >= stats.max_abs_error) {
+      stats.max_abs_error = abs_error;
+      stats.outlier_index = index;
+      stats.outlier_gap = gap;
+    }
   }
   stats.mean = sum / static_cast<double>(internal.size());
   stats.mean_abs_error = abs_sum / static_cast<double>(internal.size());
@@ -162,13 +173,14 @@ OrientationStats orientationOf(
     const std::vector<vision_path_generator::Waypoint>& waypoints,
     const vision_path_generator::ExtractResult& result) {
   OrientationStats stats;
+  (void)result;
   if (waypoints.empty()) {
     return stats;
   }
   std::vector<double> errors;
+  std::vector<double> adjacent;
   errors.reserve(waypoints.size());
-  const vision_path_generator::Vec3 plane{
-      result.plane_a, result.plane_b, result.plane_c};
+  adjacent.reserve(waypoints.size());
   for (std::size_t index = 0; index < waypoints.size(); ++index) {
     const auto& waypoint = waypoints[index];
     const auto& quat = waypoint.orientation;
@@ -194,13 +206,21 @@ OrientationStats orientationOf(
     }
     const double normal_norm = vision_path_generator::norm(waypoint.normal);
     if (normal_norm < 1e-8) {
+      ++stats.hemisphere_violations;
       continue;
     }
-    if (result.plane_oriented && vision_path_generator::dot(waypoint.normal, plane) < 0.0) {
+    const vision_path_generator::Vec3 to_viewpoint{
+        -waypoint.position.x, -waypoint.position.y, -waypoint.position.z};
+    if (vision_path_generator::dot(waypoint.normal, to_viewpoint) < 0.0) {
       ++stats.hemisphere_violations;
     }
-    if (index > 0 && vision_path_generator::dot(waypoints[index - 1].normal, waypoint.normal) < 0.0) {
-      ++stats.normal_flips;
+    if (index > 0) {
+      const double adjacent_dot =
+          vision_path_generator::dot(waypoints[index - 1].normal, waypoint.normal);
+      adjacent.push_back(adjacent_dot);
+      if (adjacent_dot < 0.0) {
+        ++stats.normal_flips;
+      }
     }
     const auto tool_z = vision_path_generator::rotateVector(quat, {0.0, 0.0, 1.0});
     const auto expected = waypoint.normal * -1.0;
@@ -223,6 +243,22 @@ OrientationStats orientationOf(
     const auto p95_index = static_cast<std::size_t>(std::ceil(0.95 * static_cast<double>(errors.size()))) - 1;
     stats.p95_error_deg = errors[std::min(p95_index, errors.size() - 1)];
     stats.recorded = true;
+  }
+  if (!adjacent.empty()) {
+    double sum = 0.0;
+    for (const double value : adjacent) {
+      sum += value;
+    }
+    stats.mean_adjacent_dot = sum / static_cast<double>(adjacent.size());
+    std::sort(adjacent.begin(), adjacent.end());
+    stats.min_adjacent_dot = adjacent.front();
+    const double p05_pos = 0.05 * static_cast<double>(adjacent.size() - 1);
+    const auto p05_index = static_cast<std::size_t>(std::floor(p05_pos));
+    const double p05_frac = p05_pos - static_cast<double>(p05_index);
+    const double upper = adjacent[std::min(p05_index + 1, adjacent.size() - 1)];
+    stats.p05_adjacent_dot = adjacent[p05_index] * (1.0 - p05_frac) + upper * p05_frac;
+    const double cosine = std::clamp(stats.min_adjacent_dot, -1.0, 1.0);
+    stats.max_adjacent_angle_deg = std::acos(cosine) * (180.0 / kPi);
   }
   return stats;
 }
@@ -332,6 +368,8 @@ int main(int argc, char** argv) {
   const auto& primary = runs.front();
   const auto spacing = spacingOf(primary.waypoints);
   const auto orientation = orientationOf(primary.waypoints, primary);
+  const auto orientation_run2 = orientationOf(runs[1].waypoints, runs[1]);
+  const auto orientation_run3 = orientationOf(runs[2].waypoints, runs[2]);
   const bool deterministic = sameRun(runs[0], runs[1]) && sameRun(runs[1], runs[2]);
   const bool spacing_measured = spacing.internal_count > 0;
   const bool spacing_pass =
@@ -342,6 +380,10 @@ int main(int argc, char** argv) {
                              primary.object_points > 0 && primary.surface_nan == 0 &&
                              primary.surface_inf == 0 && primary.finite_normals > 0 &&
                              primary.invalid_normals == 0 && orientation.normal_flips == 0 &&
+                             orientation_run2.normal_flips == 0 && orientation_run3.normal_flips == 0 &&
+                             orientation.hemisphere_violations == 0 &&
+                             orientation_run2.hemisphere_violations == 0 &&
+                             orientation_run3.hemisphere_violations == 0 &&
                              primary.raw_path_length > 0.0 && primary.waypoints.size() > 1 &&
                              spacing_pass && orientation.invalid_quaternion == 0 &&
                              orientation.quaternion_flips == 0 && orientation.recorded && deterministic;
@@ -362,6 +404,8 @@ int main(int argc, char** argv) {
   parameters << "max_plane_inlier_ratio: " << params.max_plane_inlier_ratio << "\n";
   parameters << "min_height: " << params.min_height << "\n";
   parameters << "normal_k: " << params.normal_k << "\n";
+  parameters << "normal_viewpoint: [0.0, 0.0, 0.0]\n";
+  parameters << "normal_orientation: viewpoint\n";
   parameters << "boundary_radius: " << params.boundary_radius << "\n";
   parameters << "waypoint_spacing: " << params.waypoint_spacing << "\n";
   parameters << "max_segment_gap: " << params.max_segment_gap << "\n";
@@ -428,7 +472,13 @@ int main(int argc, char** argv) {
   json << "    \"surface_nan_coordinates\": " << primary.surface_nan << ",\n";
   json << "    \"surface_inf_coordinates\": " << primary.surface_inf << ",\n";
   json << "    \"consecutive_negative_dots\": " << orientation.normal_flips << ",\n";
-  json << "    \"hemisphere_violations\": " << orientation.hemisphere_violations << "\n";
+  json << "    \"hemisphere_violations\": " << orientation.hemisphere_violations << ",\n";
+  json << "    \"viewpoint\": [0.0, 0.0, 0.0],\n";
+  json << "    \"hemisphere_rule\": \"n · (viewpoint - point) >= 0\",\n";
+  json << "    \"min_adjacent_dot\": " << jsonNumber(orientation.min_adjacent_dot) << ",\n";
+  json << "    \"mean_adjacent_dot\": " << jsonNumber(orientation.mean_adjacent_dot) << ",\n";
+  json << "    \"p05_adjacent_dot\": " << jsonNumber(orientation.p05_adjacent_dot) << ",\n";
+  json << "    \"max_adjacent_angle_deg\": " << jsonNumber(orientation.max_adjacent_angle_deg) << "\n";
   json << "  },\n";
   json << "  \"path\": {\n";
   json << "    \"mode\": \"" << jsonEscape(primary.method) << "\",\n";
@@ -471,7 +521,9 @@ int main(int argc, char** argv) {
        << ", " << runs[2].waypoints.size() << "],\n";
   json << "    \"path_lengths_m\": [" << jsonNumber(runs[0].raw_path_length) << ", "
        << jsonNumber(runs[1].raw_path_length) << ", " << jsonNumber(runs[2].raw_path_length) << "],\n";
-  json << "    \"fingerprints_equal\": " << (deterministic ? "true" : "false") << "\n";
+  json << "    \"fingerprints_equal\": " << (deterministic ? "true" : "false") << ",\n";
+  json << "    \"normal_flips\": [" << orientation.normal_flips << ", " << orientation_run2.normal_flips
+       << ", " << orientation_run3.normal_flips << "]\n";
   json << "  },\n";
   json << "  \"timing_ms\": {\n";
   json << "    \"voxel_ms\": " << jsonNumber(primary.voxel_ms) << ",\n";
@@ -526,7 +578,12 @@ int main(int argc, char** argv) {
     body << "surface_inf " << primary.surface_inf << "\n";
     body << "unexpected_normal_flips " << orientation.normal_flips << "\n";
     body << "hemisphere_violations " << orientation.hemisphere_violations << "\n";
+    body << "min_adjacent_dot " << orientation.min_adjacent_dot << "\n";
+    body << "mean_adjacent_dot " << orientation.mean_adjacent_dot << "\n";
+    body << "p05_adjacent_dot " << orientation.p05_adjacent_dot << "\n";
+    body << "max_adjacent_angle_deg " << orientation.max_adjacent_angle_deg << "\n";
     write_text("normals.txt", body.str());
+    write_text("normals-after.txt", body.str());
   }
   {
     std::ostringstream body;
@@ -566,8 +623,58 @@ int main(int argc, char** argv) {
     body << "mean_error_deg " << orientation.mean_error_deg << "\n";
     body << "p95_error_deg " << orientation.p95_error_deg << "\n";
     body << "max_error_deg " << orientation.max_error_deg << "\n";
+    body << "hemisphere_violations " << orientation.hemisphere_violations << "\n";
     write_text("orientation.txt", body.str());
+    write_text("orientation-after.txt", body.str());
   }
+  {
+    std::ostringstream body;
+    body << std::setprecision(17);
+    body << "index,dot,angle_deg,camera_facing_i,camera_facing_next\n";
+    for (std::size_t index = 1; index < primary.waypoints.size(); ++index) {
+      const auto& previous = primary.waypoints[index - 1];
+      const auto& current = primary.waypoints[index];
+      const double adjacent_dot = vision_path_generator::dot(previous.normal, current.normal);
+      const double angle = std::acos(std::clamp(adjacent_dot, -1.0, 1.0)) * (180.0 / kPi);
+      const auto facing = [](const vision_path_generator::Waypoint& waypoint) {
+        const vision_path_generator::Vec3 to_viewpoint{
+            -waypoint.position.x, -waypoint.position.y, -waypoint.position.z};
+        return vision_path_generator::dot(waypoint.normal, to_viewpoint) >= 0.0 ? 1 : -1;
+      };
+      body << (index - 1) << ',' << adjacent_dot << ',' << angle << ',' << facing(previous) << ','
+           << facing(current) << '\n';
+    }
+    write_text("normal-continuity-after.csv", body.str());
+  }
+  {
+    std::ostringstream body;
+    body << std::setprecision(17);
+    body << "outlier_index " << spacing.outlier_index << "\n";
+    body << "gap_m " << spacing.outlier_gap << "\n";
+    body << "abs_error_m " << spacing.max_abs_error << "\n";
+    const auto point = [](const vision_path_generator::Vec3& value) {
+      std::ostringstream text;
+      text << std::setprecision(17) << value.x << " " << value.y << " " << value.z;
+      return text.str();
+    };
+    if (spacing.outlier_index + 1 < primary.waypoints.size()) {
+      const std::size_t index = spacing.outlier_index;
+      body << "previous " << (index > 0 ? point(primary.waypoints[index - 1].position) : "none") << "\n";
+      body << "current " << point(primary.waypoints[index].position) << "\n";
+      body << "next " << point(primary.waypoints[index + 1].position) << "\n";
+    }
+    write_text("spacing-outlier.txt", body.str());
+  }
+  write_text(
+      "normal-orientation-rule.txt",
+      "viewpoint 0 0 0\n"
+      "frame camera_depth_optical_frame\n"
+      "hemisphere_rule n · (viewpoint - point) >= 0\n"
+      "outward camera-facing side of the visible surface\n"
+      "tool_axis +Z = -outward normal\n"
+      "roll path tangent projected orthogonal to tool +Z\n"
+      "plane_normal_sign_alignment not used\n"
+      "neighbor_sign_propagation not used\n");
   {
     std::ostringstream body;
     body << std::setprecision(17);
@@ -577,6 +684,10 @@ int main(int argc, char** argv) {
          << runs[2].waypoints.size() << "\n";
     body << "path_lengths_m " << runs[0].raw_path_length << " " << runs[1].raw_path_length << " "
          << runs[2].raw_path_length << "\n";
+    body << "normal_flips " << orientation.normal_flips << " " << orientation_run2.normal_flips << " "
+         << orientation_run3.normal_flips << "\n";
+    body << "hemisphere_violations " << orientation.hemisphere_violations << " "
+         << orientation_run2.hemisphere_violations << " " << orientation_run3.hemisphere_violations << "\n";
     write_text("determinism.txt", body.str());
   }
   {

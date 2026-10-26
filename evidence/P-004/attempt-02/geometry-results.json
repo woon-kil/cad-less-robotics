@@ -1,0 +1,109 @@
+{
+  "status": "FAIL",
+  "frame": "camera_depth_optical_frame",
+  "error": "",
+  "input": {
+    "topic": "/camera/depth/points",
+    "frame_id": "camera_depth_optical_frame",
+    "stamp_sec": 1792995971,
+    "stamp_nanosec": 582898000,
+    "width": 254957,
+    "height": 1,
+    "fields": "x:7:1,y:7:1,z:7:1",
+    "sha256": "09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60",
+    "loaded_points": 254957,
+    "finite_points": 254957
+  },
+  "filtering": {
+    "input": 254957,
+    "finite": 254957,
+    "after_voxel": 128602,
+    "voxel_index_fallback": true,
+    "after_outlier": 128132,
+    "plane_inliers": 41208,
+    "after_plane_removal": 86924,
+    "after_height": 84348,
+    "surface_points": 31555
+  },
+  "plane": {
+    "valid": true,
+    "oriented_toward_object": true,
+    "a": 0.0492518294983528,
+    "b": -0.16704475008147307,
+    "c": -0.98471839058752397,
+    "d": 0.97604728613193159,
+    "inliers": 41208,
+    "inlier_ratio": 0.32160584397340242,
+    "remaining": 86924
+  },
+  "normals": {
+    "count": 31555,
+    "finite": 31555,
+    "invalid": 0,
+    "length_mean": 1.0000000000539628,
+    "length_min": 0.99999995164238398,
+    "length_max": 1.0000000482588003,
+    "surface_nan_coordinates": 0,
+    "surface_inf_coordinates": 0,
+    "consecutive_negative_dots": 3,
+    "hemisphere_violations": 0,
+    "viewpoint": [0.0, 0.0, 0.0],
+    "hemisphere_rule": "n · (viewpoint - point) >= 0",
+    "min_adjacent_dot": -0.83315405710049384,
+    "mean_adjacent_dot": 0.96761339946784186,
+    "p05_adjacent_dot": 0.87783059085951431,
+    "max_adjacent_angle_deg": 146.42411244447976
+  },
+  "path": {
+    "mode": "boundary",
+    "requested_mode": "boundary",
+    "raw_points": 573,
+    "length_m": 1.7537877446544481,
+    "closed": false,
+    "endpoint_gap_m": 0.36898717185540247
+  },
+  "spacing": {
+    "target_spacing_m": 0.002,
+    "internal_segment_count": 671,
+    "mean_spacing_m": 0.0019526813438595124,
+    "std_spacing_m": 0.00013261315421247513,
+    "min_spacing_m": 0.00040948138113350887,
+    "max_spacing_m": 0.0020000000000001093,
+    "mean_abs_error_m": 4.7318656140493937e-05,
+    "max_abs_error_m": 0.0015905186188664912,
+    "remainder_m": 0.0013357134610460935,
+    "mean_error_within_0_25mm": true
+  },
+  "orientation": {
+    "tool_axis": "+Z",
+    "approach": "tool +Z equals the negated outward surface normal",
+    "roll": "path tangent projected onto the plane perpendicular to tool +Z",
+    "invalid_quaternion": 0,
+    "zero_quaternion": 0,
+    "bad_norm": 0,
+    "non_finite": 0,
+    "quaternion_sign_flips": 0,
+    "mean_error_deg": 6.0330397692472604e-08,
+    "p95_error_deg": 8.5377364625159387e-07,
+    "max_error_deg": 1.2074182697257333e-06,
+    "recorded": true
+  },
+  "determinism": {
+    "runs": 3,
+    "equal": true,
+    "waypoint_counts": [673, 673, 673],
+    "path_lengths_m": [1.7537877446544481, 1.7537877446544481, 1.7537877446544481],
+    "fingerprints_equal": true,
+    "normal_flips": [3, 3, 3]
+  },
+  "timing_ms": {
+    "voxel_ms": 42.188966000000001,
+    "outlier_ms": 339.45462700000002,
+    "plane_ms": 194.07294999999999,
+    "normal_ms": 70.908373999999995,
+    "path_ms": 271.71213,
+    "waypoint_ms": 3.473157,
+    "total_ms": 1307.8754449999999,
+    "run_totals_ms": [1307.8754449999999, 1292.8134090000001, 1286.137365]
+  }
+}

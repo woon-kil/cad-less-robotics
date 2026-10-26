@@ -94,6 +94,42 @@ TEST(Orientation, ToolAxesFollowNormalAndTangent) {
   EXPECT_NEAR(handed.z, tool_z.z, 1e-9);
 }
 
+TEST(NormalOrientation, FlipsANormalThatPointsAwayFromTheViewpoint) {
+  const auto oriented = vision_path_generator::orientNormalTowardsViewpoint(
+      {0.0, 0.0, 1.0}, {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0});
+  EXPECT_NEAR(oriented.x, 0.0, 1e-12);
+  EXPECT_NEAR(oriented.y, 0.0, 1e-12);
+  EXPECT_NEAR(oriented.z, -1.0, 1e-12);
+}
+
+TEST(NormalOrientation, KeepsANormalThatAlreadyFacesTheViewpoint) {
+  const auto oriented = vision_path_generator::orientNormalTowardsViewpoint(
+      {0.0, 0.0, 1.0}, {0.0, 0.0, -2.0}, {0.0, 0.0, 0.0});
+  EXPECT_NEAR(oriented.x, 0.0, 1e-12);
+  EXPECT_NEAR(oriented.y, 0.0, 1e-12);
+  EXPECT_NEAR(oriented.z, -1.0, 1e-12);
+}
+
+TEST(NormalOrientation, RejectsANonFiniteOrZeroNormal) {
+  const auto invalid = vision_path_generator::orientNormalTowardsViewpoint(
+      {0.0, 0.0, 1.0}, {0.0, 0.0, 0.0}, {0.0, 0.0, 0.0});
+  EXPECT_NEAR(invalid.x, 0.0, 1e-12);
+  EXPECT_NEAR(invalid.y, 0.0, 1e-12);
+  EXPECT_NEAR(invalid.z, 0.0, 1e-12);
+}
+
+TEST(NormalOrientation, DoesNotPropagateAcrossACameraFacingCorner) {
+  const vision_path_generator::Vec3 viewpoint{0.0, 0.0, 0.0};
+  const vision_path_generator::Vec3 point{0.2, 0.0, 1.0};
+  const auto left = vision_path_generator::orientNormalTowardsViewpoint(
+      point, {-1.0, 0.0, -0.3}, viewpoint);
+  const auto right = vision_path_generator::orientNormalTowardsViewpoint(
+      point, {1.0, 0.0, -0.3}, viewpoint);
+  EXPECT_LT(vision_path_generator::dot(left, point), 0.0);
+  EXPECT_LT(vision_path_generator::dot(right, point), 0.0);
+  EXPECT_LT(vision_path_generator::dot(left, right), 0.0);
+}
+
 TEST(Orientation, FlipsQuaternionToTheSameHemisphere) {
   std::vector<vision_path_generator::Quat> orientations{{0.0, 0.0, 0.0, 1.0}, {0.0, 0.0, 0.0, -1.0}};
   vision_path_generator::alignQuaternionHemisphere(orientations);

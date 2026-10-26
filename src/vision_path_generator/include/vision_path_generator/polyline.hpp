@@ -55,6 +55,10 @@ std::vector<Vec3> smoothOpenPolyline(const std::vector<Vec3>& input, int passes)
 // 툴 +Z는 표면 밖 법선의 반대(소재 쪽)다. 툴 +X는 경로 접선이다.
 Quat orientationFromTangentAndNormal(const Vec3& tangent, const Vec3& outward_normal);
 
+// n · (viewpoint - point) >= 0 이 되도록 단위 법선의 부호를 고른다.
+// 이웃 법선을 보지 않는다. 법선이 0이거나 값이 유한하지 않으면 0을 반환한다.
+Vec3 orientNormalTowardsViewpoint(const Vec3& point, const Vec3& normal, const Vec3& viewpoint);
+
 Vec3 rotateVector(const Quat& orientation, const Vec3& vector);
 void alignQuaternionHemisphere(std::vector<Quat>& orientations);
 

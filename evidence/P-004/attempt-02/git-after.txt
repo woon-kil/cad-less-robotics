@@ -1,0 +1,4 @@
+TESTED_COMMIT=NONE
+FINAL_COMMIT=PENDING
+Working tree at evidence write: viewpoint normal orientation, four unit tests, attempt-02 evidence.
+Attempt #1 files were not overwritten.

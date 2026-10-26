@@ -1,0 +1,27 @@
+Attempt #1의 19개 negative adjacent dot은 한 종류의 오류가 아니다.
+
+측정:
+- 연속 법선 내적이 음수인 쌍 19개. 각은 97.8° 1개, 나머지 18개는 139°–174°.
+- 카메라 원점 (0,0,0) 기준 n · (viewpoint - point) < 0 인 waypoint는 26개다.
+- 그 26개는 길이 1, 6, 1, 1, 3, 3, 2, 3, 6인 짧은 구간이다. normal-segments-before.csv.
+- 길이 138(329–466)과 119(470–588) 구간은 camera_facing이다. 반대 hemisphere를 고른 긴 반전 구간이 아니다.
+- 첫 법선 부호를 경로를 따라 전파하면 이 긴 camera_facing 구간까지 뒤집힌다. 그 전파는 적용하지 않았다.
+
+코드:
+- PCL 1.12 NormalEstimation 생성자는 viewpoint (0,0,0), use_sensor_origin_ true다.
+- setInputCloud는 use_sensor_origin_일 때 sensor_origin_을 viewpoint로 복사한다.
+- compute는 n · (viewpoint - point) < 0 이면 법선을 뒤집는다.
+- 그 다음 alignNormals가 dot(normal, plane.normal) < 0 인 법선을 다시 뒤집었다.
+- 이 snapshot의 평면 법선은 (0.04925, -0.16704, -0.98472)로 카메라 쪽(-Z)이다.
+- 측면처럼 카메라로 향하는 수평 성분이 크고 평면 법선과의 내적이 음수인 점에서, 평면 반구 정렬이 카메라 방향을 180° 되돌렸다.
+- 되돌려진 짧은 구간의 경계가 18개 negative dot이다.
+
+남은 3개:
+- index 311, dot -0.136, 97.8°. 양쪽 다 camera_facing이고 뒤 구간이 그 방향을 유지한다. 모서리 회전이다.
+- index 43과 44, dot -0.691 / -0.833, 133.7° / 146.4°. waypoint 44 하나가 양쪽 이웃과 다르고, 그 법선도 camera_facing이다.
+- 44를 뒤집으면 n · (viewpoint - point)가 음수가 된다. 이웃 전파와 법선 smoothing은 하지 않았다.
+
+수정:
+- 표면 법선 부호는 추정 뒤 n · ((0,0,0) - point) >= 0 으로만 고른다.
+- setViewPoint(0,0,0)를 setInputCloud 다음에 호출한다.
+- 평면 법선 부호는 작업면 제거에만 남긴다.

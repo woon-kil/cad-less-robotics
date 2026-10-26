@@ -1,0 +1,15 @@
+snapshot sha256 09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60
+same_file true
+
+surface_points 31555 31555
+raw_path_points 573 573
+path_length_m 1.7537877446544481 1.7537877446544481
+waypoints 673 673
+mean_spacing_m 0.0019526813438595124 0.0019526813438595124
+mean_abs_error_m 4.7318656140493937e-05 4.7318656140493937e-05
+max_position_delta_m 0
+normals_changed 26
+max_normal_delta 2.000000030299336
+negative_adjacent_dots 19 3
+
+위치와 경로 길이는 attempt #1과 같다. 바뀐 26개 법선은 180° 부호 변경이다.

@@ -375,6 +375,8 @@ pcl::PointCloud<pcl::Normal>::Ptr estimateNormals(
   estimator.setInputCloud(cloud);
   estimator.setSearchMethod(tree);
   estimator.setKSearch(k);
+  // setInputCloud가 sensor_origin_을 viewpoint로 덮어 쓰므로, 그 다음에 카메라 원점을 고정한다.
+  estimator.setViewPoint(0.f, 0.f, 0.f);
   auto normals = pcl::PointCloud<pcl::Normal>::Ptr(new pcl::PointCloud<pcl::Normal>);
   estimator.compute(*normals);
   if (normals->size() != cloud->size()) {
@@ -384,22 +386,20 @@ pcl::PointCloud<pcl::Normal>::Ptr estimateNormals(
   return normals;
 }
 
-void alignNormals(pcl::PointCloud<pcl::Normal>& normals, const Plane& plane) {
-  for (auto& normal : normals.points) {
-    Eigen::Vector3d vector(normal.normal_x, normal.normal_y, normal.normal_z);
-    if (!std::isfinite(vector.x()) || vector.norm() < 1e-9) {
-      normal.normal_x = 0.f;
-      normal.normal_y = 0.f;
-      normal.normal_z = 0.f;
-      continue;
-    }
-    if (vector.dot(plane.normal) < 0.0) {
-      vector = -vector;
-    }
-    vector.normalize();
-    normal.normal_x = static_cast<float>(vector.x());
-    normal.normal_y = static_cast<float>(vector.y());
-    normal.normal_z = static_cast<float>(vector.z());
+void orientNormalsTowardsCamera(
+    const pcl::PointCloud<pcl::PointXYZ>& cloud, pcl::PointCloud<pcl::Normal>& normals) {
+  const Vec3 viewpoint{0.0, 0.0, 0.0};
+  const std::size_t count = std::min(cloud.size(), normals.size());
+  for (std::size_t index = 0; index < count; ++index) {
+    const auto& point = cloud[index];
+    const auto& source = normals[index];
+    const Vec3 oriented = orientNormalTowardsViewpoint(
+        Vec3{point.x, point.y, point.z},
+        Vec3{source.normal_x, source.normal_y, source.normal_z},
+        viewpoint);
+    normals[index].normal_x = static_cast<float>(oriented.x);
+    normals[index].normal_y = static_cast<float>(oriented.y);
+    normals[index].normal_z = static_cast<float>(oriented.z);
   }
 }
 
@@ -542,19 +542,21 @@ std::vector<Waypoint> buildWaypoints(
     query.z = static_cast<float>(samples[index].z);
     std::vector<int> ids(1);
     std::vector<float> distance(1);
-    Eigen::Vector3d normal = plane.normal;
+    Vec3 used{plane.normal.x(), plane.normal.y(), plane.normal.z()};
+    bool from_surface = false;
     if (tree.nearestKSearch(query, 1, ids, distance) > 0) {
       const auto& source = normals->at(static_cast<std::size_t>(ids[0]));
-      Eigen::Vector3d candidate(source.normal_x, source.normal_y, source.normal_z);
-      if (candidate.norm() > 1e-6 && std::isfinite(candidate.x())) {
-        normal = candidate.normalized();
-      } else {
-        ++missing_normals;
+      const Vec3 candidate{source.normal_x, source.normal_y, source.normal_z};
+      if (norm(candidate) > 1e-6 && std::isfinite(candidate.x) && std::isfinite(candidate.y) &&
+          std::isfinite(candidate.z)) {
+        used = candidate;
+        from_surface = true;
       }
-    } else {
-      ++missing_normals;
     }
-    const Vec3 used{normal.x(), normal.y(), normal.z()};
+    if (!from_surface) {
+      ++missing_normals;
+      used = orientNormalTowardsViewpoint(samples[index], used, Vec3{0.0, 0.0, 0.0});
+    }
     used_normals.push_back(used);
     orientations.push_back(orientationFromTangentAndNormal(tangent, used));
   }
@@ -685,7 +687,7 @@ ExtractResult PathExtractor::extract(const pcl::PointCloud<pcl::PointXYZ>::Const
     if (!normals) {
       return finish();
     }
-    alignNormals(*normals, plane);
+    orientNormalsTowardsCamera(*object, *normals);
     recordNormalStats(*normals, result);
 
     std::vector<Vec3> polyline;

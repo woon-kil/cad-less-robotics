@@ -1,0 +1,31 @@
+P-004 attempt #2. Attempt #1 files stay in evidence/P-004/.
+
+README.md 2918
+changed-files.txt 1194
+determinism.txt 401
+filtering.txt 166
+geometry-regression.txt 545
+geometry-results.json 3304
+git-after.txt 179
+git-before.txt 127
+manifest.txt 676
+normal-continuity-after.csv 30022
+normal-flips-before.csv 6341
+normal-orientation-rule.txt 298
+normal-segments-before.csv 1911
+normals-after.txt 404
+normals.txt 404
+orientation-after.txt 304
+orientation.txt 304
+parameters.yaml 491
+path.svg 378156
+path.txt 148
+plane.txt 264
+regression-test.log 9008
+root-cause.txt 1971
+spacing-outlier.txt 287
+spacing.txt 339
+timing.txt 182
+waypoints-run2.csv 154357
+waypoints-run3.csv 154357
+waypoints.csv 154357
