@@ -1,0 +1,21 @@
+host: p620
+observed_at: 2026-10-26T19:20:25+09:00
+dofbot_usb_device: ABSENT
+
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 002 Device 008: ID 2bc5:0804 Orbbec 3D Technology International, Inc Orbbec Gemini 335L
+Bus 003 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 003 Device 002: ID 17aa:104d Generic Realtek USB Audio Front
+Bus 003 Device 003: ID 17aa:1046 Generic Realtek USB Audio Rear
+Bus 004 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 005 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 006 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 007 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+Bus 008 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+
+lsusb -t:
+Bus 002 Port 001 Dev 008 is the Gemini 335L, 5000M, uvcvideo plus usbhid.
+No other non-hub device is on the buses.
+
+Gemini 335L is not the DOFBOT.

@@ -1,0 +1,18 @@
+JB-01 FAIL  DOFBOT USB 또는 시리얼 장치가 없다
+JB-02 PASS  팔 드라이버는 없고 P-002 모델과 그리퍼 mimic만 기록했다
+JB-03 FAIL  read-only joint state를 받지 못했다
+JB-04 FAIL  Arm1 raw와 radian이 없다
+JB-05 FAIL  hardware에서 Arm1_Joint로 가는 mapping을 만들지 않았다
+JB-06 FAIL  sign 근거가 없다
+JB-07 FAIL  Arm1 offset 근거가 없다
+JB-08 FAIL  unit conversion 근거가 없다
+JB-09 PASS  zero reference를 찾았고 결과는 NOT VERIFIED 다
+JB-10 FAIL  joint state가 없어 10초 관측을 시작하지 않았다
+JB-11 PASS  robot motion 0
+JB-12 PASS  joint command 0
+JB-13 PASS  trajectory command 0
+JB-14 PASS  T_base_target 0
+JB-15 PASS  T_base_camera 0
+JB-16 PASS  P-007을 시작하지 않았다
+OVERALL BLOCKED
+ZERO_REFERENCE NOT VERIFIED

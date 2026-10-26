@@ -1,0 +1,11 @@
+mapping_established: false
+reason: no connected DOFBOT and no arm driver source
+hardware_joint: null
+urdf_joint: Arm1_Joint
+sign: null
+offset: null
+scale: null
+unit: null
+zero_reference: NOT VERIFIED
+gripper_mimic_offsets_are_not_arm1: true
+source_created_without_config: false

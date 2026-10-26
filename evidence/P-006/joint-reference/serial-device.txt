@@ -1,0 +1,9 @@
+host: p620
+observed_at: 2026-10-26T19:20:25+09:00
+
+/dev/serial/by-id: absent
+/dev/serial/by-path: absent
+/dev/ttyUSB*: absent
+/dev/ttyACM*: absent
+
+No device path was guessed.

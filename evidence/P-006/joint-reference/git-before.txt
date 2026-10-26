@@ -1,0 +1,2 @@
+BASE_COMMIT=c2f1b0ca17ba744cdefa7ab8823e77c63420f04f
+THIS_COMMIT_SCOPE=evidence/P-006/joint-reference and evidence/P-006/base-reference/diagnosis-close.md

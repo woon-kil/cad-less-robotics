@@ -1,0 +1,2 @@
+evidence/P-006/joint-reference/
+evidence/P-006/base-reference/diagnosis-close.md

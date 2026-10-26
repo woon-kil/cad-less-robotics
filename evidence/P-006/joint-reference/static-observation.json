@@ -1,0 +1,13 @@
+{
+  "started": false,
+  "reason": "no DOFBOT serial device and no /joint_states publisher",
+  "observed_at": "2026-10-26T19:20:25+09:00",
+  "duration_sec": null,
+  "message_count": 0,
+  "frequency_hz": null,
+  "arm1_min": null,
+  "arm1_max": null,
+  "arm1_mean": null,
+  "arm1_range": null,
+  "motion_test": false
+}

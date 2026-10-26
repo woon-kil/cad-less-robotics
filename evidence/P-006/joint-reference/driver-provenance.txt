@@ -1,0 +1,21 @@
+hardware_driver: ABSENT
+node_launched: no
+protocol: none
+
+P-002 planning model, not a hardware driver:
+repository: https://github.com/atticusrussell/ballbot
+commit: 906da9f9120c056dd0c8766fe1a72e72a086061c
+packages_on_p620:
+  dofbot_pro_description
+  dofbot_pro_moveit
+urdf: DOFBOT_Pro-V24.urdf
+
+The p620 cache has no arm driver package. The only extra URDF is
+third_party/dofbot-pro-cache/DOFBOT_Pro-V24.hardware.urdf.
+Its five offset="0" entries are gripper mimic joints
+rlink_joint2, llink_joint1, llink_joint2, rlink_joint3, llink_joint3,
+all mimicking grip_joint. They are not an Arm1 hardware offset.
+
+bytesize-robotics-humble was already running. ros2 topic list showed
+/parameter_events and /rosout only. /joint_states had no publisher.
+No read API was called.
