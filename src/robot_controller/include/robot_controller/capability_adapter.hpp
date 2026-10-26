@@ -132,4 +132,77 @@ PlanningAttachment attachPlanning(
     const SealedProjection& sealed, double fraction, int trajectory_points, bool collision_clear,
     bool limits_clear, bool velocity_clear, double min_fraction);
 
+// 0.05 rad. 0.5 rad branch 문턱의 1/10이고, Attempt #3 최대 관절 간격 0.4 rad를 8구간으로 나눈다.
+// Attempt #5 결과를 보고 바꾸지 않는다.
+constexpr double kMaxJointInterpolationStepRad = 0.05;
+
+// motion_planner_node::retime과 같다. 새 속도 스케줄러가 아니다.
+constexpr double kJointVelocityCapRadS = 0.4;
+constexpr double kJointTimeStepFloorSec = 0.05;
+
+constexpr char kJointTrajectoryFeasible[] = "JOINT_TRAJECTORY_FEASIBLE";
+constexpr char kJointLimitFailure[] = "JOINT_LIMIT_FAILURE";
+constexpr char kCollisionFailure[] = "COLLISION_FAILURE";
+constexpr char kVelocityFailure[] = "VELOCITY_FAILURE";
+constexpr char kContinuityFailure[] = "CONTINUITY_FAILURE";
+constexpr char kTimeParameterizationFailure[] = "TIME_PARAMETERIZATION_FAILURE";
+
+inline constexpr const char* kArmJointOrder[] = {
+    "Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint", "Arm5_Joint"};
+
+struct InterpolatedJointPath {
+  std::vector<std::vector<double>> joints;
+  std::vector<int> waypoint_sample_index;
+};
+
+struct TimedJointPoint {
+  std::vector<double> joints;
+  double time_from_start_sec{0.0};
+};
+
+struct CartesianSegmentDeviation {
+  double path_length_m{0.0};
+  double chord_length_m{0.0};
+  double max_chord_deviation_m{0.0};
+  double tool_axis_excursion_deg{0.0};
+};
+
+struct FidelitySeparation {
+  OrientationMetrics metrics;
+  std::string trajectory_class;
+  std::string process_fidelity;
+};
+
+bool armJointOrderMatches(const std::vector<std::string>& names);
+
+// q를 다시 IK하지 않는다. 양 끝 waypoint를 포함하고 구간 최대 관절 간격은 max_step 이하다.
+InterpolatedJointPath interpolateJointWaypoints(
+    const std::vector<std::vector<double>>& waypoints, double max_step);
+
+std::vector<TimedJointPoint> retimeJointPath(
+    const std::vector<std::vector<double>>& joints, double max_velocity, double min_dt);
+
+bool jointVelocityWithin(const std::vector<TimedJointPoint>& timed, double max_velocity);
+
+double maxFiniteDifferenceAcceleration(const std::vector<TimedJointPoint>& timed);
+
+int countOutsideBounds(
+    const std::vector<std::vector<double>>& samples, const std::vector<double>& lower,
+    const std::vector<double>& upper, double margin);
+
+std::string classifyJointTrajectory(
+    double max_joint_step, int limit_violations, int collision_invalid, bool timing_ok, bool velocity_ok);
+
+std::vector<std::size_t> sourceIndexForSamples(
+    const std::vector<std::size_t>& waypoint_sources, const std::vector<int>& waypoint_sample_index,
+    std::size_t sample_count);
+
+CartesianSegmentDeviation measureCartesianSegment(const std::vector<MotionPose>& samples);
+
+bool fkMatchesProjectedPose(
+    const MotionPose& fk, const MotionPose& projected, double position_tolerance_m,
+    double orientation_tolerance_deg);
+
+FidelitySeparation separateJointFeasibility(const OrientationMetrics& metrics, const std::string& trajectory_class);
+
 }  // namespace robot_controller

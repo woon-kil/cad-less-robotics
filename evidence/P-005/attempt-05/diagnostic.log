@@ -1,0 +1,48 @@
+[INFO] [1793004044.604928855] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00129403 seconds
+[INFO] [1793004044.605027081] [moveit_robot_model.robot_model]: Loading robot model 'DOFBOT_Pro-V24'...
+[INFO] [1793004044.605037100] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1793004045.714579433] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1793004048.746611702] [moveit.ros_planning_interface.moveit_cpp]: Listening to '/joint_states' for joint states
+[INFO] [1793004048.746920507] [moveit_ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
+[INFO] [1793004048.750058565] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/attached_collision_object' for attached collision objects
+[INFO] [1793004048.750739094] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on '/dofbot_dry_plan/monitored_planning_scene'
+[INFO] [1793004048.750829786] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1793004048.750959522] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/publish_planning_scene'
+[INFO] [1793004048.750968479] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1793004048.751106500] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1793004048.751360021] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1793004048.751487502] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1793004048.751498092] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1793004062.224147833] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[INFO] [1793004062.232029510] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[INFO] [1793004062.233724582] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[INFO] [1793004062.233737066] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[INFO] [1793004062.233742316] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[INFO] [1793004062.233753878] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[INFO] [1793004062.233766111] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.010000
+[INFO] [1793004062.233771642] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1793004062.233781661] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[INFO] [1793004062.233786440] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[INFO] [1793004062.233790978] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[INFO] [1793004062.233795246] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[WARN] [1793004062.236200194] [moveit_ros.trajectory_execution_manager]: Parameter '~moveit_controller_manager' is not specified but only one matching plugin was found: 'moveit_simple_controller_manager/MoveItSimpleControllerManager'. Using that one.
+[ERROR] [1793004062.245042551] [moveit.plugins.moveit_simple_controller_manager]: No controller_names specified.
+[INFO] [1793004062.245165274] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1793004062.245172387] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1793004062.245435406] [moveit_ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[INFO] [1793004062.850597734] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 22 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.851232587] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 26 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.851859174] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 31 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.852337681] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 22 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.852872034] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 26 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.853505835] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 31 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.853965125] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 22 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.854507343] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 26 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.855133800] [joint_trajectory_dry]: JOINT_TRAJECTORY_FEASIBLE states 31 collisions 0 PROCESS_FIDELITY_NOT_YET_ACCEPTED
+[INFO] [1793004062.857310405] [moveit.ros_planning_interface.moveit_cpp]: Deleting MoveItCpp
+[INFO] [1793004062.857432176] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1793004062.857447745] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping world geometry monitor
+[INFO] [1793004062.857455540] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping planning scene monitor
+P-005 ATTEMPT #5 PASS_CANDIDATE fidelity PROCESS_FIDELITY_NOT_YET_ACCEPTED
+Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+         at line 127 in ./src/class_loader.cpp

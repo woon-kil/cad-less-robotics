@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="360" viewBox="0 0 980 360">
+<rect width="980" height="360" fill="#f7f4ee"/>
+<text x="24" y="32" font-family="sans-serif" font-size="18" fill="#1c1917">joint trajectory chord deviation and tool-axis excursion</text>
+<polyline fill="none" stroke="#b45309" stroke-width="2" points="40,299.94 68,299.295 96,299.923 124,299.925 152,300 180,299.957 208,299.936 236,299.933 264,300 292,300 "/>
+<polyline fill="none" stroke="#b45309" stroke-width="1" stroke-dasharray="4 3" points="40,299.856 68,279.519 96,295.111 124,299.185 152,299.047 180,294.65 208,298.301 236,294.799 264,298.548 292,298.707 "/>
+<text x="40" y="340" font-family="sans-serif" font-size="13" fill="#b45309">CASE-01</text>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="2" points="360,299.838 388,299.82 416,300 444,299.957 472,300 500,300 528,300 556,300 584,299.942 612,299.182 "/>
+<polyline fill="none" stroke="#1d4ed8" stroke-width="1" stroke-dasharray="4 3" points="360,292.249 388,294.199 416,299.115 444,293.822 472,298.822 500,298.826 528,298.986 556,299.011 584,283.537 612,288.848 "/>
+<text x="360" y="340" font-family="sans-serif" font-size="13" fill="#1d4ed8">CASE-02</text>
+<polyline fill="none" stroke="#44403c" stroke-width="2" points="680,299.946 708,299.876 736,299.874 764,299.88 792,299.887 820,300 848,299.897 876,299.84 904,299.799 932,299.939 "/>
+<polyline fill="none" stroke="#44403c" stroke-width="1" stroke-dasharray="4 3" points="680,299.707 708,297.102 736,276.957 764,298.239 792,297.85 820,299.548 848,297.38 876,292.262 904,287.743 932,289.015 "/>
+<text x="680" y="340" font-family="sans-serif" font-size="13" fill="#44403c">CASE-03</text>
+</svg>

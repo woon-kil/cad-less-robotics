@@ -7,6 +7,7 @@
 #include <Eigen/Geometry>
 
 #include <cmath>
+#include <limits>
 
 namespace {
 
@@ -193,4 +194,97 @@ TEST(CapabilityAdapter, PositionJacobianNullspaceDoesNotMovePosition) {
     EXPECT_LT(velocity.norm(), 1e-9);
   }
   EXPECT_GT(std::abs(basis[0][3]) + std::abs(basis[0][4]) + std::abs(basis[1][3]) + std::abs(basis[1][4]), 0.5);
+}
+
+TEST(CapabilityAdapter, JointOrderMatchesArm1ThroughArm5) {
+  const std::vector<std::string> names = {"Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint", "Arm5_Joint"};
+  EXPECT_TRUE(robot_controller::armJointOrderMatches(names));
+  auto swapped = names;
+  std::swap(swapped[0], swapped[1]);
+  EXPECT_FALSE(robot_controller::armJointOrderMatches(swapped));
+  EXPECT_FALSE(robot_controller::armJointOrderMatches({"Arm1_Joint", "Arm2_Joint", "Arm3_Joint", "Arm4_Joint"}));
+}
+
+TEST(CapabilityAdapter, JointInterpolationPreservesEndpointsAndStep) {
+  const std::vector<std::vector<double>> waypoints = {{0.0, 0.0, 0.0, 0.0, 0.0}, {0.12, 0.0, 0.0, 0.0, 0.0}};
+  const auto path = robot_controller::interpolateJointWaypoints(waypoints, robot_controller::kMaxJointInterpolationStepRad);
+  ASSERT_GE(path.joints.size(), 2u);
+  ASSERT_EQ(path.waypoint_sample_index.size(), 2u);
+  EXPECT_EQ(path.joints.front(), waypoints.front());
+  EXPECT_EQ(path.joints.back(), waypoints.back());
+  EXPECT_EQ(path.waypoint_sample_index.front(), 0);
+  EXPECT_EQ(path.waypoint_sample_index.back(), static_cast<int>(path.joints.size() - 1));
+  for (std::size_t index = 1; index < path.joints.size(); ++index) {
+    const auto step = robot_controller::jointStep(path.joints[index - 1], path.joints[index]);
+    EXPECT_LE(step.max_abs, robot_controller::kMaxJointInterpolationStepRad + 1e-12);
+  }
+}
+
+TEST(CapabilityAdapter, DetectsIntermediateJointLimit) {
+  const std::vector<double> lower(5, -1.0);
+  const std::vector<double> upper(5, 1.0);
+  const std::vector<std::vector<double>> samples = {
+      {0.0, 0.0, 0.0, 0.0, 0.0}, {0.0, 0.0, 1.2, 0.0, 0.0}, {0.2, 0.0, 0.0, 0.0, 0.0}};
+  EXPECT_EQ(robot_controller::countOutsideBounds(samples, lower, upper, 1e-6), 1);
+  EXPECT_EQ(
+      robot_controller::classifyJointTrajectory(0.2, 1, 0, true, true), robot_controller::kJointLimitFailure);
+}
+
+TEST(CapabilityAdapter, RejectsIntermediateCollision) {
+  EXPECT_EQ(
+      robot_controller::classifyJointTrajectory(0.2, 0, 2, true, true), robot_controller::kCollisionFailure);
+  EXPECT_EQ(
+      robot_controller::classifyJointTrajectory(0.6, 1, 2, false, false), robot_controller::kContinuityFailure);
+}
+
+TEST(CapabilityAdapter, SourceIndexSurvivesInterpolation) {
+  const auto sources = robot_controller::sourceIndexForSamples({61, 62}, {0, 3}, 4);
+  ASSERT_EQ(sources.size(), 4u);
+  EXPECT_EQ(sources[0], 61u);
+  EXPECT_EQ(sources[1], std::numeric_limits<std::size_t>::max());
+  EXPECT_EQ(sources[3], 62u);
+  const auto path = robot_controller::interpolateJointWaypoints(
+      {{0.0, 0.0, 0.0, 0.0, 0.0}, {0.12, 0.0, 0.0, 0.0, 0.0}}, 0.05);
+  const auto mapped = robot_controller::sourceIndexForSamples({61, 71}, path.waypoint_sample_index, path.joints.size());
+  ASSERT_EQ(mapped.size(), path.joints.size());
+  EXPECT_EQ(mapped.front(), 61u);
+  EXPECT_EQ(mapped.back(), 71u);
+}
+
+TEST(CapabilityAdapter, TrajectoryFkMatchesProjectedPose) {
+  const auto pose = identityPose();
+  EXPECT_TRUE(robot_controller::fkMatchesProjectedPose(pose, pose, 1e-9, 1e-6));
+  const auto rotated = poseFrom(Eigen::Quaterniond(Eigen::AngleAxisd(0.2, Eigen::Vector3d::UnitZ())), 0.0);
+  EXPECT_FALSE(robot_controller::fkMatchesProjectedPose(rotated, pose, 1e-6, 0.01));
+}
+
+TEST(CapabilityAdapter, JointFeasibilityDoesNotAcceptProcessFidelity) {
+  robot_controller::OrientationMetrics metrics;
+  metrics.position_error_m = 0.0002;
+  metrics.tool_axis_error_deg = 24.9;
+  metrics.roll_error_deg = 70.0;
+  metrics.full_orientation_error_deg = 74.0;
+  const auto separated = robot_controller::separateJointFeasibility(metrics, robot_controller::kJointTrajectoryFeasible);
+  EXPECT_EQ(separated.trajectory_class, robot_controller::kJointTrajectoryFeasible);
+  EXPECT_EQ(separated.process_fidelity, robot_controller::kProcessFidelityNotYetAccepted);
+  EXPECT_NEAR(separated.metrics.tool_axis_error_deg, 24.9, 1e-12);
+  EXPECT_NEAR(separated.metrics.roll_error_deg, 70.0, 1e-12);
+}
+
+TEST(CapabilityAdapter, RetimeMatchesExistingVelocityCap) {
+  const std::vector<std::vector<double>> joints = {
+      {0.0, 0.0, 0.0, 0.0, 0.0}, {0.4, 0.0, 0.0, 0.0, 0.0}, {0.4, 0.05, 0.0, 0.0, 0.0}};
+  const auto timed = robot_controller::retimeJointPath(
+      joints, robot_controller::kJointVelocityCapRadS, robot_controller::kJointTimeStepFloorSec);
+  ASSERT_EQ(timed.size(), 3u);
+  EXPECT_NEAR(timed[1].time_from_start_sec, 1.0, 1e-12);
+  EXPECT_NEAR(timed[2].time_from_start_sec, 1.125, 1e-12);
+  EXPECT_TRUE(robot_controller::jointVelocityWithin(timed, robot_controller::kJointVelocityCapRadS));
+  EXPECT_GT(robot_controller::maxFiniteDifferenceAcceleration(timed), 0.0);
+  EXPECT_TRUE(robot_controller::retimeJointPath(joints, 0.0, 0.05).empty());
+  EXPECT_EQ(
+      robot_controller::classifyJointTrajectory(0.2, 0, 0, false, true),
+      robot_controller::kTimeParameterizationFailure);
+  EXPECT_EQ(
+      robot_controller::classifyJointTrajectory(0.2, 0, 0, true, false), robot_controller::kVelocityFailure);
 }

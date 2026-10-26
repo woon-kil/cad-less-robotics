@@ -1,0 +1,11 @@
+position_margin_rad 9.9999999999999995e-07
+intermediate_states_checked yes
+run 1 CASE-01 violations 0
+run 1 CASE-02 violations 0
+run 1 CASE-03 violations 0
+run 2 CASE-01 violations 0
+run 2 CASE-02 violations 0
+run 2 CASE-03 violations 0
+run 3 CASE-01 violations 0
+run 3 CASE-02 violations 0
+run 3 CASE-03 violations 0

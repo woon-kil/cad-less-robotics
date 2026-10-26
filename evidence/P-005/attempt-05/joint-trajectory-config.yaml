@@ -1,0 +1,9 @@
+max_joint_interpolation_step_rad: 0.050000000000000003
+interpolation_rationale: "0.05 rad is one tenth of the 0.5 rad branch threshold and splits the Attempt 3 max step of 0.4 rad into 8 intervals. Locked before this run."
+max_joint_velocity: 0.40000000000000002
+joint_time_step_floor_sec: 0.050000000000000003
+time_parameterization: motion_planner_node_retime
+hardware_acceleration_acceptance: false
+vendor_acceleration_limits: disabled
+branch_discontinuity_rad: 0.5
+execute_trajectory: false

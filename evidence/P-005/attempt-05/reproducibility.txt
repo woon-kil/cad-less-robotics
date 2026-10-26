@@ -1,0 +1,6 @@
+runs 3
+equal yes
+time_tolerance_sec 1e-9
+run 1 CASE-01 states 22 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.1197341337093105 CASE-02 states 26 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.7112396933017004 CASE-03 states 31 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 3.3177566339588793
+run 2 CASE-01 states 22 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.1197341337093105 CASE-02 states 26 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.7112396933017004 CASE-03 states 31 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 3.3177566339588793
+run 3 CASE-01 states 22 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.1197341337093105 CASE-02 states 26 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 2.7112396933017004 CASE-03 states 31 limits 0 collisions 0 JOINT_TRAJECTORY_FEASIBLE duration 3.3177566339588793

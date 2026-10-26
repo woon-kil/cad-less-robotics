@@ -1,0 +1,8 @@
+# P-005 attempt 5. 관절 보간 간격은 결과를 보기 전에 고정한다.
+# 0.05 rad는 branch 문턱 0.5 rad의 1/10이고, Attempt #3에서 본 최대 관절 간격 0.4 rad를 8구간으로 나눈다.
+# Cartesian eef_step과는 별개다. 충돌 결과를 보고 이 값을 바꾸지 않는다.
+max_joint_interpolation_step_rad: 0.05
+# motion_planner_node::retime과 같다. 새 속도 스케줄러가 아니다.
+max_joint_velocity: 0.4
+joint_time_step_floor_sec: 0.05
+execute_trajectory: false

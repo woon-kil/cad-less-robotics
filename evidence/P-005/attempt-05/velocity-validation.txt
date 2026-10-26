@@ -1,0 +1,14 @@
+time_parameterization motion_planner_node_retime
+max_joint_velocity_rad_s 0.40000000000000002
+min_dt_sec 0.050000000000000003
+hardware_acceleration_acceptance false
+vendor_acceleration_limits disabled
+run 1 CASE-01 max_velocity 0.40000000000000041 finite_difference_acceleration 6.3999999999999853 duration_sec 2.1197341337093105 velocity_ok yes
+run 1 CASE-02 max_velocity 0.40000000000000013 finite_difference_acceleration 7.9999999999999867 duration_sec 2.7112396933017004 velocity_ok yes
+run 1 CASE-03 max_velocity 0.40000000000000036 finite_difference_acceleration 7.6096613559799628 duration_sec 3.3177566339588793 velocity_ok yes
+run 2 CASE-01 max_velocity 0.40000000000000041 finite_difference_acceleration 6.3999999999999853 duration_sec 2.1197341337093105 velocity_ok yes
+run 2 CASE-02 max_velocity 0.40000000000000013 finite_difference_acceleration 7.9999999999999867 duration_sec 2.7112396933017004 velocity_ok yes
+run 2 CASE-03 max_velocity 0.40000000000000036 finite_difference_acceleration 7.6096613559799628 duration_sec 3.3177566339588793 velocity_ok yes
+run 3 CASE-01 max_velocity 0.40000000000000041 finite_difference_acceleration 6.3999999999999853 duration_sec 2.1197341337093105 velocity_ok yes
+run 3 CASE-02 max_velocity 0.40000000000000013 finite_difference_acceleration 7.9999999999999867 duration_sec 2.7112396933017004 velocity_ok yes
+run 3 CASE-03 max_velocity 0.40000000000000036 finite_difference_acceleration 7.6096613559799628 duration_sec 3.3177566339588793 velocity_ok yes

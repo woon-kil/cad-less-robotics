@@ -1,0 +1,12 @@
+self_collision_check checkSelfCollision
+planning_scene_collision_check checkCollision
+interpolated_states_checked yes
+run 1 CASE-01 self 0 planning_scene 0
+run 1 CASE-02 self 0 planning_scene 0
+run 1 CASE-03 self 0 planning_scene 0
+run 2 CASE-01 self 0 planning_scene 0
+run 2 CASE-02 self 0 planning_scene 0
+run 2 CASE-03 self 0 planning_scene 0
+run 3 CASE-01 self 0 planning_scene 0
+run 3 CASE-02 self 0 planning_scene 0
+run 3 CASE-03 self 0 planning_scene 0
