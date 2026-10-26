@@ -1,8 +1,1959 @@
 {
-  "frames": [],
+  "frames": [
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t01-00",
+      "timestamp": 1793019986.261635,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.05666134757094962,
+          0.004230426974893454,
+          0.41730686591124794
+        ],
+        "quaternion_xyzw": [
+          -0.1518779862966615,
+          -0.0259122323854798,
+          -0.007852653847272737,
+          0.9880283241480615
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005040596021205069,
+      "rgb_depth_distance_m": 0.0015841816233931796,
+      "normal_angle_deg": 0.7692254834951869
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t01-01",
+      "timestamp": 1793019986.62874,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.056649405377476904,
+          0.0042312619841766135,
+          0.4172989011493756
+        ],
+        "quaternion_xyzw": [
+          -0.15179563009878363,
+          -0.025933601988767895,
+          -0.007822641899578438,
+          0.9880406576879882
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005067522572201121,
+      "rgb_depth_distance_m": 0.0016324950192982326,
+      "normal_angle_deg": 0.8111296735608854
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t01-02",
+      "timestamp": 1793019986.962471,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.05665511807563751,
+          0.004222657353122331,
+          0.4172718295866807
+        ],
+        "quaternion_xyzw": [
+          -0.1517736880095444,
+          -0.02584908212950049,
+          -0.007853714379388234,
+          0.9880459967792445
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004984876315207056,
+      "rgb_depth_distance_m": 0.001569908298214068,
+      "normal_angle_deg": 0.7325874348505806
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t01-03",
+      "timestamp": 1793019987.329509,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.0566574684009837,
+          0.004218280232947958,
+          0.4172609749100196
+        ],
+        "quaternion_xyzw": [
+          -0.15178968951196076,
+          -0.026121672370735316,
+          -0.007816283887120008,
+          0.9880366663725666
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005024095911110673,
+      "rgb_depth_distance_m": 0.0016677344622906924,
+      "normal_angle_deg": 0.7966185242589421
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t02-00",
+      "timestamp": 1793020021.803475,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.02807454103124375,
+          0.003997376777656422,
+          0.4190754722656956
+        ],
+        "quaternion_xyzw": [
+          -0.15196349052023503,
+          -0.024286483328833052,
+          -0.006818578505154501,
+          0.9880641534149459
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005114658874906565,
+      "rgb_depth_distance_m": 0.0014652469620176911,
+      "normal_angle_deg": 0.8589270003216507
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t02-01",
+      "timestamp": 1793020022.170579,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.0280656622639135,
+          0.003989586803392606,
+          0.41906904504901116
+        ],
+        "quaternion_xyzw": [
+          -0.1518797181579371,
+          -0.02423948558365908,
+          -0.006784072076948335,
+          0.9880784254890701
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005051614094090408,
+      "rgb_depth_distance_m": 0.0014579278465809125,
+      "normal_angle_deg": 0.8114097947258165
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t02-02",
+      "timestamp": 1793020022.537683,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.028078298788309856,
+          0.003992259815281178,
+          0.4190404205462119
+        ],
+        "quaternion_xyzw": [
+          -0.15196501925863343,
+          -0.024434298752210034,
+          -0.0068043566977574535,
+          0.9880603719895564
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005011668140495253,
+      "rgb_depth_distance_m": 0.0014666374711807349,
+      "normal_angle_deg": 0.7902315956345886
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t02-03",
+      "timestamp": 1793020022.904787,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.028071707716378815,
+          0.003983286644798069,
+          0.41903007140671195
+        ],
+        "quaternion_xyzw": [
+          -0.15202140610462397,
+          -0.02464356164655604,
+          -0.006741527397089716,
+          0.9880469314580658
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005040736549163158,
+      "rgb_depth_distance_m": 0.001418530483867279,
+      "normal_angle_deg": 0.7643607842855938
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t03-00",
+      "timestamp": 1793020058.379922,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.09333944916279213,
+          0.004716304423490638,
+          0.4150638375869919
+        ],
+        "quaternion_xyzw": [
+          -0.15165798115494689,
+          -0.025250733476911036,
+          -0.0030270232721640337,
+          0.9881058113081784
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005129150965562058,
+      "rgb_depth_distance_m": 0.0019329887705755184,
+      "normal_angle_deg": 0.9096144557852968
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t03-01",
+      "timestamp": 1793020058.747027,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.09334670284326367,
+          0.004724761179538569,
+          0.41507325588797267
+        ],
+        "quaternion_xyzw": [
+          -0.1517596449974212,
+          -0.025305496792488894,
+          -0.003053962439718506,
+          0.9880887183323969
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004987839293043353,
+      "rgb_depth_distance_m": 0.0019334052239377737,
+      "normal_angle_deg": 0.8858131608377651
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t03-02",
+      "timestamp": 1793020059.080757,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.09334509482589876,
+          0.004730680745950945,
+          0.41510744837457675
+        ],
+        "quaternion_xyzw": [
+          -0.1518126662786329,
+          -0.02492360150619784,
+          -0.0030841295966079676,
+          0.988090186465772
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005035835582213812,
+      "rgb_depth_distance_m": 0.0018518075021843605,
+      "normal_angle_deg": 0.8693113912878845
+    },
+    {
+      "semantic_position": "CAMERA_SIDE",
+      "stem": "camera_side-t03-03",
+      "timestamp": 1793020059.447861,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.09334498041471045,
+          0.004727414387822106,
+          0.41507784869131936
+        ],
+        "quaternion_xyzw": [
+          -0.15149792554884467,
+          -0.02510041808230891,
+          -0.0030482264076813178,
+          0.9881341284877563
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004937114728814893,
+      "rgb_depth_distance_m": 0.0019016272923537952,
+      "normal_angle_deg": 0.9440013575225308
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t01-00",
+      "timestamp": 1793019542.539291,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04520727843615001,
+          -0.1454497949119789,
+          0.462483440208056
+        ],
+        "quaternion_xyzw": [
+          -0.1478190504019748,
+          -0.028352765460629824,
+          -0.005601009998739714,
+          0.988592068406371
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005303865956212912,
+      "rgb_depth_distance_m": 0.0018452455309880978,
+      "normal_angle_deg": 0.33131486125780596
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t01-01",
+      "timestamp": 1793019542.906383,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.045202747959623694,
+          -0.1454688474337703,
+          0.46247973757870126
+        ],
+        "quaternion_xyzw": [
+          -0.14772867558737757,
+          -0.02856243639227522,
+          -0.005532924022783192,
+          0.9885999253430554
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005427706477838705,
+      "rgb_depth_distance_m": 0.0017987246090267507,
+      "normal_angle_deg": 0.328803063720988
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t01-02",
+      "timestamp": 1793019543.273475,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.045198088955595024,
+          -0.14546213619973847,
+          0.4624747455938796
+        ],
+        "quaternion_xyzw": [
+          -0.14776343952002743,
+          -0.028455290942745293,
+          -0.005551155866483426,
+          0.9885977174903455
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005422586579665795,
+      "rgb_depth_distance_m": 0.0018607291457519246,
+      "normal_angle_deg": 0.3660936345004226
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t01-03",
+      "timestamp": 1793019543.640569,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04520445833554506,
+          -0.1454631821177745,
+          0.46247936234035913
+        ],
+        "quaternion_xyzw": [
+          -0.14772887473847904,
+          -0.02856725672976387,
+          -0.00555374018846642,
+          0.9885996395818468
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005489056994752333,
+      "rgb_depth_distance_m": 0.0018627243880227021,
+      "normal_angle_deg": 0.32695179109565337
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t02-00",
+      "timestamp": 1793019618.128907,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 0,
+      "valid_depth_corner_ratio": 0.0,
+      "board_depth_valid_ratio": null,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04779395224380222,
+          -0.0865351033467648,
+          0.4453480518285488
+        ],
+        "quaternion_xyzw": [
+          -0.14868140416340334,
+          -0.02760175004508732,
+          -0.007243802239903095,
+          0.9884733232513442
+        ]
+      },
+      "tf_valid": false,
+      "rejection_reason": "lookup_failed",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 0,
+      "plane_rmse_m": null,
+      "rgb_depth_distance_m": null,
+      "normal_angle_deg": null
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t02-01",
+      "timestamp": 1793019618.496012,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 0,
+      "valid_depth_corner_ratio": 0.0,
+      "board_depth_valid_ratio": null,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.047805168898199774,
+          -0.08653018585453416,
+          0.44531674322902826
+        ],
+        "quaternion_xyzw": [
+          -0.14867590762429445,
+          -0.027675641811374545,
+          -0.007298251014925538,
+          0.988471683395404
+        ]
+      },
+      "tf_valid": false,
+      "rejection_reason": "lookup_failed",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 0,
+      "plane_rmse_m": null,
+      "rgb_depth_distance_m": null,
+      "normal_angle_deg": null
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t02-02",
+      "timestamp": 1793019618.863115,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 0,
+      "valid_depth_corner_ratio": 0.0,
+      "board_depth_valid_ratio": null,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.047795101126805635,
+          -0.0865363614488174,
+          0.44532836576723056
+        ],
+        "quaternion_xyzw": [
+          -0.14873434452805415,
+          -0.027641518238479813,
+          -0.007253449764742651,
+          0.9884641767377269
+        ]
+      },
+      "tf_valid": false,
+      "rejection_reason": "lookup_failed",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 0,
+      "plane_rmse_m": null,
+      "rgb_depth_distance_m": null,
+      "normal_angle_deg": null
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t02-03",
+      "timestamp": 1793019619.230219,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 0,
+      "valid_depth_corner_ratio": 0.0,
+      "board_depth_valid_ratio": null,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.047795914922875465,
+          -0.08653402413074805,
+          0.44533490109415647
+        ],
+        "quaternion_xyzw": [
+          -0.14873309394644538,
+          -0.027604609796342352,
+          -0.007261783367263339,
+          0.9884653351460719
+        ]
+      },
+      "tf_valid": false,
+      "rejection_reason": "lookup_failed",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 0,
+      "plane_rmse_m": null,
+      "rgb_depth_distance_m": null,
+      "normal_angle_deg": null
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t03-00",
+      "timestamp": 1793019637.217474,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04779694653370581,
+          -0.08653712551305394,
+          0.4452894762195677
+        ],
+        "quaternion_xyzw": [
+          -0.14875708579369917,
+          -0.02770831996090236,
+          -0.007244987731206377,
+          0.9884589463320593
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005058012211725608,
+      "rgb_depth_distance_m": 0.0015806018924175332,
+      "normal_angle_deg": 0.588656003755824
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t03-01",
+      "timestamp": 1793019637.58438,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04778991923050796,
+          -0.08653241748937461,
+          0.4453043580901703
+        ],
+        "quaternion_xyzw": [
+          -0.1488197525832504,
+          -0.02760476451810397,
+          -0.007260881303399375,
+          0.988452294154684
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004981713070309476,
+      "rgb_depth_distance_m": 0.0016151253857084446,
+      "normal_angle_deg": 0.6066385699476002
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t03-02",
+      "timestamp": 1793019637.951268,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04779835696315012,
+          -0.08653022016094722,
+          0.44532204026229993
+        ],
+        "quaternion_xyzw": [
+          -0.14873683358539777,
+          -0.027608621587339715,
+          -0.007263728662820706,
+          0.9884646461027069
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004999217766622679,
+      "rgb_depth_distance_m": 0.0015020352044313005,
+      "normal_angle_deg": 0.6021616390520471
+    },
+    {
+      "semantic_position": "CENTER",
+      "stem": "center-t03-03",
+      "timestamp": 1793019638.318327,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.04779855312121697,
+          -0.08653814997275146,
+          0.44534179529598256
+        ],
+        "quaternion_xyzw": [
+          -0.14861594807170175,
+          -0.027616051796149853,
+          -0.007276872924967482,
+          0.9884825242675641
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005109159877060341,
+      "rgb_depth_distance_m": 0.001489884076014832,
+      "normal_angle_deg": 0.5708309012246061
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t01-00",
+      "timestamp": 1793019690.64739,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.04046345112746728,
+          -0.09404896950257138,
+          0.4524813257527912
+        ],
+        "quaternion_xyzw": [
+          -0.1505181532596819,
+          -0.0232442425506477,
+          -0.003912898692570933,
+          0.9883262011863104
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005180471437514449,
+      "rgb_depth_distance_m": 0.0016200151764284559,
+      "normal_angle_deg": 0.753970117942965
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t01-01",
+      "timestamp": 1793019691.014497,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.040460343890123214,
+          -0.09404921912610766,
+          0.45248914113712574
+        ],
+        "quaternion_xyzw": [
+          -0.15041236676884256,
+          -0.02314512445266272,
+          -0.003940068009754442,
+          0.9883445244453699
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005190687966471486,
+      "rgb_depth_distance_m": 0.0015754950847034904,
+      "normal_angle_deg": 0.7739971300479438
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t01-02",
+      "timestamp": 1793019691.381602,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.04045061657017393,
+          -0.09405866845489558,
+          0.4524148704025381
+        ],
+        "quaternion_xyzw": [
+          -0.15042458683984297,
+          -0.02355815836126555,
+          -0.003896531170177114,
+          0.9883330784171538
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005035509240444198,
+      "rgb_depth_distance_m": 0.001727415700190955,
+      "normal_angle_deg": 0.7983600154735647
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t01-03",
+      "timestamp": 1793019691.748709,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.04045449884468678,
+          -0.09404728349840195,
+          0.4524597041314733
+        ],
+        "quaternion_xyzw": [
+          -0.15057203622230567,
+          -0.023259004331882344,
+          -0.003900081979783376,
+          0.9883176968899774
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.000516683486099958,
+      "rgb_depth_distance_m": 0.001620422844802313,
+      "normal_angle_deg": 0.7386049604112094
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t02-00",
+      "timestamp": 1793019732.229014,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.04045524731880209,
+          -0.09404231515980853,
+          0.4524358176732107
+        ],
+        "quaternion_xyzw": [
+          -0.15060578796344778,
+          -0.023105401925138446,
+          -0.003913020647847856,
+          0.9883161059616484
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005118571624159212,
+      "rgb_depth_distance_m": 0.001635168845781387,
+      "normal_angle_deg": 0.8105658135110366
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t02-01",
+      "timestamp": 1793019732.562737,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.040462608894284616,
+          -0.09404646879662938,
+          0.45245717316245426
+        ],
+        "quaternion_xyzw": [
+          -0.15070503396281212,
+          -0.023157279924260133,
+          -0.00388422467027642,
+          0.988299876516985
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005259035940233064,
+      "rgb_depth_distance_m": 0.0015504809013649201,
+      "normal_angle_deg": 0.7951208966053351
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t02-02",
+      "timestamp": 1793019732.929833,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.040458597187224284,
+          -0.09404924967514855,
+          0.45245514955879756
+        ],
+        "quaternion_xyzw": [
+          -0.15052456708824155,
+          -0.023047059412588854,
+          -0.003931819462524894,
+          0.9883297671076411
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005271816393808211,
+      "rgb_depth_distance_m": 0.0016099885879359392,
+      "normal_angle_deg": 0.8529590917967727
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t02-03",
+      "timestamp": 1793019733.296929,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.040456023223203685,
+          -0.09404891713441403,
+          0.45244037737148707
+        ],
+        "quaternion_xyzw": [
+          -0.1504831876472229,
+          -0.023133171774705804,
+          -0.003940446030236856,
+          0.9883340222233855
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005141415185496637,
+      "rgb_depth_distance_m": 0.0016219081982672013,
+      "normal_angle_deg": 0.7963812273692117
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t03-00",
+      "timestamp": 1793019773.81192,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.038648393223164615,
+          -0.04267828305712734,
+          0.4371035646209861
+        ],
+        "quaternion_xyzw": [
+          -0.15129260128081573,
+          -0.02179393931109481,
+          -0.002024794843988547,
+          0.9882466661784537
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005186406925205511,
+      "rgb_depth_distance_m": 0.0013413342930024622,
+      "normal_angle_deg": 0.808878749293375
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t03-01",
+      "timestamp": 1793019774.145654,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.038650406172889444,
+          -0.04268033135243804,
+          0.4370930736288932
+        ],
+        "quaternion_xyzw": [
+          -0.15142059657698764,
+          -0.022021900384960574,
+          -0.0019888591764394958,
+          0.9882220819607708
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005321496919936848,
+      "rgb_depth_distance_m": 0.0013732751628118631,
+      "normal_angle_deg": 0.8346551982541629
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t03-02",
+      "timestamp": 1793019774.512761,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.03864676986225227,
+          -0.042682362805373394,
+          0.4370709983285283
+        ],
+        "quaternion_xyzw": [
+          -0.15121192130819905,
+          -0.022111690956485436,
+          -0.002026125147827256,
+          0.9882519530940544
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005054520569875213,
+      "rgb_depth_distance_m": 0.001411511619396599,
+      "normal_angle_deg": 0.9043117212266035
+    },
+    {
+      "semantic_position": "LEFT",
+      "stem": "left-t03-03",
+      "timestamp": 1793019774.879867,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          0.03863853997979338,
+          -0.04267604653658527,
+          0.43709309515904554
+        ],
+        "quaternion_xyzw": [
+          -0.15145621751101668,
+          -0.021964267096787927,
+          -0.0020015363750774573,
+          0.9882178803281673
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005177665438367021,
+      "rgb_depth_distance_m": 0.001394690305256024,
+      "normal_angle_deg": 0.8475521247741801
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t01-00",
+      "timestamp": 1793019815.059295,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12473792298665362,
+          -0.1321083378167399,
+          0.45382285085725105
+        ],
+        "quaternion_xyzw": [
+          -0.15012871517432005,
+          -0.023594031680911565,
+          -0.006878698741769563,
+          0.9883609533226048
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.000532544022549861,
+      "rgb_depth_distance_m": 0.002826632623023609,
+      "normal_angle_deg": 0.7699402692495095
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t01-01",
+      "timestamp": 1793019815.393014,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12473208798865973,
+          -0.13211212555946186,
+          0.45382365643092815
+        ],
+        "quaternion_xyzw": [
+          -0.15008594514141163,
+          -0.023505741257552087,
+          -0.006846729957548278,
+          0.9883697746733409
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005377525119747393,
+      "rgb_depth_distance_m": 0.0027648032644361498,
+      "normal_angle_deg": 0.7222783561021582
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t01-02",
+      "timestamp": 1793019815.760102,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12473086688290914,
+          -0.13210496905894228,
+          0.45384175904091845
+        ],
+        "quaternion_xyzw": [
+          -0.15022123438687707,
+          -0.023440637709667075,
+          -0.006857343593132554,
+          0.9883506938743417
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.000531665408159242,
+      "rgb_depth_distance_m": 0.002821070856211697,
+      "normal_angle_deg": 0.7687469438746667
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t01-03",
+      "timestamp": 1793019816.127192,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12474073406820764,
+          -0.13210370903870364,
+          0.4538533885461521
+        ],
+        "quaternion_xyzw": [
+          -0.150133302239278,
+          -0.02345823455794202,
+          -0.006886562558914033,
+          0.9883634341912272
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.000535467995873667,
+      "rgb_depth_distance_m": 0.002803588016196082,
+      "normal_angle_deg": 0.7725399050915424
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t02-00",
+      "timestamp": 1793019851.169038,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12299643555598762,
+          -0.07632104048119628,
+          0.43741590559436233
+        ],
+        "quaternion_xyzw": [
+          -0.1520077817633056,
+          -0.027376551145822034,
+          -0.0026419636223688906,
+          0.9879965479489174
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005075603689607377,
+      "rgb_depth_distance_m": 0.0026425201269910416,
+      "normal_angle_deg": 0.8913241875783641
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t02-01",
+      "timestamp": 1793019851.536139,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12299436420954823,
+          -0.07631139637735661,
+          0.43742943463919315
+        ],
+        "quaternion_xyzw": [
+          -0.1520950572249238,
+          -0.02724267845583669,
+          -0.002662440047385236,
+          0.9879867617793738
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005063263812149492,
+      "rgb_depth_distance_m": 0.0025805159493783956,
+      "normal_angle_deg": 0.8497220431757825
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t02-02",
+      "timestamp": 1793019851.869867,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12300074546259228,
+          -0.07630986071310802,
+          0.43745410859519823
+        ],
+        "quaternion_xyzw": [
+          -0.15202748236061203,
+          -0.027188770031858864,
+          -0.0026875715769456325,
+          0.9879985791236074
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004970907864234492,
+      "rgb_depth_distance_m": 0.0025994276011755465,
+      "normal_angle_deg": 0.89527794744297
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t02-03",
+      "timestamp": 1793019852.23697,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.1230020325933706,
+          -0.07631601134297426,
+          0.43745559236438053
+        ],
+        "quaternion_xyzw": [
+          -0.15192857685801636,
+          -0.02720146038327459,
+          -0.002684169148389929,
+          0.9880134530070417
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0004956257761235819,
+      "rgb_depth_distance_m": 0.002591933919158674,
+      "normal_angle_deg": 0.8796372399965415
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t03-00",
+      "timestamp": 1793019883.606789,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12630036109794232,
+          -0.01908539521971331,
+          0.42008154174496415
+        ],
+        "quaternion_xyzw": [
+          -0.15142942963137226,
+          -0.02861224344872736,
+          -0.004024058725518378,
+          0.988045684327259
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005336695747438351,
+      "rgb_depth_distance_m": 0.002451083538962227,
+      "normal_angle_deg": 1.034996744904542
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t03-01",
+      "timestamp": 1793019883.973884,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12630171232931742,
+          -0.019079756379069345,
+          0.42011759271318966
+        ],
+        "quaternion_xyzw": [
+          -0.15140258003250845,
+          -0.028393880070873727,
+          -0.004042817617406545,
+          0.9880560216707012
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005247709775902628,
+      "rgb_depth_distance_m": 0.002382533965525681,
+      "normal_angle_deg": 1.0026861839536778
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t03-02",
+      "timestamp": 1793019884.307607,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12629125830591376,
+          -0.01908287542592109,
+          0.42010245297317045
+        ],
+        "quaternion_xyzw": [
+          -0.15149682659530012,
+          -0.02838052349476372,
+          -0.00400933671299539,
+          0.9880420955793526
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005325428970554798,
+      "rgb_depth_distance_m": 0.0023917489733966887,
+      "normal_angle_deg": 0.9916906025760008
+    },
+    {
+      "semantic_position": "RIGHT",
+      "stem": "right-t03-03",
+      "timestamp": 1793019884.6747,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12629631434897826,
+          -0.019083640970368892,
+          0.4201057091971654
+        ],
+        "quaternion_xyzw": [
+          -0.1512131157474027,
+          -0.028263157073017058,
+          -0.003998898385858786,
+          0.9880889617792156
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005257244171848574,
+      "rgb_depth_distance_m": 0.002468625813619743,
+      "normal_angle_deg": 1.0768897112529836
+    },
+    {
+      "semantic_position": "ROBOT_SIDE",
+      "stem": "robot_side-t01-00",
+      "timestamp": 1793019892.91857,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12629678430942456,
+          -0.019078114905199207,
+          0.4200916608443154
+        ],
+        "quaternion_xyzw": [
+          -0.1513444869237754,
+          -0.02819636810095833,
+          -0.00405996960919017,
+          0.9880705074793331
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005318111118959399,
+      "rgb_depth_distance_m": 0.0024298177826853652,
+      "normal_angle_deg": 1.0047352813300416
+    },
+    {
+      "semantic_position": "ROBOT_SIDE",
+      "stem": "robot_side-t01-01",
+      "timestamp": 1793019893.252304,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.1263002095369974,
+          -0.01908353924638539,
+          0.42008218336458
+        ],
+        "quaternion_xyzw": [
+          -0.15141098167452288,
+          -0.028611299754983967,
+          -0.004017979285016684,
+          0.9880485635823539
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.000530835421839399,
+      "rgb_depth_distance_m": 0.0024616728653256894,
+      "normal_angle_deg": 1.0472211997633893
+    },
+    {
+      "semantic_position": "ROBOT_SIDE",
+      "stem": "robot_side-t01-02",
+      "timestamp": 1793019893.61941,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.1262956666709525,
+          -0.019077001795710185,
+          0.42008200484037356
+        ],
+        "quaternion_xyzw": [
+          -0.15160029829804744,
+          -0.028401359574866437,
+          -0.004051768408845137,
+          0.9880254528619206
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.0005205449245192231,
+      "rgb_depth_distance_m": 0.0024472953366017416,
+      "normal_angle_deg": 1.0292737878675802
+    },
+    {
+      "semantic_position": "ROBOT_SIDE",
+      "stem": "robot_side-t01-03",
+      "timestamp": 1793019893.953143,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_depth_optical_frame",
+      "checkerboard_detected": true,
+      "internal_corner_count": 54,
+      "full_board_detection": true,
+      "valid_depth_corner_count": 54,
+      "valid_depth_corner_ratio": 1.0,
+      "board_depth_valid_ratio": 1.0,
+      "board_pose_camera": {
+        "frame_id": "camera_color_optical_frame",
+        "convention": "p_color = T_color_checkerboard * p_checkerboard",
+        "not_workplane_frame": true,
+        "not_base_link": true,
+        "translation_m": [
+          -0.12629298233676223,
+          -0.019090837401041068,
+          0.4200821451336076
+        ],
+        "quaternion_xyzw": [
+          -0.151298986355354,
+          -0.02841233092368487,
+          -0.003975156688156066,
+          0.9880716341989735
+        ]
+      },
+      "tf_valid": true,
+      "rejection_reason": "",
+      "workplane_xy": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+      "plane_samples": 4000,
+      "plane_rmse_m": 0.00054046678406541,
+      "rgb_depth_distance_m": 0.0024256517360910466,
+      "normal_angle_deg": 1.0294720798143973
+    }
+  ],
   "summary": {
-    "capture_count": 0,
-    "positions": {},
+    "capture_count": 52,
+    "positions": {
+      "CENTER": {
+        "frames": 12,
+        "full_board": 12,
+        "observed": true
+      },
+      "LEFT": {
+        "frames": 12,
+        "full_board": 12,
+        "observed": true
+      },
+      "RIGHT": {
+        "frames": 12,
+        "full_board": 12,
+        "observed": true
+      },
+      "ROBOT_SIDE": {
+        "frames": 4,
+        "full_board": 4,
+        "observed": true
+      },
+      "CAMERA_SIDE": {
+        "frames": 12,
+        "full_board": 12,
+        "observed": true
+      }
+    },
     "camera_visible_roi": {
       "metric_boundary": "METRIC_BOUNDARY_UNRESOLVED",
       "reason": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION"
