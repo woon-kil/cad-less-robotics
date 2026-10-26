@@ -1,0 +1,29 @@
+{
+  "status": "IMPLEMENTED_NOT_VERIFIED",
+  "observed_positions": [],
+  "capture_count": 0,
+  "camera_visible_roi": "METRIC_BOUNDARY_UNRESOLVED",
+  "robot_reachable_roi": "UNVERIFIED_P007_NOT_OPEN",
+  "checks": {
+    "R2-01": true,
+    "R2-02": true,
+    "R2-03": true,
+    "R2-04": true,
+    "R2-05": false,
+    "R2-06": true,
+    "R2-07": false,
+    "R2-08": false,
+    "R2-09": false,
+    "R2-10": false,
+    "R2-11": true,
+    "R2-12": true,
+    "R2-13": true,
+    "R2-14": true,
+    "R2-15": true,
+    "R2-16": true,
+    "R2-17": true,
+    "R2-18": true,
+    "R2-19": true,
+    "R2-20": true
+  }
+}

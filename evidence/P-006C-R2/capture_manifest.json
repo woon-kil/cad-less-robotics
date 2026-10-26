@@ -1,0 +1,14 @@
+{
+  "positions": ["CENTER", "LEFT", "RIGHT", "ROBOT_SIDE", "CAMERA_SIDE"],
+  "frames_per_placement": 4,
+  "placement_intent": {
+    "CENTER": "종이 전체가 X 0–400, Y 300–800 안에 있는 작업 영역 중앙",
+    "LEFT": "DOFBOT에서 LED를 볼 때 왼쪽. 종이는 ROI 밖과 Y 300 미만으로 나가지 않는다",
+    "RIGHT": "같은 시선에서 오른쪽. 종이는 ROI 안에 둔다",
+    "ROBOT_SIDE": "Y 300 경계 안쪽. 설치 영역에는 올리지 않는다",
+    "CAMERA_SIDE": "LED와 카메라 쪽 안쪽. 받침 밑으로 넣지 않는다"
+  },
+  "names_are_not_reachability": true,
+  "legacy_near_far_unused": true,
+  "captures": []
+}

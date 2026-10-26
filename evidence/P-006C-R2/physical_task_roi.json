@@ -1,0 +1,36 @@
+{
+  "frame": "workplane_roi_frame",
+  "origin": "left robot-side tabletop corner",
+  "origin_view": "DOFBOT 쪽에 서서 Gemini 335L과 LED 쪽을 바라볼 때 테이블의 왼쪽 robot-side 모서리",
+  "axis": {
+    "x": "right",
+    "y": "robot_side_to_camera_side",
+    "z": "up_from_workplane"
+  },
+  "not_base_link": true,
+  "not_camera_frame": true,
+  "not_t_base_camera": true,
+  "table_mm": {
+    "x": [0, 400],
+    "y": [0, 800]
+  },
+  "physical_task_roi_mm": {
+    "x": [0, 400],
+    "y": [300, 800]
+  },
+  "physical_task_roi_size_mm": [400, 500],
+  "physical_task_roi_area_mm2": 200000,
+  "excluded_installation_mm": {
+    "y": [0, 300],
+    "reason": "DOFBOT, 베이스, 제어기 설치 영역"
+  },
+  "checkerboard_outer_mm": [210, 285],
+  "checkerboard_pattern": {
+    "squares": [7, 10],
+    "internal_corners": [6, 9],
+    "square_size_mm": 20.0
+  },
+  "robot_reachable_roi": "UNVERIFIED_P007_NOT_OPEN",
+  "process_roi": "NOT_CONFIRMED",
+  "source": "operator tape measurement, not pixel scale"
+}

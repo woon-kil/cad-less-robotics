@@ -1,0 +1,17 @@
+{
+  "locked_before_capture": true,
+  "thresholds_file": "evidence/P-006/camera-target/thresholds.yaml",
+  "thresholds_sha256": "303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539",
+  "thresholds_changed": false,
+  "optical_z_40mm_rule_used": false,
+  "pixel_to_workplane": false,
+  "full_board_corners": 54,
+  "sync_max_sec": 0.05,
+  "corner_depth": "P-006C와 같다. 5x5 median, raw>0인 표본 5개 이상, 0.17–20 m, meters_per_count는 thresholds.yaml.",
+  "valid_corner_depths_min": 40,
+  "board_depth_valid_ratio": "코너 사각형 안 stride-2 표본. 4000개 상한을 비율에는 쓰지 않는다. 평면 RMSE만 기존 상한을 유지한다.",
+  "position_observed": "한 프레임이라도 54코너, solvePnP z>0, 유효 코너 깊이 40개 이상이면 그 semantic position은 관측된 것이다. 미달 프레임은 지우지 않는다.",
+  "camera_visible_roi_metric_boundary": "METRIC_BOUNDARY_UNRESOLVED",
+  "unresolved_reason": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION",
+  "identity_tf": "forbidden"
+}

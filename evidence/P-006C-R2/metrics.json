@@ -1,0 +1,16 @@
+{
+  "frames": [],
+  "summary": {
+    "capture_count": 0,
+    "positions": {},
+    "camera_visible_roi": {
+      "metric_boundary": "METRIC_BOUNDARY_UNRESOLVED",
+      "reason": "UNRESOLVED_PENDING_WORKPLANE_REGISTRATION"
+    },
+    "robot_reachable_roi": "UNVERIFIED_P007_NOT_OPEN",
+    "process_roi": "NOT_CONFIRMED",
+    "optical_z_40mm_rule_used": false,
+    "pixel_to_workplane": false,
+    "threshold_change": 0
+  }
+}
