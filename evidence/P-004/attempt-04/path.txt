@@ -1,0 +1,7 @@
+mode boundary
+requested_mode boundary
+raw_path_points 573
+path_length_m 1.7537877446544481
+path_closed no
+endpoint_gap_m 0.36898717185540247
+error 

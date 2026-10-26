@@ -1,0 +1,8 @@
+viewpoint 0 0 0
+frame camera_depth_optical_frame
+hemisphere_rule n · (viewpoint - point) >= 0
+outward camera-facing side of the visible surface
+tool_axis +Z = -outward normal
+roll path tangent projected orthogonal to tool +Z
+plane_normal_sign_alignment not used
+neighbor_sign_propagation not used

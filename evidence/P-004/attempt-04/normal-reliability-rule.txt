@@ -1,0 +1,20 @@
+metric normal_axis_separation
+formula (lambda1 - lambda0) / lambda1
+threshold 0.5
+reason lambda1 must be at least twice lambda0 before the normal axis is distinct
+reliable 612
+unreliable 61
+recovered 54
+unrecoverable 7
+total 673
+min 0.055170493903981509
+p01 0.15110613777745982
+p05 0.41324597117828532
+median 0.83982587263118313
+p95 0.97632219629881989
+max 0.9924266377427533
+measured_waypoint_44_separation 0.19064645273297784
+measured_waypoint_44_smaller_count 9
+measured_waypoint_44_order_from_smallest 10
+measured_below_threshold 61
+note waypoint index is an evidence label for this snapshot, not a production condition

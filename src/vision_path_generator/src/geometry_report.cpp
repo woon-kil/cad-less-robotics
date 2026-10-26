@@ -263,9 +263,126 @@ OrientationStats orientationOf(
   return stats;
 }
 
+struct DiscCounts {
+  std::size_t negative{0};
+  std::size_t geometric{0};
+  std::size_t outlier{0};
+  std::size_t sign{0};
+  std::size_t ordering{0};
+  std::size_t unknown{0};
+};
+
+struct ClassifiedPair {
+  std::size_t index{0};
+  vision_path_generator::NormalDiscontinuity kind{vision_path_generator::NormalDiscontinuity::None};
+  double angle_deg{0.0};
+  double tangent_deg{0.0};
+  double distance_m{0.0};
+};
+
+const char* discontinuityName(vision_path_generator::NormalDiscontinuity kind) {
+  switch (kind) {
+    case vision_path_generator::NormalDiscontinuity::None:
+      return "NONE";
+    case vision_path_generator::NormalDiscontinuity::Geometric:
+      return "GEOMETRIC_DISCONTINUITY";
+    case vision_path_generator::NormalDiscontinuity::EstimationOutlier:
+      return "NORMAL_ESTIMATION_OUTLIER";
+    case vision_path_generator::NormalDiscontinuity::SignAmbiguity:
+      return "SIGN_AMBIGUITY";
+    case vision_path_generator::NormalDiscontinuity::PathOrdering:
+      return "PATH_ORDERING_ERROR";
+    case vision_path_generator::NormalDiscontinuity::Unknown:
+      return "UNKNOWN";
+  }
+  return "UNKNOWN";
+}
+
+double tangentTurnDeg(
+    const std::vector<vision_path_generator::Waypoint>& waypoints, std::size_t index) {
+  if (index + 2 >= waypoints.size()) {
+    return 0.0;
+  }
+  const auto first = waypoints[index + 1].position - waypoints[index].position;
+  const auto second = waypoints[index + 2].position - waypoints[index + 1].position;
+  const double denom = vision_path_generator::norm(first) * vision_path_generator::norm(second);
+  if (denom < 1e-12) {
+    return 0.0;
+  }
+  const double cosine = std::clamp(vision_path_generator::dot(first, second) / denom, -1.0, 1.0);
+  return std::acos(cosine) * (180.0 / kPi);
+}
+
+std::vector<ClassifiedPair> classifyPairs(
+    const std::vector<vision_path_generator::Waypoint>& waypoints, double max_gap) {
+  std::vector<ClassifiedPair> pairs;
+  for (std::size_t index = 0; index + 1 < waypoints.size(); ++index) {
+    const bool has_previous = index > 0;
+    const bool has_following = index + 2 < waypoints.size();
+    const auto kind = vision_path_generator::classifyNormalDiscontinuity(
+        has_previous ? waypoints[index - 1].normal : vision_path_generator::Vec3{},
+        waypoints[index].normal, waypoints[index + 1].normal,
+        has_following ? waypoints[index + 2].normal : vision_path_generator::Vec3{},
+        waypoints[index].position, waypoints[index + 1].position,
+        vision_path_generator::norm(waypoints[index + 1].position - waypoints[index].position), max_gap,
+        has_previous, has_following);
+    if (kind == vision_path_generator::NormalDiscontinuity::None) {
+      continue;
+    }
+    const double cosine = std::clamp(
+        vision_path_generator::dot(waypoints[index].normal, waypoints[index + 1].normal), -1.0, 1.0);
+    pairs.push_back(ClassifiedPair{
+        index, kind, std::acos(cosine) * (180.0 / kPi), tangentTurnDeg(waypoints, index),
+        vision_path_generator::norm(waypoints[index + 1].position - waypoints[index].position)});
+  }
+  return pairs;
+}
+
+DiscCounts countPairs(const std::vector<ClassifiedPair>& pairs) {
+  DiscCounts counts;
+  counts.negative = pairs.size();
+  for (const auto& pair : pairs) {
+    switch (pair.kind) {
+      case vision_path_generator::NormalDiscontinuity::Geometric:
+        ++counts.geometric;
+        break;
+      case vision_path_generator::NormalDiscontinuity::EstimationOutlier:
+        ++counts.outlier;
+        break;
+      case vision_path_generator::NormalDiscontinuity::SignAmbiguity:
+        ++counts.sign;
+        break;
+      case vision_path_generator::NormalDiscontinuity::PathOrdering:
+        ++counts.ordering;
+        break;
+      case vision_path_generator::NormalDiscontinuity::Unknown:
+      case vision_path_generator::NormalDiscontinuity::None:
+        ++counts.unknown;
+        break;
+    }
+  }
+  return counts;
+}
+
+bool invalidDiscontinuityFree(const DiscCounts& counts) {
+  return counts.outlier == 0 && counts.sign == 0 && counts.ordering == 0 && counts.unknown == 0;
+}
+
+double percentileOf(const std::vector<double>& sorted, double fraction) {
+  if (sorted.empty()) {
+    return 0.0;
+  }
+  const double position = fraction * static_cast<double>(sorted.size() - 1);
+  const auto index = static_cast<std::size_t>(std::floor(position));
+  const double fraction_part = position - static_cast<double>(index);
+  const double upper = sorted[std::min(index + 1, sorted.size() - 1)];
+  return sorted[index] * (1.0 - fraction_part) + upper * fraction_part;
+}
+
 void writeCsv(const std::string& path, const std::vector<vision_path_generator::Waypoint>& waypoints) {
   std::ofstream output(path);
-  output << "index,x,y,z,qx,qy,qz,qw,nx,ny,nz,path_distance_m\n";
+  output << "index,x,y,z,qx,qy,qz,qw,nx,ny,nz,path_distance_m,normal_separation,normal_reliable,"
+            "normal_recovered,normal_unrecoverable_edge\n";
   output << std::setprecision(17);
   double distance = 0.0;
   for (std::size_t index = 0; index < waypoints.size(); ++index) {
@@ -276,7 +393,10 @@ void writeCsv(const std::string& path, const std::vector<vision_path_generator::
     output << index << ',' << waypoint.position.x << ',' << waypoint.position.y << ',' << waypoint.position.z
            << ',' << waypoint.orientation.x << ',' << waypoint.orientation.y << ',' << waypoint.orientation.z
            << ',' << waypoint.orientation.w << ',' << waypoint.normal.x << ',' << waypoint.normal.y << ','
-           << waypoint.normal.z << ',' << distance << '\n';
+           << waypoint.normal.z << ',' << distance << ',' << waypoint.normal_separation << ','
+           << (waypoint.normal_reliable ? "true" : "false") << ','
+           << (waypoint.normal_recovered ? "true" : "false") << ','
+           << (waypoint.normal_unrecoverable_edge ? "true" : "false") << '\n';
   }
 }
 
@@ -370,6 +490,12 @@ int main(int argc, char** argv) {
   const auto orientation = orientationOf(primary.waypoints, primary);
   const auto orientation_run2 = orientationOf(runs[1].waypoints, runs[1]);
   const auto orientation_run3 = orientationOf(runs[2].waypoints, runs[2]);
+  const auto pairs = classifyPairs(primary.waypoints, params.max_segment_gap);
+  const auto pairs_run2 = classifyPairs(runs[1].waypoints, params.max_segment_gap);
+  const auto pairs_run3 = classifyPairs(runs[2].waypoints, params.max_segment_gap);
+  const auto discontinuities = countPairs(pairs);
+  const auto discontinuities_run2 = countPairs(pairs_run2);
+  const auto discontinuities_run3 = countPairs(pairs_run3);
   const bool deterministic = sameRun(runs[0], runs[1]) && sameRun(runs[1], runs[2]);
   const bool spacing_measured = spacing.internal_count > 0;
   const bool spacing_pass =
@@ -379,8 +505,9 @@ int main(int argc, char** argv) {
                              primary.sor_points > 0 && primary.plane_valid && primary.plane_inliers > 0 &&
                              primary.object_points > 0 && primary.surface_nan == 0 &&
                              primary.surface_inf == 0 && primary.finite_normals > 0 &&
-                             primary.invalid_normals == 0 && orientation.normal_flips == 0 &&
-                             orientation_run2.normal_flips == 0 && orientation_run3.normal_flips == 0 &&
+                             primary.invalid_normals == 0 && invalidDiscontinuityFree(discontinuities) &&
+                             invalidDiscontinuityFree(discontinuities_run2) &&
+                             invalidDiscontinuityFree(discontinuities_run3) &&
                              orientation.hemisphere_violations == 0 &&
                              orientation_run2.hemisphere_violations == 0 &&
                              orientation_run3.hemisphere_violations == 0 &&
@@ -405,6 +532,7 @@ int main(int argc, char** argv) {
   parameters << "min_height: " << params.min_height << "\n";
   parameters << "normal_k: " << params.normal_k << "\n";
   parameters << "normal_viewpoint: [0.0, 0.0, 0.0]\n";
+  parameters << "normal_axis_separation_min: " << vision_path_generator::kMinNormalAxisSeparation << "\n";
   parameters << "normal_orientation: viewpoint\n";
   parameters << "boundary_radius: " << params.boundary_radius << "\n";
   parameters << "waypoint_spacing: " << params.waypoint_spacing << "\n";
@@ -513,6 +641,17 @@ int main(int argc, char** argv) {
   json << "    \"p95_error_deg\": " << jsonNumber(orientation.p95_error_deg) << ",\n";
   json << "    \"max_error_deg\": " << jsonNumber(orientation.max_error_deg) << ",\n";
   json << "    \"recorded\": " << (orientation.recorded ? "true" : "false") << "\n";
+  json << "  },\n";
+  json << "  \"discontinuities\": {\n";
+  json << "    \"negative_adjacency_total\": " << discontinuities.negative << ",\n";
+  json << "    \"explained_geometric\": " << discontinuities.geometric << ",\n";
+  json << "    \"normal_estimation_outlier\": " << discontinuities.outlier << ",\n";
+  json << "    \"sign_ambiguity\": " << discontinuities.sign << ",\n";
+  json << "    \"path_ordering_error\": " << discontinuities.ordering << ",\n";
+  json << "    \"unknown\": " << discontinuities.unknown << ",\n";
+  json << "    \"unexplained_or_invalid\": "
+       << (discontinuities.outlier + discontinuities.sign + discontinuities.ordering + discontinuities.unknown)
+       << "\n";
   json << "  },\n";
   json << "  \"determinism\": {\n";
   json << "    \"runs\": 3,\n";
@@ -701,6 +840,115 @@ int main(int argc, char** argv) {
     body << "waypoint_ms " << primary.waypoint_ms << "\n";
     body << "total_ms " << primary.total_ms << "\n";
     write_text("timing.txt", body.str());
+  }
+  {
+    std::size_t reliable = 0;
+    std::size_t unreliable = 0;
+    std::size_t recovered = 0;
+    std::size_t unrecoverable = 0;
+    std::vector<double> separations;
+    separations.reserve(primary.waypoints.size());
+    std::ostringstream distribution;
+    std::ostringstream classification;
+    std::ostringstream recovery;
+    distribution << std::setprecision(17);
+    classification << std::setprecision(17);
+    recovery << std::setprecision(17);
+    distribution << "index,separation,reliable\n";
+    classification << "index,separation,reliable,recovered,unrecoverable_edge\n";
+    recovery << "index,separation,result\n";
+    for (std::size_t index = 0; index < primary.waypoints.size(); ++index) {
+      const auto& waypoint = primary.waypoints[index];
+      separations.push_back(waypoint.normal_separation);
+      if (waypoint.normal_reliable) {
+        ++reliable;
+      } else {
+        ++unreliable;
+      }
+      if (waypoint.normal_recovered) {
+        ++recovered;
+      }
+      if (waypoint.normal_unrecoverable_edge ||
+          (!waypoint.normal_reliable && !waypoint.normal_recovered)) {
+        ++unrecoverable;
+      }
+      distribution << index << ',' << waypoint.normal_separation << ','
+                   << (waypoint.normal_reliable ? "true" : "false") << '\n';
+      classification << index << ',' << waypoint.normal_separation << ','
+                     << (waypoint.normal_reliable ? "true" : "false") << ','
+                     << (waypoint.normal_recovered ? "true" : "false") << ','
+                     << (waypoint.normal_unrecoverable_edge ? "true" : "false") << '\n';
+      if (waypoint.normal_recovered || waypoint.normal_unrecoverable_edge || !waypoint.normal_reliable) {
+        const char* result = waypoint.normal_recovered
+                                 ? "RECOVERED"
+                                 : (waypoint.normal_unrecoverable_edge ? "UNRECOVERABLE_EDGE" : "UNRECOVERABLE_SUPPORT");
+        recovery << index << ',' << waypoint.normal_separation << ',' << result << '\n';
+      }
+    }
+    std::sort(separations.begin(), separations.end());
+    write_text("normal-reliability-distribution.csv", distribution.str());
+    write_text("normal-classification.csv", classification.str());
+    write_text("normal-recovery.csv", recovery.str());
+    std::ostringstream rule;
+    rule << std::setprecision(17);
+    rule << "metric normal_axis_separation\n";
+    rule << "formula (lambda1 - lambda0) / lambda1\n";
+    rule << "threshold " << vision_path_generator::kMinNormalAxisSeparation << "\n";
+    rule << "reason lambda1 must be at least twice lambda0 before the normal axis is distinct\n";
+    rule << "reliable " << reliable << "\n";
+    rule << "unreliable " << unreliable << "\n";
+    rule << "recovered " << recovered << "\n";
+    rule << "unrecoverable " << unrecoverable << "\n";
+    rule << "total " << primary.waypoints.size() << "\n";
+    if (!separations.empty()) {
+      rule << "min " << separations.front() << "\n";
+      rule << "p01 " << percentileOf(separations, 0.01) << "\n";
+      rule << "p05 " << percentileOf(separations, 0.05) << "\n";
+      rule << "median " << percentileOf(separations, 0.5) << "\n";
+      rule << "p95 " << percentileOf(separations, 0.95) << "\n";
+      rule << "max " << separations.back() << "\n";
+    }
+    write_text("normal-reliability-rule.txt", rule.str());
+  }
+  {
+    std::ostringstream body;
+    body << std::setprecision(17);
+    body << "index,kind,angle_deg,tangent_angle_deg,distance_m,requires_motion_handling\n";
+    for (const auto& pair : pairs) {
+      const bool motion = pair.kind == vision_path_generator::NormalDiscontinuity::Geometric;
+      body << pair.index << ',' << discontinuityName(pair.kind) << ',' << pair.angle_deg << ','
+           << pair.tangent_deg << ',' << pair.distance_m << ',' << (motion ? "true" : "false") << '\n';
+    }
+    write_text("discontinuity-classification.csv", body.str());
+  }
+  {
+    std::ostringstream body;
+    body << std::setprecision(17);
+    body << "explained_geometric " << discontinuities.geometric << "\n";
+    body << "smoothing_applied no\n";
+    for (const auto& pair : pairs) {
+      if (pair.kind != vision_path_generator::NormalDiscontinuity::Geometric) {
+        continue;
+      }
+      body << "index " << pair.index << "\n";
+      body << "normal_angle_deg " << pair.angle_deg << "\n";
+      body << "tangent_angle_deg " << pair.tangent_deg << "\n";
+      body << "requires_motion_handling true\n";
+    }
+    write_text("edge-preservation.txt", body.str());
+  }
+  {
+    std::ostringstream body;
+    body << std::setprecision(17);
+    body << "tool_axis +Z\n";
+    body << "approach tool +Z follows the negated outward surface normal\n";
+    body << "invalid_quaternion " << orientation.invalid_quaternion << "\n";
+    body << "quaternion_sign_flips " << orientation.quaternion_flips << "\n";
+    body << "hemisphere_violations " << orientation.hemisphere_violations << "\n";
+    body << "mean_error_deg " << orientation.mean_error_deg << "\n";
+    body << "p95_error_deg " << orientation.p95_error_deg << "\n";
+    body << "max_error_deg " << orientation.max_error_deg << "\n";
+    write_text("orientation-validation.txt", body.str());
   }
 
   std::cout << "P-004 GEOMETRY " << (geometry_pass ? "PASS" : "FAIL") << "\n";

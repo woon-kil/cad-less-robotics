@@ -1,0 +1,6 @@
+explained_geometric 1
+smoothing_applied no
+index 311
+normal_angle_deg 97.817525203886817
+tangent_angle_deg 61.748500293980115
+requires_motion_handling true

@@ -1,0 +1,8 @@
+tool_axis +Z
+approach tool +Z follows the negated outward surface normal
+invalid_quaternion 0
+quaternion_sign_flips 0
+hemisphere_violations 0
+mean_error_deg 5.9061789005620327e-08
+p95_error_deg 8.5377364625159387e-07
+max_error_deg 1.2074182697257333e-06

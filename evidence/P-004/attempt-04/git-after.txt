@@ -1,0 +1,3 @@
+TESTED_COMMIT=NONE
+FINAL_COMMIT=PENDING
+Working tree at evidence write: normal-axis reliability, two-sided recovery, discontinuity classification, five unit tests, attempt-04 evidence.

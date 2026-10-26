@@ -1,0 +1,13 @@
+baseline attempt-02 waypoints.csv
+surface_points 31555
+raw_path_points 573
+path_length_m 1.7537877446544481
+waypoints 673
+max_position_difference_m 0
+normals_changed 54
+spacing_target_m 0.002
+spacing_mean_m 0.0019526813438595124
+spacing_mean_abs_error_m 4.7318656140493937e-05
+spacing_min_m 0.00040948138113350887
+spacing_min_segment_start_index 54
+resampling_modified no

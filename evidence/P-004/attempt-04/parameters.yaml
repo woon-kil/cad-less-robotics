@@ -1,0 +1,22 @@
+path_mode: boundary
+voxel_leaf_size: 0.002
+sor_mean_k: 30
+sor_stddev: 1
+ransac_distance: 0.004
+ransac_iterations: 200
+ransac_seed: pcl_1_12_default_12345
+max_plane_inlier_ratio: 0.98
+min_height: 0.003
+normal_k: 20
+normal_viewpoint: [0.0, 0.0, 0.0]
+normal_axis_separation_min: 0.5
+normal_orientation: viewpoint
+boundary_radius: 0.01
+waypoint_spacing: 0.002
+max_segment_gap: 0.02
+smooth_passes: 1
+cluster_tolerance: 0.01
+min_cluster_size: 50
+min_waypoints: 5
+target_frame: camera_depth_optical_frame
+require_transform: false

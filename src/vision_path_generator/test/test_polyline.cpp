@@ -130,6 +130,51 @@ TEST(NormalOrientation, DoesNotPropagateAcrossACameraFacingCorner) {
   EXPECT_LT(vision_path_generator::dot(left, right), 0.0);
 }
 
+TEST(NormalReliability, SeparatesTheNormalAxisByAtLeastAFactorOfTwo) {
+  EXPECT_NEAR(vision_path_generator::normalAxisSeparation(1.0, 2.0), 0.5, 1e-12);
+  EXPECT_NEAR(vision_path_generator::kMinNormalAxisSeparation, 0.5, 1e-12);
+  EXPECT_GT(
+      vision_path_generator::normalAxisSeparation(0.2, 1.0),
+      vision_path_generator::kMinNormalAxisSeparation);
+  EXPECT_LT(vision_path_generator::normalAxisSeparation(0.8, 1.0), vision_path_generator::kMinNormalAxisSeparation);
+}
+
+TEST(NormalRecovery, ReplacesAnIsolatedNormalWhenBothSupportsAgree) {
+  const auto recovered = vision_path_generator::recoverNormalFromSupports(
+      {0.0, 0.0, 1.0}, {1.0, 0.0, 0.0}, {0.0, 0.0, -1.0}, {0.0, 0.2, -1.0}, true, true, {0.0, 0.0, 0.0});
+  EXPECT_EQ(recovered.recovery, vision_path_generator::NormalRecovery::Recovered);
+  EXPECT_NEAR(recovered.normal.x, 0.0, 1e-9);
+  EXPECT_LT(recovered.normal.z, 0.0);
+  EXPECT_GT(vision_path_generator::dot(recovered.normal, {0.0, 0.0, -1.0}), 0.0);
+}
+
+TEST(NormalRecovery, DoesNotBlendSupportsAcrossASharpEdge) {
+  const vision_path_generator::Vec3 original{0.0, 1.0, 0.0};
+  const auto recovered = vision_path_generator::recoverNormalFromSupports(
+      {0.0, 0.0, 1.0}, original, {-1.0, 0.0, -0.2}, {1.0, 0.0, -0.2}, true, true, {0.0, 0.0, 0.0});
+  EXPECT_EQ(recovered.recovery, vision_path_generator::NormalRecovery::UnrecoverableEdge);
+  EXPECT_NEAR(recovered.normal.x, original.x, 1e-12);
+  EXPECT_NEAR(recovered.normal.y, original.y, 1e-12);
+  EXPECT_NEAR(recovered.normal.z, original.z, 1e-12);
+}
+
+TEST(NormalDiscontinuity, KeepsACoherentCameraFacingCorner) {
+  const auto region_a = vision_path_generator::normalized({-0.9, 0.0, -0.2});
+  const auto region_b = vision_path_generator::normalized({0.9, 0.0, -0.2});
+  const auto kind = vision_path_generator::classifyNormalDiscontinuity(
+      region_a, region_a, region_b, region_b, {0.001, 0.0, 1.0}, {-0.001, 0.0, 1.0}, 0.002, 0.02, true,
+      true);
+  EXPECT_EQ(kind, vision_path_generator::NormalDiscontinuity::Geometric);
+}
+
+TEST(NormalDiscontinuity, MarksASignFlipThatStillFacesTheCamera) {
+  const vision_path_generator::Vec3 away{0.0, 0.0, 1.0};
+  const vision_path_generator::Vec3 toward{0.0, 0.0, -1.0};
+  const auto kind = vision_path_generator::classifyNormalDiscontinuity(
+      toward, away, toward, toward, {0.0, 0.0, 1.0}, {0.2, 0.0, 1.0}, 0.002, 0.02, true, true);
+  EXPECT_EQ(kind, vision_path_generator::NormalDiscontinuity::SignAmbiguity);
+}
+
 TEST(Orientation, FlipsQuaternionToTheSameHemisphere) {
   std::vector<vision_path_generator::Quat> orientations{{0.0, 0.0, 0.0, 1.0}, {0.0, 0.0, 0.0, -1.0}};
   vision_path_generator::alignQuaternionHemisphere(orientations);

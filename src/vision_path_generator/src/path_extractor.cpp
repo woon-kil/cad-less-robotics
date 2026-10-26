@@ -520,22 +520,73 @@ std::vector<Vec3> crestChain(
   return longestGapRun(ordered, params.max_segment_gap);
 }
 
+struct NormalDraft {
+  Vec3 normal;
+  double separation{0.0};
+  bool reliable{false};
+  bool recovered{false};
+  bool unrecoverable_edge{false};
+};
+
+bool neighborEigenvalues(
+    const pcl::KdTreeFLANN<pcl::PointXYZ>& tree, const pcl::PointXYZ& query, int k, double& lambda0,
+    double& lambda1, double& lambda2) {
+  if (k < 3) {
+    return false;
+  }
+  std::vector<int> ids(static_cast<std::size_t>(k));
+  std::vector<float> distances(static_cast<std::size_t>(k));
+  const int found = tree.nearestKSearch(query, k, ids, distances);
+  if (found < 3) {
+    return false;
+  }
+  Eigen::Vector3d mean = Eigen::Vector3d::Zero();
+  for (int index = 0; index < found; ++index) {
+    const auto& point = tree.getInputCloud()->at(static_cast<std::size_t>(ids[static_cast<std::size_t>(index)]));
+    mean += Eigen::Vector3d(point.x, point.y, point.z);
+  }
+  mean /= static_cast<double>(found);
+  Eigen::Matrix3d covariance = Eigen::Matrix3d::Zero();
+  for (int index = 0; index < found; ++index) {
+    const auto& point = tree.getInputCloud()->at(static_cast<std::size_t>(ids[static_cast<std::size_t>(index)]));
+    const Eigen::Vector3d delta(point.x - mean.x(), point.y - mean.y(), point.z - mean.z());
+    covariance += delta * delta.transpose();
+  }
+  covariance /= static_cast<double>(found);
+  const Eigen::SelfAdjointEigenSolver<Eigen::Matrix3d> solver(covariance);
+  if (solver.info() != Eigen::Success) {
+    return false;
+  }
+  lambda0 = solver.eigenvalues()(0);
+  lambda1 = solver.eigenvalues()(1);
+  lambda2 = solver.eigenvalues()(2);
+  return true;
+}
+
+bool findReliableSupport(
+    const std::vector<NormalDraft>& drafts, int start, int step, std::size_t& found) {
+  for (int cursor = start; cursor >= 0 && cursor < static_cast<int>(drafts.size()); cursor += step) {
+    if (drafts[static_cast<std::size_t>(cursor)].reliable) {
+      found = static_cast<std::size_t>(cursor);
+      return true;
+    }
+  }
+  return false;
+}
+
 std::vector<Waypoint> buildWaypoints(
     const std::vector<Vec3>& samples,
     const pcl::PointCloud<pcl::PointXYZ>::ConstPtr& cloud,
     const pcl::PointCloud<pcl::Normal>::ConstPtr& normals,
     const Plane& plane,
+    int normal_k,
     std::string& error) {
   pcl::KdTreeFLANN<pcl::PointXYZ> tree;
   tree.setInputCloud(cloud);
-  std::vector<Quat> orientations;
-  std::vector<Vec3> used_normals;
-  orientations.reserve(samples.size());
-  used_normals.reserve(samples.size());
+  std::vector<NormalDraft> drafts(samples.size());
   std::size_t missing_normals = 0;
+  const Vec3 viewpoint{0.0, 0.0, 0.0};
   for (std::size_t index = 0; index < samples.size(); ++index) {
-    Vec3 tangent = (index + 1 < samples.size()) ? samples[index + 1] - samples[index]
-                                                 : samples[index] - samples[index - 1];
     pcl::PointXYZ query;
     query.x = static_cast<float>(samples[index].x);
     query.y = static_cast<float>(samples[index].y);
@@ -544,9 +595,11 @@ std::vector<Waypoint> buildWaypoints(
     std::vector<float> distance(1);
     Vec3 used{plane.normal.x(), plane.normal.y(), plane.normal.z()};
     bool from_surface = false;
+    pcl::PointXYZ source = query;
     if (tree.nearestKSearch(query, 1, ids, distance) > 0) {
-      const auto& source = normals->at(static_cast<std::size_t>(ids[0]));
-      const Vec3 candidate{source.normal_x, source.normal_y, source.normal_z};
+      source = cloud->at(static_cast<std::size_t>(ids[0]));
+      const auto& source_normal = normals->at(static_cast<std::size_t>(ids[0]));
+      const Vec3 candidate{source_normal.normal_x, source_normal.normal_y, source_normal.normal_z};
       if (norm(candidate) > 1e-6 && std::isfinite(candidate.x) && std::isfinite(candidate.y) &&
           std::isfinite(candidate.z)) {
         used = candidate;
@@ -555,20 +608,60 @@ std::vector<Waypoint> buildWaypoints(
     }
     if (!from_surface) {
       ++missing_normals;
-      used = orientNormalTowardsViewpoint(samples[index], used, Vec3{0.0, 0.0, 0.0});
+      used = orientNormalTowardsViewpoint(samples[index], used, viewpoint);
     }
-    used_normals.push_back(used);
-    orientations.push_back(orientationFromTangentAndNormal(tangent, used));
+    double lambda0 = 0.0;
+    double lambda1 = 0.0;
+    double lambda2 = 0.0;
+    const double separation =
+        neighborEigenvalues(tree, source, normal_k, lambda0, lambda1, lambda2)
+            ? normalAxisSeparation(lambda0, lambda1)
+            : 0.0;
+    drafts[index].normal = used;
+    drafts[index].separation = separation;
+    drafts[index].reliable = separation >= kMinNormalAxisSeparation;
   }
   if (missing_normals * 2 > samples.size()) {
     error = "법선 추정에 실패했습니다.";
     return {};
   }
+  for (std::size_t index = 0; index < drafts.size(); ++index) {
+    if (drafts[index].reliable) {
+      continue;
+    }
+    std::size_t left = 0;
+    std::size_t right = 0;
+    const bool has_left = findReliableSupport(drafts, static_cast<int>(index) - 1, -1, left);
+    const bool has_right = findReliableSupport(drafts, static_cast<int>(index) + 1, 1, right);
+    const Vec3 left_normal = has_left ? drafts[left].normal : Vec3{};
+    const Vec3 right_normal = has_right ? drafts[right].normal : Vec3{};
+    const RecoveredNormal recovered = recoverNormalFromSupports(
+        samples[index], drafts[index].normal, left_normal, right_normal, has_left, has_right, viewpoint);
+    drafts[index].normal = recovered.normal;
+    drafts[index].recovered = recovered.recovery == NormalRecovery::Recovered;
+    drafts[index].unrecoverable_edge = recovered.recovery == NormalRecovery::UnrecoverableEdge;
+  }
+
+  std::vector<Quat> orientations;
+  orientations.reserve(samples.size());
+  for (std::size_t index = 0; index < samples.size(); ++index) {
+    const Vec3 tangent = (index + 1 < samples.size()) ? samples[index + 1] - samples[index]
+                                                       : samples[index] - samples[index - 1];
+    orientations.push_back(orientationFromTangentAndNormal(tangent, drafts[index].normal));
+  }
   alignQuaternionHemisphere(orientations);
   std::vector<Waypoint> waypoints;
   waypoints.reserve(samples.size());
   for (std::size_t index = 0; index < samples.size(); ++index) {
-    waypoints.push_back(Waypoint{samples[index], orientations[index], used_normals[index]});
+    Waypoint waypoint;
+    waypoint.position = samples[index];
+    waypoint.orientation = orientations[index];
+    waypoint.normal = drafts[index].normal;
+    waypoint.normal_separation = drafts[index].separation;
+    waypoint.normal_reliable = drafts[index].reliable;
+    waypoint.normal_recovered = drafts[index].recovered;
+    waypoint.normal_unrecoverable_edge = drafts[index].unrecoverable_edge;
+    waypoints.push_back(waypoint);
   }
   return waypoints;
 }
@@ -718,7 +811,7 @@ ExtractResult PathExtractor::extract(const pcl::PointCloud<pcl::PointXYZ>::Const
       result.waypoint_ms = stages.lap();
       return finish();
     }
-    result.waypoints = buildWaypoints(sampled, object, normals, plane, result.error);
+    result.waypoints = buildWaypoints(sampled, object, normals, plane, params_.normal_k, result.error);
     result.waypoint_ms = stages.lap();
     if (!result.error.empty()) {
       result.waypoints.clear();

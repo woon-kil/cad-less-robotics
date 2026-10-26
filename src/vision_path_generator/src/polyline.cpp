@@ -196,6 +196,88 @@ Vec3 orientNormalTowardsViewpoint(const Vec3& point, const Vec3& normal, const V
   return unit;
 }
 
+double normalAxisSeparation(double lambda0, double lambda1) {
+  if (!std::isfinite(lambda0) || !std::isfinite(lambda1) || !(lambda1 > 0.0) || lambda0 < 0.0) {
+    return 0.0;
+  }
+  return (lambda1 - lambda0) / lambda1;
+}
+
+RecoveredNormal recoverNormalFromSupports(
+    const Vec3& point,
+    const Vec3& original,
+    const Vec3& left,
+    const Vec3& right,
+    bool has_left,
+    bool has_right,
+    const Vec3& viewpoint) {
+  if (!has_left || !has_right || norm(left) < 1e-9 || norm(right) < 1e-9) {
+    return RecoveredNormal{original, NormalRecovery::UnrecoverableSupport};
+  }
+  const Vec3 left_unit = normalized(left);
+  const Vec3 right_unit = normalized(right);
+  if (dot(left_unit, right_unit) <= 0.0) {
+    return RecoveredNormal{original, NormalRecovery::UnrecoverableEdge};
+  }
+  const Vec3 recovered = orientNormalTowardsViewpoint(point, left_unit + right_unit, viewpoint);
+  if (norm(recovered) < 1e-9) {
+    return RecoveredNormal{original, NormalRecovery::UnrecoverableSupport};
+  }
+  return RecoveredNormal{recovered, NormalRecovery::Recovered};
+}
+
+namespace {
+
+bool facesViewpoint(const Vec3& normal, const Vec3& point) {
+  if (norm(normal) < 1e-9 || !std::isfinite(point.x) || !std::isfinite(point.y) || !std::isfinite(point.z) ||
+      !std::isfinite(normal.x) || !std::isfinite(normal.y) || !std::isfinite(normal.z)) {
+    return false;
+  }
+  const Vec3 to_viewpoint{-point.x, -point.y, -point.z};
+  return dot(normal, to_viewpoint) >= 0.0;
+}
+
+bool flipResolves(
+    const Vec3& flipped, const Vec3& pair, const Vec3& outer, bool has_outer, const Vec3& point) {
+  return facesViewpoint(flipped, point) && dot(flipped, pair) >= 0.0 &&
+         (!has_outer || dot(flipped, outer) >= 0.0);
+}
+
+}  // namespace
+
+NormalDiscontinuity classifyNormalDiscontinuity(
+    const Vec3& previous,
+    const Vec3& current,
+    const Vec3& next,
+    const Vec3& following,
+    const Vec3& current_point,
+    const Vec3& next_point,
+    double segment_length,
+    double max_segment_gap,
+    bool has_previous,
+    bool has_following) {
+  if (norm(current) < 1e-9 || norm(next) < 1e-9) {
+    return NormalDiscontinuity::Unknown;
+  }
+  if (dot(current, next) >= 0.0) {
+    return NormalDiscontinuity::None;
+  }
+  if (std::isfinite(segment_length) && std::isfinite(max_segment_gap) && segment_length > max_segment_gap) {
+    return NormalDiscontinuity::PathOrdering;
+  }
+  const Vec3 flipped_current = current * -1.0;
+  const Vec3 flipped_next = next * -1.0;
+  if (flipResolves(flipped_current, next, previous, has_previous, current_point) ||
+      flipResolves(flipped_next, current, following, has_following, next_point)) {
+    return NormalDiscontinuity::SignAmbiguity;
+  }
+  if (facesViewpoint(current, current_point) && facesViewpoint(next, next_point) && has_previous &&
+      has_following && dot(previous, current) >= 0.0 && dot(next, following) >= 0.0) {
+    return NormalDiscontinuity::Geometric;
+  }
+  return NormalDiscontinuity::EstimationOutlier;
+}
+
 Quat orientationFromTangentAndNormal(const Vec3& tangent_in, const Vec3& outward_normal_in) {
   Eigen::Vector3d tool_z(outward_normal_in.x, outward_normal_in.y, outward_normal_in.z);
   if (tool_z.norm() < 1e-9) {
