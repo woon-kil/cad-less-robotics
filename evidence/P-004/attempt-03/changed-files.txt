@@ -1,0 +1,17 @@
+src/vision_path_generator/src/discontinuity_report.cpp
+  기존 PathExtractor를 한 번 호출해 문제 waypoint 창, k=20 표면 이웃, PCA, 접선, 가상 부호를 기록한다.
+  법선 부호와 경로를 바꾸지 않는다.
+
+src/vision_path_generator/CMakeLists.txt
+  discontinuity_report 실행 파일만 추가한다.
+
+scripts/render_discontinuity_figures.py
+  진단 CSV로 SVG를 그린다. 점을 옮기거나 법선을 뒤집지 않는다.
+
+src/vision_path_generator/src/path_extractor.cpp
+src/vision_path_generator/src/polyline.cpp
+  변경 없음.
+
+evidence/P-004/
+evidence/P-004/attempt-02/
+  변경 없음.

@@ -1,0 +1,22 @@
+P-004 attempt #3 diagnostic. Attempts 1 and 2 are unchanged.
+
+README.md 2984
+alternative-sign-analysis.csv 874
+changed-files.txt 627
+classification.json 3747
+discontinuities.csv 629
+git-after.txt 123
+git-before.txt 147
+index-043-neighborhood.csv 6270
+index-043-surface.csv 16260
+index-044-neighborhood.csv 6269
+index-044-surface.csv 15263
+index-311-neighborhood.csv 6214
+index-311-surface.csv 15477
+local-geometry-analysis.csv 1616
+manifest.txt 588
+normal-discontinuity-043.svg 27307
+normal-discontinuity-044.svg 25871
+normal-discontinuity-311.svg 26847
+regression-test.log 8942
+tangent-analysis.csv 4594

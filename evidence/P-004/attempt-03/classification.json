@@ -1,0 +1,74 @@
+{
+  "snapshot_sha256": "09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60",
+  "production_algorithm_changed": false,
+  "normal_k": 20,
+  "items": [
+    {
+      "index": 43,
+      "pair": [43, 44],
+      "classification": "NORMAL_ESTIMATION_OUTLIER",
+      "dot": -0.69054071318091226,
+      "angle_deg": 133.67292625411935,
+      "distance_m": 0.0018926124611461433,
+      "tangent_angle_deg": 35.568322505693786,
+      "camera_dot": [0.54986068941671717, 0.07608951669244246],
+      "neighbor_agreement": {
+        "n42_n43": 0.97241772736084697,
+        "n43_n45": 0.96969955004281871,
+        "n42_n45": 0.94083172643552460
+      },
+      "source_pca_angle_deg": 3.52019892386405e-06,
+      "waypoint_pca_angle_deg": 19.655760386126115,
+      "source_eigenvalue_ratio_0_over_1": 0.6757588335225138,
+      "flip_index_camera_dot": -0.54986068941671717,
+      "evidence": "43은 42·45와 14° 안쪽으로 맞다. 음수 내적은 44 하나가 사이에 들어간 결과다. 43을 뒤집으면 camera dot이 -0.550이 되고 42와의 내적 0.972가 깨진다."
+    },
+    {
+      "index": 44,
+      "pair": [44, 45],
+      "classification": "NORMAL_ESTIMATION_OUTLIER",
+      "dot": -0.83315405710049384,
+      "angle_deg": 146.42411244447976,
+      "distance_m": 0.0019880585400368403,
+      "tangent_angle_deg": 21.811713762586127,
+      "camera_dot": [0.07608951669244246, 0.44641968512601027],
+      "camera_cosine": [0.073924505092832271, 0.43435233897433445],
+      "neighbor_agreement": {
+        "n43_n45": 0.96969955004281871,
+        "n45_n46": 1.00000002890824913,
+        "n44_n43": -0.69054071318091226,
+        "n44_n45": -0.83315405710049384
+      },
+      "planarity": 0.05952151237968336,
+      "surface_variation": 0.16147227458749491,
+      "eigenvalue_ratio_0_over_1": 0.8093535472670225,
+      "source_pca_angle_deg": 0.00015579439162229328,
+      "normal_k_count": 20,
+      "viz_point_count": 163,
+      "flip_index_camera_dot": -0.07608951669244246,
+      "flip_index_pair_dots": [0.69054071318091226, 0.83315405710049384],
+      "evidence": "44의 k=20 PCA는 저장된 법선과 0.00016°로 같다. 그러나 λ0/λ1=0.809, planarity=0.060이라 평면 축이 분리되지 않는다. 주변 42·43·45·46은 서로 20° 안쪽이고 경로 접선은 22°–36°만 돈다. 44만 뒤집으면 양쪽 내적은 양수가 되지만 camera dot은 -0.076이 된다."
+    },
+    {
+      "index": 311,
+      "pair": [311, 312],
+      "classification": "GEOMETRIC_DISCONTINUITY",
+      "dot": -0.13601860860959203,
+      "angle_deg": 97.817525203886817,
+      "distance_m": 0.0018991832137703827,
+      "tangent_angle_deg": 61.748500293980115,
+      "camera_dot": [0.44956507718206179, 0.73164176290654592],
+      "camera_cosine": [0.49055962059479619, 0.79671905993306591],
+      "region_before_dot": 1.0000000131636917,
+      "region_after_dot": 0.99059012925968215,
+      "waypoint_pca_angle_deg": 99.359311629029747,
+      "source_pca_angle_deg": 0.0013339223491856832,
+      "source_surface_variation": 0.24652063840484217,
+      "source_eigenvalue_ratio_0_over_1": 0.9448295060960179,
+      "nearest_distance_m": 0.0016081606736406684,
+      "flip_index_camera_dot": -0.44956507718206179,
+      "flip_next_camera_dot": -0.73164176290654592,
+      "evidence": "309–311의 법선이 같고 312 이후는 그 법선과 98°를 유지한다. 같은 점에서 경로 접선이 61.7° 돈다. 간격은 1.90 mm다. 어느 쪽을 뒤집어도 camera dot이 음수가 되고, 뒤집힌 쪽의 연속 구간 내적 1.0 또는 0.991이 깨진다. 311의 최근접 점 이웃은 λ0/λ1=0.945로 섞여 있고, waypoint 중심 k=20 PCA는 저장된 법선과 99° 다르며 312 방향과 가깝다."
+    }
+  ]
+}

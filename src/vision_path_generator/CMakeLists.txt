@@ -45,6 +45,10 @@ add_executable(geometry_report src/geometry_report.cpp)
 target_include_directories(geometry_report SYSTEM PRIVATE ${PCL_INCLUDE_DIRS})
 target_link_libraries(geometry_report path_extractor_core ${PCL_LIBRARIES})
 
+add_executable(discontinuity_report src/discontinuity_report.cpp)
+target_include_directories(discontinuity_report SYSTEM PRIVATE ${PCL_INCLUDE_DIRS})
+target_link_libraries(discontinuity_report path_extractor_core ${PCL_LIBRARIES})
+
 add_executable(path_extractor_node src/path_extractor_node.cpp)
 target_include_directories(path_extractor_node SYSTEM PRIVATE ${PCL_INCLUDE_DIRS})
 target_link_libraries(path_extractor_node path_extractor_core ${PCL_LIBRARIES})
@@ -52,6 +56,7 @@ ament_target_dependencies(path_extractor_node
   rclcpp sensor_msgs geometry_msgs std_msgs pcl_conversions tf2 tf2_ros tf2_sensor_msgs)
 
 install(TARGETS polyline_core path_extractor_core camera_node path_extractor_node geometry_report
+  discontinuity_report
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME})
