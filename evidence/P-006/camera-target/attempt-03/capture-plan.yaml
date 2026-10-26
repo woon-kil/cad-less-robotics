@@ -1,0 +1,48 @@
+locked_before_measurement: true
+attempt1_commit: 641eaea9985f9ce200536d9257d7f0c34522b711
+threshold_commit: 7548e1bd6c7c393f61b0e782120a91e40b9cae59
+diversity_rule_commit: 5c987bfca178f06c88c6aeaf218edff9ac6f31f3
+attempt2_commit: 29869c0c11b93f4b3e7a8ef722559822b2d37bb7
+attempt2_plan_sha256: 75db25998f34b3d9b402b2ee21b001f3359fe1f7f47e074ec1c29f4e66f85176
+thresholds_sha256: 303d1a4067b05d81cbbbb8ff24ae92ddbf34712b2c91ea0c470cb021a007b539
+checkerboard_sha256: 1d17d9e66a5e2f13e61c9d93303561562996faadfac3f03a817d22dbbcaf9853
+attempt1_color_pose_sha256: 4a46797303e8e908d9cb8c3b845bd96ce60447199cb26da7d0cb881c2d6f4dc3
+attempt1_reproducibility_sha256: a8805827177ed2b9f36a73c3df347bc51c6607ea321a3d8596aa693305917d7e
+attempt1_summary_sha256: 6cce005faa72f5cbde8fbed7937060aa7dacd7cd7a1bac9a95e8b953538c8582
+attempt1_frame_0000_sha256: 8e3a38da2b0fb048d86ece0bc25fc54b46e8d907041b9d5f70d6d60ab01f65fe
+attempt1_frame_0011_sha256: 61c5d4be66305a7fb90182fbf5aa7f583e139ae4f7cfa8759ecaa9d268cb80bc
+attempt2_diversity_sha256: ff9cecd64b9050c65dfa5a2233a34500ce34dfaa8d6ef9a8aeb3794ad05ae656
+attempt2_poses_sha256: 94711540f4418e67c752d2f7dfc8fe690622ab3c1dd01ac750e458a627b19050
+attempt2_summary_sha256: a4690975f3e5600a82f30872ff8ba3030599acff8fbdb5670b17f2a446fb339d
+attempt2_tilt_positive_sha256: 969d21166fe94f30d37bec557791c84853c37eb820af2a1f0e50561a03d4ad09
+attempt2_tilt_negative_sha256: 8233899e53f5470313540718d7a98c4edf2a52911813e0cdc0cbc31e36f37f9e
+recapture_poses: [left, right, near, far]
+reused_poses: [tilt_positive, tilt_negative]
+frames_per_try: 4
+max_tries: 3
+try_is_eligible_if: "solved frames >= 4 and the unchanged geometric rule passes"
+class_passes_if: "any retained try is eligible. Failed tries stay on disk."
+failed_try_deletion: false
+fixed_reference:
+  source: evidence/P-006/camera-target/color-pose.csv
+  median_t_m: [-0.04281625, -0.14894789, 0.46428018]
+  board_plus_z_in_color: [-0.05421199379988951, 0.2945430344238207, 0.9540992928414992]
+separation:
+  lateral_m: 0.020
+  range_m: 0.040
+  tilt_deg: 8.0
+  left: "median tx < fixed tx - lateral_m"
+  right: "median tx > fixed tx + lateral_m"
+  near: "median tz < fixed tz - range_m"
+  far: "median tz > fixed tz + range_m"
+  note: "Same numeric rules as evidence/P-006/camera-target/attempt-02/capture-plan.yaml. Not relaxed."
+operator_target:
+  not_acceptance: true
+  lateral_mm: [40, 60]
+  range_mm: [60, 80]
+  purpose: "Placement margin only. Acceptance stays 20 mm in X and 40 mm in Z."
+optical_axes: "camera_color_optical_frame +X is image right, +Y is image down, +Z is forward. left is smaller X. near is smaller Z."
+metric_scope: "Every Attempt 3 frame, including failed placement tries, is compared with thresholds.yaml."
+tilt_scope: "tilt_positive and tilt_negative are reread from Attempt 2 poses.csv. Those files are not rewritten."
+reproducibility_scope: "CT-16 is recomputed from unchanged Attempt 1 fixed poses."
+identity_tf: forbidden
