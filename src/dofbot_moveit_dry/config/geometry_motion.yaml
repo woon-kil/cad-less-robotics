@@ -1,0 +1,19 @@
+# P-005 software integration. 이 파일의 변환 숫자는 없다.
+# 배치는 실행 시 SRDF init 자세의 Arm5_Link FK로 계산하고 TF로 게시하지 않는다.
+execute_trajectory: false
+max_orientation_step_deg: 45.0
+window_count: 11
+eef_step: 0.002
+jump_threshold: 1.0
+min_fraction: 0.95
+max_joint_velocity: 0.4
+max_segment_gap: 0.02
+planning_group: arm_group
+end_effector_link: Arm5_Link
+start_state_name: init
+grip_state_name: open
+source_frame: camera_depth_optical_frame
+planning_frame: base_link
+runs: 3
+expected_snapshot_sha256: 09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60
+expected_waypoints_sha256: b9a254590dcc260b4556dd38c366bdd98a64efe99bd5eee4d614b39834041021

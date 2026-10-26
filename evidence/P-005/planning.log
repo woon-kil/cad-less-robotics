@@ -1,0 +1,58 @@
+[INFO] [1792999253.462815141] [moveit_rdf_loader.rdf_loader]: Loaded robot model in 0.00124167 seconds
+[INFO] [1792999253.462884783] [moveit_robot_model.robot_model]: Loading robot model 'DOFBOT_Pro-V24'...
+[INFO] [1792999253.462892066] [moveit_robot_model.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+[WARN] [1792999254.569217104] [kdl_parser]: The root link base_link has an inertia specified in the URDF, but KDL does not support a root link with an inertia.  As a workaround, you can add an extra dummy link to your URDF.
+[INFO] [1792999257.610419869] [moveit.ros_planning_interface.moveit_cpp]: Listening to '/joint_states' for joint states
+[INFO] [1792999257.610735627] [moveit_ros.current_state_monitor]: Listening to joint states on topic '/joint_states'
+[INFO] [1792999257.613916026] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/attached_collision_object' for attached collision objects
+[INFO] [1792999257.614609580] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Publishing maintained planning scene on '/dofbot_dry_plan/monitored_planning_scene'
+[INFO] [1792999257.614703598] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting planning scene monitor
+[INFO] [1792999257.614843203] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to '/dofbot_dry_plan/publish_planning_scene'
+[INFO] [1792999257.614852370] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Starting world geometry update monitor for collision objects, attached objects, octomap updates.
+[INFO] [1792999257.615167337] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'collision_object'
+[INFO] [1792999257.615315949] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Listening to 'planning_scene_world' for planning scene world geometry
+[WARN] [1792999257.615443511] [moveit.ros.occupancy_map_monitor.middleware_handle]: Resolution not specified for Octomap. Assuming resolution = 0.1 instead
+[ERROR] [1792999257.615452698] [moveit.ros.occupancy_map_monitor.middleware_handle]: No 3D sensor plugin(s) defined for octomap updates
+[INFO] [1792999270.962081754] [moveit.ros_planning_interface.moveit_cpp]: Loading planning pipeline 'ompl'
+[INFO] [1792999270.970209820] [moveit.ros_planning.planning_pipeline]: Using planning interface 'OMPL'
+[INFO] [1792999270.971953405] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.path_tolerance' was not set. Using default value: 0.100000
+[INFO] [1792999270.971965578] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.resample_dt' was not set. Using default value: 0.100000
+[INFO] [1792999270.971970928] [moveit_ros.add_time_optimal_parameterization]: Param 'ompl.min_angle_change' was not set. Using default value: 0.001000
+[INFO] [1792999270.971982831] [moveit_ros.fix_workspace_bounds]: Param 'ompl.default_workspace_bounds' was not set. Using default value: 10.000000
+[INFO] [1792999270.971995054] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_bounds_error' was set to 0.010000
+[INFO] [1792999270.972000454] [moveit_ros.fix_start_state_bounds]: Param 'ompl.start_state_max_dt' was not set. Using default value: 0.500000
+[INFO] [1792999270.972015663] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Add Time Optimal Parameterization'
+[INFO] [1792999270.972021584] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Workspace Bounds'
+[INFO] [1792999270.972026153] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Bounds'
+[INFO] [1792999270.972030591] [moveit.ros_planning.planning_pipeline]: Using planning request adapter 'Fix Start State Path Constraints'
+[WARN] [1792999270.974490584] [moveit_ros.trajectory_execution_manager]: Parameter '~moveit_controller_manager' is not specified but only one matching plugin was found: 'moveit_simple_controller_manager/MoveItSimpleControllerManager'. Using that one.
+[ERROR] [1792999270.981099330] [moveit.plugins.moveit_simple_controller_manager]: No controller_names specified.
+[INFO] [1792999270.981218666] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1792999270.981225489] [moveit.plugins.moveit_simple_controller_manager]: Returned 0 controllers in list
+[INFO] [1792999270.981489500] [moveit_ros.trajectory_execution_manager]: Trajectory execution is not managing controllers
+[WARN] [1792999270.986800426] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999270.986846744] [geometry_motion_dry]: P-005 run 1 CASE-01 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999270.993981788] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999270.994026002] [geometry_motion_dry]: P-005 run 1 CASE-02 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999270.999931735] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999270.999969166] [geometry_motion_dry]: P-005 run 1 CASE-03 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.007626110] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.007666306] [geometry_motion_dry]: P-005 run 2 CASE-01 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.013863743] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.013901284] [geometry_motion_dry]: P-005 run 2 CASE-02 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.023123854] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.023165132] [geometry_motion_dry]: P-005 run 2 CASE-03 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.028790535] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.028826603] [geometry_motion_dry]: P-005 run 3 CASE-01 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.038397734] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.038434765] [geometry_motion_dry]: P-005 run 3 CASE-02 CARTESIAN_PATH fraction 0.0909 points 2
+[WARN] [1792999271.048225973] [moveit_robot_state.cartesian_interpolator]: The computed trajectory is too short to detect jumps in joint-space Need at least 10 steps, only got 2. Try a lower max_step.
+[INFO] [1792999271.048264336] [geometry_motion_dry]: P-005 run 3 CASE-03 CARTESIAN_PATH fraction 0.0909 points 2
+[INFO] [1792999271.050199403] [geometry_motion_dry]: P-005 RESULT FAIL
+[INFO] [1792999271.051112244] [moveit.ros_planning_interface.moveit_cpp]: Deleting MoveItCpp
+[INFO] [1792999271.051382226] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopped publishing maintained planning scene.
+[INFO] [1792999271.051770421] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping world geometry monitor
+[INFO] [1792999271.052035373] [moveit_ros.planning_scene_monitor.planning_scene_monitor]: Stopping planning scene monitor
+Warning: class_loader.ClassLoader: SEVERE WARNING!!! Attempting to unload library while objects created by this loader exist in the heap! You should delete your objects before attempting to unload the library or destroying the ClassLoader. The library will NOT be unloaded.
+         at line 127 in ./src/class_loader.cpp
+[ros2run]: Process exited with failure 1

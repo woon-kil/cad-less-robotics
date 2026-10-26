@@ -1,0 +1,8 @@
+waypoints_csv /ws/cad-less-robotics/evidence/P-004/attempt-04/waypoints.csv
+frame camera_depth_optical_frame
+waypoints 673
+sharp_transitions 4
+accepted 673
+rejected 0
+error 
+original_overwritten no

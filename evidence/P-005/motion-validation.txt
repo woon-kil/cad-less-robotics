@@ -1,0 +1,14 @@
+input 673
+accepted 673
+rejected 0
+sharp_transitions 4
+segments 5
+max_orientation_step_deg 45
+threshold_basis tool +Z angle, half of a right angle, above this path p99
+primary_edge_index 311
+primary_edge_tool_z_deg 97.817525013552412
+primary_edge_quaternion_deg 144.83073082578031
+primary_edge_detected yes
+smoothed no
+boundary_policy SEGMENT_BOUNDARY_REQUIRES_POLICY
+error 

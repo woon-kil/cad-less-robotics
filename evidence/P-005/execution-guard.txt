@@ -1,0 +1,10 @@
+execute_trajectory false
+execute_calls 0
+controller_sends 0
+follow_joint_trajectory_execution 0
+fake_system_execution 0
+hardware_execution 0
+tf_publishes 0
+camera_robot_calibration 0
+planning_end_link Arm5_Link
+process_tcp_claimed no

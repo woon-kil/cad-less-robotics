@@ -55,12 +55,19 @@ target_link_libraries(path_extractor_node path_extractor_core ${PCL_LIBRARIES})
 ament_target_dependencies(path_extractor_node
   rclcpp sensor_msgs geometry_msgs std_msgs pcl_conversions tf2 tf2_ros tf2_sensor_msgs)
 
-install(TARGETS polyline_core path_extractor_core camera_node path_extractor_node geometry_report
+install(TARGETS polyline_core
+  EXPORT polyline_coreTargets
+  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+install(TARGETS path_extractor_core camera_node path_extractor_node geometry_report
   discontinuity_report
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include/ DESTINATION include)
+ament_export_targets(polyline_coreTargets HAS_LIBRARY_TARGET)
+ament_export_dependencies(Eigen3)
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)

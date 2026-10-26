@@ -1,0 +1,13 @@
+position_margin_rad 9.9999999999999995e-07
+max_joint_velocity_rad_s 0.40000000000000002
+vendor_acceleration_limits disabled
+hardware_safe_acceleration_validated no
+run 1 CASE-01 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 1 CASE-02 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 1 CASE-03 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 2 CASE-01 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 2 CASE-02 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 2 CASE-03 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 3 CASE-01 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 3 CASE-02 position_violations 0 velocity_violations 0 max_joint_velocity 0
+run 3 CASE-03 position_violations 0 velocity_violations 0 max_joint_velocity 0

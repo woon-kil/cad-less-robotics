@@ -20,7 +20,7 @@ find_package(tf2_geometry_msgs REQUIRED)
 find_package(trajectory_msgs REQUIRED)
 find_package(Eigen3 REQUIRED)
 
-add_library(waypoint_prep SHARED src/waypoint_prep.cpp)
+add_library(waypoint_prep SHARED src/waypoint_prep.cpp src/motion_contract.cpp)
 target_include_directories(waypoint_prep PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>)
@@ -39,17 +39,24 @@ ament_target_dependencies(motion_planner_node
   tf2_geometry_msgs
   trajectory_msgs)
 
-install(TARGETS waypoint_prep motion_planner_node
+install(TARGETS waypoint_prep
+  EXPORT waypoint_prepTargets
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
+  RUNTIME DESTINATION bin)
+install(TARGETS motion_planner_node
   RUNTIME DESTINATION lib/${PROJECT_NAME})
 install(DIRECTORY include/ DESTINATION include)
 install(DIRECTORY launch config DESTINATION share/${PROJECT_NAME})
+ament_export_targets(waypoint_prepTargets HAS_LIBRARY_TARGET)
+ament_export_dependencies(Eigen3)
 
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   ament_add_gtest(test_waypoint_prep test/test_waypoint_prep.cpp)
   target_link_libraries(test_waypoint_prep waypoint_prep)
+  ament_add_gtest(test_motion_contract test/test_motion_contract.cpp)
+  target_link_libraries(test_motion_contract waypoint_prep)
 endif()
 
 ament_package()

@@ -82,6 +82,7 @@ ros2 launch robot_controller system_bringup.launch.py \
 - 그리퍼 조인트 이름은 문서에 없어 yaml에 없다.
 - 카메라 기본 토픽은 Orbbec ROS 2 래퍼의 `/camera/depth/points`다. DOFBOT Pro 일체 카메라가 같은 이름인지는 확인되지 않았다.
 - 핸드아이 변환은 측정값이 없다. `publish_hand_eye_tf:=true`는 측정한 xyz/rpy를 같이 줄 때만 쓴다. 0은 보정값이 아니다.
+- P-005의 배치는 `TEST_ONLY_SYNTHETIC_PLACEMENT`다. calibration이 아니고 TF로 게시하지 않는다. 계획 링크는 `Arm5_Link`이며 process TCP가 아니다.
 - `ros2` 브랜치 perception_pcl CMake에서 SAC 분할 타깃이 주석이라, RANSAC은 `pcl_ros` 노드가 아니라 이 패키지 안에서 직접 호출한다. Humble apt 바이너리를 이 세션에서 설치해 확인하지는 않았다.
 
 ## 참고

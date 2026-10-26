@@ -1,0 +1,4 @@
+TESTED_COMMIT=NONE
+FINAL_COMMIT=PENDING
+Working tree at evidence write: motion contract, geometry_motion_dry, P-005 evidence.
+Cartesian fraction stayed at 1/11. min_fraction was not lowered.

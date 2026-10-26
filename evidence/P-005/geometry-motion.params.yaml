@@ -1,0 +1,106 @@
+/**:
+  ros__parameters:
+    execute_trajectory: false
+    planning_scene_monitor_options:
+      name: planning_scene_monitor
+      robot_description: robot_description
+      joint_state_topic: /joint_states
+      attached_collision_object_topic: /dofbot_dry_plan/attached_collision_object
+      publish_planning_scene_topic: /dofbot_dry_plan/publish_planning_scene
+      monitored_planning_scene_topic: /dofbot_dry_plan/monitored_planning_scene
+      wait_for_initial_state_timeout: 5.0
+    planning_pipelines:
+      pipeline_names:
+      - ompl
+      namespace: ''
+    ompl:
+      planning_plugin: ompl_interface/OMPLPlanner
+      request_adapters: default_planner_request_adapters/AddTimeOptimalParameterization
+        default_planner_request_adapters/FixWorkspaceBounds default_planner_request_adapters/FixStartStateBounds
+        default_planner_request_adapters/FixStartStatePathConstraints
+      start_state_max_bounds_error: 0.01
+      planner_configs:
+        RRTConnect:
+          type: geometric::RRTConnect
+          range: 0.0
+      arm_group:
+        planner_configs:
+        - RRTConnect
+        longest_valid_segment_fraction: 0.01
+    plan_request_params:
+      planning_attempts: 5
+      planning_pipeline: ompl
+      planner_id: RRTConnect
+      max_velocity_scaling_factor: 1.0
+      max_acceleration_scaling_factor: 1.0
+      planning_time: 5.0
+    max_orientation_step_deg: 45.0
+    window_count: 11
+    eef_step: 0.002
+    jump_threshold: 1.0
+    min_fraction: 0.95
+    max_joint_velocity: 0.4
+    max_segment_gap: 0.02
+    planning_group: arm_group
+    end_effector_link: Arm5_Link
+    start_state_name: init
+    grip_state_name: open
+    source_frame: camera_depth_optical_frame
+    planning_frame: base_link
+    runs: 3
+    expected_snapshot_sha256: 09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60
+    expected_waypoints_sha256: b9a254590dcc260b4556dd38c366bdd98a64efe99bd5eee4d614b39834041021
+    urdf_path: /ws/cad-less-robotics/third_party/dofbot-pro-cache/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+    srdf_path: /ws/cad-less-robotics/third_party/dofbot-pro-cache/dofbot_pro_moveit/config/DOFBOT_Pro-V24.srdf
+    waypoints_csv: /ws/cad-less-robotics/evidence/P-004/attempt-04/waypoints.csv
+    snapshot_pcd: /ws/cad-less-robotics/evidence/P-004/artifacts/snapshot.pcd
+    output_dir: /ws/cad-less-robotics/evidence/P-005
+    robot_description_kinematics:
+      arm_group:
+        kinematics_solver: kdl_kinematics_plugin/KDLKinematicsPlugin
+        kinematics_solver_search_resolution: 0.005
+        kinematics_solver_timeout: 0.005
+    robot_description_planning:
+      default_velocity_scaling_factor: 0.1
+      default_acceleration_scaling_factor: 0.1
+      joint_limits:
+        Arm1_Joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        Arm2_Joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        Arm3_Joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        Arm4_Joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        Arm5_Joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        grip_joint:
+          has_velocity_limits: true
+          max_velocity: 1.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        rlink_joint2:
+          has_velocity_limits: false
+          max_velocity: 0.0
+          has_acceleration_limits: false
+          max_acceleration: 0
+        rlink_joint3:
+          has_velocity_limits: false
+          max_velocity: 0.0
+          has_acceleration_limits: false
+          max_acceleration: 0

@@ -1,0 +1,12 @@
+ M README.md
+ M src/dofbot_moveit_dry/CMakeLists.txt
+ M src/dofbot_moveit_dry/package.xml
+ M src/robot_controller/CMakeLists.txt
+ M src/vision_path_generator/CMakeLists.txt
+?? evidence/P-005/
+?? scripts/validate_geometry_motion.sh
+?? src/dofbot_moveit_dry/config/geometry_motion.yaml
+?? src/dofbot_moveit_dry/src/geometry_motion_dry.cpp
+?? src/robot_controller/include/robot_controller/motion_contract.hpp
+?? src/robot_controller/src/motion_contract.cpp
+?? src/robot_controller/test/test_motion_contract.cpp

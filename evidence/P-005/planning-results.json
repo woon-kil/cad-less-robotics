@@ -1,0 +1,20 @@
+{
+  "status": "FAIL",
+  "fatal": "",
+  "environment": {"planning_group": "arm_group", "end_link": "Arm5_Link", "execute_trajectory": false},
+  "source_geometry": {"sha256": "09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60", "waypoints_sha256": "b9a254590dcc260b4556dd38c366bdd98a64efe99bd5eee4d614b39834041021", "frame": "camera_depth_optical_frame", "waypoints": 673},
+  "synthetic_transform": {"type": "TEST_ONLY_SYNTHETIC_PLACEMENT", "calibrated": false, "scale": 1.0, "published_to_tf": false},
+  "motion_validation": {"accepted": 673, "rejected": 0, "sharp_transitions": 4, "segments": 5, "primary_edge_index": 311, "primary_edge_tool_z_deg": 97.817525013552412},
+  "execution_guard": {"execute_calls": 0, "controller_sends": 0, "tf_publishes": 0},
+  "planning_cases": [
+    {"run": 1, "id": "CASE-01", "source_start": 61, "source_end": 71, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0051654609999999997, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 1, "id": "CASE-02", "source_start": 312, "source_end": 322, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0070743689999999996, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 1, "id": "CASE-03", "source_start": 572, "source_end": 582, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0058852050000000001, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 2, "id": "CASE-01", "source_start": 61, "source_end": 71, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0076416840000000002, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 2, "id": "CASE-02", "source_start": 312, "source_end": 322, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.006179904, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 2, "id": "CASE-03", "source_start": 572, "source_end": 582, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0092079320000000003, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 3, "id": "CASE-01", "source_start": 61, "source_end": 71, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0056080089999999997, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 3, "id": "CASE-02", "source_start": 312, "source_end": 322, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0095553010000000004, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0},
+    {"run": 3, "id": "CASE-03", "source_start": 572, "source_end": 582, "fraction": 0.090909090909090912, "trajectory_points": 2, "planning_time_sec": 0.0097755689999999996, "max_joint_velocity": 0, "position_violations": 0, "velocity_violations": 0, "collision_states": 0, "failure_class": "CARTESIAN_PATH", "execution_calls": 0}
+  ]
+}

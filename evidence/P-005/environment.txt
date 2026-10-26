@@ -1,0 +1,8 @@
+container_host 218f0dac6e37
+ubuntu 22.04.5 LTS (Jammy Jellyfish)
+ros_distro humble
+arch x86_64
+model_urdf /ws/cad-less-robotics/third_party/dofbot-pro-cache/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+model_srdf /ws/cad-less-robotics/third_party/dofbot-pro-cache/dofbot_pro_moveit/config/DOFBOT_Pro-V24.srdf
+execute_trajectory false
+tf_publish 0
