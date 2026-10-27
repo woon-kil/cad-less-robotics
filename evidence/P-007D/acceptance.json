@@ -1,0 +1,139 @@
+{
+ "gate": "P-007D",
+ "title": "Block-Write Command Propagation Static Diagnosis",
+ "base_commit": "3c58b70",
+ "spec": "검수 세션이 재작성한 STATIC ANALYSIS ONLY 판본. 기존 raw-state 설계는 폐기됨",
+ "verdict": "DIAGNOSIS PASS — COMMAND PATH VALID THROUGH HOST, FIRMWARE ACCEPTANCE UNRESOLVED",
+ "classification": "D2 — TRANSPORT BOUNDARY ISOLATED",
+ "verdict_basis": "P-007B 의 명령을 설치 Arm_Lib 소스 산술로 재구성한 결과 register 0x12 · payload [0x04,0xDA,0x07,0xD0] · raw 1242 가 기록값과 완전히 일치했다. 주석 처리된 바이트 스왑은 쓰기·읽기 endianness 를 비교한 결과 결함이 아니었다. 공식 API semantics 와도 명령 경로를 무효화할 차이가 없다. 따라서 L1(API)·L2(encoding)은 VERIFIED, L3(SMBus call)은 SUPPORTED 다. L4(firmware acceptance) 이후는 정적 분석으로 원리상 닿을 수 없다 — 펌웨어는 소스가 없는 STM8 바이너리이고, SMBus 쓰기는 ACK 만 받으면 예외를 내지 않는다.",
+ "d1_not_found": "host-side 에서 공식 동작과 모순되는 구체적 결함을 찾지 못했다. wrong register·wrong payload·wrong byte order·source divergence 전부 음성이다.",
+ "boundary": {
+  "L1_python_api": "VERIFIED",
+  "L2_armlib_encoding": "VERIFIED",
+  "L3_linux_smbus_call": "SUPPORTED",
+  "L4_firmware_acceptance": "UNKNOWN",
+  "L5_board_to_servo_bus": "UNKNOWN",
+  "L6_servo_execution": "CONTRADICTED"
+ },
+ "🔴 most_specific_finding": "설치 Arm_Lib 에서 write_i2c_block_data 를 쓰는 함수는 7개인데, **이 장비에서 실행된 적이 있는 것은 Arm_serial_servo_write 하나뿐이고 그 1회가 효과가 없었다.** 성공이 확인된 모든 연산(조회 7회 + 읽기 1,290+회)은 write_byte_data(2바이트) 또는 read 계열이다. 즉 **write_i2c_block_data 가 이 보드에서 의미 있게 수락된 사례가 0건**이다.",
+ "hypothesis_effect": {
+  "H-C5_command_propagation": "OPEN(최우선) → **호스트측 배제. L4 이후로 국소화**. 가설이 '명령 전파 실패' 에서 '펌웨어가 block-write payload 를 수락하지 않는다' 로 구체화됐다",
+  "H-C2_current_torque_state": "WEAKENED 유지 (P-007C-R3)",
+  "H-C6.other_controller_state": "OPEN 유지",
+  "H-C6.learning_mode": "ELIMINATED",
+  "H-C1": "ELIMINATED",
+  "H-C3": "NOT_SUPPORTED",
+  "H-C4": "NOT_SUPPORTED — 이 게이트가 소스 재구성으로 재확인"
+ },
+ "next_experiment_proposed_only": {
+  "name": "RGB block-write control experiment",
+  "why": "같은 주소(0x15)·같은 primitive(write_i2c_block_data)를 쓰면서 **서보를 움직이지 않고** 효과가 육안으로 관측된다. L4(firmware acceptance)를 모션 없이 시험할 수 있는 유일한 경로다",
+  "baseline_already_captured": "P-007C-R2 가 RGB **소등** 상태를 운영자 사진으로 확보했다 — before 기준선이 이미 있다",
+  "🔴 limitation": "RGB 는 3바이트, P-007B 는 4바이트다. 펌웨어 수락 실패가 **길이 또는 register 의존**이면 RGB 성공이 4바이트 서보 경로를 보증하지 못한다. 게이트 설계에 반영할 것",
+  "status": "제안만 한다. 이 게이트에서 실행하지 않았다. controller state mutation 이므로 별도 승인 필요"
+ },
+ "robot_command_count": 0,
+ "i2c_access_count": 0,
+ "controller_state_mutation": 0,
+ "robot_motion": 0,
+ "rgb_command": 0,
+ "torque_mutation": 0,
+ "hardware_access_note": "🔴 SSH 파일 읽기 1회를 했다. `cat Arm_Lib.py` + `sha256sum` 뿐이고 Arm_Lib import·I2C·보드 조회는 0 이다. 스펙 §2 가 '파일 hash 만 다시 계산할 수 있다' 고 적어 파일 접근을 상정한다. AST 전수(§3)에 소스 전문이 필요했고 로컬에는 2개 함수 본문만 있었다.",
+ "checks": [
+  {
+   "id": "P007D-01",
+   "result": "PASS",
+   "note": "착수 전 82파일 SHA-256 매니페스트 작성, 종료 직전 재비교. 변경 0 · 누락 0 · 추가 0",
+   "evidence": "logs/evidence_manifest_{before,after}.json"
+  },
+  {
+   "id": "P007D-02",
+   "result": "PASS",
+   "note": "Arm_Lib.py sha256 edfcae72… 일치. 471행·28함수. 새 hardware query 없이 파일 해시만 재계산",
+   "evidence": "logs/baseline.log"
+  },
+  {
+   "id": "P007D-03",
+   "result": "PASS",
+   "note": "AST 로 SMBus call-site 42개 전수. write_byte_data 22 · write_i2c_block_data 13 · read_byte_data 5 · read_word_data 2",
+   "evidence": "block_write_inventory.json"
+  },
+  {
+   "id": "P007D-04",
+   "result": "PASS",
+   "note": "write_i2c_block_data 13 call-site 를 7개 함수로 분류. register·payload 길이·모션 여부·관측 가능성·기실행 여부 기재",
+   "evidence": "block_write_comparison.json"
+  },
+  {
+   "id": "P007D-05",
+   "result": "PASS",
+   "note": "P-007B 경로를 소스 산술로 재구성 → register 0x12 · payload [0x04,0xDA,0x07,0xD0] · raw 1242. 기록값과 **완전 일치**. 실행 0",
+   "evidence": "single_servo_block_path.json"
+  },
+  {
+   "id": "P007D-06",
+   "result": "PASS",
+   "note": "Arm_RGB_set 정적 재구성 — 0x02 · 3바이트 · 같은 주소·같은 primitive. **실행하지 않았다**",
+   "evidence": "rgb_block_path.json"
+  },
+  {
+   "id": "P007D-07",
+   "result": "PASS",
+   "note": "주석 처리된 바이트 스왑을 D1 후보로 검사 → 결함 아님. 쓰기·읽기 endianness 일치",
+   "evidence": "byte_order_analysis.md"
+  },
+  {
+   "id": "P007D-08",
+   "result": "PASS",
+   "note": "L1~L6 계층 판정 완료. L1-L2 VERIFIED · L3 SUPPORTED · L4-L5 UNKNOWN · L6 CONTRADICTED",
+   "evidence": "propagation_boundary.json"
+  },
+  {
+   "id": "P007D-09",
+   "result": "PASS",
+   "note": "공개자료 신규 조사 0. 확인된 공식 사실을 provenance 로만 기록. 소스 헤더 V1.0.1 vs 패키지 1.0.3 불일치를 기록(명령 경로 무관)",
+   "evidence": "official_provenance.json"
+  },
+  {
+   "id": "P007D-10",
+   "result": "PASS",
+   "note": "신규 I2C 접근 0 — i2cdetect·i2cget·i2cset·register probe 0. Arm_Lib import 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "P007D-11",
+   "result": "PASS",
+   "note": "servo command 0 · write6 0 · write_any 0 · bus_servo_control 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "P007D-12",
+   "result": "PASS",
+   "note": "RGB command 0 · buzzer 0 · torque 변경 0 · Button_Mode 0 · calibration/offset 0 · reset 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "P007D-13",
+   "result": "PASS",
+   "note": "APP·joystick·arm_driver·MoveIt 실행 0 · reboot/relogin 0 · power cycle 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "P007D-14",
+   "result": "PASS",
+   "note": "로봇 모션 0 · controller state mutation 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "P007D-15",
+   "result": "PASS",
+   "note": "산출물이 evidence/P-007D/ 에만. 분석 스크립트는 scripts/ 에 두고 소스 경로를 인자로 전달, python3 -I 로 실행",
+   "evidence": "git status"
+  }
+ ],
+ "summary": {
+  "total": 15,
+  "PASS": 15,
+  "FAIL": 0
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "gate": "P-007D",
+ "purpose": "§8 — 공개자료를 새로 조사하지 않았다. 확인된 공식 사실을 provenance 로만 기록한다",
+ "policy": "이 게이트는 WebSearch·WebFetch 를 호출하지 않았다. 아래는 검수 세션이 확인한 것과 P-007C-R1 이 blob 검증으로 확보한 것이다",
+ "facts": [
+  {
+   "fact": "Arm_serial_servo_write(id, angle, time) 가 공식 single-servo API 다",
+   "source": "P-007C-R1 official/03-control-single-servo.pdf (blob 63b80fe9…, hash 검증) + 검수 세션 yahboom.net/study/DOFBOT-Pro/12621/",
+   "installed_source_divergence": "없음 — 시그니처·인자 의미·각도 범위가 일치"
+  },
+  {
+   "fact": "공식 Basic Control Course 가 이 API 를 직접 호출한다. 별도 초기화·torque-on 없음",
+   "source": "P-007C-R1 official_servo_examples.json",
+   "installed_source_divergence": "없음"
+  },
+  {
+   "fact": "Arm_RGB_set(R,G,B) 가 공식 expansion-board RGB API 다",
+   "source": "검수 세션 yahboom.net/study/DOFBOT-Pro/12619/",
+   "installed_source_divergence": "미확인 — 공식 문서의 register·payload 기술이 없다(P-007C-R1: 공식은 register 를 한 개도 기술하지 않는다)"
+  }
+ ],
+ "🔴 divergence_found": [
+  {
+   "what": "소스 헤더 버전 주석과 패키지 버전 불일치",
+   "detail": "Arm_Lib.py 5행이 `# V1.0.1` 인데 설치 패키지는 **1.0.3** 이다(egg: Arm_Lib-1.0.3-py3.10.egg)",
+   "significance": "파일 헤더가 릴리스와 함께 갱신되지 않았다는 뜻이다. 명령 경로 동작과는 무관하다. 다만 **버전 문자열을 provenance 근거로 쓸 때 주의**해야 한다 — P-007C-R1 이 Arm_get_hardversion 의 '0.20' 에 대해 내린 것과 같은 성격의 경고다",
+   "d1_relevant": false
+  }
+ ],
+ "conclusion": "설치 Arm_Lib 소스와 공식 API semantics 사이에 **명령 경로를 무효화할 차이가 없다.**"
+}

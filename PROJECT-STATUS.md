@@ -16,13 +16,13 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **DOFBOT 이 위치 명령에 응답하지 않는다** | `evidence/P-007B/acceptance.json` |
-| 최신 닫힌 게이트 | **P-007C-R3 `OBSERVATION PASS — TORQUE_ON_STRONGLY_SUPPORTED`** | `evidence/P-007C-R3/acceptance.json` |
+| 최신 닫힌 게이트 | **P-007D `DIAGNOSIS PASS — COMMAND PATH VALID THROUGH HOST, FIRMWARE ACCEPTANCE UNRESOLVED` (D2)** | `evidence/P-007D/acceptance.json` |
 | **게이트가 일으킨** 로봇 모션 | **0** | P-007A·A-R1·B·C·C-R1 `environment.json` 전부 `robot_moved_by_this_gate: 0` (실측 grep). ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **1회** (P-007B, ID2 152°, raw 1242) | `servo_position_writes` 가 P-007B 만 `1`, 나머지 게이트는 전부 `0` (실측 grep) |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | **H-C5(block-write) ← 최우선** · H-C6.other. H-C2(torque)는 R3 가 `WEAKENED`, H-C6.learning_mode 는 R2 가 `ELIMINATED` | `evidence/P-007C-R3/acceptance.json` |
+| 미해결 가설 | **H-C5 가 L4(펌웨어 수락) 이후로 국소화됨** — 호스트측 배제. H-C6.other `OPEN`, H-C2 `WEAKENED`, H-C6.learning_mode `ELIMINATED` | `evidence/P-007D/acceptance.json` |
 
 ## 게이트 현황
 
@@ -85,21 +85,29 @@
   - 🔴 `VERIFIED` 아님. 능동 토크 vs 감속기 self-locking 이 이 시험만으로 갈리지 않는다
   - 🔴 **H-C5(block-write)가 최우선으로 승격** — 토크가 켜져 있다면 서보는 명령 수락 상태여야 한다
   - APP `[Stop]`(공식상 토크 토글) 이력을 행동 어휘로 재질의 → "기억 없다". `UNRESOLVED_BY_RECALL`
-- [ ] **P-007D** raw 상태 해상도 · block-write 경로 진단 — **근거는 생겼다. 플랜 재검토 후 개방**
-  - R3 가 H-C5 를 최우선으로 올렸고 P-007D 의 Q2 가 정확히 그것을 겨냥한다
-  - ⚠️ P-007D 는 **I2C 조회를 수반**한다. R2·R3 관찰 게이트와 위험 등급이 다르다
+- [x] **P-007D** Block-Write Command Propagation **정적** 진단 — **`D2 — TRANSPORT BOUNDARY ISOLATED`**
+  - 🔴 기존 raw-state 설계는 **폐기**. 검수 세션이 `H-C5` 전용 정적 게이트로 축소 재작성
+  - P-007B 경로를 소스 산술로 재구성 → `0x12` · `[0x04,0xDA,0x07,0xD0]` · raw `1242` **완전 일치**
+  - D1 후보(register·payload·byte order·source divergence) **전부 음성**
+  - L1-L2 `VERIFIED` · L3 `SUPPORTED` · **L4-L5 `UNKNOWN`** · L6 `CONTRADICTED`
+  - 🔴 **`write_i2c_block_data` 가 이 보드에서 수락된 사례 0건** — 7개 함수 중 1개만 실행됐고 그게 실패
+  - I2C 0 · 모션 0 · mutation 0. SSH 파일 읽기 1회만(해시+cat, import 0)
 
 ## 🔴 다음 행동
 
-~~1. RGB breathing 육안 확인~~ → **완료. R2 가 learning mode 배제**
-~~2. ID2 수동 저항 확인~~ → **완료. R3 가 토크 ON 쪽으로 판정**
+~~1. RGB breathing 육안 확인~~ → **R2 완료. learning mode 배제**
+~~2. ID2 수동 저항 확인~~ → **R3 완료. 토크 ON 쪽**
+~~3. P-007D 로 H-C5 조사~~ → **완료. 호스트측 정상, L4 이후로 국소화**
 
-**최우선 가설이 H-C5(command propagation / block-write)로 바뀌었다.**
+**남은 질문: 이 보드의 펌웨어가 `write_i2c_block_data` payload 를 수락하는가.**
 
-근거: 토크가 켜져 있다면 공식 정의상 서보는 `can receive control commands` 상태다. 그런데 P-007B 명령은 효과가 없었다. 그리고 P-007C 가 이미 적었듯 — 성공한 조회는 전부 `write_byte_data` 1바이트 + read 계열이고, **효과가 없었던 유일한 것이 `write_i2c_block_data` 4바이트(`0x12`)** 다.
+정적 분석은 여기서 끝이다 — 펌웨어는 소스 없는 STM8 바이너리이고, SMBus 쓰기는 ACK 만 받으면 예외를 내지 않는다.
 
-1. **P-007D 플랜을 R3 결과에 맞춰 재검토** 후 승인받고 개방
-   - ⚠️ P-007D 는 I2C 조회를 수반한다. R2·R3 의 무접촉 관찰과 위험 등급이 다르다
+1. **RGB block-write control experiment** (P-007D 가 제안만 함, 미실행)
+   - 같은 주소 `0x15` · 같은 primitive 로 **서보를 움직이지 않고** L4 를 시험한다
+   - before 기준선 확보됨 — P-007C-R2 의 RGB 소등 사진
+   - 🔴 **한계**: RGB 3바이트 vs 서보 4바이트. 수락 실패가 길이·register 의존이면 보증되지 않는다
+   - ⚠️ controller state mutation + RGB 물리 출력 변화 → **별도 승인 게이트 필요**
 2. 기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
@@ -127,7 +135,8 @@
 | 6 | 2026-10-27 10:12~11:14 | P-007B · P-007C · P-007C-R1 착수 | NO_MOTION_RESPONSE · DIAGNOSIS PASS D · R1 중간 중단(사용 한도) |
 | 7 | 2026-10-27 13:41~14:06 | P-007C-R1 재개·종료 · PROJECT-STATUS 신설 (세션 `cb876b8e`) | NO OFFICIAL EXPLANATION FOUND. R1-01~29 전부 PASS |
 | 8 | 2026-10-27 14:09~14:35 | P-007C-R2 육안 관찰 게이트 (세션 `cb876b8e`) | LEARNING MODE EXCLUDED. 6라운드 운영자 왕복 |
-| 9 | 2026-10-27 14:35~ | P-007C-R3 수동 토크 관찰 (세션 `cb876b8e`) | TORQUE_ON_STRONGLY_SUPPORTED. H-C5 최우선 승격 |
+| 9 | 2026-10-27 14:35~14:50 | P-007C-R3 수동 토크 관찰 (세션 `cb876b8e`) | TORQUE_ON_STRONGLY_SUPPORTED. H-C5 최우선 승격 |
+| 10 | 2026-10-27 14:50~ | P-007D 정적 진단 (세션 `cb876b8e`) | D2. 호스트측 VERIFIED, L4 이후 UNKNOWN |
 
 ## 운영 규칙 (이 프로젝트 고유)
 

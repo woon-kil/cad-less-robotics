@@ -1,0 +1,97 @@
+{
+ "gate": "P-007D",
+ "purpose": "§6 — 설치 Arm_Lib 의 모든 write_i2c_block_data call 비교",
+ "total_call_sites": 13,
+ "distinct_functions": 7,
+ "rows": [
+  {
+   "api": "Arm_RGB_set",
+   "register": "0x02",
+   "payload_bytes": 3,
+   "motion": "NO",
+   "observable_effect": "RGB LED 색 변화 (육안)",
+   "previously_executed": "NO",
+   "note": "서보 무관. 관측 가능한 유일한 비모션 block-write"
+  },
+  {
+   "api": "Arm_serial_servo_write",
+   "register": "0x10 + id",
+   "payload_bytes": 4,
+   "motion": "YES",
+   "observable_effect": "관절 이동",
+   "previously_executed": "YES — P-007B 1회, **효과 없음**",
+   "note": "🔴 이 게이트의 조사 대상. 공식 single-servo 경로"
+  },
+  {
+   "api": "bus_servo_control",
+   "register": "0x10 + id",
+   "payload_bytes": 4,
+   "motion": "YES",
+   "observable_effect": "관절 이동",
+   "previously_executed": "NO",
+   "note": "🔴 Arm_serial_servo_write 와 **동일 register·동일 길이**. 차이는 각도 대신 raw num 을 받고 pos=num-514 를 쓴다는 것뿐"
+  },
+  {
+   "api": "Arm_serial_servo_write_any",
+   "register": "0x19 / 0x17",
+   "payload_bytes": "5 / 4",
+   "motion": "YES",
+   "observable_effect": "관절 이동",
+   "previously_executed": "NO",
+   "note": "id!=0 이면 0x19 에 5바이트([id, vH, vL, tH, tL]), id==0 이면 0x17 에 4바이트. ID 반전 없음. 벤더 사용처 0건(P-007C)"
+  },
+  {
+   "api": "Arm_serial_servo_write6",
+   "register": "0x1E 다음 0x1D",
+   "payload_bytes": "2 다음 12",
+   "motion": "YES",
+   "observable_effect": "6축 동시 이동",
+   "previously_executed": "NO",
+   "note": "🔴 **두 번의 block write 를 연속** 발행한다. time(0x1E, 2바이트) 먼저, data(0x1D, 12바이트) 다음. 사이에 sleep 없음"
+  },
+  {
+   "api": "Arm_serial_servo_write6_array",
+   "register": "0x1E 다음 0x1D",
+   "payload_bytes": "2 다음 12",
+   "motion": "YES",
+   "observable_effect": "6축 동시 이동",
+   "previously_executed": "NO",
+   "note": "write6 과 동일 구조. 입력이 리스트"
+  },
+  {
+   "api": "bus_servo_control_array6",
+   "register": "0x1E 다음 0x1D",
+   "payload_bytes": "2 다음 12",
+   "motion": "YES",
+   "observable_effect": "6축 동시 이동",
+   "previously_executed": "NO",
+   "note": "raw num 판본"
+  }
+ ],
+ "🔴 key_observations": [
+  "**block-write 7개 함수 중 실행된 적이 있는 것은 Arm_serial_servo_write 하나뿐이고, 그 1회가 효과 없었다.** 나머지 6개는 이 장비에서 한 번도 호출되지 않았다 — block-write 경로 전체가 미검증이다",
+  "성공이 확인된 모든 연산(조회 7회 + 읽기 1,290+회)은 `write_byte_data`(2바이트) 또는 `read_*` 계열이다. **write_i2c_block_data 가 이 보드에서 의미 있게 수락된 사례가 0건**이다",
+  "RGB(0x02, 3바이트)가 **모션 없이 block-write 수락을 시험할 수 있는 유일한 경로**다",
+  "register 가 payload 길이와 1:1 대응한다 — 0x02:3, 0x10+id:4, 0x19:5, 0x1E:2, 0x1D:12, 0x17:4. 펌웨어가 register 별 고정 길이를 기대한다는 추정과 일관되나 **공식 근거는 없다**"
+ ],
+ "primitive_split": {
+  "write_byte_data": {
+   "call_sites": 22,
+   "functions": 18,
+   "verified_working": "YES (조회·읽기)"
+  },
+  "write_i2c_block_data": {
+   "call_sites": 13,
+   "functions": 7,
+   "verified_working": "🔴 NO — 0건"
+  },
+  "read_byte_data": {
+   "call_sites": 5,
+   "verified_working": "YES"
+  },
+  "read_word_data": {
+   "call_sites": 2,
+   "verified_working": "YES"
+  }
+ }
+}

@@ -1,0 +1,789 @@
+{
+ "source": "/private/tmp/claude-501/-Users-woonkil-projects-cad-less-robotics/cb876b8e-71b6-45f9-8ab9-25636a2a519a/scratchpad/armlib_src/Arm_Lib.py",
+ "source_lines": 472,
+ "total_functions_in_class": 28,
+ "smbus_call_sites": 42,
+ "functions_touching_bus": [
+  "Arm_Action_Mode",
+  "Arm_Action_Study",
+  "Arm_Button_Mode",
+  "Arm_Buzzer_Off",
+  "Arm_Buzzer_On",
+  "Arm_Clear_Action",
+  "Arm_PWM_servo_write",
+  "Arm_Product_Select",
+  "Arm_RGB_set",
+  "Arm_Read_Action_Num",
+  "Arm_get_hardversion",
+  "Arm_ping_servo",
+  "Arm_reset",
+  "Arm_serial_servo_read",
+  "Arm_serial_servo_read_any",
+  "Arm_serial_servo_write",
+  "Arm_serial_servo_write6",
+  "Arm_serial_servo_write6_array",
+  "Arm_serial_servo_write_any",
+  "Arm_serial_servo_write_offset_state",
+  "Arm_serial_servo_write_offset_switch",
+  "Arm_serial_set_id",
+  "Arm_serial_set_torque",
+  "bus_servo_control",
+  "bus_servo_control_array6"
+ ],
+ "by_primitive": {
+  "read_byte_data": [
+   "Arm_Read_Action_Num",
+   "Arm_get_hardversion",
+   "Arm_ping_servo",
+   "Arm_serial_servo_write_offset_state"
+  ],
+  "read_word_data": [
+   "Arm_serial_servo_read",
+   "Arm_serial_servo_read_any"
+  ],
+  "write_byte_data": [
+   "Arm_Action_Mode",
+   "Arm_Action_Study",
+   "Arm_Button_Mode",
+   "Arm_Buzzer_Off",
+   "Arm_Buzzer_On",
+   "Arm_Clear_Action",
+   "Arm_PWM_servo_write",
+   "Arm_Product_Select",
+   "Arm_Read_Action_Num",
+   "Arm_get_hardversion",
+   "Arm_ping_servo",
+   "Arm_reset",
+   "Arm_serial_servo_read",
+   "Arm_serial_servo_read_any",
+   "Arm_serial_servo_write_offset_state",
+   "Arm_serial_servo_write_offset_switch",
+   "Arm_serial_set_id",
+   "Arm_serial_set_torque"
+  ],
+  "write_i2c_block_data": [
+   "Arm_RGB_set",
+   "Arm_serial_servo_write",
+   "Arm_serial_servo_write6",
+   "Arm_serial_servo_write6_array",
+   "Arm_serial_servo_write_any",
+   "bus_servo_control",
+   "bus_servo_control_array6"
+  ]
+ },
+ "counts_by_primitive": {
+  "read_byte_data": 5,
+  "read_word_data": 2,
+  "write_byte_data": 22,
+  "write_i2c_block_data": 13
+ },
+ "calls": [
+  {
+   "function": "Arm_serial_servo_write",
+   "def_line": 15,
+   "call_line": 27,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "16 + id",
+    "[value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "16 + id",
+   "payload_expr": "[value_H, value_L, time_H, time_L]",
+   "payload_len": 4
+  },
+  {
+   "function": "Arm_serial_servo_write",
+   "def_line": 15,
+   "call_line": 38,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "16 + id",
+    "[value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "16 + id",
+   "payload_expr": "[value_H, value_L, time_H, time_L]",
+   "payload_len": 4
+  },
+  {
+   "function": "Arm_serial_servo_write",
+   "def_line": 15,
+   "call_line": 49,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "16 + id",
+    "[value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "16 + id",
+   "payload_expr": "[value_H, value_L, time_H, time_L]",
+   "payload_len": 4
+  },
+  {
+   "function": "Arm_serial_servo_write_any",
+   "def_line": 54,
+   "call_line": 62,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "25",
+    "[id & 255, value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "25",
+   "payload_expr": "[id & 255, value_H, value_L, time_H, time_L]",
+   "payload_len": 5
+  },
+  {
+   "function": "Arm_serial_servo_write_any",
+   "def_line": 54,
+   "call_line": 73,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "23",
+    "[value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "23",
+   "payload_expr": "[value_H, value_L, time_H, time_L]",
+   "payload_len": 4
+  },
+  {
+   "function": "Arm_serial_servo_write_offset_switch",
+   "def_line": 78,
+   "call_line": 81,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "28",
+    "id"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "28",
+   "payload_expr": "id",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write_offset_switch",
+   "def_line": 78,
+   "call_line": 83,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "28",
+    "0"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "28",
+   "payload_expr": "0",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write_offset_state",
+   "def_line": 89,
+   "call_line": 91,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "27",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "27",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write_offset_state",
+   "def_line": 89,
+   "call_line": 93,
+   "receiver": "self.bus",
+   "primitive": "read_byte_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "27"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "27",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write6_array",
+   "def_line": 100,
+   "call_line": 139,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "30",
+    "timeArr"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "30",
+   "payload_expr": "timeArr",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write6_array",
+   "def_line": 100,
+   "call_line": 140,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "s_id",
+    "data"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "s_id",
+   "payload_expr": "data",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write6",
+   "def_line": 145,
+   "call_line": 183,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "30",
+    "timeArr"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "30",
+   "payload_expr": "timeArr",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_write6",
+   "def_line": 145,
+   "call_line": 184,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "s_id",
+    "data"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "s_id",
+   "payload_expr": "data",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_read",
+   "def_line": 189,
+   "call_line": 194,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "id + 48",
+    "0"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "id + 48",
+   "payload_expr": "0",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_read",
+   "def_line": 189,
+   "call_line": 196,
+   "receiver": "self.bus",
+   "primitive": "read_word_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "id + 48"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "id + 48",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_read_any",
+   "def_line": 218,
+   "call_line": 223,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "55",
+    "id"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "55",
+   "payload_expr": "id",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_servo_read_any",
+   "def_line": 218,
+   "call_line": 225,
+   "receiver": "self.bus",
+   "primitive": "read_word_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "55"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "55",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_ping_servo",
+   "def_line": 237,
+   "call_line": 241,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "reg",
+    "data"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "reg",
+   "payload_expr": "data",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_ping_servo",
+   "def_line": 237,
+   "call_line": 243,
+   "receiver": "self.bus",
+   "primitive": "read_byte_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "reg"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "reg",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_ping_servo",
+   "def_line": 237,
+   "call_line": 246,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "reg",
+    "data"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "reg",
+   "payload_expr": "data",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_ping_servo",
+   "def_line": 237,
+   "call_line": 248,
+   "receiver": "self.bus",
+   "primitive": "read_byte_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "reg"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "reg",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_get_hardversion",
+   "def_line": 257,
+   "call_line": 259,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "1",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "1",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_get_hardversion",
+   "def_line": 257,
+   "call_line": 261,
+   "receiver": "self.bus",
+   "primitive": "read_byte_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "1",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_set_torque",
+   "def_line": 270,
+   "call_line": 273,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "26",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "26",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_set_torque",
+   "def_line": 270,
+   "call_line": 275,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "26",
+    "0"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "26",
+   "payload_expr": "0",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_serial_set_id",
+   "def_line": 280,
+   "call_line": 282,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "24",
+    "id & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "24",
+   "payload_expr": "id & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Product_Select",
+   "def_line": 287,
+   "call_line": 289,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "4",
+    "index & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "4",
+   "payload_expr": "index & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_RGB_set",
+   "def_line": 294,
+   "call_line": 296,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "2",
+    "[red & 255, green & 255, blue & 255]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "2",
+   "payload_expr": "[red & 255, green & 255, blue & 255]",
+   "payload_len": 3
+  },
+  {
+   "function": "Arm_Button_Mode",
+   "def_line": 301,
+   "call_line": 303,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "3",
+    "mode & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "3",
+   "payload_expr": "mode & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_reset",
+   "def_line": 308,
+   "call_line": 310,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "5",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "5",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_PWM_servo_write",
+   "def_line": 315,
+   "call_line": 318,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "87",
+    "angle & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "87",
+   "payload_expr": "angle & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_PWM_servo_write",
+   "def_line": 315,
+   "call_line": 320,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "80 + id",
+    "angle & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "80 + id",
+   "payload_expr": "angle & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Clear_Action",
+   "def_line": 325,
+   "call_line": 327,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "35",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "35",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Action_Study",
+   "def_line": 333,
+   "call_line": 335,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "36",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "36",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Action_Mode",
+   "def_line": 340,
+   "call_line": 342,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "32",
+    "mode & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "32",
+   "payload_expr": "mode & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Read_Action_Num",
+   "def_line": 347,
+   "call_line": 349,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "34",
+    "1"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "34",
+   "payload_expr": "1",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Read_Action_Num",
+   "def_line": 347,
+   "call_line": 351,
+   "receiver": "self.bus",
+   "primitive": "read_byte_data",
+   "is_write": false,
+   "args": [
+    "self.addr",
+    "34"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "34",
+   "payload_expr": null,
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Buzzer_On",
+   "def_line": 358,
+   "call_line": 361,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "6",
+    "delay & 255"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "6",
+   "payload_expr": "delay & 255",
+   "payload_len": null
+  },
+  {
+   "function": "Arm_Buzzer_Off",
+   "def_line": 366,
+   "call_line": 368,
+   "receiver": "self.bus",
+   "primitive": "write_byte_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "6",
+    "0"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "6",
+   "payload_expr": "0",
+   "payload_len": null
+  },
+  {
+   "function": "bus_servo_control",
+   "def_line": 372,
+   "call_line": 405,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "16 + id",
+    "[value_H, value_L, time_H, time_L]"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "16 + id",
+   "payload_expr": "[value_H, value_L, time_H, time_L]",
+   "payload_len": 4
+  },
+  {
+   "function": "bus_servo_control_array6",
+   "def_line": 416,
+   "call_line": 465,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "30",
+    "timeArr"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "30",
+   "payload_expr": "timeArr",
+   "payload_len": null
+  },
+  {
+   "function": "bus_servo_control_array6",
+   "def_line": 416,
+   "call_line": 466,
+   "receiver": "self.bus",
+   "primitive": "write_i2c_block_data",
+   "is_write": true,
+   "args": [
+    "self.addr",
+    "s_id",
+    "data"
+   ],
+   "addr_arg": "self.addr",
+   "register_expr": "s_id",
+   "payload_expr": "data",
+   "payload_len": null
+  }
+ ]
+}

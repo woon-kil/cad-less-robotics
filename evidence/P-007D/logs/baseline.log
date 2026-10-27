@@ -1,0 +1,23 @@
+# P-007D 기준선 — 하드웨어 접근 내역 전부
+# I2C 0 · Arm_Lib import 0 · 보드 조회 0. SSH 파일 읽기만 했다.
+
+$ ssh -o BatchMode=yes jetson@192.168.0.94 'echo SSH_OK; hostname'
+SSH_OK
+yahboom
+
+$ ssh ... 'sha256sum ~/software/Arm_Lib/Arm_Lib/Arm_Lib.py ~/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py'
+edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c  /home/jetson/software/Arm_Lib/Arm_Lib/Arm_Lib.py
+edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c  /home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py
+
+$ ssh ... 'cat /home/jetson/software/Arm_Lib/Arm_Lib/Arm_Lib.py' > <scratchpad>/armlib_src/Arm_Lib.py
+$ shasum -a 256 <scratchpad>/armlib_src/Arm_Lib.py
+edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c
+SHA 일치 — 기준선 확인
+471 lines
+
+# 분석은 전부 Mac 로컬에서 수행:
+$ python3 -I scripts/p007d_smbus_inventory.py <scratchpad>/armlib_src/Arm_Lib.py
+#   - 스크립트는 소스 디렉터리 밖(scripts/)에 둔다
+#   - 소스 경로는 인자로만 전달한다
+#   - python3 -I 로 실행해 소스 디렉터리에서 모듈을 집어오지 않게 한다
+#   - Arm_Lib 를 import 하지 않는다. ast.parse 만 쓴다

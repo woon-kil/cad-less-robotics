@@ -1,0 +1,25 @@
+{
+ "gate": "P-007D",
+ "purpose": "§5 — Arm_RGB_set 을 소스에서 분석. 🔴 실행하지 않았다. RGB command = 0",
+ "source_line": 296,
+ "source": "self.bus.write_i2c_block_data(self.addr, 0x02, [red & 0xff, green & 0xff, blue & 0xff])",
+ "addr": "0x15 (동일)",
+ "register": "0x02",
+ "primitive": "write_i2c_block_data",
+ "payload_len": 3,
+ "payload_encoding": "[R,G,B] 각 & 0xFF. 스케일·반전·시간 인자 없음",
+ "exception_handling": "bare `except:` → 'Arm_RGB_set I2C error' 출력 후 반환",
+ "return_semantics": "None (명시 return 없음)",
+ "motion_capability": "없음 — 서보 버스를 건드리지 않는다",
+ "state_mutation": "YES — 보드의 RGB 출력 상태를 바꾼다",
+ "observable_effect": "🔴 **물리적으로 관측 가능**. 확장보드 RGB LED 색이 바뀐다. P-007C-R2 가 그 LED 가 현재 **소등**임을 운영자 사진으로 확인했다",
+ "official_provenance": "검수 세션이 확인 — yahboom.net/study/DOFBOT-Pro/12619/ 가 Arm_RGB_set(R,G,B) 를 정상 expansion-board RGB API 로 제공하고 실제 RGB 변화로 결과를 관찰하게 한다. 🔴 이 게이트는 공개자료를 새로 조사하지 않았다. provenance 로만 기록한다",
+ "🔴 why_this_is_the_ideal_control_channel": [
+  "같은 slave 주소(0x15)·같은 primitive(write_i2c_block_data)를 쓴다 — transport 가 동일하다",
+  "서보 버스를 전혀 건드리지 않는다 — 모션 0",
+  "효과가 **육안으로 즉시 관측**된다. P-007B 의 근본 문제였던 '펌웨어가 수락했는지 알 수 없다' 를 우회한다",
+  "현재 RGB 가 소등이므로 **before/after 대비가 명확**하다 (P-007C-R2 사진이 before 기준선)"
+ ],
+ "🔴 but_not_executed_here": "controller state mutation 이고 RGB 물리 출력이 바뀐다. 별도 승인 게이트가 필요하다. 이 게이트의 목표는 RGB command = 0 이다.",
+ "payload_length_caveat": "RGB 는 3바이트, P-007B 는 4바이트다. 만약 펌웨어 수락 실패가 **길이 의존**이면 RGB 성공이 4바이트 경로를 보증하지 못한다. 후속 게이트 설계 시 이 한계를 반영해야 한다."
+}

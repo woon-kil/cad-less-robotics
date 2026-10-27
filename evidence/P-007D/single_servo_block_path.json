@@ -1,0 +1,82 @@
+{
+ "gate": "P-007D",
+ "purpose": "§4 — P-007B single-servo 경로를 소스에서 재구성. 실행하지 않았다.",
+ "api_call": "Arm_serial_servo_write(2, 152, 2000)",
+ "source_lines": "Arm_Lib.py 15~30 (id in {2,3,4} 분기)",
+ "derivation": [
+  {
+   "step": 1,
+   "line": 19,
+   "expr": "angle = 180 - angle",
+   "value": 28,
+   "note": "ID 2·3·4 는 '与实际相反角度'(실제와 반대 각도) 주석과 함께 반전된다"
+  },
+  {
+   "step": 2,
+   "line": 20,
+   "expr": "pos = int((3100-900)*(angle-0)/(180-0) + 900)",
+   "value": 1242
+  },
+  {
+   "step": 3,
+   "line": 21,
+   "expr": "# pos = ((pos << 8) & 0xff00) | ((pos >> 8) & 0xff)",
+   "value": "DISABLED — 주석 처리된 바이트 스왑",
+   "🔴 analyzed_separately": true
+  },
+  {
+   "step": 4,
+   "line": "22-23",
+   "expr": "value_H = (pos>>8)&0xFF ; value_L = pos&0xFF",
+   "value": [
+    "0x4",
+    "0xda"
+   ]
+  },
+  {
+   "step": 5,
+   "line": "24-25",
+   "expr": "time_H = (time>>8)&0xFF ; time_L = time&0xFF",
+   "value": [
+    "0x7",
+    "0xd0"
+   ]
+  },
+  {
+   "step": 6,
+   "line": 27,
+   "expr": "write_i2c_block_data(0x15, 0x10+id, [value_H,value_L,time_H,time_L])",
+   "value": {
+    "addr": "0x15",
+    "register": "0x12",
+    "payload": [
+     "0x4",
+     "0xda",
+     "0x7",
+     "0xd0"
+    ]
+   }
+  }
+ ],
+ "source_derived": {
+  "register": "0x12",
+  "payload": [
+   "0x4",
+   "0xda",
+   "0x7",
+   "0xd0"
+  ],
+  "payload_len": 4,
+  "raw_pos": 1242
+ },
+ "p007b_recorded": {
+  "register": "0x12 (0x10 + id)",
+  "payload": "[0x04,0xDA,0x07,0xD0] (P-007C single_servo_path.md)",
+  "transmitted_raw_pos": 1242
+ },
+ "match": true,
+ "match_detail": "register·payload 4바이트·raw_pos 모두 일치. 소스에서 유도한 값이 P-007B 가 실제로 기록한 값과 같다",
+ "bounds_check": "🔴 Arm_serial_servo_write 에는 angle 범위 검사가 없다(write6_array 에는 있다). 다만 152° → pos 1242 는 유효 범위 900~3100 안이므로 이번 건과 무관하다",
+ "exception_handling": "bare `except:` 로 모든 예외를 삼키고 메시지만 출력한다. P-007B 는 library_stdout 이 비어 있고 i2c_error_printed=false 이므로 **예외가 발생하지 않았다**",
+ "conclusion": "L1(Python API)·L2(Arm_Lib encoding) 에서 이상 없음. P-007B 는 설치 라이브러리가 의도한 그대로의 바이트를 만들었다."
+}

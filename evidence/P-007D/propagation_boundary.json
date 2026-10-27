@@ -1,0 +1,77 @@
+{
+ "gate": "P-007D",
+ "purpose": "§7 — P-007B 실패 지점을 계층으로 좁힌다",
+ "🔴 distinction_held": [
+  "write_i2c_block_data 가 예외 없이 반환했다",
+  "≠ firmware 가 명령을 수락했다",
+  "≠ servo 가 명령을 받았다",
+  "≠ servo 가 명령을 실행했다"
+ ],
+ "layers": [
+  {
+   "layer": "L1",
+   "name": "Python API",
+   "verdict": "VERIFIED",
+   "evidence": [
+    "single_servo_block_path.json — Arm_serial_servo_write(2,152,2000) 호출이 소스의 id∈{2,3,4} 분기로 정확히 들어간다",
+    "P-007C-R1 — 공식 코스가 같은 API·같은 인자 형식을 정상 경로로 제시(R1-A OFFICIAL_MATCH)",
+    "evidence/P-007B/command_log.json — 호출 1회, 예외 None"
+   ]
+  },
+  {
+   "layer": "L2",
+   "name": "Arm_Lib encoding",
+   "verdict": "VERIFIED",
+   "evidence": [
+    "single_servo_block_path.json — 소스 산술로 재구성한 register 0x12 · payload [0x04,0xDA,0x07,0xD0] · raw 1242 가 P-007B 기록과 **완전 일치**",
+    "byte_order_analysis.md — 주석 처리된 스왑은 결함이 아니다. 쓰기·읽기 endianness 가 일치한다",
+    "angle 1242 는 유효 범위 900~3100 안"
+   ]
+  },
+  {
+   "layer": "L3",
+   "name": "Linux SMBus call",
+   "verdict": "SUPPORTED",
+   "evidence": [
+    "P-007B — 예외 0, 'I2C error' 출력 0. bare except 가 모든 예외를 잡는 구조이므로 '출력 없음' = '예외 없음'",
+    "같은 세션·같은 버스·같은 주소에서 write_byte_data 계열이 1,290+회 성공 — 버스와 드라이버는 살아 있다"
+   ],
+   "why_not_VERIFIED": "예외 부재는 커널이 ACK 를 받았다는 뜻까지다. 커널이 보낸 바이트열 자체를 관측하지 않았다(로직 애널라이저·i2c trace 없음)"
+  },
+  {
+   "layer": "L4",
+   "name": "expansion-board firmware acceptance",
+   "verdict": "🔴 UNKNOWN",
+   "evidence": [
+    "이 보드에서 write_i2c_block_data 가 의미 있게 수락된 사례가 **0건**(block_write_comparison.json)",
+    "성공이 확인된 것은 전부 write_byte_data(2바이트)·read 계열",
+    "P-007C 가 이미 적은 한계 — SMBus 쓰기는 ACK 만 받으면 예외를 내지 않으므로 수락 여부를 구분할 수 없다"
+   ],
+   "why_unknown": "정적 분석으로는 원리상 닿을 수 없는 계층이다. 펌웨어는 STM8 바이너리이고 소스가 없다(P-007C-R1: 공식 저장소에 .py 0개, 펌웨어는 arm_slave_Vx.y.hex)"
+  },
+  {
+   "layer": "L5",
+   "name": "board → servo-bus propagation",
+   "verdict": "🔴 UNKNOWN",
+   "evidence": [
+    "P-007C ping 0x38 → ID1~6 전부 0xDA. 보드가 서보 버스로 조회를 보내고 응답을 받는 경로는 **살아 있다**",
+    "🔴 단 ping 은 write_byte_data 경로로 나간 조회다. 위치 명령이 같은 서보 버스 경로를 타는지는 별개다"
+   ],
+   "why_unknown": "L4 가 UNKNOWN 이면 L5 도 결정 불가"
+  },
+  {
+   "layer": "L6",
+   "name": "servo execution",
+   "verdict": "🔴 CONTRADICTED",
+   "evidence": [
+    "운영자 직접 관찰 — '전혀 움직이지 않았다'(evidence/P-007B/operator_observation.json)",
+    "명령 후 readback 150° 유지",
+    "P-007C-R3 — 토크는 켜져 있는 쪽이 유력. 즉 '서보가 명령을 받고도 무시했다' 설명이 약하다"
+   ],
+   "note": "실행되지 않은 것은 관측된 사실이다. 어느 계층에서 끊겼는지가 미해결이다"
+  }
+ ],
+ "boundary": "L1-L2 VERIFIED · L3 SUPPORTED · L4-L5 UNKNOWN · L6 CONTRADICTED",
+ "🔴 conclusion": "host-side(L1~L3)는 정상이다. 실패는 **L4 이후**에 있고, 정적 분석으로는 더 좁힐 수 없다. L4 를 건드리려면 명령을 실제로 보내는 수밖에 없는데, 서보 명령은 모션을 수반한다 — 그래서 RGB 가 유일한 비모션 대안이다.",
+ "verdict_mapped": "D2 — TRANSPORT BOUNDARY ISOLATED"
+}
