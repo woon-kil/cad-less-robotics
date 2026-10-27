@@ -1,0 +1,38 @@
+### C1 PREFLIGHT  host=yahboom date=2026-10-27T22:47:38+08:00
+
+## [1] /dev/video0 identity — Stage B 와 동일한가
+	Card type        : Orbbec DaBai DCW2 RGB Camera: O
+	Bus info         : usb-3610000.usb-2.4.3
+	Serial           : CH8R3620170
+	Bus info         : usb-3610000.usb-2.4.3
+Format Video Capture:
+	Width/Height      : 640/480
+	Pixel Format      : 'MJPG' (Motion-JPEG)
+	Field             : None
+	Bytes per Line    : 0
+	Size Image        : 614989
+	Colorspace        : Default
+	Transfer Function : Default (maps to Rec. 709)
+	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+	Quantization      : Default (maps to Full Range)
+	Flags             : 
+
+## [2] /dev/video0 홀더
+  holders=0
+
+## [3] 모션 가능 프로세스
+  count=0
+
+## [4] ROS robot 그래프 의도적 기동 여부 (ps 기준. ros2 CLI 미사용)
+   3091 sh -c ros2 run dofbot_pro_info kinemarics_dofbot
+   3092 /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot
+
+## [5] i2c-7 보유자 (B0 기준선과 비교용. 접근은 하지 않는다)
+  PID 2264 python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py 
+  PID 3091 sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+  PID 3092 /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot 
+
+## [6] 디스크
+/dev/nvme0n1p1   69G   57G  9.2G  87% /
+
+### PREFLIGHT END

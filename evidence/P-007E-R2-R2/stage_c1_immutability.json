@@ -1,0 +1,24 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1",
+ "prior_gates": {
+  "gates_checked": 12,
+  "command": "git diff --exit-code b576dbe HEAD -- <12 게이트>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_A_closed_@3579ab5": {
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_B_closed_@4d0c709": {
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_C0_closed_@121dc43": {
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "🔴 policy": "C1 은 실패했으나 그렇다고 C0/B/A 산출물을 'C1 이 알려준 사실'에 맞춰 고치지 않았다. harness 결함 발견은 stage_c1_* 신규 파일에만 기록했다",
+ "source_images": "logs/b3_frame.png · b3_frame_raw.mjpg — 이번 단계에서 읽지도 않았다(C1 은 live 캡처만 사용)"
+}

@@ -1,0 +1,23 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1",
+ "DaBai_UVC_stream_sessions": 1,
+ "camera_frames": {
+  "estimated_processed": "1200 (10 trial × 2 window × M=60 — 코드가 매 trial 두 window 를 완주해 306행까지 도달했다는 사실로부터 추론)",
+  "persisted_as_evidence": 20,
+  "🔴 persisted_with_full_window_data": 0
+ },
+ "stationary_sham_trials": {"requested": 10, "completed_in_memory": 10, "persisted": 0,
+                            "🔴 note": "계산은 끝났으나 저장 전 크래시"},
+ "servo_reads": 0, "servo_writes": 0, "motion_capable_commands": 0, "torque_writes": 0,
+ "RGB_writes": 0, "raw_I2C": 0, "robot_controller_access": 0, "robot_motion": 0,
+ "ROS_camera_launch": 0, "ros2_CLI": 0,
+ "camera_physical_moves": 0, "Gemini_physical_moves": 0, "DaBai_physical_moves": 0,
+ "🔴 UVC_control_writes": {
+  "harness_explicit": 0,
+  "opencv_implicit": ">= 1 (S_FMT, MJPG→YUYV — stage_c1_run.json 참조)",
+  "label": "BUDGET DEVIATION. 코드에 set 호출은 0건이지만 cv2.VideoCapture 자체의 암묵적 동작을 막지 못했다. 숨기지 않고 기록한다"
+ },
+ "controller_reported_state": "[86, 152, 0, 18, 93, 178] — 접근하지 않았다",
+ "stale_harness_status": "ID2==150 전제 harness 3종 STALE 유지 + 🔴 scripts/p007e_r2r2_c1_sham.py 신규 DEFECTIVE 추가"
+}

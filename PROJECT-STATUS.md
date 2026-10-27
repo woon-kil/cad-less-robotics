@@ -17,7 +17,7 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2-R2** · Stage A `CLOSED @ 3579ab5` · Stage B `FOV_PASS / CLOSED @ 4d0c709` · **Stage C0 사전등록 완료 · C1 미실행** | `evidence/P-007E-R2-R2/stage_c0_preregistration.json` |
+| 진행 중 게이트 | **P-007E-R2-R2** · Stage A/B/C0 CLOSED · **Stage C1 `X — OBSERVATION INVALID`**(harness 출력경로 버그 + 🔴 cv2 가 카메라 포맷을 MJPG→YUYV 로 암묵 변경) — 검수 결정 대기 | `evidence/P-007E-R2-R2/stage_c1_run.json` |
 | 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
@@ -229,6 +229,14 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - C1 harness `scripts/p007e_r2r2_c1_sham.py` — 🔴 **기본값 NO CAPTURE**. `ALLOW_CAPTURE=1` + `--run-sham` 둘 다 필요. 사전등록 sha256 변조 시 중단(실측 확인). 음성 시험 3종 통과
   - 🔴 카메라 제어 변경 0 — 자동노출 ON·자동WB ON·50 Hz 그대로 C1 첫 baseline 을 측정한다
   - 예산 전 항목 0. Stage A(@3579ab5)·Stage B(@4d0c709)·선행 12게이트 `git diff --exit-code` 전부 exit 0
+- [x] **P-007E-R2-R2 Stage C1** 최초 실캡처 — **`X — OBSERVATION INVALID`**
+  - 독립 근거 2건: ① `HARNESS_OUTPUT_PATH_DEFECT` — `run_sham()` outdir 에 JSON 경로가 그대로 전달돼 `os.makedirs()` 가 그 경로를 디렉터리로 만들고, 최종 저장이 `IsADirectoryError` 로 죽어 **10 trial 측정값 전량 소실**
+  - ② 🔴 `FORMAT_CHANGED_DURING_CAPTURE` — `cv2.VideoCapture(FOURCC 미지정)` 가 `MJPG→YUYV` 로 바꿨다. OpenCV `cap_v4l.cpp`(1차 소스, WebFetch 확인) `try_order[]` 가 YUYV 를 MJPEG 보다 먼저 시도해 생긴 일임을 **CONFIRMED** — 두 번째 근거만으로도 X. harness 버그 수정이 재실행을 정당화하지 않는다
+  - 🔴 UVC 제어 예산: harness 명시적 write 0 이지만 cv2 암묵적 S_FMT ≥1 — `BUDGET DEVIATION` 으로 정직하게 기록
+  - 안전 확인: video0/i2c-7 holders preflight 기준선과 동일 · 모션 가능 프로세스 0 · 이 단계가 보낸 로봇 명령 0 — 순수 소프트웨어 결함. 🔴 물리 모션 자체는 운영자 관측 채널이 없어 `NOT OBSERVED`(소프트웨어 가드 정상 ≠ 물리적으로 안전했다는 확인)
+  - harness `scripts/p007e_r2r2_c1_sham.py` → `DEFECTIVE / DO NOT EXECUTE` (본문 미수정, provenance 보존). 불일치 M1~M5 기록, 수정은 **제안만**(미적용)
+  - 🔴 재시도 금지(의뢰서 지시) — 고치고 바로 재실행하지 않았다. 회수한 anchor 프레임 20장은 포렌식 보존용, 수치 계산에 쓰지 않았다
+  - 다음 결정은 검수자 몫: harness 수정 범위 승인 / 포맷을 MJPG 로 고정(C0-R1 필요)할지 YUYV 신규 기준선 수용할지 / C1-R1 재시도 승인
 
 ## 🔴 다음 행동
 
@@ -328,6 +336,18 @@ operator channel        realtime visual observation
 > ② 벤더 카메라 launch 를 **기본 `camera_name='camera'`** 로 띄우면 토픽이 `/camera/color/image_raw`·`/camera/depth/image_raw` 로 나가고, 그것은 `color_follow.py:36-37` 등 **앱 노드의 구독 이름과 정확히 일치**한다. 그 앱 노드가 떠 있으면 `TargetAngle` → `arm_driver` 로 모션이 이어진다. 카메라를 띄울 때는 `camera_name` 을 전용 이름으로 바꾸고 `ROS_DOMAIN_ID` 를 명시한다(p620 컨테이너는 도메인 **0**, Jetson 대화형은 **98**, 비대화형 ssh 는 **미설정**).
 > 근거·원문 인용: `evidence/P-007E-R2-R2/indirect_path_risk.json`
 
+> 🔴 **C1 갱신 — DaBai `/dev/video0` 포맷이 바뀐 채 남아 있다.** Stage B 확인값은 `MJPG` 였으나, C1 의
+> `cv2.VideoCapture()`(FOURCC 미지정)가 **`YUYV`** 로 바꿔놓았고 이번 단계에서 되돌리지 않았다
+> (S_FMT 는 UVC control write 라 금지 범위). 이후 DaBai 를 다룰 때 baseline 을
+> **`C1-induced YUYV`** 라고 명시한다 — Stage A/B/C0 가 가정한 `MJPG` 는 더 이상 현재 상태가 아니다.
+> `--list-ctrls`·`G_FMT` 범위에서 다른 제어값(auto_exposure·auto WB·dynamic fps·50Hz·brightness 30·contrast 50)은
+> Stage B 와 동일함을 확인했다 — **이 범위에서는** 포맷만 바뀌었다. 프레임 간격(S_PARM)은 Stage B 에 기준값이
+> 없어 비교 불가 — 사후 1회 읽기 전용으로 확보한 `30.000 fps` 는 비교 근거가 아니라 **앞으로의 기준선**이다.
+> 🔴 게다가 `cv2.VideoCapture` 는 여는 것만으로 **항상** S_FMT 를 호출한다(OpenCV `cap_v4l.cpp` 1차 소스 확인) —
+> C0 의 `no_control_writes` 와 `capture_mechanism: cv2.VideoCapture` 자체가 내적으로 모순이다(M6). 복구(S_FMT 로
+> MJPG 재지정)나 캡처 경로 변경은 검수 결정 사항이며 사전등록 개정(C0-R1 범위)이 필요하다.
+> 근거: `evidence/P-007E-R2-R2/stage_c1_run.json`
+
 > 🔴 **R1 갱신 — 보드 상태가 바뀌었다.** 확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다(P-007D-R1). 이후 보드 LED 를 관찰할 때 baseline 을 **`P-007D-R1 induced BLUE`** 라고 명시한다 — learning mode(breathing)도 `Arm_Clear_Action` 완료(녹색)도 아니다. **P-007C-R2 의 "RGB 소등" baseline 은 더 이상 유효하지 않다.** 복구는 별도 게이트로 만들지 않는다(검수 세션 판단). LED 가 관찰을 실제로 방해하는 시점에 그 게이트 안에서 함께 설계한다.
 
 > R3 갱신: 토크가 **이미 켜져 있는** 쪽이 유력해져 "토크를 켜는 순간 래치된 target 으로 움직인다" 경로는 **약해졌다.** 🔴 제거되지는 않았다 — 토크 ON 은 `STRONGLY_SUPPORTED`이지 `VERIFIED`가 아니고, 컨트롤러가 target 을 보관하는지 자체가 미확인이다.
@@ -361,7 +381,8 @@ operator channel        realtime visual observation
 | 14 | 2026-10-27 19:02~19:48 (KST, 커밋 `02de7b0`~`b576dbe`) | P-007E-R1 검수 종결 반영 · **P-007E-R2 Stage 1** · **P-007E-R2-R1** (세션 `66eb4937`) | Stage 1 `TARGET_NOT_DETECTED` · R2-R1 `CANDIDATE FOUND` — 로봇 접근 0
 | 15 | 2026-10-27 20:47~21:54 (KST, 커밋 `ee0b2ca`) | **P-007E-R2-R2 Stage A** 정적 감사 (세션 `66eb4937`) | `CAMERA-ONLY PATH IDENTIFIED / START NOT AUTHORIZED` — 카메라 기동 0 · `ros2` CLI 0
 | 16 | 2026-10-27 22:02~22:12 (KST, 커밋 `639c0ca`) | **P-007E-R2-R2 Stage B** B0~B4 (세션 `66eb4937`) | **`FOV_PASS`** — 캡처 1프레임 · 🔴 로봇 버스 제3 사용자 발견
-| 17 | 2026-10-27 23:00~23:5x (KST, 커밋 `6144076`) | **P-007E-R2-R2 Stage C0** 사전등록 (세션 `66eb4937`) | `PREREGISTRATION / C1 HARNESS READY` — 카메라 기동 0 · C1 미실행
+| 17 | 2026-10-27 23:00~23:43 (KST, 커밋 `6144076`~`121dc43`) | **P-007E-R2-R2 Stage C0** 사전등록 (세션 `66eb4937`) | `PREREGISTRATION / C1 HARNESS READY` — 카메라 기동 0 · C1 미실행
+| 18 | 23:47~23:53 KST (Jetson +0800 22:47:38~22:53 → +1h 환산) · 보고 커밋 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C1** 최초 실캡처 — 10 trial 완주했으나 저장 직전 크래시 | `X — OBSERVATION INVALID` — 이 단계가 보낸 로봇 명령 0, 데이터 전량 소실
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
