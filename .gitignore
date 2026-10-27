@@ -8,3 +8,5 @@ evidence/P-004/artifacts/
 *.user
 .idea/
 .vscode/
+__pycache__/
+*.pyc
