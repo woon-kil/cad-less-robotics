@@ -10,3 +10,4 @@ evidence/P-004/artifacts/
 .vscode/
 __pycache__/
 *.pyc
+docs/
