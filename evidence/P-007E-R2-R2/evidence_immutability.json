@@ -27,7 +27,7 @@
   "evidence/P-007E-R2-R1/evidence_immutability.json",
   "evidence/P-007E-R2-R1/sensor_inventory.json"
  ],
- "immutability": "PASS",
+ "immutability": "PASS (sha 맵 11게이트 161파일 + 커밋 대조 12게이트 전체)",
  "note": "added_outside_baseline 은 baseline 작성 당시(=R2-R1 커밋 시점) 아직 존재하지 않았던 R2-R1 자신의 산출물이다. 이 게이트가 만든 파일이 아니다",
  "sha256": {
   "evidence/P-007B/README.md": "ed4113eb3a979dfa554511ef63b861df4c8019528620fe3af8fbbec95ccbdaa3",
@@ -197,5 +197,12 @@
   "evidence/P-007E/logs/preflight_raw.txt": "0d4e40918fd771b8fe9177a6157e03fa3ef951e3ab33dc5b1cda696c50a481d7",
   "evidence/P-007E/phase1_aborted.json": "c321395cb8337fd969269abbdcc8e068d856b5214eba85995833d8d8473ccee8",
   "evidence/P-007E/preflight.json": "7973a3ecff3e9047b7df41373f56bca139767fdc9aeeae18ab2d2a279cff54be"
+ },
+ "🔴 baseline_coverage_gap": "baseline 맵(161파일)에는 R2-R1 자신의 6파일이 없다. 따라서 그 6파일의 changed 0 은 **비교 대상이 없어 자동으로 0 이 된 값**이고 sha 대조로 검증된 것이 아니다",
+ "commit_level_verification": {
+  "command": "git diff --exit-code b576dbe HEAD -- evidence/P-007B evidence/P-007C evidence/P-007C-R1 evidence/P-007C-R2 evidence/P-007C-R3 evidence/P-007D evidence/P-007D-R1 evidence/P-007D-R2 evidence/P-007E evidence/P-007E-R1 evidence/P-007E-R2 evidence/P-007E-R2-R1",
+  "exit_code": 0,
+  "meaning": "🔴 커밋된 baseline(b576dbe) 대비 12게이트 전부 변경 0 — R2-R1 자신의 6파일까지 포함해 실제로 검증된 부분은 이것이다",
+  "result": "PASS"
  }
 }

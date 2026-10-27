@@ -27,13 +27,13 @@
   "③ /dev/video0|1 을 보유한 프로세스 0개",
   "④ 디스크 여유 재측정 — 녹화 예산 안에 들어오는지",
   "⑤ 운영자 현장 입회 + 물리 전원 차단 즉시 도달 가능 (announce-before-physical-command 규칙)",
-  "⑥ 기동 직후 `ros2 topic list` 로 토픽이 /p007e_r2r2/... 로 나오는지 확인 (camera_name 네임스페이스 가정의 실측 검증)"
+  "⑥ 🔴 **양성 조건으로** 네임스페이스 확인 — 같은 env(`ROS_DOMAIN_ID=71 ROS_LOCALHOST_ONLY=1`)에서 `ros2 topic list` 를 실행해 `/p007e_r2r2/color/image_raw` 가 **존재하고** `/camera/` 로 시작하는 토픽이 **0개**인 것을 확인한다. env 없이 별도 ssh 로 실행하면 빈 목록이 나와 가드가 거짓 통과한다. 🔴 이 명령은 domain 71 에 ros2 daemon 을 띄운다 — 정적 감사 단계에서 금지했던 바로 그 동작이므로, 기동이 승인된 뒤에만 쓴다"
  ],
  "preregistered_abort_conditions": [
   "A — 어떤 로봇 움직임이라도 관측되면 즉시 물리 전원 차단. 해석하지 않는다 → SAFETY BLOCK",
   "B — ps 에 이미지 구독 + Arm_Lib 계열 프로세스가 새로 나타나면 즉시 카메라 프로세스 종료 → UNEXPECTED_NODE",
   "C — 카메라 프로세스가 /dev/i2c-7 fd 를 열면 즉시 종료 → BUS_ACCESS_VIOLATION",
-  "D — 토픽이 /camera/... 네임스페이스로 나오면 즉시 종료 → NAMESPACE_GUARD_FAILED",
+  "D — 위 ⑥의 양성 조건이 성립하지 않으면(전용 토픽이 없거나 `/camera/*` 가 1개 이상) 즉시 종료 → NAMESPACE_GUARD_FAILED",
   "E — 드라이버가 'Set UVC backend to libuvc' 등에서 멈추고 스트림이 열리지 않으면 → TRANSPORT_BLOCKED (P-007E-R2 Stage 1 선례)"
  ],
  "🔴 explicitly_not_in_this_proposal": [
@@ -41,5 +41,12 @@
   "servo readback 반복 수집 (R2 에서 금지)",
   "recorder 장시간 녹화 · sham 시행 · feature tracking · marker",
   "커스텀 launch 파일 신규 작성 · 벤더 launch 패치"
- ]
+ ],
+ "🔴 scope_label": "이 제안은 **경로 A(ROS orbbec_camera)로 결정될 경우**의 제안이다. 경로 B(ROS 없는 UVC 직접 읽기)의 기동 제안은 **작성하지 않았다** — 경로 선택이 검수 결정 사항이기 때문이다",
+ "env_propagation_verified": {
+  "question": "ROS_DOMAIN_ID / ROS_LOCALHOST_ONLY 가 setup.bash 소싱 체인을 거쳐도 살아남는가",
+  "command": "grep -nE 'ROS_DOMAIN_ID|ROS_LOCALHOST_ONLY' /opt/ros/humble/setup.{bash,sh} /home/jetson/dofbot_pro_ws/install/{setup,local_setup}.{bash,sh}",
+  "hits": 0,
+  "conclusion": "소싱 체인이 두 변수를 건드리지 않는다 → 명령 앞에서 export 해도 유지된다. (0건이므로 export 를 source 뒤로 옮길 필요 없음)"
+ }
 }

@@ -51,7 +51,7 @@ raw 로그: `logs/static_audit_raw.txt` (168행, 읽기 전용 스크립트 1회
 | `startup_proposal.json` | 🔴 제안 전용. 미집행. 최소 기동 명령 + 사전조건 6 + 사전등록 abort 조건 A~E |
 | `decision.json` | 판정 · 증거 명칭 고정 · 금지 표현 · 21px = PREDICTION 표지 · 검수 결정 요청 |
 | `command_budget.json` | 전 항목 0 |
-| `evidence_immutability.json` | 선행 12게이트 167파일 — changed 0 · missing 0 (PASS) |
+| `evidence_immutability.json` | sha 맵 대조 11게이트 161파일 changed 0 · missing 0 + 🔴 커밋 대조 `git diff --exit-code b576dbe HEAD` 12게이트 **exit 0** (PASS) |
 
 ## 이 게이트가 하지 않은 것
 
@@ -60,3 +60,7 @@ raw 로그: `logs/static_audit_raw.txt` (168행, 읽기 전용 스크립트 1회
 - 커스텀 launch 작성 · 벤더 launch 패치 (우회 즉석 구현 금지)
 - 경로 A/B 선택 · ROI · marker · sham · Stage 2
 - Gemini·DaBai 물리 포즈 변경 (만지지 않음)
+
+## 🔴 불변성 서술 주의
+
+baseline 으로 쓴 sha 맵(R2-R1, 161파일)에는 **R2-R1 자신의 6파일이 없다.** 그 6파일의 `changed 0` 은 비교 대상이 없어 자동으로 나온 값이다. R2-R1 산출물까지 실제로 검증한 근거는 커밋 대조(`git diff --exit-code b576dbe HEAD -- <12 게이트>` → exit 0)이다.

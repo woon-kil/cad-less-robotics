@@ -17,7 +17,8 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP`** | `evidence/P-007E-R2/stage1_fov.json` |
+| 진행 중 게이트 | **P-007E-R2-R2 — DaBai Passive Observation Path Qualification** (Stage A 정적 감사 완료 · 🔴 카메라 기동 미승인) | `evidence/P-007E-R2-R2/decision.json` |
+| 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **2회** (P-007B · P-007E-R1 Phase B — 둘 다 ID2 152°, raw 1242) | P-007B `servo_position_writes: 1` · P-007E-R1 `phase_b_acceptance.json servo_writes: 1`. 나머지 게이트는 전부 `0` |
@@ -245,7 +246,11 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 
 🔴 n=1 이다. 성질로 일반화하지 않는다. `L6 OBSERVED_NO_MOTION` 은 P-007B 한정이다. Phase B 의 L6 는 **관찰 자체가 없다**(`UNOBSERVED`) — 모션 없음이 관찰된 것이 아니다.
 
-## 🔴 다음 — P-007E-R2 (설계 전용 게이트. motion command 0)
+## 🔴 P-007E-R2 원안 (고정 외부 카메라 전제 — **SUPERSEDED**)
+
+> 🔴 **아래 설계는 Stage 1 에서 전제가 깨졌다.** 고정 Gemini 는 작업면을 보고 팔은 화각 밖이다(`TARGET_NOT_DETECTED`).
+> 검수 결정으로 관측 모델이 **고정 카메라의 pre/post 3D displacement → Arm4 eye-in-hand 의 visual ego-motion** 으로 바뀌었다.
+> 현행 설계·제약은 `evidence/P-007E-R2-R2/`(판정·간접경로 위험·기동 제안)를 본다. 아래 본문은 **이력으로 보존**한다.
 
 **P-007E-R1 Phase B 는 검수 종결됐다** — `EVIDENCE PASS / EXPERIMENTAL OBSERVATION INVALID / A-C NOT DISCRIMINATED / CLOSED @ a28e41e`.
 
@@ -255,7 +260,7 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 2. **baseline stale** — `STALE / DO NOT EXECUTE` 3종 표시 완료. 🔴 152→150 복귀 명령은 새로운 physical experiment 이므로 보내지 않는다
 3. **readback 명칭** — `controller-reported servo position`. H1/H2/H3 열림. 다음은 또 다른 +2° 반복이 아니라 **readback ↔ physical pose correspondence** 검증이다
 
-### P-007E-R2 — 목표는 하나 (🔴 Stage 1 에서 `TARGET_NOT_DETECTED` 로 멈춤)
+### P-007E-R2 — 목표는 하나 (🔴 Stage 1 에서 `TARGET_NOT_DETECTED` 로 멈춤 / 관측 모델은 R2-R2 로 대체됨)
 
 > **다음 단 한 번의 motion command 가 발생할 때 controller readback 과 independent physical measurement 를 동시에 확보할 방법을 설계한다.**
 
@@ -263,11 +268,12 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 
 ```
 controller channel      pre/post ID2 readback
-independent physical    synchronized RGB-D pre/post displacement
+independent physical    ⚠️ SUPERSEDED: 고정 카메라의 synchronized RGB-D pre/post displacement
+                        → 현행: eye-in-hand visual ego-motion (DaBai, Arm4)
 operator channel        realtime visual observation
 ```
 
-- 🔴 전체 P-006 calibration 은 불필요하다. `T_base_camera` 가 아니라 **"실제로 로봇 링크가 움직였는가"** 라는 독립 센서 증거만 있으면 된다. 고정 카메라에서 동일 physical feature 의 pre/post 3D displacement 로 충분하다
+- ⚠️ (SUPERSEDED — 고정 카메라 전제) 🔴 전체 P-006 calibration 은 불필요하다. `T_base_camera` 가 아니라 **"실제로 로봇 링크가 움직였는가"** 라는 독립 센서 증거만 있으면 된다. 고정 카메라에서 동일 physical feature 의 pre/post 3D displacement 로 충분하다
 - 🔴 **명령 전에 카메라 기록이 실제로 시작됐다는 것을 machine-verifiable guard 로** 만든다. 실험 validity 가 운영자 육안 관찰 여부에 다시 의존하지 않도록
 - 🔴 이 게이트에서 보내지 않는 것: **152→150 복귀 · +2° 재시험 · torque**. motion command 0
 
