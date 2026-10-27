@@ -1,0 +1,23 @@
+{
+ "gate": "P-007B",
+ "method": "Claude Code AskUserQuestion. 운영자 직접 관찰. Claude가 추정하지 않았다.",
+ "A_arm2_moved": {
+  "answer": "NO",
+  "verbatim": "전혀 움직이지 않았다"
+ },
+ "B_direction_matches_h0": {
+  "answer": "N/A",
+  "reason": "움직임이 없어 방향을 판정할 수 없다"
+ },
+ "C_other_joint_moved": {
+  "answer": "NO",
+  "verbatim": "없다"
+ },
+ "D_abnormal_motion_vibration_collision": {
+  "answer": "NO",
+  "verbatim": "없다"
+ },
+ "emergency_power_cut_used": false,
+ "operator_position": "workspace 밖에서 로봇 전체를 직시 (홀드 포인트 전 확인)",
+ "audible_cue": "Mac에서 say 로 카운트다운을 냈다"
+}

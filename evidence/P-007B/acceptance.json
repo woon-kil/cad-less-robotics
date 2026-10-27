@@ -1,0 +1,254 @@
+{
+ "gate": "P-007B",
+ "base_commit": "bd30ac38f5bc78fac0466deadc82fa6ff6eb2d24",
+ "verdict": "NO_MOTION_RESPONSE",
+ "verdict_basis": "스펙 §25 — command 후 ID2 readback과 물리 링크 모두 변화가 없다.",
+ "verdict_detail": "Arm_serial_servo_write(2, 152, 2000) 을 1회 호출했다. 파이썬 예외 없음, 라이브러리의 'I2C error' 출력 없음, 호출은 0.0007초에 반환. 2000ms+1.5s 대기 후 5라운드 읽기에서 ID2는 150으로 불변이고 다른 채널도 전부 불변이다. 운영자는 어떤 움직임도 보지 못했다.",
+ "h0_direction": "NOT_VALIDATED",
+ "h0_grade_unchanged": "P3 — VENDOR_DEFINED_SOFTWARE_CONVENTION",
+ "p4_convention_promoted": false,
+ "contradicted": false,
+ "contradicted_note": "CONTRADICTED가 아니다. 움직임이 없으면 방향 증거가 없다. H2도 승인하지 않는다.",
+ "command_escalation": "없음. 명령을 더 크게 하지 않았다 (§25)",
+ "automatic_return": 0,
+ "cause_analysis": "하지 않았다. 스펙 §25에 따라 별도 게이트다.",
+ "measured_facts_only": [
+  "I2C 레벨에서 예외와 에러 출력이 없었다. 바이트는 0x12 레지스터로 전송된 것으로 보인다.",
+  "전송 raw pos는 1242이고 현재 readback 150이 뜻하는 raw는 1267~1278이다.",
+  "컨트롤러 보고 각도는 명령 전후 모두 [86,150,0,18,93,178]이다.",
+  "운영자가 무동작을 확인했다. 진동·소음·이상도 없었다."
+ ],
+ "exclusive_control_maintained": true,
+ "robot_motion_by_this_gate": 0,
+ "next_gate": "제안만 한다. 이 게이트에서 실행하지 않는다.",
+ "checks": [
+  {
+   "id": "P007B-01",
+   "result": "PASS",
+   "note": "Arm_Lib sha256 edfcae72… 가 P-007A·R1과 일치. 쓰기 직전 재확인까지 2회",
+   "evidence": "source_integrity.json, command_log.json"
+  },
+  {
+   "id": "P007B-02",
+   "result": "PASS",
+   "note": "btime 1793005682, 세션 마커 starttime 2433 모두 R1과 동일 → 재부팅·재로그인 없음",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-03",
+   "result": "PASS",
+   "note": "활성 .desktop은 bash-1.desktop 하나이고 Exec 대상 setting.sh 부재. 백업 sha256 416f63d9… 보존",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-04",
+   "result": "PASS",
+   "note": "jupyterlab inactive, ipykernel 0",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-05",
+   "result": "PASS",
+   "note": "YahboomArm 0건",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-06",
+   "result": "PASS",
+   "note": "joystick.py 0건",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-07",
+   "result": "PASS",
+   "note": "arm_driver.py 0건",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-08",
+   "result": "PASS",
+   "note": "i2c fd 보유 3건 전부 비-writer(OLED·ros2·kinematics). uncontrolled writer 0. 명령 직전 재확인에서도 0",
+   "evidence": "control_ownership.json"
+  },
+  {
+   "id": "P007B-09",
+   "result": "PASS",
+   "note": "운영자 YES. R1 답 재사용 안 함",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-10",
+   "result": "PASS",
+   "note": "운영자 YES. 실제 차단 시험 안 함",
+   "evidence": "preflight.json"
+  },
+  {
+   "id": "P007B-11",
+   "result": "PASS",
+   "note": "baseline 5라운드 신규 읽기, error 0. 과거 값 미사용",
+   "evidence": "baseline_reads.csv"
+  },
+  {
+   "id": "P007B-12",
+   "result": "PASS",
+   "note": "ID2 = 150, 5라운드 전부 동일",
+   "evidence": "candidate_before.json"
+  },
+  {
+   "id": "P007B-13",
+   "result": "PASS",
+   "note": "Arm2 한계 ±1.5708 rad, 이동 후 upper 여유 +28.00°",
+   "evidence": "candidate_target.json"
+  },
+  {
+   "id": "P007B-14",
+   "result": "PASS",
+   "note": "target 152 와 duration 2000ms 를 승인 전에 고정",
+   "evidence": "candidate_target.json, hold_point.json"
+  },
+  {
+   "id": "P007B-15",
+   "result": "PASS",
+   "note": "Jetson URDF로 FK 계산. 도구는 P-007A candidate_fk.json 좌표를 오차 0으로 재현해 검증",
+   "evidence": "expected_motion.json"
+  },
+  {
+   "id": "P007B-16",
+   "result": "PASS",
+   "note": "write·read 양쪽을 줄 번호와 함께 분석. ID2 반전(19행)·역변환(212~213행)과 int() 절단 +1 편향까지 수치로 고정",
+   "evidence": "command_api_analysis.md"
+  },
+  {
+   "id": "P007B-17",
+   "result": "PASS",
+   "note": "Arm_serial_servo_write 단일 관절 API만 사용. id=0 일괄 경로 미사용, assert id==2",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-18",
+   "result": "PASS",
+   "note": "hold_point.json 생성 후 READY_FOR_OPERATOR_APPROVAL 에서 턴 종료",
+   "evidence": "hold_point.json"
+  },
+  {
+   "id": "P007B-19",
+   "result": "PASS",
+   "note": "운영자가 홀드 포인트 이후 직접 타이핑. 붙여넣기 아님",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-20",
+   "result": "PASS",
+   "note": "승인 시점까지 servo write 0",
+   "evidence": "hold_point.json"
+  },
+  {
+   "id": "P007B-21",
+   "result": "PASS",
+   "note": "ID2 명령 1회",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-22",
+   "result": "PASS",
+   "note": "ID1 명령 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-23",
+   "result": "PASS",
+   "note": "ID3 명령 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-24",
+   "result": "PASS",
+   "note": "ID4 명령 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-25",
+   "result": "PASS",
+   "note": "ID5 명령 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-26",
+   "result": "PASS",
+   "note": "ID6·gripper 명령 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-27",
+   "result": "PASS",
+   "note": "write6·write6_array·write_any 호출 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007B-28",
+   "result": "PASS",
+   "note": "torque 변경 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-29",
+   "result": "PASS",
+   "note": "calibration·reset·homing·move_init_pose 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-30",
+   "result": "PASS",
+   "note": "MoveIt execution 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-31",
+   "result": "PASS",
+   "note": "명령 후 5라운드 × 6 = 30 읽기, error 0",
+   "evidence": "post_reads.csv, joint_delta.json"
+  },
+  {
+   "id": "P007B-32",
+   "result": "PASS",
+   "note": "운영자 A = 전혀 움직이지 않았다. B는 움직임이 없어 N/A",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "P007B-33",
+   "result": "PASS",
+   "note": "운영자 C = 다른 관절 움직임 없다. readback도 전 채널 불변",
+   "evidence": "operator_observation.json, joint_delta.json"
+  },
+  {
+   "id": "P007B-34",
+   "result": "PASS",
+   "note": "운영자 D = 이상 없음. 비상 전원 차단 사용 안 함",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "P007B-35",
+   "result": "PASS",
+   "note": "자동 복귀 모션 0. −2° 복귀도 하지 않았다",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-36",
+   "result": "PASS",
+   "note": "T_base_camera 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-37",
+   "result": "PASS",
+   "note": "P-006D 시작 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007B-38",
+   "result": "PASS",
+   "note": "P-008 시작 0",
+   "evidence": "environment.json"
+  }
+ ]
+}

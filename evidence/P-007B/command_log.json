@@ -1,0 +1,37 @@
+{
+ "gate": "P-007B",
+ "api": "Arm_Device.Arm_serial_servo_write",
+ "servo_id": 2,
+ "arguments": {
+  "id": 2,
+  "angle": 152,
+  "time_ms": 2000
+ },
+ "register": "0x12 (0x10 + id)",
+ "transmitted_raw_pos": 1242,
+ "call_count": 1,
+ "retried": false,
+ "other_ids_commanded": 0,
+ "write6_calls": 0,
+ "torque_change": 0,
+ "offset_write": 0,
+ "calibration": 0,
+ "gripper": 0,
+ "pre_write_read_id2": 150,
+ "commanded_at_device": "2026-10-27T09:28:44+0800",
+ "python_exception": null,
+ "library_stdout": "",
+ "i2c_error_printed": false,
+ "call_elapsed_s": 0.000655,
+ "blocking": "non-blocking. 호출은 0.0007초에 반환했고 컨트롤러가 2000ms에 걸쳐 보간하도록 되어 있다",
+ "wait_after_command_s": 3.5,
+ "guards_enforced": [
+  "Arm_Lib sha256 재확인",
+  "Arm_Device.__init__/__del__ AST 쓰기 호출 검사",
+  "쓰기 직전 ID2 readback == 150 확인",
+  "assert servo_id == 2",
+  "target == base + 2 검증",
+  "id=0 일괄경로 미사용"
+ ],
+ "approval": "운영자가 홀드 포인트 이후 직접 타이핑한 'EXECUTE P-007B ARM2 +2 DEG'"
+}

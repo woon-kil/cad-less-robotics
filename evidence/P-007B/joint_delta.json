@@ -1,0 +1,68 @@
+{
+ "gate": "P-007B",
+ "post_read_rounds": 5,
+ "samples": 30,
+ "communication_errors": 0,
+ "per_servo": {
+  "1": {
+   "before": 86,
+   "after_unique": [
+    86
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  },
+  "2": {
+   "before": 150,
+   "after_unique": [
+    150
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  },
+  "3": {
+   "before": 0,
+   "after_unique": [
+    0
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  },
+  "4": {
+   "before": 18,
+   "after_unique": [
+    18
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  },
+  "5": {
+   "before": 93,
+   "after_unique": [
+    93
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  },
+  "6": {
+   "before": 178,
+   "after_unique": [
+    178
+   ],
+   "delta": 0,
+   "stable_across_rounds": true
+  }
+ },
+ "id2_expected_post_read": [
+  152,
+  153
+ ],
+ "id2_measured_post_read": [
+  150
+ ],
+ "id2_delta": 0,
+ "id2_changed": false,
+ "other_joints_changed": [],
+ "interpretation": "ID2 readback이 명령 전후 모두 150이다. 다른 채널도 전부 불변이다.",
+ "not": "이 결과로 H0 방향을 확인하거나 반박하지 않는다. 움직임이 없으면 방향 증거가 없다."
+}
