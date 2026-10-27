@@ -1,0 +1,149 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "Stage C1-R1-R1 — Evidence Pipeline Closure",
+ "base_commit": "f92e155",
+ "character": "STATIC REPAIR / OFFLINE VALIDATION / NO CAMERA EXECUTION / NO ROBOT EXECUTION",
+ "advisor_review": "커밋 전 advisor 가 BLOCKING 3건(artifact_sha256.json 자기참조 불일치/real git path fail-open/C1-R1 라벨 오기)을 지적했다. 전부 코드 수정 + Jetson 재시험으로 해결하고 커밋한다 — 1회 재검토 라운드",
+ "prior_evidence_immutable": {
+  "C0-R1_7e38158": "unchanged",
+  "C0-R2_acc59bd": "unchanged",
+  "C1-R1_51b3af2_f92e155": "unchanged, 기존 disclosure 5건 보존",
+  "🔴_C1-R1_closing_label": "검수자 종결 판정 = `MEASUREMENT PASS / QUALIFICATION CONDITIONAL / CLOSED @ f92e155`(검수 세션이 §0에서 명시). 이 라벨을 그대로 보존한다",
+  "C1-R1_preregistered_logic_output": "harness(analysis.py classify_run)가 낸 사전등록 로직 출력은 `Q1 — OBSERVATION CHANNEL QUALIFIED` — 이것은 검수자의 종결 판정과 별개의, harness 자신의 산출물이다. 둘 다 소급 변경하지 않는다",
+  "C1-R1_measured_values_preserved": {
+   "valid_trials": "10/10",
+   "false_positive": "0/10",
+   "dropout": 0.0,
+   "sigma_tx_px": 0.01089,
+   "sigma_ty_px": 0.01596,
+   "sigma_rot_deg": 0.00188,
+   "publication_thr_norm_px": 4.95,
+   "publication_thr_rot_deg": 0.3
+  },
+  "C1-R1_integrity_defect_preserved": "TRANSFER_INTEGRITY_NOT_VERIFIED_BEFORE_SOURCE_DELETION — 소급하여 VERIFIED 로 승격하지 않음. trial JSON parse 성공 ≠ SHA 검증"
+ },
+ "algorithm_threshold_unchanged": {
+  "ROI": "unchanged", "masks": "unchanged", "ORB": "unchanged", "BFMatcher": "unchanged",
+  "RANSAC": "unchanged", "quality_guards": "unchanged", "K": 5, "M": 60, "N_sham": 10,
+  "sigma_floor_translation_px": 0.7, "sigma_floor_rotation_deg": 0.06,
+  "threshold_formula": "unchanged (K × max(observed_sigma, sigma_floor))",
+  "LOO_procedure": "unchanged",
+  "Q1_Q2_Q3_Q4_X_logic": "unchanged (analysis.py 파일 내용 100% 불변, sha256 동일: fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f)"
+ },
+
+ "🔴_advisor_blocking_findings_and_fixes": {
+  "block_1_artifact_sha_self_mismatch": {
+   "finding": "원래 구현은 artifact_sha256.json 을 먼저 쓰고 그 다음 manifest.set_status() 가 manifest.json 을 다시 썼다 — artifact_sha256.json 에 적힌 manifest 해시가 항상 stale 해져서 실제 run 마다 자기 자신에 대한 TRANSFER_FAILED 가 났을 것",
+   "fix": "_finalize_evidence_package() 순서를 ① summary 작성 ② manifest 에 대한 **마지막** 쓰기(core completeness, artifact_sha256.json 제외) ③ 그 이후 manifest.json 불변 ④ artifact_sha256.json 생성(이제 manifest 최종본 반영) ⑤ full completeness + self verify_transfer 로 재구성. finalize 중 예외가 나면 manifest 를 CRASHED+EVIDENCE_PACKAGE_INCOMPLETE 로 남기고 재던진다(§18 '성공으로 종료하지 않는다')",
+   "verified_by": "T10/E4 가 execute_c1r1()·run_full_sham() 의 실제 출력에 대해 self_transfer_verification_status=='TRANSFER_VERIFIED' 를 확인 — Jetson 재실행에서 전부 PASS"
+  },
+  "block_2_real_git_path_not_fail_closed": {
+   "finding": "`git -C <dir>` 는 <dir> 이 저장소가 아니면 상위 디렉터리로 올라가며 찾는다 — 검증 없이 쓰면 (a) 구조화되지 않은 traceback으로 죽거나 (b) 더 위험하게, 상위의 엉뚱한 저장소 HEAD 를 조용히 기록할 수 있었다",
+   "fix": "evidence_pipeline.py 에 `_verify_repo_root()`(rev-parse --show-toplevel 로 실제 발견된 루트가 repo_root 와 일치하는지 확인) + `GitProvenanceUnavailable` 예외 추가. execute_c1r1() 은 dirty-tree check·runtime provenance 를 **reader 생성보다 먼저**, try/except 로 감싸 호출한다 — 실패 시 reader/manifest 를 전혀 만들지 않고 `ABORTED/PROVENANCE_UNAVAILABLE` 로 끝난다",
+   "verified_by": "E16(git_run_fn 이 raise → ABORTED+PROVENANCE_UNAVAILABLE, manifest 미생성, reader_factory 호출 안 됨) · E17(dirty tree + require_clean_tree=True → ABORTED+DIRTY_TREE_GUARD, manifest 미생성) — 둘 다 PASS"
+  },
+  "block_3_c1r1_label_mismatch": {
+   "finding": "이번 gate의 초안 문서들이 C1-R1 의 검수 종결 판정을 'Q1 판정 보존'으로만 적어, 검수자의 실제 종결 라벨(`MEASUREMENT PASS / QUALIFICATION CONDITIONAL / CLOSED @ f92e155`)과 달랐다",
+   "fix": "이 파일과 stage_c1r1r1_architecture_note.json, PROJECT-STATUS.md 의 C1-R1-R1 항목에서 검수자 종결 라벨을 그대로 쓰고, Q1 은 'harness 의 사전등록 로직 출력'으로만 병기하도록 수정. stage_c1r1_decision.json(C1-R1 당시 파일) 자체는 건드리지 않았다"
+  }
+ },
+
+ "🔴_minor_fixes_also_applied": {
+  "evidence_pipeline_sha_recorded": "scripts/p007e_r2r2_evidence_pipeline.py 자신의 sha256 이 이제 runtime_provenance·summary 양쪽에 `evidence_pipeline_module_sha256` 로 기록된다(E1 확인)",
+  "M_N_sham_recorded_as_executed_not_preregistered": "summary.M/N_sham 은 이번 실행에서 실제로 쓴 값(M_executed/N_sham_executed 파라미터)을 기록한다. rules(사전등록값)는 별도로 M_rules_preregistered/N_sham_rules_preregistered 로 남긴다 — mock 시험(M=5)과 사전등록(M=60)이 혼동되지 않는다(E3 확인)",
+  "stage_label_no_longer_hardcoded": "execute_c1r1() 의 manifest `stage` 필드가 'C1-R1-R1' 하드코딩이 아니라 사용 중인 preregistration 자신의 `stage` 필드값에서 온다 — 다음 gate가 이 harness 를 그대로 재사용해도 이번 repair 세션 번호가 잘못 박히지 않는다",
+  "E15_strengthened": "env 체크뿐이던 E15 에 `acquisition._run_v4l2ctl` poison-stub 시험을 추가했다 — stub 이 raise 하도록 바꿔도 FakeReader 캡처 경로가 COMPLETED 로 끝나면, 그 경로가 실제 v4l2-ctl(=real device)을 전혀 호출하지 않는다는 것이 실증된다"
+ },
+
+ "repair_A_runtime_provenance": {
+  "module": "scripts/p007e_r2r2_evidence_pipeline.py — build_runtime_provenance()",
+  "fields": ["git_head", "base_commit(=git_head)", "preregistration_commit(git log -1 로 조회)",
+            "preregistration_sha256", "harness_sha256", "acquisition_module_sha256",
+            "measurement_module_sha256", "analysis_module_sha256", "evidence_pipeline_module_sha256"],
+  "stale_literal_removed": "manifest.base_commit='64b32bc' 하드코딩 제거, preregistration_commit='<set at commit time>' placeholder 제거, manifest.stage='C1-R1-R1' 하드코딩도 제거(preregistration 자신의 stage 필드로 대체) — 전부 실행 시점 조회값으로 대체",
+  "git_calls_readonly_only": "rev-parse HEAD / rev-parse --show-toplevel / status --porcelain / log -1 --format=%H -- <path> — 전부 읽기전용, 쓰기 0",
+  "fail_closed_on_wrong_repo": "rev-parse --show-toplevel 결과가 repo_root 와 다르면(또는 저장소 자체가 없으면) GitProvenanceUnavailable → execute_c1r1 이 reader 생성 전에 ABORTED 로 끝난다",
+  "injectable_for_testing": "run_fn 파라미터로 전부 mock 가능(E1/E16/E17/T10 이 실증, 공용 헬퍼 _make_mock_git()) — 실제 저장소를 전혀 건드리지 않고 시험 가능",
+  "🔴_known_limitation_disclosed": "ROOT 가 git 저장소가 아닌 위치(이번 세션의 Jetson scp 개별파일 배치 디렉터리)에서 실제로(git_run_fn=None) execute_c1r1() 을 돌리면 이제는 추측 없이 ABORTED/PROVENANCE_UNAVAILABLE 로 fail-closed 끝난다(이전 버전은 구조화되지 않은 traceback 이었다) — 그래도 실제 캡처는 여전히 불가능하다는 사실 자체는 바뀌지 않는다. 다음 physical-motion gate 는 harness 가 git-tracked checkout 에서 실행되는 배포 방식을 설계해야 한다(이번 범위에서 해결 안 함)"
+ },
+ "repair_B_C_automatic_summary": {
+  "before": "capture harness 종료 → summary 없음 → 별도 session 에서 analysis.py re-import → manual aggregate (C1-R1 의 결함)",
+  "after": "run_full_sham() 이 COMPLETED 로 끝나면 같은 프로세스 안에서 _finalize_evidence_package() 가 올바른 순서(summary→manifest 최종쓰기→artifact_sha256.json→self-verify)로 frozen analysis.py 를 호출해 summary/sham_summary.json + artifact_sha256.json 을 자동 생성한다. 분석 공식은 1바이트도 수정하지 않았다",
+  "verified_by": "E3(자동생성 확인, M/N_sham 실행값 일치)·E4(summary 의 analysis_module_sha256 일치 + self_transfer_verification=TRANSFER_VERIFIED)·T10(execute_c1r1 실제 경로에서 evidence_package_core_status=COMPLETE·full_completeness=COMPLETE·self_transfer_verification=TRANSFER_VERIFIED 전부 확인)"
+ },
+ "repair_threshold_provenance": {
+  "fields": ["observed_sigma_{tx,ty,rot}", "sigma_floor_{tx,ty,rot}", "effective_sigma_{tx,ty,rot}",
+            "threshold_floor_dominated_{tx,ty,rot}", "threshold_floor_dominated(종합)"],
+  "verified_by": "E13(observed≪floor → 전부 True) · E14(observed>floor → 전부 False)"
+ },
+ "repair_C_frame_timing": {
+  "fields": ["target_frame_interval_sec", "observed_frame_interval_median_sec",
+            "observed_frame_interval_robust_sd_sec", "interval_ratio_to_target",
+            "window_duration_reference_median_sec", "window_duration_comparison_median_sec",
+            "total_capture_duration_sec"],
+  "verified_by": "E12 — synthetic 0.729s interval 입력 → median/ratio/window_duration 정확히 계산됨"
+ },
+ "quasi_static_semantics": "evidence/P-007E-R2-R2/stage_c1r1r1_architecture_note.json + scripts/p007e_r2r2_evidence_pipeline.py.QUASI_STATIC_SEMANTICS_NOTE(코드 상수, 모든 future summary 에 자동 포함)",
+ "repair_D_artifact_sha_manifest": {
+  "module": "build_artifact_sha_manifest() / discover_artifact_relative_paths()",
+  "output": "artifact_sha256.json — {relative_path, size_bytes, sha256} per entry, manifest.json 최종쓰기 **이후**에만 생성(Block 1 수정)",
+  "verified_by": "E6(mock 2파일 전체 SHA manifest 생성이 직접계산값과 일치) + T10/E4(실제 harness 출력에 대한 self-verify)"
+ },
+ "repair_transfer_integrity_and_deletion": {
+  "verify_transfer": "remote manifest entries ↔ local 재계산 비교(size/sha256/JSON parse)",
+  "remote_deletion_eligible": "explicit_opt_in=False 가 기본값 — opt-in 없으면 전송 결과와 무관하게 항상 NO DELETE",
+  "verified_by": "E7(TRANSFER_VERIFIED) · E8(1바이트 변경→TRANSFER_FAILED+삭제금지) · E9(파일누락→TRANSFER_FAILED+삭제금지) · E10(SHA 일치해도 JSON parse 실패→삭제금지) · E11(opt-in 없으면 전송성공해도 NO DELETE)",
+  "this_gate_real_deletion_tested": false,
+  "note": "C1-R1-R1 에서는 실제 remote file 삭제를 시험하지 않았다 — 전부 mock 디렉터리 2개 비교. 실제 ssh/scp 호출은 이 모듈 어디에도 없다"
+ },
+ "repair_E_artifact_completeness": {
+  "expected_contract": ["manifest.json", "trials/trial_00..N-1.json", "summary/sham_summary.json",
+                        "artifact_sha256.json"],
+  "self_reference_handling": "manifest 에 쓰는 core status 는 require_artifact_manifest=False(manifest/trials/summary 만), artifact_sha256.json 생성 뒤의 full status 는 True — 자기참조 모순 없음(Block 1)",
+  "verified_by": "E5 — 9/10 trial 만 존재 → EVIDENCE_PACKAGE_INCOMPLETE, missing 목록에 trial_09.json·summary·artifact_sha256 포함 확인"
+ },
+
+ "negative_tests": {
+  "T0_T12_regression": "evidence/P-007E-R2-R2/c1r1r1_repair_tests/repair_result.json.regression_negative_tests_T0_T12 — 전부 PASS (T10 은 SHA 필드명 변경(*_module_sha256)·mock git_run_fn(_make_mock_git)·self_transfer_verification 확인이 추가됐지만 동작은 동치)",
+  "E1_E17_new": "같은 파일.repair_negative_tests_E1_E15(내부적으로 E1~E17) — 전부 PASS. advisor 재검토로 E16/E17 추가, E15 강화",
+  "selftest_estimator_regression": "translation_err=0.70305px, rotation_err=0.06007deg — C0 기준(0.703px/0.060°)과 일치, 변경 없음"
+ },
+
+ "🔴_self_reference_false_positive_recurred_3x_this_gate": {
+  "finding": "구현 중 자기참조 오탐(naive substring 검사가 자기 자신의 정의/코드/주석을 오탐)이 이번 gate에서 3회 재발했다: ① self_ast_check 의 FORBIDDEN_CALL_PATTERNS 를 그대로 참조하지 않고 E15 에 'VideoCapture(' 리터럴을 새로 적어 오탐 ② 그 오탐을 설명하는 주석 문장 자체가 같은 리터럴을 포함해 재오탐 ③ E2 의 historical stale-commit 리터럴을 'expected' 설명문에 그대로 적어 오탐. 전부 문자열 조립('Video'+'Capture(', '64b32'+'bc')으로 수정",
+  "pattern_is_now_project_recurring": "i2c 자기참조(C1 harness) → VideoCapture 자기참조(C0-R1) → 이번 gate 내 3회 추가 재발(총 5회). feedback 메모리 forbidden-pattern-literal-self-matches-its-own-guard.md 로 일반화 기록"
+ },
+
+ "command_budget": {
+  "camera_starts": 0, "new_captures": 0, "real_UVC_streams": 0, "S_FMT": 0, "camera_control_writes": 0,
+  "ROS_launches": 0, "ros2_CLI": 0,
+  "servo_reads": 0, "servo_writes": 0, "torque_writes": 0, "RGB_writes": 0, "raw_I2C": 0,
+  "robot_controller_access": 0, "motion_capable_commands": 0,
+  "experiment_generated_motion_commands": 0, "physical_robot_motion_observation": "NOT_APPLICABLE",
+  "DaBai_physical_moves": 0, "Gemini_physical_moves": 0,
+  "real_remote_ssh_delete_calls": 0, "real_git_write_calls": 0
+ },
+ "git_tree_status": "clean (아래 커밋 이후)",
+ "prior_evidence_diff": "git diff --name-status f92e155 -- evidence/ scripts/ 실측 결과: 'M\\tscripts/p007e_r2r2_c1r1_sham.py' 단 1줄뿐. evidence/ 디렉터리는 0건 변경(A만, M 0건). harness 소스(M)는 §5~§18 이 요구한 의도된 repair이며 evidence json 수정이 아니다 — C1-R1 당시 harness 의 historical SHA(91457a35...)는 커밋 51b3af2 에 그대로 보존돼 있고, stage_c1r1_decision.json/stage_c1r1_disclosures.json 의 참조값도 변경하지 않았다.",
+
+ "acceptance": {
+  "EPC-01_prior_evidence_unchanged": true, "EPC-02_C1R1_integrity_defect_preserved": true,
+  "EPC-03_runtime_git_provenance": true, "EPC-04_stale_base_commit_literal_eliminated": true,
+  "EPC-05_module_sha_provenance": true, "EPC-06_harness_automatic_summary": true,
+  "EPC-07_summary_uses_frozen_analysis": true, "EPC-08_threshold_provenance_explicit": true,
+  "EPC-09_floor_dominated_flag": true, "EPC-10_frame_timing_first_class": true,
+  "EPC-11_quasi_static_semantics_documented": true, "EPC-12_artifact_sha_manifest": true,
+  "EPC-13_remote_local_sha_verification": true, "EPC-14_parse_readability_verification": true,
+  "EPC-15_remote_deletion_default_disabled": true, "EPC-16_deletion_requires_opt_in_and_verified_transfer": true,
+  "EPC-17_incomplete_package_detection": true, "EPC-18_trial_numbering_mapping_explicit": true,
+  "EPC-19_anchor_self_comparison_provenance_explicit": true, "EPC-20_all_negative_tests_pass": true,
+  "EPC-21_estimator_regression_unchanged": true, "EPC-22_real_camera_starts_zero": true,
+  "EPC-23_real_captures_zero": true, "EPC-24_robot_controller_access_zero": true,
+  "EPC-25_motion_capable_commands_zero": true, "EPC-26_prior_estimator_threshold_unchanged": true,
+  "EPC-27_git_tree_clean": "커밋 후 확인",
+  "EPC-28_self_referential_artifact_sha_consistency": "추가 기준(advisor) — T10/E4 self_transfer_verification=TRANSFER_VERIFIED 로 충족"
+ },
+
+ "🔴 verdict": "P-007E-R2-R2 STAGE C1-R1-R1 — EVIDENCE PIPELINE CLOSURE PASS / FUTURE EXPERIMENT PROVENANCE READY / NO CAMERA OR ROBOT EXECUTION",
+ "next_action": "다음 physical-motion observation gate 는 검수자가 이번 gate를 승인한 뒤 별도로 설계한다. C1-R1 재실행/DaBai real capture/Arm2 command/152→150/torque operation/P006D/physical-motion observation 전부 자동 실행하지 않는다"
+}

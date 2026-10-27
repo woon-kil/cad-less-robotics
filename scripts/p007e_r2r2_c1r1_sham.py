@@ -267,11 +267,15 @@ def _median_of(xs):
 
 
 def run_full_sham(reader, estimator, roi_mean_fn, mask, run_root, manifest_fields, N_sham, M,
-                  sleep_fn=None, trial_gap_s=2.0):
+                  sleep_fn=None, trial_gap_s=2.0, rules=None, target_frame_interval_s=0.25):
     """🔴 crash recovery ≠ experiment resume. 예외(일반 Exception 뿐 아니라 SIGTERM/SIGHUP 으로
        변환된 SystemExit 포함)가 나면 manifest 를 CRASHED 로 남기고 **자동으로 이어서 하지 않는다**.
        완료된 trial 의 evidence 는 보존된다. atexit 핸들러를 안전망으로 더 건다 — 사전등록
-       문구("atexit/finally")와 실제 구현을 일치시켰다."""
+       문구("atexit/finally")와 실제 구현을 일치시켰다.
+
+       🔴 C1-R1-R1 Repair B/C — COMPLETED 로 끝나고 rules(K/M/N_sham/floor_trans/floor_rot) 가
+       주어지면, 별도 session 없이 이 함수가 끝나기 전에 frozen analysis.py 로
+       summary/sham_summary.json 과 artifact_sha256.json 을 자동 생성한다(§7/§8/§13)."""
     import atexit
     import signal
     sleep_fn = sleep_fn or time.sleep
@@ -308,7 +312,66 @@ def run_full_sham(reader, estimator, roi_mean_fn, mask, run_root, manifest_field
         if prev_hup is not None:
             signal.signal(signal.SIGHUP, prev_hup)
         atexit.unregister(_mark_crashed)
-    return manifest.data
+
+    finalize_result = None
+    if manifest.data.get("status") == "COMPLETED" and rules is not None:
+        try:
+            finalize_result = _finalize_evidence_package(run_root, N_sham, M, rules,
+                                                          target_frame_interval_s, manifest)
+        except Exception as e:  # noqa: BLE001 — 🔴 §18 "성공으로 종료하지 않는다"
+            # finalize 자체가 깨지면(summary 계산 실패 등) manifest 를 정직하게
+            # CRASHED/INCOMPLETE 로 남긴다. trial 들은 이미 저장돼 evidence 로 남아있다
+            manifest.set_status("CRASHED", crash_error="FINALIZE_FAILED: %r" % e,
+                               evidence_package_core_status="EVIDENCE_PACKAGE_INCOMPLETE")
+            raise
+    result = dict(manifest.data)
+    if finalize_result is not None:
+        result["finalize"] = finalize_result
+    return result
+
+
+def _finalize_evidence_package(run_root, N_sham, M, rules, target_frame_interval_s, manifest):
+    """🔴 Repair B/C/D/E — capture 완료 직후, 같은 프로세스 안에서 summary +
+    artifact SHA manifest + completeness guard 를 전부 만든다. 별도 session 에서
+    analysis.py 를 다시 import 해 수동으로 계산하는 단계를 없앤다(C1-R1 의 결함).
+
+    🔴 advisor 지적 반영 — 순서가 중요하다. artifact_sha256.json 에 적히는 manifest.json
+    해시가 **최종본**이어야 한다. manifest.set_status() 는 manifest.json 을 다시 쓰므로,
+    artifact_sha256.json 을 만들기 **전에** manifest 에 대한 마지막 쓰기를 끝내고, 그
+    이후로는 manifest.json 을 절대 건드리지 않는다. artifact_sha256.json 자신은 자기
+    참조가 불가능하므로(존재하기 전에는 자기 해시를 쓸 수 없다) manifest 에 기록하는
+    completeness 는 그것을 제외한 core contract 만 본다. 전체 contract(artifact_sha256.json
+    포함) 완전성은 artifact_sha256.json 을 다 쓴 뒤 다시 계산해 반환값에만 담는다."""
+    import importlib
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    evp = importlib.import_module("p007e_r2r2_evidence_pipeline")
+    an = importlib.import_module("p007e_r2r2_analysis")
+
+    trial_paths = [os.path.join(run_root, "trials", "trial_%02d.json" % i) for i in range(N_sham)]
+    trials = [json.load(open(p)) for p in trial_paths]
+    evidence_pipeline_path = os.path.join(ROOT, "scripts/p007e_r2r2_evidence_pipeline.py")
+    summary = evp.build_sham_summary(trials, trial_paths, rules, an, M_executed=M, N_sham_executed=N_sham,
+                                     target_frame_interval_s=target_frame_interval_s, run_root=run_root,
+                                     evidence_pipeline_path=evidence_pipeline_path)
+    atomic_write_json(os.path.join(run_root, "summary", "sham_summary.json"), summary)
+
+    # 🔴 manifest 에 대한 마지막 쓰기 — core contract(artifact_sha256.json 제외)만 확인
+    core_completeness = evp.check_artifact_completeness(run_root, N_sham, require_artifact_manifest=False)
+    manifest.set_status("COMPLETED", evidence_package_core_status=core_completeness["status"],
+                        evidence_package_core_missing=core_completeness["missing"])
+
+    # 🔴 이 시점 이후 manifest.json 을 다시 쓰지 않는다 — artifact_sha256.json 의 manifest
+    # 해시가 이 최종본과 바이트 단위로 일치해야 한다
+    artifact_paths = evp.discover_artifact_relative_paths(run_root)
+    artifact_manifest = evp.build_artifact_sha_manifest(run_root, artifact_paths)
+    atomic_write_json(os.path.join(run_root, "artifact_sha256.json"), artifact_manifest)
+
+    full_completeness = evp.check_artifact_completeness(run_root, N_sham, require_artifact_manifest=True)
+    # 🔴 §13/§14 self-check — 방금 쓴 manifest.json 이 artifact_sha256.json 에 적힌 해시와
+    # 바이트 단위로 일치하는지(local==local "전송" 검증). E16/T10 이 이 결과를 확인한다
+    self_transfer = evp.verify_transfer(artifact_manifest["entries"], run_root)
+    return {"summary": summary, "core_completeness": core_completeness,
+           "full_completeness": full_completeness, "self_transfer_verification": self_transfer}
 
 
 class FakeReader:
@@ -449,15 +512,45 @@ def build_estimator_and_mask():
     return estimator, mask, meas.roi_mean_brightness, rules
 
 
-def execute_c1r1(run_root, reader_factory=None):
-    """🔴 REAL CAPTURE PATH 의 유일한 구현. C0-R1 은 reader_factory=None(실제 장치)으로
-       호출하지 않는다 — 코드는 존재하되 이번 게이트에서는 한 번도 실행되지 않는다."""
+def execute_c1r1(run_root, reader_factory=None, git_run_fn=None, require_clean_tree=False):
+    """🔴 REAL CAPTURE PATH 의 유일한 구현. C0-R1/C1-R1 은 reader_factory=None(실제 장치)으로
+       호출하지 않는다 — 코드는 존재하되 그 게이트에서는 한 번도 실행되지 않았다.
+
+       🔴 C1-R1-R1 Repair A/§6 — manifest 의 base_commit/preregistration_commit 은 더 이상
+       historical literal 이 아니라 실행 시점 git 조회 결과다. git_run_fn 을 주입하면 실제
+       저장소를 전혀 건드리지 않고 이 함수 전체를 시험할 수 있다(E1/T10 과 같은 패턴).
+       require_clean_tree=True 이고 실행 시점 tree 가 dirty 면 캡처를 시작하지 않고
+       ABORT BEFORE CAPTURE 한다.
+
+       🔴 advisor 지적 — git 조회(dirty-tree + runtime provenance)는 reader 생성보다
+       **먼저** 끝낸다. ROOT 가 git 저장소가 아니거나(또는 상위의 다른 저장소가 섞이면)
+       GitProvenanceUnavailable 이 올라오는데, 이를 구조화된 ABORT로 fail-closed 처리한다
+       — manifest/reader 를 전혀 만들지 않는다. 추측으로 진행하지 않는다."""
     import importlib
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    evp = importlib.import_module("p007e_r2r2_evidence_pipeline")
     pre = json.load(open(PREREG))
     exp = pre["expected_device"]
+
+    try:
+        dirty_tree_check = evp.check_dirty_tree(ROOT, require_clean=require_clean_tree, run_fn=git_run_fn)
+        runtime_provenance = evp.build_runtime_provenance(
+            ROOT, PREREG, os.path.abspath(__file__),
+            os.path.join(ROOT, "scripts/p007e_r2r2_acquisition.py"),
+            os.path.join(ROOT, "scripts/p007e_r2r2_measurement.py"),
+            os.path.join(ROOT, "scripts/p007e_r2r2_analysis.py"),
+            evidence_pipeline_path=os.path.join(ROOT, "scripts/p007e_r2r2_evidence_pipeline.py"),
+            run_fn=git_run_fn)
+    except (evp.GitProvenanceUnavailable, RuntimeError) as e:
+        return {"status": "ABORTED", "reason": "PROVENANCE_UNAVAILABLE", "error": repr(e)}
+
+    if dirty_tree_check["abort"]:
+        return {"status": "ABORTED", "reason": "DIRTY_TREE_GUARD", "dirty_tree_check": dirty_tree_check}
+
     g = env_guards(exp["path"])
     if not g["pass"]:
-        return {"status": "ABORTED", "reason": "ENV_GUARD_FAILED", "env_guards": g}
+        return {"status": "ABORTED", "reason": "ENV_GUARD_FAILED", "env_guards": g,
+               "dirty_tree_check": dirty_tree_check}
     estimator, mask, roi_mean_fn, rules = build_estimator_and_mask()
     if reader_factory is None:
         acq = importlib.import_module("p007e_r2r2_acquisition")
@@ -466,16 +559,15 @@ def execute_c1r1(run_root, reader_factory=None):
     else:
         reader = reader_factory()
     manifest_fields = {
-        "gate": "P-007E-R2-R2", "stage": "C1-R1", "base_commit": "64b32bc",
-        "preregistration_commit": "<set at commit time>",
-        "harness_sha256": sha256(os.path.abspath(__file__)),
-        "acquisition_sha256": sha256(os.path.join(ROOT, "scripts/p007e_r2r2_acquisition.py")),
-        "measurement_sha256": sha256(os.path.join(ROOT, "scripts/p007e_r2r2_measurement.py")),
-        "analysis_sha256": sha256(os.path.join(ROOT, "scripts/p007e_r2r2_analysis.py")),
+        # 🔴 "stage" 도 하드코딩 리터럴이 아니라 실제 쓰고 있는 preregistration 자신의
+        # stage 필드에서 가져온다 — "C1-R1-R1" 처럼 이번 repair 세션 번호를 박아두면
+        # 다음 gate가 이 harness 를 그대로 재사용할 때 틀린 라벨이 남는다
+        "gate": pre.get("gate", "P-007E-R2-R2"), "stage": pre.get("stage", "UNKNOWN_STAGE"),
         "expected_device_identity": exp, "expected_format": exp,
-        "roi_sha256": sha256(ROI), "env_guards_at_start": g}
+        "roi_sha256": sha256(ROI), "env_guards_at_start": g,
+        "dirty_tree_check": dirty_tree_check, **runtime_provenance}
     return run_full_sham(reader, estimator, roi_mean_fn, mask, run_root, manifest_fields,
-                         N_sham=rules["N_sham"], M=rules["M"])
+                         N_sham=rules["N_sham"], M=rules["M"], rules=rules)
 
 
 # ---------------------------------------------------------------------------
@@ -531,6 +623,7 @@ def selftest():
 def _load_rules():
     pre = json.load(open(PREREG))
     g = pre["frame_quality_guards"]
+    floor = pre["🔴 threshold_construction_rule"]["sigma_floor"]
     return {
         "orb": pre["algorithm"]["orb_parameters"], "ransac": pre["transform_model"]["ransac"],
         "min_features": g["min_features_per_frame_in_roi"]["value"],
@@ -540,7 +633,27 @@ def _load_rules():
         "max_scale_dev": g["max_scale_deviation"]["value"],
         "K": pre["🔴 K_M_Nsham_semantics"]["K"]["value"], "M": pre["🔴 K_M_Nsham_semantics"]["M"]["value"],
         "N_sham": pre["🔴 K_M_Nsham_semantics"]["N_sham"]["value"],
+        # 🔴 C1-R1-R1 Repair B/C 가 summary 자동생성에 쓴다 — floor 값 자체는 바꾸지 않고 읽기만 추가
+        "floor_trans": floor["translation_px"], "floor_rot": floor["rotation_deg"],
     }
+
+
+def _make_mock_git(expected_root, head=None, dirty=False):
+    """🔴 C1-R1-R1 — git provenance/dirty-tree 시험 공용 mock. 실제 저장소를
+    전혀 건드리지 않는다. `--show-toplevel` 도 반드시 처리한다 — _verify_repo_root()
+    가 그 값을 expected_root 와 realpath 비교하므로, 이걸 빠뜨리면 모든 mock 호출이
+    GitProvenanceUnavailable 로 끝난다(실제로 한 번 겪은 함정)."""
+    head = head or ("mock" + "0" * 36)
+
+    def _mock(argv):
+        if "--show-toplevel" in argv:
+            return expected_root + "\n"
+        if "rev-parse" in argv:
+            return head + "\n"
+        if "status" in argv:
+            return ("M mockfile.txt\n" if dirty else "")
+        return "mockcommit" + "0" * 30 + "\n"
+    return _mock
 
 
 # ---------------------------------------------------------------------------
@@ -677,22 +790,41 @@ def negative_tests(tmp_base):
     results["T9_analysis_branch_coverage"] = t9
 
     # T10 — 🔴 execute_c1r1() 을 FakeReader 로 호출 — 실제 캡처 경로와 **동일한 함수**를
-    # reader 클래스 하나만 바꿔 끝까지 돈다. real device 는 절대 참조하지 않는다
+    # reader 클래스 하나만 바꿔 끝까지 돈다. real device 는 절대 참조하지 않는다.
+    # 🔴 C1-R1-R1 repair 이후: git_run_fn 을 mock 으로 주입해 배포 위치가 git 저장소가
+    # 아니어도(Jetson scp 배치 등) 동작한다 — 실제 저장소를 전혀 건드리지 않는다.
+    # SHA 필드명이 build_runtime_provenance() 로 바뀌면서 *_module_sha256 으로 변경됐다
     t10_root = os.path.join(tmp_base, "t10")
     try:
         base = open(FRAME, "rb").read()
         expected = {"width": 640, "height": 480, "pixelformat": "MJPG"}
-        result = execute_c1r1(t10_root, reader_factory=lambda: FakeReader(base, expected))
+        mock_git = _make_mock_git(ROOT, head="mockheadT10" + "0" * 25)
+        result = execute_c1r1(t10_root, reader_factory=lambda: FakeReader(base, expected),
+                              git_run_fn=mock_git)
         manifest = json.load(open(os.path.join(t10_root, "manifest.json")))
         trial_files = sorted(f for f in os.listdir(os.path.join(t10_root, "trials")))
+        required_sha_keys = ("harness_sha256", "acquisition_module_sha256",
+                             "measurement_module_sha256", "analysis_module_sha256",
+                             "evidence_pipeline_module_sha256")
+        required_provenance_keys = ("git_head", "base_commit", "preregistration_commit",
+                                    "preregistration_sha256")
+        finalize = result.get("finalize") or {}
+        self_tr = finalize.get("self_transfer_verification") or {}
+        full_comp = finalize.get("full_completeness") or {}
         t10 = {"manifest_status": manifest["status"], "trial_files": trial_files,
-              "harness_sha_recorded": "harness_sha256" in manifest,
-              "acquisition_sha_recorded": "acquisition_sha256" in manifest,
-              "measurement_sha_recorded": "measurement_sha256" in manifest,
-              "analysis_sha_recorded": "analysis_sha256" in manifest,
+              "sha_keys_recorded": {k: k in manifest for k in required_sha_keys},
+              "provenance_keys_recorded": {k: k in manifest for k in required_provenance_keys},
+              "git_head_is_mocked_value": manifest.get("git_head", "").startswith("mockheadT10"),
+              "evidence_package_core_status": manifest.get("evidence_package_core_status"),
+              "full_completeness_status": full_comp.get("status"),
+              "self_transfer_verification_status": self_tr.get("status"),
               "pass": manifest["status"] == "COMPLETED"
-                      and all(k in manifest for k in
-                             ("harness_sha256", "acquisition_sha256", "measurement_sha256", "analysis_sha256"))}
+                      and all(k in manifest for k in required_sha_keys)
+                      and all(k in manifest for k in required_provenance_keys)
+                      and manifest.get("git_head", "").startswith("mockheadT10")
+                      and manifest.get("evidence_package_core_status") == "COMPLETE"
+                      and full_comp.get("status") == "COMPLETE"
+                      and self_tr.get("status") == "TRANSFER_VERIFIED"}
     except Exception as e:  # noqa: BLE001
         t10 = {"pass": False, "error": repr(e)}
     results["T10_execute_c1r1_via_fake_reader"] = t10
@@ -781,6 +913,320 @@ def _analysis_branch_tests():
 
 
 # ---------------------------------------------------------------------------
+# P-007E-R2-R2 Stage C1-R1-R1 — Evidence Pipeline Closure negative tests (E1~E15)
+# 🔴 실제 camera/robot 전혀 참조하지 않는다. 전부 mock/synthetic/tmp 디렉터리.
+# ---------------------------------------------------------------------------
+def _stale_literal_absent(literal):
+    """🔴 E2 — harness 소스 자체를 읽어 historical literal 이 더 이상 하드코딩돼
+    있지 않은지 정적으로 확인한다 (self_ast_check 과 같은 자기참조 검사 패턴)."""
+    src = open(os.path.abspath(__file__), "r", encoding="utf-8").read()
+    return literal not in src
+
+
+def repair_negative_tests(tmp_base):
+    import importlib
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    evp = importlib.import_module("p007e_r2r2_evidence_pipeline")
+    an = importlib.import_module("p007e_r2r2_analysis")
+    results = {}
+
+    # E1 — runtime commit provenance: mock repo HEAD 변경이 manifest(runtime provenance)에
+    # 그대로 반영되는지. 실제 저장소는 전혀 건드리지 않는다 (show-toplevel 도 처리하는
+    # 공용 mock — 안 하면 _verify_repo_root() 에서 GitProvenanceUnavailable 로 먼저 끝난다)
+    fake_head = "e1fake" + "a" * 34
+    mock_git_e1 = _make_mock_git(ROOT, head=fake_head)
+    evidence_pipeline_path = os.path.join(ROOT, "scripts/p007e_r2r2_evidence_pipeline.py")
+    prov = evp.build_runtime_provenance(ROOT, PREREG, os.path.abspath(__file__),
+                                        os.path.join(ROOT, "scripts/p007e_r2r2_acquisition.py"),
+                                        os.path.join(ROOT, "scripts/p007e_r2r2_measurement.py"),
+                                        os.path.join(ROOT, "scripts/p007e_r2r2_analysis.py"),
+                                        evidence_pipeline_path=evidence_pipeline_path,
+                                        run_fn=mock_git_e1)
+    results["E1_runtime_commit_provenance"] = {
+        "expected": "git_head == base_commit == 주입된 mock HEAD, 하드코딩값 아님",
+        "observed_git_head": prov["git_head"], "observed_base_commit": prov["base_commit"],
+        "evidence_pipeline_sha_recorded": "evidence_pipeline_module_sha256" in prov,
+        "pass": prov["git_head"] == fake_head and prov["base_commit"] == fake_head
+                and "evidence_pipeline_module_sha256" in prov}
+
+    # E2 — stale literal prevention: 과거 C1-R1 의 historical base_commit 리터럴이
+    # 더 이상 harness 소스에 하드코딩돼 있지 않은지. 🔴 그 리터럴 자체를 이 파일에
+    # 그대로 적으면 이 검사가 자기 자신을 오탐한다(i2c/VideoCapture 선례와 동일 함정) —
+    # 조립식 문자열로 피한다
+    _historical_stale_commit = "64b32" + "bc"
+    results["E2_stale_literal_prevention"] = {
+        "expected": "과거 Stage C1 의 historical base_commit 7-char 리터럴이 harness 소스에 없어야 한다",
+        "pass": _stale_literal_absent(_historical_stale_commit)}
+
+    # E3/E4 — automatic summary: mock 10 trial 입력 → harness finalization(run_full_sham)
+    # 만으로 summary/sham_summary.json 생성. 별도 manual analysis 호출 없음
+    e34_root = os.path.join(tmp_base, "e3e4")
+    try:
+        sys.path.insert(0, os.path.join(ROOT, "scripts"))
+        meas = importlib.import_module("p007e_r2r2_measurement")
+        roi = json.load(open(ROI))
+        base = open(FRAME, "rb").read()
+        rules = _load_rules()
+        expected = {"width": 640, "height": 480, "pixelformat": "MJPG"}
+        import cv2  # noqa: F401 — FakeReader 내부에서 이미 쓰는 의존성, 가용성만 재확인
+        img = cv2.imdecode(__import__("numpy").frombuffer(base, __import__("numpy").uint8), cv2.IMREAD_GRAYSCALE)
+        mask = meas.build_mask(roi, img.shape)
+        estimator = meas.make_estimator(rules, mask)
+        reader = FakeReader(base, expected)
+        e34_result = run_full_sham(reader, estimator, meas.roi_mean_brightness, mask, e34_root,
+                                   {"gate": "P-007E-R2-R2", "stage": "C1-R1-R1-MOCK", "mock": True},
+                                   N_sham=10, M=5, sleep_fn=lambda s: None, rules=rules)
+        summary_path = os.path.join(e34_root, "summary", "sham_summary.json")
+        summary = json.load(open(summary_path))
+        finalize34 = e34_result.get("finalize") or {}
+        self_tr34 = finalize34.get("self_transfer_verification") or {}
+        results["E3_automatic_summary"] = {
+            "expected": "harness 종료만으로 summary/sham_summary.json 존재, 별도 analysis 호출 불필요",
+            "summary_exists": os.path.exists(summary_path), "trial_file_count": summary.get("trial_file_count"),
+            "executed_M_recorded": summary.get("M"), "executed_N_sham_recorded": summary.get("N_sham"),
+            # 🔴 advisor 지적 반영 — summary.M 은 이번 실행값(5)이어야 한다, rules 의
+            # 사전등록값(60)이 아니다. M!=M_rules_preregistered 로 그 불일치가 이번
+            # mock 시험에서는 **의도된 것**임을 바로 확인할 수 있다
+            "M_matches_executed_not_preregistered": (summary.get("M") == 5
+                                                      and summary.get("M_rules_preregistered") == rules["M"]),
+            "pass": os.path.exists(summary_path) and summary.get("trial_file_count") == 10
+                    and summary.get("M") == 5 and summary.get("N_sham") == 10}
+        results["E4_summary_module_sha"] = {
+            "expected": "summary.analysis_module_sha256 == 실제 analysis.py sha256",
+            "recorded": summary.get("analysis_module_sha256"),
+            "actual": sha256(os.path.join(ROOT, "scripts/p007e_r2r2_analysis.py")),
+            "self_transfer_verification_status": self_tr34.get("status"),
+            "pass": summary.get("analysis_module_sha256") == sha256(os.path.join(ROOT, "scripts/p007e_r2r2_analysis.py"))
+                    and self_tr34.get("status") == "TRANSFER_VERIFIED"}
+    except Exception as e:  # noqa: BLE001
+        results["E3_automatic_summary"] = {"pass": False, "error": repr(e)}
+        results["E4_summary_module_sha"] = {"pass": False, "error": repr(e)}
+
+    # E5 — incomplete trial set: 9/10 trial 만 존재 → EVIDENCE_PACKAGE_INCOMPLETE
+    e5_root = os.path.join(tmp_base, "e5")
+    for i in range(9):
+        atomic_write_json(os.path.join(e5_root, "trials", "trial_%02d.json" % i), {"index": i, "mock": True})
+    atomic_write_json(os.path.join(e5_root, "manifest.json"), {"mock": True})
+    comp = evp.check_artifact_completeness(e5_root, 10)
+    results["E5_incomplete_trial_set"] = {
+        "expected": "EVIDENCE_PACKAGE_INCOMPLETE, missing 에 trial_09.json·summary·artifact_sha256 포함",
+        "observed_status": comp["status"], "missing": comp["missing"],
+        "pass": comp["status"] == "EVIDENCE_PACKAGE_INCOMPLETE" and "trials/trial_09.json" in comp["missing"]}
+
+    # E6 — source SHA manifest 생성(mock artifact 전체)
+    e6_root = os.path.join(tmp_base, "e6")
+    os.makedirs(e6_root, exist_ok=True)
+    open(os.path.join(e6_root, "a.json"), "w").write('{"x":1}')
+    open(os.path.join(e6_root, "b.bin"), "wb").write(b"\x00\x01\x02\x03")
+    manifest6 = evp.build_artifact_sha_manifest(e6_root)
+    expected6 = {e["relative_path"]: e["sha256"] for e in manifest6["entries"]}
+    direct6 = {"a.json": evp.sha256_bytes(open(os.path.join(e6_root, "a.json"), "rb").read()),
+              "b.bin": evp.sha256_bytes(open(os.path.join(e6_root, "b.bin"), "rb").read())}
+    results["E6_source_sha_manifest"] = {
+        "expected": "manifest 의 각 entry sha256 이 직접 계산값과 일치",
+        "pass": expected6 == direct6 and len(manifest6["entries"]) == 2}
+
+    # E7 — transfer success: remote(mock)/local(mock) 파일 동일 → TRANSFER_VERIFIED
+    e7_remote = os.path.join(tmp_base, "e7_remote")
+    e7_local = os.path.join(tmp_base, "e7_local")
+    os.makedirs(e7_remote, exist_ok=True)
+    os.makedirs(e7_local, exist_ok=True)
+    content7 = b'{"ok": true}'
+    open(os.path.join(e7_remote, "f.json"), "wb").write(content7)
+    open(os.path.join(e7_local, "f.json"), "wb").write(content7)
+    remote_manifest7 = evp.build_artifact_sha_manifest(e7_remote)
+    tr7 = evp.verify_transfer(remote_manifest7["entries"], e7_local)
+    results["E7_transfer_success"] = {"expected": "TRANSFER_VERIFIED", "observed": tr7["status"],
+                                      "pass": tr7["status"] == "TRANSFER_VERIFIED"}
+
+    # E8 — transfer mismatch: local 1 byte 변경 → TRANSFER_FAILED, 삭제 금지
+    e8_remote = os.path.join(tmp_base, "e8_remote")
+    e8_local = os.path.join(tmp_base, "e8_local")
+    os.makedirs(e8_remote, exist_ok=True)
+    os.makedirs(e8_local, exist_ok=True)
+    open(os.path.join(e8_remote, "f.json"), "wb").write(b'{"ok": true}')
+    open(os.path.join(e8_local, "f.json"), "wb").write(b'{"ok": false}')   # 🔴 1바이트+ 변경
+    remote_manifest8 = evp.build_artifact_sha_manifest(e8_remote)
+    tr8 = evp.verify_transfer(remote_manifest8["entries"], e8_local)
+    comp8 = {"status": "COMPLETE"}  # completeness 와 무관하게 transfer 자체가 실패해야 함
+    del8 = evp.remote_deletion_eligible(tr8, comp8["status"] == "COMPLETE", explicit_opt_in=True)
+    results["E8_transfer_mismatch"] = {
+        "expected": "TRANSFER_FAILED, REMOTE_DELETE_FORBIDDEN(opt-in=True 여도)",
+        "observed_status": tr8["status"], "deletion_eligible": del8["eligible"], "deletion_reason": del8["reason"],
+        "pass": tr8["status"] == "TRANSFER_FAILED" and del8["eligible"] is False}
+
+    # E9 — missing artifact: local 파일 하나 누락 → TRANSFER_FAILED, 삭제 금지
+    e9_remote = os.path.join(tmp_base, "e9_remote")
+    e9_local = os.path.join(tmp_base, "e9_local")
+    os.makedirs(e9_remote, exist_ok=True)
+    os.makedirs(e9_local, exist_ok=True)
+    open(os.path.join(e9_remote, "f1.json"), "wb").write(b'{"a":1}')
+    open(os.path.join(e9_remote, "f2.json"), "wb").write(b'{"b":2}')
+    open(os.path.join(e9_local, "f1.json"), "wb").write(b'{"a":1}')
+    # f2.json 을 local 에 만들지 않음 — 누락 흉내
+    remote_manifest9 = evp.build_artifact_sha_manifest(e9_remote)
+    tr9 = evp.verify_transfer(remote_manifest9["entries"], e9_local)
+    del9 = evp.remote_deletion_eligible(tr9, True, explicit_opt_in=True)
+    results["E9_missing_artifact"] = {
+        "expected": "TRANSFER_FAILED(MISSING_LOCAL_FILE), REMOTE_DELETE_FORBIDDEN",
+        "observed_status": tr9["status"], "deletion_eligible": del9["eligible"],
+        "pass": tr9["status"] == "TRANSFER_FAILED" and del9["eligible"] is False}
+
+    # E10 — corrupt JSON: sha/size 가 "remote 가 원래 그 내용이었다"는 전제로 일치하더라도
+    # JSON parse 가 실패하면 REMOTE_DELETE_FORBIDDEN
+    e10_local = os.path.join(tmp_base, "e10_local")
+    os.makedirs(e10_local, exist_ok=True)
+    corrupt = b'{"broken": '   # 불완전 JSON
+    open(os.path.join(e10_local, "f.json"), "wb").write(corrupt)
+    remote_manifest10 = [{"relative_path": "f.json", "size_bytes": len(corrupt),
+                         "sha256": evp.sha256_bytes(corrupt)}]   # sha/size 는 일치하게 구성
+    tr10 = evp.verify_transfer(remote_manifest10, e10_local)
+    del10 = evp.remote_deletion_eligible(tr10, True, explicit_opt_in=True)
+    results["E10_corrupt_json_sha_matches"] = {
+        "expected": "sha_match=True 여도 json_parse_ok=False 라 match=False, REMOTE_DELETE_FORBIDDEN",
+        "sha_match": tr10["entries"][0]["sha_match"], "json_parse_ok": tr10["entries"][0]["json_parse_ok"],
+        "overall_status": tr10["status"], "deletion_eligible": del10["eligible"],
+        "pass": tr10["entries"][0]["sha_match"] is True and tr10["entries"][0]["json_parse_ok"] is False
+                and tr10["status"] == "TRANSFER_FAILED" and del10["eligible"] is False}
+
+    # E11 — default deletion: explicit opt-in 없음(False) → 전송이 완벽해도 NO DELETE
+    tr11 = evp.verify_transfer(remote_manifest7["entries"], e7_local)   # E7 의 완전 일치 데이터 재사용
+    del11_default = evp.remote_deletion_eligible(tr11, True, explicit_opt_in=False)
+    results["E11_default_deletion_disabled"] = {
+        "expected": "explicit_opt_in=False(기본값) → eligible=False, 전송 성공 여부와 무관",
+        "transfer_status": tr11["status"], "deletion_eligible": del11_default["eligible"],
+        "deletion_reason": del11_default["reason"],
+        "pass": tr11["status"] == "TRANSFER_VERIFIED" and del11_default["eligible"] is False}
+
+    # E12 — frame timing summary: synthetic interval 입력에서 median/robust_sd/ratio 정확성
+    def _mk_timed_window(start_t, n, interval):
+        rows = [{"decoded": True, "valid": True, "roi_mean": 100.0, "t": start_t + i * interval,
+                "est": {"translation_norm_px": 0.0, "inlier_count": 300, "inlier_ratio": 0.9,
+                       "residual_rms_inliers_px": 0.5}} for i in range(n)]
+        return {"n_frames": n, "dropout_rate": 0.0, "rows": rows,
+               "frame_interval_stats": {"count": n - 1, "median": interval,
+                                       "robust_sd": 0.0, "min": interval, "max": interval}}
+    e12_interval = 0.729
+    trials_e12 = []
+    for i in range(10):
+        ref = _mk_timed_window(1000.0 + i * 100, 5, e12_interval)
+        cmp_ = _mk_timed_window(1000.0 + i * 100 + 50, 5, e12_interval)
+        trials_e12.append({"index": i, "verdict": "VALID",
+                          "windows": {"reference": ref, "comparison": cmp_},
+                          "delta": {"translation_x_px": 0.0, "translation_y_px": 0.0,
+                                   "rotation_deg": 0.0, "norm": 0.0}})
+    rules_e12 = {"K": 5, "M": 5, "N_sham": 10, "floor_trans": 0.70, "floor_rot": 0.060}
+    summary_e12 = evp.build_sham_summary(trials_e12, [], rules_e12, an, M_executed=5, N_sham_executed=10, target_frame_interval_s=0.25)
+    ft12 = summary_e12["frame_timing"]
+    expected_duration = (5 - 1) * e12_interval
+    results["E12_frame_timing_summary"] = {
+        "expected": "median≈%.3f, ratio≈%.3f, window_duration≈%.3f" % (
+            e12_interval, e12_interval / 0.25, expected_duration),
+        "observed_median": ft12["observed_frame_interval_median_sec"],
+        "observed_ratio": ft12["interval_ratio_to_target"],
+        "observed_window_duration_reference": ft12["window_duration_reference_median_sec"],
+        "pass": abs(ft12["observed_frame_interval_median_sec"] - e12_interval) < 1e-9
+                and abs(ft12["interval_ratio_to_target"] - e12_interval / 0.25) < 1e-6
+                and abs(ft12["window_duration_reference_median_sec"] - expected_duration) < 1e-6}
+
+    # E13/E14 — threshold provenance: floor-dominated vs non-floor-dominated
+    def _mk_delta_trial(idx, dtx, dty, drot):
+        w = {"n_frames": 10, "dropout_rate": 0.0,
+            "rows": [{"decoded": True, "valid": True, "roi_mean": 100.0, "t": idx * 10.0 + i,
+                     "est": {"translation_norm_px": 0.0, "inlier_count": 300, "inlier_ratio": 0.9,
+                            "residual_rms_inliers_px": 0.5}} for i in range(10)],
+            "frame_interval_stats": {"count": 9, "median": 0.25, "robust_sd": 0.0, "min": 0.25, "max": 0.25}}
+        return {"index": idx, "verdict": "VALID", "windows": {"reference": w, "comparison": w},
+               "delta": {"translation_x_px": dtx, "translation_y_px": dty, "rotation_deg": drot,
+                        "norm": (dtx ** 2 + dty ** 2) ** 0.5}}
+    trials_floor = [_mk_delta_trial(i, 0.01 * (i % 3 - 1), 0.01 * (i % 2), 0.0005 * (i % 3 - 1))
+                   for i in range(10)]
+    summary_floor = evp.build_sham_summary(trials_floor, [], rules_e12, an, M_executed=10, N_sham_executed=10)
+    tp_floor = summary_floor["threshold_provenance"]
+    results["E13_threshold_floor_dominated_true"] = {
+        "expected": "observed sigma ≪ floor → threshold_floor_dominated=True(전 축)",
+        "observed": {k: tp_floor[k] for k in
+                     ("observed_sigma_tx", "observed_sigma_ty", "observed_sigma_rot",
+                      "threshold_floor_dominated")},
+        "pass": tp_floor["threshold_floor_dominated_tx"] and tp_floor["threshold_floor_dominated_ty"]
+                and tp_floor["threshold_floor_dominated_rot"] and tp_floor["threshold_floor_dominated"]}
+
+    trials_nonfloor = [_mk_delta_trial(i, float(i - 5), float(i - 5), 0.1 * (i - 5)) for i in range(10)]
+    summary_nonfloor = evp.build_sham_summary(trials_nonfloor, [], rules_e12, an, M_executed=10, N_sham_executed=10)
+    tp_nonfloor = summary_nonfloor["threshold_provenance"]
+    results["E14_threshold_non_floor_case"] = {
+        "expected": "observed sigma > floor → threshold_floor_dominated=False(전 축)",
+        "observed": {k: tp_nonfloor[k] for k in
+                     ("observed_sigma_tx", "observed_sigma_ty", "observed_sigma_rot",
+                      "threshold_floor_dominated")},
+        "pass": not tp_nonfloor["threshold_floor_dominated_tx"] and not tp_nonfloor["threshold_floor_dominated_ty"]
+                and not tp_nonfloor["threshold_floor_dominated_rot"] and not tp_nonfloor["threshold_floor_dominated"]}
+
+    # E15 — no camera opt-in, 실측 강화판: env 체크뿐 아니라 acquisition._run_v4l2ctl
+    # 을 raise 하도록 poison-stub 한 뒤에도 FakeReader 경로가 끝까지 성공하면, 이 경로가
+    # 실제 v4l2-ctl(=real device)을 전혀 호출하지 않는다는 것이 **실증**된다(advisor 지적).
+    # 🔴 금지 호출 리터럴을 여기 그대로 적으면 이 검사 자신이 자기 자신을 오탐한다
+    # (i2c/C1-harness 선례와 동일 함정) — self_ast_check 가 쓰는 조립식 상수를 그대로 재사용한다
+    acq_mod = importlib.import_module("p007e_r2r2_acquisition")
+    _orig_run_v4l2ctl = acq_mod._run_v4l2ctl
+
+    def _poisoned_run_v4l2ctl(*a, **kw):
+        raise AssertionError("REAL_V4L2CTL_CALLED_DURING_FAKEREADER_ONLY_TEST")
+    acq_mod._run_v4l2ctl = _poisoned_run_v4l2ctl
+    try:
+        e15_root = os.path.join(tmp_base, "e15")
+        base15 = open(FRAME, "rb").read()
+        expected15 = {"width": 640, "height": 480, "pixelformat": "MJPG"}
+        result15 = execute_c1r1(e15_root, reader_factory=lambda: FakeReader(base15, expected15),
+                                git_run_fn=_make_mock_git(ROOT, head="mockheadE15" + "0" * 25))
+        poisoned_fakereader_completed = (result15.get("status") == "COMPLETED")
+        poison_error = None
+    except Exception as e:  # noqa: BLE001 — poison 이 실제로 발동했다면 여기로 떨어진다(=FAIL)
+        poisoned_fakereader_completed = False
+        poison_error = repr(e)
+    finally:
+        acq_mod._run_v4l2ctl = _orig_run_v4l2ctl
+    results["E15_no_camera_opt_in"] = {
+        "expected": "① capture opt-in env 없음 ② acquisition._run_v4l2ctl 을 poison 해도 FakeReader 경로는 COMPLETED",
+        "env_present": os.environ.get(ALLOW_ENV) == "1",
+        "fakereader_only_source_check": not any(
+            p in open(os.path.abspath(__file__)).read() for p in FORBIDDEN_CALL_PATTERNS),
+        "poisoned_fakereader_completed": poisoned_fakereader_completed, "poison_error": poison_error,
+        "pass": os.environ.get(ALLOW_ENV) != "1" and poisoned_fakereader_completed}
+
+    # E16 — 🔴 git_run_fn 이 raise 하면 ABORTED 로 끝나고 manifest/reader 가 전혀
+    # 만들어지지 않는다 (advisor 지적 — fail-closed 검증, Block 2)
+    e16_root = os.path.join(tmp_base, "e16")
+    def _raising_git(argv):
+        raise RuntimeError("E16_SIMULATED_GIT_FAILURE")
+    def _reader_factory_should_not_be_called():
+        raise AssertionError("READER_FACTORY_CALLED_DESPITE_PROVENANCE_ABORT")
+    result16 = execute_c1r1(e16_root, reader_factory=_reader_factory_should_not_be_called,
+                            git_run_fn=_raising_git)
+    results["E16_provenance_unavailable_aborts_before_reader"] = {
+        "expected": "status=ABORTED, reason=PROVENANCE_UNAVAILABLE, manifest.json 생성 안 됨, reader_factory 호출 안 됨",
+        "observed_status": result16.get("status"), "observed_reason": result16.get("reason"),
+        "manifest_created": os.path.exists(os.path.join(e16_root, "manifest.json")),
+        "pass": result16.get("status") == "ABORTED" and result16.get("reason") == "PROVENANCE_UNAVAILABLE"
+                and not os.path.exists(os.path.join(e16_root, "manifest.json"))}
+
+    # E17 — 🔴 dirty tree + require_clean_tree=True → ABORTED (§6 abort 경로, Block 2)
+    e17_root = os.path.join(tmp_base, "e17")
+    mock_git_dirty = _make_mock_git(ROOT, head="mockheadE17" + "0" * 25, dirty=True)
+    result17 = execute_c1r1(e17_root, reader_factory=_reader_factory_should_not_be_called,
+                            git_run_fn=mock_git_dirty, require_clean_tree=True)
+    results["E17_dirty_tree_require_clean_aborts"] = {
+        "expected": "status=ABORTED, reason=DIRTY_TREE_GUARD, manifest.json 생성 안 됨",
+        "observed_status": result17.get("status"), "observed_reason": result17.get("reason"),
+        "manifest_created": os.path.exists(os.path.join(e17_root, "manifest.json")),
+        "pass": result17.get("status") == "ABORTED" and result17.get("reason") == "DIRTY_TREE_GUARD"
+                and not os.path.exists(os.path.join(e17_root, "manifest.json"))}
+
+    all_pass = all(v["pass"] for v in results.values())
+    return {"results": results, "all_pass": all_pass}
+
+
+# ---------------------------------------------------------------------------
 # main
 # ---------------------------------------------------------------------------
 def main():
@@ -788,6 +1234,9 @@ def main():
     ap.add_argument("--run-sham", action="store_true")
     ap.add_argument("--selftest", action="store_true")
     ap.add_argument("--negative-tests", action="store_true")
+    ap.add_argument("--repair-tests", action="store_true",
+                    help="🔴 P-007E-R2-R2 Stage C1-R1-R1 — 기존 T0~T12 회귀 + selftest 회귀 + "
+                         "신규 E1~E15(evidence pipeline repair) 를 전부 돌린다. --work-dir 필요, 카메라 0")
     ap.add_argument("--out", default=None,
                     help="결과 JSON **파일** 경로. 반드시 .json 으로 끝나야 한다")
     ap.add_argument("--work-dir", default=None,
@@ -803,9 +1252,9 @@ def main():
     if a.out is not None and not a.out.endswith(".json"):
         print(json.dumps({"stop": "ABORT BEFORE RUN — --out 은 .json 파일 경로여야 한다: %r" % a.out}))
         sys.exit(2)
-    if a.negative_tests:
+    if a.negative_tests or a.repair_tests:
         if a.work_dir is None:
-            print(json.dumps({"stop": "ABORT BEFORE RUN — --negative-tests 는 --work-dir(디렉터리) 가 필요하다"}))
+            print(json.dumps({"stop": "ABORT BEFORE RUN — --negative-tests/--repair-tests 는 --work-dir(디렉터리) 가 필요하다"}))
             sys.exit(2)
         if a.out is not None and os.path.abspath(a.work_dir) == os.path.abspath(a.out):
             print(json.dumps({"stop": "ABORT BEFORE RUN — --work-dir 과 --out 이 같은 경로다: %r" % a.out}))
@@ -846,6 +1295,12 @@ def main():
     elif a.negative_tests:
         rec["negative_tests"] = negative_tests(a.work_dir)   # 🔴 --out 이 아니라 --work-dir
         rec["stop"] = "NEGATIVE_TESTS_ONLY — 카메라 0"
+    elif a.repair_tests:
+        # 🔴 Stage C1-R1-R1 — §23 회귀(T0~T12·selftest) + 신규 E1~E15. 카메라 0, 로봇 0
+        rec["regression_negative_tests_T0_T12"] = negative_tests(os.path.join(a.work_dir, "t_regression"))
+        rec["regression_selftest"] = selftest()
+        rec["repair_negative_tests_E1_E15"] = repair_negative_tests(os.path.join(a.work_dir, "e_repair"))
+        rec["stop"] = "REPAIR_TESTS_ONLY — 카메라 0"
     elif rec["capture_opt_in"]["granted"]:
         # 🔴 REAL CAPTURE PATH. C0-R1 에서는 이 분기에 **실제로 도달하지 않는다**
         # (ALLOW_ENV 를 설정하지 않았다) — 코드는 존재하되 이번 게이트에서 한 번도 실행되지 않았다.
@@ -856,7 +1311,7 @@ def main():
         rec["stop"] = ("🔴 NO CAPTURE (기본값). 캡처하려면 %s=1 과 --run-sham 이 모두 필요하다" % ALLOW_ENV)
 
     text = json.dumps(rec, ensure_ascii=False, indent=1)
-    if a.out and (a.selftest or a.negative_tests):
+    if a.out and (a.selftest or a.negative_tests or a.repair_tests):
         atomic_write_json(a.out, rec)   # 🔴 --out 은 위에서 .json 파일임을 이미 검증했다
     print(text)
 

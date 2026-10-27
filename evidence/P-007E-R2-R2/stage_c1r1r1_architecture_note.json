@@ -1,0 +1,33 @@
+{
+  "gate": "P-007E-R2-R2",
+  "stage": "Stage C1-R1-R1 — §24 preregistered architecture note (quasi-static observation semantics)",
+  "note": "이 문서는 사전등록 자체를 소급 수정하지 않는다. C1-R1 preregistration(stage_c1r1_preregistration.json)은 불변이며, 이 note는 향후 physical-motion gate 설계에 적용할 신규 architecture 제약을 선언한다. 같은 텍스트가 scripts/p007e_r2r2_evidence_pipeline.py 의 QUASI_STATIC_SEMANTICS_NOTE 상수로도 존재하여 future summary(sham_summary.json)에 machine-readable 로 포함된다.",
+  "qualification_statement": "This observation channel is used for pre/post quasi-static physical displacement detection, not dynamic trajectory tracking.",
+  "qualified_for": [
+    "pre-command stable visual pose",
+    "post-command settled visual pose",
+    "pre/post comparison of the two"
+  ],
+  "not_qualified_for": [
+    "servo trajectory reconstruction",
+    "motion velocity measurement",
+    "dynamic path tracking",
+    "absolute joint-angle measurement",
+    "absolute robot pose measurement"
+  ],
+  "channel_independence": "controller-reported servo position and the DaBai visual observation are independent evidence channels. They are not assumed to be the same physical quantity.",
+  "🔴_11_timing_semantics_clarification": {
+    "finding": "C1-R1 의 frame_interval 실측(≈0.729s/frame, 목표 0.25s의 약 2.9배)에 대해 현재 preregistration 에는 abort criterion 이 없다(python 재귀 키 검색으로 'abort' 0건 확인, C1-R1 disclosures #2 에 이미 기록)",
+    "decision": "C1-R1 을 사후적으로 INVALID 처리하지 않는다. 검수자의 종결 판정(`MEASUREMENT PASS / QUALIFICATION CONDITIONAL / CLOSED @ f92e155`)과 harness 의 사전등록 로직 출력(`Q1 — OBSERVATION CHANNEL QUALIFIED`) 둘 다 그대로 유지된다",
+    "motion_gate_implication": "command duration≈2s, camera interval≈0.729s observed in C1-R1 — 후속 physical-motion gate 설계에서 이 수치를 고려하되, 이번 C1-R1-R1 에서는 새로운 settle time이나 motion timing 값을 결정하지 않는다. 다음 gate에서 별도 preregistration 한다"
+  },
+  "🔴_9_threshold_provenance_definitions": {
+    "observed_sigma": "trial 간 Δtx/Δty/Δrot 의 robust_sd (1.4826×median(|x-median(x)|)) — 실측 노이즈",
+    "sigma_floor": "C0 합성 단위시험에서 관측된 추정기 자체의 회수오차 바닥(translation_px=0.70, rotation_deg=0.06) — 변경 금지",
+    "effective_sigma": "max(observed_sigma, sigma_floor)",
+    "final_threshold": "K × effective_sigma (K=5, 변경 금지)",
+    "threshold_floor_dominated": "effective_sigma == sigma_floor 인 축 — machine-readable bool, sham_summary.json.threshold_provenance 에 축별로 기록됨"
+  },
+  "🔴_19_trial_numbering_convention": "harness 는 0-based 저장(trial_00..trial_(N-1))을 유지한다(파일명 변경 없음). machine-readable summary 에는 storage_index(0-based)와 human_trial_number(storage_index + human_trial_offset, 기본 1 → 1-based) 를 둘 다 기록한다",
+  "🔴_20_anchor_self_comparison_provenance": "run_trial() 구현상 trial 당 정확히 1개 행(reference window 의 첫 캡처 프레임)이 anchor 자기자신과 비교된다(residual=0.0, inlier_ratio=1.0). 이 행은 noise_metrics 의 분포(inlier_count_distribution 등)에는 포함되지만, estimator 계산 규칙 자체는 이번 repair 로 변경하지 않았다 — summary.anchor_self_comparison_rows 로 개수만 기록한다"
+}
