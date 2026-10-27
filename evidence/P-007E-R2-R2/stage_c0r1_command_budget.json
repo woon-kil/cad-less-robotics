@@ -1,0 +1,33 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0-R1 — STATIC REPAIR / OFFLINE VALIDATION / RE-PREREGISTRATION ONLY",
+ "DaBai_camera_starts": 0,
+ "new_camera_captures": 0,
+ "real_UVC_stream_sessions": 0,
+ "real_device_S_FMT": 0,
+ "real_device_control_writes": 0,
+ "ROS_launches": 0,
+ "ros2_CLI": 0,
+ "Arm_Lib": 0,
+ "servo_reads": 0,
+ "servo_writes": 0,
+ "torque_writes": 0,
+ "RGB_writes": 0,
+ "raw_I2C": 0,
+ "robot_controller_access": 0,
+ "motion_capable_commands": 0,
+ "experiment_generated_motion_commands": 0,
+ "physical_robot_motion_observation": "NOT_APPLICABLE — 이 게이트는 로봇 실험이 아니다",
+ "DaBai_physical_moves": 0,
+ "Gemini_physical_moves": 0,
+ "DOFBOT_physical_manipulation": 0,
+ "🔴 what_was_done_on_jetson": "cv2 오프라인 음성시험(T0~T7, 카메라 0) 1회 + 합성 추정기 회귀(selftest, 카메라 0) 1회. 신규 스크립트 3개(acquisition·measurement·c1r1_sham) + 재동결 사전등록 1개 + Stage B 기존 프레임 1장(읽기만)을 전송했다. `/dev/video0` 는 단 한 번도 open 하지 않았다 — negative test T5 는 가짜 경로 `/dev/null-mock` 으로 NoNegotiationV4L2Reader 를 만들고 `read_format` 메서드 자체를 mock 으로 교체해 실제 ioctl 호출 없이 검증했다 2라운드에서 T0~T12(13종) 음성시험 + selftest 회귀를 추가 실행했다 — 모두 카메라 0. execute_c1r1() 은 T10 에서 FakeReader 로만 호출했다",
+ "controller_reported_state": "[86, 152, 0, 18, 93, 178] — 접근하지 않았다",
+ "stale_harness_status": "ID2==150 전제 harness 3종 STALE · scripts/p007e_r2r2_c1_sham.py DEFECTIVE 유지(미수정)",
+ "scripts_transferred": [
+  "p007e_r2r2_acquisition.py",
+  "p007e_r2r2_measurement.py",
+  "p007e_r2r2_analysis.py",
+  "p007e_r2r2_c1r1_sham.py"
+ ]
+}

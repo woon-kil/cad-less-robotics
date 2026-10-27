@@ -1,0 +1,96 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0-R1 — Acquisition Harness Repair & Re-Preregistration",
+ "🔴 verdict": "ACQUISITION REPAIR PASS / C1-R1 RE-PREREGISTERED / NO CAMERA OR ROBOT EXECUTION",
+ "what_was_fixed": [
+  {
+   "id": "HARNESS_OUTPUT_PATH_DEFECT (C1 원인 ①)",
+   "fix": "run_root 아래 manifest.json / trials/trial_NN.json / frames/trial_NN/ / summary/ 로 경로 완전 분리. directory 인자와 file 인자를 같은 변수로 쓰지 않는다",
+   "🔴 recurrence_caught_and_fixed_in_this_same_gate": "구현 중 이 결함이 negative_tests(tmp_base) 호출에서 **실제로 재발**했다 — `--out`(JSON 파일 경로)을 그대로 tmp_base(디렉터리 인자)로 재사용해 `NotADirectoryError` 로 즉시 죽었다. `--work-dir` 인자를 신설해 분리하고, `--out`·`--work-dir` 이 같은 경로면 **그 어떤 작업도 하기 전에** exit code 2 로 거부하는 CLI 레벨 가드를 추가했다(T0 로 검증). 이 사실은 숨기지 않고 그대로 기록한다"
+  },
+  {
+   "id": "FORMAT_CHANGED_DURING_CAPTURE (C1 원인 ②)",
+   "fix": "cv2.VideoCapture 제거. v4l2-ctl --stream-mmap 기반 NoNegotiationV4L2Reader 로 교체. format_invariant 를 매 trial 전 읽기 전용으로 확인하고 불일치 시 ABORT"
+  },
+  {
+   "id": "M6 — PREREGISTRATION_DEFECT (cv2.VideoCapture 와 no_control_writes 의 내적 모순)",
+   "fix": "C1-R1 사전등록에서 capture_mechanism 자체를 교체해 모순을 해소했다. C0(@121dc43)는 고치지 않았다 — 역사적 사실(당시 PASS, 이후 설계 결함 발견)을 그대로 보존한다"
+  },
+  {
+   "id": "M2 — 증분 저장 없음",
+   "fix": "trial 단위 원자적 저장(tmp+fsync+os.replace). T3 로 crash-safety 검증"
+  },
+  {
+   "id": "M3 — 포맷 변경 미처리",
+   "fix": "format_invariant 를 trial 마다 확인, 불일치 → 그 trial INVALID"
+  },
+  {
+   "id": "M4 — roi_mean 전체 프레임",
+   "fix": "measurement.py roi_mean_brightness() 가 마스킹 영역만 평균. selftest 로 버그 재현(전체평균 138.6) vs 수정값(68.1) 차이를 직접 보였다"
+  },
+  {
+   "id": "M5 — 분석 코드 부재",
+   "fix": "run_trial()/run_full_sham() 를 구현해 acquisition+measurement+manifest+원자적 저장을 실제로 엮었다 — reference/comparison window 캡처, decode, estimator, window median, delta(norm 포함), trial verdict(VALID/INVALID), frame accounting(requested/received/decoded/valid/dropped/persisted) 를 전부 계산하고 trial 단위로 저장한다. 🔴 그러나 cross-trial 집계(LOO 임계·publication 임계·Q1~X 최종 판정)는 아직 구현하지 않았다 — 실제 10 trial 데이터가 있어야 의미가 있는 코드라 C1-R1 준비 단계로 남긴다. M5 는 축소된 형태로 잔존한다"
+  }
+ ],
+ "architecture": {
+  "acquisition_layer": "scripts/p007e_r2r2_acquisition.py — CapturedFrame 만 내놓는다. subprocess·시간을 안다",
+  "measurement_layer": "scripts/p007e_r2r2_measurement.py — bytes 만 받는다. 장치·subprocess 를 모른다",
+  "orchestration": "scripts/p007e_r2r2_c1r1_sham.py — 둘을 엮는다. 기본값 NO CAPTURE"
+ },
+ "static_verification": {
+  "acquisition_entry_point": "AST 로 확인 — subprocess 호출 지점은 _run_v4l2ctl 단 하나, 모든 호출이 _assert_safe_argv(화이트리스트+금지문자열 이중 검사)를 거친다",
+  "🔴 self_check_self_match_pitfall": "화이트리스트/블랙리스트 상수 자체가 금지 문자열을 담고 있어 '파일에 금지 문자열이 있는가' 식 naive 검사는 자기 자신을 오탐한다(i2c 선례와 동일 함정). 대신 호출 구조(누가 subprocess 를 부르고, 그 호출이 가드를 거치는가)를 검사했다"
+ },
+ "frozen_unchanged_from_C0": "ROI(3영역+M1~M10)·ORB(3000,1.2,8,12)·BFMatcher·estimateAffinePartial2D(RANSAC 1.5px)·quality guards·K=5/M=60/N_sham=10·threshold 공식·LOO·판정어휘 Q1~X — 전부 기계적 대조(파이썬 assert)로 C0 와 동일함을 확인했다 (이번 응답 로그 참조)",
+ "synthetic_regression": {
+  "max_translation_err_px": 0.7030500554652772,
+  "max_rotation_err_deg": 0.060073024411087014,
+  "C0_reference": {
+   "max_translation_err_px": 0.703,
+   "max_rotation_err_deg": 0.06
+  },
+  "match": "일치 (소수점 반올림 차이만) — 추정기 리팩터링이 동작을 바꾸지 않았음을 확인"
+ },
+ "negative_tests_summary": "T0~T12 전부 PASS (evidence/P-007E-R2-R2/logs/c0r1_negative_tests.json)",
+ "🔴 what_this_does_not_prove": [
+  "실제 DaBai 에서 format invariant 가드가 동작하는지 — 카메라를 열지 않았다",
+  "v4l2-ctl --stream-mmap 반복 호출이 1200회 규모에서 camera control(exposure 등)을 바꾸지 않는지 — 미검증. C1-R1 preflight/실행에서 처음 확인된다",
+  "🔴 cross-trial 집계(LOO·publication 임계·Q1~X 최종 판정) 코드의 정확성 — 아직 작성되지 않았다"
+ ],
+ "next_decision_required_by_reviewer": [
+  "🔴 1순위 — 현재 장치 상태는 C1-induced YUYV 다. 사전등록 expected_device.pixelformat 은 MJPG 를 요구하므로, 이 상태 그대로 C1-R1 을 실행하면 매 trial 이 FORMAT_INVARIANT_VIOLATION_BEFORE 로 즉시 INVALID 되고 run 전체가 X 로 끝날 가능성이 높다. 재부팅·재연결로 MJPG 가 돌아오는지는 **모른다**(확인하지 않았다 — 확인 자체가 장치 접근이다). 선택지: ① 승인된 1회 S_FMT 로 MJPG 복귀(새 게이트로 분리해 범위를 좁힌다) ② YUYV 를 새 기준선으로 받아들여 사전등록의 expected_device 를 갱신 — 이 경우 **ROI·가드는 MJPG 프레임(Stage B3) 기준으로 정해졌다는 점**을 검수에 함께 고려해야 한다",
+  "C1-R1 로 재시도 승인 여부 (위 1순위 해결 후)",
+  "camera-control invariant 를 trial 자동 비교로 승격할지(현재는 read_controls() 읽기만 구현, §19 의도적 축소)"
+ ],
+ "stop": "commit/push 후 STOP. C1-R1 stationary sham · DaBai 실제 캡처 · 카메라 포맷/제어 시험 · servo 명령 · Arm2 모션 · 152→150 · P006D 어느 것도 자동 진행하지 않는다",
+ "🔴 run_trial_integration_added": {
+  "why": "작업의뢰서 §10/§14 가 요구한 acquisition/measurement/persistence 통합 배선이 애초 구현에 빠져 있었다 — negative tests 는 추상화된 mock 만 검증했지 실제 run_trial()/run_full_sham() 함수 자체가 없었다. advisor 지적 없이 자체 점검에서 발견해 추가했다",
+  "what_was_added": [
+   "run_trial() — 1 trial 캡처+추정+delta",
+   "run_full_sham() — manifest lifecycle 로 N trial 을 엮는다",
+   "FakeReader — 실제 장치를 전혀 참조하지 않는 TEST-ONLY 모의 reader",
+   "integration_mock_test() / T8 — 정상 3-trial 완주 + trial 도중 crash 시뮬레이션을 실제 함수로 끝까지 돌린다"
+  ],
+  "🔴 bug_found_by_T8": {
+   "what": "RunManifest.__init__() 이 run_root 디렉터리를 만들지 않고 바로 manifest.json 을 쓰려다 FileNotFoundError 로 죽었다",
+   "fix": "os.makedirs(run_root, exist_ok=True) 를 _write() 호출 전에 추가",
+   "🔴 meta_note": "T0 에서 잡은 출력경로 버그에 이어, 이번엔 T8 이 또 다른 '디렉터리 생성 누락' 버그를 잡았다. 같은 세션 안에서 같은 클래스의 결함이 두 번 발견됐다 — 경로/디렉터리 처리는 이 프로젝트에서 반복적으로 틀리는 지점이다"
+  }
+ },
+ "🔴 advisor_round2_fixes": {
+  "1_real_opt_in_was_stub": "execute_c1r1() 구현 완료 — env_guards(이식) → build_estimator_and_mask → reader(real 이면 NoNegotiationV4L2Reader, mock 이면 reader_factory) → run_full_sham. main() 의 granted 분기가 이제 이 함수를 실제로 호출한다(단, 이 게이트에서는 ALLOW_ENV 를 설정하지 않아 그 분기에 도달하지 않았다). --run-root 를 --out/--work-dir 과 분리된 인자로 신설",
+  "2_M5_implemented_now": "scripts/p007e_r2r2_analysis.py — robust_sd/sigma_eff/compute_thresholds/compute_loo_false_positives/compute_q4_photometric_correlation/classify_run. 합성 trial 로 Q1/Q2/Q3/Q4/X 다섯 분기 전부 단위시험(T9, 로컬 Mac 에서도 재현 — cv2 불필요한 순수 python)",
+  "3_roi_mean_and_pacing_wired": "run_trial() 이 매 프레임 roi_mean_fn(gray, mask) 를 호출하고 기록한다. 0.25s 목표 간격 페이싱(t_next 루프) + trial 간 2.0s 간격을 실제로 구현했다. window 마다 frame_interval_stats(count/median/robust_sd/min/max) 계산",
+  "4_preregistration_full_merge": "dict(c0) 를 베이스로 시작해 superseded_keys(capture_mechanism·c1_harness_policy·K_M_Nsham_semantics)만 교체하고, python assert 로 'C0 키 중 사라진 것' / '예상 밖으로 바뀐 것'이 둘 다 빈 리스트임을 확인했다. trial_protocol·noise_metrics_to_produce·measurement_question·observation_channel_name·forbidden_names·terminology_update_from_stage_B 전부 보존됐다. M.realization_in_path_B 는 cv2 grab/retrieve 서술을 지우고 새 acquisition 방식으로 갱신",
+  "5_sha_pinning_closed": "module_sha256(acquisition·measurement·analysis) 를 사전등록에 고정하고, harness 가 --run-sham 시 세 파일을 재계산해 대조, 불일치면 ABORT(T12 로 검증). harness 자신의 sha256 은 순환참조를 피해 git 커밋과 이 보고서로 고정한다(prereg 안에 넣지 않는다)",
+  "6_short_flag_bypass_closed": "v4l2-ctl --help-all 로 -v=--set-fmt-video, -c=--set-ctrl 확인. _assert_safe_argv 를 '-' 로 시작하는 모든 토큰에 대해 화이트리스트 정확 대조(default-deny)로 교체했다(T11 로 검증)",
+  "7_crash_handling_matches_wording": "SIGTERM/SIGHUP 핸들러를 run_full_sham() 실행 구간에만 등록해 SystemExit 으로 변환하고 except BaseException 으로 잡아 CRASHED 기록 후 재전파. atexit 을 안전망으로 추가 등록. 사전등록 문구('atexit/finally')와 구현이 이제 일치한다",
+  "8_reviewer_decision_1_added": "아래 next_decision_required_by_reviewer 1번 항목으로 승격"
+ },
+ "what_this_does_not_prove": [
+  "실제 DaBai 에서 format invariant 가드가 동작하는지 — 카메라를 열지 않았다",
+  "v4l2-ctl --stream-mmap 을 트리에서 1,200 회 반복할 때 camera control(exposure 등)이 session 경계를 넘어 안정적인지 — acquisition.session_per_frame_characteristic 에 미검증으로 명시했다. C1-R1 실행에서 처음 확인된다",
+  "🔴 현재 YUYV 상태에서 C1-R1 을 실제로 돌렸을 때 모든 trial 이 FORMAT_INVARIANT_VIOLATION 으로 즉시 끝나지 않는지 — expected_device 와 실제 장치 상태가 불일치하므로 실행 전 검수 결정이 필요하다"
+ ]
+}

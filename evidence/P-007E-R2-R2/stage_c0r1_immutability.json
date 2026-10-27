@@ -1,0 +1,43 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0-R1",
+ "prior_gates": {
+  "gates_checked": 12,
+  "command": "git diff --exit-code b576dbe HEAD -- <12 게이트>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_A_closed_@3579ab5": {
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_B_closed_@4d0c709": {
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_C0_closed_@121dc43": {
+  "exit_code": 0,
+  "result": "PASS",
+  "🔴 note": "M6(사전등록 내적 모순) 발견에도 불구하고 이 파일은 고치지 않았다 — 역사적 사실(C0=당시 PASS) 보존"
+ },
+ "stage_C1_closed_@64b32bc": {
+  "exit_code": 0,
+  "result": "PASS",
+  "🔴 note": "C1 의 20개 anchor 프레임·판정·불일치표 전부 보존. FORENSIC_ONLY 로 재확인(아래)"
+ },
+ "🔴 c1_invalid_data_classification": {
+  "artifacts": [
+   "evidence/P-007E-R2-R2/logs/c1_failed_run_frames/ (20 jpg)",
+   "evidence/P-007E-R2-R2/stage_c1_run.json",
+   "evidence/P-007E-R2-R2/stage_c1_preregistration_harness_mismatch.json"
+  ],
+  "classification": [
+   "FORENSIC_ONLY",
+   "INVALID_EXPERIMENT",
+   "NOT_FOR_THRESHOLD_TUNING",
+   "NOT_FOR_ROI_TUNING",
+   "NOT_FOR_SENSITIVITY_CLAIM"
+  ],
+  "used_in_C0R1_design": "아니오 — C1 프레임의 motion/noise 값을 전혀 분석하지 않았다. ROI·threshold·ORB 파라미터는 C0 동결값을 그대로 복사했다(기계적 대조로 확인)"
+ }
+}

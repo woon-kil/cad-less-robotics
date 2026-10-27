@@ -1,0 +1,244 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1-R1",
+ "argv": [
+  "--negative-tests",
+  "--out",
+  "/tmp/p007e_c0r1/negtests_result.json",
+  "--work-dir",
+  "/tmp/p007e_c0r1/negtests_out"
+ ],
+ "self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "atexit",
+   "cv2",
+   "hashlib",
+   "importlib",
+   "json",
+   "numpy",
+   "os",
+   "p007e_r2r2_acquisition",
+   "p007e_r2r2_measurement",
+   "signal",
+   "subprocess",
+   "sys",
+   "time"
+  ],
+  "forbidden_imports_found": [],
+  "i2c_string_refs": [],
+  "video_capture_refs": [],
+  "pass": true
+ },
+ "acquisition_module_check": {
+  "path": "/tmp/p007e_c0r1/scripts/p007e_r2r2_acquisition.py",
+  "sha256": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+  "subprocess_call_sites": [
+   {
+    "function": "_run_v4l2ctl",
+    "guarded_by_assert_safe_argv": true
+   }
+  ],
+  "single_entry_point": true,
+  "entry_point_is__run_v4l2ctl": true,
+  "all_sites_guarded": true,
+  "pass": true
+ },
+ "preregistration": {
+  "path": "evidence/P-007E-R2-R2/stage_c1r1_preregistration.json",
+  "expected_sha256": "ed44663d9e52611f2dfc0db3f07eabc9b3de40fba88a56544b0e4057111faaff",
+  "actual_sha256": "ed44663d9e52611f2dfc0db3f07eabc9b3de40fba88a56544b0e4057111faaff",
+  "match": true
+ },
+ "module_sha_check": {
+  "scripts/p007e_r2r2_acquisition.py": {
+   "expected": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+   "actual": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+   "match": true
+  },
+  "scripts/p007e_r2r2_measurement.py": {
+   "expected": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+   "actual": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+   "match": true
+  },
+  "scripts/p007e_r2r2_analysis.py": {
+   "expected": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+   "actual": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+   "match": true
+  }
+ },
+ "capture_opt_in": {
+  "env_P007E_R2R2_C1R1_ALLOW_CAPTURE": "0",
+  "flag_run_sham": false,
+  "granted": false
+ },
+ "negative_tests": {
+  "results": {
+   "T0_cli_path_collision_guard": {
+    "expected": "exit code 2, ABORT BEFORE RUN, 결과 파일 미생성",
+    "observed_exit_code": 2,
+    "observed_stdout": "{\"stop\": \"ABORT BEFORE RUN \\u2014 --work-dir \\uacfc --out \\uc774 \\uac19\\uc740 \\uacbd\\ub85c\\ub2e4: '/tmp/p007e_c0r1/negtests_out/t0_collision.json'\"}",
+    "result_file_created": false,
+    "pass": true
+   },
+   "T1_wrong_output_path": {
+    "expected": "ABORT BEFORE RUN",
+    "observed": "ABORT BEFORE RUN — FileExistsError: [Errno 17] File exists: '/tmp/p007e_c0r1/negtests_out/t1/manifest.json'",
+    "pass": true
+   },
+   "T2_trial_persistence": {
+    "expected": "3 files",
+    "observed": [
+     "trial_00.json",
+     "trial_01.json",
+     "trial_02.json"
+    ],
+    "pass": true
+   },
+   "T3_simulated_crash": {
+    "expected": "trial_00.json · trial_01.json 생존, trial_02.json 없음(미완성이 명확)",
+    "observed_files": [
+     "trial_00.json",
+     "trial_01.json"
+    ],
+    "trial2_survived": true,
+    "trial3_absent_and_clear": true,
+    "pass": true
+   },
+   "T3b_crash_during_write": {
+    "expected": "trial_00.json 없음 · trial_00.json.tmp 는 존재하되 파싱 불가(미완성 식별 가능)",
+    "final_file_missing": true,
+    "tmp_present_and_unparseable": true,
+    "pass": true
+   },
+   "T4_malformed_frame": {
+    "expected": "decode_gray 가 None 반환 (예외 전파 없음)",
+    "observed": "None",
+    "pass": true
+   },
+   "T5_wrong_format_metadata": {
+    "expected": "match=False → ABORT/INVALID",
+    "observed_match": false,
+    "mismatches": {
+     "pixelformat": {
+      "expected": "MJPG",
+      "actual": "YUYV"
+     }
+    },
+    "pass": true
+   },
+   "T6_preregistration_sha_mismatch": {
+    "expected": "실제 sha != 상수 sha → ABORT",
+    "observed": "ABORT",
+    "pass": true
+   },
+   "T7_capture_opt_in_absent": {
+    "expected": "env 없으면 NO CAPTURE",
+    "env_present": false,
+    "pass": true
+   },
+   "T8_integrated_mock_run": {
+    "normal_run": {
+     "manifest_status": "COMPLETED",
+     "trial_files": [
+      "trial_00.json",
+      "trial_01.json",
+      "trial_02.json"
+     ],
+     "verdicts": [
+      "VALID",
+      "VALID",
+      "VALID"
+     ],
+     "roi_mean_recorded_per_trial": [
+      true,
+      true,
+      true
+     ],
+     "pass": true
+    },
+    "simulated_crash_run": {
+     "crashed_as_expected": true,
+     "manifest_status": "CRASHED",
+     "last_completed_trial": 0,
+     "trial_files_survived": [
+      "trial_00.json"
+     ],
+     "pass": true
+    },
+    "all_pass": true,
+    "pass": true
+   },
+   "T9_analysis_branch_coverage": {
+    "Q1_clean": true,
+    "X_two_invalid": true,
+    "Q3_high_dropout": true,
+    "Q2_loo_false_positives": true,
+    "Q4_photometric_correlation": true,
+    "pass": true
+   },
+   "T10_execute_c1r1_via_fake_reader": {
+    "manifest_status": "COMPLETED",
+    "trial_files": [
+     "trial_00.json",
+     "trial_01.json",
+     "trial_02.json",
+     "trial_03.json",
+     "trial_04.json",
+     "trial_05.json",
+     "trial_06.json",
+     "trial_07.json",
+     "trial_08.json",
+     "trial_09.json"
+    ],
+    "harness_sha_recorded": true,
+    "acquisition_sha_recorded": true,
+    "measurement_sha_recorded": true,
+    "analysis_sha_recorded": true,
+    "pass": true
+   },
+   "T11_short_flag_bypass_rejected": {
+    "expected": "-v/-c/-p 전부 AcquisitionGuardError 로 거부",
+    "observed": [
+     {
+      "argv": [
+       "--device=/dev/null-mock",
+       "-v",
+       "width=640,height=480,pixelformat=MJPG"
+      ],
+      "blocked": true
+     },
+     {
+      "argv": [
+       "--device=/dev/null-mock",
+       "-c",
+       "brightness=0"
+      ],
+      "blocked": true
+     },
+     {
+      "argv": [
+       "--device=/dev/null-mock",
+       "-p",
+       "30"
+      ],
+      "blocked": true
+     }
+    ],
+    "pass": true
+   },
+   "T12_module_sha_mismatch_detectable": {
+    "expected": "실제 파일 sha256 이 틀린 기대값과 전부 달라야 한다(=mismatch 가 감지된다)",
+    "observed": {
+     "scripts/p007e_r2r2_acquisition.py": true,
+     "scripts/p007e_r2r2_measurement.py": true,
+     "scripts/p007e_r2r2_analysis.py": true
+    },
+    "pass": true
+   }
+  },
+  "all_pass": true
+ },
+ "stop": "NEGATIVE_TESTS_ONLY — 카메라 0"
+}
