@@ -1,0 +1,54 @@
+{
+ "gate": "P-007E",
+ "status": "🔴 관찰 전에 고정한다. 실행 후 수정 금지",
+ "approved_command": "Arm_serial_servo_write(2, 155, 2000)",
+ "approval": "P-007E EXECUTION APPROVED — ARM2 150° → 155° / +5° / 2000 ms / ONE COMMAND ONLY (검수 세션)",
+ "conditional_on": [
+  "Workspace clear = YES",
+  "Current posture photo = CAPTURED",
+  "Physical power cutoff = IMMEDIATELY REACHABLE"
+ ],
+ "stop_if": "셋 중 하나라도 NO/UNCERTAIN 이면 STOP",
+ "🔴 two_phase_design": {
+  "why": "스펙이 'observation recorded before interpreting readback' 을 요구한다. 한 스크립트에서 명령과 readback 을 모두 하면 controller 값이 운영자 육안 판정을 오염시킨다",
+  "phase1": "scripts/p007e_phase1_command.py — 명령 1회. **명령 후 readback 하지 않는다**",
+  "operator": "물리 관찰을 먼저 확정한다",
+  "phase2": "scripts/p007e_phase2_readback.py — settling 후 ID1~6 ×5 읽기. 읽기 전용"
+ },
+ "script_sha256": {
+  "phase1": "b7a6c2fba073da857ace8298cca0078ef146f4a17b1fd0747d3c493db033b687",
+  "phase2": "95778882531f5af381bf8d40b9d4677db454b8a9300ed7518e6e60f18428c261"
+ },
+ "guards_in_phase1": [
+  "디스크 sha256",
+  "__init__/__del__ AST 부작용 0",
+  "배타적 제어(자기 조상 제외)",
+  "런타임 egg assert + egg sha256",
+  "🔴 명령 직전 baseline ×3 재확인 — 150 이 아니면 BASELINE_CHANGED 로 중단",
+  "assert id==2",
+  "assert target==baseline+5==155",
+  "assert 0<=target<=180",
+  "servo_writes 를 호출 **앞**에서 1 로 집계(시도 기준)",
+  "stdout/stderr 캡처(bare except 대응)"
+ ],
+ "classification_fixed_in_advance": {
+  "A": "Arm2 만 예상 방향 이동 + readback 유의 변화 + 이상 없음 → CONTROL PASS — SERVO COMMAND EXECUTION CONFIRMED",
+  "B": "이동 O + readback 변화 X → DIAGNOSIS — MOTION CONFIRMED / FEEDBACK PATH SUSPECT",
+  "C": "이동 X + readback 변화 O → DIAGNOSIS — REPORTED STATE CHANGED / PHYSICAL EXECUTION NOT CONFIRMED",
+  "D": "이동 X + readback 변화 X → DIAGNOSIS — SERVO COMMAND NON-RESPONSE REPRODUCED",
+  "E": "타 joint 이동·급격한 motion·충돌·비정상음 → SAFETY BLOCK — ABNORMAL MOTION. 즉시 전원 차단 판단"
+ },
+ "🔴 D_interpretation_limit": "D 가 나와도 L4 firmware rejection / L5 propagation failure / L6 servo-side rejection 중 하나를 확정하지 않는다. '+5° 재현' 까지만 적는다. STM8 firmware 문제나 서보 고장으로 단정하지 않는다",
+ "expected_if_A": {
+  "tcp_displacement_mm": 13.67,
+  "direction": "그리퍼 끝 약 11.4mm 위로(+z), 약 7.5mm base 쪽(-y)",
+  "max_any_point_mm": 21.16,
+  "readback_expected": "ID2 155 또는 156 (write·read 양쪽 int() 절단으로 +1 편향 가능)"
+ },
+ "rerun_policy": {
+  "guard_abort": "die() 중단은 버스 쓰기 전이므로 servo_writes 0. 원인 해소 후 재실행 가능",
+  "truncated_after_baseline": "출력이 baseline 재확인 이후에 끊기면 **명령이 나간 것으로 간주**한다. 재실행하지 않는다",
+  "never": "어떤 경우에도 두 번째 servo command 를 보내지 않는다. 자동 return 도 없다"
+ },
+ "rgb": "P-007D-R1 induced BLUE 유지. RGB command 0. 🔴 RGB 를 controller mode indicator 로 해석하지 않는다"
+}
