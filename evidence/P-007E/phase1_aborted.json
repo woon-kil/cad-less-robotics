@@ -1,0 +1,24 @@
+{
+ "gate": "P-007E",
+ "phase": "1-COMMAND",
+ "guards": [
+  "sha256 + __init__/__del__ 부작용 0",
+  "배타적 제어 유지",
+  "런타임 egg sha256 일치"
+ ],
+ "aborted": "BASELINE_CHANGED:[150, None, 150]",
+ "bus_write_attempted": false,
+ "servo_writes": 0,
+ "torque_changes": 0,
+ "rgb_commands": 0,
+ "readback_in_this_phase": 3,
+ "disk_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "exclusive_control_violations": [],
+ "arm_lib_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+ "egg_sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+ "pre_write_read_id2": [
+  150,
+  null,
+  150
+ ]
+}
