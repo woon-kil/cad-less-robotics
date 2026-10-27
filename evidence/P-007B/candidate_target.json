@@ -1,0 +1,41 @@
+{
+ "joint": "Arm2_Joint",
+ "servo_id": 2,
+ "baseline_library_deg": 150,
+ "target_library_deg": 152,
+ "delta_deg": 2,
+ "q_before_rad": 1.0471975511965976,
+ "q_target_rad": 1.0821041362364843,
+ "q_before_deg": 60,
+ "q_target_deg": 62,
+ "urdf_limit_rad": [
+  -1.5708,
+  1.5708
+ ],
+ "margin_to_upper_after_rad": 0.4886958637635157,
+ "margin_to_upper_after_deg": 28.000210459149713,
+ "command_api": "Arm_serial_servo_write(2, 152, 2000)",
+ "duration_ms": 2000,
+ "duration_rationale": "벤더 선례 YahboomArm.py:365 의 500ms보다 4배 느리다. 2°/2000ms = 약 1°/s",
+ "command_raw_pos": 1242,
+ "current_raw_range": [
+  1267,
+  1278
+ ],
+ "expected_servo_travel_counts": [
+  25,
+  36
+ ],
+ "expected_servo_travel_deg": [
+  2.05,
+  2.95
+ ],
+ "expected_post_read_id2": [
+  152,
+  153
+ ],
+ "expected_post_read_most_likely": 153,
+ "expected_post_read_note": "write·read 양쪽 int() 절단으로 +1 편향. 153은 semantics 불일치가 아니다. command_api_analysis.md 참조",
+ "other_ids_commanded": 0,
+ "fixed_before_approval": true
+}

@@ -1,0 +1,7 @@
+{
+ "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+ "sha256_measured": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "sha256_expected": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "matches_p007a_r1": true,
+ "checked_before_command": true
+}

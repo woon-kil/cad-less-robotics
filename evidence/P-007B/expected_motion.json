@@ -1,0 +1,141 @@
+{
+ "gate": "P-007B",
+ "method": "scripts/p007b_fk.py + Jetson URDF DOFBOT_Pro-V24.urdf",
+ "urdf_sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28",
+ "urdf_path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf",
+ "fk_self_check": "PASS — evidence/P-007A/candidate_fk.json 의 Arm1/Arm2/Arm3_Link 좌표를 오차 0으로 재현",
+ "convention": "q_urdf = (q_library_deg - 90) * pi/180",
+ "convention_status": "VENDOR_DEFINED_CONVENTION",
+ "arm2_axis_urdf": "1 0 0",
+ "arm2_q_deg_before_after": [
+  60,
+  62
+ ],
+ "links": [
+  {
+   "link": "Arm1_Link",
+   "before_mm": [
+    0.0,
+    0.0,
+    89.5
+   ],
+   "after_mm": [
+    0.0,
+    0.0,
+    89.5
+   ],
+   "delta_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "abs_delta_mm": 0.0
+  },
+  {
+   "link": "Arm2_Link",
+   "before_mm": [
+    0.0,
+    0.0,
+    122.5
+   ],
+   "after_mm": [
+    0.0,
+    0.0,
+    122.5
+   ],
+   "delta_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "abs_delta_mm": 0.0
+  },
+  {
+   "link": "Arm3_Link",
+   "before_mm": [
+    -5.55,
+    -71.54,
+    163.92
+   ],
+   "after_mm": [
+    -5.65,
+    -72.94,
+    161.4
+   ],
+   "delta_mm": [
+    -0.1,
+    -1.4,
+    -2.53
+   ],
+   "abs_delta_mm": 2.89
+  },
+  {
+   "link": "Arm4_Link",
+   "before_mm": [
+    -2.71,
+    -30.21,
+    235.68
+   ],
+   "after_mm": [
+    -2.99,
+    -34.13,
+    234.55
+   ],
+   "delta_mm": [
+    -0.27,
+    -3.92,
+    -1.13
+   ],
+   "abs_delta_mm": 4.09
+  },
+  {
+   "link": "Arm5_Link",
+   "before_mm": [
+    2.65,
+    46.49,
+    221.53
+   ],
+   "after_mm": [
+    2.41,
+    43.02,
+    223.09
+   ],
+   "delta_mm": [
+    -0.24,
+    -3.48,
+    1.56
+   ],
+   "abs_delta_mm": 3.82
+  },
+  {
+   "link": "Gripping_point_Link",
+   "before_mm": [
+    8.79,
+    134.31,
+    202.82
+   ],
+   "after_mm": [
+    8.59,
+    131.43,
+    207.47
+   ],
+   "delta_mm": [
+    -0.2,
+    -2.88,
+    4.65
+   ],
+   "abs_delta_mm": 5.47
+  }
+ ],
+ "EXPECTED_PHYSICAL_DIRECTION": "그리퍼 끝(Gripping_point_Link)이 약 4.7mm 위로(+z) 올라가고 약 2.9mm base 쪽으로(-y) 당겨진다. 합성 변위 약 5.5mm. 테이블에서 멀어지는 방향이므로 테이블·고정물과의 간격은 줄지 않는다.",
+ "gripping_point_z_before_mm": 202.82,
+ "gripping_point_z_after_mm": 207.47,
+ "z_increases": true,
+ "total_tip_displacement_mm": 5.47,
+ "visual_detectability_warning": "약 5.5mm는 육안 판별 한계에 가깝다. 서보 실제 이동량이 2.0°~2.9°라 변위는 5.5~8.0mm 범위일 수 있다. 방향 판별이 불확실하면 현실적 천장은 DIAGNOSIS PASS다.",
+ "not": [
+  "measured TCP",
+  "calibrated TCP",
+  "FK accuracy validated"
+ ]
+}

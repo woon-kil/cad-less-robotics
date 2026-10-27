@@ -1,0 +1,25 @@
+{
+ "gate": "P-007B",
+ "measured_at_device": "2026-10-27T09:22:00+08:00",
+ "i2c_fd_holders": [
+  {
+   "pid": 2264,
+   "i2c_fd_count": 1,
+   "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+  },
+  {
+   "pid": 3091,
+   "i2c_fd_count": 1,
+   "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot"
+  },
+  {
+   "pid": 3092,
+   "i2c_fd_count": 1,
+   "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot"
+  }
+ ],
+ "servo_capable_uncontrolled_writers": [],
+ "writer_count": 0,
+ "non_writer_classification_source": "evidence/P-007A-R1/control_authority_inventory.json",
+ "scope": "이 측정 시점에 열린 fd 기준. 필요할 때 장치를 여는 프로그램까지 전수 증명한 것은 아니다."
+}

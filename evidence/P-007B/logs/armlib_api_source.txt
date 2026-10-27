@@ -1,0 +1,202 @@
+=== 함수 목록 (줄번호) ===
+9:    def __init__(self, i2c_bus=7):
+15:    def Arm_serial_servo_write(self, id, angle, time):
+54:    def Arm_serial_servo_write_any(self, id, angle, time):
+78:    def Arm_serial_servo_write_offset_switch(self, id):
+89:    def Arm_serial_servo_write_offset_state(self):
+100:    def Arm_serial_servo_write6_array(self, joints, time):
+145:    def Arm_serial_servo_write6(self, s1, s2, s3, s4, s5, s6, time):
+189:    def Arm_serial_servo_read(self, id):
+218:    def Arm_serial_servo_read_any(self, id):
+237:    def Arm_ping_servo(self, id):
+257:    def Arm_get_hardversion(self):
+270:    def Arm_serial_set_torque(self, onoff):
+280:    def Arm_serial_set_id(self, id):
+287:    def Arm_Product_Select(self, index):
+294:    def Arm_RGB_set(self, red, green, blue):
+301:    def Arm_Button_Mode(self, mode):
+308:    def Arm_reset(self):
+315:    def Arm_PWM_servo_write(self, id, angle):
+325:    def Arm_Clear_Action(self):
+333:    def Arm_Action_Study(self):
+340:    def Arm_Action_Mode(self, mode):
+347:    def Arm_Read_Action_Num(self):
+358:    def Arm_Buzzer_On(self, delay=0xff):
+366:    def Arm_Buzzer_Off(self):
+372:    def bus_servo_control(self, id, num, time=1000):
+409:    def __change_value(self, value):
+416:    def bus_servo_control_array6(self, array, time=1000):
+470:    def get_i2c_bus_num(self):
+=== Arm_serial_servo_write 본문 ===
+    def Arm_serial_servo_write(self, id, angle, time):
+        if id == 0:  # 此为所有舵机控制
+            self.Arm_serial_servo_write6(angle, angle, angle, angle, angle, angle, time)
+        elif id == 2 or id == 3 or id == 4:  # 与实际相反角度
+            angle = 180 - angle
+            pos = int((3100 - 900) * (angle - 0) / (180 - 0) + 900)
+            # pos = ((pos << 8) & 0xff00) | ((pos >> 8) & 0xff)
+            value_H = (pos >> 8) & 0xFF
+            value_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+            try:
+                self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])
+            except:
+                print('Arm_serial_servo_write I2C error')
+        elif id == 5:
+            pos = int((3700 - 380) * (angle - 0) / (270 - 0) + 380)
+            # pos = ((pos << 8) & 0xff00) | ((pos >> 8) & 0xff)
+            value_H = (pos >> 8) & 0xFF
+            value_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+            try:
+                self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])
+            except:
+                print('Arm_serial_servo_write I2C error')
+        else:
+            pos = int((3100 - 900) * (angle - 0) / (180 - 0) + 900)
+            # pos = ((pos << 8) & 0xff00) | ((pos >> 8) & 0xff)
+            value_H = (pos >> 8) & 0xFF
+            value_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+            try:
+                self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])
+            except:
+                print('Arm_serial_servo_write I2C error')
+
+    # 设置任意总线舵机角度接口：id: 1-250(0是群发) angle: 0-180  表示900 3100   0 - 180
+    def Arm_serial_servo_write_any(self, id, angle, time):
+        if id != 0:
+            pos = int((3100 - 900) * (angle - 0) / (180 - 0) + 900)
+            value_H = (pos >> 8) & 0xFF
+            value_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+            try:
+                self.bus.write_i2c_block_data(self.addr, 0x19, [id & 0xff, value_H, value_L, time_H, time_L])
+            except:
+                print('Arm_serial_servo_write_any I2C error')
+        elif id == 0:  # 此为所有舵机控制
+            pos = int((3100 - 900) * (angle - 0) / (180 - 0) + 900)
+            # pos = ((pos << 8) & 0xff00) | ((pos >> 8) & 0xff)
+            value_H = (pos >> 8) & 0xFF
+            value_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+            try:
+                self.bus.write_i2c_block_data(self.addr, 0x17, [value_H, value_L, time_H, time_L])
+            except:
+                print('Arm_serial_servo_write_any I2C error')
+
+    # 一键设置总线舵机中位偏移，上电搬动到中位，然后发送下面函数，id:1-6(设置)，0（恢复初始）
+    def Arm_serial_servo_write_offset_switch(self, id):
+        try:
+            if id > 0 and id < 7:
+                self.bus.write_byte_data(self.addr, 0x1c, id)
+            elif id == 0:
+                self.bus.write_byte_data(self.addr, 0x1c, 0x00)
+                time.sleep(.5)
+        except:
+            print('Arm_serial_servo_write_offset_switch I2C error')
+
+    # 读取一键设置总线舵机中位偏移的状态，0表示找不到对应舵机ID，1表示成功，2表示失败超出范围
+    def Arm_serial_servo_write_offset_state(self):
+        try:
+            self.bus.write_byte_data(self.addr, 0x1b, 0x01)
+            time.sleep(.001)
+            state = self.bus.read_byte_data(self.addr, 0x1b)
+            return state
+        except:
+            print('Arm_serial_servo_write_offset_state I2C error')
+        return None
+
+    # 设置总线舵机角度接口：array
+    def Arm_serial_servo_write6_array(self, joints, time):
+        s1, s2, s3, s4, s5, s6 = joints[0], joints[1], joints[2], joints[3], joints[4], joints[5]
+        if s1 > 180 or s2 > 180 or s3 > 180 or s4 > 180 or s5 > 270 or s6 > 180:
+            print("参数传入范围不在0-180之内！")
+            return
+        try:
+            pos = int((3100 - 900) * (s1 - 0) / (180 - 0) + 900)
+            value1_H = (pos >> 8) & 0xFF
+            value1_L = pos & 0xFF
+
+            s2 = 180 - s2
+            pos = int((3100 - 900) * (s2 - 0) / (180 - 0) + 900)
+            value2_H = (pos >> 8) & 0xFF
+            value2_L = pos & 0xFF
+
+            s3 = 180 - s3
+            pos = int((3100 - 900) * (s3 - 0) / (180 - 0) + 900)
+            value3_H = (pos >> 8) & 0xFF
+            value3_L = pos & 0xFF
+
+            s4 = 180 - s4
+            pos = int((3100 - 900) * (s4 - 0) / (180 - 0) + 900)
+            value4_H = (pos >> 8) & 0xFF
+            value4_L = pos & 0xFF
+
+            pos = int((3700 - 380) * (s5 - 0) / (270 - 0) + 380)
+            value5_H = (pos >> 8) & 0xFF
+            value5_L = pos & 0xFF
+
+            pos = int((3100 - 900) * (s6 - 0) / (180 - 0) + 900)
+            value6_H = (pos >> 8) & 0xFF
+            value6_L = pos & 0xFF
+            time_H = (time >> 8) & 0xFF
+            time_L = time & 0xFF
+
+            data = [value1_H, value1_L, value2_H, value2_L, value3_H, value3_L,
+                    value4_H, value4_L, value5_H, value5_L, value6_H, value6_L]
+            timeArr = [time_H, time_L]
+            s_id = 0x1d
+            self.bus.write_i2c_block_data(self.addr, 0x1e, timeArr)
+            self.bus.write_i2c_block_data(self.addr, s_id, data)
+        except:
+            print('Arm_serial_servo_write6 I2C error')
+
+    # 设置总线舵机角度接口：s1~S4和s6: 0-180，S5：0~270,time是运行的时间
+    def Arm_serial_servo_write6(self, s1, s2, s3, s4, s5, s6, time):
+=== Arm_serial_servo_read 본문 ===
+    def Arm_serial_servo_read(self, id):
+        if id < 1 or id > 6:
+            print("id must be 1 - 6")
+            return None
+        try:
+            self.bus.write_byte_data(self.addr, id + 0x30, 0x0)
+            time.sleep(0.003)
+            pos = self.bus.read_word_data(self.addr, id + 0x30)
+        except:
+            print('Arm_serial_servo_read I2C error')
+            return None
+        if pos == 0:
+            return None
+        pos = (pos >> 8 & 0xff) | (pos << 8 & 0xff00)
+        # print(pos)
+        if id == 5:
+            pos = int((270 - 0) * (pos - 380) / (3700 - 380) + 0)
+            if pos > 270 or pos < 0:
+                return None
+        else:
+            pos = int((180 - 0) * (pos - 900) / (3100 - 900) + 0)
+            if pos > 180 or pos < 0:
+                return None
+        if id == 2 or id == 3 or id == 4:
+            pos = 180 - pos
+        # print(pos)
+        return pos
+
+    # 读取总线舵机角度，id: 1-250 返回0-180
+    def Arm_serial_servo_read_any(self, id):
+        if id < 1 or id > 250:
+            print("id must be 1 - 250")
+            return None
+        try:
+            self.bus.write_byte_data(self.addr, 0x37, id)
+            time.sleep(0.003)
+            pos = self.bus.read_word_data(self.addr, 0x37)
+        except:
+            print('Arm_serial_servo_read_any I2C error')
+            return None

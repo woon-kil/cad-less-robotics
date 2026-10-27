@@ -1,0 +1,151 @@
+{
+ "path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf",
+ "sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28",
+ "bytes": 19234,
+ "robot_name": "DOFBOT_Pro-V24",
+ "joints": [
+  {
+   "name": "Arm1_Joint",
+   "type": "revolute",
+   "parent": "base_link",
+   "child": "Arm1_Link",
+   "origin_xyz": "0 0 0.0895",
+   "origin_rpy": "0 0 0",
+   "axis_xyz": "0 0 1",
+   "limit_lower": "-1.5708",
+   "limit_upper": "1.5708"
+  },
+  {
+   "name": "Arm2_Joint",
+   "type": "revolute",
+   "parent": "Arm1_Link",
+   "child": "Arm2_Link",
+   "origin_xyz": "0 0 0.0329999999999998",
+   "origin_rpy": "0 0 0",
+   "axis_xyz": "1 0 0",
+   "limit_lower": "-1.5708",
+   "limit_upper": "1.5708"
+  },
+  {
+   "name": "Arm3_Joint",
+   "type": "revolute",
+   "parent": "Arm2_Link",
+   "child": "Arm3_Link",
+   "origin_xyz": "-0.000549999999999828 0 0.0828499999999964",
+   "origin_rpy": "0 0 0",
+   "axis_xyz": "1 0 0",
+   "limit_lower": "-1.5708",
+   "limit_upper": "1.5708"
+  },
+  {
+   "name": "Arm4_Joint",
+   "type": "revolute",
+   "parent": "Arm3_Link",
+   "child": "Arm4_Link",
+   "origin_xyz": "-5.0000000000161E-05 0 0.0828500000000002",
+   "origin_rpy": "1.57079632679386 0 0",
+   "axis_xyz": "1 0 0",
+   "limit_lower": "-1.5708",
+   "limit_upper": "1.5708"
+  },
+  {
+   "name": "DaBai_DCW2_Joint",
+   "type": "fixed",
+   "parent": "Arm4_Link",
+   "child": "DaBai_DCW2_Link",
+   "origin_xyz": "-0.000199999999999811 0.0688999999999998 0.0506000000000001",
+   "origin_rpy": "0.00872664625997288 0 0",
+   "axis_xyz": "0 0 0",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "Arm5_Joint",
+   "type": "revolute",
+   "parent": "Arm4_Link",
+   "child": "Arm5_Link",
+   "origin_xyz": "0 0.0781490000000018 0.00215000000000008",
+   "origin_rpy": "0 0 0",
+   "axis_xyz": "0 1 0",
+   "limit_lower": "-1.5708",
+   "limit_upper": "3.1416"
+  },
+  {
+   "name": "grip_joint",
+   "type": "revolute",
+   "parent": "Arm5_Link",
+   "child": "rlink1",
+   "origin_xyz": "0.012625 0.029275 0.00475",
+   "origin_rpy": "0 0 0.42401",
+   "axis_xyz": "0 0 -1",
+   "limit_lower": "-1.6",
+   "limit_upper": "0"
+  },
+  {
+   "name": "rlink_joint2",
+   "type": "continuous",
+   "parent": "rlink1",
+   "child": "rlink2",
+   "origin_xyz": "0.027229 -0.012593 -0.0025",
+   "origin_rpy": "0 0 1.1468",
+   "axis_xyz": "0 0 1",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "llink_joint1",
+   "type": "continuous",
+   "parent": "Arm5_Link",
+   "child": "llink1",
+   "origin_xyz": "-0.012375 0.029275 0.0045",
+   "origin_rpy": "0 0 2.7292",
+   "axis_xyz": "0 0 1",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "llink_joint2",
+   "type": "continuous",
+   "parent": "llink1",
+   "child": "llink2",
+   "origin_xyz": "0.027362 0.012302 -0.0025",
+   "origin_rpy": "0 0 -1.1584",
+   "axis_xyz": "0 0 1",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "rlink_joint3",
+   "type": "continuous",
+   "parent": "Arm5_Link",
+   "child": "rlink3",
+   "origin_xyz": "0.0045 0.047275 0.0045",
+   "origin_rpy": "0 0 0.42401",
+   "axis_xyz": "0 0 1",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "llink_joint3",
+   "type": "continuous",
+   "parent": "Arm5_Link",
+   "child": "llink3",
+   "origin_xyz": "-0.0045 0.047275 0.0045",
+   "origin_rpy": "0 0 2.7292",
+   "axis_xyz": "0 0 1",
+   "limit_lower": null,
+   "limit_upper": null
+  },
+  {
+   "name": "Gripping_point_Joint",
+   "type": "fixed",
+   "parent": "Arm5_Link",
+   "child": "Gripping_point_Link",
+   "origin_xyz": "0 0.09 0.00",
+   "origin_rpy": "0 0 0",
+   "axis_xyz": "0 0 0",
+   "limit_lower": null,
+   "limit_upper": null
+  }
+ ]
+}

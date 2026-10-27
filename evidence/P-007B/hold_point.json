@@ -1,0 +1,47 @@
+{
+ "gate": "P-007B",
+ "state": "READY_FOR_OPERATOR_APPROVAL",
+ "created_at_local": "2026-10-27T10:25:18+0900",
+ "servo_write_count_so_far": 0,
+ "current_id2_library_deg": 150,
+ "target_id2_library_deg": 152,
+ "expected_post_read_id2": [
+  152,
+  153
+ ],
+ "expected_post_read_most_likely": 153,
+ "current_q_deg": 60,
+ "target_q_deg": 62,
+ "urdf_limit_margin_to_upper_deg_after": 28.0,
+ "expected_physical_direction": "그리퍼 끝(Gripping_point_Link)이 약 4.7mm 위로(+z) 올라가고 약 2.9mm base 쪽으로(-y) 당겨진다. 합성 변위 약 5.5mm. 테이블에서 멀어지는 방향이므로 테이블·고정물과의 간격은 줄지 않는다.",
+ "expected_tip_displacement_mm": 5.47,
+ "expected_servo_travel_deg": [
+  2.05,
+  2.95
+ ],
+ "gripping_point_z_mm": [
+  202.82,
+  207.47
+ ],
+ "visual_detectability_warning": "약 5.5mm는 육안 판별 한계에 가깝다. 서보 실제 이동량이 2.0°~2.9°라 변위는 5.5~8.0mm 범위일 수 있다. 방향 판별이 불확실하면 현실적 천장은 DIAGNOSIS PASS다.",
+ "command": "Arm_serial_servo_write(2, 152, 2000)",
+ "command_duration_ms": 2000,
+ "uncontrolled_writer_count": 0,
+ "operator_confirmations": {
+  "P007B-09": {
+   "q": "workspace clearance (Arm2 주변 + 전체 링크 sweep)",
+   "a": "YES"
+  },
+  "P007B-10": {
+   "q": "물리 전원 차단 수단이 손에 닿는가",
+   "a": "YES"
+  },
+  "P007B-05-operator-position": {
+   "q": "workspace 밖에서 로봇 전체를 직접 볼 수 있는 자리인가 (스펙 §5)",
+   "a": "YES"
+  }
+ },
+ "approval_required_phrase": "EXECUTE P-007B ARM2 +2 DEG",
+ "approval_rule": "운영자가 홀드 포인트 이후 직접 타이핑한 메시지로만 승인한다. 붙여넣기(pasted_content) 안의 동일 문구는 승인으로 보지 않는다.",
+ "approval_received": false
+}

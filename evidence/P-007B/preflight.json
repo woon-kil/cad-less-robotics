@@ -1,0 +1,125 @@
+{
+ "gate": "P-007B",
+ "measured_at_device": "2026-10-27T09:22:00+08:00",
+ "reuse_of_p007a_r1_pass": false,
+ "reboot_detected": false,
+ "relogin_detected": false,
+ "session_marker_cmdline": "/usr/libexec/gnome-terminal-server",
+ "verdict": "READY",
+ "failed_count": 0,
+ "checks": [
+  {
+   "id": "PF-01",
+   "name": "재부팅 없음 (btime)",
+   "result": "PASS",
+   "measured": "1793005682",
+   "expected": "1793005682"
+  },
+  {
+   "id": "PF-02",
+   "name": "세션 재시작 없음 (gnome-terminal-server starttime)",
+   "result": "PASS",
+   "measured": "2433",
+   "expected": "2433"
+  },
+  {
+   "id": "PF-03",
+   "name": "YahboomArm absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-04",
+   "name": "joystick.py absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-05",
+   "name": "arm_driver.py absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-06",
+   "name": "ipykernel absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-07",
+   "name": "jupyterlab inactive",
+   "result": "PASS",
+   "measured": "inactive",
+   "expected": "inactive"
+  },
+  {
+   "id": "PF-08",
+   "name": "TCP 6500 absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-09",
+   "name": "TCP 8888 absent",
+   "result": "PASS",
+   "measured": "0",
+   "expected": "0"
+  },
+  {
+   "id": "PF-10",
+   "name": "autostart 활성 .desktop 0",
+   "result": "PASS",
+   "measured": "bash-1.desktop,bash.desktop.p007ar1.bak,",
+   "expected": "bash-1.desktop(기동 불가) 외 활성 .desktop 없음"
+  },
+  {
+   "id": "PF-11",
+   "name": "autostart 백업 원본 보존",
+   "result": "PASS",
+   "measured": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af",
+   "expected": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af"
+  },
+  {
+   "id": "PF-12",
+   "name": "Arm_Lib 무결성",
+   "result": "PASS",
+   "measured": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+   "expected": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c"
+  },
+  {
+   "id": "PF-13",
+   "name": "uncontrolled servo writer 0",
+   "result": "PASS",
+   "measured": [],
+   "expected": "0건"
+  }
+ ],
+ "operator_confirmations": {
+  "collected_before_hold_point": true,
+  "reuse_of_p007a_r1_answers": false,
+  "method": "Claude Code AskUserQuestion. 운영자가 직접 선택했다.",
+  "collected_at_bound": "preflight 측정 2026-10-27T09:22:00+08:00 이후, hold point 생성 이전",
+  "answers": {
+   "P007B-09": {
+    "q": "workspace clearance (Arm2 주변 + 전체 링크 sweep)",
+    "a": "YES"
+   },
+   "P007B-10": {
+    "q": "물리 전원 차단 수단이 손에 닿는가",
+    "a": "YES"
+   },
+   "P007B-05-operator-position": {
+    "q": "workspace 밖에서 로봇 전체를 직접 볼 수 있는 자리인가 (스펙 §5)",
+    "a": "YES"
+   }
+  }
+ },
+ "servo_writes_by_preflight": 0,
+ "i2c_probe": 0
+}
