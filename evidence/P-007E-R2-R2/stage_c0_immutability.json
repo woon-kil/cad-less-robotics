@@ -1,0 +1,22 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0",
+ "prior_gates": {
+  "gates_checked": 12,
+  "command": "git diff --exit-code b576dbe HEAD -- <12 게이트>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_A_closed_@3579ab5": {
+  "command": "git diff --exit-code 3579ab5 -- <Stage A 12파일>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "stage_B_closed_@4d0c709": {
+  "command": "git diff --exit-code 4d0c709 -- <Stage B 14파일>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "🔴 policy": "Stage A/B 의 acceptance·command budget 을 C0 상태에 맞추려고 수정하지 않았다. C0 내용은 전부 신규 파일에 기록했다",
+ "source_images": "logs/b3_frame.png · logs/b3_frame_raw.mjpg — 읽기만 했다 (Stage B 커밋 이후 변경 0)"
+}

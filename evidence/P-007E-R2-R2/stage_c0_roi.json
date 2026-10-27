@@ -1,0 +1,193 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0 — preregistration",
+ "🔴 frozen_before": "Stage C1 sham 데이터를 보기 전에 고정한다. C1 결과가 나쁘다는 이유로 사후 변경하지 않는다. 변경이 필요하면 C1 을 INVALID 로 닫고 새 게이트에서 다시 preregister 한다",
+ "source_image": {
+  "path": "evidence/P-007E-R2-R2/logs/b3_frame.png",
+  "sha256_png": "2dea76b2cb7546c55fc3a5dd804ea3c88d3876a38dc05512f13fe8687fc86a9c",
+  "origin_raw": "evidence/P-007E-R2-R2/logs/b3_frame_raw.mjpg",
+  "sha256_raw_mjpg": "1d5091318b3d651b1bf89796764621554f471af14e8b6c47b90995b23c0165bc",
+  "dimensions": [
+   640,
+   480
+  ],
+  "provenance": "Stage B3 에서 `v4l2-ctl --stream-count=1` 로 얻은 단일 프레임. 🔴 원본 두 파일 모두 수정하지 않았다 (읽기만)",
+  "captured_at": "2026-10-27T21:07+08:00 (Jetson 시계)"
+ },
+ "coordinate_convention": "픽셀 좌표 [x0, y0, x1, y1], 원점 좌상단, x1/y1 배타적",
+ "include_regions": [
+  {
+   "name": "A_cabinet_left_face",
+   "rect": [
+    62,
+    215,
+    200,
+    295
+   ],
+   "why": "캐비닛 좌측 수직 모서리 + 전면. 강체 가구 구조"
+  },
+  {
+   "name": "B_cabinet_handle",
+   "rect": [
+    195,
+    240,
+    300,
+    315
+   ],
+   "why": "캐비닛 함몰 손잡이 사각형 — 2D 코너가 명확한 강체 구조"
+  },
+  {
+   "name": "C_cabinet_right_face",
+   "rect": [
+    330,
+    200,
+    424,
+    300
+   ],
+   "why": "캐비닛 우상단 코너 + 우측 수직 모서리"
+  }
+ ],
+ "exclude_regions": [
+  {
+   "name": "M1_cable_left",
+   "rect": [
+    0,
+    282,
+    205,
+    335
+   ],
+   "why": "흰 케이블 — 이동 가능"
+  },
+  {
+   "name": "M1_cable_mid",
+   "rect": [
+    195,
+    295,
+    335,
+    335
+   ],
+   "why": "흰 케이블 — 이동 가능"
+  },
+  {
+   "name": "M1_cable_right",
+   "rect": [
+    330,
+    252,
+    430,
+    300
+   ],
+   "why": "흰 케이블 — 이동 가능"
+  },
+  {
+   "name": "M2_lamp_pole",
+   "rect": [
+    283,
+    0,
+    337,
+    400
+   ],
+   "why": "책상 램프 기둥·받침 — 사람이 옮길 수 있는 물체"
+  },
+  {
+   "name": "M3_robot_candidate",
+   "rect": [
+    255,
+    425,
+    385,
+    480
+   ],
+   "why": "🔴 하단 중앙 어두운 덩어리 — 로봇 구조물일 수 있다. robot-attached pixel 은 반드시 mask"
+  },
+  {
+   "name": "M4_ceiling_light",
+   "rect": [
+    0,
+    0,
+    640,
+    48
+   ],
+   "why": "천장 조명 포화 영역"
+  },
+  {
+   "name": "M5_right_soft",
+   "rect": [
+    425,
+    0,
+    640,
+    480
+   ],
+   "why": "걸린 배낭·천 더미 — 변형/이동 가능"
+  },
+  {
+   "name": "M6_left_clutter",
+   "rect": [
+    0,
+    0,
+    64,
+    480
+   ],
+   "why": "좌측 선반 잡동사니·옷 — 이동 가능"
+  },
+  {
+   "name": "M7_table_and_base",
+   "rect": [
+    0,
+    368,
+    640,
+    480
+   ],
+   "why": "테이블 상면(저질감) + 램프 받침 + 로봇 가능 영역"
+  },
+  {
+   "name": "M8_object_on_top",
+   "rect": [
+    148,
+    138,
+    268,
+    228
+   ],
+   "why": "캐비닛 위 금속 물체 — 올려둔 물건, 이동 가능"
+  },
+  {
+   "name": "M9_paper_on_top",
+   "rect": [
+    52,
+    182,
+    170,
+    224
+   ],
+   "why": "캐비닛 위 종이 — 이동 가능"
+  },
+  {
+   "name": "M10_yellow_object",
+   "rect": [
+    238,
+    158,
+    302,
+    218
+   ],
+   "why": "노랑·초록 물체 — 이동 가능"
+  }
+ ],
+ "mask_statistics": {
+  "mask_pixels": 16704,
+  "mask_fraction_of_frame_pct": 5.44,
+  "orb_features_full_frame": 3000,
+  "orb_features_inside_mask": 449,
+  "overlay": "logs/c0_roi_overlay.png"
+ },
+ "selection_rationale": [
+  "포함한 것은 **캐비닛 강체 구조** 뿐이다 — 좌측 수직 모서리·전면·함몰 손잡이 사각형·우상단 코너·우측 수직 모서리",
+  "손잡이 사각형은 2D 코너를 주므로 조리개 문제(aperture problem)를 피한다. 긴 직선만으로는 선 방향 변위가 관측되지 않는다",
+  "세 영역이 화면 좌·중·우에 분산돼 있다 — 회전 ego-motion 은 중심에서 멀수록 변위가 크므로 수평 분산이 회전 추정에 유리하다",
+  "면적은 프레임의 5.44% 지만 ORB 특징 449개를 담는다. 넓은 저질감 영역을 넣는 것보다 강체 질감에 집중하는 쪽을 택했다"
+ ],
+ "exclusion_rationale": [
+  "🔴 robot-attached pixel 은 반드시 mask 한다 — eye-in-hand 에서 로봇에 붙은 특징은 ID2 회전 시 카메라와 함께 움직여 **화면상 정지로 보이고**, ID5·ID6 이 움직이면 **거짓 모션**을 만든다. 하단 중앙 어두운 덩어리는 로봇 구조물인지 테이블인지 갈리지 않았으므로 **넉넉히 배제**했다",
+  "케이블·천 더미·걸린 배낭·선반 잡동사니·캐비닛 위 물건(금속 물체·종이·노랑 물체)은 **이동/변형 가능**하다",
+  "책상 램프 기둥과 받침은 사람이 옮길 수 있는 물체다. 기둥이 캐비닛 전면을 세로로 가르므로 폭 넓게 배제했다",
+  "천장 조명 상단 띠는 포화(12.7%)되어 질감이 없다",
+  "테이블 상면은 저질감이고 램프 받침·로봇 가능 영역을 포함하므로 통째로 배제했다. 🔴 '고정 테이블 구조 모서리'는 허용 목록에 있지만, 그 모서리는 수평 직선 하나라 조리개 문제가 크고 램프 받침과 붙어 있어 취하지 않았다"
+ ],
+ "🔴 what_this_roi_is_not": "로봇의 절대 자세나 관절각을 재는 영역이 아니다. **카메라가 정지한 외부 장면에 대해 얼마나 움직였다고 보고하는가**(eye-in-hand visual ego-motion)를 재는 영역이다"
+}

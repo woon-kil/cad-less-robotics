@@ -1,0 +1,171 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C0 — Stationary Ego-Motion Qualification Preregistration",
+ "🔴 purpose": "Stage C1 sham 데이터를 **보기 전에** 측정 규칙을 tracked evidence 로 고정한다. C1 결과를 사후 튜닝할 수 없게 만드는 것이 이 단계의 성공 조건이다",
+ "base_commits": {"stage_A": "STATIC SAFETY AUDIT PASS / CLOSED @ 3579ab5",
+                  "stage_B": "PASSIVE UVC OBSERVATION FOV_PASS / CLOSED @ 4d0c709"},
+
+ "measurement_question": "로봇이 전혀 움직이지 않을 때, Arm4 에 고정된 DaBai 가 정적인 외부 장면을 **얼마나 움직였다고 잘못 측정하는가**",
+ "observation_channel_name": "independent physical-motion evidence via eye-in-hand visual ego-motion",
+ "🔴 forbidden_names": ["absolute robot pose", "absolute joint angle", "external robot observer",
+                        "controller-reported position", "independent external observer",
+                        "independent robot pose measurement"],
+
+ "🔴 K_M_Nsham_semantics": {
+  "source_of_truth": "docs/261027-1914-P-007E-R2-독립물리관측-설계-플랜.md §D4 의 상수표 (선행 설계). 작업의뢰서 §10 은 **예시**로 다른 의미를 들었으나, 같은 조항이 '기존 설계가 있으면 그것을 우선한다'고 했으므로 선행 정의를 따른다",
+  "🔴 ambiguity_resolved_here": "작업의뢰서 §10 예시는 `K = 한 window 를 대표하는 frame 수` 였다. 선행 설계에서 K 는 **임계 배수**이고 window 길이는 M 이다. 이 문서는 선행 정의를 채택하고 그 사실을 명시 기록한다",
+  "K": {"value": 5, "meaning": "🔴 **임계 배수(sigma multiplier)**. 선행 설계: `최소 검출 변위 = K × SD(창평균차이)` — 축별",
+        "quote": "docs 플랜 §D4: `| K | 5 |` · `| 최소 검출 변위 | K × SD(창평균차이) — 축별 |`"},
+  "M": {"value": 60, "meaning": "**한 window 를 이루는 보존 프레임 수**. 선행 설계: `M = 60 프레임 (4 Hz → 약 15 s)`",
+        "realization_in_path_B": "🔴 경로 B 는 UVC 직접 읽기다. 프레임레이트를 **장치에 쓰지 않는다**(control write 금지). 대신 스트림을 돌리며 **목표 간격 0.25 s 마다 1장씩 retain**(grab 반복 + 주기적 retrieve)해 60장을 모은다 → window ≈ 15 s. 실현된 간격은 프레임별 host epoch 로 기록하고 사후 보고한다"},
+  "N_sham": {"value": 10, "meaning": "motion command 없이 반복하는 sham trial 수"}
+ },
+
+ "trial_protocol": {
+  "🔴 sham_definition": "future physical-motion measurement 와 **동일한 camera acquisition / window selection / feature extraction / transform estimation** 절차를 수행하되 robot motion command 만 없는 trial. 연속 두 프레임의 optical noise 측정으로 축소하지 않는다",
+  "sequence_per_trial": [
+   "1. reference(pre) window — M=60 프레임, 목표 간격 0.25 s (≈15 s)",
+   "2. host-control quiet interval 60 ms (P-007E-R1 harness 와 동일한 시간 구조. 🔴 sham 에서는 어떤 I/O 도 하지 않는다)",
+   "3. command slot 2000 ms — 🔴 **write 없음**. 미래 motion trial 의 `Arm_serial_servo_write(2, X, 2000)` 소요시간을 시간축에서 그대로 비워 둔다",
+   "4. settle 1000 ms",
+   "5. comparison(post) window — M=60 프레임, 목표 간격 0.25 s (≈15 s)"],
+  "inter_trial_gap_s": 2.0,
+  "N_trials": 10,
+  "estimated_wall_clock": "trial 당 약 33 s → 10 trial 약 5.5 분 + 오버헤드",
+  "🔴 known_delta_vs_future_motion_trial": [
+   "미래 motion trial 은 controller 측에서 baseline servo read 와 post read 를 수행한다. **sham 은 그것을 하지 않는다** — R2 승인 범위가 `servo readback 반복 수집 금지`이기 때문이다 (command budget servo_reads = 0)",
+   "따라서 sham 은 **카메라 측 프로토콜의 완전한 거울**이고, 컨트롤러 측 단계는 의도적으로 빠져 있다. 이 차이를 숨기지 않고 기록한다",
+   "결과적으로 sham 은 I2C 트랜잭션이 유발하는 호스트 부하·타이밍 효과를 포함하지 않는다"]
+ },
+
+ "capture_mechanism": {
+  "device": "/dev/video0 (Stage B2 에서 Video Capture 노드로 확정. /dev/video1 은 Metadata 전용)",
+  "api": "cv2.VideoCapture(0, cv2.CAP_V4L2) — grab() 반복 + 목표 간격마다 retrieve()",
+  "🔴 no_control_writes": "CAP_PROP_EXPOSURE / AUTO_EXPOSURE / AUTO_WB / FPS / FRAME_WIDTH / FRAME_HEIGHT 등 **어떤 CAP_PROP 도 set 하지 않는다**",
+  "🔴 format_audit": "캡처 전후 `v4l2-ctl --device=/dev/video0 --get-fmt-video` 를 기록한다. cv2 가 내부적으로 S_FMT 를 호출해 포맷이 바뀌면 **그 사실이 로그에 남는다**. 숨기지 않는다",
+  "no_recorder": "프레임을 전량 저장하지 않는다. 프레임별 추정 결과(행)만 저장하고, 감사용으로 각 window 의 **첫 프레임 1장씩**만 JPEG 로 남긴다 (trial 당 2장, 총 20장)",
+  "ros": "사용하지 않는다 — ROS 그래프 미생성"
+ },
+
+ "algorithm": {
+  "🔴 fixed_single_choice": "ORB + BFMatcher(NORM_HAMMING, crossCheck=True) + cv2.estimateAffinePartial2D(RANSAC). 🔴 여러 알고리즘을 C1 결과를 보고 고르는 구조를 만들지 않는다",
+  "why_ORB": "비특허·OpenCV 기본 포함. Jetson 의 cv2 4.10.0 에서 즉시 사용 가능(= C1 harness 가 실제로 쓸 바로 그 버전에서 C0 검증을 했다). SIFT/SURF 는 가용성·라이선스 변동 위험이 있어 쓰지 않는다",
+  "orb_parameters": {"nfeatures": 3000, "scaleFactor": 1.2, "nlevels": 8, "fastThreshold": 12},
+  "matching": "crossCheck=True 상호 최근접. 🔴 ratio test 와 crossCheck 를 둘 다 쓰지 않는다 — 둘을 섞으면 임계가 둘이 되어 사후 조정 여지가 생긴다",
+  "mask": "stage_c0_roi.json 의 include − exclude 로 만든 이진 마스크. 🔴 detectAndCompute 단계에서 적용한다",
+  "🔴 not_used_as_measurement": "단순 corner count 는 motion measurement 로 쓰지 않는다. 측정량은 RANSAC robust transform 의 파라미터다"
+ },
+
+ "transform_model": {
+  "🔴 fixed_choice": "2D partial affine (4 DOF: 회전 1 + 균일 스케일 1 + 평행이동 2) — cv2.estimateAffinePartial2D",
+  "ransac": {"method": "cv2.RANSAC", "ransacReprojThreshold_px": 1.5, "maxIters": 5000, "confidence": 0.995},
+  "why_not_homography": "homography 는 8 DOF 다. 작은 ego-motion 에서는 자유도가 남아 **노이즈를 모델 파라미터로 흡수**해 평행이동 추정을 불안정하게 만든다. 자동 선택도 하지 않는다",
+  "why_not_full_affine": "6 DOF 는 shear 를 허용한다. 강체 카메라 회전·병진에 shear 자유도를 주면 역시 노이즈를 흡수한다",
+  "🔴 interpretation_limit": "장면은 깊이가 있는 3D 다. 어떤 2D 모델도 물리적으로 정확하지 않다. partial affine 파라미터는 **영상 변화의 강건 요약 통계**이지 카메라 pose 가 아니다",
+  "outputs_per_frame_pair": ["translation_x_px", "translation_y_px", "translation_norm_px", "rotation_deg",
+                             "scale", "n_features_a", "n_features_b", "n_matches", "inlier_count",
+                             "inlier_ratio", "residual_rms_inliers_px", "residual_median_inliers_px"]
+ },
+
+ "window_estimator": {
+  "🔴 fixed_choice": "component-wise **median**",
+  "anchor": "각 trial 의 reference window 첫 보존 프레임을 anchor 로 고정한다",
+  "per_frame": "모든 보존 프레임 f 에 대해 T(anchor → f) 를 추정한다 (양쪽 window 공통)",
+  "window_representative": "그 window 의 유효 프레임들에 대한 (tx, ty, rot) 의 **성분별 median**",
+  "trial_measurement": "Δ = representative(comparison) − representative(reference), 성분별. Δ_norm = hypot(Δtx, Δty)",
+  "why_median": "자동노출·자동WB 가 켜져 있어 이상치 프레임이 생길 수 있다. 평균은 이상치에 끌린다. 🔴 C1 결과를 보고 estimator 를 바꾸지 않는다"
+ },
+
+ "frame_quality_guards": {
+  "🔴 derivation": "Stage B 프레임 1장에 대한 C0 오프라인 분석과 합성 변환 시험에서 나온 수치에 **여유를 두고** 정했다. 합성 시험에는 센서 노이즈가 없으므로 실제 프레임은 더 나쁠 것을 전제로 **느슨하게** 잡았다. 가드의 목적은 감도 정의가 아니라 **총체적 실패 검출**이다",
+  "min_features_per_frame_in_roi": {"value": 150, "basis": "기준 프레임 ROI 449개, 합성 시험 최소 343개"},
+  "min_matches": {"value": 60, "basis": "합성 시험 최소 253"},
+  "min_inliers": {"value": 40, "basis": "합성 시험 최소 183. estimateAffinePartial2D 의 수학적 최소는 2 점이지만 통계적 안정성을 위해 크게 잡는다"},
+  "min_inlier_ratio": {"value": 0.50, "basis": "합성 시험 최소 0.696"},
+  "max_residual_rms_inliers_px": {"value": 1.50, "basis": "합성 시험 최대 0.734. RANSAC reprojection threshold 와 같은 값으로 고정"},
+  "max_scale_deviation": {"value": 0.05, "basis": "합성 시험 scale 범위 0.9983~1.0008. |scale − 1| 가 이를 넘으면 총체적 실패로 본다"},
+  "🔴 frozen": "C1 sham 결과를 보고 조정하지 않는다"
+ },
+
+ "noise_metrics_to_produce": [
+  "Δtx · Δty · Δ_norm · Δrot 각각: median, robust SD(1.4826×MAD), min, max, 전체 10 trial 값 목록",
+  "inlier_count 분포 · inlier_ratio 분포 · residual_rms 분포 (프레임 단위 pooled)",
+  "feature dropout rate — window 당 가드 탈락 프레임 비율, 전체 median",
+  "trial invalid rate",
+  "false-positive count (아래 LOO 정의)",
+  "window 당 ROI 평균 밝기와 그 변화량 (광도 지배 판정용)",
+  "프레임별 host epoch 과 실현 간격 통계"
+ ],
+
+ "🔴 threshold_construction_rule": {
+  "form": "threshold = preregistered_function(sham_statistics) — 숫자는 sham 통계로 계산하되 **공식은 지금 고정한다**",
+  "robust_sd": "σ_rob(x) = 1.4826 × median(|x − median(x)|)",
+  "sigma_floor": {"translation_px": 0.70, "rotation_deg": 0.060,
+   "basis": "🔴 C0 합성 단위시험에서 관측된 **알고리즘 회수 오차의 최댓값**(평행이동 0.703 px, 회전 0.0601°). 센서 노이즈 floor 가 아니라 **추정기 자체의 바닥**이다. sham 의 σ_rob 가 이보다 작게 나오면 그것은 추정기 분해능 아래이므로 floor 를 쓴다",
+   "formula": "σ_eff = max(σ_rob, σ_floor)"},
+  "translation_threshold": "thr_tx = K × σ_eff(Δtx) · thr_ty = K × σ_eff(Δty) · thr_norm = K × sqrt(σ_eff(Δtx)² + σ_eff(Δty)²)   (K = 5)",
+  "rotation_threshold": "thr_rot = K × σ_eff(Δrot)   (K = 5)",
+  "minimum_detectable_displacement": "= thr_norm (px). 🔴 축별로도 thr_tx · thr_ty 를 함께 보고한다",
+  "🔴 forbidden": ["sham 결과를 보고 multiplier 선택", "결과가 좋아 보이는 percentile 선택",
+                   "~21 px prediction 에 맞춘 threshold 조정", "σ_floor 사후 변경"]
+ },
+
+ "🔴 detection_and_validity_definitions": {
+  "frame_dropout": "한 프레임의 T(anchor→f) 추정이 frame_quality_guards 중 하나라도 위반 → 그 프레임은 **dropout**. window median 계산에서 제외한다",
+  "window_validity": "한 window 의 유효 프레임이 48장(=0.8 × M) 미만이면 그 window 는 무효",
+  "trial_INVALID": "① 어느 window 라도 무효 ② 캡처 실패·장치 점유 실패 ③ 캡처 전후 포맷이 바뀐 채 되돌릴 수 없는 경우 ④ 프로토콜·가드 위반(예: 예상 밖 프로세스 출현)",
+  "trial_DETECTED": "trial 이 유효하고 (Δ_norm > thr_norm) 또는 (|Δrot| > thr_rot)",
+  "trial_NOT_DETECTED": "trial 이 유효하고 둘 다 넘지 않음",
+  "🔴 false_positive": "C1 은 robot motion = 0 이므로 **DETECTED 인 유효 trial 은 전부 false positive** 다",
+  "🔴 leave_one_out": "FP 를 셀 때는 자기 자신이 임계에 기여하는 순환을 피하기 위해 **trial i 의 임계를 나머지 9 trial 로 계산**한다(동일 공식). 공표용 임계는 10 trial 전체로 계산한 값이다",
+  "distinctions": {"false positive": "유효 trial 이 임계를 넘은 것",
+                   "dropout": "프레임 단위 가드 탈락 — trial 실패가 아니다",
+                   "invalid trial": "window·캡처·프로토콜 수준의 실패 — 검출 판정 자체를 하지 않는다"}
+ },
+
+ "🔴 result_vocabulary": {
+  "precedence": "X > Q3 > Q4 > Q2 > Q1 — 먼저 성립하는 코드를 채택한다",
+  "X — OBSERVATION INVALID": "invalid trial ≥ 2/10, 또는 안전·가드 위반, 또는 캡처 자체 실패",
+  "Q3 — EXCESSIVE FEATURE DROPOUT": "window dropout rate 의 median ≥ 10%, 또는 dropout > 20% 인 window 를 가진 trial ≥ 2",
+  "Q4 — PHOTOMETRIC INSTABILITY DOMINANT": "프레임 단위로 (ROI 평균 밝기의 anchor 대비 변화량) 과 (translation_norm) 의 Spearman |ρ| ≥ 0.7",
+  "Q2 — OBSERVATION CHANNEL NOT SENSITIVE/STABLE ENOUGH": "leave-one-out false positive ≥ 2/10",
+  "Q1 — OBSERVATION CHANNEL QUALIFIED": "invalid ≤ 1/10 **그리고** Q3 조건 불성립 **그리고** Q4 조건 불성립 **그리고** LOO false positive ≤ 1/10",
+  "🔴 frozen": "C1 결과를 본 뒤 새로운 성공 판정을 만들지 않는다. 세부 진단 코드는 추가할 수 있으나 **성공 판정은 Q1 하나뿐**이다"
+ },
+
+ "camera_controls": {
+  "measured_in_stage_B": {"auto_exposure": "Aperture Priority (ON)", "white_balance_automatic": "ON",
+                          "exposure_dynamic_framerate": "ON", "power_line_frequency": "50 Hz",
+                          "brightness": 30, "contrast": 50},
+  "🔴 c0_action": "변경하지 않았다",
+  "🔴 c1_policy": "첫 baseline 은 **현재 상태 그대로** 측정한다. 이 상태에서 qualification 이 실패한 경우에만 후속 별도 게이트에서 camera-control stabilization 을 검토한다",
+  "note": "50 Hz 설정은 국내 상용 60 Hz 와 불일치한다. 이것이 Q4 를 유발하면 그 자체가 후속 게이트의 근거가 된다"
+ },
+
+ "🔴 prediction_status": {
+  "value": "~21 px (ID2 2° 기준 ego-motion)",
+  "status": "PREDICTION ONLY — fx≈600 가정, DaBai 실측 intrinsics 아님",
+  "rule": "C0 의 ROI·알고리즘·가드·임계 중 **어느 것도 이 예측에 맞춰 정하지 않았다**. C1 의 목적은 먼저 독립적인 noise floor 를 얻는 것이다"
+ },
+
+ "🔴 pixel_to_mm": "C0/C1 의 primary measurement 는 **pixel domain** 이다. DaBai 실측 intrinsics 와 장면 geometry 가 없으므로 px → mm 변환을 하지 않는다",
+
+ "🔴 terminology_update_from_stage_B": {
+  "old": "I2C BUS QUIET INTERVAL / bus was silent",
+  "new": "HOST-CONTROL QUIET INTERVAL",
+  "why": "`yahboom_oled` 가 /dev/i2c-7 에 0x3C 를 향한 트랜잭션을 주기적으로 시도한다(NON-SERVO I2C CLIENT). 50 ms 구간이 보장하는 것은 **우리 프로세스가 버스를 건드리지 않았다**는 것뿐이다",
+  "🔴 not_promoted": "이 사실을 P-007B 또는 P-007E-R1 의 **원인으로 승격하지 않는다**. 시간적 간섭은 아직 측정되지 않았다"
+ },
+
+ "c1_harness_policy": {
+  "script": "scripts/p007e_r2r2_c1_sham.py",
+  "default": "🔴 NO CAMERA START / NO CAPTURE — 기본 실행은 사전등록 로드와 자기검사만 하고 종료한다",
+  "opt_in": "환경변수 `P007E_R2R2_C1_ALLOW_CAPTURE=1` **그리고** `--run-sham` 플래그가 **둘 다** 있어야 캡처 경로에 진입한다",
+  "self_checks": ["자기 소스 AST 검사 — Arm_Lib · smbus · smbus2 · rclpy · rospy import 0",
+                  "`/dev/i2c` 문자열 참조 0",
+                  "사전등록 파일 sha256 대조 — 이 문서가 바뀌면 harness 가 멈춘다",
+                  "모션 가능 프로세스 0 확인 (ps 기반)",
+                  "/dev/video0 점유 프로세스 0 확인"],
+  "offline_mode": "`--selftest` 는 카메라 없이 Stage B 프레임으로 합성 단위시험만 수행한다"
+ }
+}

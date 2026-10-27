@@ -1,0 +1,225 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1",
+ "argv": [
+  "--selftest",
+  "--out",
+  "/tmp/p007e_c0h/selftest.json"
+ ],
+ "self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "cv2",
+   "hashlib",
+   "json",
+   "numpy",
+   "os",
+   "subprocess",
+   "sys",
+   "time"
+  ],
+  "forbidden_imports_found": [],
+  "i2c_string_refs": [],
+  "pass": true
+ },
+ "preregistration": {
+  "path": "evidence/P-007E-R2-R2/stage_c0_preregistration.json",
+  "expected_sha256": "048c905488bc9fa1b6b49686cb05ae31c7c9d6cf48b2ea5417d66c52a632502f",
+  "actual_sha256": "048c905488bc9fa1b6b49686cb05ae31c7c9d6cf48b2ea5417d66c52a632502f",
+  "match": true
+ },
+ "roi_sha256": "b90e2d346b65f8fbd9ddab5ca987e0da813f3d82c968079f8712c3ed73eb357f",
+ "capture_opt_in": {
+  "env_P007E_R2R2_C1_ALLOW_CAPTURE": "0",
+  "flag_run_sham": false,
+  "granted": false
+ },
+ "unit_validation": {
+  "kind": "ALGORITHM UNIT VALIDATION",
+  "🔴 not_physical_evidence": "합성 2D 변환이다. 실제 DaBai 감도 증거가 아니다.",
+  "rows": [
+   {
+    "applied": {
+     "dx": 0.5,
+     "dy": 0,
+     "rot_deg_input": 0
+    },
+    "expected": {
+     "tx": 0.5,
+     "ty": 0.0,
+     "rot_deg": -0.0
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 393,
+     "n_matches": 334,
+     "translation_x_px": 0.3237581194405478,
+     "translation_y_px": 0.02492846988667891,
+     "translation_norm_px": 0.32471641245026567,
+     "rotation_deg": -0.002901183057506326,
+     "scale": 0.9999705600317812,
+     "inlier_count": 302,
+     "inlier_ratio": 0.9041916167664671,
+     "residual_rms_inliers_px": 0.5585408418157216,
+     "residual_median_inliers_px": 0.3329178927552915,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.17799614904267813,
+    "err_rot_deg": -0.002901183057506326
+   },
+   {
+    "applied": {
+     "dx": 2,
+     "dy": 0,
+     "rot_deg_input": 0
+    },
+    "expected": {
+     "tx": 2.0,
+     "ty": 0.0,
+     "rot_deg": -0.0
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 446,
+     "n_matches": 392,
+     "translation_x_px": 2.189048032067214,
+     "translation_y_px": 0.04934401756729738,
+     "translation_norm_px": 2.1896041009203064,
+     "rotation_deg": 0.006304808711242503,
+     "scale": 0.9996691293271858,
+     "inlier_count": 359,
+     "inlier_ratio": 0.9158163265306123,
+     "residual_rms_inliers_px": 0.42075884053186496,
+     "residual_median_inliers_px": 0.13622635433300792,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.19538165343288524,
+    "err_rot_deg": 0.006304808711242503
+   },
+   {
+    "applied": {
+     "dx": 0,
+     "dy": 2,
+     "rot_deg_input": 0
+    },
+    "expected": {
+     "tx": 0.0,
+     "ty": 2.0,
+     "rot_deg": -0.0
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 468,
+     "n_matches": 350,
+     "translation_x_px": 0.0022719005976852722,
+     "translation_y_px": 2.0573690303255883,
+     "translation_norm_px": 2.0573702847263973,
+     "rotation_deg": 0.0023125882142171917,
+     "scale": 1.000015437401801,
+     "inlier_count": 290,
+     "inlier_ratio": 0.8285714285714286,
+     "residual_rms_inliers_px": 0.4468310962804998,
+     "residual_median_inliers_px": 0.07499494710742952,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.05741399805643244,
+    "err_rot_deg": 0.0023125882142171917
+   },
+   {
+    "applied": {
+     "dx": 0,
+     "dy": 0,
+     "rot_deg_input": 0.1
+    },
+    "expected": {
+     "tx": -0.4183914200676558,
+     "ty": 0.5588706178984125,
+     "rot_deg": -0.1
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 373,
+     "n_matches": 322,
+     "translation_x_px": -0.005810439239616001,
+     "translation_y_px": 0.33810479340696475,
+     "translation_norm_px": 0.33815471685150805,
+     "rotation_deg": -0.03992697558891299,
+     "scale": 0.999537699362209,
+     "inlier_count": 284,
+     "inlier_ratio": 0.8819875776397516,
+     "residual_rms_inliers_px": 0.46397984861352737,
+     "residual_median_inliers_px": 0.09413338159335174,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.4679322760874869,
+    "err_rot_deg": 0.060073024411087014
+   },
+   {
+    "applied": {
+     "dx": 0,
+     "dy": 0,
+     "rot_deg_input": 1.0
+    },
+    "expected": {
+     "tx": -4.139839994993249,
+     "ty": 5.6213232223968195,
+     "rot_deg": -1.0
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 371,
+     "n_matches": 272,
+     "translation_x_px": -4.246644738402942,
+     "translation_y_px": 5.697928551344353,
+     "translation_norm_px": 7.1063620306335755,
+     "rotation_deg": -1.0123882977743954,
+     "scale": 1.0001080826573037,
+     "inlier_count": 214,
+     "inlier_ratio": 0.7867647058823529,
+     "residual_rms_inliers_px": 0.7296031629556122,
+     "residual_median_inliers_px": 0.5834810932922794,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.13143678951484736,
+    "err_rot_deg": -0.01238829777439543
+   },
+   {
+    "applied": {
+     "dx": 3,
+     "dy": -2,
+     "rot_deg_input": 0.3
+    },
+    "expected": {
+     "tx": 1.7477551612827427,
+     "ty": -0.3212017133281533,
+     "rot_deg": -0.3
+    },
+    "result": {
+     "n_features_a": 449,
+     "n_features_b": 343,
+     "n_matches": 253,
+     "translation_x_px": 1.9401174367718987,
+     "translation_y_px": -0.29405295034517476,
+     "translation_norm_px": 1.9622749058358424,
+     "rotation_deg": -0.2848827622476761,
+     "scale": 0.9998342015393809,
+     "inlier_count": 183,
+     "inlier_ratio": 0.7233201581027668,
+     "residual_rms_inliers_px": 0.7336436700514545,
+     "residual_median_inliers_px": 0.591191332712378,
+     "valid": true,
+     "reason": null
+    },
+    "err_trans_norm": 0.19426862938434483,
+    "err_rot_deg": 0.015117237752323875
+   }
+  ]
+ },
+ "stop": "SELFTEST_ONLY — 카메라 0"
+}
