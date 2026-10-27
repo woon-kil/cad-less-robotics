@@ -1,0 +1,25 @@
+{
+ "gate": "P-007E-R1",
+ "phase": "B — 운영자 물리 관찰",
+ "🔴 realtime_observation": "UNOBSERVED / OPERATOR_ABSENT",
+ "realtime_detail": "운영자는 명령 송신 시각(2026-10-27T17:49:06+0800)에 로봇 앞에 없었다. 따라서 실시간 motion·buzz·vibration·타관절 관찰값은 **존재하지 않는다**. 최초 설문에 입력된 '확신하지 못하겠다'·'모름'·'없었다' 는 관찰이 아니므로 증거로 쓰지 않는다",
+ "🔴 substituted_method": "POST_HOC_PHOTO_COMPARISON",
+ "post_hoc": {
+  "procedure": "팔을 건드리지 않은 상태에서, 명령 전 캡처한 자세 증거(사진)와 현재 Arm2 자세를 비교",
+  "operator_verdict": "WITHDRAWN (사진으로 5 mm 판별 불가)",
+  "motion": "UNOBSERVED",
+  "expected_displacement_mm": 5.47,
+  "basis": "evidence/P-007E/fk_clearance.json linearity_check.p007b_plus2deg_mm",
+  "🔴 evidence_strength": "실시간 육안 관찰보다 **약하다**. 약 5.5 mm 는 사후 사진 대비의 판별 한계에 가깝다. `NO MOTION` 은 `OPERATOR_REPORTED_POST_HOC` 수준이고 `VERIFIED` 가 아니다"
+ },
+ "other_joints": "UNOBSERVED (실시간 부재). post-read 상 ID1·3·4·5·6 값은 명령 전과 동일",
+ "buzz_noise": "UNOBSERVED",
+ "vibration_contact": "UNOBSERVED",
+ "abnormal_event": "보고 없음. 다만 실시간 부재이므로 '이상 없음'을 관찰 증거로 승격하지 않는다",
+ "operator_preconditions_at_command_time": {
+  "declared_before_command": "4조건 전부 YES 로 응답",
+  "🔴 actual": "④ 'operator is watching Arm2' 는 **충족되지 않았다**. 명령 후 운영자가 자리 부재를 밝혔다",
+  "consequence": "명령 자체는 승인 범위대로 1회 집행됐으나, 이 게이트의 1차 관찰 설계는 불성립"
+ },
+ "🔴 post_hoc_withdrawn": "운영자 추가 발언 '사진으로 5mm정도는 판단불가' — POST_HOC_PHOTO_COMPARISON 의 '같다 — 움직임 없다' 응답을 **철회**한다. motion 은 UNOBSERVED 로 확정한다"
+}

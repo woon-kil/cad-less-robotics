@@ -1,0 +1,66 @@
+{
+ "gate": "P-007E-R1",
+ "phase": "B — 판정 규칙 (🔴 명령 **전에** 고정. 실행 후 수정하지 않는다)",
+ "fixed_at": "명령 송신 이전",
+ "approved_command": {
+  "api": "Arm_serial_servo_write",
+  "call": "Arm_serial_servo_write(2, 152, 2000)",
+  "budget": 1,
+  "retry": "금지",
+  "auto_return": "금지",
+  "plus5": "금지 — target 은 반드시 152",
+  "forbidden": ["torque", "RGB", "Button_Mode", "Action_Mode", "reset", "power-cycle"]
+ },
+ "operator_preconditions": {
+  "required_all_yes": ["workspace clear = YES",
+                       "current posture evidence = CAPTURED",
+                       "physical power cutoff = IMMEDIATELY REACHABLE",
+                       "operator is watching Arm2 at command time"],
+  "on_any_no": "PRE_COMMAND_SAFETY_ABORT · servo_writes = 0 · 종료"
+ },
+ "observation_order": "🔴 물리 관찰 먼저. write 직후 readback 으로 판단하지 않는다. 운영자 기록(motion YES/NO · 방향 · 다른 관절 · buzz/noise · vibration/contact) 확정 후 settling 을 두고 post-read",
+ "post_read": {
+  "script": "scripts/p007e_r1_postread.py",
+  "sha256": "ad7dca94750bf158cdd7471494aec656543ba9aa1f13de89e621206aaafb2e7c",
+  "read_only_static_check": "arm.* 호출은 Arm_serial_servo_read 1종뿐 · write/torque/RGB/Button/Action 매치 0",
+  "spacing_ms": 20.0,
+  "rounds": 5,
+  "🔴 why_new_script": "기존 scripts/p007e_phase2_readback.py 는 한 라운드 안에서 ID1~6 을 간격 없이 읽는다. ced8f52 실측상 0~8ms 간격은 None ~50%. 그 스크립트는 Phase B 에 쓰지 않는다"
+ },
+ "readback_change_criterion": {
+  "subject": "ID2",
+  "changed": "None 이 아닌 ID2 값 중 하나라도 150 이 아니면 CHANGE",
+  "no_change": "None 이 아닌 ID2 값이 전부 150 이면 NO CHANGE",
+  "unknown": "ID2 가 전 라운드 None 이면 READBACK UNKNOWN — 판정 보류",
+  "152_match": "ID2 == 152 여부는 **별도 기록**. CHANGE 판정 기준 자체는 '150 이 아님'이다",
+  "🔴 no_extra_reads": "값을 얻으려고 규정 라운드를 넘겨 추가로 읽지 않는다"
+ },
+ "result_codes": {
+  "A": "MOTION + READBACK CHANGE → TIMING HYPOTHESIS STRONGLY SUPPORTED",
+  "B": "MOTION + NO READBACK CHANGE",
+  "C": "NO MOTION + READBACK CHANGE",
+  "D": "NO MOTION + NO READBACK CHANGE → TIMING HYPOTHESIS NOT SUPPORTED BY CONTROLLED RETEST",
+  "E": "ABNORMAL — 예상 밖 큰 움직임 · 다른 joint motion · buzz 이상. 해석하지 않고 종료, 필요 시 물리 전원 차단"
+ },
+ "🔴 no_promotion": "A 가 나와도 ROOT CAUSE VERIFIED 로 승격하지 않는다. P-007B 의 실제 read→write wall-clock interval 이 측정되지 않았다",
+ "transport_fault_mapping": {
+  "trigger": "write 호출에서 exception 발생 또는 라이브러리 stdout 에 'I2C error'",
+  "verdict": "E / TRANSPORT_FAULT",
+  "reason": "명령이 보드에 전달됐다는 보장이 없으므로 깨끗한 D 로 읽지 않는다",
+  "action": "A~D 어느 코드도 부여하지 않는다"
+ },
+ "harness_abort_mapping": {
+  "codes": ["PRE_COMMAND_BASELINE_ABORT", "HARNESS_TIMING_ABORT", "DISK_SHA_MISMATCH",
+            "EGG_SHA_MISMATCH", "EXCLUSIVE_CONTROL_LOST", "RUNTIME_MODULE_NOT_EGG",
+            "DUNDER_BUS_SIDE_EFFECT"],
+  "action": "servo_writes = 0 으로 raw 를 기록하고 **STOP**. 같은 실행을 재호출하지 않는다"
+ },
+ "expected_displacement": {
+  "source": "evidence/P-007E/fk_clearance.json (linearity_check.p007b_plus2deg_mm)",
+  "tcp_mm_at_plus2deg": 5.47,
+  "model_direction": "그리퍼 끝이 위(+z) · 베이스 쪽(-y) — 테이블에서 멀어지는 방향",
+  "🔴 direction_grading": "P-006A 실물 정합이 미해결이므로 방향은 **보고만 하고 채점하지 않는다**",
+  "duration": "2000 ms 에 걸쳐 천천히 — 약 5 mm 는 놓치기 쉬운 크기다"
+ },
+ "stop_after": "🔴 A/B/C/D/E 판정과 raw evidence 까지만 남긴다. 다음 게이트를 열거나 원인에 맞춰 코드를 수정하지 않는다"
+}

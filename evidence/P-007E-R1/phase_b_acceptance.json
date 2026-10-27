@@ -1,0 +1,101 @@
+{
+ "gate": "P-007E-R1",
+ "title": "Timing-Controlled Servo Command Experiment",
+ "phase": "B — 승인된 단일 모션 명령 집행",
+ "base_commit": "84fe456",
+ "approved_by": "검수 세션 — EXECUTE P-007E-R1 PHASE-B / ARM2 150° → 152° / +2° / 2000 ms / >=50 ms QUIET INTERVAL / ONE COMMAND ONLY",
+
+ "🔴 protocol_deviations": {
+  "note": "검수자가 다음 방향을 정하는 데 직접 필요하므로 최상단에 둔다",
+  "d1_precondition_false": "운영자가 명령 **전에** 4조건을 '전부 YES'(④ operator is watching Arm2 포함)로 응답했으나, 명령 후 **자리에 없었다**고 밝혔다. ④는 실제로 충족되지 않았다. 같은 버튼 하나로 묻는 설계 때문에 ②(자세 증거 CAPTURED)도 액면가로 신뢰할 수 없다",
+  "d2_observation_order_reversed": "사전 고정 규칙은 '물리 관찰 먼저, readback 나중'이었다. 실제로는 readback(17:51:39)이 물리 비교보다 **먼저** 수행됐다 — 실시간 관찰이 이미 불성립이어서 상태를 먼저 고정했다",
+  "d3_operator_not_blinded": "운영자는 readback 152 결과와 '다르다→A / 같다→C' 매핑을 **들은 뒤에** 사후 비교를 했다. 비맹검이다",
+  "d4_substitute_method_not_preregistered": "대체 관찰(POST_HOC_PHOTO_COMPARISON)은 사전 등록되지 않았고 5.5 mm 판별 감도도 검증되지 않았다",
+  "d5_substitute_method_withdrawn": "🔴 운영자가 이후 '사진으로 5mm 정도는 판단불가'라고 명시했다. 사후 비교의 'NO MOTION' 응답은 **철회**한다. motion 은 UNOBSERVED 다"
+ },
+
+ "harness": {
+  "script": "scripts/p007e_r1_timing_controlled.py",
+  "sha256": "27cefc1c560fbf2a1686fd1fac322ce0042f28a525203b9f5109cbbb3aab3fb5",
+  "unchanged_from_phase_a": true,
+  "opt_in": "P007E_R1_ALLOW_SERVO_WRITE=1"
+ },
+ "pre_command_guards_passed": [
+  "disk sha256 + __init__/__del__ 버스 부작용 0",
+  "배타적 제어 · autostart · jupyterlab 확인",
+  "런타임 egg sha256 일치",
+  "baseline == [86, 150, 0, 18, 93, 178] · ID2 == 150",
+  "HARD GUARD 통과 — quiet_interval 60.099 ms >= 50.0 ms"
+ ],
+ "command": {
+  "api": "Arm_serial_servo_write",
+  "call": "Arm_serial_servo_write(2, 152, 2000)",
+  "commanded_at": "2026-10-27T17:49:06+0800",
+  "quiet_interval_ms": 60.099,
+  "exception": null,
+  "i2c_error_printed": false,
+  "library_stdout": "",
+  "elapsed_s": 0.000645,
+  "retry": 0,
+  "automatic_return": false,
+  "second_command": 0
+ },
+ "counts": {
+  "servo_writes": 1, "motion_capable_commands": 1, "bus_write_attempted": true,
+  "torque_writes": 0, "rgb_writes": 0, "raw_i2c_writes": 0,
+  "budget": 1, "budget_respected": true
+ },
+
+ "readback": {
+  "tool": "scripts/p007e_r1_postread.py (읽기 전용 · 모든 read 사이 20 ms)",
+  "sha256": "ad7dca94750bf158cdd7471494aec656543ba9aa1f13de89e621206aaafb2e7c",
+  "🔴 why_new_tool": "기존 scripts/p007e_phase2_readback.py 는 한 라운드 안에서 ID1~6 을 간격 없이 읽는다. ced8f52 실측에서 0~8 ms 간격은 None 이 ~50% 였다. Phase B 에는 쓰지 않았다",
+  "pre_command": {"rounds": 3, "ID2": [150, 150, 150], "none": 0, "i2c_error": 0,
+                  "all_channels": [86, 150, 0, 18, 93, 178], "at": "17:45:5x"},
+  "post_command": {"rounds": 5, "ID2": [152, 152, 152, 152, 152], "none": 0, "i2c_error": 0,
+                   "all_channels": [86, 152, 0, 18, 93, 178],
+                   "window": "2026-10-27T17:51:39+0800 ~ 17:51:40+0800 (명령 후 약 2분 33초 — settling 충분)"},
+  "change_criterion_applied": "None 이 아닌 ID2 값 중 하나라도 150 이 아니면 CHANGE — 사전 고정",
+  "verdict": "READBACK CHANGE",
+  "🔴 p007b_actual": "P-007B 의 명령 후 readback 은 `[86, 150, 0, 18, 93, 178]` — ID2 **불변**이었다"
+ },
+
+ "🔴 readback_raw_arithmetic": {
+  "method": "evidence/P-007B/command_api_analysis.md 의 라이브러리 식을 그대로 재계산 — write: pos=int(2200*(180-angle)/180+900) · read: 180-int(180*(raw-900)/2200)",
+  "target_raw_sent": 1242,
+  "readback_if_target_exactly_reached": 153,
+  "observed_readback": 152,
+  "raw_range_for_readback_152": "1243..1254",
+  "raw_range_for_readback_150_pre": "1267..1278",
+  "short_of_target_counts": "1..12 (0.08°~0.98°)",
+  "raw_displacement_from_pre": "13..35 counts = 1.06°~2.86° (library scale)",
+  "🔴 finding": "readback 152 는 보낸 target raw(1242)의 **정확한 echo 가 아니다**. echo 라면 153 이어야 한다. 관측값은 target 보다 1~12 count 모자란 위치에 해당한다",
+  "🔴 implication": "target 근처에 안착한 **측정 위치**와 모양이 같다. 즉 물리 모션(A)을 배제할 수 없다. 다만 컨트롤러 내부 보간 결과를 보고하는 경우와 이 데이터만으로 갈리지 않는다"
+ },
+
+ "motion": {
+  "🔴 realtime_observation": "UNOBSERVED / OPERATOR_ABSENT",
+  "post_hoc_photo_comparison": "WITHDRAWN — 운영자 '사진으로 5mm 정도는 판단불가'. 최초 응답('같다')은 증거로 쓰지 않는다",
+  "expected_displacement_mm": 5.47,
+  "basis": "evidence/P-007E/fk_clearance.json linearity_check.p007b_plus2deg_mm",
+  "verdict": "MOTION UNOBSERVED",
+  "detail": "evidence/P-007E-R1/phase_b_operator_observation.json"
+ },
+
+ "🔴 result_code": "A/C NOT DISCRIMINATED",
+ "verdict": "P-007E-R1 PHASE-B RESULT — READBACK CHANGE (사전 기준 충족) / MOTION: realtime UNOBSERVED · post-hoc photo WITHDRAWN (감도 미검증) · readback-range 산술은 물리 이동과 정합 → A/C NOT DISCRIMINATED",
+ "🔴 why_not_C": "C(NO MOTION + READBACK CHANGE)로 적지 않는다. 사전 등록된 관찰(실시간)이 존재하지 않고, 대체 관찰은 철회됐으며, readback 152 의 raw 범위는 target 근처 실제 이동과 정합한다. **A 는 배제되지 않았다**",
+ "hypothesis_statements": {
+  "🔴 not_A_declared": "A 로 선언하지도 않는다 — 모션을 관찰한 사람이 없다. `TIMING HYPOTHESIS STRONGLY SUPPORTED` 를 쓰지 않는다",
+  "🔴 not_D": "D 가 아니므로 `TIMING HYPOTHESIS NOT SUPPORTED BY CONTROLLED RETEST` 도 쓰지 않는다",
+  "🔴 no_root_cause": "`ROOT CAUSE VERIFIED` 로 승격하지 않는다. P-007B 의 실제 read→write wall-clock interval 이 미측정이므로 P-007B 와 이번 실행의 차이를 timing 단일 변수로 확정할 수 없다",
+  "observed_difference": "P-007B 와 이번 실행 사이에서 **controller 보고 각도의 거동이 달라졌다** — 150 불변 → 152. 명시적으로 바꾼 변수는 quiet interval(>=50 ms) 하나다. 그러나 P-007B 의 실제 간격 미측정으로 통제된 대조는 아니다"
+ },
+ "🔴 open_question_not_a_gate": "readback 이 물리 위치인지 컨트롤러 내부 보간/target 반영인지 이 게이트로는 갈리지 않는다. 단 **단순 target echo 는 산술로 약화됐다**(echo 라면 153). 다음 행동으로 승격하지 않고 질문으로만 남긴다",
+
+ "rgb": "P-007D-R1 induced BLUE 유지. RGB write 0",
+ "evidence_immutability": "PASS — 선행 9게이트 134파일 변경 0 · 누락 0 · 추가 0 (logs/phase_b_manifest_before.json ↔ after.json)",
+ "phase_a_untouched": "acceptance.json · dryrun.json · guard_negative_test.json · logs/dryrun_raw.txt 는 수정하지 않았다",
+ "🔴 current_robot_state": "ID2 readback 152. 전 채널 `[86, 152, 0, 18, 93, 178]`. baseline 150 을 전제한 스크립트(이 harness 의 EXPECTED_BASELINE 포함)는 모두 stale 이다. 동일 조건 재실행은 추가 모션 명령 없이는 불가능하다",
+ "stop": "🔴 판정과 raw evidence 까지만 남기고 STOP. 다음 게이트를 열지 않았고 원인에 맞춘 코드 수정도 하지 않았다"
+}
