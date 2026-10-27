@@ -17,7 +17,7 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2-R2** · Stage A/B/C0/C1 CLOSED · **Stage C0-R1 `ACQUISITION REPAIR PASS / C1-R1 RE-PREREGISTERED`** — 🔴 검수 1순위: 현재 장치 `C1-induced YUYV`(사전등록은 MJPG 기대) 해소 방법 결정 대기 | `evidence/P-007E-R2-R2/stage_c0r1_decision.json` |
+| 진행 중 게이트 | **P-007E-R2-R2** · Stage A/B/C0/C1/C0-R1 CLOSED · **Stage C0-R2 `PIXEL FORMAT RECOVERED TO MJPG / CONTROLS UNCHANGED`** — `/dev/video0` 는 MJPG 640×480 로 복구됨. 🔴 **C1-R1 stationary sham 실행은 검수 승인 대기 중** | `evidence/P-007E-R2-R2/stage_c0r2_decision.json` |
 | 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
@@ -244,7 +244,16 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 🔴 **2라운드 자체 검증 8건 전부 반영** — 빈 opt-in stub→`execute_c1r1()` 실배선 / M5 "데이터 없이 못 짠다"는 틀린 판단→결정적 순수함수로 즉시 구현 / `roi_mean`·페이싱 미연결→`run_trial()` 실제 연결(0.25s 페이싱+2.0s trial 간격) / 사전등록 "골라담기"로 키 누락→`dict(c0)` 전체 베이스+python assert 로 누락 0 확인 / SHA 고정이 사전등록 1개뿐→acquisition·measurement·analysis 3개 모듈 SHA 고정+`--run-sham` 강제대조 / `v4l2-ctl` 단축플래그(`-v`/`-c`) 우회 가능→default-deny 로 교체 / crash 처리가 사전등록 문구와 불일치→SIGTERM/SIGHUP+`BaseException`+`atexit` 일치 / 검수자 1순위 결정사항 누락→`next_decision` 1번 승격
   - 음성시험 **T0~T12 전부 PASS** + 합성 추정기 회귀 일치(0.70305px/0.06007°, C0 와 동일) + 커밋 직전 로컬 SHA ↔ Jetson 실측 SHA 바이트 단위 일치 확인
   - 🔴 C1 의 20개 anchor 프레임은 `FORENSIC_ONLY` 로 재확인, 이번 설계에 전혀 쓰지 않았다. Stage A/B/C0/C1·선행 12게이트 `git diff --exit-code` 전부 exit 0
-  - **검수 1순위 결정 필요**: 현재 장치 상태 `C1-induced YUYV` — 사전등록은 `MJPG` 기대. 재부팅으로 복귀하는지 미확인(확인 자체가 장치 접근). ① 승인된 1회 S_FMT 로 MJPG 복귀(별도 게이트) ② YUYV 신규 기준선 수용(단 ROI·가드는 MJPG 프레임 기준으로 정해졌음을 고려) 중 선택 필요
+  - **검수 1순위 결정**: ① MJPG 복귀 선택됨 — C0-R2 에서 집행
+
+- [x] **P-007E-R2-R2 Stage C0-R2** DaBai Pixel-Format Baseline Recovery — **`PIXEL FORMAT RECOVERED TO MJPG 640x480 / CONTROLS UNCHANGED / NO CAPTURE OR ROBOT EXECUTION`**
+  - 목적: C1(invalid experiment) 이 변경한 YUYV state mutation을 Stage B 검증 baseline(MJPG 640×480)으로 **제한적으로 복구**. stationary sham 실행 아님
+  - preflight 읽기전용: `/dev/video0` holders 없음 · `/dev/i2c-7` holders = pid 3091/3092(`ros2 run dofbot_pro_info kinemarics_dofbot`, 기존 관찰과 동일한 정보조회 노드, 모션 생성 노드 아님) · 모션 가능 프로세스 0
+  - 실측: before = YUYV 640×480 (ALREADY_RECOVERED 아님) → 승인된 **S_FMT 정확히 1회** (`v4l2-ctl --set-fmt-video=width=640,height=480,pixelformat=MJPG`, rc=0) → after = MJPG 640×480
+  - camera controls before/after `v4l2-ctl --list-ctrls` 읽기전용 비교 — brightness/contrast/saturation/hue/white_balance_automatic/gamma/gain/power_line_frequency/white_balance_temperature/sharpness/backlight_compensation/auto_exposure/exposure_time_absolute/exposure_dynamic_framerate/privacy **전부 동일**(diff 확인), 예상 밖 control 변화 없음
+  - capture/stream 0 · OpenCV 0 · ROS/Arm_Lib/I2C/servo/robot motion 0 · Gemini/DaBai/DOFBOT 물리 이동 0 · 기존 evidence 수정 0
+  - `evidence/P-007E-R2-R2/stage_c0r2_decision.json` + `c0r2_controls_before.txt`/`c0r2_controls_after.txt`
+  - 이제 `stage_c1r1_preregistration.json` 의 `expected_device.pixelformat=MJPG` 가 실측 상태와 일치. **C1-R1 stationary sham 은 이 gate 범위 밖 — 검수 승인 대기**
 
 ## 🔴 다음 행동
 
@@ -392,6 +401,7 @@ operator channel        realtime visual observation
 | 17 | 2026-10-27 23:00~23:43 (KST, 커밋 `6144076`~`121dc43`) | **P-007E-R2-R2 Stage C0** 사전등록 (세션 `66eb4937`) | `PREREGISTRATION / C1 HARNESS READY` — 카메라 기동 0 · C1 미실행
 | 18 | 23:47~23:53 KST (Jetson +0800 22:47:38~22:53 → +1h 환산) · 보고 커밋 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C1** 최초 실캡처 — 10 trial 완주했으나 저장 직전 크래시 | `X — OBSERVATION INVALID` — 이 단계가 보낸 로봇 명령 0, 데이터 전량 소실
 | 19 | 2026-10-28 (세션 `66eb4937`, 커밋 `6f9b9c5`) | **P-007E-R2-R2 Stage C0-R1** acquisition harness repair & re-preregistration — 카메라 기동 0, 2라운드 자체검증 반영 | `ACQUISITION REPAIR PASS / C1-R1 RE-PREREGISTERED`
+| 20 | 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C0-R2** DaBai pixel-format baseline recovery — 승인된 S_FMT 1회, capture 0 | `PIXEL FORMAT RECOVERED TO MJPG 640x480 / CONTROLS UNCHANGED`
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

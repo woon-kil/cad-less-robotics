@@ -1,0 +1,49 @@
+{
+  "gate": "P-007E-R2-R2",
+  "stage": "Stage C0-R2 — DaBai Pixel-Format Baseline Recovery",
+  "base_commit": "7e38158",
+  "purpose": "C1(invalid experiment, cv2.VideoCapture implicit S_FMT)이 Stage B 검증 baseline(MJPG 640x480)을 YUYV 640x480 으로 변경한 state mutation을 승인된 1회 S_FMT 로 복구한다. stationary sham 실행이 아니다.",
+  "device_identity": {
+    "path": "/dev/video0",
+    "card": "Orbbec DaBai DCW2 RGB Camera: O",
+    "serial": "CH8R3620170",
+    "driver": "uvcvideo 5.15.148"
+  },
+  "preflight_readonly": {
+    "video0_holders": "none (fuser 확인)",
+    "i2c7_holders": "pid 3091/3092 — ros2 run dofbot_pro_info kinemarics_dofbot (정보조회 노드, 기존 관찰과 동일, 모션 생성 노드 아님, 본 gate와 무관)",
+    "motion_capable_processes": 0,
+    "robot_controller_access": 0
+  },
+  "format_before": {"width": 640, "height": 480, "pixelformat": "YUYV"},
+  "approved_mutation": {
+    "operation": "VIDIOC_S_FMT (단 1회)",
+    "command": "v4l2-ctl --device=/dev/video0 --set-fmt-video=width=640,height=480,pixelformat=MJPG",
+    "returncode": 0,
+    "count": 1,
+    "other_mutations": 0
+  },
+  "format_after": {"width": 640, "height": 480, "pixelformat": "MJPG"},
+  "format_recovery_result": "RECOVERED (YUYV 640x480 -> MJPG 640x480), ALREADY_RECOVERED 아님 — 복구 전 실측이 YUYV였음",
+  "camera_controls_before_after": {
+    "method": "v4l2-ctl --list-ctrls 읽기전용, before/after diff",
+    "files": ["c0r2_controls_before.txt", "c0r2_controls_after.txt"],
+    "result": "CONTROLS_IDENTICAL=true — brightness/contrast/saturation/hue/white_balance_automatic/gamma/gain/power_line_frequency/white_balance_temperature/sharpness/backlight_compensation/auto_exposure/exposure_time_absolute/exposure_dynamic_framerate/privacy 전부 before=after",
+    "unexpected_control_change": false
+  },
+  "capture_or_stream_operations": 0,
+  "opencv_used": false,
+  "ros_arm_lib_i2c_servo_robot_motion": 0,
+  "experiment_generated_motion_commands": 0,
+  "physical_robot_motion_observation": "NOT_APPLICABLE",
+  "gemini_dabai_dofbot_physical_position_changed": false,
+  "prior_evidence_changed": 0,
+  "provenance_chain": {
+    "stage_b": "MJPG 640x480 baseline VERIFIED (validated)",
+    "stage_c1": "cv2.VideoCapture 의 implicit S_FMT 가 MJPG -> YUYV 로 변경 (invalid experiment)",
+    "stage_c0r1": "acquisition harness repair, 카메라 0회 개방, YUYV 상태 그대로 재사전등록",
+    "stage_c0r2": "explicitly authorized recovery, YUYV -> MJPG, 1회 S_FMT"
+  },
+  "note_to_reviewer": "stage_c1r1_preregistration.json 의 expected_device.pixelformat=MJPG 가 이제 실측 상태와 일치한다. C1-R1 stationary sham 실행은 이 gate의 범위가 아니며 검수 승인을 기다린다.",
+  "🔴 verdict": "P-007E-R2-R2 STAGE C0-R2 — PIXEL FORMAT RECOVERED TO MJPG 640x480 / CONTROLS UNCHANGED / NO CAPTURE OR ROBOT EXECUTION"
+}
