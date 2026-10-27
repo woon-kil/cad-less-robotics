@@ -17,7 +17,7 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2-R2 — DaBai Passive Observation Path Qualification** · Stage A `STATIC SAFETY AUDIT PASS / CLOSED @ 3579ab5` · Stage B **`FOV_PASS`** | `evidence/P-007E-R2-R2/stage_b_decision.json` |
+| 진행 중 게이트 | **P-007E-R2-R2** · Stage A `CLOSED @ 3579ab5` · Stage B `FOV_PASS / CLOSED @ 4d0c709` · **Stage C0 사전등록 완료 · C1 미실행** | `evidence/P-007E-R2-R2/stage_c0_preregistration.json` |
 | 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
@@ -216,6 +216,19 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 🔴 Stage C 제약: 자동노출·자동WB·dynamic framerate ON · `power_line_frequency=50Hz`(국내 60Hz 불일치) · 특징 상당수가 변형/이동 가능 대상 위 · 경로 B 는 RGB only·intrinsics 표준 경로 없음
   - 예산: 저장 프레임 1장 외 전 항목 0 (ros2 CLI·Arm_Lib·I2C·servo read/write·torque·RGB write·robot motion·물리 이동 = 0)
   - 🔴 Stage A 는 `CLOSED @ 3579ab5` — Stage B 는 그 파일을 수정하지 않고 새 파일로만 기록했다 (`git diff --exit-code 3579ab5` exit 0)
+- [x] **P-007E-R2-R2 Stage C0** Stationary Ego-Motion Qualification **사전등록** — `PREREGISTRATION / C1 HARNESS READY`
+  - 성격: DESIGN / OFFLINE ANALYSIS / PREREGISTRATION ONLY. 🔴 카메라 기동 0 · 새 캡처 0 · UVC 제어 변경 0 · 로봇 접근 0
+  - ROI 동결 — 캐비닛 강체 3영역(프레임 5.44%, ORB 449개). 🔴 **robot-attached pixel 넉넉히 mask** (eye-in-hand 에서 그 화소는 ID2 회전 시 화면상 정지로 보이고 ID5·6 이 움직이면 거짓 모션)
+  - 알고리즘 1종 고정 — ORB + BFMatcher(Hamming, crossCheck) + `estimateAffinePartial2D`(RANSAC 1.5 px). 모델 = 2D partial affine 4 DOF
+  - 가드 — features≥150 · matches≥60 · inliers≥40 · ratio≥0.50 · residual≤1.50 px · |scale−1|≤0.05
+  - 🔴 **K/M 의미 충돌 명시 해소** — 선행 설계(`docs/261027-1914-*` §D4) 우선: `K=5`는 **임계 배수**, `M=60`은 window 프레임 수, `N_sham=10`
+  - 임계 공식 `thr = K × max(1.4826·MAD, σ_floor)` · σ_floor = 0.70 px · 0.060°(C0 합성 회수 오차 최댓값). FP 는 **leave-one-out** 으로 센다
+  - 판정 어휘 `X > Q3 > Q4 > Q2 > Q1` — 🔴 성공 판정은 **Q1 하나뿐**
+  - 🔴 sham 과 미래 motion trial 의 **알려진 차이** 기록 — R2 예산이 servo readback 을 금지하므로 sham 에 controller 측 read 가 없다. 카메라 측만 완전한 거울이다
+  - 단위검증(🔴 `ALGORITHM UNIT VALIDATION`, 물리 감도 아님) — 합성 14종 평행이동 오차 ≤0.703 px · 회전 ≤0.060° · 밝기/대비 섭동 겉보기 변위 ≤0.015 px
+  - C1 harness `scripts/p007e_r2r2_c1_sham.py` — 🔴 **기본값 NO CAPTURE**. `ALLOW_CAPTURE=1` + `--run-sham` 둘 다 필요. 사전등록 sha256 변조 시 중단(실측 확인). 음성 시험 3종 통과
+  - 🔴 카메라 제어 변경 0 — 자동노출 ON·자동WB ON·50 Hz 그대로 C1 첫 baseline 을 측정한다
+  - 예산 전 항목 0. Stage A(@3579ab5)·Stage B(@4d0c709)·선행 12게이트 `git diff --exit-code` 전부 exit 0
 
 ## 🔴 다음 행동
 
@@ -302,6 +315,7 @@ operator channel        realtime visual observation
 
 
 > 🔴 **R2-R2 Stage B 갱신 — 로봇 I2C 버스에 제3 사용자가 있다.** `yahboom_oled.py` 가 `__BUS_LIST = [1, 0, 7, 8]` 을 **영구 순환 탐색**한다. 7번이 로봇 버스다. open 은 성공하는데도 예외로 떨어져 회전하므로 **버스 7 에 0x3C(OLED) 를 향한 트랜잭션이 시도된다**. 서보 명령 능력은 없다(Arm_Lib 0 · 0x15 접근 0).
+> 🔴 **용어 고정(C0): 기존 50 ms 는 `HOST-CONTROL QUIET INTERVAL` 로 부른다.** `I2C BUS QUIET INTERVAL` · `bus was silent` 표현을 금지한다.
 > 🔴 **따라서 `quiet interval` 은 "버스가 조용했다"를 뜻하지 않는다.** P-007E-R1 의 정의는 "**우리 프로세스가** 버스를 건드리지 않은 구간"이고 제3 프로세스를 배제하지 못한다. 다음 motion gate 의 quiet interval 설계는 이 사실 위에서 다시 세운다.
 > 상태: `EXCLUSIVE CONTROL ASSUMPTION — REOPENED FOR CLASSIFICATION`. 🔴 **프로세스 kill·fd close·autostart 수정 금지**(검수 지시). P-007E-R1 의 `exclusive_control_violations: []` 도 수정하지 않았다.
 > 🔴 이것이 P-007B 무응답이나 P-007E-R1 readback 변화를 **설명한다고 말하지 않는다** — 간섭원의 존재만 확인됐고 시간적 중첩은 측정되지 않았다.
@@ -347,6 +361,7 @@ operator channel        realtime visual observation
 | 14 | 2026-10-27 19:02~19:48 (KST, 커밋 `02de7b0`~`b576dbe`) | P-007E-R1 검수 종결 반영 · **P-007E-R2 Stage 1** · **P-007E-R2-R1** (세션 `66eb4937`) | Stage 1 `TARGET_NOT_DETECTED` · R2-R1 `CANDIDATE FOUND` — 로봇 접근 0
 | 15 | 2026-10-27 20:47~21:54 (KST, 커밋 `ee0b2ca`) | **P-007E-R2-R2 Stage A** 정적 감사 (세션 `66eb4937`) | `CAMERA-ONLY PATH IDENTIFIED / START NOT AUTHORIZED` — 카메라 기동 0 · `ros2` CLI 0
 | 16 | 2026-10-27 22:02~22:12 (KST, 커밋 `639c0ca`) | **P-007E-R2-R2 Stage B** B0~B4 (세션 `66eb4937`) | **`FOV_PASS`** — 캡처 1프레임 · 🔴 로봇 버스 제3 사용자 발견
+| 17 | 2026-10-27 23:00~23:5x (KST, 커밋 `6144076`) | **P-007E-R2-R2 Stage C0** 사전등록 (세션 `66eb4937`) | `PREREGISTRATION / C1 HARNESS READY` — 카메라 기동 0 · C1 미실행
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
