@@ -75,5 +75,9 @@
  "robot_moved_by_this_gate": 0,
  "gemini_moved": 0,
  "led_moved": 0,
- "sudo_nopasswd_available": false
+ "sudo_nopasswd_available": false,
+ "base_commit": "d9527b0d61e8145ae5f7aca3a3ad6dc043f009d7",
+ "investigated_at_before_snapshot": "2026-10-27T09:22:10+09:00 (snapshot.sh 단계 로그)",
+ "isolation_at": "2026-10-27T09:34:34+09:00 ~ 09:34:40+09:00 (isolation_actions.json)",
+ "device_clock_offset": "+08:00"
 }

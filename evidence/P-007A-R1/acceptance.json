@@ -1,6 +1,6 @@
 {
  "gate": "P-007A-R1",
- "base_commit": "76b16c64f7695ec39794ea7b8ede36c8f20d9b27",
+ "base_commit": "d9527b0d61e8145ae5f7aca3a3ad6dc043f009d7",
  "verdict": "PASS",
  "verdict_reason": "uncontrolled servo writer 0, servo-capable network entrypoint 0, autostart 격리 확인(정적), 72초 respawn 0, 읽기 600/600 error 0, 격리 전후 각도 동일, 운영자 무동작·전원 접근·clearance 확인. 벤더 소프트웨어 삭제·firmware 변경 0이고 변경은 모두 가역이다.",
  "p007b": "MAY BE DESIGNED. NOT AUTHORIZED TO EXECUTE.",
@@ -218,5 +218,6 @@
    "note": "robot·Gemini·LED 이동 0.",
    "evidence": "environment.json"
   }
- ]
+ ],
+ "base_commit_note": "게이트 첫 커밋 0073542의 부모(d9527b0 = P-007A 최종). 최종 커밋 해시는 파일이 자기 해시를 담을 수 없어 완료 보고에 적는다."
 }

@@ -100,5 +100,16 @@
  },
  "started_by_this_gate": [
   "ros2cli daemon pid 1677026 — before snapshot이 띄웠다. respawn으로 읽지 않는다."
- ]
+ ],
+ "jupyter_use_during_this_gate": {
+  "kernel_pid": 1672919,
+  "started_at": "2026-10-27T08:20:06+08:00 (=09:20:06+09:00)",
+  "measurement": "/proc/stat btime 1793005682 + /proc/1672919/stat starttime 5472417 / USER_HZ 100. ros2 daemon(5485217) 역산이 snapshot 실행 시각과 일치해 환산을 교차 확인했다.",
+  "cwd": "/home/jetson/dofbot_pro/dofbot_color_sorting/scripts",
+  "who": "운영자. SSH 키 설치 경로를 찾던 중 Claude가 제시한 Jupyter(8888) 경로로 브라우저를 열었다. 셀 실행은 없었고 커널은 JupyterLab이 워크스페이스 복원으로 띄운 것으로 본다.",
+  "i2c_fd_at_snapshot": 0,
+  "servo_write_observed": 0,
+  "angle_effect": "격리 전 각도가 P-007A와 동일(86,150,0,18,93,178)해서 이 커널로 인한 이동 흔적은 없다.",
+  "resolution": "운영자가 sudo systemctl stop jupyterlab 으로 서비스 cgroup과 함께 종료했다. 이 게이트가 만든 표면을 이 게이트에서 닫았다."
+ }
 }

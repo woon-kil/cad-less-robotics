@@ -42,7 +42,7 @@ P-007A가 BLOCKED로 닫힌 이유는 통신이 아니라 control ownership이�
 
 ## UNKNOWN 해소
 
-before 스냅샷의 ROS 그래프에 `/arm_grap`, `/dofbot_garbage`(중복), `/dofbot_snake`, `/color_identify1`이 있었다. P-007A는 ROS 그래프를 보지 않았다. 격리 후 `ros2 node list`가 `/kinemarics_dofbot` 하나만 반환해, 그 노드들이 종료한 프로세스 소유였음을 실측으로 확정했다. `YahboomArm.pyc`는 `.py`와 code object digest가 일치해(MATCH) `.py` 분석을 적용할 수 있다.
+before 스냅샷의 ROS 그래프에 `/arm_grap`, `/dofbot_garbage`(중복), `/dofbot_snake`, `/color_identify1`이 있었다. P-007A는 ROS 그래프를 보지 않았다. 격리 후 `ros2 node list`가 `/kinemarics_dofbot` 하나만 반환했다. 이 실측이 보이는 것은 그 노드들이 **종료된 집합(pid 3022 + ipykernel)** 소유였다는 것까지다. Jupyter 중지와 kill 사이에 node list를 다시 뜨지 않았으므로 둘을 분리하지 못한다. pid 3022 귀속은 정적 근거다 — 노드 이름이 APP·`ws/src` 범위에서 `YahboomArm.py`에만 나오고 `rclpy.init`이 `YahboomArm.py:55`이며, 커널의 cwd `dofbot_color_sorting`은 그 grep 결과에 없었다. 어느 쪽이든 격리 후 서보 쓰기 가능 프로세스는 0이다. `YahboomArm.pyc`는 `.py`와 code object digest가 일치해(MATCH) `.py` 분석을 적용할 수 있다.
 
 ## 남은 한계
 

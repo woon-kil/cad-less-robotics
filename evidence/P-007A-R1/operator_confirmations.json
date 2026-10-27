@@ -1,7 +1,6 @@
 {
  "gate": "P-007A-R1",
  "collected_before_isolation": true,
- "collected_at_local": "2026-10-27T09:30+09:00",
  "method": "Claude Code AskUserQuestion. 운영자가 직접 선택했다. Cursor나 Claude가 추정하지 않았다.",
  "confirmations": [
   {
@@ -21,6 +20,13 @@
    "question": "격리 중 로봇팔을 직접 보고 있을 수 있는가",
    "answer": "YES_WATCHING_NOW",
    "note": "격리 직후 무동작 관찰 결과는 isolation 실행 후 별도로 기록한다."
+  },
+  {
+   "id": "R1-19-precondition-recheck",
+   "question": "kill 직전 재확인 — 지금 로봇팔을 보고 있는가",
+   "answer": "YES_WATCHING_NOW",
+   "at_bound": "jupyterlab stop_time 2026-10-27T08:33:22+08:00(=09:33:22+09:00) 이후, isolation_actions 첫 action 2026-10-27T09:34:34+09:00 이전",
+   "note": "첫 확인 이후 SSH 인증 라운드가 여러 번 있었으므로 종료 직전에 한 번 더 받았다."
   }
  ],
  "post_isolation_no_motion_observation": {
@@ -31,5 +37,6 @@
   "method": "운영자 직접 관찰. Claude가 추정하지 않았다.",
   "limit": "컨트롤러 보고 각도가 전후 동일한 것과 함께 본다. 각도 고정만으로는 물리 무동작의 완전한 증명이 아니다."
  },
- "limits": "운영자 관찰과 전원 접근은 무동작을 보장하지 않는다. 컨트롤러에 이미 전달된 이동 명령은 어떤 신호로도 취소되지 않으며 물리 전원 차단만 남는다."
+ "limits": "운영자 관찰과 전원 접근은 무동작을 보장하지 않는다. 컨트롤러에 이미 전달된 이동 명령은 어떤 신호로도 취소되지 않으며 물리 전원 차단만 남는다.",
+ "collected_at_bound": "커밋 a8be796(2026-10-27T09:01:37+09:00) 이전. AskUserQuestion 응답을 그 커밋에 기록했다. 분 단위 측정값이 없어 상한만 적는다."
 }
