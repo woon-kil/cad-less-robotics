@@ -1,0 +1,122 @@
+{
+ "gate": "P-007A-R1",
+ "method": "정적 소스 읽기 + /proc 직접 읽기. i2c probe·실행 0.",
+ "chains": [
+  {
+   "root": "~/.config/autostart/bash.desktop (Exec=bash start_app.sh)",
+   "note": "start_app.sh는 gnome-terminal 3개를 띄우고 스스로 끝난다. 감시 루프(while/wait/재기동 줄)가 없다. 자식은 gnome-terminal-server pid 2969로 reparent된다.",
+   "children": [
+    {
+     "pid_before": 3021,
+     "cmd": "bash -c python3 YahboomArm.pyc;exec bash",
+     "role": "래퍼 셸. python 종료 후 exec bash로 셸만 남는다. 재기동하지 않는다.",
+     "servo_write": false
+    },
+    {
+     "pid_before": 3022,
+     "cmd": "python3 YahboomArm.pyc",
+     "role": "CONTROL_WRITER + Flask 6500",
+     "servo_write": true,
+     "ros_nodes_hosted": [
+      "/arm_grap",
+      "/dofbot_garbage",
+      "/dofbot_snake",
+      "/color_identify1"
+     ],
+     "evidence": "격리 후 ros2 node list가 /kinemarics_dofbot 하나만 남은 것으로 소유를 확정했다. rclpy.init은 YahboomArm.py:55."
+    },
+    {
+     "pid_before": 3047,
+     "cmd": "python3 yb-discover.py",
+     "role": "UDP 8000 discovery 응답기",
+     "servo_write": false
+    },
+    {
+     "pid_before": 3072,
+     "cmd": "python3 joystick.py",
+     "role": "CONTROL_WRITER. main이 Robot_Controller().move_init_pose() 호출",
+     "servo_write": true
+    }
+   ]
+  },
+  {
+   "root": "~/.config/autostart/bash-1.desktop (Exec=bash setting.sh)",
+   "note": "setting.sh가 존재하지 않아 기동할 수 없다. 원본 보존, 변경하지 않았다.",
+   "children": []
+  },
+  {
+   "root": "yahboom_oled.service (systemd system, active)",
+   "children": [
+    {
+     "pid": 2264,
+     "cmd": "python3 yahboom_oled.py",
+     "role": "NON_SERVO_I2C_CLIENT",
+     "servo_write": false,
+     "evidence": "Adafruit_SSD1306 기본 주소 SSD1306_I2C_ADDRESS=0x3C. yahboom_oled.py는 SSD1306_128_32(rst=None, i2c_bus=..., gpio=1)로 주소를 넘기지 않는다. __BUS_LIST=[1,0,7,8]. 서보 쓰기 호출 0."
+    }
+   ]
+  },
+  {
+   "root": "jupyterlab.service (Restart=always, UnitFileState=enabled)",
+   "children": [
+    {
+     "pid": 1090,
+     "cmd": "jupyter-lab --ip=0.0.0.0 --no-browser",
+     "role": "NETWORK_CONTROL_ENTRYPOINT (8888). 커널을 통해 임의 하드웨어 코드 실행 가능",
+     "servo_write": "indirect"
+    },
+    {
+     "pid": 1672919,
+     "cmd": "python3 -m ipykernel_launcher",
+     "role": "UNCONTROLLED_EXECUTION_SURFACE. cwd=/home/jetson/dofbot_pro/dofbot_color_sorting/scripts. 격리 시점 i2c fd 0",
+     "servo_write": "indirect",
+     "note": "Jupyter 서버는 죽은 커널을 자동 재시작한다. 그래서 커널만 죽이지 않고 서비스를 먼저 멈췄다."
+    }
+   ]
+  },
+  {
+   "root": "YahboomArm.pyc (pid 3022) → ros2 run",
+   "children": [
+    {
+     "pid": 3091,
+     "cmd": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot",
+     "role": "상속 descriptor 보유. 서보 쓰기 코드 없음",
+     "servo_write": false
+    },
+    {
+     "pid": 3092,
+     "cmd": "ros2 CLI python wrapper",
+     "role": "상속 descriptor 보유",
+     "servo_write": false
+    },
+    {
+     "pid": 3103,
+     "cmd": "kinemarics_dofbot (ELF)",
+     "role": "NON_CONTROLLER_PROCESS",
+     "servo_write": false,
+     "evidence": "strings·ldd에서 i2c·smbus·Arm_Lib 참조 0건. i2c fd 목록에도 없다."
+    }
+   ]
+  }
+ ],
+ "startup_sources_checked": [
+  "~/.config/autostart",
+  "/etc/xdg/autostart",
+  "로그인 가능 사용자 전원의 ~/.bashrc·~/.profile·~/.bash_profile·~/.xsessionrc",
+  "/etc/profile·/etc/profile.d·/etc/X11/Xsession.d",
+  "user crontab·/etc/crontab·/etc/cron.d·cron.hourly·cron.daily",
+  "systemd system/user service·timer·socket·path 유닛과 Restart=",
+  "docker ps -a(컨테이너 0건)",
+  "udev /etc·/lib rules.d"
+ ],
+ "login_trigger_finding": "~/.bashrc:123 의 유일한 hit는 'source /home/jetson/dofbot_pro_ws/install/setup.bash' 다. 앱을 기동하지 않는다.",
+ "started_by_this_gate": [
+  {
+   "pid": 1677026,
+   "cmd": "ros2cli daemon",
+   "note": "before snapshot의 ros2 node list가 띄웠다. respawn이 아니다."
+  }
+ ],
+ "udev_finding": "/lib/udev/rules.d/60-i2c-tools.rules 는 SUBSYSTEM==i2c-dev에 GROUP=i2c MODE=0660만 준다. RUN= 없음 → 기동원이 아니다.",
+ "i2c_topology": "어댑터 i2c-0/1/2/4/5/7/9/10/11. 0x15는 i2c-7(c250000.i2c)에 있다. i2c-9·i2c-10은 i2c-2의 mux 채널이라 i2c-7 경로가 아니다. 확인은 sysfs 정적 읽기만 썼고 버스 probe는 하지 않았다."
+}

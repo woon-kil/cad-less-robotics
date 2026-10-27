@@ -1,0 +1,8 @@
+topic /camera/color/image_raw
+frame_id camera_color_optical_frame
+stamp_sec 1793006639
+stamp_nanosec 789987000
+width 1280
+height 720
+encoding rgb8
+calibration_solve no

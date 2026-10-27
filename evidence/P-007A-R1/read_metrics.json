@@ -1,0 +1,161 @@
+{
+ "captured_at_start": "2026-10-27T08:36:26.157+08:00",
+ "captured_at_end": "2026-10-27T08:36:28.905+08:00",
+ "device_timezone": "+08:00",
+ "phase": "post_isolation",
+ "rounds": 100,
+ "channels": 6,
+ "sample_count": 600,
+ "successful_reads": 600,
+ "communication_error_count": 0,
+ "empty_count": 0,
+ "api": "Arm_Device.Arm_serial_servo_read",
+ "classification": "CONTROLLER_REPORTED_STATE",
+ "not": "measured_joint_state",
+ "latency_s": {
+  "mean": 0.0045696,
+  "p95": 0.006037,
+  "max": 0.006091
+ },
+ "per_servo": {
+  "1": {
+   "joint_name": "Arm1_Joint",
+   "samples": 100,
+   "min": 86,
+   "max": 86,
+   "mean": 86.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    86
+   ],
+   "max_consecutive_abs_delta": 0
+  },
+  "2": {
+   "joint_name": "Arm2_Joint",
+   "samples": 100,
+   "min": 150,
+   "max": 150,
+   "mean": 150.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    150
+   ],
+   "max_consecutive_abs_delta": 0
+  },
+  "3": {
+   "joint_name": "Arm3_Joint",
+   "samples": 100,
+   "min": 0,
+   "max": 0,
+   "mean": 0.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    0
+   ],
+   "max_consecutive_abs_delta": 0
+  },
+  "4": {
+   "joint_name": "Arm4_Joint",
+   "samples": 100,
+   "min": 18,
+   "max": 18,
+   "mean": 18.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    18
+   ],
+   "max_consecutive_abs_delta": 0
+  },
+  "5": {
+   "joint_name": "Arm5_Joint",
+   "samples": 100,
+   "min": 93,
+   "max": 93,
+   "mean": 93.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    93
+   ],
+   "max_consecutive_abs_delta": 0
+  },
+  "6": {
+   "joint_name": "gripper(ID6)",
+   "samples": 100,
+   "min": 178,
+   "max": 178,
+   "mean": 178.0,
+   "sample_stdev": 0.0,
+   "unique": [
+    178
+   ],
+   "max_consecutive_abs_delta": 0
+  }
+ },
+ "pre_post_comparison": {
+  "1": {
+   "pre_unique": [
+    86
+   ],
+   "post_unique": [
+    86
+   ],
+   "identical": true
+  },
+  "2": {
+   "pre_unique": [
+    150
+   ],
+   "post_unique": [
+    150
+   ],
+   "identical": true
+  },
+  "3": {
+   "pre_unique": [
+    0
+   ],
+   "post_unique": [
+    0
+   ],
+   "identical": true
+  },
+  "4": {
+   "pre_unique": [
+    18
+   ],
+   "post_unique": [
+    18
+   ],
+   "identical": true
+  },
+  "5": {
+   "pre_unique": [
+    93
+   ],
+   "post_unique": [
+    93
+   ],
+   "identical": true
+  },
+  "6": {
+   "pre_unique": [
+    178
+   ],
+   "post_unique": [
+    178
+   ],
+   "identical": true
+  }
+ },
+ "angles_identical_pre_post": true,
+ "p007a_reference": [
+  86,
+  150,
+  0,
+  18,
+  93,
+  178
+ ],
+ "matches_p007a": true,
+ "limit": "컨트롤러 보고 각도 고정은 물리 무동작의 완전한 증명이 아니다. 운영자 관찰을 함께 본다."
+}

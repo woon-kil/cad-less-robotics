@@ -28,5 +28,52 @@
  "p007b_executed": 0,
  "p006d_started": 0,
  "t_base_camera_computed": 0,
- "credentials_recorded": false
+ "credentials_recorded": false,
+ "isolation_executed": true,
+ "processes_killed": 2,
+ "processes_killed_detail": [
+  {
+   "pid": 3072,
+   "cmd": "python3 joystick.py",
+   "signal": "SIGKILL"
+  },
+  {
+   "pid": 3022,
+   "cmd": "python3 YahboomArm.pyc",
+   "signal": "SIGKILL"
+  }
+ ],
+ "kernel_already_gone_when_reached": {
+  "pid": 1672919,
+  "reason": "운영자의 systemctl stop jupyterlab 으로 cgroup과 함께 종료됨"
+ },
+ "services_stopped_by_operator": [
+  "jupyterlab.service (sudo, TTY 필요)"
+ ],
+ "services_disabled": 0,
+ "autostart_entries_renamed": 1,
+ "autostart_entries_deleted": 0,
+ "signals_used": [
+  "SIGKILL"
+ ],
+ "sigint_used": 0,
+ "sigterm_used": 0,
+ "process_group_kill": 0,
+ "vendor_processes_left_running": [
+  "yahboom_oled.py",
+  "yb-discover.py",
+  "kinemarics_dofbot",
+  "ros2 run wrapper"
+ ],
+ "started_by_this_gate": [
+  "ros2cli daemon pid 1677026 (before snapshot의 ros2 node list)"
+ ],
+ "read_rounds": {
+  "before": 5,
+  "after": 100
+ },
+ "robot_moved_by_this_gate": 0,
+ "gemini_moved": 0,
+ "led_moved": 0,
+ "sudo_nopasswd_available": false
 }

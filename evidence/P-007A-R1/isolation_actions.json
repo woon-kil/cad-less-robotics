@@ -1,6 +1,6 @@
 {
  "gate": "P-007A-R1",
- "dry_run": true,
+ "dry_run": false,
  "signal_used": "SIGKILL only. SIGINT·SIGTERM 미사용",
  "vendor_source_deleted": 0,
  "package_removed": 0,
@@ -21,53 +21,84 @@
  ],
  "actions": [
   {
-   "at": "2026-10-27T09:28:23+0900",
+   "at": "2026-10-27T09:34:34+0900",
    "action": "autostart_before",
    "detail": "/home/jetson/.config/autostart 목록·해시",
    "result": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e  /home/jetson/.config/autostart/bash-1.desktop | 416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af  /home/jetson/.config/autostart/bash.desktop | --- | bash-1.desktop | bash.desktop | ",
-   "dry_run": true
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:23+0900",
+   "at": "2026-10-27T09:34:34+0900",
    "action": "autostart_rename",
-   "detail": "set -e; f=/home/jetson/.config/autostart/bash.desktop; if [ -e \"$f\" ]; then mv -v \"$f\" \"$f.p007ar1.bak\"; else echo 'already isolated'; fi",
-   "result": "DRY_RUN_SKIPPED",
-   "dry_run": true
+   "detail": "bash.desktop -> bash.desktop.p007ar1.bak",
+   "result": "renamed '/home/jetson/.config/autostart/bash.desktop' -> '/home/jetson/.config/autostart/bash.desktop.p007ar1.bak'",
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:24+0900",
+   "at": "2026-10-27T09:34:35+0900",
    "action": "autostart_after",
-   "detail": "활성 .desktop: ['bash-1.desktop', 'bash.desktop'] | bash-1.desktop -> Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh (대상 존재: no) | bash.desktop -> Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh (대상 존재: yes)",
-   "result": "기동 가능 항목: ['bash.desktop']",
-   "dry_run": true
+   "detail": "활성 .desktop: ['bash-1.desktop'] | bash-1.desktop -> Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh (대상 존재: no)",
+   "result": "기동 가능 항목: 없음",
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:24+0900",
+   "at": "2026-10-27T09:34:35+0900",
    "action": "autostart_hash_after",
    "detail": "해시 재확인",
-   "result": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e  /home/jetson/.config/autostart/bash-1.desktop | 416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af  /home/jetson/.config/autostart/bash.desktop | ",
-   "dry_run": true
+   "result": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e  /home/jetson/.config/autostart/bash-1.desktop | 416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af  /home/jetson/.config/autostart/bash.desktop.p007ar1.bak | ",
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:24+0900",
+   "at": "2026-10-27T09:34:36+0900",
    "action": "kill",
-   "detail": "joystick.py pid 3072 (CONTROL_WRITER. main이 move_init_pose()를 호출한다)",
-   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=2781 CMD=python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py",
-   "dry_run": true
+   "detail": "joystick.py pid 3072 SIGKILL (CONTROL_WRITER. main이 move_init_pose()를 호출한다)",
+   "result": "IDENTITY_OK ST=2781 GONE_AFTER_KILL",
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:24+0900",
+   "at": "2026-10-27T09:34:38+0900",
    "action": "kill",
-   "detail": "YahboomArm.pyc pid 3022 (CONTROL_WRITER + NETWORK_CONTROL_ENTRYPOINT (Flask 6500))",
-   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=2715 CMD=python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc",
-   "dry_run": true
+   "detail": "YahboomArm.pyc pid 3022 SIGKILL (CONTROL_WRITER + NETWORK_CONTROL_ENTRYPOINT (Flask 6500))",
+   "result": "IDENTITY_OK ST=2715 GONE_AFTER_KILL",
+   "dry_run": false
   },
   {
-   "at": "2026-10-27T09:28:24+0900",
-   "action": "kill",
-   "detail": "ipykernel_launcher pid 1672919 (UNCONTROLLED_EXECUTION_SURFACE. cwd가 dofbot_color_sorting/scripts)",
-   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=5472417 CMD=/usr/bin/python3 -m ipykernel_launcher -f /home/jetson/.local/share/jupyter/runtime/kernel-8bdc692a-df38-",
-   "dry_run": true
+   "at": "2026-10-27T09:34:38+0900",
+   "action": "kill_skip",
+   "detail": "ipykernel_launcher pid 1672919",
+   "result": "이미 없음 (GONE_BEFORE)",
+   "dry_run": false
   }
+ ],
+ "order_enforced": [
+  "롤백 스크립트 선행 작성 + --dry-run 통과",
+  "재기동원 차단(autostart rename)",
+  "차단 확인(기동 가능 항목 0)",
+  "Jupyter 서비스 중지(운영자 sudo)",
+  "writer 신원 재확인 후 SIGKILL"
+ ],
+ "jupyter_stop": {
+  "by": "operator",
+  "command": "ssh -t jetson@192.168.0.94 'sudo systemctl stop jupyterlab'",
+  "why_service_not_kernel": "Jupyter 서버는 죽은 커널을 자동 재시작한다. 커널만 SIGKILL하면 수 초 안에 새 커널이 떠 respawn 테스트가 실패한다.",
+  "verified": {
+   "is_active": "inactive",
+   "is_enabled": "enabled",
+   "kernel_1672919": "GONE",
+   "jupyter_lab_1090": "GONE",
+   "ipykernel_count": 0,
+   "listener_8888": "없음"
+  },
+  "rollback": "sudo systemctl start jupyterlab"
+ },
+ "autostart_backup_integrity": {
+  "file": "/home/jetson/.config/autostart/bash.desktop.p007ar1.bak",
+  "sha256_before": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af",
+  "sha256_after_rename": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af",
+  "identical": true,
+  "method": "mv 만 썼다. 내용은 바꾸지 않았다."
+ },
+ "started_by_this_gate": [
+  "ros2cli daemon pid 1677026 — before snapshot이 띄웠다. respawn으로 읽지 않는다."
  ]
 }

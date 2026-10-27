@@ -1,0 +1,1966 @@
+{
+ "gate": "P-007A-R1",
+ "role": "read_only_snapshot",
+ "writes_performed": 0,
+ "environment": {
+  "hostname": {
+   "cmd": "hostname",
+   "rc": 0,
+   "out": "yahboom",
+   "err": ""
+  },
+  "uname": {
+   "cmd": "uname -a",
+   "rc": 0,
+   "out": "Linux yahboom 5.15.148-tegra #1 SMP PREEMPT Tue Jan 7 17:14:38 PST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+   "err": ""
+  },
+  "os_release": {
+   "cmd": "cat /etc/os-release | head -4",
+   "rc": 0,
+   "out": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"",
+   "err": ""
+  },
+  "date_iso": {
+   "cmd": "date -Is",
+   "rc": 0,
+   "out": "2026-10-27T08:36:19+08:00",
+   "err": ""
+  },
+  "whoami": {
+   "cmd": "id",
+   "rc": 0,
+   "out": "uid=1000(jetson) gid=1000(jetson) groups=1000(jetson),4(adm),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),104(render),116(i2c),120(lpadmin),135(gdm),136(sambashare),993(ollama),994(docker),996(weston-launch),999(gpio),1001(jtop)",
+   "err": ""
+  },
+  "sudo_nopasswd": {
+   "cmd": "sudo -n true; echo rc=$?",
+   "rc": 0,
+   "out": "rc=1",
+   "err": "sudo: a password is required"
+  }
+ },
+ "processes": [
+  {
+   "pid": 1,
+   "ppid": 0,
+   "starttime_ticks": 0,
+   "uid": 0,
+   "cmdline": "/sbin/init 2"
+  },
+  {
+   "pid": 246,
+   "ppid": 1,
+   "starttime_ticks": 933,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-journald"
+  },
+  {
+   "pid": 284,
+   "ppid": 1,
+   "starttime_ticks": 963,
+   "uid": 0,
+   "cmdline": "/bin/bash /etc/systemd/nv-tee-supplicant.sh"
+  },
+  {
+   "pid": 286,
+   "ppid": 284,
+   "starttime_ticks": 964,
+   "uid": 0,
+   "cmdline": "/usr/sbin/tee-supplicant"
+  },
+  {
+   "pid": 294,
+   "ppid": 1,
+   "starttime_ticks": 967,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-udevd"
+  },
+  {
+   "pid": 583,
+   "ppid": 1,
+   "starttime_ticks": 1175,
+   "uid": 0,
+   "cmdline": "/usr/sbin/haveged --Foreground --verbose=1"
+  },
+  {
+   "pid": 585,
+   "ppid": 1,
+   "starttime_ticks": 1176,
+   "uid": 129,
+   "cmdline": "/sbin/rpcbind -f -w"
+  },
+  {
+   "pid": 586,
+   "ppid": 1,
+   "starttime_ticks": 1176,
+   "uid": 104,
+   "cmdline": "/lib/systemd/systemd-resolved"
+  },
+  {
+   "pid": 587,
+   "ppid": 1,
+   "starttime_ticks": 1177,
+   "uid": 106,
+   "cmdline": "/lib/systemd/systemd-timesyncd"
+  },
+  {
+   "pid": 645,
+   "ppid": 1,
+   "starttime_ticks": 1382,
+   "uid": 123,
+   "cmdline": "avahi-daemon: running [yahboom.local]"
+  },
+  {
+   "pid": 646,
+   "ppid": 1,
+   "starttime_ticks": 1382,
+   "uid": 0,
+   "cmdline": "/usr/lib/bluetooth/bluetoothd -d --noplugin=audio,a2dp,avrcp"
+  },
+  {
+   "pid": 647,
+   "ppid": 1,
+   "starttime_ticks": 1383,
+   "uid": 105,
+   "cmdline": "@dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only"
+  },
+  {
+   "pid": 648,
+   "ppid": 1,
+   "starttime_ticks": 1383,
+   "uid": 0,
+   "cmdline": "/usr/sbin/NetworkManager --no-daemon"
+  },
+  {
+   "pid": 656,
+   "ppid": 1,
+   "starttime_ticks": 1384,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers"
+  },
+  {
+   "pid": 662,
+   "ppid": 1,
+   "starttime_ticks": 1385,
+   "uid": 0,
+   "cmdline": "python3 /opt/nvidia/pva-allow-2/bin/nvidiaPvaAllowd.py"
+  },
+  {
+   "pid": 669,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 0,
+   "cmdline": "/usr/libexec/polkitd --no-debug"
+  },
+  {
+   "pid": 674,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 0,
+   "cmdline": "/usr/libexec/power-profiles-daemon"
+  },
+  {
+   "pid": 677,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 107,
+   "cmdline": "/usr/sbin/rsyslogd -n -iNONE"
+  },
+  {
+   "pid": 682,
+   "ppid": 1,
+   "starttime_ticks": 1387,
+   "uid": 0,
+   "cmdline": "seatd -g video"
+  },
+  {
+   "pid": 692,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/lib/snapd/snapd"
+  },
+  {
+   "pid": 696,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/libexec/accounts-daemon"
+  },
+  {
+   "pid": 698,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/libexec/switcheroo-control"
+  },
+  {
+   "pid": 700,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-logind"
+  },
+  {
+   "pid": 703,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/usr/libexec/udisks2/udisksd"
+  },
+  {
+   "pid": 704,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant"
+  },
+  {
+   "pid": 712,
+   "ppid": 645,
+   "starttime_ticks": 1390,
+   "uid": 123,
+   "cmdline": "avahi-daemon: chroot helper"
+  },
+  {
+   "pid": 752,
+   "ppid": 1,
+   "starttime_ticks": 1394,
+   "uid": 0,
+   "cmdline": "/usr/sbin/ModemManager"
+  },
+  {
+   "pid": 935,
+   "ppid": 1,
+   "starttime_ticks": 1447,
+   "uid": 0,
+   "cmdline": "/bin/bash /etc/systemd/nvmemwarning.sh"
+  },
+  {
+   "pid": 1093,
+   "ppid": 1,
+   "starttime_ticks": 1671,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvargus-daemon"
+  },
+  {
+   "pid": 1096,
+   "ppid": 1,
+   "starttime_ticks": 1672,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvs-service"
+  },
+  {
+   "pid": 1102,
+   "ppid": 1,
+   "starttime_ticks": 1673,
+   "uid": 999,
+   "cmdline": "/usr/local/bin/ollama serve"
+  },
+  {
+   "pid": 1109,
+   "ppid": 1,
+   "starttime_ticks": 1673,
+   "uid": 0,
+   "cmdline": "/bin/sh /snap/cups/1147/scripts/run-cups-browsed"
+  },
+  {
+   "pid": 1113,
+   "ppid": 1,
+   "starttime_ticks": 1674,
+   "uid": 0,
+   "cmdline": "/bin/sh /snap/cups/1147/scripts/run-cupsd"
+  },
+  {
+   "pid": 1128,
+   "ppid": 1,
+   "starttime_ticks": 1675,
+   "uid": 0,
+   "cmdline": "/usr/bin/containerd"
+  },
+  {
+   "pid": 1139,
+   "ppid": 1,
+   "starttime_ticks": 1677,
+   "uid": 0,
+   "cmdline": "/usr/sbin/cron -f -P"
+  },
+  {
+   "pid": 1155,
+   "ppid": 1,
+   "starttime_ticks": 1679,
+   "uid": 0,
+   "cmdline": "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+  },
+  {
+   "pid": 1185,
+   "ppid": 1,
+   "starttime_ticks": 1683,
+   "uid": 0,
+   "cmdline": "/usr/sbin/gdm3"
+  },
+  {
+   "pid": 1203,
+   "ppid": 1,
+   "starttime_ticks": 1684,
+   "uid": 111,
+   "cmdline": "/usr/sbin/kerneloops --test"
+  },
+  {
+   "pid": 1216,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 0,
+   "cmdline": "/sbin/agetty -o -p -- \\u --keep-baud 115200,57600,38400,9600 ttyGS0 vt220"
+  },
+  {
+   "pid": 1219,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 0,
+   "cmdline": "/sbin/agetty -o -p -- \\u --keep-baud 115200,57600,38400,9600 ttyTCU0 vt220"
+  },
+  {
+   "pid": 1220,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 111,
+   "cmdline": "/usr/sbin/kerneloops"
+  },
+  {
+   "pid": 1257,
+   "ppid": 1185,
+   "starttime_ticks": 1691,
+   "uid": 0,
+   "cmdline": "gdm-session-worker [pam/gdm-autologin]"
+  },
+  {
+   "pid": 1351,
+   "ppid": 1,
+   "starttime_ticks": 1702,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvphsd"
+  },
+  {
+   "pid": 1362,
+   "ppid": 1351,
+   "starttime_ticks": 1703,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvphsd"
+  },
+  {
+   "pid": 1399,
+   "ppid": 1,
+   "starttime_ticks": 1708,
+   "uid": 0,
+   "cmdline": "/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
+  },
+  {
+   "pid": 1400,
+   "ppid": 1,
+   "starttime_ticks": 1708,
+   "uid": 1000,
+   "cmdline": "/lib/systemd/systemd --user"
+  },
+  {
+   "pid": 1407,
+   "ppid": 1400,
+   "starttime_ticks": 1710,
+   "uid": 1000,
+   "cmdline": "(sd-pam)"
+  },
+  {
+   "pid": 1591,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pipewire"
+  },
+  {
+   "pid": 1592,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pipewire-media-session"
+  },
+  {
+   "pid": 1593,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pulseaudio --daemonize=no --log-target=journal"
+  },
+  {
+   "pid": 1600,
+   "ppid": 1,
+   "starttime_ticks": 1740,
+   "uid": 108,
+   "cmdline": "/usr/libexec/rtkit-daemon"
+  },
+  {
+   "pid": 1604,
+   "ppid": 1,
+   "starttime_ticks": 1741,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-keyring-daemon --daemonize --login"
+  },
+  {
+   "pid": 1615,
+   "ppid": 1400,
+   "starttime_ticks": 1743,
+   "uid": 1000,
+   "cmdline": "/usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only"
+  },
+  {
+   "pid": 1616,
+   "ppid": 1257,
+   "starttime_ticks": 1743,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu"
+  },
+  {
+   "pid": 1626,
+   "ppid": 1616,
+   "starttime_ticks": 1745,
+   "uid": 0,
+   "cmdline": "/usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3"
+  },
+  {
+   "pid": 1915,
+   "ppid": 1616,
+   "starttime_ticks": 1818,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-binary --session=ubuntu"
+  },
+  {
+   "pid": 2041,
+   "ppid": 1400,
+   "starttime_ticks": 1886,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/at-spi-bus-launcher"
+  },
+  {
+   "pid": 2053,
+   "ppid": 2041,
+   "starttime_ticks": 1888,
+   "uid": 1000,
+   "cmdline": "/usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/1000/at-spi/bus_0"
+  },
+  {
+   "pid": 2076,
+   "ppid": 1400,
+   "starttime_ticks": 1902,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-remote-desktop-daemon"
+  },
+  {
+   "pid": 2078,
+   "ppid": 1400,
+   "starttime_ticks": 1902,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-ctl --monitor"
+  },
+  {
+   "pid": 2090,
+   "ppid": 1400,
+   "starttime_ticks": 1904,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd"
+  },
+  {
+   "pid": 2097,
+   "ppid": 1400,
+   "starttime_ticks": 1906,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f"
+  },
+  {
+   "pid": 2099,
+   "ppid": 1400,
+   "starttime_ticks": 1907,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-binary --systemd-service --session=ubuntu"
+  },
+  {
+   "pid": 2145,
+   "ppid": 1400,
+   "starttime_ticks": 1920,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-shell"
+  },
+  {
+   "pid": 2148,
+   "ppid": 648,
+   "starttime_ticks": 1924,
+   "uid": 65534,
+   "cmdline": "/usr/sbin/dnsmasq --conf-file=/dev/null --no-hosts --keep-in-foreground --bind-interfaces --except-interface=lo --clear-on-reload --strict-order --listen-address=192.168.8.88 --dhcp-range=192.168.8.97,192.168.8.254,60m --dhcp-lease-max=50 --dhcp-leasefile=/var/lib/NetworkManager/dnsmasq-wlP1p1s0.leases --pid-file=/run/nm-dnsmasq-wlP1p1s0.pid --conf-dir=/etc/NetworkManager/dnsmasq-shared.d"
+  },
+  {
+   "pid": 2256,
+   "ppid": 1,
+   "starttime_ticks": 1964,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2260,
+   "ppid": 1,
+   "starttime_ticks": 1965,
+   "uid": 1000,
+   "cmdline": "/bin/sh -c python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+  },
+  {
+   "pid": 2264,
+   "ppid": 2260,
+   "starttime_ticks": 1966,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+  },
+  {
+   "pid": 2310,
+   "ppid": 2256,
+   "starttime_ticks": 1998,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2319,
+   "ppid": 2256,
+   "starttime_ticks": 1999,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2472,
+   "ppid": 1400,
+   "starttime_ticks": 2036,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-permission-store"
+  },
+  {
+   "pid": 2476,
+   "ppid": 1400,
+   "starttime_ticks": 2036,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-shell-calendar-server"
+  },
+  {
+   "pid": 2480,
+   "ppid": 1113,
+   "starttime_ticks": 2036,
+   "uid": 0,
+   "cmdline": "cupsd -f -s /var/snap/cups/common/etc/cups/cups-files.conf -c /var/snap/cups/common/etc/cups/cupsd.conf"
+  },
+  {
+   "pid": 2491,
+   "ppid": 1400,
+   "starttime_ticks": 2040,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-source-registry"
+  },
+  {
+   "pid": 2498,
+   "ppid": 1,
+   "starttime_ticks": 2047,
+   "uid": 0,
+   "cmdline": "/usr/libexec/upowerd"
+  },
+  {
+   "pid": 2501,
+   "ppid": 1400,
+   "starttime_ticks": 2047,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/goa-daemon"
+  },
+  {
+   "pid": 2505,
+   "ppid": 1400,
+   "starttime_ticks": 2052,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-calendar-factory"
+  },
+  {
+   "pid": 2515,
+   "ppid": 1400,
+   "starttime_ticks": 2059,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/dconf-service"
+  },
+  {
+   "pid": 2519,
+   "ppid": 1400,
+   "starttime_ticks": 2060,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/goa-identity-service"
+  },
+  {
+   "pid": 2535,
+   "ppid": 1400,
+   "starttime_ticks": 2066,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-udisks2-volume-monitor"
+  },
+  {
+   "pid": 2536,
+   "ppid": 1400,
+   "starttime_ticks": 2066,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-addressbook-factory"
+  },
+  {
+   "pid": 2548,
+   "ppid": 1400,
+   "starttime_ticks": 2071,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-gphoto2-volume-monitor"
+  },
+  {
+   "pid": 2554,
+   "ppid": 1400,
+   "starttime_ticks": 2074,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-mtp-volume-monitor"
+  },
+  {
+   "pid": 2572,
+   "ppid": 1400,
+   "starttime_ticks": 2077,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-goa-volume-monitor"
+  },
+  {
+   "pid": 2576,
+   "ppid": 1400,
+   "starttime_ticks": 2078,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-afc-volume-monitor"
+  },
+  {
+   "pid": 2587,
+   "ppid": 1109,
+   "starttime_ticks": 2081,
+   "uid": 0,
+   "cmdline": "cups-browsed -c /var/snap/cups/common/etc/cups/cups-browsed.conf"
+  },
+  {
+   "pid": 2600,
+   "ppid": 2090,
+   "starttime_ticks": 2239,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-trash --spawner :1.17 /org/gtk/gvfs/exec_spaw/0"
+  },
+  {
+   "pid": 2607,
+   "ppid": 1400,
+   "starttime_ticks": 2254,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications"
+  },
+  {
+   "pid": 2618,
+   "ppid": 1400,
+   "starttime_ticks": 2259,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/at-spi2-registryd --use-gnome-session"
+  },
+  {
+   "pid": 2625,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "sh -c /usr/bin/ibus-daemon --panel disable $([ \"$XDG_SESSION_TYPE\" = \"x11\" ] && echo \"--xim\")"
+  },
+  {
+   "pid": 2627,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-a11y-settings"
+  },
+  {
+   "pid": 2628,
+   "ppid": 2625,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/bin/ibus-daemon --panel disable --xim"
+  },
+  {
+   "pid": 2629,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-color"
+  },
+  {
+   "pid": 2631,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-datetime"
+  },
+  {
+   "pid": 2633,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-housekeeping"
+  },
+  {
+   "pid": 2635,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-keyboard"
+  },
+  {
+   "pid": 2638,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-media-keys"
+  },
+  {
+   "pid": 2639,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-power"
+  },
+  {
+   "pid": 2641,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-print-notifications"
+  },
+  {
+   "pid": 2643,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-rfkill"
+  },
+  {
+   "pid": 2645,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-screensaver-proxy"
+  },
+  {
+   "pid": 2646,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-sharing"
+  },
+  {
+   "pid": 2647,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-smartcard"
+  },
+  {
+   "pid": 2648,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-sound"
+  },
+  {
+   "pid": 2649,
+   "ppid": 1400,
+   "starttime_ticks": 2269,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-wacom"
+  },
+  {
+   "pid": 2650,
+   "ppid": 1400,
+   "starttime_ticks": 2269,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-xsettings"
+  },
+  {
+   "pid": 2651,
+   "ppid": 2099,
+   "starttime_ticks": 2272,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-software --gapplication-service"
+  },
+  {
+   "pid": 2683,
+   "ppid": 2099,
+   "starttime_ticks": 2276,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-data-server/evolution-alarm-notify"
+  },
+  {
+   "pid": 2696,
+   "ppid": 2099,
+   "starttime_ticks": 2281,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-disk-utility-notify"
+  },
+  {
+   "pid": 2708,
+   "ppid": 2099,
+   "starttime_ticks": 2283,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2737,
+   "ppid": 2628,
+   "starttime_ticks": 2289,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-memconf"
+  },
+  {
+   "pid": 2747,
+   "ppid": 2628,
+   "starttime_ticks": 2291,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-extension-gtk3"
+  },
+  {
+   "pid": 2757,
+   "ppid": 1400,
+   "starttime_ticks": 2295,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-x11 --kill-daemon"
+  },
+  {
+   "pid": 2767,
+   "ppid": 1400,
+   "starttime_ticks": 2299,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-portal"
+  },
+  {
+   "pid": 2793,
+   "ppid": 1,
+   "starttime_ticks": 2316,
+   "uid": 122,
+   "cmdline": "/usr/libexec/colord"
+  },
+  {
+   "pid": 2801,
+   "ppid": 1400,
+   "starttime_ticks": 2323,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-printer"
+  },
+  {
+   "pid": 2806,
+   "ppid": 1400,
+   "starttime_ticks": 2327,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal"
+  },
+  {
+   "pid": 2846,
+   "ppid": 1400,
+   "starttime_ticks": 2337,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-document-portal"
+  },
+  {
+   "pid": 2861,
+   "ppid": 1400,
+   "starttime_ticks": 2339,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gjs /usr/share/gnome-shell/org.gnome.ScreenSaver"
+  },
+  {
+   "pid": 2884,
+   "ppid": 2846,
+   "starttime_ticks": 2343,
+   "uid": 0,
+   "cmdline": "fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc"
+  },
+  {
+   "pid": 2896,
+   "ppid": 1400,
+   "starttime_ticks": 2347,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal-gnome"
+  },
+  {
+   "pid": 2906,
+   "ppid": 2708,
+   "starttime_ticks": 2352,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2908,
+   "ppid": 2708,
+   "starttime_ticks": 2352,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2909,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2911,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2913,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2917,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2918,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2920,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2925,
+   "ppid": 2708,
+   "starttime_ticks": 2356,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2926,
+   "ppid": 2708,
+   "starttime_ticks": 2356,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2927,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2928,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2929,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2930,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2931,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2932,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2933,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2934,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2935,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2941,
+   "ppid": 2628,
+   "starttime_ticks": 2371,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-engine-libpinyin --ibus"
+  },
+  {
+   "pid": 2945,
+   "ppid": 1400,
+   "starttime_ticks": 2378,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/tracker-miner-fs-3"
+  },
+  {
+   "pid": 2969,
+   "ppid": 1400,
+   "starttime_ticks": 2433,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-terminal-server"
+  },
+  {
+   "pid": 2992,
+   "ppid": 1400,
+   "starttime_ticks": 2503,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal-gtk"
+  },
+  {
+   "pid": 3021,
+   "ppid": 2969,
+   "starttime_ticks": 2714,
+   "uid": 1000,
+   "cmdline": "bash"
+  },
+  {
+   "pid": 3047,
+   "ppid": 2969,
+   "starttime_ticks": 2745,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py"
+  },
+  {
+   "pid": 3091,
+   "ppid": 1400,
+   "starttime_ticks": 3423,
+   "uid": 1000,
+   "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot"
+  },
+  {
+   "pid": 3092,
+   "ppid": 3091,
+   "starttime_ticks": 3423,
+   "uid": 1000,
+   "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot"
+  },
+  {
+   "pid": 3103,
+   "ppid": 3092,
+   "starttime_ticks": 3545,
+   "uid": 1000,
+   "cmdline": "/home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot"
+  },
+  {
+   "pid": 3123,
+   "ppid": 1,
+   "starttime_ticks": 4629,
+   "uid": 112,
+   "cmdline": "/usr/sbin/uuidd --socket-activation"
+  },
+  {
+   "pid": 3197,
+   "ppid": 1400,
+   "starttime_ticks": 8097,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-metadata"
+  },
+  {
+   "pid": 3204,
+   "ppid": 2099,
+   "starttime_ticks": 8299,
+   "uid": 1000,
+   "cmdline": "update-notifier"
+  },
+  {
+   "pid": 1677026,
+   "ppid": 1,
+   "starttime_ticks": 5485217,
+   "uid": 1000,
+   "cmdline": "/usr/bin/python3 -c from ros2cli.daemon.daemonize import main; main() --name ros2-daemon --ros-domain-id 0 --rmw-implementation rmw_fastrtps_cpp"
+  },
+  {
+   "pid": 1698074,
+   "ppid": 935,
+   "starttime_ticks": 5551525,
+   "uid": 0,
+   "cmdline": "sleep 300"
+  },
+  {
+   "pid": 1704103,
+   "ppid": 1155,
+   "starttime_ticks": 5569738,
+   "uid": 0,
+   "cmdline": "sshd: jetson [priv]"
+  },
+  {
+   "pid": 1704149,
+   "ppid": 1704103,
+   "starttime_ticks": 5569751,
+   "uid": 1000,
+   "cmdline": "sshd: jetson@notty"
+  },
+  {
+   "pid": 1704150,
+   "ppid": 1704149,
+   "starttime_ticks": 5569752,
+   "uid": 1000,
+   "cmdline": "python3 -"
+  }
+ ],
+ "i2c": {
+  "devices": {
+   "cmd": "ls -l /dev/i2c-*",
+   "rc": 0,
+   "out": "crw-rw---- 1 root i2c 89,  0 Nov 22  2023 /dev/i2c-0\ncrw-rw---- 1 root i2c 89,  1 Nov 22  2023 /dev/i2c-1\ncrw-rw---- 1 root i2c 89, 10 Nov 22  2023 /dev/i2c-10\ncrw-rw---- 1 root i2c 89, 11 Jul 16 16:59 /dev/i2c-11\ncrw-rw---- 1 root i2c 89,  2 Nov 22  2023 /dev/i2c-2\ncrw-rw---- 1 root i2c 89,  4 Nov 22  2023 /dev/i2c-4\ncrw-rw---- 1 root i2c 89,  5 Nov 22  2023 /dev/i2c-5\ncrw-rw---- 1 root i2c 89,  7 Nov 22  2023 /dev/i2c-7\ncrw-rw---- 1 root i2c 89,  9 Nov 22  2023 /dev/i2c-9",
+   "err": ""
+  },
+  "group_i2c": {
+   "cmd": "getent group i2c",
+   "rc": 0,
+   "out": "i2c:x:116:jetson",
+   "err": ""
+  },
+  "adapters_sysfs": {
+   "cmd": "for d in /sys/class/i2c-dev/*; do echo \"$(basename $d) $(cat $d/name 2>/dev/null)\"; done",
+   "rc": 0,
+   "out": "i2c-0 3160000.i2c\ni2c-1 c240000.i2c\ni2c-10 i2c-2-mux (chan_id 0)\ni2c-11 NVIDIA SOC i2c adapter 0\ni2c-2 3180000.i2c\ni2c-4 Tegra BPMP I2C adapter\ni2c-5 31b0000.i2c\ni2c-7 c250000.i2c\ni2c-9 i2c-2-mux (chan_id 1)",
+   "err": ""
+  },
+  "bus_devices": {
+   "cmd": "ls -l /sys/bus/i2c/devices/ 2>/dev/null",
+   "rc": 0,
+   "out": "total 0\nlrwxrwxrwx 1 root root 0 Nov 22  2023 0-0050 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0/0-0050\nlrwxrwxrwx 1 root root 0 Nov 22  2023 0-0057 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0/0-0057\nlrwxrwxrwx 1 root root 0 Nov 22  2023 10-0010 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-10/10-0010\nlrwxrwxrwx 1 root root 0 Nov 22  2023 1-0025 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1/1-0025\nlrwxrwxrwx 1 root root 0 Nov 22  2023 1-0040 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1/1-0040\nlrwxrwxrwx 1 root root 0 Nov 22  2023 4-003c -> ../../../devices/platform/bpmp/bpmp:i2c/i2c-4/4-003c\nlrwxrwxrwx 1 root root 0 Nov 22  2023 9-0010 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-9/9-0010\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-0 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-1 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-10 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-10\nlrwxrwxrwx 1 root root 0 Jul 16 16:59 i2c-11 -> ../../../devices/platform/13800000.display/i2c-11\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-2 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-4 -> ../../../devices/platform/bpmp/bpmp:i2c/i2c-4\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-5 -> ../../../devices/platform/bus@0/31b0000.i2c/i2c-5\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-7 -> ../../../devices/platform/bus@0/c250000.i2c/i2c-7\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-9 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-9",
+   "err": ""
+  },
+  "fd_holders": {
+   "holders": [
+    {
+     "pid": 2264,
+     "i2c_fd_count": 1,
+     "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+    },
+    {
+     "pid": 3091,
+     "i2c_fd_count": 1,
+     "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot"
+    },
+    {
+     "pid": 3092,
+     "i2c_fd_count": 1,
+     "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot"
+    }
+   ],
+   "unreadable_pid_count": 218
+  },
+  "probe_commands_used": []
+ },
+ "autostart": {
+  "user_dir": {
+   "cmd": "ls -la /home/jetson/.config/autostart/ 2>/dev/null",
+   "rc": 0,
+   "out": "total 16\ndrwx------  2 jetson jetson 4096 Oct 27 08:34 .\ndrwx------ 31 jetson jetson 4096 Nov 26  2025 ..\n-rw-rw-r--  1 jetson jetson  211 Dec  3  2025 bash-1.desktop\n-rw-rw-r--  1 jetson jetson  235 Apr  9  2025 bash.desktop.p007ar1.bak",
+   "err": ""
+  },
+  "system_dir": {
+   "cmd": "ls -la /etc/xdg/autostart/ 2>/dev/null",
+   "rc": 0,
+   "out": "total 208\ndrwxr-xr-x 2 root root  4096 Apr 11  2025 .\ndrwxr-xr-x 8 root root  4096 Apr 11  2025 ..\n-rw-r--r-- 1 root root   193 Mar 26  2022 at-spi-dbus-bus.desktop\n-rw-r--r-- 1 root root   227 Mar 23  2022 geoclue-demo-agent.desktop\n-rw-r--r-- 1 root root   357 Feb  2  2023 gnome-initial-setup-copy-worker.desktop\n-rw-r--r-- 1 root root   454 Feb  2  2023 gnome-initial-setup-first-login.desktop\n-rw-r--r-- 1 root root   485 Jun 21  2022 gnome-keyring-pkcs11.desktop\n-rw-r--r-- 1 root root   478 Jun 21  2022 gnome-keyring-secrets.desktop\n-rw-r--r-- 1 root root   445 Jun 21  2022 gnome-keyring-ssh.desktop\n-rw-r--r-- 1 root root   177 Oct 21  2022 gnome-shell-overrides-migration.desktop\n-rw-r--r-- 1 root root   200 Jul 20  2022 gnome-software-service.desktop\n-rw-r--r-- 1 root root   226 Jan 22  2022 im-launch.desktop\n-rw-r--r-- 1 root root   350 Mar  7  2022 nm-applet.desktop\n-rw-r--r-- 1 root root  1846 Jan  8  2025 nvbackground.desktop\n-rwxr-xr-x 1 root root  2229 Jan  8  2025 nvbackground.sh\n-rwxr-xr-x 1 root root  1492 Jan  8  2025 nvl4t-readme.sh\n-rw-r--r-- 1 root root  1799 Jan  8  2025 nvpmodel_indicator.desktop\n-rw-r--r-- 1 root root   389 Mar 17  2022 onboard-autostart.desktop\n-rw-r--r-- 1 root root   315 May 19  2022 orca-autostart.desktop\n-rw-r--r-- 1 root root   379 May 20  2022 org.gnome.DejaDup.Monitor.desktop\n-rw-r--r-- 1 root root   470 Jul  6  2022 org.gnome.Evolution-alarm-notify.desktop\n-rw-r--r-- 1 root root   299 Apr 30  2022 org.gnome.SettingsDaemon.A11ySettings.desktop\n-rw-r--r-- 1 root root   294 Apr 30  2022 org.gnome.SettingsDaemon.Color.desktop\n-rw-r--r-- 1 root root   292 Apr 30  2022 org.gnome.SettingsDaemon.Datetime.desktop\n-rw-r--r-- 1 root root   246 Mar 19  2022 org.gnome.SettingsDaemon.DiskUtilityNotify.desktop\n-rw-r--r-- 1 root root   314 Apr 30  2022 org.gnome.SettingsDaemon.Housekeeping.desktop\n-rw-r--r-- 1 root root   303 Apr 30  2022 org.gnome.SettingsDaemon.Keyboard.desktop\n-rw-r--r-- 1 root root   301 Apr 30  2022 org.gnome.SettingsDaemon.MediaKeys.desktop\n-rw-r--r-- 1 root root   294 Apr 30  2022 org.gnome.SettingsDaemon.Power.desktop\n-rw-r--r-- 1 root root   313 Apr 30  2022 org.gnome.SettingsDaemon.PrintNotifications.desktop\n-rw-r--r-- 1 root root   293 Apr 30  2022 org.gnome.SettingsDaemon.Rfkill.desktop\n-rw-r--r-- 1 root root   313 Apr 30  2022 org.gnome.SettingsDaemon.ScreensaverProxy.desktop\n-rw-r--r-- 1 root root   292 Apr 30  2022 org.gnome.SettingsDaemon.Sharing.desktop\n-rw-r--r-- 1 root root   291 Apr 30  2022 org.gnome.SettingsDaemon.Smartcard.desktop\n-rw-r--r-- 1 root root   298 Apr 30  2022 org.gnome.SettingsDaemon.Sound.desktop\n-rw-r--r-- 1 root root   301 Apr 30  2022 org.gnome.SettingsDaemon.UsbProtection.desktop\n-rw-r--r-- 1 root root   298 Apr 30  2022 org.gnome.SettingsDaemon.Wacom.desktop\n-rw-r--r-- 1 root root   289 Apr 30  2022 org.gnome.SettingsDaemon.Wwan.desktop\n-rw-r--r-- 1 root root   291 Apr 30  2022 org.gnome.SettingsDaemon.XSettings.desktop\n-rw-r--r-- 1 root root   369 Feb 21  2022 print-applet.desktop\n-rw-r--r-- 1 root root  5330 Sep  7  2022 pulseaudio.desktop\n-rw-r--r-- 1 root root   228 Dec  1  2022 snap-userd-autostart.desktop\n-rw-r--r-- 1 root root   191 Feb 24  2022 spice-vdagent.desktop\n-rw-r--r-- 1 root root   445 Mar 22  2022 tracker-miner-fs-3.desktop\n-rw-r--r-- 1 root root  4057 Feb 28  2023 ubuntu-advantage-notification.desktop\n-rw-r--r-- 1 root root   153 Mar 15  2022 ubuntu-report-on-upgrade.desktop\n-rw-r--r-- 1 root root 11025 Feb 28  2023 update-notifier.desktop\n-rw-r--r-- 1 root root   303 Mar 25  2022 user-dirs-update-gtk.desktop\n-rw-r--r-- 1 root root   250 Mar 25  2022 xdg-user-dirs.desktop",
+   "err": ""
+  },
+  "user_entries": [
+   {
+    "path": "/home/jetson/.config/autostart/bash-1.desktop",
+    "content": "[Desktop Entry]\nType=Application\nExec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh\nHidden=false\nNoDisplay=false\nX-GNOME-Autostart-enabled=true\nName[en_US]=setting\nName=setting\nComment[en_US]=\nComment=\n",
+    "sha256": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e",
+    "bytes": 211
+   },
+   {
+    "path": "/home/jetson/.config/autostart/bash.desktop.p007ar1.bak",
+    "content": "[Desktop Entry]\nType=Application\nExec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh\nHidden=false\nNoDisplay=false\nX-GNOME-Autostart-enabled=true\nName[en_US]=App-Arm\nName=App-Arm\nComment[en_US]=app program\nComment=app program\n",
+    "sha256": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af",
+    "bytes": 235
+   }
+  ],
+  "system_same_name": [],
+  "xdg_config_dirs": {
+   "cmd": "echo \"${XDG_CONFIG_DIRS:-unset}\"",
+   "rc": 0,
+   "out": "unset",
+   "err": ""
+  }
+ },
+ "login_configs": {
+  "login_users": [
+   {
+    "user": "root",
+    "home": "/root",
+    "shell": "/bin/bash"
+   },
+   {
+    "user": "sync",
+    "home": "/bin",
+    "shell": "/bin/sync"
+   },
+   {
+    "user": "jetson",
+    "home": "/home/jetson",
+    "shell": "/bin/bash"
+   }
+  ],
+  "scanned_file_count": 81,
+  "startup_hits": [
+   {
+    "path": "/home/jetson/.bashrc",
+    "exists": true,
+    "hit_count": 1,
+    "hits": [
+     {
+      "line": 123,
+      "pattern": "dofbot",
+      "text": "source /home/jetson/dofbot_pro_ws/install/setup.bash"
+     }
+    ]
+   },
+   {
+    "path": "/home/jetson/.config/autostart",
+    "dir_entries": [
+     "bash-1.desktop",
+     "bash.desktop.p007ar1.bak"
+    ]
+   }
+  ]
+ },
+ "cron": {
+  "user_crontab": {
+   "cmd": "crontab -l 2>&1 | head -40",
+   "rc": 0,
+   "out": "no crontab for jetson",
+   "err": ""
+  },
+  "etc_crontab": {
+   "cmd": "cat /etc/crontab 2>/dev/null | tail -10",
+   "rc": 0,
+   "out": "# |  |  .---------- day of month (1 - 31)\n# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...\n# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat\n# |  |  |  |  |\n# *  *  *  *  * user-name command to be executed\n17 *\t* * *\troot    cd / && run-parts --report /etc/cron.hourly\n25 6\t* * *\troot\ttest -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )\n47 6\t* * 7\troot\ttest -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )\n52 6\t1 * *\troot\ttest -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )\n#",
+   "err": ""
+  },
+  "cron_d": {
+   "cmd": "ls -la /etc/cron.d/ /etc/cron.hourly/ /etc/cron.daily/ 2>/dev/null",
+   "rc": 0,
+   "out": "/etc/cron.d/:\ntotal 28\ndrwxr-xr-x   2 root root  4096 Apr 11  2025 .\ndrwxr-xr-x 158 root root 12288 Jul 16 16:59 ..\n-rw-r--r--   1 root root   219 Oct 10  2021 anacron\n-rw-r--r--   1 root root   202 Jan  9  2022 e2scrub_all\n-rw-r--r--   1 root root   102 Mar 23  2022 .placeholder\n\n/etc/cron.daily/:\ntotal 56\ndrwxr-xr-x   2 root root  4096 Apr 11  2025 .\ndrwxr-xr-x 158 root root 12288 Jul 16 16:59 ..\n-rwxr-xr-x   1 root root   311 Oct 10  2021 0anacron\n-rwxr-xr-x   1 root root   376 Nov 12  2019 apport\n-rwxr-xr-x   1 root root  1478 Apr  8  2022 apt-compat\n-rwxr-xr-x   1 root root   384 Nov 19  2019 cracklib-runtime\n-rwxr-xr-x   1 root root   123 Dec  6  2021 dpkg\n-rwxr-xr-x   1 root root   377 May 25  2022 logrotate\n-rwxr-xr-x   1 root root  1330 Mar 18  2022 man-db\n-rw-r--r--   1 root root   102 Mar 23  2022 .placeholder\n-rwxr-xr-x   1 root root   652 Dec  7  2020 plocate\n-rwxr-xr-x   1 root root   349 Feb  9  2021 quota\n\n/etc/cron.hourly/:\ntotal 20\ndrwxr-xr-x   2 root root  4096 Apr 11  2025 .\ndrwxr-xr-x 158 root root 12288 Jul 16 16:59 ..\n-rw-r--r--   1 root root   102 Mar 23  2022 .placeholder",
+   "err": ""
+  },
+  "all_user_crontabs": {
+   "cmd": "sudo -n ls -la /var/spool/cron/crontabs/ 2>&1 | head -20",
+   "rc": 0,
+   "out": "sudo: a password is required",
+   "err": ""
+  }
+ },
+ "systemd": {
+  "services_running": {
+   "cmd": "systemctl list-units --type=service --state=running --no-pager --plain 2>/dev/null | head -60",
+   "rc": 0,
+   "out": "UNIT                           LOAD   ACTIVE SUB     DESCRIPTION\naccounts-daemon.service        loaded active running Accounts Service\navahi-daemon.service           loaded active running Avahi mDNS/DNS-SD Stack\nbluetooth.service              loaded active running Bluetooth service\ncolord.service                 loaded active running Manage, Install and Generate Color Profiles\ncontainerd.service             loaded active running containerd container runtime\ncron.service                   loaded active running Regular background program processing daemon\ndbus.service                   loaded active running D-Bus System Message Bus\ndocker.service                 loaded active running Docker Application Container Engine\ngdm.service                    loaded active running GNOME Display Manager\nhaveged.service                loaded active running Entropy Daemon based on the HAVEGE algorithm\njtop.service                   loaded active running jtop service\nkerneloops.service             loaded active running Tool to automatically collect and submit kernel crash signatures\nModemManager.service           loaded active running Modem Manager\nnetworkd-dispatcher.service    loaded active running Dispatcher daemon for systemd-networkd\nNetworkManager.service         loaded active running Network Manager\nnv-tee-supplicant.service      loaded active running OP-TEE Client Supplicant\nnvargus-daemon.service         loaded active running Argus daemon\nnvidia-pva-allowd.service      loaded active running service for managing PVA allowlists\nnvmemwarning.service           loaded active running Display Low memory warning\nnvphs.service                  loaded active running PHS daemon\nnvs-service.service            loaded active running NVS-SERVICE Embedded Sensor HAL Daemon\nollama.service                 loaded active running Ollama Service\npolkit.service                 loaded active running Authorization Manager\npower-profiles-daemon.service  loaded active running Power Profiles daemon\nrpcbind.service                loaded active running RPC bind portmap service\nrsyslog.service                loaded active running System Logging Service\nrtkit-daemon.service           loaded active running RealtimeKit Scheduling Policy Service\nseatd.service                  loaded active running Seat management daemon\nserial-getty@ttyGS0.service    loaded active running Serial Getty on ttyGS0\nserial-getty@ttyTCU0.service   loaded active running Serial Getty on ttyTCU0\nsnap.cups.cups-browsed.service loaded active running Service for snap application cups.cups-browsed\nsnap.cups.cupsd.service        loaded active running Service for snap application cups.cupsd\nsnapd.service                  loaded active running Snap Daemon\nssh.service                    loaded active running OpenBSD Secure Shell server\nswitcheroo-control.service     loaded active running Switcheroo Control Proxy service\nsystemd-journald.service       loaded active running Journal Service\nsystemd-logind.service         loaded active running User Login Management\nsystemd-resolved.service       loaded active running Network Name Resolution\nsystemd-timesyncd.service      loaded active running Network Time Synchronization\nsystemd-udevd.service          loaded active running Rule-based Manager for Device Events and Files\nudisks2.service                loaded active running Disk Manager\nupower.service                 loaded active running Daemon for power management\nuser@1000.service              loaded active running User Manager for UID 1000\nuuidd.service                  loaded active running Daemon for generating UUIDs\nwpa_supplicant.service         loaded active running WPA supplicant\nyahboom_oled.service           loaded active running yahboom_oled\n\nLOAD   = Reflects whether the unit definition was properly loaded.\nACTIVE = The high-level unit activation state, i.e. generalization of SUB.\nSUB    = The low-level unit activation state, values depend on unit type.\n46 loaded units listed.",
+   "err": ""
+  },
+  "timers": {
+   "cmd": "systemctl list-timers --all --no-pager 2>/dev/null | head -30",
+   "rc": 0,
+   "out": "NEXT                        LEFT        LAST                        PASSED               UNIT                           ACTIVATES\nTue 2026-10-27 09:08:48 CST 32min left  Tue 2026-10-27 06:08:48 CST 2h 27min ago         apport-autoreport.timer        apport-autoreport.service\nTue 2026-10-27 09:32:17 CST 55min left  Tue 2026-10-27 08:31:51 CST 4min 28s ago         anacron.timer                  anacron.service\nTue 2026-10-27 16:56:41 CST 8h left     Tue 2026-10-27 05:58:06 CST 2h 38min ago         motd-news.timer                motd-news.service\nTue 2026-10-27 17:13:15 CST 8h left     Thu 2026-07-16 17:04:14 CST 3 months 11 days ago update-notifier-download.timer update-notifier-download.service\nTue 2026-10-27 17:23:04 CST 8h left     Thu 2026-07-16 17:14:04 CST 3 months 11 days ago systemd-tmpfiles-clean.timer   systemd-tmpfiles-clean.service\nWed 2026-10-28 00:00:00 CST 15h left    Tue 2026-10-27 00:00:06 CST 8h ago               dpkg-db-backup.timer           dpkg-db-backup.service\nWed 2026-10-28 00:00:00 CST 15h left    Tue 2026-10-27 00:00:06 CST 8h ago               logrotate.timer                logrotate.service\nWed 2026-10-28 02:02:22 CST 17h left    Tue 2026-10-27 06:11:48 CST 2h 24min ago         fwupd-refresh.timer            fwupd-refresh.service\nWed 2026-10-28 06:39:30 CST 22h left    Tue 2026-10-27 04:37:48 CST 3h 58min ago         man-db.timer                   man-db.service\nWed 2026-10-28 06:59:09 CST 22h left    Tue 2026-10-27 05:02:48 CST 3h 33min ago         plocate-updatedb.timer         plocate-updatedb.service\nSun 2026-11-01 03:10:49 CST 4 days left Mon 2026-10-26 21:50:12 CST 10h ago              e2scrub_all.timer              e2scrub_all.service\nMon 2026-11-02 01:12:33 CST 5 days left Mon 2026-10-26 21:50:12 CST 10h ago              fstrim.timer                   fstrim.service\nMon 2026-11-02 06:23:05 CST 5 days left Mon 2026-03-02 19:27:04 CST 7 months 25 days ago update-notifier-motd.timer     update-notifier-motd.service\nn/a                         n/a         n/a                         n/a                  snapd.snap-repair.timer        snapd.snap-repair.service\nn/a                         n/a         n/a                         n/a                  ua-timer.timer                 ua-timer.service\n\n15 timers listed.",
+   "err": ""
+  },
+  "sockets": {
+   "cmd": "systemctl list-units --type=socket --all --no-pager --plain 2>/dev/null | head -30",
+   "rc": 0,
+   "out": "UNIT                            LOAD   ACTIVE   SUB       DESCRIPTION\napport-forward.socket           loaded inactive dead      Unix socket for apport crash forwarding\navahi-daemon.socket             loaded active   running   Avahi mDNS/DNS-SD Stack Activation Socket\ndbus.socket                     loaded active   running   D-Bus System Message Bus Socket\ndm-event.socket                 loaded active   listening Device-mapper event daemon FIFOs\ndocker.socket                   loaded active   running   Docker Socket for the API\nlvm2-lvmpolld.socket            loaded active   listening LVM2 poll daemon socket\nrpcbind.socket                  loaded active   running   RPCbind Server Activation Socket\nsnapd.socket                    loaded active   running   Socket activation for snappy daemon\nsssd-autofs.socket              loaded inactive dead      SSSD AutoFS Service responder socket\nsssd-nss.socket                 loaded inactive dead      SSSD NSS Service responder socket\nsssd-pac.socket                 loaded inactive dead      SSSD PAC Service responder socket\nsssd-pam-priv.socket            loaded inactive dead      SSSD PAM Service responder private socket\nsssd-pam.socket                 loaded inactive dead      SSSD PAM Service responder socket\nsssd-ssh.socket                 loaded inactive dead      SSSD SSH Service responder socket\nsssd-sudo.socket                loaded inactive dead      SSSD Sudo Service responder socket\nsyslog.socket                   loaded active   running   Syslog Socket\nsystemd-fsckd.socket            loaded active   listening fsck to fsckd communication Socket\nsystemd-initctl.socket          loaded active   listening initctl Compatibility Named Pipe\nsystemd-journald-audit.socket   loaded active   running   Journal Audit Socket\nsystemd-journald-dev-log.socket loaded active   running   Journal Socket (/dev/log)\nsystemd-journald.socket         loaded active   running   Journal Socket\nsystemd-networkd.socket         loaded inactive dead      Network Service Netlink Socket\nsystemd-rfkill.socket           loaded active   listening Load/Save RF Kill Switch Status /dev/rfkill Watch\nsystemd-udevd-control.socket    loaded active   running   udev Control Socket\nsystemd-udevd-kernel.socket     loaded active   running   udev Kernel Socket\nuuidd.socket                    loaded active   running   UUID daemon activation socket\n\nLOAD   = Reflects whether the unit definition was properly loaded.\nACTIVE = The high-level unit activation state, i.e. generalization of SUB.",
+   "err": ""
+  },
+  "paths": {
+   "cmd": "systemctl list-units --type=path --all --no-pager --plain 2>/dev/null | head -20",
+   "rc": 0,
+   "out": "UNIT                               LOAD      ACTIVE   SUB     DESCRIPTION\napport-autoreport.path             loaded    active   waiting Process error reports when automatic reporting is enabled (file watch)\nresolvconf-pull-resolved.path      loaded    active   waiting resolvconf-pull-resolved.path\nsystemd-ask-password-console.path  loaded    active   waiting Dispatch Password Requests to Console Directory Watch\nsystemd-ask-password-plymouth.path loaded    inactive dead    Forward Password Requests to Plymouth Directory Watch\nsystemd-ask-password-wall.path     loaded    active   waiting Forward Password Requests to Wall Directory Watch\nwhoopsie.path                      not-found inactive dead    whoopsie.path\n\nLOAD   = Reflects whether the unit definition was properly loaded.\nACTIVE = The high-level unit activation state, i.e. generalization of SUB.\nSUB    = The low-level unit activation state, values depend on unit type.\n6 loaded units listed.\nTo show all installed unit files use 'systemctl list-unit-files'.",
+   "err": ""
+  },
+  "user_units": {
+   "cmd": "systemctl --user list-units --all --no-pager --plain 2>&1 | head -40",
+   "rc": 0,
+   "out": "UNIT                                                                                                                                 LOAD      ACTIVE     SUB       DESCRIPTION\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001.device           loaded    active     plugged   SSD NVME 256GB\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart1.device  loaded    active     plugged   SSD NVME 256GB APP\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart10.device loaded    active     plugged   SSD NVME 256GB esp\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart11.device loaded    active     plugged   SSD NVME 256GB recovery_alt\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart12.device loaded    active     plugged   SSD NVME 256GB recovery-dtb_alt\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart13.device loaded    active     plugged   SSD NVME 256GB esp_alt\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart14.device loaded    active     plugged   SSD NVME 256GB UDA\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart15.device loaded    active     plugged   SSD NVME 256GB reserved\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart2.device  loaded    active     plugged   SSD NVME 256GB A_kernel\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart3.device  loaded    active     plugged   SSD NVME 256GB A_kernel-dtb\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart4.device  loaded    active     plugged   SSD NVME 256GB A_reserved_on_user\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart5.device  loaded    active     plugged   SSD NVME 256GB B_kernel\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart6.device  loaded    active     plugged   SSD NVME 256GB B_kernel-dtb\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart7.device  loaded    active     plugged   SSD NVME 256GB B_reserved_on_user\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart8.device  loaded    active     plugged   SSD NVME 256GB recovery\ndev-disk-by\\x2did-nvme\\x2dnvme.10ec\\x2d4a524432303236303730303136343433\\x2d535344204e564d45203235364742\\x2d00000001\\x2dpart9.device  loaded    active     plugged   SSD NVME 256GB recovery-dtb\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443.device                                                                     loaded    active     plugged   SSD NVME 256GB\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart1.device                                                            loaded    active     plugged   SSD NVME 256GB APP\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart10.device                                                           loaded    active     plugged   SSD NVME 256GB esp\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart11.device                                                           loaded    active     plugged   SSD NVME 256GB recovery_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart12.device                                                           loaded    active     plugged   SSD NVME 256GB recovery-dtb_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart13.device                                                           loaded    active     plugged   SSD NVME 256GB esp_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart14.device                                                           loaded    active     plugged   SSD NVME 256GB UDA\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart15.device                                                           loaded    active     plugged   SSD NVME 256GB reserved\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart2.device                                                            loaded    active     plugged   SSD NVME 256GB A_kernel\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart3.device                                                            loaded    active     plugged   SSD NVME 256GB A_kernel-dtb\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart4.device                                                            loaded    active     plugged   SSD NVME 256GB A_reserved_on_user\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart5.device                                                            loaded    active     plugged   SSD NVME 256GB B_kernel\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart6.device                                                            loaded    active     plugged   SSD NVME 256GB B_kernel-dtb\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart7.device                                                            loaded    active     plugged   SSD NVME 256GB B_reserved_on_user\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart8.device                                                            loaded    active     plugged   SSD NVME 256GB recovery\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443\\x2dpart9.device                                                            loaded    active     plugged   SSD NVME 256GB recovery-dtb\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1.device                                                                   loaded    active     plugged   SSD NVME 256GB\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart1.device                                                          loaded    active     plugged   SSD NVME 256GB APP\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart10.device                                                         loaded    active     plugged   SSD NVME 256GB esp\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart11.device                                                         loaded    active     plugged   SSD NVME 256GB recovery_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart12.device                                                         loaded    active     plugged   SSD NVME 256GB recovery-dtb_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart13.device                                                         loaded    active     plugged   SSD NVME 256GB esp_alt\ndev-disk-by\\x2did-nvme\\x2dSSD_NVME_256GB_JRD2026070016443_1\\x2dpart14.device                                                         loaded    active     plugged   SSD NVME 256GB UDA",
+   "err": ""
+  },
+  "unit_detail": {
+   "jupyterlab.service": {
+    "cmd": "systemctl show jupyterlab.service -p Restart -p ExecStart -p WantedBy -p ActiveState -p UnitFileState --no-pager 2>/dev/null",
+    "rc": 0,
+    "out": "Restart=always\nExecStart={ path=/usr/sbin/jupyterlab-start ; argv[]=/usr/sbin/jupyterlab-start ; ignore_errors=no ; start_time=[Thu 2026-07-16 16:59:15 CST] ; stop_time=[Tue 2026-10-27 08:33:22 CST] ; pid=651 ; code=killed ; status=15/TERM }\nWantedBy=multi-user.target\nActiveState=inactive\nUnitFileState=enabled",
+    "err": ""
+   },
+   "yahboom_oled.service": {
+    "cmd": "systemctl show yahboom_oled.service -p Restart -p ExecStart -p WantedBy -p ActiveState -p UnitFileState --no-pager 2>/dev/null",
+    "rc": 0,
+    "out": "Restart=no\nExecStart={ path=/bin/sh ; argv[]=/bin/sh -c python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py ; ignore_errors=no ; start_time=[Thu 2026-07-16 16:59:21 CST] ; stop_time=[n/a] ; pid=2260 ; code=(null) ; status=0/0 }\nWantedBy=multi-user.target\nActiveState=active\nUnitFileState=enabled",
+    "err": ""
+   },
+   "docker.service": {
+    "cmd": "systemctl show docker.service -p Restart -p ExecStart -p WantedBy -p ActiveState -p UnitFileState --no-pager 2>/dev/null",
+    "rc": 0,
+    "out": "Restart=always\nExecStart={ path=/usr/bin/dockerd ; argv[]=/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock ; ignore_errors=no ; start_time=[Thu 2026-07-16 16:59:18 CST] ; stop_time=[n/a] ; pid=1399 ; code=(null) ; status=0/0 }\nWantedBy=graphical.target\nActiveState=active\nUnitFileState=enabled",
+    "err": ""
+   }
+  },
+  "reverse_deps_jupyter": {
+   "cmd": "systemctl list-dependencies --reverse jupyterlab.service --no-pager 2>/dev/null | head -20",
+   "rc": 0,
+   "out": "jupyterlab.service\n● └─multi-user.target\n○   ├─nv-late-init.service\n●   └─graphical.target",
+   "err": ""
+  },
+  "enabled_grep_dofbot": {
+   "cmd": "systemctl list-unit-files --no-pager --plain 2>/dev/null | grep -iE 'dofbot|yahboom|arm|jupyter' | head -20",
+   "rc": 0,
+   "out": "apparmor.service                           enabled         enabled\njupyterlab.service                         enabled         enabled\nsnapd.apparmor.service                     enabled         enabled\nyahboom_oled.service                       enabled         enabled",
+   "err": ""
+  }
+ },
+ "docker": {
+  "ps_all": {
+   "cmd": "docker ps -a --format '{{.ID}} {{.Image}} {{.Status}} {{.Names}}' 2>&1 | head -20",
+   "rc": 0,
+   "out": "",
+   "err": ""
+  },
+  "restart_policies": {
+   "cmd": "for c in $(docker ps -aq 2>/dev/null); do echo \"$c $(docker inspect -f '{{.HostConfig.RestartPolicy.Name}} {{.HostConfig.Privileged}} {{range .HostConfig.Devices}}{{.PathOnHost}} {{end}}' $c 2>/dev/null)\"; done 2>&1 | head -20",
+   "rc": 0,
+   "out": "",
+   "err": ""
+  }
+ },
+ "udev": {
+  "i2c_rules": {
+   "cmd": "grep -rln -i i2c /etc/udev/rules.d /lib/udev/rules.d 2>/dev/null | head -20",
+   "rc": 0,
+   "out": "/lib/udev/rules.d/60-autosuspend.rules\n/lib/udev/rules.d/60-i2c-tools.rules\n/lib/udev/rules.d/60-sensor.rules\n/lib/udev/rules.d/60-persistent-input.rules",
+   "err": ""
+  },
+  "i2c_rule_lines": {
+   "cmd": "grep -rn -i i2c /etc/udev/rules.d 2>/dev/null | head -20",
+   "rc": 0,
+   "out": "",
+   "err": ""
+  }
+ },
+ "network": {
+  "listeners": {
+   "cmd": "ss -ltnp 2>&1 | head -40",
+   "rc": 0,
+   "out": "State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                    \nLISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*                                              \nLISTEN 0      4096       127.0.0.1:11434      0.0.0.0:*                                              \nLISTEN 0      5          127.0.0.1:11511      0.0.0.0:*    users:((\"python3\",pid=1677026,fd=6))      \nLISTEN 0      4096         0.0.0.0:631        0.0.0.0:*                                              \nLISTEN 0      4096         0.0.0.0:111        0.0.0.0:*                                              \nLISTEN 0      32      192.168.8.88:53         0.0.0.0:*                                              \nLISTEN 0      128          0.0.0.0:22         0.0.0.0:*                                              \nLISTEN 0      10                 *:5900             *:*    users:((\"gnome-remote-de\",pid=2076,fd=23))\nLISTEN 0      4096            [::]:631           [::]:*                                              \nLISTEN 0      4096            [::]:111           [::]:*                                              \nLISTEN 0      128             [::]:22            [::]:*                                              \nLISTEN 0      10                 *:3389             *:*    users:((\"gnome-remote-de\",pid=2076,fd=22))",
+   "err": ""
+  },
+  "listeners_sudo": {
+   "cmd": "sudo -n ss -ltnp 2>&1 | head -40",
+   "rc": 0,
+   "out": "sudo: a password is required",
+   "err": ""
+  }
+ },
+ "ros": {
+  "node_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 node list 2>&1 | head -30",
+   "rc": 0,
+   "out": "/kinemarics_dofbot",
+   "err": ""
+  },
+  "service_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 service list 2>&1 | head -40",
+   "rc": 0,
+   "out": "/dofbot_kinemarics\n/kinemarics_dofbot/describe_parameters\n/kinemarics_dofbot/get_parameter_types\n/kinemarics_dofbot/get_parameters\n/kinemarics_dofbot/list_parameters\n/kinemarics_dofbot/set_parameters\n/kinemarics_dofbot/set_parameters_atomically",
+   "err": ""
+  },
+  "topic_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 topic list 2>&1 | head -40",
+   "rc": 0,
+   "out": "/parameter_events\n/rosout",
+   "err": ""
+  }
+ },
+ "sources": {
+  "start_app_sh": {
+   "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh",
+   "content": "#!/bin/bash\nsource /opt/ros/humble/setup.bash\nsource /home/jetson/dofbot_pro_ws/install/setup.bash\ngnome-terminal -- bash -c \"python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc;exec bash\"\ngnome-terminal -- bash -c \"python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py\"\ngnome-terminal -- bash -c \"python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py\"\n/usr/bin/pactl set-default-sink alsa_output.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.analog-stereo\n/usr/bin/pactl set-default-source alsa_input.usb-C-Media_Electronics_Inc._USB_Audio_Device-00.mono-fallback\n",
+   "sha256": "aa7540c6e1ac96c6f5eec3b4d65f6512177ccad14ef518b32a59e596ea7904da",
+   "bytes": 591
+  },
+  "arm_lib_integrity": {
+   "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+   "bytes": 17739
+  },
+  "arm_lib_constructor": {
+   "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+   "exists": true,
+   "hit_count": 55,
+   "hits": [
+    {
+     "line": 9,
+     "pattern": "def __init__",
+     "text": "def __init__(self, i2c_bus=7):"
+    },
+    {
+     "line": 12,
+     "pattern": "bus =",
+     "text": "self.bus = smbus.SMBus(int(i2c_bus))"
+    },
+    {
+     "line": 15,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write(self, id, angle, time):"
+    },
+    {
+     "line": 17,
+     "pattern": "write",
+     "text": "self.Arm_serial_servo_write6(angle, angle, angle, angle, angle, angle, time)"
+    },
+    {
+     "line": 27,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 29,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write I2C error')"
+    },
+    {
+     "line": 38,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 40,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write I2C error')"
+    },
+    {
+     "line": 49,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 51,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write I2C error')"
+    },
+    {
+     "line": 54,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write_any(self, id, angle, time):"
+    },
+    {
+     "line": 62,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x19, [id & 0xff, value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 64,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write_any I2C error')"
+    },
+    {
+     "line": 73,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x17, [value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 75,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write_any I2C error')"
+    },
+    {
+     "line": 78,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write_offset_switch(self, id):"
+    },
+    {
+     "line": 81,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x1c, id)"
+    },
+    {
+     "line": 83,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x1c, 0x00)"
+    },
+    {
+     "line": 86,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write_offset_switch I2C error')"
+    },
+    {
+     "line": 89,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write_offset_state(self):"
+    },
+    {
+     "line": 91,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x1b, 0x01)"
+    },
+    {
+     "line": 96,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write_offset_state I2C error')"
+    },
+    {
+     "line": 100,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write6_array(self, joints, time):"
+    },
+    {
+     "line": 139,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x1e, timeArr)"
+    },
+    {
+     "line": 140,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, s_id, data)"
+    },
+    {
+     "line": 142,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write6 I2C error')"
+    },
+    {
+     "line": 145,
+     "pattern": "write",
+     "text": "def Arm_serial_servo_write6(self, s1, s2, s3, s4, s5, s6, time):"
+    },
+    {
+     "line": 183,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x1e, timeArr)"
+    },
+    {
+     "line": 184,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, s_id, data)"
+    },
+    {
+     "line": 186,
+     "pattern": "write",
+     "text": "print('Arm_serial_servo_write6 I2C error')"
+    },
+    {
+     "line": 194,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, id + 0x30, 0x0)"
+    },
+    {
+     "line": 223,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x37, id)"
+    },
+    {
+     "line": 241,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, reg, data)"
+    },
+    {
+     "line": 246,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, reg, data)"
+    },
+    {
+     "line": 259,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x01, 0x01)"
+    },
+    {
+     "line": 273,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x1A, 0x01)"
+    },
+    {
+     "line": 275,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x1A, 0x00)"
+    },
+    {
+     "line": 282,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x18, id & 0xff)"
+    },
+    {
+     "line": 289,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x04, index & 0xff)"
+    },
+    {
+     "line": 296,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x02, [red & 0xff, green & 0xff, blue & 0xff])"
+    },
+    {
+     "line": 303,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x03, mode & 0xff)"
+    },
+    {
+     "line": 310,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x05, 0x01)"
+    },
+    {
+     "line": 315,
+     "pattern": "write",
+     "text": "def Arm_PWM_servo_write(self, id, angle):"
+    },
+    {
+     "line": 318,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x57, angle & 0xff)"
+    },
+    {
+     "line": 320,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x50 + id, angle & 0xff)"
+    },
+    {
+     "line": 322,
+     "pattern": "write",
+     "text": "print('Arm_PWM_servo_write I2C error')"
+    },
+    {
+     "line": 327,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x23, 0x01)"
+    },
+    {
+     "line": 335,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x24, 0x01)"
+    },
+    {
+     "line": 342,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x20, mode & 0xff)"
+    },
+    {
+     "line": 349,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x22, 0x01)"
+    },
+    {
+     "line": 361,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x06, delay&0xff)"
+    },
+    {
+     "line": 368,
+     "pattern": "write",
+     "text": "self.bus.write_byte_data(self.addr, 0x06, 0x00)"
+    },
+    {
+     "line": 405,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x10 + id, [value_H, value_L, time_H, time_L])"
+    },
+    {
+     "line": 465,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, 0x1e, timeArr)"
+    },
+    {
+     "line": 466,
+     "pattern": "write",
+     "text": "self.bus.write_i2c_block_data(self.addr, s_id, data)"
+    }
+   ]
+  },
+  "exit_paths": {
+   "joystick.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py",
+    "exists": true,
+    "hit_count": 3,
+    "hits": [
+     {
+      "line": 77,
+      "pattern": "__del__",
+      "text": "def __del__(self):"
+     },
+     {
+      "line": 222,
+      "pattern": "KeyboardInterrupt",
+      "text": "except KeyboardInterrupt:"
+     },
+     {
+      "line": 330,
+      "pattern": "KeyboardInterrupt",
+      "text": "except KeyboardInterrupt:"
+     }
+    ]
+   },
+   "YahboomArm.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+    "exists": true,
+    "hit_count": 0,
+    "hits": []
+   },
+   "yb-discover.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py",
+    "exists": true,
+    "hit_count": 0,
+    "hits": []
+   }
+  },
+  "write_paths": {
+   "joystick.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py",
+    "exists": true,
+    "hit_count": 4,
+    "hits": [
+     {
+      "line": 260,
+      "pattern": "arm_move",
+      "text": "self.robot.arm_move_6(self.arm_joints, 1000)"
+     },
+     {
+      "line": 272,
+      "pattern": "arm_move",
+      "text": "self.robot.arm_move_1(6, self.arm_joints[5], 500)"
+     },
+     {
+      "line": 285,
+      "pattern": "arm_move",
+      "text": "self.robot.arm_move_1(id, self.arm_joints[id-1], 500)"
+     },
+     {
+      "line": 320,
+      "pattern": "move_init_pose",
+      "text": "g_robot.move_init_pose()"
+     }
+    ]
+   },
+   "YahboomArm.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+    "exists": true,
+    "hit_count": 17,
+    "hits": [
+     {
+      "line": 280,
+      "pattern": "Arm_serial_servo_write",
+      "text": "Arm.Arm_serial_servo_write_offset_switch(id)"
+     },
+     {
+      "line": 282,
+      "pattern": "Arm_serial_servo_write",
+      "text": "state = Arm.Arm_serial_servo_write_offset_state()"
+     },
+     {
+      "line": 311,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_down, 1000)"
+     },
+     {
+      "line": 313,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_front, 1000)"
+     },
+     {
+      "line": 315,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_down, 1000)"
+     },
+     {
+      "line": 317,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_follow, 1000)"
+     },
+     {
+      "line": 319,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_down, 1000)"
+     },
+     {
+      "line": 365,
+      "pattern": "Arm_serial_servo_write",
+      "text": "Arm.Arm_serial_servo_write(id, angle, 500)"
+     },
+     {
+      "line": 377,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6(angle1, angle2, angle3, angle4, angle5, angle6, time)"
+     },
+     {
+      "line": 386,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6(90, 90, 90, 90, 90, 180, 1000)"
+     },
+     {
+      "line": 401,
+      "pattern": "set_torque",
+      "text": "Arm.Arm_serial_set_torque(state)"
+     },
+     {
+      "line": 411,
+      "pattern": "Arm_serial_servo_write",
+      "text": "Arm.Arm_serial_servo_write_offset_switch(id)"
+     },
+     {
+      "line": 413,
+      "pattern": "Arm_serial_servo_write",
+      "text": "state = Arm.Arm_serial_servo_write_offset_state()"
+     },
+     {
+      "line": 587,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_down, 500)"
+     },
+     {
+      "line": 592,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_front, 1500)"
+     },
+     {
+      "line": 693,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_down, 1000)"
+     },
+     {
+      "line": 1061,
+      "pattern": "write6",
+      "text": "Arm.Arm_serial_servo_write6_array(joints_init_front, 1000)"
+     }
+    ]
+   },
+   "yb-discover.py": {
+    "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py",
+    "exists": true,
+    "hit_count": 0,
+    "hits": []
+   }
+  },
+  "app_dir_listing": {
+   "cmd": "ls -la /home/jetson/dofbot_pro/APP_DOFBOT_PRO 2>/dev/null | head -40",
+   "rc": 0,
+   "out": "total 124\ndrwxrwxr-x  4 jetson jetson  4096 Dec 16  2025 .\ndrwxrwxr-x 21 jetson jetson  4096 Mar  4  2026 ..\n-rwxrwxrwx  1 jetson jetson  1873 Apr 18  2025 camera.py\n-rwxrwxrwx  1 jetson jetson  1213 Oct 30  2020 camera.pyc\n-rwxrwxrwx  1 jetson jetson   273 Dec  9  2020 compile.py\n-rw-rw-r--  1 jetson jetson   249 Jul 16 17:03 config.ini\n-rwxrwxrwx  1 jetson jetson 10808 Apr  9  2025 joystick.py\n-rwxrwxrwx  1 jetson jetson   344 Oct 15  2020 open_camera.py\ndrwxrwxr-x  2 jetson jetson  4096 Apr 18  2025 __pycache__\n-rw-rw-r--  1 jetson jetson   591 Dec 16  2025 start_app.sh\ndrwxrwxr-x  3 jetson jetson  4096 Apr  9  2025 templates\n-rwxrwxrwx  1 jetson jetson 42166 Apr 22  2025 YahboomArm.py\n-rw-rw-r--  1 jetson jetson 22658 Apr 22  2025 YahboomArm.pyc\n-rwxrwxrwx  1 jetson jetson   557 Apr 10  2025 yb-discover.py",
+   "err": ""
+  },
+  "oled_source": {
+   "path": "/home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py",
+   "exists": true,
+   "hit_count": 9,
+   "hits": [
+    {
+     "line": 17,
+     "pattern": "i2c",
+     "text": "def __init__(self, i2c_bus=\"auto\", clear=False, debug=False):"
+    },
+    {
+     "line": 26,
+     "pattern": "i2c",
+     "text": "if i2c_bus != \"auto\":"
+    },
+    {
+     "line": 27,
+     "pattern": "i2c",
+     "text": "self.__i2c_bus = int(i2c_bus)"
+    },
+    {
+     "line": 28,
+     "pattern": "0x",
+     "text": "self.__bus_index = 0xFF"
+    },
+    {
+     "line": 30,
+     "pattern": "i2c",
+     "text": "self.__i2c_bus = self.__BUS_LIST[self.__bus_index]"
+    },
+    {
+     "line": 52,
+     "pattern": "i2c",
+     "text": "rst=None, i2c_bus=self.__i2c_bus, gpio=1)"
+    },
+    {
+     "line": 62,
+     "pattern": "0x",
+     "text": "if self.__bus_index == 0xFF:"
+    },
+    {
+     "line": 66,
+     "pattern": "i2c",
+     "text": "self.__i2c_bus = self.__BUS_LIST[self.__bus_index]"
+    },
+    {
+     "line": 195,
+     "pattern": "address",
+     "text": "# Read the local IP address"
+    }
+   ]
+  },
+  "robot_controller_grep": {
+   "cmd": "grep -rn -E 'class Robot_Controller|def move_init_pose|P_LOOK_AT' /home/jetson/dofbot_pro/APP_DOFBOT_PRO 2>/dev/null | head -20",
+   "rc": 0,
+   "out": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py:252:            self.arm_joints[i] = self.robot.P_LOOK_AT[i]",
+   "err": ""
+  },
+  "yb_discover_head": {
+   "path": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py",
+   "head": "import os\nimport sys\nimport getopt\nimport socket\n\n\nif __name__ == \"__main__\":\n    host = '0.0.0.0'\n    port = 8000\n    addr = (host, port)\n    udpServer = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)\n    udpServer.bind(addr)\n    print(\"Searching for devices...\")\n    while True:\n        data, addr = udpServer.recvfrom(1024)\n        print(data, addr)\n        msg = str(data, encoding = 'utf-8')\n        print(msg)\n        if msg == \"YAHBOOMARM_FIND\":\n            udpServer.sendto(bytes(\"DOFBOT-Pro\", encoding='utf-8'), addr)\n            print(\"send ok\")"
+  },
+  "kinematics_i2c_refs": {
+   "cmd": "strings /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot 2>/dev/null | grep -icE 'i2c|smbus|Arm_Lib' ; echo '---'; ldd /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot 2>/dev/null | grep -icE 'i2c|arm_lib'",
+   "rc": 1,
+   "out": "0\n---\n0",
+   "err": ""
+  },
+  "pyc_match": {
+   "py": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py",
+   "pyc": "/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc",
+   "magic_runtime": "6f0d0d0a",
+   "magic_pyc": "6f0d0d0a",
+   "magic_match": true,
+   "digest_py": "379885298f8c272cd830df1a43fea099fd048b6c02fcf2d9ac1d64c5e108eb9a",
+   "digest_pyc": "379885298f8c272cd830df1a43fea099fd048b6c02fcf2d9ac1d64c5e108eb9a",
+   "verdict": "MATCH"
+  },
+  "writer_file_perms": {
+   "cmd": "ls -l /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh /home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py 2>&1",
+   "rc": 0,
+   "out": "-rwxrwxrwx 1 jetson jetson 10808 Apr  9  2025 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py\n-rw-rw-r-- 1 jetson jetson   591 Dec 16  2025 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh\n-rw-rw-r-- 1 jetson jetson 22658 Apr 22  2025 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc\n-rw-rw-r-- 1 jetson jetson  4242 Oct 21  2025 /home/jetson/dofbot_pro_ws/src/dofbot_pro_driver/dofbot_pro_driver/arm_driver.py",
+   "err": ""
+  }
+ }
+}

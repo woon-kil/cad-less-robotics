@@ -109,28 +109,33 @@ def kill_writers(snap):
             log("kill_skip", pat, "snapshot에 없음")
             continue
         pid, exp = p["pid"], p["starttime_ticks"]
-        check = ("if [ ! -d /proc/%(pid)d ]; then echo GONE; exit 3; fi; "
-                 "ST=$(sed 's/.*) //' /proc/%(pid)d/stat | awk '{print $20}'); "
-                 "CMD=$(tr '\\0' ' ' < /proc/%(pid)d/cmdline); "
-                 "echo \"ST=$ST CMD=$CMD\"" % {"pid": pid})
-        got = rsh(check, check=False)
+        # 신원 확인과 종료를 한 번의 원격 명령에 둔다. 두 번에 나누면 그 사이에
+        # 프로세스가 끝나고 같은 pid가 재사용될 틈이 생긴다.
+        snippet = """
+PID=%(pid)d; EXP=%(exp)s; PAT=%(pat)s; DRY=%(dry)d
+if [ ! -d /proc/$PID ]; then echo GONE_BEFORE; exit 3; fi
+ST=$(sed 's/.*) //' /proc/$PID/stat | awk '{print $20}')
+CMD=$(tr '\\0' ' ' < /proc/$PID/cmdline)
+case "$CMD" in *"$PAT"*) ;; *) echo "MISMATCH_CMD ST=$ST CMD=$CMD"; exit 4;; esac
+[ "$ST" = "$EXP" ] || { echo "MISMATCH_START ST=$ST CMD=$CMD"; exit 4; }
+echo "IDENTITY_OK ST=$ST"
+if [ "$DRY" = "1" ]; then echo DRY_RUN_NOT_KILLED; exit 0; fi
+kill -9 $PID
+sleep 1.5
+if [ -d /proc/$PID ]; then echo ALIVE_AFTER_KILL; exit 5; else echo GONE_AFTER_KILL; fi
+""" % {"pid": pid, "exp": exp, "pat": pat, "dry": 1 if DRY else 0}
+        got = rsh(snippet, check=False)
+        out = " ".join(got.stdout.split())
         if got.returncode == 3:
-            log("kill_skip", "%s pid %d" % (pat, pid), "이미 없음")
+            log("kill_skip", "%s pid %d" % (pat, pid), "이미 없음 (%s)" % out)
             continue
-        line = got.stdout.strip()
-        st = line.split("ST=")[1].split()[0] if "ST=" in line else ""
-        if st != str(exp) or pat not in line:
-            log("identity_mismatch", "%s pid %d 기대 starttime %s" % (pat, pid, exp), line[:200])
-            raise SystemExit("신원 불일치. PID 재사용 가능성. 종료하지 않았다.")
-        if DRY:
-            log("kill", "%s pid %d (%s)" % (pat, pid, role), "DRY_RUN_SKIPPED. 신원 일치 확인: %s" % line[:120])
-            continue
-        rsh("kill -9 %d" % pid, check=False)
-        time.sleep(1.5)
-        gone = rsh("test -d /proc/%d && echo ALIVE || echo GONE" % pid, check=False).stdout.strip()
-        log("kill", "%s pid %d SIGKILL (%s)" % (pat, pid, role), gone)
-        if gone != "GONE":
+        log("kill", "%s pid %d SIGKILL (%s)" % (pat, pid, role), out or got.stderr.strip())
+        if got.returncode == 4:
+            raise SystemExit("신원 불일치. PID 재사용 가능성. 종료하지 않았다: %s" % out)
+        if got.returncode == 5:
             raise SystemExit("%s pid %d 가 SIGKILL 후에도 남아 있다" % (pat, pid))
+        if got.returncode != 0:
+            raise SystemExit("예상 못한 rc=%d: %s" % (got.returncode, out or got.stderr))
 
 
 def main():

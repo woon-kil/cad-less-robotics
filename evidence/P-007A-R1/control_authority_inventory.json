@@ -1,0 +1,83 @@
+{
+ "gate": "P-007A-R1",
+ "classification": {
+  "CONTROL_WRITER": [
+   {
+    "cmd": "python3 joystick.py",
+    "pid_before": 3072,
+    "stopped": true,
+    "signal": "SIGKILL",
+    "write_paths": "Robot_Controller.move_init_pose → Arm_serial_servo_write6_array(P_LOOK_AT=[90,164,18,0,90,30]); stick 이벤트 → update_joints → Arm_serial_servo_write",
+    "exit_handlers": "Joystick.__del__ 은 조이스틱 디바이스만 닫는다. KeyboardInterrupt 핸들러는 break/pass. Robot_Controller에는 __del__·atexit·signal 이 없다."
+   },
+   {
+    "cmd": "python3 YahboomArm.pyc",
+    "pid_before": 3022,
+    "stopped": true,
+    "signal": "SIGKILL",
+    "write_paths": "write6_array·write·set_torque·write_offset_switch 17개 지점(280~1061행). main은 부저 3회 후 Flask 6500.",
+    "pyc_py_match": "MATCH (magic 일치 + code object digest 일치) → .py 분석 결과를 .pyc에 적용 가능"
+   }
+  ],
+  "NETWORK_CONTROL_ENTRYPOINT_servo_capable": [
+   {
+    "cmd": "YahboomArm.pyc Flask 6500",
+    "stopped": true,
+    "evidence": "격리 후 ss -ltn에 6500 없음"
+   }
+  ],
+  "NETWORK_ENTRYPOINT_not_servo_capable": [
+   {
+    "cmd": "python3 yb-discover.py",
+    "pid": 3047,
+    "stopped": false,
+    "reason": "전문 21줄. UDP 8000 bind 후 'YAHBOOMARM_FIND'에 'DOFBOT-Pro'만 응답한다. subprocess·os.system·exec·Arm 호출이 없다. 서보 권한이 없으므로 R1-14 대상이 아니다. 6500이 사라진 뒤에는 discovery만으로 명령이 불가능하다."
+   }
+  ],
+  "UNCONTROLLED_EXECUTION_SURFACE": [
+   {
+    "cmd": "jupyterlab.service + ipykernel_launcher",
+    "stopped": true,
+    "how": "운영자가 sudo systemctl stop jupyterlab 실행. cgroup(651→1090→1672919)이 함께 종료됐다.",
+    "after": "is-active=inactive, ipykernel 0개, 8888 listener 없음",
+    "limit": "UnitFileState=enabled 그대로다. 재부팅하면 다시 올라온다. disable은 하지 않았다(최소 가역 변경)."
+   }
+  ],
+  "NON_SERVO_I2C_CLIENT": [
+   {
+    "cmd": "python3 yahboom_oled.py",
+    "pid": 2264,
+    "stopped": false,
+    "reason": "SSD1306 0x3C. 서보 주소 0x15 접근 근거 없음"
+   },
+   {
+    "cmd": "sh -c ros2 run … / ros2 CLI wrapper",
+    "pid": [
+     3091,
+     3092
+    ],
+    "stopped": false,
+    "reason": "부모에서 상속한 descriptor만 보유. 서보 쓰기 코드 없음"
+   }
+  ],
+  "NON_CONTROLLER_PROCESS": [
+   {
+    "cmd": "kinemarics_dofbot",
+    "pid": 3103,
+    "stopped": false,
+    "reason": "바이너리에 i2c·smbus·Arm_Lib 참조 0. i2c fd 없음. FK/IK 전용"
+   }
+  ],
+  "READ_ONLY_CONTROLLER_CLIENT": [
+   {
+    "cmd": "scripts/p007a_r1_read.py (이 게이트)",
+    "reason": "Arm_Lib 해시 검증 + Arm_Device.__init__/__del__ AST 검사 후 Arm_serial_servo_read만 호출. 쓰기 0"
+   }
+  ],
+  "UNKNOWN": []
+ },
+ "unknown_servo_writer_count": 0,
+ "unknown_resolution": "before snapshot의 ROS 그래프에 /arm_grap /dofbot_garbage(중복) /dofbot_snake /color_identify1 이 있었다. 격리 후 ros2 node list가 /kinemarics_dofbot 하나만 반환해 그 노드들이 종료한 프로세스 소유였음을 실측으로 확정했다.",
+ "control_writer_count_after": 0,
+ "servo_capable_network_entrypoint_after": 0
+}

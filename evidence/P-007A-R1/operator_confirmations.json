@@ -1,28 +1,35 @@
 {
-  "gate": "P-007A-R1",
-  "collected_before_isolation": true,
-  "collected_at_local": "2026-10-27T09:30+09:00",
-  "method": "Claude Code AskUserQuestion. 운영자가 직접 선택했다. Cursor나 Claude가 추정하지 않았다.",
-  "confirmations": [
-    {
-      "id": "R1-20",
-      "question": "DOFBOT 전원을 즉시 끊을 수 있는 물리 스위치·전원선이 손에 닿는 곳에 있는가",
-      "answer": "YES",
-      "note": "실제 전원 차단 시험은 하지 않았다. 접근 가능 여부만 확인했다."
-    },
-    {
-      "id": "R1-21",
-      "question": "작은 움직임 반경(초기 자세 [90,164,18,0,90,30] 복귀 포함)에 사람·손·케이블·Gemini·LED 프레임·fixture·느슨한 물체가 없는가",
-      "answer": "YES",
-      "note": "어느 관절을 움직일지는 정하지 않았다. 물체 이동을 지시하지 않았다."
-    },
-    {
-      "id": "R1-19-precondition",
-      "question": "격리 중 로봇팔을 직접 보고 있을 수 있는가",
-      "answer": "YES_WATCHING_NOW",
-      "note": "격리 직후 무동작 관찰 결과는 isolation 실행 후 별도로 기록한다."
-    }
-  ],
-  "post_isolation_no_motion_observation": "PENDING",
-  "limits": "운영자 관찰과 전원 접근은 무동작을 보장하지 않는다. 컨트롤러에 이미 전달된 이동 명령은 어떤 신호로도 취소되지 않으며 물리 전원 차단만 남는다."
+ "gate": "P-007A-R1",
+ "collected_before_isolation": true,
+ "collected_at_local": "2026-10-27T09:30+09:00",
+ "method": "Claude Code AskUserQuestion. 운영자가 직접 선택했다. Cursor나 Claude가 추정하지 않았다.",
+ "confirmations": [
+  {
+   "id": "R1-20",
+   "question": "DOFBOT 전원을 즉시 끊을 수 있는 물리 스위치·전원선이 손에 닿는 곳에 있는가",
+   "answer": "YES",
+   "note": "실제 전원 차단 시험은 하지 않았다. 접근 가능 여부만 확인했다."
+  },
+  {
+   "id": "R1-21",
+   "question": "작은 움직임 반경(초기 자세 [90,164,18,0,90,30] 복귀 포함)에 사람·손·케이블·Gemini·LED 프레임·fixture·느슨한 물체가 없는가",
+   "answer": "YES",
+   "note": "어느 관절을 움직일지는 정하지 않았다. 물체 이동을 지시하지 않았다."
+  },
+  {
+   "id": "R1-19-precondition",
+   "question": "격리 중 로봇팔을 직접 보고 있을 수 있는가",
+   "answer": "YES_WATCHING_NOW",
+   "note": "격리 직후 무동작 관찰 결과는 isolation 실행 후 별도로 기록한다."
+  }
+ ],
+ "post_isolation_no_motion_observation": {
+  "id": "R1-19",
+  "question": "격리 동안 로봇팔이 움직였는가",
+  "answer": "NO_MOTION_OBSERVED",
+  "observed_window": "autostart 이름 변경 → joystick.py·YahboomArm.pyc SIGKILL → 72초 respawn 관찰",
+  "method": "운영자 직접 관찰. Claude가 추정하지 않았다.",
+  "limit": "컨트롤러 보고 각도가 전후 동일한 것과 함께 본다. 각도 고정만으로는 물리 무동작의 완전한 증명이 아니다."
+ },
+ "limits": "운영자 관찰과 전원 접근은 무동작을 보장하지 않는다. 컨트롤러에 이미 전달된 이동 명령은 어떤 신호로도 취소되지 않으며 물리 전원 차단만 남는다."
 }

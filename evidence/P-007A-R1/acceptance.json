@@ -1,0 +1,222 @@
+{
+ "gate": "P-007A-R1",
+ "base_commit": "76b16c64f7695ec39794ea7b8ede36c8f20d9b27",
+ "verdict": "PASS",
+ "verdict_reason": "uncontrolled servo writer 0, servo-capable network entrypoint 0, autostart 격리 확인(정적), 72초 respawn 0, 읽기 600/600 error 0, 격리 전후 각도 동일, 운영자 무동작·전원 접근·clearance 확인. 벤더 소프트웨어 삭제·firmware 변경 0이고 변경은 모두 가역이다.",
+ "p007b": "MAY BE DESIGNED. NOT AUTHORIZED TO EXECUTE.",
+ "conditional_pass_used": false,
+ "robot_motion_by_this_gate": 0,
+ "residual_limits": [
+  "jupyterlab.service는 inactive지만 UnitFileState=enabled다. 재부팅하면 Jupyter 표면이 돌아온다. P-007B 직전에 다시 확인해야 한다.",
+  "autostart 격리는 정적 확인이다. 재로그인 검증은 재로그인이 move_init_pose를 유발하므로 이 게이트에서 하지 않았다.",
+  "열린 fd snapshot은 '필요할 때 장치를 여는' 프로그램을 전수 증명하지 않는다. writer 0은 '이 시점 열린 writer 0 + 72초 재생성 0 + 식별된 재기동원 차단' 범위다.",
+  "정지 경로는 어느 것도 시험하지 않았다. Normal Stop은 이미 전송된 명령을 취소하지 못한다.",
+  "전원 재투입·재부팅·재로그인은 벤더 initial posture 회전을 유발할 수 있다."
+ ],
+ "checks": [
+  {
+   "id": "R1-01",
+   "result": "PASS",
+   "note": "process dependency map 작성. bash.desktop→start_app.sh→3 프로세스, YahboomArm→ros2 run→kinematics, 서비스 2개 체인까지 기록했다.",
+   "evidence": "process_dependency_map.json"
+  },
+  {
+   "id": "R1-02",
+   "result": "PASS",
+   "note": "control-related process 전부 분류했다. CONTROL_WRITER 2, servo-capable network entrypoint 1, non-servo i2c client 3, non-controller 1, uncontrolled execution surface 1.",
+   "evidence": "control_authority_inventory.json"
+  },
+  {
+   "id": "R1-03",
+   "result": "PASS",
+   "note": "UNKNOWN servo writer 0. before 그래프의 데모 노드 4개는 격리 후 ros2 node list가 /kinemarics_dofbot만 반환해 종료 프로세스 소유로 확정했다.",
+   "evidence": "control_authority_inventory.json, network_entrypoints_after.json"
+  },
+  {
+   "id": "R1-04",
+   "result": "PASS",
+   "note": "vendor source 삭제 0. mv 1회뿐이고 내용 변경 없음(해시 동일).",
+   "evidence": "isolation_actions.json"
+  },
+  {
+   "id": "R1-05",
+   "result": "PASS",
+   "note": "firmware 변경 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-06",
+   "result": "PASS",
+   "note": "가역 격리. autostart 원본은 .p007ar1.bak로 보존(sha256 동일), restore.sh --dry-run 통과.",
+   "evidence": "isolation_actions.json, ../../scripts/p007a_r1_restore.sh"
+  },
+  {
+   "id": "R1-07",
+   "result": "PASS",
+   "note": "joystick.py pid 3072 신원 확인(starttime 2781) 후 SIGKILL, GONE_AFTER_KILL.",
+   "evidence": "isolation_actions.json, process_after.json"
+  },
+  {
+   "id": "R1-08",
+   "result": "PASS",
+   "note": "YahboomArm.pyc pid 3022 SIGKILL. 격리 후 6500 listener 없음.",
+   "evidence": "isolation_actions.json, network_entrypoints_after.json"
+  },
+  {
+   "id": "R1-09",
+   "result": "PASS",
+   "note": "운영자가 sudo systemctl stop jupyterlab 실행. is-active=inactive, ipykernel 0, 8888 listener 없음. 한계: UnitFileState=enabled 그대로라 재부팅 시 복귀한다.",
+   "evidence": "isolation_actions.json"
+  },
+  {
+   "id": "R1-10",
+   "result": "PASS",
+   "note": "OLED는 NON_SERVO_I2C_CLIENT. Adafruit_SSD1306 기본 0x3C, 주소 인자를 넘기지 않고, 서보 쓰기 호출 0. 중지하지 않았다.",
+   "evidence": "control_authority_inventory.json"
+  },
+  {
+   "id": "R1-11",
+   "result": "PASS",
+   "note": "kinemarics_dofbot은 NON_CONTROLLER_PROCESS. strings·ldd에서 i2c·smbus·Arm_Lib 참조 0, i2c fd 없음.",
+   "evidence": "control_authority_inventory.json"
+  },
+  {
+   "id": "R1-12",
+   "result": "PASS",
+   "note": "autostart control path 격리. 활성 .desktop은 bash-1.desktop 하나이고 Exec 대상 setting.sh가 존재하지 않아 기동 불가. 한계: 정적 확인이며 재로그인 검증은 하지 않았다(재로그인 자체가 motion 유발).",
+   "evidence": "autostart_before.json, autostart_after.json"
+  },
+  {
+   "id": "R1-13",
+   "result": "PASS",
+   "note": "CONTROL_WRITER count = 0. 격리 후 i2c fd 보유는 OLED와 상속 descriptor 2건뿐.",
+   "evidence": "process_after.json, i2c_after.json"
+  },
+  {
+   "id": "R1-14",
+   "result": "PASS",
+   "note": "servo-capable NETWORK_CONTROL_ENTRYPOINT = 0. 6500·8888 모두 없음. yb-discover(UDP 8000)는 exec·Arm 호출이 없어 servo-capable이 아니다.",
+   "evidence": "network_entrypoints_after.json, control_authority_inventory.json"
+  },
+  {
+   "id": "R1-15",
+   "result": "PASS",
+   "note": "72초(24회 × 3s) 관찰에서 재생성 0, 6500/8888 listener 0, jupyterlab inactive 유지.",
+   "evidence": "respawn_test.json"
+  },
+  {
+   "id": "R1-16",
+   "result": "PASS",
+   "note": "격리 후 100라운드 × 6 = 600 읽기 전부 성공.",
+   "evidence": "read_regression.csv, read_metrics.json"
+  },
+  {
+   "id": "R1-17",
+   "result": "PASS",
+   "note": "communication error 0, empty 0. latency mean 0.00457s, p95 0.00604s, max 0.00609s.",
+   "evidence": "read_metrics.json"
+  },
+  {
+   "id": "R1-18",
+   "result": "PASS",
+   "note": "격리 전후 6채널 각도가 전부 동일(86,150,0,18,93,178)하고 P-007A 기준값과도 같다.",
+   "evidence": "read_metrics.json"
+  },
+  {
+   "id": "R1-19",
+   "result": "PASS",
+   "note": "운영자가 격리 구간 전체를 보고 '움직이지 않았다'고 확인했다. Claude가 추정하지 않았다.",
+   "evidence": "operator_confirmations.json"
+  },
+  {
+   "id": "R1-20",
+   "result": "PASS",
+   "note": "운영자가 물리 전원 차단 접근을 YES로 확인했다. 실제 차단 시험은 하지 않았다.",
+   "evidence": "operator_confirmations.json, stop_strategy.md"
+  },
+  {
+   "id": "R1-21",
+   "result": "PASS",
+   "note": "운영자가 작업대 clearance를 YES로 확인했다. 어느 관절을 움직일지는 정하지 않았다.",
+   "evidence": "operator_confirmations.json"
+  },
+  {
+   "id": "R1-22",
+   "result": "PASS",
+   "note": "ONE MOTION AUTHORITY 정책 작성.",
+   "evidence": "stop_strategy.md"
+  },
+  {
+   "id": "R1-23",
+   "result": "PASS",
+   "note": "Normal Stop 정의. 전송된 명령을 취소하지 못한다는 한계를 함께 적었다.",
+   "evidence": "stop_strategy.md"
+  },
+  {
+   "id": "R1-24",
+   "result": "PASS",
+   "note": "Emergency Stop은 운영자 물리 전원 차단으로만 정의했다. 토크 끄기·Arm_reset은 미시험이라 그렇게 부르지 않는다.",
+   "evidence": "stop_strategy.md"
+  },
+  {
+   "id": "R1-25",
+   "result": "PASS",
+   "note": "servo position command 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-26",
+   "result": "PASS",
+   "note": "gripper command 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-27",
+   "result": "PASS",
+   "note": "torque change 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-28",
+   "result": "PASS",
+   "note": "homing·reset·calibration 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-29",
+   "result": "PASS",
+   "note": "arm_driver.py 실행 0. 떠 있지도 않았다.",
+   "evidence": "environment.json, process_after.json"
+  },
+  {
+   "id": "R1-30",
+   "result": "PASS",
+   "note": "MoveIt execution 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-31",
+   "result": "PASS",
+   "note": "P-007B execution 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-32",
+   "result": "PASS",
+   "note": "P-006D 시작 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-33",
+   "result": "PASS",
+   "note": "T_base_camera 0.",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-34",
+   "result": "PASS",
+   "note": "robot·Gemini·LED 이동 0.",
+   "evidence": "environment.json"
+  }
+ ]
+}
