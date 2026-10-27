@@ -1,0 +1,38 @@
+{
+ "gate": "P-007E-R2-R2",
+ "target": "install/orbbec_camera/share/orbbec_camera/launch/dabai_dcw2.launch.py",
+ "how_closure_was_computed": "launch 파일 텍스트를 읽어 IncludeLaunchDescription · ExecuteProcess · Node · ComposableNode · ComposableNodeContainer 선언을 모두 열거했다. 포함(Include)이 0 이므로 전이 추적이 1단에서 끝난다",
+ "includes": 0,
+ "execute_process": 0,
+ "processes_started": [
+  {
+   "process": "/opt/ros/humble/lib/rclcpp_components/component_container",
+   "role": "ROS 2 core 컴포넌트 컨테이너",
+   "owner": "root:root · 2024-11-28 · ROS 2 Humble 표준 구성요소",
+   "robot_code": "없음 — ROS core"
+  }
+ ],
+ "composable_nodes_loaded": [
+  {
+   "plugin": "orbbec_camera::OBCameraNodeDriver",
+   "package": "orbbec_camera",
+   "library": "install/orbbec_camera/lib/liborbbec_camera.so (component_container 가 동적 적재)",
+   "robot_code": "정적 근거로 0건 — 섹션 orbbec_tree_robot_keyword_counts 참조"
+  }
+ ],
+ "🔴 launch_defaults_that_matter": {
+  "camera_name": "camera → 토픽이 /camera/... 로 나간다. 🔴 벤더 앱 노드가 구독하는 이름과 **정확히 일치**한다",
+  "enable_point_cloud": "true",
+  "enable_colored_point_cloud": "true",
+  "enable_depth": "true",
+  "enable_ir": "true",
+  "enable_color_auto_exposure": "false",
+  "enable_color_auto_white_balance": "true",
+  "publish_tf": "true",
+  "enable_heartbeat": "false",
+  "color": "640x480 @15 MJPG",
+  "note": "기본값은 point cloud 까지 켠다. passive ego-motion 관측에는 불필요하고 디스크·CPU 부담만 늘린다 (디스크 여유 9.3G / 86% 사용)"
+ },
+ "foxy_branch": "dabai_dcw2.launch.py:89 ros_distro = os.environ[\"ROS_DISTRO\"] — foxy 면 Node(executable=\"orbbec_camera_node\"), 그 외(humble)는 ComposableNode 분기. 두 분기 모두 노드 1개다",
+ "🔴 env_dependency": "launch 파일이 os.environ[\"ROS_DISTRO\"] 를 직접 읽는다. ROS 환경을 소싱하지 않고 실행하면 KeyError 로 실패한다 — 즉 기동은 명시적 소싱 없이는 불가능하다(우발 기동 방어에 유리)"
+}

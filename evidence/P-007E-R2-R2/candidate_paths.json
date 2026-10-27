@@ -1,0 +1,37 @@
+{
+ "gate": "P-007E-R2-R2",
+ "note": "🔴 비교만 한다. 이 게이트는 경로를 선택하지 않는다",
+ "paths": [
+  {
+   "id": "A — ROS 2 orbbec_camera (dabai_dcw2.launch.py)",
+   "modality": "RGB + Depth + IR + (옵션)point cloud",
+   "static_verdict": "SAFE (텍스트 근거) · 노드 1개 폐쇄",
+   "surface_area": "🔴 가장 큼 — ROS 그래프에 합류한다. 토픽 이름 충돌 + 다른 노드의 구독 가능성이 구조적으로 존재한다",
+   "mitigations_without_code_change": ["camera_name:=<전용이름> 으로 네임스페이스 분리", "ROS_DOMAIN_ID 전용값", "ROS_LOCALHOST_ONLY=1", "depth/IR/point cloud 비활성"],
+   "pros": ["타임스탬프·camera_info·intrinsics 가 표준 메시지로 나온다", "P-007E-R2 Stage 1 에서 p620 측 동일 스택 운용 경험이 있다"],
+   "cons": ["ROS 그래프 노출", "point cloud 기본 on → 디스크·CPU", "컴파일 바이너리 행위는 정적으로 확인 불가"]
+  },
+  {
+   "id": "B — ROS 없는 UVC 직접 읽기 (/dev/video0, v4l2 또는 cv2)",
+   "modality": "🔴 RGB only (Depth 센서 2bc5:06a0 는 UVC video 노드로 노출되지 않는다)",
+   "static_verdict": "경로상 ROS 그래프가 **존재하지 않는다** → indirect_path_risk 의 ①~⑤ 사슬이 구조적으로 성립하지 않는다",
+   "surface_area": "가장 작음 — 프로세스 1개, 토픽 0, 다른 노드와의 접점 0",
+   "availability_measured": {
+    "devices": "/dev/video0 (81,0) · /dev/video1 (81,1) · crw-rw----+ root:video",
+    "user_groups": "jetson 은 video(44) 그룹 소속 → 추가 권한 없이 열 수 있다",
+    "tools": "v4l2-ctl 설치됨 · python3 cv2 4.10.0",
+    "current_holders": "🔴 /dev/video0|1 을 보유한 프로세스 0개 (fd 전수 스캔)",
+    "rgb_modes": "1920x1080 · 1440x1080 · 1280x960 · 1280x720 · 640x480 · 640x360 · 320x240 (P-007E-R2-R1 측정)"
+   },
+   "pros": ["표면적 최소", "ROS 소싱·도메인 문제 자체가 사라진다", "타임스탬프를 우리가 직접 붙인다"],
+   "cons": ["🔴 intrinsics 를 얻는 표준 경로가 없다 — pixel 영역 분석만 가능", "Depth 없음", "자동노출·화이트밸런스 제어를 직접 해야 한다", "ego-motion 특징 추적에 쓸 보정 정보가 ROS 경로보다 빈약"]
+  },
+  {
+   "id": "C — Mac 외부 관찰자 (fallback)",
+   "status": "R2-R1 에서 조사됨. 물리 배치·rigid support·TCC 미해결",
+   "role": "A·B 가 모두 불가할 때의 fallback"
+  }
+ ],
+ "disk_constraint": "🔴 Jetson / 파티션: 69G 중 57G 사용 · **여유 9.3G (86%)**. Stage 1 p620 실측 추산(색 1프레임 1.94 MB → 600프레임 1166 MB)을 그대로 적용하면 sham 다회 반복 시 여유가 빠르게 소진된다. 녹화 예산은 기동 설계에서 반드시 산정한다",
+ "🔴 not_decided_here": ["A vs B 선택", "해상도·FPS", "ROI·추적 특징", "녹화 길이·프레임 수"]
+}

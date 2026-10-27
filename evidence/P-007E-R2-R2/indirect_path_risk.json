@@ -1,0 +1,58 @@
+{
+ "gate": "P-007E-R2-R2",
+ "🔴 the_risk": "카메라 노드 자체가 안전해도, 카메라가 토픽을 publish 하는 순간 **이미 떠 있는 다른 노드**가 그 이미지를 받아 서보를 움직일 수 있다. 위험은 카메라 드라이버가 아니라 ROS 그래프에 있다",
+ "chain_documented_by_file_line": [
+  "① orbbec 노드 → /camera/color/image_raw · /camera/depth/image_raw  (camera_name 기본값 'camera')",
+  "② color_follow.py:36-37 Subscriber(self, Image, \"/camera/color/image_raw\") · (\"/camera/depth/image_raw\")",
+  "③ color_follow.py:33 create_publisher(ArmJoint, \"TargetAngle\", 1)",
+  "④ arm_driver.py:25 create_subscription(ArmJoint, 'TargetAngle', self.arm_callback)",
+  "⑤ arm_driver.py:72 self.Arm.Arm_serial_servo_write(msg.id, msg.angle, msg.run_time)  ← 물리 모션"
+ ],
+ "topic_name_collision": {
+  "app_nodes_subscribe": {"/camera/depth/image_raw": 51, "/camera/color/image_raw": 46, "/camera/set_color_exposure": 20},
+  "launch_default_publishes": "/camera/color/image_raw · /camera/depth/image_raw",
+  "🔴 verdict": "기본 camera_name 으로 띄우면 토픽 이름이 벤더 앱 노드의 구독 이름과 **정확히 일치**한다. 충돌을 피하는 가장 값싼 수단은 camera_name 변경(코드 변경 0)이다"
+ },
+ "package_risk_table": {
+  "legend": "arm = Arm_Lib|Arm_serial_servo|move_init_pose 를 담은 .py 수 · image = 이미지/카메라 토픽 참조 .py 수 · BOTH = 두 조건을 같은 파일에서 만족",
+  "rows": [
+   {"package": "dofbot_pro_voice_ctrl", "arm": 33, "image": 22, "BOTH": 28, "risk": "🔴 HIGH"},
+   {"package": "dofbot_pro_driver",     "arm": 11, "image": 9,  "BOTH": 11, "risk": "🔴 HIGH — arm_driver 는 기동만으로 모션"},
+   {"package": "dofbot_pro_apriltag",   "arm": 8,  "image": 10, "BOTH": 7,  "risk": "🔴 HIGH"},
+   {"package": "dofbot_pro_yolov11",    "arm": 3,  "image": 3,  "BOTH": 2,  "risk": "HIGH"},
+   {"package": "dofbot_pro_KCF",        "arm": 2,  "image": 6,  "BOTH": 1,  "risk": "HIGH"},
+   {"package": "dofbot_pro_mediapipe",  "arm": 6,  "image": 0,  "BOTH": 0,  "risk": "MED — Arm_Lib 는 있으나 이미지 참조 0"},
+   {"package": "dofbot_pro_color",      "arm": 2,  "image": 10, "BOTH": 0,  "risk": "🔴 HIGH via topic — Arm_Lib 직접 호출은 Dofbot_Track.py 뿐이고 그것은 console_scripts 에 없다. 그러나 color_follow 가 TargetAngle 을 발행한다"},
+   {"package": "dofbot_pro_depth",      "arm": 0,  "image": 2,  "BOTH": 0,  "risk": "LOW"},
+   {"package": "dofbot_pro_vision",     "arm": 0,  "image": 3,  "BOTH": 0,  "risk": "LOW"},
+   {"package": "dofbot_pro_info",       "arm": 0,  "image": 0,  "BOTH": 0,  "risk": "LOW — 현재 실행 중인 노드가 여기 속한다"},
+   {"package": "dofbot_pro_moveit",     "arm": 0,  "image": 0,  "BOTH": 0,  "risk": "LOW (py 기준. launch·config 는 이 게이트에서 감사하지 않았다)"},
+   {"package": "dofbot_pro_interface",  "arm": 0,  "image": 0,  "BOTH": 0,  "risk": "LOW — msg/srv 정의"}
+  ],
+  "🔴 caveat": "BOTH=0 이 안전을 뜻하지 않는다. color_follow 가 그 반례다 — 토픽 경유 간접 경로는 파일 단위 교차로는 잡히지 않는다"
+ },
+ "currently_running_nodes": {
+  "measured_by": "ps -eo pid,user,etime,cmd (🔴 ros2 node list 아님 — 데몬 기동 회피)",
+  "rows": [
+   "2260/2264 python3 yahboom_oled.py — /dev/i2c-1 (로봇 버스 아님)",
+   "3047 python3 yb-discover.py — UDP 응답기",
+   "3091 sh -c ros2 run dofbot_pro_info kinemarics_dofbot",
+   "3092 /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot",
+   "3103 install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot"
+  ],
+  "image_subscribing_arm_nodes_running": 0,
+  "verdict": "현재 그래프에 이미지→모션 경로를 완성할 노드가 없다. 이 사실은 **기동 직전에 다시 측정해야** 한다"
+ },
+ "🔴 leaked_i2c_fd": {
+  "finding": "PID 3091(sh) · 3092(ros2 python 래퍼) 가 fd 11 → /dev/i2c-7 을 보유한다 (fd 타임스탬프 Jul 16 17:01, 두 PID 동일)",
+  "not_holding": "PID 3103 — 실제 kinemarics 실행 바이너리는 보유하지 않는다",
+  "interpretation_limit": "상속된 descriptor 로 보인다. 셸과 래퍼는 이 fd 에 쓰지 않는다. 그러나 **로봇 버스 fd 가 ROS 프로세스 트리 안에 열린 채 남아 있다**는 사실 자체를 기록한다. 원인 규명은 이 게이트의 범위가 아니다",
+  "relevance": "배타적 제어 가정(P-007E-R1 dryrun 의 exclusive_control_violations=[])을 다시 들여다볼 사유가 된다"
+ },
+ "cross_host_graph": {
+  "jetson_interactive": "~/.bashrc:127 export ROS_DOMAIN_ID=98",
+  "jetson_noninteractive_ssh": "🔴 ~/.bashrc 5-9행 비대화형 가드로 **조기 return** → ROS_DISTRO·ROS_DOMAIN_ID·ros2 전부 비어 있음(실측)",
+  "p620_camera_container": "ROS_DOMAIN_ID 미설정 → 기본값 0",
+  "🔴 consequence": "ssh 로 소싱만 하고 띄우면 도메인 0 이 되어 **p620 컨테이너와 같은 그래프에 합류**한다. 도메인을 명시 지정하지 않으면 격리가 깨진다"
+ }
+}

@@ -1,0 +1,168 @@
+### P-007E-R2-R2 STATIC AUDIT
+### host=yahboom date=2026-10-27T20:46:54+08:00 uname=5.15.148-tegra
+
+## [1] 감사 수단 자체의 안전성 — 이 스크립트가 쓰는 명령
+cat sed grep find ls ps sha256sum tr wc id df  — 전부 read-only
+ros2 / colcon / python3 -c 'import orbbec' / v4l2-ctl --stream : 사용하지 않음
+
+## [2] DaBai DCW2 launch 파일 — 전이 폐쇄(transitive closure)
+-- 대상: /home/jetson/dofbot_pro_ws/src/OrbbecSDK_ROS2-main/orbbec_camera/launch/dabai_dcw2.launch.py
+-- IncludeLaunchDescription 건수:
+0
+-- 기동되는 Node / ComposableNode 선언 전부:
+94:                Node(
+95:                    package="orbbec_camera",
+96:                    executable="orbbec_camera_node",
+107:        compose_node = ComposableNode(
+108:            package="orbbec_camera",
+109:            plugin="orbbec_camera::OBCameraNodeDriver",
+115:        container = ComposableNodeContainer(
+118:            package="rclcpp_components",
+119:            executable="component_container",
+-- ExecuteProcess / cmd= / os.system / subprocess 건수:
+0
+
+## [3] Orbbec 트리 전체 — 로봇/컨트롤러 키워드 건수 (Log·checkpoint 제외)
+Arm_Lib          = 0
+smbus            = 0
+Arm_serial       = 0
+move_init_pose   = 0
+set_torque       = 0
+Button_Mode      = 0
+Action_Mode      = 0
+dofbot_pro       = 0
+-- i2c 히트는 전부 카메라 내부 버스 SDK 선언인지 확인:
+orbbec_camera/SDK/include/libobsensor/h/Device.h:433: * @brief Write to an I2C register.
+orbbec_camera/SDK/include/libobsensor/h/Device.h:436: * @param module_id The I2C module id to be written.
+orbbec_camera/SDK/include/libobsensor/h/Device.h:442:void ob_device_write_i2c(ob_device *device, uint32_t module_id, uint32_t reg, uint32_t mask, uint32_t value, ob_error **error);
+orbbec_camera/SDK/include/libobsensor/h/Device.h:445: * @brief Read an I2C register.
+orbbec_camera/SDK/include/libobsensor/h/Device.h:448: * @param module_id The id of the I2C module to be read.
+orbbec_camera/SDK/include/libobsensor/h/Device.h:454:void ob_device_read_i2c(ob_device *device, uint32_t module_id, uint32_t reg, uint32_t mask, uint32_t *value, ob_error **error);
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:155:     * @brief Write to an I2C register
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:157:     * @param moduleId The ID of the I2C module to write to
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:162:    void writeI2C(uint32_t moduleId, uint32_t reg, uint32_t mask, uint32_t value);
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:165:     * @brief Read from an I2C register
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:167:     * @param moduleId The ID of the I2C module to read from
+orbbec_camera/SDK/include/libobsensor/hpp/Device.hpp:172:    void readI2C(uint32_t moduleId, uint32_t reg, uint32_t mask, uint32_t *value);
+-- orbbec_camera 노드 소스가 그 I2C API 를 호출하는지:
+0
+
+## [4] src ↔ install 동일성 + prefix resolve
+b785e5cf1859d33d2d45397e44d8d1f97d3cf0fcd4efc9120a91139e8887c956  /home/jetson/dofbot_pro_ws/src/OrbbecSDK_ROS2-main/orbbec_camera/launch/dabai_dcw2.launch.py
+b785e5cf1859d33d2d45397e44d8d1f97d3cf0fcd4efc9120a91139e8887c956  /home/jetson/dofbot_pro_ws/install/orbbec_camera/share/orbbec_camera/launch/dabai_dcw2.launch.py
+-- /opt/ros 쪽 orbbec_camera 중복:
+ls: cannot access '/opt/ros/*/share/orbbec_camera': No such file or directory
+-- 실행물:
+-rwxr-xr-x 1 jetson jetson 56128 Sep  2  2025 /home/jetson/dofbot_pro_ws/install/orbbec_camera/lib/orbbec_camera/orbbec_camera_node
+-rwxr-xr-x 1 root   root   18536 Nov 28  2024 /opt/ros/humble/lib/rclcpp_components/component_container
+
+## [5] 간접 구동 경로 — image 구독 + Arm_Lib 호출 교차
+dofbot_pro_color         arm=2   image=10  BOTH=0
+dofbot_pro_depth         arm=0   image=2   BOTH=0
+dofbot_pro_vision        arm=0   image=3   BOTH=0
+dofbot_pro_apriltag      arm=8   image=10  BOTH=7
+dofbot_pro_KCF           arm=2   image=6   BOTH=1
+dofbot_pro_mediapipe     arm=6   image=0   BOTH=0
+dofbot_pro_yolov11       arm=3   image=3   BOTH=2
+dofbot_pro_driver        arm=11  image=9   BOTH=11
+dofbot_pro_moveit        arm=0   image=0   BOTH=0
+dofbot_pro_voice_ctrl    arm=33  image=22  BOTH=28
+dofbot_pro_info          arm=0   image=0   BOTH=0
+dofbot_pro_interface     arm=0   image=0   BOTH=0
+-- 카메라 토픽 문자열 집계:
+     51 /camera/depth/image_raw
+     46 /camera/color/image_raw
+     20 /camera/set_color_exposure
+      1 /camera/depth_registered/points
+      1 /camera/depth/points
+-- 🔴 arm_driver.py 기동 시 즉시 모션 (원문):
+18:        self.Arm = Arm_Device()
+25:        self.sub_arm = self.create_subscription(
+32:        self.sub_buzzer = self.create_subscription(
+51:        self.Arm.Arm_serial_servo_write6(90.0, 90.0, 90.0, 0.0, 90.0, 30.0, 3000)
+60:                self.Arm.Arm_serial_servo_write6(
+-- 🔴 color_follow.py 이미지→TargetAngle 연결 (원문):
+33:        self.pubPoint = self.create_publisher(ArmJoint, "TargetAngle", 1)
+36:        self.depth_image_sub  = Subscriber(self, Image, "/camera/color/image_raw", qos_profile=1)
+37:        self.rgb_image_sub = Subscriber(self, Image, "/camera/depth/image_raw", qos_profile=1)
+
+## [6] 현재 실행 중인 프로세스 (ps 기반 — ros2 node list 아님)
+   2260 jetson    1-03:38:33 /bin/sh -c python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py
+   2264 jetson    1-03:38:33 python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py
+   3047 jetson    1-03:38:25 python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py
+   3091 jetson    1-03:38:18 sh -c ros2 run dofbot_pro_info kinemarics_dofbot
+   3092 jetson    1-03:38:18 /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot
+   3103 jetson    1-03:38:17 /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot
+-- (위 목록 끝)
+-- /dev/i2c-7 fd 보유:
+   PID 3091  sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+   PID 3092  /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot 
+-- /dev/video0|1 fd 보유:
+-- (fd 스캔 끝)
+
+## [7] 셸 환경 · autostart
+-- ~/.bashrc 비대화형 가드:
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+-- ROS 소싱·도메인:
+122:source /opt/ros/humble/setup.bash
+123:source /home/jetson/dofbot_pro_ws/install/setup.bash
+124:source /home/jetson/LargeModel_ws/install/setup.bash
+127:export ROS_DOMAIN_ID=98
+147:echo -e "\033[34mDOMAIN_ID: $(printenv ROS_DOMAIN_ID)\033[0m"
+-- 비대화형 ssh 에서 본 환경: ROS_DISTRO=[] ROS_DOMAIN_ID=[] ros2=[]
+-- autostart 항목:
+bash-1.desktop
+bash.desktop.p007ar1.bak
+-- bash-1.desktop Exec 대상 존재 여부:
+Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh
+ls: cannot access '/home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh': No such file or directory
+
+## [8] 기계적 부착 provenance (URDF 원문)
+b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28  /home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf
+-- joint 이름·타입 전부:
+88:    name="Arm1_Joint"
+89-    type="revolute">
+146:    name="Arm2_Joint"
+147-    type="revolute">
+204:    name="Arm3_Joint"
+205-    type="revolute">
+262:    name="Arm4_Joint"
+263-    type="revolute">
+320:    name="DaBai_DCW2_Joint"
+321-    type="fixed">
+373:    name="Arm5_Joint"
+374-    type="revolute">
+431:    name="grip_joint"
+432-    type="revolute">
+774:    name="Gripping_point_Joint"
+775-    type="fixed">
+-- DaBai_DCW2_Joint 원문:
+  <joint
+    name="DaBai_DCW2_Joint"
+    type="fixed">
+    <origin
+      xyz="-0.000199999999999811 0.0688999999999998 0.0506000000000001"
+      rpy="0.00872664625997288 0 0" />
+    <parent
+      link="Arm4_Link" />
+    <child
+      link="DaBai_DCW2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+-- mesh:
+-rw-rw-r-- 1 jetson jetson 4037784 Mar 20  2025 /home/jetson/dofbot_pro_ws/src/dofbot_pro_description/meshes/DaBai_DCW2_Link.STL
+
+## [9] ROS 없는 대안 경로 — UVC
+uid=1000(jetson) gid=1000(jetson) groups=1000(jetson),4(adm),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),104(render),116(i2c),120(lpadmin),135(gdm),136(sambashare),993(ollama),994(docker),996(weston-launch),999(gpio),1001(jtop)
+crw-rw----+ 1 root video 81, 0 Jul 16 16:59 /dev/video0
+crw-rw----+ 1 root video 81, 1 Jul 16 16:59 /dev/video1
+/usr/bin/v4l2-ctl
+cv2 4.10.0
+/dev/nvme0n1p1   69G   57G  9.3G  86% /
+
+### AUDIT END

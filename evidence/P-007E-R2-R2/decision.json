@@ -1,0 +1,42 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "Stage A — Static Code Audit (passive observation path)",
+ "🔴 verdict": "R2-R2 STAGE A — CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED",
+ "what_was_established": [
+  "`dabai_dcw2.launch.py` 의 launch 폐쇄는 노드 1개다 — rclcpp_components/component_container 안의 orbbec_camera::OBCameraNodeDriver. Include 0 · ExecuteProcess 0 · subprocess 0",
+  "Orbbec 트리 전체에서 Arm_Lib · smbus · Arm_serial · move_init_pose · set_torque · Button_Mode · Action_Mode · dofbot_pro = **각 0건**",
+  "i2c 히트 12건은 전부 카메라 내부 버스용 SDK 선언이고, 노드 소스의 호출은 0건이다",
+  "실행되는 install 본은 src 와 sha256 동일하고 /opt/ros 쪽 중복이 없다",
+  "현재 ROS 그래프에 이미지→모션 경로를 완성할 노드가 없다 (ps 기준)"
+ ],
+ "🔴 what_was_also_established_and_is_the_real_hazard": [
+  "`arm_driver.py:51` 은 __init__ 안에서 조건 없이 `Arm_serial_servo_write6(90.0, 90.0, 90.0, 0.0, 90.0, 30.0, 3000)` 를 호출한다. 이 노드는 **기동만으로** 6축 모션을 명령한다",
+  "`color_follow.py:36-37` 이 /camera/color/image_raw · /camera/depth/image_raw 를 구독하고 `:33` 이 TargetAngle 을 발행하며 `arm_driver.py:25` 가 그것을 구독한다 — 카메라 publish 가 모션으로 이어지는 완전한 사슬이 코드에 존재한다",
+  "launch 기본 camera_name='camera' 는 그 구독 이름과 **정확히 일치**한다",
+  "비대화형 ssh 는 ROS 환경을 상속하지 않고, p620 컨테이너는 도메인 0, Jetson 대화형은 98 이다 — 도메인을 명시하지 않으면 격리가 깨진다"
+ ],
+ "evidence_naming": {
+  "🔴 approved_term": "independent physical-motion evidence via eye-in-hand visual ego-motion",
+  "🔴 forbidden_terms": [
+   "independent external observer",
+   "independent robot pose measurement",
+   "absolute joint angle measurement",
+   "ROOT CAUSE VERIFIED",
+   "TIMING HYPOTHESIS STRONGLY SUPPORTED",
+   "TIMING HYPOTHESIS NOT SUPPORTED BY CONTROLLED RETEST"
+  ],
+  "timing_status_fixed_wording": "Timing hypothesis remains OPEN; controlled retest produced a readback change, but the pre-registered physical-motion observation was not obtained."
+ },
+ "🔴 sensitivity_number_label": {
+  "value": "약 21 px (ID2 2° 기준 ego-motion)",
+  "status": "PREDICTION — NOT A MEASURED DETECTION CAPABILITY",
+  "assumption": "fx ≈ 600 가정. 🔴 DaBai 실측 intrinsics 가 아니다. optical frame 방위·관측 장면의 depth/geometry 도 반영되지 않았다",
+  "rule": "실측 qualification 전에는 검출 성능으로 승격하지 않는다"
+ },
+ "reviewer_decision_required": [
+  "① 제안된 최소 기동(startup_proposal.json)을 승인할 것인가. 감사한 쪽이 스스로 기동 승인을 내리지 않는다",
+  "② 경로 A(ROS orbbec_camera) 와 경로 B(ROS 없는 UVC 직접 읽기) 중 어느 쪽으로 qualification 을 진행할 것인가 — 표면적은 B 가 작고 intrinsics·표준 타임스탬프는 A 가 유리하다",
+  "③ 운영자 육안 provenance(P4) 를 지금 받을 것인가"
+ ],
+ "stop": "보고·커밋 후 STOP. 카메라 기동 · 캡처 · FOV 시험 · sham · feature tracking · marker · servo 명령 · 152→150 복귀 · Stage 2 어느 것도 자동 진행하지 않는다"
+}

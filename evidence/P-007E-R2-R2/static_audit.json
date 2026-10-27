@@ -1,0 +1,115 @@
+{
+ "gate": "P-007E-R2-R2",
+ "title": "DaBai Passive Observation Path Qualification — Stage A: STATIC CODE AUDIT",
+ "scope": "STATIC AUDIT ONLY — 카메라 미개방 · recorder 미기동 · ros2 CLI 미실행 · 로봇/컨트롤러 접근 0",
+ "method": {
+  "allowed_commands": [
+   "cat",
+   "sed",
+   "grep",
+   "find",
+   "ls",
+   "ps",
+   "sha256sum",
+   "tr",
+   "wc",
+   "id",
+   "df"
+  ],
+  "🔴 deliberately_not_used": [
+   "ros2 launch --show-args / --print — launch .py 의 top-level 코드를 실행한다",
+   "ros2 node list / topic list — ros2 daemon 을 기동한다",
+   "python3 -c 'import <vendor module>' — import 부작용 위험",
+   "v4l2-ctl --stream-mmap / cv2.VideoCapture — 카메라 개방"
+  ],
+  "raw_log": "logs/static_audit_raw.txt (168행, 단일 read-only 스크립트 1회 실행)",
+  "audit_script": "scripts/p007e_r2r2_static_audit.sh (sha256 d52df993633be66e62b4d3816b01619f0f044da1413f2917695207bdf318fde0) — 이 게이트가 Jetson 에 보낸 유일한 실행물. ssh jetson bash -s < script 로 1회 실행"
+ },
+ "entry_points": [
+  {
+   "entry": "ros2 launch orbbec_camera dabai_dcw2.launch.py",
+   "verdict": "SAFE (정적 근거 기준)",
+   "evidence": [
+    "dabai_dcw2.launch.py — IncludeLaunchDescription 건수 = 0 (전이 포함 없음)",
+    "dabai_dcw2.launch.py — ExecuteProcess|os.system|subprocess|cmd= 건수 = 0",
+    "dabai_dcw2.launch.py:107-113 ComposableNode(package=\"orbbec_camera\", plugin=\"orbbec_camera::OBCameraNodeDriver\")",
+    "dabai_dcw2.launch.py:115-124 ComposableNodeContainer(package=\"rclcpp_components\", executable=\"component_container\")",
+    "dabai_dcw2.launch.py:89-103 ros_distro == \"foxy\" 분기는 Node(executable=\"orbbec_camera_node\") 하나. 이 호스트는 humble 이라 else 분기를 탄다"
+   ],
+   "launch_closure_node_count": 1,
+   "🔴 caveat": "이 판정은 **launch·소스 텍스트** 근거다. 컴파일된 `orbbec_camera_node` / `liborbbec_camera.so` 의 런타임 행위를 실행해 확인한 것이 아니다"
+  },
+  {
+   "entry": "ros2 run dofbot_pro_driver arm_driver",
+   "verdict": "🔴 UNSAFE — 기동 자체가 6축 모션을 명령한다",
+   "evidence_verbatim": [
+    "dofbot_pro_driver/dofbot_pro_driver/arm_driver.py:18        self.Arm = Arm_Device()",
+    "dofbot_pro_driver/dofbot_pro_driver/arm_driver.py:51        self.Arm.Arm_serial_servo_write6(90.0, 90.0, 90.0, 0.0, 90.0, 30.0, 3000)",
+    "dofbot_pro_driver/dofbot_pro_driver/arm_driver.py:25        self.sub_arm = self.create_subscription(  # ArmJoint, 'TargetAngle'",
+    "dofbot_pro_driver/dofbot_pro_driver/arm_driver.py:60/72    Arm_serial_servo_write6(...) / Arm_serial_servo_write(msg.id, msg.angle, msg.run_time)"
+   ],
+   "note": "51행은 __init__ 안의 무조건 실행문이다. 구독 콜백이 아니다. 즉 이 노드를 띄우는 순간 ID1~6 이 (90,90,90,0,90,30) 으로 3000 ms 에 걸쳐 이동 명령을 받는다. 현재 controller-reported ID2=152 상태가 비가역으로 파괴된다"
+  },
+  {
+   "entry": "ros2 run dofbot_pro_color color_follow",
+   "verdict": "🔴 UNSAFE as a consumer — 이미지를 받아 모션 명령 토픽을 발행한다",
+   "evidence_verbatim": [
+    "dofbot_pro_color/dofbot_pro_color/color_follow.py:33        self.pubPoint = self.create_publisher(ArmJoint, \"TargetAngle\", 1)",
+    "dofbot_pro_color/dofbot_pro_color/color_follow.py:36        self.depth_image_sub  = Subscriber(self, Image, \"/camera/color/image_raw\", qos_profile=1)",
+    "dofbot_pro_color/dofbot_pro_color/color_follow.py:37        self.rgb_image_sub = Subscriber(self, Image, \"/camera/depth/image_raw\", qos_profile=1)"
+   ],
+   "note": "이 파일 자체는 Arm_Lib 을 import 하지 않는다. 모션은 `TargetAngle` 토픽을 통해 arm_driver 가 집행한다. 변수명(depth_image_sub ↔ color 토픽)이 서로 엇갈려 있으나 원문 그대로 기록한다 — 해석하지 않는다"
+  },
+  {
+   "entry": "ros2 run dofbot_pro_info kinemarics_dofbot  (🔴 현재 실행 중)",
+   "verdict": "SAFE — 서비스 서버 1개. 로봇 접근 키워드 0건",
+   "evidence": [
+    "dofbot_pro_info 패키지 전체 grep: Arm_Lib|smbus|i2c|Arm_serial|servo_write|move_init_pose|set_torque = 0건",
+    "src/kinemarics_dofbotpro.cpp:113 create_service<dofbot_pro_interface::srv::Kinemarics>",
+    "ps: PID 3103 /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot (etime 1-03:38)"
+   ]
+  },
+  {
+   "entry": "autostart ~/.config/autostart/bash-1.desktop",
+   "verdict": "현재 NO-OP — Exec 대상 파일이 없다",
+   "evidence": [
+    "Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh",
+    "ls: cannot access '/home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh': No such file or directory"
+   ],
+   "🔴 note": "파일이 다시 생기면 판정이 바뀐다. 기동 직전 재확인 항목에 넣는다"
+  },
+  {
+   "entry": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py  (🔴 현재 실행 중)",
+   "verdict": "SAFE — UDP 0.0.0.0:8000 응답기 21행. subprocess/os.system/Arm_Lib 0건",
+   "evidence": "전문 21행 확인: socket.recvfrom 후 msg == \"YAHBOOMARM_FIND\" 이면 b\"DOFBOT-Pro\" 를 회신하는 것이 전부"
+  },
+  {
+   "entry": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py  (🔴 현재 실행 중)",
+   "verdict": "ROBOT BUS 와 무관 — /dev/i2c-1 을 쓴다",
+   "evidence": "PID 2264 fd 5 -> /dev/i2c-1. 로봇 확장보드는 /dev/i2c-7 addr 0x15 (P-007A·P-007B)"
+  }
+ ],
+ "orbbec_tree_robot_keyword_counts": {
+  "scope": "src/OrbbecSDK_ROS2-main 전체 (Log·.ipynb_checkpoints 제외)",
+  "Arm_Lib": 0,
+  "smbus": 0,
+  "Arm_serial": 0,
+  "move_init_pose": 0,
+  "set_torque": 0,
+  "Button_Mode": 0,
+  "Action_Mode": 0,
+  "dofbot_pro": 0,
+  "i2c": {
+   "hits": 12,
+   "🔴 what_they_are": "전부 `orbbec_camera/SDK/include/libobsensor/` 의 **카메라 내부 I2C** 선언·주석이다 (Device.h:442 ob_device_write_i2c, Device.hpp:162 writeI2C 등). USB 뒤 카메라 모듈 내부 버스이고 로봇 확장보드 버스(/dev/i2c-7)와 무관하다",
+   "call_sites_in_node_source": 0,
+   "measured_by": "grep -rnI -E 'write_i2c|writeI2C|read_i2c|readI2C' orbbec_camera/src orbbec_camera/include | wc -l → 0"
+  }
+ },
+ "🔴 what_this_audit_did_not_verify": [
+  "컴파일된 `liborbbec_camera.so` / `orbbec_camera_node` 바이너리의 런타임 행위 (소스·launch 텍스트만 읽었다)",
+  "런타임 설정파일 `install/orbbec_camera/share/orbbec_camera/config/OrbbecSDKConfig_v1.0.xml` 의 내용",
+  "`~/.bashrc:124` 가 소싱하는 `/home/jetson/LargeModel_ws` 의 노드 목록",
+  "camera_name 변경이 실제로 토픽 네임스페이스를 바꾸는지 — launch 텍스트상 PushRosNamespace 로 그렇게 보이나 기동 후 확인 사항이다"
+ ]
+}

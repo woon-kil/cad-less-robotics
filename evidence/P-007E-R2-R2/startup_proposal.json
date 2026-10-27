@@ -1,0 +1,45 @@
+{
+ "gate": "P-007E-R2-R2",
+ "🔴 status": "PROPOSAL ONLY — NOT EXECUTED. 이 게이트는 카메라를 기동하지 않았다",
+ "why_not_executed": [
+  "이번 지시문에는 Jetson 에서 `new camera capture / new recorder start` 를 해제하는 명시적 allow-list 가 없다",
+  "'안전성이 증명되었다'를 판정하는 주체는 검수자다. 감사한 쪽이 스스로 증명하고 스스로 기동하면 게이트가 성립하지 않는다",
+  "실패 시 피해가 비가역이다 — arm_driver 류가 끼어들면 controller-reported ID2=152 상태가 복구 불가하게 파괴된다"
+ ],
+ "proposed_minimal_start": {
+  "path": "A — ROS 2 orbbec_camera",
+  "🔴 code_changes_required": 0,
+  "🔴 vendor_launch_patch": "없음 — launch 인자만 바꾼다 (우회 구현 금지 원칙)",
+  "command": "ROS_DOMAIN_ID=71 ROS_LOCALHOST_ONLY=1 bash -c 'source /opt/ros/humble/setup.bash && source /home/jetson/dofbot_pro_ws/install/setup.bash && ros2 launch orbbec_camera dabai_dcw2.launch.py camera_name:=p007e_r2r2 enable_point_cloud:=false enable_colored_point_cloud:=false enable_depth:=false enable_ir:=false enable_color:=true color_width:=640 color_height:=480 color_fps:=15 enable_color_auto_exposure:=false enable_color_auto_white_balance:=false publish_tf:=false log_level:=info'",
+  "argument_rationale": {
+   "camera_name:=p007e_r2r2": "🔴 토픽을 /p007e_r2r2/... 로 내보내 벤더 앱 노드의 구독 이름(/camera/color/image_raw 등)과 겹치지 않게 한다",
+   "ROS_DOMAIN_ID=71": "Jetson 대화형 세션(98)·p620 컨테이너(미설정=0) 양쪽과 분리한다",
+   "ROS_LOCALHOST_ONLY=1": "호스트 밖 노드가 그래프에 합류하지 못하게 한다",
+   "enable_depth/ir/point_cloud:=false": "ego-motion 은 RGB 로 충분하다. 디스크 여유 9.3G 보호",
+   "auto_exposure·auto_white_balance:=false": "프레임 간 측광 변화가 ego-motion 신호로 오인되는 것을 막는다",
+   "publish_tf:=false": "로봇 TF 트리와 간섭하지 않는다",
+   "명시적 source": "비대화형 ssh 는 ~/.bashrc 를 조기 return 하므로 소싱이 없으면 기동 자체가 불가능하다 — 우발 기동 방어로 유리하다"
+  }
+ },
+ "preconditions_to_verify_immediately_before_start": [
+  "① ps 기준으로 arm_driver · dofbot_pro_driver · color_follow · grasp · apriltag_* · KCF · yolov11 · voice_ctrl 프로세스 0개 (🔴 ros2 node list 금지 — 데몬 기동)",
+  "② ~/.config/autostart/bash-1.desktop 의 Exec 대상(setting.sh)이 여전히 부재",
+  "③ /dev/video0|1 을 보유한 프로세스 0개",
+  "④ 디스크 여유 재측정 — 녹화 예산 안에 들어오는지",
+  "⑤ 운영자 현장 입회 + 물리 전원 차단 즉시 도달 가능 (announce-before-physical-command 규칙)",
+  "⑥ 기동 직후 `ros2 topic list` 로 토픽이 /p007e_r2r2/... 로 나오는지 확인 (camera_name 네임스페이스 가정의 실측 검증)"
+ ],
+ "preregistered_abort_conditions": [
+  "A — 어떤 로봇 움직임이라도 관측되면 즉시 물리 전원 차단. 해석하지 않는다 → SAFETY BLOCK",
+  "B — ps 에 이미지 구독 + Arm_Lib 계열 프로세스가 새로 나타나면 즉시 카메라 프로세스 종료 → UNEXPECTED_NODE",
+  "C — 카메라 프로세스가 /dev/i2c-7 fd 를 열면 즉시 종료 → BUS_ACCESS_VIOLATION",
+  "D — 토픽이 /camera/... 네임스페이스로 나오면 즉시 종료 → NAMESPACE_GUARD_FAILED",
+  "E — 드라이버가 'Set UVC backend to libuvc' 등에서 멈추고 스트림이 열리지 않으면 → TRANSPORT_BLOCKED (P-007E-R2 Stage 1 선례)"
+ ],
+ "🔴 explicitly_not_in_this_proposal": [
+  "servo write · torque · RGB · raw I2C · 152→150 복귀",
+  "servo readback 반복 수집 (R2 에서 금지)",
+  "recorder 장시간 녹화 · sham 시행 · feature tracking · marker",
+  "커스텀 launch 파일 신규 작성 · 벤더 launch 패치"
+ ]
+}

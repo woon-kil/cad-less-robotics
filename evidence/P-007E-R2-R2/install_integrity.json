@@ -1,0 +1,22 @@
+{
+ "gate": "P-007E-R2-R2",
+ "why": "실행되는 것은 src 가 아니라 install 트리다 (Arm_Lib disk-vs-egg 대조와 같은 논리)",
+ "sha256_match": {
+  "src": "src/OrbbecSDK_ROS2-main/orbbec_camera/launch/dabai_dcw2.launch.py",
+  "install": "install/orbbec_camera/share/orbbec_camera/launch/dabai_dcw2.launch.py",
+  "sha256": "b785e5cf1859d33d2d45397e44d8d1f97d3cf0fcd4efc9120a91139e8887c956",
+  "identical": true
+ },
+ "prefix_resolution": {
+  "opt_ros_duplicate": "없음 — ls -d /opt/ros/*/share/orbbec_camera → No such file or directory",
+  "workspace_install": "/home/jetson/dofbot_pro_ws/install/orbbec_camera (유일)",
+  "conclusion": "`orbbec_camera` 는 워크스페이스 install 에서만 resolve 된다. /opt/ros 쪽 중복으로 다른 launch 가 실행될 가능성은 없다"
+ },
+ "executables": {
+  "install/orbbec_camera/lib/orbbec_camera/orbbec_camera_node": "jetson:jetson 56128 B 2025-09-02",
+  "/opt/ros/humble/lib/rclcpp_components/component_container": "root:root 18536 B 2024-11-28"
+ },
+ "🔴 not_built_packages": "install 트리에 `dofbot_pro_vision` 이 없다 (src 에는 존재). 이 게이트는 그 사실만 기록하고 빌드하지 않는다",
+ "urdf_sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28 — P-007E-R1 dryrun.json 의 urdf_sha256 과 동일(불변 확인)",
+ "arm_lib_note": "이 게이트는 Arm_Lib 을 import·대조하지 않았다. 로봇 접근 0 을 지키기 위함이다. 디스크 sha(edfcae72…)는 선행 게이트 기록을 참조한다"
+}

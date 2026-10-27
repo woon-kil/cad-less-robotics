@@ -1,0 +1,41 @@
+{
+ "gate": "P-007E-R2-R2",
+ "claim_being_supported": "DaBai DCW2 는 로봇의 원위 구조(Arm4)에 기계적으로 부착되어 있고, 독립적으로 관절운동하지 않는다",
+ "🔴 what_is_NOT_claimed": [
+  "정밀 extrinsic calibration 값",
+  "부착부의 강성(stiffness) 정량값",
+  "카메라 광학 프레임의 절대 방위"
+ ],
+ "evidence": [
+  {
+   "id": "P1 — URDF fixed joint",
+   "source": "src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf (sha256 b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28)",
+   "verbatim": "<joint name=\"DaBai_DCW2_Joint\" type=\"fixed\"> <origin xyz=\"-0.000199999999999811 0.0688999999999998 0.0506000000000001\" rpy=\"0.00872664625997288 0 0\" /> <parent link=\"Arm4_Link\" /> <child link=\"DaBai_DCW2_Link\" /> <axis xyz=\"0 0 0\" /> </joint>",
+   "line_range": "319-331",
+   "evidence_level": "LOCAL_EVIDENCE — 로봇 자신의 description"
+  },
+  {
+   "id": "P2 — 액추에이터 대차대조",
+   "source": "같은 URDF, joint 전수 열거",
+   "revolute_joints": ["Arm1_Joint:88-89", "Arm2_Joint:146-147", "Arm3_Joint:204-205", "Arm4_Joint:262-263", "Arm5_Joint:373-374", "grip_joint:431-432"],
+   "fixed_joints": ["DaBai_DCW2_Joint:320-321", "Gripping_point_Joint:774-775"],
+   "🔴 argument": "revolute 6개가 서보 ID1~6 에 대응하고, 남는 액추에이터가 없다. 카메라를 독립적으로 움직일 구동원이 모델에 존재하지 않는다",
+   "evidence_level": "LOCAL_EVIDENCE"
+  },
+  {
+   "id": "P3 — 형상 자산",
+   "source": "src/dofbot_pro_description/meshes/DaBai_DCW2_Link.STL",
+   "fact": "4,037,784 B · 2025-03-20 · URDF visual·collision 양쪽이 이 파일을 참조(300행·315행)",
+   "meaning": "벤더가 이 카메라를 로봇 링크의 일부로 모델링했다",
+   "evidence_level": "LOCAL_EVIDENCE"
+  },
+  {
+   "id": "P4 — 운영자 육안 확인",
+   "status": "🔴 NOT YET OBTAINED",
+   "what_to_ask": "DaBai 가 팔의 원위 구조에 볼트/브래킷으로 붙어 있고, 자체적으로 꺾이는 관절·틸트 기구가 없는지 **눈으로만** 확인",
+   "🔴 forbidden": "만지거나 흔들어 확인하는 것. 토크 상태가 불명확한 팔이 물리적으로 움직일 수 있다",
+   "evidence_level": "PENDING"
+  }
+ ],
+ "sufficiency": "P1+P2+P3 는 '카메라가 원위 구조에 부착되어 있고 독립 관절이 없다'를 지지한다. 측정 모델에 필요한 전제는 그 정도이며 정밀 캘리브레이션은 필요하지 않다. P4 는 모델과 실물의 일치를 확인하는 마지막 고리로 남는다"
+}
