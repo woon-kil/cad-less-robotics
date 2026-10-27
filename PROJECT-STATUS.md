@@ -17,7 +17,7 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2-R2 — DaBai Passive Observation Path Qualification** (Stage A 정적 감사 완료 · 🔴 카메라 기동 미승인) | `evidence/P-007E-R2-R2/decision.json` |
+| 진행 중 게이트 | **P-007E-R2-R2 — DaBai Passive Observation Path Qualification** · Stage A `STATIC SAFETY AUDIT PASS / CLOSED @ 3579ab5` · Stage B **`FOV_PASS`** | `evidence/P-007E-R2-R2/stage_b_decision.json` |
 | 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
@@ -205,6 +205,16 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 🔴 `~21 px` 는 **PREDICTION** (fx≈600 가정, DaBai 실측 intrinsics 아님). 실측 qualification 전 검출 성능으로 승격 금지
   - 🔴 Jetson 디스크 여유 **9.3G (86% 사용)** — 녹화 예산 제약
   - 다음은 검수 결정 — ① 최소 기동 승인 ② 경로 A/B 선택 ③ 운영자 육안 provenance
+- [x] **P-007E-R2-R2 Stage B** Passive UVC Observation Qualification — **`FOV_PASS`**
+  - 검수 결정: **경로 B(Direct UVC)** 채택. ROS 그래프를 격리하는 대신 `camera topic → color_follow → TargetAngle → arm_driver → servo write` 경로를 **구조적으로 제거**한다
+  - B0 상속 fd 분류 — 3091/3092 = `INHERITED DESCRIPTOR ONLY`. 🔴 **2264(`yahboom_oled.py`) = ACTIVE NON-SERVO I2C BUS USER** (아래 이월 위험)
+  - B1 운영자 육안 — `mounted on distal structure = YES` · `independent articulated camera axis = NO` (접촉 0)
+  - B2 열거 — RGB capture node = **`/dev/video0`**. `/dev/video1` 은 Metadata Capture 전용(ENUM_FMT 빈 목록·G_FMT 실패). 설정 변경 0
+  - B3 캡처 — **1 frame** (예산 MAX 1). warm-up skip 0 · S_FMT 0 · 44,208 B JPEG · Jetson 잔존물 0 · 가드 전후 클린
+  - B4 FOV — 코너 3,481(강 917) · 32×32 타일 커버리지 **76%** · 네 사분면 모두 비지 않음 · 노출 mean 139(포화 12.7%)
+  - 🔴 eye-in-hand 에서는 Arm3~gripper 가 보일 필요가 없다 — 필요한 것은 **로봇과 독립적으로 고정된 외부 장면**이고 충분히 들어와 있다
+  - 🔴 Stage C 제약: 자동노출·자동WB·dynamic framerate ON · `power_line_frequency=50Hz`(국내 60Hz 불일치) · 특징 상당수가 변형/이동 가능 대상 위 · 경로 B 는 RGB only·intrinsics 표준 경로 없음
+  - 예산: `camera captures = 1` 외 전 항목 0 (ros2 CLI·Arm_Lib·I2C·servo read/write·torque·RGB write·robot motion·물리 이동 = 0)
 
 ## 🔴 다음 행동
 
@@ -290,6 +300,14 @@ operator channel        realtime visual observation
 > 🔴 **물리 위치는 미확인이다.** readback 152 가 실제 관절 위치인지 컨트롤러 보고값인지 갈리지 않았다. 다음 게이트가 FK·clearance 를 계산할 때 `150` 을 실제 자세로 가정하면 안 된다
 
 
+> 🔴 **R2-R2 Stage B 갱신 — 로봇 I2C 버스에 제3 사용자가 있다.** `yahboom_oled.py` 가 `__BUS_LIST = [1, 0, 7, 8]` 을 **영구 순환 탐색**한다. 7번이 로봇 버스다. open 은 성공하는데도 예외로 떨어져 회전하므로 **버스 7 에 0x3C(OLED) 를 향한 트랜잭션이 시도된다**. 서보 명령 능력은 없다(Arm_Lib 0 · 0x15 접근 0).
+> 🔴 **따라서 `quiet interval` 은 "버스가 조용했다"를 뜻하지 않는다.** P-007E-R1 의 정의는 "**우리 프로세스가** 버스를 건드리지 않은 구간"이고 제3 프로세스를 배제하지 못한다. 다음 motion gate 의 quiet interval 설계는 이 사실 위에서 다시 세운다.
+> 상태: `EXCLUSIVE CONTROL ASSUMPTION — REOPENED FOR CLASSIFICATION`. 🔴 **프로세스 kill·fd close·autostart 수정 금지**(검수 지시). P-007E-R1 의 `exclusive_control_violations: []` 도 수정하지 않았다.
+> 🔴 이것이 P-007B 무응답이나 P-007E-R1 readback 변화를 **설명한다고 말하지 않는다** — 간섭원의 존재만 확인됐고 시간적 중첩은 측정되지 않았다.
+> 근거: `evidence/P-007E-R2-R2/b0_i2c_fd_classification.json` · 이슈보고서 `docs/261027-2212-*`
+>
+> 🔴 **ROS 도메인 정정.** 실행 중 노드의 `/proc/<pid>/environ` 에 `ROS_DOMAIN_ID` 가 없다 → 현재 그래프는 **도메인 0** 이고 p620 컨테이너와 같다. `~/.bashrc:127` 의 98 은 그 프로세스에 적용되지 않았다.
+
 > 🔴 **R2-R2 갱신 — 카메라를 띄울 때의 함정 2건.**
 > ① `ros2 run dofbot_pro_driver arm_driver` 는 **기동만으로** `arm_driver.py:51` 의 `Arm_serial_servo_write6(90,90,90,0,90,30, 3000)` 를 집행한다. 이 노드(와 `dofbot_pro_driver`·`grasp`·`apriltag_*`·`voice_ctrl` 계열)는 **어떤 이유로도 띄우지 않는다**.
 > ② 벤더 카메라 launch 를 **기본 `camera_name='camera'`** 로 띄우면 토픽이 `/camera/color/image_raw`·`/camera/depth/image_raw` 로 나가고, 그것은 `color_follow.py:36-37` 등 **앱 노드의 구독 이름과 정확히 일치**한다. 그 앱 노드가 떠 있으면 `TargetAngle` → `arm_driver` 로 모션이 이어진다. 카메라를 띄울 때는 `camera_name` 을 전용 이름으로 바꾸고 `ROS_DOMAIN_ID` 를 명시한다(p620 컨테이너는 도메인 **0**, Jetson 대화형은 **98**, 비대화형 ssh 는 **미설정**).
@@ -327,6 +345,7 @@ operator channel        realtime visual observation
 | 13 | 2026-10-27 18:39~19:02 (KST, 커밋 `be1491e`) | **P-007E-R1 Phase B** (세션 `66eb4937`) | **A/C NOT DISCRIMINATED.** 서보 명령 2번째 1회 집행(18:49:06 KST), readback 150→152, 물리 모션 UNOBSERVED |
 | 14 | 2026-10-27 19:02~19:48 (KST, 커밋 `02de7b0`~`b576dbe`) | P-007E-R1 검수 종결 반영 · **P-007E-R2 Stage 1** · **P-007E-R2-R1** (세션 `66eb4937`) | Stage 1 `TARGET_NOT_DETECTED` · R2-R1 `CANDIDATE FOUND` — 로봇 접근 0
 | 15 | 2026-10-27 20:47~21:54 (KST, 커밋 `ee0b2ca`) | **P-007E-R2-R2 Stage A** 정적 감사 (세션 `66eb4937`) | `CAMERA-ONLY PATH IDENTIFIED / START NOT AUTHORIZED` — 카메라 기동 0 · `ros2` CLI 0
+| 16 | 2026-10-27 22:02~22:12 (KST, 커밋 `639c0ca`) | **P-007E-R2-R2 Stage B** B0~B4 (세션 `66eb4937`) | **`FOV_PASS`** — 캡처 1프레임 · 🔴 로봇 버스 제3 사용자 발견
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
