@@ -17,7 +17,8 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP`** — 운영자 결정 대기 | `evidence/P-007E-R2/stage1_fov.json` |
+| 진행 중 게이트 | **P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP`** | `evidence/P-007E-R2/stage1_fov.json` |
+| 최신 조사 | **P-007E-R2-R1 `CANDIDATE FOUND / PHYSICAL SETUP REQUIRED`** — 검수 결정 대기 | `evidence/P-007E-R2-R1/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **2회** (P-007B · P-007E-R1 Phase B — 둘 다 ID2 152°, raw 1242) | P-007B `servo_position_writes: 1` · P-007E-R1 `phase_b_acceptance.json servo_writes: 1`. 나머지 게이트는 전부 `0` |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
@@ -178,6 +179,13 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 🔴 **FOV 1프레임에 DOFBOT 구조물이 없다.** P-006C 고정 포즈는 **작업면**을 본다 — 팔을 보도록 놓인 적이 없다
   - 🔴 Jetson 접속 0 · I2C 접근 0 · robot motion 0. 드라이버 정지·임시물 삭제로 원복
   - 다음은 운영자 물리 결정 — 카메라 재배치(P-006C 고정 전제 파기) / 관측 장치 추가 / `OBSERVATION QUALIFICATION BLOCKED`
+- [x] **P-007E-R2-R1** 관측장치 선정 조사 — **`CANDIDATE FOUND / PHYSICAL SETUP REQUIRED`** (분류 B)
+  - 성격: DESIGN / INVENTORY / FEASIBILITY ONLY. 캡처 0 · 거치 0 · 로봇 모션 0 · robot controller access 0
+  - 🔴 **URDF: `DaBai_DCW2_Joint` parent = `Arm4_Link`** → Jetson 의 Orbbec DaBai DCW2 는 **eye-in-hand**. ID2 와 함께 움직인다
+  - p620 에 두 번째 카메라 없음 · Mac 은 내장 1대 · Jetson 에 DaBai RGB-D
+  - PRIMARY = Mac 내장(R6 완전 독립, 배치·TCC·사양 미해결) / SECONDARY = DaBai(설치 0, ego-motion 민감도 우위, 🔴 §16 충돌 → 검수 결정)
+  - 🔴 Gemini 재배치 NOT RECOMMENDED — workplane baseline 이 현재 포즈에 묶여 있다
+  - 🔴 DaBai 사용 시 **벤더 launch 가 로봇 노드를 함께 띄울 위험** 정적 검사 필수 (P-007A `move_init_pose()` 계열)
 
 ## 🔴 다음 행동
 
