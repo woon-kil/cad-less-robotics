@@ -119,7 +119,28 @@
 | `write_any` | `0x19` / 5B · `0x17` / 4B | 있음 |
 | `write6` 계열 | `0x1E`→`0x1D` / 2→12B | 있음 |
 
-→ 다음은 **P-007D-R2 — Servo Command Transport Observability Feasibility** 다(검수 세션 설계 중). "장비 구매 없이 가능한 관측 → 외부 계측 필요 → controlled motion" 순서의 **의사결정 게이트**이고, 바로 두 번째 서보 명령으로 가지 않는다.
+**P-007D-R2 — Observability Decision Gate 가 OPEN 이다(미완).** 중간 판정:
+
+> **`R2-B CANDIDATE SELECTED / BLOCKED BY ELECTRICAL PROBE SAFETY`**
+
+| 후보 | 판정 |
+| --- | --- |
+| R2-A kernel I2C trace | `DEFERRED / LOW INFORMATION GAIN` — ceiling 이 **L3** 다. L4 를 원리상 못 연다 |
+| **R2-B servo-bus capture** | 🔴 **SELECTED** — 단 전기 안전 미확인으로 BLOCKED |
+| R2-C Jetson-side 외부 I2C capture | `NOT_SELECTED` (kernel trace 와 중복) |
+
+🔴 **probe point 가 S1~S6 가 아니라 `Servo/Upload` 점퍼 주변 STM8 `TXD`/`RXD` 로 변경됐다**(검수 세션 설계 변경). 서보 커넥터의 미확정 전기 구조를 안 건드리고 "STM8 이 명령 후 servo 방향으로 데이터를 내보냈는가"를 더 직접 본다. **첫 capture 에는 pinout·packet format·protocol decode 가 필요 없다** — waveform/activity 유무만으로 진단 가치가 있다.
+
+**남은 blocker 정확히 2개**: `TXD/RXD logic voltage` · `probe ground reference`. 이 둘 없이 analyzer 연결은 승인되지 않는다.
+
+확정된 경로:
+```
+Jetson --I2C 0x15--> YB-EVV01/STM8 --TXD/RXD--> [Upload|Servo 점퍼] --> S1~S6 --> ID1~6 bus servo
+```
+서보 규격(검수 세션 조사): UART 115200 · PH2.0-3PIN · body 15kg×5 / gripper 6kg×1.
+🔴 **공급전압(6~7.4V)과 UART logic voltage 는 다른 값이다.** logic level 은 `UNKNOWN`.
+
+다음: 검수 세션이 logic level·ground 근거를 조사해 **R2-B GO/NO-GO** 판정. 실패 시 (a) 전원 OFF 비침습 측정 게이트 (b) R2-C → controlled motion.
 
 기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
 

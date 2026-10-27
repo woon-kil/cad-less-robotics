@@ -1,0 +1,89 @@
+{
+ "gate": "P-007D-R2",
+ "title": "Servo Command Transport Observability Decision Gate",
+ "status": "🔴 **OPEN — INTERIM.** 닫히지 않았다. 최종 판정은 검수 세션이 logic-level/ground 근거 조사를 끝낸 뒤 내린다",
+ "base_commit": "f1a4638",
+ "interim_verdict": "R2-B CANDIDATE SELECTED / BLOCKED BY ELECTRICAL PROBE SAFETY",
+ "candidate_rulings": {
+  "R2-A_kernel_i2c_trace": "DEFERRED / LOW INFORMATION GAIN",
+  "R2-B_servo_bus_capture": "🔴 **SELECTED** — 단 전기 안전 미확인으로 BLOCKED",
+  "R2-C_jetson_side_external_i2c_capture": "NOT_SELECTED (kernel trace 와 정보 중복)"
+ },
+ "remaining_blockers": [
+  "TXD/RXD logic voltage",
+  "probe ground reference"
+ ],
+ "🔴 design_change_by_reviewer": {
+  "what": "probe point 를 S1~S6 가 아니라 **Servo/Upload 점퍼 주변 STM8 TXD/RXD** 로 변경",
+  "why": "서보 커넥터의 미확정 전기 구조를 건드리지 않고 '**STM8 이 P-007B 명령 후 servo 방향으로 데이터를 내보냈는가**' 라는 핵심 질문을 더 직접 본다",
+  "first_capture_does_not_need": [
+   "S1~S6 pinout",
+   "servo packet format",
+   "protocol decode"
+  ],
+  "sufficient_for_first_capture": "P-007B 와 같은 명령 시점에 STM8 servo-side TX 에서 **waveform/activity 가 발생하는가** 만으로 큰 진단 가치가 있다"
+ },
+ "contributions_from_this_session": {
+  "R2-1_kernel_trace_feasibility": {
+   "result": "기술적으로 가능. CONFIG_TRACEPOINTS=y · CONFIG_FTRACE=y · CONFIG_I2C_CHARDEV=y · CONFIG_I2C_SLAVE=y (kernel 5.15.148-tegra)",
+   "blocker": "/sys/kernel/debug 가 drwx------ root:root. `sudo -n` 불가 — 비밀번호 필요. jetson 은 sudo(27)·i2c(116) 그룹 소속",
+   "method": "읽기 전용 — uname · /proc/config.gz · stat · ls · id · sudo -n · sysfs. **I2C 트랜잭션 0**",
+   "timing": "R2 개시 **이전** 에 수행. R2-1 의 '이미 확보한 정보가 충분하면 재실행하지 않는다' 조항 충족"
+  },
+  "R2-2_kernel_trace_evidence_ceiling": {
+   "ceiling": "maximum boundary = **L3**",
+   "reasoning": "커널 i2c tracepoint 가 노출하는 것은 (a) 어댑터에 전달된 바이트열 (b) 어댑터 수준 전송 결과(ACK/NACK) 다. (a)는 P-007D 가 소스 산술로 이미 정확히 재구성했으므로 중복이고, (b)는 P-007C 가 '예외 없음' 에서 이미 추론한 것과 거의 같다. I2C ACK 는 슬레이브 하드웨어·ISR 이 내는 것이지 애플리케이션 로직이 내는 것이 아니므로 **L4(펌웨어가 payload 를 해석하고 행동했는가)는 원리상 볼 수 없다**",
+   "one_reason_to_still_run_it": "실제 transaction 에서 **NACK/error 가 발견되면** 기존 L3 가정이 깨지므로 진단 가치가 크다. 반증 가능성 확인용으로만 남긴다",
+   "status_of_this_reasoning": "🔴 tracepoint 가 노출하는 범위에 대한 **추론**이다. 실행해 본 것이 아니다"
+  },
+  "board_photo_extraction": {
+   "what": "공식 보드 사진 3장을 PDF **내장 이미지 네이티브 해상도**로 추출해 검수 세션에 전달",
+   "manifest": "official_extract_manifest.json",
+   "dir": "official_extract/ (gitignore)",
+   "silkscreen_confirmed": [
+    "Upload / Servo 점퍼 + **TXD · RXD** 실크 — 공식 설명을 보드 사진으로 독립 확인",
+    "YB-EVV01 V1.0 · YAHBOOM",
+    "RESET · STOP(K2) · K1 버튼",
+    "S1~S6 3핀 헤더 열",
+    "MCU · +5V 실크 — 운영자가 찾은 LED 라벨 위치와 일치",
+    "SDA · SCL · +5V · GND, J22 · J23 · J24",
+    "STM32 — **헤더 영역**(메인 컨트롤러 장착부). 서보 컨트롤러가 아니다"
+   ],
+   "🔴 not_determinable_from_photos": [
+    "UART logic voltage",
+    "S1~S6 3핀의 V+/GND/DATA 순서",
+    "half/full duplex 토폴로지",
+    "STM8 패키지 마킹"
+   ]
+  },
+  "additional_photos": "🔴 요청하지 않았다. 검수 세션 판단 — 사진을 더 찍어도 logic voltage 는 알 수 없고, 지금 필요한 것은 실크가 아니라 전기적 근거다"
+ },
+ "architecture_as_established": "Jetson --I2C 0x15--> YB-EVV01/STM8 --TXD/RXD--> [Upload|Servo 점퍼] --> Servo side --> S1~S6 --> ID1~6 serial bus servo",
+ "servo_spec_from_reviewer_research": {
+  "body": "15 kg bus servo x5",
+  "gripper": "6 kg bus servo x1",
+  "control": "UART serial command",
+  "baud": 115200,
+  "connector": "PH2.0-3PIN",
+  "body_voltage": "6.0~7.4 V",
+  "gripper_voltage": "4.8~6.0 V",
+  "🔴 caution": "서보 **공급전압**과 **UART logic voltage** 는 전혀 다른 값이다. 7.4 V 서보라고 logic 이 7.4 V 인 것이 아니다. logic level 은 UNKNOWN",
+  "model_name": "EXTERNAL_CORROBORATED / MODEL NOT PROMOTED — 외부 논문이 DS-SY15A 로 특정하나 Yahboom 공식 Pro 자료가 아니므로 확정하지 않는다",
+  "source": "검수 세션의 공개자료 조사. 이 세션은 공개자료를 새로 조사하지 않았다"
+ },
+ "next": "검수 세션이 YB-EVV01 의 TXD/RXD logic level · STM8 계열 전압 · 회로/PCB/firmware 자료 존재 여부를 조사한 뒤 R2-B GO/NO-GO 를 판정한다. 전압 확정 실패 시 선택지는 (a) 전원 OFF 상태 비침습 continuity/voltage 측정 게이트 설계 (b) 계측 가치 낮다고 보고 R2-C → controlled motion diagnostic",
+ "counts_this_gate": {
+  "hardware_access": 0,
+  "additional_photography": 0,
+  "wiring": 0,
+  "probe": 0,
+  "i2c_access": 0,
+  "controller_mutation": 0,
+  "robot_command": 0,
+  "robot_motion": 0,
+  "sudoers_mutation": 0,
+  "logic_analyzer_connection": 0,
+  "purchase": 0
+ },
+ "rgb_baseline": "P-007D-R1 induced BLUE (유지)"
+}

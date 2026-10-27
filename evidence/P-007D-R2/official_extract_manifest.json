@@ -1,0 +1,34 @@
+{
+ "gate": "P-007D-R2",
+ "why": "official_extract/ 는 저작권 때문에 .gitignore 한다. 이 매니페스트가 재현 지시서다. 스크래치패드에 두면 세션 종료와 함께 사라진다(이 세션에서 이미 1회 발생).",
+ "source_pdf": "evidence/P-007C-R1/official/nt-01-7-gripping-anomaly-solutions.pdf",
+ "source_blob_sha": "3e7eb9f70cbee5d4036e242c08c655da5c0ed312",
+ "source_pin_commit": "57cc4369af73d65188d33e49227650c789779a7e",
+ "extraction_cmd": "pdfimages -png -f 5 -l 6 <source_pdf> <outdir>/evv01",
+ "note": "페이지 렌더링(pdftoppm)이 아니라 PDF 내장 이미지 직접 추출이다. 네이티브 해상도이고 업스케일 아티팩트가 없다. pdftoppm -r 400 은 단순 확대일 뿐이었다.",
+ "native_resolutions": {
+  "evv01-001.png": "810x523",
+  "evv01-002.png": "820x462",
+  "evv01-003.png": "772x496"
+ },
+ "files": [
+  {
+   "file": "evidence/P-007D-R2/official_extract/evv01-001.png",
+   "sha256": "42bab0bf3323178865090ddf0b00360c2bcf39dce7dc0b4f6100fbe314f496b1",
+   "bytes": 569306,
+   "content": "점퍼 클로즈업 — Upload/Servo + TXD/RXD 실크 판독 가능. S1~S6 헤더, MCU·+5V LED 라벨"
+  },
+  {
+   "file": "evidence/P-007D-R2/official_extract/evv01-002.png",
+   "sha256": "db8dc34f8edee76f53fcaa8d0425bdfeb875fe61908c0ddb8e37de0dd2a72076",
+   "bytes": 495588,
+   "content": "평상시 전체 — YB-EVV01 V1.0 실크, RESET·STOP(K2)·K1, STM32 헤더 영역, 적색 LED 점등"
+  },
+  {
+   "file": "evidence/P-007D-R2/official_extract/evv01-003.png",
+   "sha256": "0cf61d4298e45f9a6ee1e0a064c9db799a87936933c9e3387a47a2d1809cbc37",
+   "bytes": 446490,
+   "content": "programming mode — 002와 동일 각도. RGB 점등 상태. before/after 대조용"
+  }
+ ]
+}
