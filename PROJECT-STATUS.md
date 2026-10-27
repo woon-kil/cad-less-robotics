@@ -22,7 +22,7 @@
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | **`0x12`/4B 서보 명령은 이제 controller readback 을 바꾼다.** 남은 미해결은 **물리 모션 여부**(L5 이후)다. block-write 전면 고장은 `ELIMINATED`. 아래 §evidence-strength 표 참조 | `evidence/P-007E-R1/phase_b_acceptance.json` |
+| 미해결 가설 | **`0x12`/4B 서보 명령 1회(n=1)에서 controller readback 150→152 가 관측됐다.** L4/L5 경계 해석은 검수 세션 몫이다. 남은 미해결은 **물리 모션 여부**다. block-write 전면 고장은 `ELIMINATED`. 아래 §evidence-strength 표 참조 | `evidence/P-007E-R1/phase_b_acceptance.json` |
 
 ## 🔴 Evidence-strength 고정 표현 (이 문구를 그대로 쓴다)
 
@@ -154,7 +154,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - analyzer 샘플레이트(≥2 MS/s)는 제약이 아니었다 — **voltage tolerance 칸을 못 채우는 것**이 NO-GO 근거
   - 하드웨어 접근 0 · 촬영 0 · probe 0 · 구매 0
   - ⚠️ **RGB 가 파랑으로 켜진 채 남아 있다.** 검수 세션 판단: **그대로 둔다.** 기능 문제 없고 provenance 가 명확하다. 복구 전용 게이트를 따로 만들지 않고, LED 상태가 후속 관찰을 **실제로 방해하는 시점에** 복구 행위를 함께 설계한다
-- [x] **P-007E** Controlled Servo Response Discrimination (1차) — **`PHASE-1 ABORTED BY GUARD`**
+- [x] **P-007E** Controlled Servo Response Discrimination (1차) — 기록된 값은 `aborted: "BASELINE_CHANGED:[150, None, 150]"` 뿐이다 (**별도 verdict 문자열 없음** — `evidence/P-007E/phase1_aborted.json`)
   - 가드가 명령을 막았고 그 과정에서 **I2C 최소 간격**을 발견했다 (`evidence/P-007E/i2c_timing_discovery.json`)
   - offline FK/clearance 보존 — `+5°` 는 TCP 13.67 mm, `+2°` 는 5.47 mm (`fk_clearance.json`)
   - 서보 쓰기 0
@@ -198,12 +198,13 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 **최종 경계** (🔴 P-007E-R1 Phase B 로 갱신)
 ```
 L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERIFIED(물리효과)
-                                                    └ Servo  0x12/4B ACCEPTED_BY_CONTROLLER
-                                                        (readback 150→152, quiet interval 60.099 ms)
+                                                    └ Servo  0x12/4B — Phase B 1회:
+                                                        readback 150→152 OBSERVED
+                                                        (quiet interval 60.099 ms, n=1)
                                                         → L5 UNKNOWN → L6 MOTION UNOBSERVED
 ```
 
-🔴 `L6 OBSERVED_NO_MOTION` 은 P-007B 한정이다. Phase B 의 L6 는 **관찰 자체가 없다**(`UNOBSERVED`) — 모션 없음이 관찰된 것이 아니다.
+🔴 n=1 이다. 성질로 일반화하지 않는다. `L6 OBSERVED_NO_MOTION` 은 P-007B 한정이다. Phase B 의 L6 는 **관찰 자체가 없다**(`UNOBSERVED`) — 모션 없음이 관찰된 것이 아니다.
 
 ## 🔴 다음 — 검수 세션 판단 대기 (STOP)
 
@@ -215,7 +216,7 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 2. **baseline stale 처리** — 현재 readback `[86, 152, 0, 18, 93, 178]`. 150 복귀는 또 하나의 모션 명령이다
 3. **readback 의미** — raw 1243..1254 는 target raw 1242 의 echo 가 아니다. 물리 위치 vs 컨트롤러 보고의 판별 설계
 
-들고 들어가는 사실: torque `TORQUE_ON_STRONGLY_SUPPORTED` · learning mode 제외 · global block-write failure 제외 · 공식 API encoding 이상 없음 · RGB/STM8 path 동작 · **`0x12`/4B 서보 명령이 controller readback 을 target 근처 값으로 바꿨다(quiet interval 60.099 ms)** · **물리 모션은 어느 실행에서도 양성 관찰이 없다**.
+들고 들어가는 사실: torque `TORQUE_ON_STRONGLY_SUPPORTED` · learning mode 제외 · global block-write failure 제외 · 공식 API encoding 이상 없음 · RGB/STM8 path 동작 · **`0x12`/4B 서보 명령 1회에서 controller readback 이 target 근처 값으로 관측됐다(150→152, quiet interval 60.099 ms, n=1)** · **물리 모션은 어느 실행에서도 양성 관찰이 없다**.
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
 
@@ -252,8 +253,10 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 | 9 | 2026-10-27 14:35~14:50 | P-007C-R3 수동 토크 관찰 (세션 `cb876b8e`) | TORQUE_ON_STRONGLY_SUPPORTED. H-C5 최우선 승격 |
 | 10 | 2026-10-27 14:50~14:57 | P-007D 정적 진단 (세션 `cb876b8e`) | D2. 호스트측 VERIFIED, L4 이후 UNKNOWN |
 | 11 | 2026-10-27 14:57~ | P-007D-R1 RGB 제어 실험 (세션 `cb876b8e`) | **A. 최초 상태 변경.** block-write 물리 출력 확인 |
-| 12 | 2026-10-27 15:59~18:39 | P-007D-R2 · P-007E · P-007E-R1 Phase A | R2-C CLOSED · E 가드 abort · R1 harness READY (서보 쓰기 0) |
-| 13 | 2026-10-27 17:45~ | **P-007E-R1 Phase B** (세션 `01C11Mac`) | **A/C NOT DISCRIMINATED.** 서보 명령 2번째 1회 집행, readback 150→152, 물리 모션 UNOBSERVED |
+| 12 | 2026-10-27 15:59~18:39 (KST) | P-007D-R2 · P-007E · P-007E-R1 Phase A | R2-C CLOSED · E 가드 abort(`BASELINE_CHANGED`) · R1 harness READY (서보 쓰기 0) |
+| 13 | 2026-10-27 18:39~19:02 (KST, 커밋 `be1491e`) | **P-007E-R1 Phase B** (세션 `66eb4937`) | **A/C NOT DISCRIMINATED.** 서보 명령 2번째 1회 집행(18:49:06 KST), readback 150→152, 물리 모션 UNOBSERVED |
+
+> 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
 ## 운영 규칙 (이 프로젝트 고유)
 
