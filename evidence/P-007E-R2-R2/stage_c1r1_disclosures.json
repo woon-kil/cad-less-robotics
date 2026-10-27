@@ -1,0 +1,50 @@
+{
+  "gate": "P-007E-R2-R2",
+  "stage": "Stage C1-R1 — post-hoc disclosures (advisor review, 커밋 51b3af2 이후 새 커밋으로 추가, decision.json 은 amend 하지 않음)",
+  "purpose": "stage_c1r1_decision.json 의 unexpected_events/aggregate/manifest 서술에 빠진 사실을 공개한다. 재캡처·harness 수정 없음 — 전부 읽기전용 확인 또는 기존 데이터의 재서술",
+
+  "1_i2c7_new_holder_pid_2264": {
+    "observation": "C0-R2 preflight(fuser) 홀더 = {3091,3092}. C1-R1 preflight(fuser) 홀더 = {2264,3091,3092} — pid 2264 추가 관측",
+    "identification_readonly": {
+      "pid_2264_cmd": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py",
+      "pid_2264_started": "Mon Oct 26 17:08:21 2026 (C1-R1 실행보다 훨씬 이전부터 상시 실행 중)",
+      "pid_2264_fd5_target": "/dev/i2c-7 (ls -l /proc/2264/fd 재확인, fuser -v 와 일치)"
+    },
+    "cross_reference": "evidence/P-007E-R2-R2/b0_i2c_fd_classification.json 의 기존 기록과 정확히 일치 — pid 2264 는 __BUS_LIST=[1,0,7,8] 을 약 1회전/초로 순환 탐색하는 기지의 OLED 디스플레이 서비스(ACTIVE NON-SERVO I2C BUS USER ON THE ROBOT BUS, SSD1306 0x3C 대상, 0x15/servo 코드 없음). C0-R2 preflight 스냅샷 순간에 우연히 bus 7 차례가 아니었을 뿐 — 순환 주기(≈4s/바퀴)상 자연스러운 표본 변동이다",
+    "relevance_to_this_gate": "env_guards() 는 device_path=/dev/video0 의 holders 만 검사한다(통과, holders=[]). i2c-7 은 이번 측정(카메라 UVC)과 별개 버스이며 이 gate 의 측정에 개입하지 않는다",
+    "classification": "EXPECTED, PERIODIC, PRE-EXISTING — NOT a new/unidentified process. 그러나 이 사실이 빠진 'unexpected_events: 없음' 이라는 stage_c1r1_decision.json 의 서술은 불완전했다 — 이 addendum으로 보완한다. decision.json 본문은 수정하지 않는다"
+  },
+
+  "2_frame_interval_protocol_deviation": {
+    "preregistered_target": "trial_protocol.sequence_per_trial — window 당 M=60 프레임, 목표 간격 0.25s(≈15s/window), trial 당 약 33s, 10 trial 약 5.5분+오버헤드",
+    "measured": "frame_interval_median ≈ 0.729s/frame (목표의 약 2.9배). window 실제 소요 ≈ 43.7s(목표 15s 의 약 2.9배). trial 전체 실제 소요 ≈ 92.5s(목표 33s 의 약 2.8배). 10 trial 총 926.97s(≈15.4분, 추정 5.5분+오버헤드를 상당히 초과)",
+    "preregistration_already_anticipated_this": "acquisition.🔴 session_per_frame_characteristic (verbatim): '프레임마다 v4l2-ctl 프로세스를 새로 띄운다 ... 각 프레임은 그 session의 STREAMON 직후 첫 프레임이고, auto-exposure 가 ON 인 상태에서 프레임마다 새로 session 을 여는 것이 노출 안정성에 미치는 영향은 미검증이다 — C1-R1 실행에서 처음 관측된다'",
+    "abort_rule_search": "사전등록 전체에 'abort' 키 자체가 없다(python 재귀 키 검색, 0건). frame_interval 에 결부된 수치 pass/fail 기준도 없다 — 기록(frame_interval_stats)만 요구한다(frame_accounting.frame_interval_stats). quality guard 는 features/matches/inliers/inlier_ratio/residual/scale/format_invariant 만 판정한다",
+    "self_judgment": "이 실측은 'PROTOCOL DEVIATION (pacing)' 으로만 분류한다. harmless 또는 harmful 여부를 스스로 판정하지 않는다 — 사전등록에 결부된 규칙이 없으므로 verdict(Q1)에는 영향을 주지 않지만, trial_protocol 의 시간 기하(reference/comparison window 길이, 전체 wall-clock)가 사전등록 서술과 실측 사이에 차이가 있다는 사실은 검수자가 판단한다",
+    "note": "quiet(60ms)/command(2000ms)/settle(1000ms) 구간은 실시간 sleep으로 프레임 캡처 지연과 무관하게 그대로 집행됐다 — 영향받은 것은 window 내부 프레임 pacing 뿐이다"
+  },
+
+  "3_aggregate_computed_outside_harness": {
+    "disclosure": "harness(scripts/p007e_r2r2_c1r1_sham.py)는 summary/sham_summary.json 을 만들지 않는다(§8/persistence_semantics 요구와 달리 harness 코드에 그 writer 가 없다 — 기존에 발견하지 못한 결함, 이번에 harness 를 수정하지 않았다). 10개 trial_NN.json 은 harness 가 직접 저장했지만, aggregate(Q1~X 판정)는 이 세션이 harness 밖에서 별도 python 스크립트로 계산했다",
+    "method": "importlib 로 scripts/p007e_r2r2_analysis.py 를 그대로 import 하여 classify_run(trials, K, floor_trans, floor_rot) 1회 호출. 판정 로직 자체는 수정 없이 재사용했다",
+    "analysis_py_sha256_used": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f (로컬 재확인, module_sha_check 기록값과 일치)",
+    "K_value_and_provenance": "5 — 사전등록 경로 pre['🔴 K_M_Nsham_semantics']['K']['value']",
+    "sigma_floor_values_and_provenance": "translation_px=0.7, rotation_deg=0.06 — 사전등록 경로 pre['🔴 threshold_construction_rule']['sigma_floor']",
+    "consequence": "판정(Q1) 자체는 사전등록 값 그대로 계산됐으므로 바뀌지 않는다. 다만 harness 가 summary 파일을 자동 생성하지 않는다는 점은 §8 요구와의 격차이며, 향후 게이트에서 harness 를 다시 쓸 때 수정 대상으로 남긴다(이번에는 수정하지 않았다 — 결과를 보고 harness를 바꾸지 않는다는 원칙)"
+  },
+
+  "4_manifest_stale_fields": {
+    "base_commit_hardcoded": "manifest.json 의 base_commit='64b32bc' 는 harness 소스(p007e_r2r2_c1r1_sham.py:469)에 리터럴로 박혀 있다 — 이 값은 Stage C1(X-INVALID)의 base commit이고, 실제 이번 게이트의 의존 체인상 직전 완료 게이트는 C0-R2@acc59bd 이다. 이 보고서의 base_commit 은 acc59bd 로 쓴다. harness 리터럴은 수정하지 않는다(SHA 고정 대상이자, 결과를 보고 바꾸지 않는다는 원칙)",
+    "preregistration_commit_placeholder": "manifest.json 의 preregistration_commit='<set at commit time>' 은 harness 의 placeholder 문자열 그대로이며 실제 커밋 해시로 치환되지 않았다 — 알려진 결함으로 기록한다",
+    "classification": "HARNESS_METADATA_DEFECT — 측정 결과나 판정 로직에는 영향 없음(이 필드들은 trial 계산에 쓰이지 않는다). 향후 harness 개정 시 수정 대상"
+  },
+
+  "5_jetson_originals_deleted_without_pre_deletion_hash_diff": {
+    "disclosure": "Jetson 배치 디렉터리(/home/jetson/p007e_r2r2_c1r1)를 scp 회수 후 rm -rf 로 삭제했다 — 비가역 작업이며, 삭제 전에 로컬↔Jetson 파일별 sha256 diff 를 명시적으로 수행하지 않았다",
+    "partial_integrity_evidence": "10개 trial_NN.json 은 로컬에서 전부 json.load() 파싱에 성공했고 내부 필드(frame_accounting, windows, format_invariant 등)가 스키마와 합치해 전송 손상이 있었다면 거의 확실히 파싱 실패로 드러났을 것이다 — 그러나 이것은 sha256 일치의 대체물이 아니다",
+    "unverified": "20개 anchor JPG(reference_first.jpg/comparison_first.jpg × 10 trial)는 전송 후 sha256 대조도, 디코드 가능성 확인도 하지 않았다. manifest.json 도 동일하게 sha256 대조 없이 신뢰했다",
+    "classification": "DISCLOSED GAP — 재다운로드가 불가능해진 상태이므로 추가 조치 없음. 향후 게이트에서는 삭제 전 sha256 diff 를 forensic 단계에 포함한다"
+  },
+
+  "🔴 verdict_unchanged": "Q1 — OBSERVATION CHANNEL QUALIFIED 판정은 위 5건 공개로 바뀌지 않는다(1,3,4,5 는 판정 로직·데이터에 영향 없음; 2 는 사전등록에 결부된 pass/fail 규칙이 없어 self-judgment 범위 밖이다). 다만 검수자는 이 addendum을 함께 읽고 판단해야 한다"
+}

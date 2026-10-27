@@ -265,7 +265,8 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - command budget 전부 목표치 충족: servo/Arm_Lib/ROS/raw I2C/robot controller access/모션가능명령 전부 0, `experiment_generated_motion_commands=0`, `physical_robot_motion_observation=NOT_OBSERVED`(독립 관측 채널 없음 — 소프트웨어 가드 정상과 물리적 비이동 확인을 혼동하지 않음), DaBai/Gemini 물리 이동 0
   - 예상 밖 사건(SIGNAL/크래시/SHA불일치/format위반/control변화/저장실패) 전부 미발생. 기존 evidence 수정 0
   - `evidence/P-007E-R2-R2/stage_c1r1_decision.json` + `c1r1_run1/`(manifest·10 trial JSON·20 anchor frame·aggregate_classify_run.json·trial_summary_table.json·post_experiment_readonly_check.txt)
-  - **검수자가 noise/LOO/dropout/photometric/threshold 를 확인한 뒤에만 다음 physical-motion observation gate 가 열린다. 이번 세션은 여기서 STOP**
+  - 🔴 **advisor 재검토 후 공개 추가(`stage_c1r1_disclosures.json`, decision.json 은 amend 안 함)**: ① i2c-7 holder 집합이 C0-R2(3091/3092)와 C1-R1(2264/3091/3092)에서 달랐다 — pid 2264=`yahboom_oled.py`, `b0_i2c_fd_classification.json` 기지의 순환 i2c 버스 탐색 서비스(≈4s/바퀴)와 정확히 일치, `/dev/video0` holders 와는 무관 ② frame_interval 실측≈0.729s/frame(목표 0.25s 의 약 2.9배, window≈43.7s·trial≈92.5s·총 15.4분) — 사전등록 `session_per_frame_characteristic`이 이미 "미검증"이라 명시한 현상이며, 사전등록 전체에 `abort` 규칙 자체가 없어 self-judgment 범위 밖(PROTOCOL DEVIATION 으로만 분류, 판정에 미반영) ③ aggregate 는 harness 가 아니라 이 세션이 harness 밖에서 `analysis.py`(SHA 재확인 일치)를 그대로 import 해 계산 — harness 에 `summary/sham_summary.json` writer 가 없다는 결함 발견(수정 안 함) ④ manifest 의 `base_commit="64b32bc"`(harness 리터럴, 실제는 acc59bd)·`preregistration_commit="<set at commit time>"`(치환 안 됨)은 HARNESS_METADATA_DEFECT 로 기록(측정값에는 영향 없음) ⑤ Jetson 원본을 사전 sha256 diff 없이 삭제(비가역) — trial JSON 10개는 파싱 성공으로 부분적 무결성만 확인, JPG 20장·manifest 는 미검증
+  - **검수자가 noise/LOO/dropout/photometric/threshold 와 위 공개 5건을 확인한 뒤에만 다음 physical-motion observation gate 가 열린다. 이번 세션은 여기서 STOP**
 
 ## 🔴 다음 행동
 
