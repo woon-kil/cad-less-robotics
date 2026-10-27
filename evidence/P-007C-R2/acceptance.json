@@ -1,0 +1,102 @@
+{
+ "gate": "P-007C-R2",
+ "base_commit": "a3a2d93",
+ "spec": "claude.ai 세션이 정의한 Learning-Mode Visual State Observation 게이트. 해석 규칙을 관찰 전에 고정했다(docs 플랜 '결과 해석 (사전 고정)').",
+ "verdict": "OBSERVATION PASS — LEARNING MODE EXCLUDED",
+ "verdict_basis": "운영자 실물 사진과 4라운드 구두 관찰이 일치한다. 확장보드에서 발광 중인 LED 는 실크 라벨 `Servo`(적색 고정)·`5V`(적색 고정)·`MCU`(적색 점멸) 셋뿐이고, 공식 문서가 learning mode 의 외부 표시로 지목한 RGB LED 는 **소등**이다. 공식 정의상 learning mode 진입 시 RGB 가 breathing light 가 되어야 하므로, 현재 보드는 learning mode 가 아니다.",
+ "🔴 what_this_does_not_prove": "torque ON 을 증명하지 않는다. 공식 자료는 breathing RGB 를 learning mode 의 표시로 정의할 뿐, 모든 torque-OFF 가 breathing RGB 를 만든다고 말하지 않는다. `Arm_serial_set_torque(0)` 으로 직접 꺼진 경우에는 RGB 표시가 없다. 이 비대칭은 관찰 **전에** 플랜에 고정해 두었다.",
+ "hypothesis_effect": {
+  "H-C6_learning_mode": "SECOND_OFFICIAL_MECHANISM_IDENTIFIED → **ELIMINATED (관측)**",
+  "H-C2_torque_enable": "변화 없음. 이제 P-007B NO_MOTION_RESPONSE 를 설명할 수 있는 **유일하게 남은 공식 메커니즘**이다",
+  "H-C5_command_propagation": "변화 없음. OPEN"
+ },
+ "incidental_finding": {
+  "what": "`SERVO` 라벨 LED 가 점등 상태다",
+  "weakens": "서보 전원 레일 부재 가설. 공식 common-problems Q3 가 전원 점검을 1차 조치로 제시하는 만큼 확인 가치가 있었다",
+  "status": "🔴 INFERENCE_NOT_EVIDENCE — 공식 자료 14종에 이 LED 들의 정의가 없다. 라벨 문자열에서 읽은 통상적 해석이며, 레일 점등이 각 서보 단자 전압을 보장하지도 않는다"
+ },
+ "checks": [
+  {
+   "id": "R2-01",
+   "result": "PASS",
+   "note": "관찰 전에 해석 규칙(YES/NO 비대칭 포함)을 플랜에 고정했다",
+   "evidence": "docs/261027-1409-P-007C-R2-*-플랜.md"
+  },
+  {
+   "id": "R2-02",
+   "result": "PASS",
+   "note": "벤더 근거를 공식 저장소 PDF(blob 검증) + 공식 웹 직접 fetch 두 채널로 확인. 교차 세대 자료는 보강으로만 분리",
+   "evidence": "vendor_verification.json"
+  },
+  {
+   "id": "R2-03",
+   "result": "PASS",
+   "note": "보드 동일성 확인 — 서보 선이 연결된 보드 = EVV01 확장보드",
+   "evidence": "operator_observation.json round2"
+  },
+  {
+   "id": "R2-04",
+   "result": "PASS",
+   "note": "발광 LED 3개를 실크 라벨로 전수 식별. Servo·5V 고정, MCU 점멸",
+   "evidence": "operator_observation.json round3·4·6"
+  },
+  {
+   "id": "R2-05",
+   "result": "PASS",
+   "note": "RGB LED 소등을 운영자 실물 사진으로 관측. 동일 프레임의 발광체는 노출 포화+적색 헤일로를 보이나 해당 패키지에는 없다",
+   "evidence": "board_led_observation.png"
+  },
+  {
+   "id": "R2-06",
+   "result": "PASS",
+   "note": "I2C 접근 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R2-07",
+   "result": "PASS",
+   "note": "코드 실행 0 · ssh 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R2-08",
+   "result": "PASS",
+   "note": "torque 변경 0 · servo command 0 · Button_Mode 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R2-09",
+   "result": "PASS",
+   "note": "버튼 조작 0 (K1·K2/STOP·RESET) · 점퍼캡 0 · 전원 재투입 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R2-10",
+   "result": "PASS",
+   "note": "로봇 모션 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R2-11",
+   "result": "PASS",
+   "note": "선행 증거 불변 — git diff --exit-code exit 0",
+   "evidence": "logs 없음. 커밋 직전 확인"
+  },
+  {
+   "id": "R2-12",
+   "result": "PASS",
+   "note": "산출물이 evidence/P-007C-R2/ 에만",
+   "evidence": "git status"
+  }
+ ],
+ "i2c_access": 0,
+ "code_execution": 0,
+ "state_mutation": 0,
+ "servo_command": 0,
+ "torque_change": 0,
+ "button_press": 0,
+ "robot_movement": 0,
+ "rounds_to_close": 6,
+ "process_note": "1라운드 질문이 '확장보드 RGB' 라고만 해서 보드 위 어느 LED 를 봐야 하는지 지시하지 못했다. 운영자가 '확장보드란?' 되물었고 4라운드가 더 들었다. 관찰 게이트는 **관측 대상을 부품 수준으로 지목**해야 한다 — 공식 사진을 1라운드에 함께 보냈으면 2라운드에 닫혔다.",
+ "next_recommended": "P-007D 를 아직 열지 않는다. 남은 단일 질문은 '지금 torque 가 켜져 있는가' 이고, 가장 싼 판별은 **운영자가 ID2 를 아주 약하게 밀어 저항을 느끼는 것**이다. 공식 정의상 torque OFF = 'can manually turn the servo angle' 이다. 🔴 단 이것은 하드웨어 상호작용이므로 별도 게이트로 열고, torque ON 상태에서 force 를 주면 기어 손상 위험이 있으므로 '아주 약하게' 를 절차에 명시해야 한다."
+}

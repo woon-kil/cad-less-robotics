@@ -1,0 +1,55 @@
+{
+ "gate": "P-007C-R2",
+ "claim": "Arm_Button_Mode(1) 진입 시 확장보드 RGB 가 breathing light 가 되고 전 서보 torque 가 자동 OFF 된다. Arm_Button_Mode(0) 종료 시 torque 자동 ON, RGB OFF.",
+ "status": "VENDOR_WEB_VERIFIED",
+ "channels": [
+  {
+   "tier": "P2 — 공식 저장소",
+   "source": "evidence/P-007C-R1/official/08-memory-action.pdf",
+   "pin_commit": "57cc4369af73d65188d33e49227650c789779a7e",
+   "blob_sha": "9ee1ace0245ac0f920a8802a1e5b8f63dea8b740",
+   "integrity": "git hash-object 일치 확인",
+   "product": "DOFBOT Pro (Orin판 17. Basic Control Course/8.)",
+   "quote": "After entering learning mode, the RGB light on the robot arm expansion board will show a breathing light state, and the robot arm will automatically turn off the torque. ... After exiting learning mode, the robot arm will automatically turn on the torque and turn off the RGB light."
+  },
+  {
+   "tier": "P2 — 공식 웹",
+   "source": "https://www.yahboom.net/study/DOFBOT-Pro/12626/",
+   "fetched_by": "이 세션에서 WebFetch 직접 호출",
+   "page_title": "8. DOFBOT Memory Actions - DOFBOT Pro",
+   "product": "DOFBOT Pro",
+   "quotes": [
+    "the RGB light on the robotic arm expansion board will show a breathing light effect",
+    "the robotic arm will automatically disable torque",
+    "After exiting learning mode, the robotic arm will automatically enable torque and turn off the RGB light."
+   ]
+  },
+  {
+   "tier": "보강 정황 — 다른 세대",
+   "source": "https://www.yahboom.net/study/Dofbot-Jetson_nano/12966/",
+   "fetched_by": "이 세션에서 WebFetch 직접 호출",
+   "page_title": "8.DOFBOT memory action - DOFBOT-JetsonNANO",
+   "product": "DOFBOT Jetson Nano 판 — 🔴 현재 장비(Pro/Orin)와 다른 세대",
+   "quotes": [
+    "the RGB light on the robotic arm expansion board will show a breathing light state",
+    "the robotic arm will automatically disable torque",
+    "the robotic arm will automatically enable torque and turn off the RGB light"
+   ],
+   "use": "최신 Pro 문서의 오기 가능성을 낮추는 보강으로만 쓴다. Pro 의 1차 근거로 쓰지 않는다 (transport_generations.json 세대 분리 원칙)"
+  }
+ ],
+ "independence": "저장소 PDF 와 공식 웹은 같은 벤더의 서로 다른 배포 채널이다. 상호 독립 관측이 아니라 같은 원문의 두 배포본일 수 있다. '두 채널 일치' 는 전사·판독 오류를 배제하는 데까지이고, 벤더 문서 자체가 틀렸을 가능성은 배제하지 않는다.",
+ "discriminative_power": {
+  "YES_breathing": "learning mode 강력 확인 → torque OFF 공식 경로 성립 → P-007B NO_MOTION_RESPONSE 설명 가능",
+  "NO_breathing": "learning mode 만 배제. 🔴 torque ON 을 증명하지 않는다. Arm_serial_set_torque(0) 으로 직접 꺼진 경우 RGB 표시가 없다",
+  "asymmetry_source": "공식 자료는 breathing RGB 를 learning mode 의 외부 표시로 정의할 뿐 모든 torque-OFF 가 breathing RGB 를 만든다고 말하지 않는다"
+ },
+ "gate_cost": {
+  "i2c_access": 0,
+  "code_execution": 0,
+  "state_mutation": 0,
+  "servo_command": 0,
+  "button_press": 0,
+  "method": "운영자 육안 관찰 1회"
+ }
+}

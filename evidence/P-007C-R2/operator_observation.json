@@ -1,0 +1,162 @@
+{
+ "gate": "P-007C-R2",
+ "round": 1,
+ "status": "COMPLETE",
+ "method": "Claude Code AskUserQuestion. 운영자 직접 관찰. Claude 가 추정하지 않았다.",
+ "question_asked": "확장보드 RGB 가 breathing(호흡) 형태로 반복 점멸하는가",
+ "answer": {
+  "breathing": "판단 어려움 / 안 보임",
+  "color_verbatim": "확장보드란? 오린 나노보드 led는 녹색 고정. dofbot 보드 led는 빨강색 고정."
+ },
+ "why_incomplete": "운영자가 '확장보드' 가 어느 보드인지 되물었다. 그리고 관찰한 LED 가 어느 LED 인지 특정되지 않았다. 질문이 'RGB LED' 를 지목하지 않고 '확장보드 RGB' 라고만 해서 보드 위의 어느 LED 를 봐야 하는지 지시하지 못했다. 이것은 질문 설계의 결함이다.",
+ "observed_so_far": [
+  {
+   "board": "Jetson Orin Nano 캐리어 보드",
+   "led": "녹색 고정",
+   "relevance": "무관 — 서보 컨트롤러가 아니다. Jetson 전원/상태 표시"
+  },
+  {
+   "board": "DOFBOT 보드 (= EVV01 확장보드로 추정)",
+   "led": "빨강 고정",
+   "relevance": "🔴 미특정 — 전원/상태 LED 인지 RGB LED 인지 확정 안 됨"
+  }
+ ],
+ "critical_finding_from_official_photos": {
+  "source": "evidence/P-007C-R1/official/nt-01-7-gripping-anomaly-solutions.pdf 5~6페이지 (blob 3e7eb9f7… 검증본)",
+  "finding": "🔴 EVV01 보드에는 LED 가 둘 이상 있다. 공식 사진에서 (a) 작은 빨간 LED 가 평상시·펌웨어모드 양쪽에서 켜져 있고 (b) 그와 별개 위치의 RGB LED 는 평상시 꺼져 있다가 programming mode 에서 밝은 청백색으로 켜진다. 공식 캡션이 후자를 'The RGB LED on the mainboard' 라고 지목한다.",
+  "implication": "운영자가 본 '빨강 고정' 은 (a) 전원/상태 LED 일 가능성이 높다. 그렇다면 RGB LED 는 아직 관측되지 않았다. 다만 (b) 가 단색 빨강으로 켜져 있을 가능성도 배제되지 않는다 — 공식 문서는 동작그룹 20개 가득 시 breathing light 가 빨강이 된다고 적는다(단 그건 breathing 이고 고정이 아니다).",
+  "action": "공식 사진(평상시/펌웨어모드 대조, RGB 위치에 빨간 네모 표시)을 운영자에게 전달하고 LED 를 특정해 재질의한다"
+ },
+ "no_conclusion_drawn": "'빨강 고정 → learning mode 배제' 로 단정하지 않았다. 관측 대상이 특정되지 않은 상태의 관찰을 판정 근거로 쓰지 않는다.",
+ "gate_cost_so_far": {
+  "i2c_access": 0,
+  "code_execution": 0,
+  "state_mutation": 0,
+  "servo_command": 0,
+  "button_press": 0,
+  "robot_movement": 0
+ },
+ "round2": {
+  "question_asked": "공식 사진에서 빨간 네모가 친 RGB LED 자리의 현재 상태 + 보드 동일성 확인",
+  "answer_verbatim": {
+   "led": "led2개는빨간불 고정 led하나는 빨강색 점멸",
+   "board": "서보선이열결된보드임"
+  },
+  "board_identity": "CONFIRMED — 서보 선이 연결된 보드. P-007C-R1 이 공식 문서로 특정한 EVV01 서보 확장보드와 일치",
+  "leds_reported": {
+   "steady_red": 2,
+   "blinking_red": 1,
+   "total": 3
+  },
+  "🔴 unresolved": [
+   "점멸하는 LED 가 공식 사진의 RGB LED 위치인지 특정되지 않았다. 운영자가 위치 대신 전체 LED 를 열거했다",
+   "'점멸' 이 공식 정의의 breathing(천천히 밝아졌다 어두워짐)인지 단순 on/off 깜빡임인지 구분되지 않았다"
+  ],
+  "why_this_matters": "공식 문서는 learning mode 의 breathing light 가 '동작그룹 20개 가득' 상태에서 **빨강**이 된다고 적는다(08-memory-action.pdf). 따라서 'RGB LED 위치에서 빨강 breathing' 이면 learning mode + 동작그룹 20개 가득이 되고 P-007B NO_MOTION_RESPONSE 가 전부 설명된다. 반면 단순 on/off 점멸이면 공식이 정의한 breathing 이 아니므로 다른 표시로 봐야 한다. 두 해석의 결론이 정반대라 추정으로 메울 수 없다.",
+  "no_conclusion_drawn": "'빨강 점멸 → learning mode' 로 단정하지 않았다. 위치·파형 둘 다 미특정이다.",
+  "next": "round 3 — 점멸 LED 의 위치(RGB 자리 여부)와 파형(breathing vs on/off)을 분리해 질의. 실물 사진/영상이 가장 확실하다"
+ },
+ "round3": {
+  "question_asked": "점멸 LED 가 RGB 자리인가 + 점멸 파형(breathing vs on/off)",
+  "answer_verbatim": {
+   "position": "mcu 적힌 led 빨강색 깜빡임.  5v 적힌 led 빨강색 고정.",
+   "waveform": "중간이라 모르겠다"
+  },
+  "🔴 key_finding": "운영자가 LED 의 **실크 라벨**을 읽어 왔다. `MCU` 와 `5V` 다. 둘 다 보드의 전원·상태 표시등이고 공식 문서가 말하는 RGB LED 가 아니다.",
+  "led_identification": [
+   {
+    "silk": "5V",
+    "state": "빨강 고정",
+    "interpretation": "5V 전원 레일 표시등. 상시 점등이 정상",
+    "relevance": "NOT_THE_RGB_LED"
+   },
+   {
+    "silk": "MCU",
+    "state": "빨강 깜빡임",
+    "interpretation": "MCU 동작(heartbeat) 표시등으로 보인다. 펌웨어가 살아 있다는 신호",
+    "relevance": "NOT_THE_RGB_LED",
+    "caveat": "공식 문서에 MCU LED 의 정의가 없다. 해석은 일반적 관례에 따른 추정이며 1차 근거가 아니다"
+   },
+   {
+    "silk": "미확인(3번째)",
+    "state": "빨강 고정",
+    "interpretation": "미특정",
+    "relevance": "UNKNOWN"
+   }
+  ],
+  "rgb_led_status": "🔴 여전히 미관측. 세 LED 중 공식 사진의 RGB 위치에 대응하는 것이 확인되지 않았다",
+  "waveform": "운영자가 breathing/on-off 를 구분하지 못했다('중간이라 모르겠다'). 그러나 MCU 라벨이 확인된 이상 이 LED 는 learning mode 지표가 아니므로 파형 구분의 중요도가 떨어졌다",
+  "inference_not_evidence": "learning mode 였다면 공식 사진처럼 RGB 가 보드 전체를 물들일 만큼 뚜렷해야 하는데, 운영자는 작은 라벨 표시등만 찾아 보고했다. learning mode 배제 쪽 정황이다. 🔴 단 이것은 추론이고 관측이 아니다. 판정 근거로 쓰지 않는다",
+  "next": "round 4 — 실물 사진. 공식 사진과 직접 대조하면 RGB LED 상태가 한 번에 확정된다"
+ },
+ "round4": {
+  "answer_verbatim": "servo led는빨강색고정",
+  "🔴 result": "세 LED 전부 실크 라벨로 신원이 확인됐다. 셋 다 전원·상태 표시등이고 공식 문서가 말하는 RGB LED 가 아니다.",
+  "led_inventory_complete": [
+   {
+    "silk": "5V",
+    "state": "빨강 고정",
+    "interpretation": "5V 로직 전원 레일 표시"
+   },
+   {
+    "silk": "SERVO",
+    "state": "빨강 고정",
+    "interpretation": "서보 전원 레일 표시"
+   },
+   {
+    "silk": "MCU",
+    "state": "빨강 깜빡임",
+    "interpretation": "MCU heartbeat"
+   }
+  ],
+  "label_interpretation_status": "🔴 INFERENCE_NOT_EVIDENCE. 공식 자료 14종 어디에도 이 세 LED 의 정의가 없다. 라벨 문자열(5V·SERVO·MCU)에서 읽은 통상적 해석이다. 라벨 자체는 운영자 실측이다.",
+  "incidental_finding": {
+   "what": "`SERVO` 라벨 LED 가 점등 상태다",
+   "why_it_matters": "서보 전원 레일이 살아 있다는 정황이다. 서보 전원 부재는 P-007B NO_MOTION_RESPONSE 를 단독으로 설명할 수 있는 가설인데(공식 common-problems Q3 도 전원 점검을 1차 조치로 제시한다), 이 관찰은 그 가설을 약화시킨다.",
+   "status": "🔴 정황이며 증거가 아니다. LED 라벨 해석이 공식 근거를 갖지 못하고, 레일 점등이 각 서보 단자의 전압을 보장하지도 않는다."
+  },
+  "rgb_led": "세 LED 모두 라벨된 표시등이므로, 공식 RGB LED 는 이 열거에 포함되지 않았다. 즉 **점등 상태로 관측되지 않았다.** 다만 운영자가 '이 셋이 전부' 라고 명시하지는 않았다 — 열거의 완결성을 확인해야 판정할 수 있다.",
+  "next": "round 5 — 열거 완결성 단일 확인. 이 셋 외에 다른 불빛이 없는지"
+ },
+ "round5_photo": {
+  "file": "evidence/P-007C-R2/board_led_observation.png",
+  "sha256": "beef2995a3ec81f026dddc8431e9b5024b0d1b38e1ed140f88bb070287956e58",
+  "bytes": 8225727,
+  "provenance": "운영자가 실물 EVV01 보드를 직접 촬영해 전달. 이 게이트의 1차 증거다.",
+  "conditions": "매크로 근접. 흐림 있음. 조작 없음 — 버튼·전원·APP 미조작",
+  "🔴 what_is_visible": {
+   "lit": [
+    {
+     "silk": "Servo",
+     "emission": "적색 점등"
+    },
+    {
+     "silk": "5V",
+     "emission": "적색 점등"
+    },
+    {
+     "silk": "MCU 쪽(일부 가림)",
+     "emission": "적색 점등 — 운영자 보고로는 깜빡임"
+    }
+   ],
+   "rgb_led": "프레임 좌상단의 **대형 백색 사각 패키지**가 소등 상태다. 5050형 어드레서블 RGB LED 의 전형적 외형(백색 하우징 + 중앙 원형 렌즈)이며, 표면의 붉은 기는 인접 적색 LED 의 **반사광**이고 자체 발광이 아니다.",
+   "photometric_basis": "점등 중인 세 LED 는 카메라 노출이 날아가 중심부가 백황색으로 포화되고 주변에 적색 헤일로가 퍼진다. 백색 사각 패키지에는 그 포화도 헤일로도 없다. 같은 프레임·같은 노출에서 발광체와 비발광체가 이렇게 다르게 찍힌다."
+  },
+  "cross_check_with_official": "공식 programming-mode 사진(nt-01-7 6페이지)에서 RGB LED 는 보드 전역을 청백색으로 물들일 만큼 밝다. 점등 시 놓칠 수 없는 밝기다. 본 사진에서는 그 수준의 발광이 전혀 없다.",
+  "limitations": [
+   "흐린 매크로 사진이다. 라벨 일부가 판독 불가다",
+   "부품 식별은 **패키지 외형 기준**이며 실크 라벨로 RGB LED 임을 확인한 것이 아니다",
+   "프레임이 보드 일부만 담는다. 보드 다른 영역의 발광체 유무는 이 사진으로 판정하지 않는다. 단 운영자가 4라운드에 걸쳐 열거한 발광 LED 는 Servo·5V·MCU 셋뿐이다"
+  ]
+ },
+ "round6_confirmation": {
+  "answer_verbatim": "mcu만 깜박임",
+  "effect": "점멸하는 LED 는 MCU 하나뿐이고 Servo·5V 는 고정 점등이다. round2 의 '2개 고정 + 1개 점멸' 과 라벨별로 일치한다. 열거가 닫혔다."
+ },
+ "final_led_state": {
+  "Servo": "적색 고정",
+  "5V": "적색 고정",
+  "MCU": "적색 점멸",
+  "RGB_LED": "소등"
+ }
+}

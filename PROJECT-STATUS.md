@@ -16,13 +16,13 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **DOFBOT 이 위치 명령에 응답하지 않는다** | `evidence/P-007B/acceptance.json` |
-| 최신 닫힌 게이트 | P-007C-R1 `DIAGNOSIS PASS — NO OFFICIAL EXPLANATION FOUND` | `evidence/P-007C-R1/acceptance.json` |
+| 최신 닫힌 게이트 | **P-007C-R2 `OBSERVATION PASS — LEARNING MODE EXCLUDED`** | `evidence/P-007C-R2/acceptance.json` |
 | **게이트가 일으킨** 로봇 모션 | **0** | P-007A·A-R1·B·C·C-R1 `environment.json` 전부 `robot_moved_by_this_gate: 0` (실측 grep). ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **1회** (P-007B, ID2 152°, raw 1242) | `servo_position_writes` 가 P-007B 만 `1`, 나머지 게이트는 전부 `0` (실측 grep) |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | H-C2(torque) · H-C5(block-write) · H-C6(learning mode) | `evidence/P-007C-R1/hypothesis_update.json` |
+| 미해결 가설 | **H-C2(torque) · H-C5(block-write)**. H-C6(learning mode)은 P-007C-R2 가 관측으로 `ELIMINATED` | `evidence/P-007C-R2/acceptance.json` |
 
 ## 게이트 현황
 
@@ -74,16 +74,24 @@
   - P-007B 명령 경로 = **`R1-A OFFICIAL_MATCH`** (공식과 차이 없음)
   - 설치본 provenance = `NO_OFFICIAL_MATCH_FOUND` (공식 저장소에 `.py` 0개 → 확인 불가)
   - 보드 = **EVV01 / STM8_32K**, 펌웨어 채널 = `arm_slave_Vx.y.hex`. 버전 매핑 `VERSION_MAPPING_UNKNOWN`
+- [x] **P-007C-R2** Learning-Mode 육안 관찰 — **`OBSERVATION PASS — LEARNING MODE EXCLUDED`**
+  - 확장보드 발광 LED 는 `Servo`(고정)·`5V`(고정)·`MCU`(점멸) 셋뿐. **RGB LED 소등** (운영자 실물 사진)
+  - 벤더 근거 `VENDOR_WEB_VERIFIED` — 공식 저장소 PDF + 공식 웹 직접 fetch 2채널
+  - 🔴 **torque ON 을 증명하지 않는다.** `set_torque(0)` 직접 호출 경우엔 RGB 표시가 없다 (관찰 전 고정한 비대칭)
+  - 덤: `SERVO` 레일 LED 점등 → 서보 전원 부재 가설 약화 (`INFERENCE_NOT_EVIDENCE`)
 - [ ] **P-007D** raw 상태 해상도 · block-write 경로 진단 — **HOLD. 열지 않는다**
-  - 플랜은 작성돼 있다(`docs/261027-1105-*`). P-007C-R1 이 **더 싼 선행 관찰**을 권고했다
+  - 플랜은 작성돼 있다(`docs/261027-1105-*`). 더 싼 선행 관찰이 아직 남아 있다
 
-## 🔴 다음 행동 (P-007C-R1 권고)
+## 🔴 다음 행동
 
-1. **쓰기 0 짜리 관찰부터** — 운영자가 확장보드 RGB 가 **breathing light** 인지 육안 확인
-   - 공식 문서상 learning mode 진입 = **자동 torque OFF**, torque OFF = `does not receive the level signal`
-   - 보이면 → learning mode 확정 → 원인 규명 / 안 보이면 → learning mode 만 배제, torque OFF 는 남음
-2. ID2 를 손으로 밀어 저항 확인 (별도 게이트 — 하드웨어 상호작용)
-3. 그래도 미해결이면 P-007D 개방
+~~1. 확장보드 RGB breathing 육안 확인~~ → **완료. P-007C-R2 가 learning mode 를 배제했다**
+
+**남은 단일 질문: 지금 torque 가 켜져 있는가.** H-C2 가 유일하게 남은 공식 메커니즘이다.
+
+1. **ID2 를 아주 약하게 밀어 저항 확인** — 공식 정의상 torque OFF = `can manually turn the servo angle`
+   - 🔴 별도 게이트로 연다. 하드웨어 상호작용이고 **torque ON 상태에서 force 를 주면 기어 손상 위험**이 있다
+   - 절차에 "아주 약하게, 저항이 느껴지면 즉시 멈춘다" 를 명시할 것
+2. 그래도 미해결이면 P-007D(raw 상태 해상도 · block-write 진단) 개방
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
 
@@ -107,6 +115,7 @@
 | 5 | 2026-10-27 08:53~10:12 | P-007A-R1 · `docs/` 추적 해제 | PASS. 쓰기 프로세스 가역 격리 |
 | 6 | 2026-10-27 10:12~11:14 | P-007B · P-007C · P-007C-R1 착수 | NO_MOTION_RESPONSE · DIAGNOSIS PASS D · R1 중간 중단(사용 한도) |
 | 7 | 2026-10-27 13:41~14:06 | P-007C-R1 재개·종료 · PROJECT-STATUS 신설 (세션 `cb876b8e`) | NO OFFICIAL EXPLANATION FOUND. R1-01~29 전부 PASS |
+| 8 | 2026-10-27 14:09~ | P-007C-R2 육안 관찰 게이트 (세션 `cb876b8e`) | LEARNING MODE EXCLUDED. 6라운드 운영자 왕복 |
 
 ## 운영 규칙 (이 프로젝트 고유)
 
