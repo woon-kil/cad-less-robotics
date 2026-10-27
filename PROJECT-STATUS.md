@@ -98,7 +98,7 @@
   - **`GLOBAL_BLOCK_WRITE_FAILURE = ELIMINATED`** — block-write 가 이 보드에서 물리 출력까지 도달한다
   - 🔴 `SERVO_0x12_4B_ACCEPTANCE` · `SERVO_BUS_PROPAGATION` 은 **UNRESOLVED 유지** (RGB `0x02`/3B vs 서보 `0x12`/4B)
   - 부수 획득: 펌웨어 채널 순서 **RGB** 확정 (공식 문서에 없던 사실)
-  - ⚠️ **RGB 가 파랑으로 켜진 채 남아 있다** — 복구 금지 조항. 아래 이월 위험 참조
+  - ⚠️ **RGB 가 파랑으로 켜진 채 남아 있다.** 검수 세션 판단: **그대로 둔다.** 기능 문제 없고 provenance 가 명확하다. 복구 전용 게이트를 따로 만들지 않고, LED 상태가 후속 관찰을 **실제로 방해하는 시점에** 복구 행위를 함께 설계한다
 
 ## 🔴 다음 행동
 
@@ -119,13 +119,13 @@
 | `write_any` | `0x19` / 5B · `0x17` / 4B | 있음 |
 | `write6` 계열 | `0x1E`→`0x1D` / 2→12B | 있음 |
 
-→ 다음 단계는 **모션을 수반하는 게이트**가 되거나, 라이브러리 밖(로직 애널라이저·i2c trace 등) 수단이 필요하다. 설계 승인이 선행돼야 한다.
+→ 다음은 **P-007D-R2 — Servo Command Transport Observability Feasibility** 다(검수 세션 설계 중). "장비 구매 없이 가능한 관측 → 외부 계측 필요 → controlled motion" 순서의 **의사결정 게이트**이고, 바로 두 번째 서보 명령으로 가지 않는다.
 
 기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
 
-> 🔴 **R1 갱신 — 보드 상태가 바뀌었다.** 확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다(P-007D-R1, 복구 금지 조항). 이후 보드 LED 를 관찰할 때 **이 파랑은 우리가 켠 것**이다 — learning mode(breathing)도 `Arm_Clear_Action` 완료(녹색)도 아니다. **P-007C-R2 의 "RGB 소등" baseline 은 더 이상 유효하지 않다.**
+> 🔴 **R1 갱신 — 보드 상태가 바뀌었다.** 확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다(P-007D-R1). 이후 보드 LED 를 관찰할 때 baseline 을 **`P-007D-R1 induced BLUE`** 라고 명시한다 — learning mode(breathing)도 `Arm_Clear_Action` 완료(녹색)도 아니다. **P-007C-R2 의 "RGB 소등" baseline 은 더 이상 유효하지 않다.** 복구는 별도 게이트로 만들지 않는다(검수 세션 판단). LED 가 관찰을 실제로 방해하는 시점에 그 게이트 안에서 함께 설계한다.
 
 > R3 갱신: 토크가 **이미 켜져 있는** 쪽이 유력해져 "토크를 켜는 순간 래치된 target 으로 움직인다" 경로는 **약해졌다.** 🔴 제거되지는 않았다 — 토크 ON 은 `STRONGLY_SUPPORTED`이지 `VERIFIED`가 아니고, 컨트롤러가 target 을 보관하는지 자체가 미확인이다.
 
