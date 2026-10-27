@@ -1,0 +1,27 @@
+{
+ "gate": "P-007E-R2",
+ "stage": 1,
+ "robot_moved_by_this_gate": 0,
+ "servo_position_writes": 0,
+ "i2c_access_to_robot": 0,
+ "🔴 jetson_untouched": "이 단계에서 Jetson 에 **접속하지 않았다**. controller readback 수집 0 (검수 지시 — R2 에서 I2C 접근을 늘리지 않는다)",
+ "controller_reported_state_unchanged": "[86, 152, 0, 18, 93, 178] — 건드리지 않았다",
+ "p620_changes": [
+  {"change": "카메라 컨테이너 `bytesize-robotics-camera` 재생성",
+   "why": "컨테이너가 `/dev/bus/usb/002/013` 으로 만들어져 있었는데 카메라는 현재 `002/014` 였다. 장치가 컨테이너 안에서 보이지 않아 드라이버가 스트림을 열지 못했다",
+   "how": "프로젝트 전용 스크립트 `scripts/run_humble_camera.sh` (sha256 p620 사본과 Mac 사본 동일 확인). 이 스크립트가 USB 노드 변경 시 재생성하도록 이미 설계돼 있다",
+   "reversible": true},
+  {"change": "`ros2 launch orbbec_camera gemini_330_series.launch.py` 기동 (컨테이너 안, 백그라운드)",
+   "reversible": true, "note": "이 단계 종료 시 정지"},
+  {"change": "`/home/woonkil/cad-less-robotics/.p007e_r2_runtime/` 에 sanity 프레임 2장 생성",
+   "reversible": true, "note": "이 단계 종료 시 삭제. p620 저장소 사본은 `8c070d0` + 로컬 수정 상태라 git 조작은 하지 않았다"}
+ ],
+ "measured": {
+  "color": {"width": 1280, "height": 720, "fx": 610.5073852539062},
+  "depth": {"width": 848, "height": 480, "fx": 410.4136657714844},
+  "mm_per_px_color": {"@1000mm": 1.638, "@600mm": 0.983},
+  "png_bytes_per_frame": 1943607,
+  "encode_write_s_per_frame": 0.103,
+  "🔴 sham_load_estimate": "600프레임 = 1166.2 MB · 인코딩 61.8 s (p620 여유 667 GB). 전프레임 PNG 저장은 과하므로 **ROI crop + 특징 측정치 저장**으로 좁히는 것이 맞다 — 다만 이번엔 거기까지 가지 않았다"
+ }
+}

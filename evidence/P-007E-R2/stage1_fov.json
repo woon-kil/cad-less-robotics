@@ -1,0 +1,22 @@
+{
+ "gate": "P-007E-R2",
+ "stage": "1 — Transport / recorder qualification",
+ "step": "FOV single-frame capture",
+ "frame": "logs/stage1_fov_color.png (1280x720, color, 드라이버 기동 직후 1장)",
+ "camera_pose": "P-006C-R2 가 쓰던 **고정 포즈 그대로**. 이 게이트에서 카메라를 움직이지 않았다",
+ "🔴 observed": "테이블 상판 · 체커보드 용지 · 그 위의 신발 · 케이블 · 바닥의 신발들. **DOFBOT 구조물은 프레임 안에 보이지 않는다**",
+ "target_definition": "ID2 원위 링크 (Arm3_Link ~ Gripping_point_Link). `Arm2_Link` 원점 변위는 0.00 mm 이므로 대상이 아니다",
+ "🔴 verdict": "TARGET_NOT_DETECTED",
+ "consistency_with_prior": "P-006C-R2 는 **작업면(workplane)** 을 관측했고 `ROBOT_SIDE` 위치는 52캡처 중 4프레임뿐이었다. 즉 이 카메라는 원래 테이블을 보도록 놓였고 팔을 보도록 놓인 적이 없다. 이번 관측은 그 기록과 **모순되지 않는다**",
+ "caveats": [
+  "단일 프레임이다. 다만 카메라가 고정이고 장면이 정적이므로 추가 프레임이 판정을 바꾸지 않는다",
+  "조명이 어둡다(자동노출 상태). 그러나 미검출의 원인은 노출이 아니라 **구조물이 화각 밖**인 것이다",
+  "장면은 P-006C 때와 달라졌다 — 체커보드 위에 신발이 올려져 있다"
+ ],
+ "counts": {"servo_writes": 0, "motion_capable_commands": 0, "torque_writes": 0,
+            "rgb_writes": 0, "raw_i2c_writes": 0, "robot_motion": 0, "robot_access": 0},
+ "🔴 stop": "검수 지시 — Stage 1 실패 코드에 해당하므로 **그대로 STOP**. 카메라 재배치·우회 구현을 즉석에서 추가하지 않는다",
+ "not_done": ["카메라 재배치", "ROI 선택", "sham run", "preregistration 2단계",
+              "heartbeat/transport 구현", "guard negative test"],
+ "why_not_reposition": "카메라 재배치는 P-006C 의 **고정 카메라 전제**를 깨고(52캡처의 기준이 된다), 운영자 물리 작업이며, 재배치 후에는 작업면 관측 자산의 재사용 가능성이 달라진다. 검수 재승인 사안이다"
+}
