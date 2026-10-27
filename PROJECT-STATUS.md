@@ -22,7 +22,37 @@
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | **H-C5 가 `0x12`/4B 서보 명령 고유 문제 또는 L5 이후로 더 좁혀짐.** block-write 전면 고장은 `ELIMINATED`. H-C6.other `OPEN`, H-C2 `WEAKENED` | `evidence/P-007D-R1/acceptance.json` |
+| 미해결 가설 | **H-C5 가 `0x12`/4B 서보 명령 고유 문제 또는 L5 이후로 더 좁혀짐.** block-write 전면 고장은 `ELIMINATED`. 아래 §evidence-strength 표 참조 | `evidence/P-007D-R1/acceptance.json` |
+
+## 🔴 Evidence-strength 고정 표현 (이 문구를 그대로 쓴다)
+
+### Torque / controller state
+
+```
+Learning mode:                   ELIMINATED
+Torque-off:                      WEAKENED
+                                 P-007C-R3 = TORQUE_ON_STRONGLY_SUPPORTED
+Other controller gating state:   NOT FULLY EXCLUDED
+```
+
+🔴 다음 표현은 **사용하지 않는다** — `torque-off completely eliminated` · `torque state verified` · `all controller gating eliminated`
+
+### Timing — 측정 사실과 가설을 분리한다
+
+```
+OBSERVED:
+  short-spacing read instability
+  (ced8f52 — Arm_serial_servo_read, 0~8ms 간격에서 None 14~15/30, 10ms 이상 0/30,
+   I2C error 출력은 전 구간 0회)
+
+HYPOTHESIS:
+  transaction-spacing / board-processing timing
+  may also affect servo write acceptance
+```
+
+🔴 다음 표현은 **사용하지 않는다** — `timing root cause confirmed` · `board requires 10 ms` · `servo write requires 10 ms` · `P-007B failed because of timing`
+
+**아직 어느 것도 증명되지 않았다.** 측정된 불안정은 **읽기** 경로이고, 너무 이른 **쓰기**가 같은 식으로 버려지는지는 직접 측정되지 않았다. P-007B 의 실제 read→write 간격도 기록돼 있지 않다(소스상 sleep 부재만 확인).
 
 ## 게이트 현황
 

@@ -1,0 +1,42 @@
+{
+ "gate": "P-007E-R1",
+ "mode": "GUARD-NEGATIVE-TEST",
+ "servo_writes": 0,
+ "bus_write_attempted": false,
+ "cases": [
+  {
+   "label": "0ms",
+   "quiet_interval_ms": 0.0,
+   "guard_ok": false,
+   "action": "HARNESS_TIMING_ABORT"
+  },
+  {
+   "label": "10ms",
+   "quiet_interval_ms": 10.0,
+   "guard_ok": false,
+   "action": "HARNESS_TIMING_ABORT"
+  },
+  {
+   "label": "49.9ms",
+   "quiet_interval_ms": 49.9,
+   "guard_ok": false,
+   "action": "HARNESS_TIMING_ABORT"
+  },
+  {
+   "label": "50.0ms",
+   "quiet_interval_ms": 50.0,
+   "guard_ok": true,
+   "action": "WRITE PATH REACHABLE"
+  },
+  {
+   "label": "60ms",
+   "quiet_interval_ms": 60.0,
+   "guard_ok": true,
+   "action": "WRITE PATH REACHABLE"
+  }
+ ],
+ "aborts": 3,
+ "passes": 2,
+ "expected": "0/10/49.9ms → ABORT (3건) · 50.0/60ms → 통과 (2건)",
+ "verdict": "PASS"
+}

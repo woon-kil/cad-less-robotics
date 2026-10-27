@@ -1,0 +1,105 @@
+{
+ "gate": "P-007E-R1",
+ "title": "Timing-Controlled Servo Command Experiment",
+ "phase": "A — HARNESS 준비·검증",
+ "status": "🔴 PHASE A 완료. Phase B 미실행",
+ "base_commit": "ced8f52",
+ "independent_variable": {
+  "changed": "read → servo write quiet interval (P-007E-R1: >= 50 ms)",
+  "held_identical_to_p007b": {
+   "joint": "Arm2/ID2",
+   "baseline": 150,
+   "target": 152,
+   "delta": "+2",
+   "duration_ms": 2000,
+   "api": "Arm_serial_servo_write",
+   "command": "exactly one",
+   "auto_return": "none"
+  },
+  "🔴 why_not_plus5": "기존 P-007E 의 +5° evidence(TCP 13.67mm · mesh bound <=21.16mm)는 evidence/P-007E/fk_clearance.json 에 **보존**한다. 그러나 이번엔 쓰지 않는다 — +5° 와 timing 을 동시에 바꾸면 독립변수가 둘이 된다. target 은 반드시 152 다"
+ },
+ "quiet_interval": {
+  "definition": "마지막 baseline I2C 트랜잭션 완료 ~ servo write 시작",
+  "clock": "time.monotonic_ns()",
+  "threshold_ms": 50.0,
+  "formula": "(t_write_start - t_last_read_end) / 1_000_000",
+  "measured_in_dryrun_ms": 60.0936,
+  "window_contains_zero_bus_access": true,
+  "forbidden_in_window": [
+   "servo read",
+   "다른 ID read",
+   "ping",
+   "hardversion",
+   "RGB",
+   "torque query/write",
+   "Button_Mode",
+   "raw SMBus"
+  ],
+  "allowed_in_window": [
+   "monotonic clock",
+   "로컬 변수 검증"
+  ]
+ },
+ "hard_guard": {
+  "condition": "quiet_interval_ms >= 50.0",
+  "on_fail": "HARNESS_TIMING_ABORT",
+  "placement": "🔴 servo write 호출 **이전**. 정적 검사로 확인 — dry-run 게이트 194행, write 209행",
+  "negative_test": "scripts/p007e_r1_timing_controlled.py --guard-test — 하드웨어 0, Arm_Lib import 0"
+ },
+ "baseline_guard": {
+  "expected": [
+   86,
+   150,
+   0,
+   18,
+   93,
+   178
+  ],
+  "id2_must_be": 150,
+  "read_spacing_ms": 20.0,
+  "on_fail": "PRE_COMMAND_BASELINE_ABORT",
+  "no_retry_into_command": "같은 실행에서 재시도 후 servo command 로 이어가지 않는다"
+ },
+ "🔴 id3_handling": {
+  "value": 0,
+  "is_none": false,
+  "expected_normal_zero": 0,
+  "distinction": "라이브러리는 raw word==0 일 때만 None 을 낸다. ID3 의 0 은 raw 900 이 0° 로 변환된 **정상값**이다. `is None` 으로만 판정한다"
+ },
+ "write_opt_in": {
+  "env": "P007E_R1_ALLOW_SERVO_WRITE",
+  "default": "0 = NO WRITE",
+  "verified": "기본 실행에서 servo_writes 0 · bus_write_attempted false · dry_run_stop 도달",
+  "static_check": "금지/모션 API 호출 지점은 Arm_serial_servo_write 1곳(209행)뿐이고 dry-run 게이트 뒤에 있다"
+ },
+ "phase_a_counts": {
+  "servo_writes": 0,
+  "motion_capable_commands": 0,
+  "bus_write_attempted": false,
+  "torque_writes": 0,
+  "rgb_writes": 0,
+  "raw_i2c_writes": 0,
+  "robot_motion": 0,
+  "read_calls": 6
+ },
+ "phase_b_prepared_not_executed": {
+  "intended_command": "Arm_serial_servo_write(2, 152, 2000)",
+  "operator_conditions": [
+   "workspace clear = YES",
+   "current posture evidence = CAPTURED",
+   "physical power cutoff = IMMEDIATELY REACHABLE"
+  ],
+  "result_codes": {
+   "A": "MOTION + READBACK CHANGE",
+   "B": "MOTION + NO READBACK CHANGE",
+   "C": "NO MOTION + READBACK CHANGE",
+   "D": "NO MOTION + NO READBACK CHANGE",
+   "E": "ABNORMAL"
+  },
+  "🔴 phase_a_selects_none": "Phase A 는 motion experiment 가 아니므로 어떤 결과 코드도 선택하지 않는다"
+ },
+ "rgb": "P-007D-R1 induced BLUE 유지. RGB write 0",
+ "evidence_immutability": "PASS — 117파일 변경 0 · 누락 0 · 추가 0",
+ "script_sha256": "27cefc1c560fbf2a1686fd1fac322ce0042f28a525203b9f5109cbbb3aab3fb5",
+ "verdict": "PHASE-A PASS — HARNESS READY / NO MOTION COMMAND EXECUTED"
+}
