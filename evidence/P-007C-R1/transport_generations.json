@@ -1,0 +1,45 @@
+{
+ "rule": "다른 세대의 serial implementation을 현재 I2C DOFBOT Pro 근거로 쓰지 않는다 (스펙 §8).",
+ "generations": [
+  {
+   "id": "G-I2C-DOFBOTPRO",
+   "product": "DOFBOT Pro (현재 장비)",
+   "host": "Jetson Orin Nano / JetPack 6.2",
+   "transport": "I2C — /dev/i2c-7, slave 0x15",
+   "controller_board": "EVV01 Robotic Arm Servo Control Board",
+   "controller_mcu": "STM8_32K (ST FlashLoader 대상)",
+   "firmware_artifact": "arm_slave_Vxxxx.hex",
+   "python_library": "Arm_Lib 1.0.3 (Arm_Device), smbus",
+   "evidence": [
+    "nt-01-7-gripping-anomaly-solutions.pdf (EVV01·STM8_32K·arm_slave_V2.1.hex)",
+    "P-007C register_map.json (0x15, 0x10+id 등)",
+    "P-007A-R1 i2c_before/after.json"
+   ],
+   "applies_to_our_gates": true
+  },
+  {
+   "id": "G-SERIAL-MUTO",
+   "product": "Yahboom Muto 계열 (로봇카). DOFBOT Pro 아님",
+   "host": "Jetson Nano, Python 3.6",
+   "transport": "serial — /dev/myserial, pyserial 3.4",
+   "python_library": "MutoLib 1.1.2 (Muto)",
+   "version_read": "g_bot.read_version() → '0x11'",
+   "evidence": [
+    "13-10-driver-library-and-communication.pdf"
+   ],
+   "applies_to_our_gates": false,
+   "trap": "🔴 이 문서는 공식 DOFBOT-Pro 저장소 안(13. Linux operating system)에 들어 있다. 즉 P2 등급 자료 안에도 타제품 serial 세대가 섞여 있다. 'MutoLib read_version 0x11' 을 우리 Arm_get_hardversion '0.20' 과 비교하면 안 된다."
+  },
+  {
+   "id": "G-I2C-GENERIC-GPIO",
+   "product": "Jetson 보드 자체 GPIO I2C 실습 (OLED 0x3C)",
+   "transport": "I2C — i2cdetect, Adafruit_SSD1306",
+   "evidence": [
+    "16-6-i2c-communication.pdf"
+   ],
+   "applies_to_our_gates": false,
+   "note": "0x15 서보 컨트롤러 프로토콜을 전혀 다루지 않는다. register 문서화 기대가 여기서 끊긴다."
+  }
+ ],
+ "conclusion": "현재 장비는 G-I2C-DOFBOTPRO 하나다. 공식 저장소에 포함된 serial 자료(G-SERIAL-MUTO)는 타제품이므로 근거에서 제외했다."
+}

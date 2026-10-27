@@ -1,0 +1,91 @@
+{
+ "method": "P-007C register_map.json(설치본 정적 분석) vs 공식 Orin판 PDF 14종 전수 판독",
+ "headline": "🔴 공식 자료는 register 를 한 개도 기술하지 않는다. 공식 PDF 는 Python API 층에서 끝난다.",
+ "searched_official_materials": [
+  "17. Basic Control Course 3·4·5·6·8 (서보 제어 전 범위)",
+  "2. Assembly course 2. Calibrating the Robotic Arm (torque·offset)",
+  "16. GPIO Hardware Control Course 6. I2C communication (유일한 I2C 전용 코스)",
+  "13. Linux operating system 10. Driver library and communication",
+  "NewTutorials 1-7 Gripping Anomaly Solutions (펌웨어·보드)"
+ ],
+ "i2c_course_finding": "16-6 은 Jetson GPIO 핀에 OLED(0x3C)를 붙이는 범용 실습이다. 0x15 서보 컨트롤러 프로토콜을 다루지 않는다. 공식 register 문서화 기대가 여기서 끊긴다.",
+ "registers": [
+  {
+   "register": "0x10+id",
+   "installed_used_by": "Arm_serial_servo_write",
+   "installed_meaning": "단일 서보 위치 명령 (4바이트 block)",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식은 Arm_serial_servo_write(id,angle,time) API 만 기술. register 없음"
+  },
+  {
+   "register": "0x19",
+   "installed_used_by": "Arm_serial_servo_write_any",
+   "installed_meaning": "ID 반전 없는 쓰기",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식 자료에 해당 API 자체가 없다"
+  },
+  {
+   "register": "0x1A",
+   "installed_used_by": "Arm_serial_set_torque",
+   "installed_meaning": "torque on/off. 읽기 경로 없음",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식은 Arm_serial_set_torque(enable) semantics 를 기술한다 — register 는 없음"
+  },
+  {
+   "register": "0x1B",
+   "installed_used_by": "Arm_serial_servo_write_offset_state",
+   "installed_meaning": "offset 설정 상태 읽기",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식이 반환값 0/1/2 semantics 를 기술 — register 는 없음"
+  },
+  {
+   "register": "0x1C",
+   "installed_used_by": "Arm_serial_servo_write_offset_switch",
+   "installed_meaning": "offset 저장. id=0 전체 초기화",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식이 id=0 전체 초기화와 범위검사 저장 조건을 기술 — register 는 없음"
+  },
+  {
+   "register": "0x1D",
+   "installed_used_by": "Arm_serial_servo_write6_array / write6",
+   "installed_meaning": "6축 12바이트 일괄",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식은 write6(S1..S6,time) API 만 기술. register 없음"
+  },
+  {
+   "register": "0x1E",
+   "installed_used_by": "write6 의 time 선행 설정",
+   "installed_meaning": "6축 공통 time",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식 미기술"
+  },
+  {
+   "register": "0x30+id",
+   "installed_used_by": "Arm_serial_servo_read",
+   "installed_meaning": "단일 서보 각도 읽기",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식이 반환 범위(ID5 0~270, 나머지 0~180)를 기술 — register 는 없음"
+  },
+  {
+   "register": "0x38",
+   "installed_used_by": "Arm_ping_servo",
+   "installed_meaning": "서보 응답 확인",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "official_note": "공식 자료에 해당 API 자체가 없다"
+  }
+ ],
+ "documented_at_api_level_only": [
+  "0x1A → Arm_serial_set_torque",
+  "0x1B → write_offset_state",
+  "0x1C → write_offset_switch",
+  "0x10+id → Arm_serial_servo_write",
+  "0x1D → write6",
+  "0x30+id → Arm_serial_servo_read"
+ ],
+ "api_level_agreement": "위 6개는 register 는 미문서지만 공식 API semantics 가 설치본 정적 분석과 모순되지 않는다. 특히 0x1C(id=0 전체 초기화)·0x1B(0/1/2 상태) 는 공식 문구와 정확히 같다.",
+ "no_official_api_at_all": [
+  "0x19 Arm_serial_servo_write_any",
+  "0x38 Arm_ping_servo"
+ ],
+ "verdict": "REGISTER_LEVEL = NOT_DOCUMENTED_IN_OFFICIAL (9/9). API_LEVEL = CONSISTENT (6/9 비교 가능, 모순 0)."
+}

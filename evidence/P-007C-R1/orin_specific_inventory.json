@@ -1,0 +1,39 @@
+{
+ "rule": "현재 장비가 Jetson Orin Nano이므로 Orin판을 1차 근거로 쓴다. Nano판과 섞지 않는다.",
+ "orin_root": "23.For_JetsonORIN_SUPER_JetPack6.2",
+ "orin_entries": 410,
+ "orin_sections": 22,
+ "orin_section_names": [
+  "1. Get started quickly",
+  "2. Assembly course",
+  "3. Remote control course",
+  "4. Preparation",
+  "5. 2D visual tracking course",
+  "6. 2D visual grabbing course",
+  "7. 2D Mediapipe course",
+  "8. Depth Camera",
+  "9. 3D Robotic arm control and inverse operation",
+  "10. 3D sorting and gripping course",
+  "11. 3D tracking and grabbing course",
+  "12. MoveIt Case Study",
+  "13. Linux operating system",
+  "14. Jupyter lab usage course",
+  "15. Basic motherboard usage course",
+  "16. GPIO Hardware Control Course",
+  "17. Basic Control Course",
+  "18. YOLO11 development",
+  "19. OpenCV course",
+  "20. Basic visual course",
+  "21. ROS2 basic course",
+  "22. Advanced vision course"
+ ],
+ "third_tree_found_this_session": {
+  "root": "NewTutorials",
+  "sections": 31,
+  "note": "1차 세션 인벤토리가 놓쳤던 세 번째 자료군이다. Nano·Orin 공용 개정판으로 보이며 Orin 전용 표기(21. YOLOv11 ORIN)와 Nano 전용 표기(22. YOLOv11 Jetson Nano)가 같은 트리에 섞여 있다. 그래서 Orin 전용으로 분류하지 않고 별도 계층으로 둔다.",
+  "material_used_from_here": "NewTutorials/1. Get Started Quickly/7.Robotic Arm Gripping Anomaly Solutions.pdf — 보드 정체(EVV01·STM8_32K)와 펌웨어 채널을 규정하는 유일한 공식 문서"
+ },
+ "nano_only_not_used_as_orin_evidence": [
+  "01~22 루트 코스 트리"
+ ]
+}

@@ -1,0 +1,33 @@
+{
+ "tree": "8474218c675e73c0dd19a331205db10be6318367",
+ "entries": 1056,
+ "truncated": false,
+ "extension_distribution": {
+  ".pdf": 765,
+  ".txt": 16,
+  ".db": 8,
+  ".yml": 5,
+  ".xlsx": 2,
+  ".jpg": 1,
+  ".md": 1
+ },
+ "py_files": 0,
+ "arm_lib_hits": 0,
+ "finding": "공식 저장소는 코스 PDF 배포소다. 소스 코드가 한 줄도 없다. byte-level provenance 비교가 이 채널로는 불가능하다.",
+ "top_level": [
+  "01~22 Nano판 코스",
+  "23.For_JetsonORIN_SUPER_JetPack6.2 (Orin판)",
+  "NewTutorials (개정판)",
+  "Annex_Download_Link.txt",
+  "Tutorial_Video_Link.txt",
+  "README.md",
+  "DOFBOT-PRO.jpg"
+ ],
+ "code_distribution_channels": [
+  "factory image (~/software/Arm_Lib)",
+  "Google Drive annex"
+ ],
+ "quoted": {
+  "17. Basic control course/README.txt": "The relevant underlying driver source code has been packaged into a python library, and the factory image has been installed. The path of the python library in the factory image is: ~/software/Arm_Lib"
+ }
+}

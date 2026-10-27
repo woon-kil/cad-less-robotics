@@ -1,0 +1,53 @@
+{
+ "installed": {
+  "package": "Arm_Lib 1.0.3",
+  "module_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+  "egg": {
+   "form": "zip",
+   "bytes": 9887,
+   "sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371"
+  },
+  "source_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "source_bytes": 17739,
+  "copies_on_disk": 6,
+  "copy_paths": [
+   "~/software/Arm_Lib (공식 course 가 적은 factory 경로)",
+   "dofbot_pro/Arm_Lib",
+   "colcon_ws/src/Arm_Lib",
+   "각 build/lib"
+  ],
+  "all_copies_identical": true,
+  "egg_internal_matches_disk": true,
+  "pyc_matches_py": "magic 6f0d0d0a 런타임 일치, 기록된 src size 17739 일치, code object digest 동일"
+ },
+ "search_in_official_repo": {
+  "method": "pin 커밋 전체 트리 1056 항목 확장자·경로 전수",
+  "py_files_found": 0,
+  "arm_lib_path_hits": 0,
+  "exact_byte_match": "불가 — 비교 대상이 저장소에 존재하지 않는다",
+  "normalized_source_match": "불가 (동일 사유)",
+  "function_level_match": "간접적으로만 가능. 공식 PDF 가 함수 이름·인자·반환을 기술한다"
+ },
+ "classification": "NO_OFFICIAL_MATCH_FOUND",
+ "classification_basis": "스펙 §6 의 네 분류는 공식 저장소에서 소스를 찾는 것을 전제한다. 공식 저장소에 .py 가 0개이므로 byte·normalized·function 어느 수준의 '찾음'도 성립하지 않는다. 이 값은 '설치본이 비공식'이라는 뜻이 아니라 '공식 저장소 채널로는 확인할 수 없다'는 뜻이다.",
+ "supporting_circumstantial": [
+  "공식 course README 가 factory image 의 라이브러리 경로를 ~/software/Arm_Lib 라고 적는다. 그 경로에 동일 바이트의 사본이 존재한다.",
+  "공식 PDF 가 기술하는 함수 이름·인자 순서·반환값·각도 범위(ID5 0~270, 나머지 0~180)가 설치본 런타임 시그니처와 일치한다.",
+  "공식 예제의 코드 경로 ~/dofbot_pro/dofbot_ctrl/scripts/*.ipynb 가 장비의 dofbot_pro 트리와 같은 레이아웃이다."
+ ],
+ "not_claimed": "위 정황은 '무수정 공식본'의 증명이 아니다. 동일 경로에 수정본이 놓여도 같은 정황이 성립한다.",
+ "version_provenance": {
+  "question": "1.0.3 이 어디서 설치됐는가 (스펙 §7)",
+  "pypi": "이름이 같다는 이유로 공식이라고 가정하지 않았다. 조회하지 않았다",
+  "installer_script_in_official_repo": "없음 — 저장소에 설치 스크립트가 0개",
+  "official_statement": "factory image 에 사전 설치. 공식 README 외 설치 절차 문서 없음",
+  "result": "INSTALL_CHANNEL = FACTORY_IMAGE (공식 기술). 버전 1.0.3 을 공식 릴리스 목록과 대조할 수 있는 공식 자료는 존재하지 않는다"
+ },
+ "only_remaining_official_channel": {
+  "channel": "Google Drive annex",
+  "url": "https://drive.google.com/drive/folders/13Rp6BC_t_N1sBiD6OY1-aM88_jkhX6nn",
+  "attempts": 1,
+  "result": "HTTP 200, 394,102 bytes. JS 셸만 반환되고 파일 목록이 HTML 에 포함되지 않는다. 파일명 후보 0개",
+  "decision": "1회로 종료. 이 게이트를 막지 않는다. OFFICIAL_EXACT_MATCH 로 승급할 수 있는 유일한 경로이므로 후속 게이트에서 브라우저 경유 재시도를 권고한다"
+ }
+}

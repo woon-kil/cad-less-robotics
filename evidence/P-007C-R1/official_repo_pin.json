@@ -1,0 +1,18 @@
+{
+ "priority": "P2 — Yahboom 공식 DOFBOT-Pro repository",
+ "repo": "YahboomTechnology/DOFBOT-Pro",
+ "url": "https://github.com/YahboomTechnology/DOFBOT-Pro",
+ "default_branch": "main",
+ "commit": "57cc4369af73d65188d33e49227650c789779a7e",
+ "commit_date": "2026-08-26T08:09:05Z",
+ "tree": "8474218c675e73c0dd19a331205db10be6318367",
+ "size_kb": 509388,
+ "license": "없음 — 재배포 권리가 부여돼 있지 않다. 그래서 PDF를 커밋하지 않고 .gitignore 한다",
+ "reproducibility": "gh api repos/YahboomTechnology/DOFBOT-Pro/git/trees/8474218c675e73c0dd19a331205db10be6318367?recursive=1 → truncated:false, 1056 항목 (재개 세션에서 재확인)",
+ "other_sources": {
+  "P3_official_download": "Annex_Download_Link.txt → https://drive.google.com/drive/folders/13Rp6BC_t_N1sBiD6OY1-aM88_jkhX6nn",
+  "P3_factory_image": "공식 course README가 드라이버가 factory image에 설치돼 있다고 적는다. 경로 ~/software/Arm_Lib",
+  "P4": "사용하지 않았다",
+  "P5": "사용하지 않았다"
+ }
+}

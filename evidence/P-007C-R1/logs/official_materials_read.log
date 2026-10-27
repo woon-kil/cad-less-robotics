@@ -1,0 +1,22 @@
+# 판독한 공식 자료와 각 자료에서 추출한 핵심 (14종)
+
+02-calibrating-arm.pdf                → torque semantics 원문. enable=0 "does not receive the level signal"
+                                        offset_switch(id=0 전체초기화) / offset_state(0,1,2) semantics
+                                        2페이지 전문. 노트북 코드 셀은 PDF 에 없음
+03-control-single-servo.pdf           → 공식 single-servo 예제 전문. 초기화 없음. ID6, 500ms
+04-read-servo-position.pdf            → read semantics. commanded/feedback 구분 없음
+                                        "90 90 90 90 89 178" 화면은 읽기 루프 단독 출력 (commanded 없음)
+05-six-servo-sata-time.pdf            → 단일 명령 간격 time.sleep(.001)
+06-control-6-servos.pdf               → write6 API. S5 0~270, 나머지 0~180. time=0 최고속
+08-memory-action.pdf                  → 🔴 learning mode 진입이 자동 torque OFF. RGB breathing light 외부표시
+                                        exit 시 자동 torque ON
+01-2-common-problems.pdf              → Q3 서보 이상 거동 → 전원 재투입
+01-3-calibration-offset-procedure.pdf → 카메라/월드 offset (offset_value.yaml). 서보 중점과 무관
+04-1-manage-app-services.pdf          → 🔴 factory image 기동 구성. App-Arm / start_app.sh / 3 프로그램
+04-2-manage-jupyterlab.pdf            → Jupyter 서비스 별도 관리
+04-3-manage-oled.pdf                  → OLED 서비스 별도 관리
+13-10-driver-library-and-communication.pdf → 🔴 MutoLib serial 세대 (타제품). 우리 I2C 세대와 분리
+16-6-i2c-communication.pdf            → GPIO+OLED(0x3C) 범용 실습. 0x15 프로토콜 미기술 (1-4p 판독)
+nt-01-7-gripping-anomaly-solutions.pdf→ 🔴 EVV01 보드 / STM8_32K / arm_slave_V2.1.hex (11p 전수)
+
+# 공식 자료에 register·smbus·write_i2c_block_data·버스번호·0x15 등장 횟수: 0

@@ -1,0 +1,82 @@
+{
+ "source_tier": "P2/P3 — Orin판 공식 코스 PDF (pin 커밋 blob 검증 완료)",
+ "common_preamble_in_every_example": [
+  "import time",
+  "from Arm_Lib import Arm_Device",
+  "Arm = Arm_Device()",
+  "time.sleep(.1)"
+ ],
+ "initialization_absent_in_all_examples": [
+  "Arm_serial_set_torque",
+  "Arm_Button_Mode",
+  "보드 enable",
+  "Arm_reset",
+  "Arm_Product_Select"
+ ],
+ "examples": [
+  {
+   "doc": "03-control-single-servo.pdf",
+   "code_path": "~/dofbot_pro/dofbot_ctrl/scripts/03.ctrl_servo.ipynb",
+   "api": "Arm_serial_servo_write(id, angle, time)",
+   "api_doc": {
+    "id": "1~6, 아래가 1, 위로 증가",
+    "angle": "ID5 만 0~270, 나머지 0~180",
+    "time": "작을수록 빠르다. 0 이면 최고속",
+    "returns": "None"
+   },
+   "calls": [
+    "Arm_serial_servo_write(6, 90, 500)",
+    "time.sleep(1)",
+    "루프: write(6,120,500)/sleep1/write(6,50,500)/sleep1/write(6,120,500)/sleep1/write(6,180,500)/sleep1"
+   ],
+   "target_id": 6
+  },
+  {
+   "doc": "05-six-servo-sata-time.pdf",
+   "code_path": "~/dofbot_pro/dofbot_ctrl/scripts/06.left_right.ipynb",
+   "calls": [
+    "Arm_serial_servo_write6(90,90,90,90,90,90,500)",
+    "Arm_serial_servo_write(3,0,1000)",
+    "time.sleep(.001)",
+    "Arm_serial_servo_write(4,180,1000)",
+    "Arm_serial_servo_write(1,180,500)"
+   ],
+   "note": "🔴 단일 서보 명령 사이 간격이 time.sleep(.001) 로 1ms 다. 공식 경로가 연속 단일 명령에 긴 지연을 요구하지 않는다는 근거"
+  },
+  {
+   "doc": "06-control-6-servos.pdf",
+   "code_path": "~/dofbot_pro/dofbot_ctrl/scripts/05.ctrl_all.ipynb",
+   "api": "Arm_serial_servo_write6(S1..S6, time)",
+   "api_doc": {
+    "S1~S4,S6": "0~180",
+    "S5": "0~270",
+    "time": "0 이면 최고속",
+    "returns": "None"
+   },
+   "note": "예제가 호출자 수준에서 S2 에 180-angle 을 넘긴다. 라이브러리 내부 ID2/3/4 반전과는 다른 층이며 공식 문서는 내부 반전을 기술하지 않는다"
+  },
+  {
+   "doc": "04-read-servo-position.pdf",
+   "code_path": "~/dofbot_pro/dofbot_ctrl/scripts/04.read_servo.ipynb",
+   "calls": [
+    "Arm_serial_servo_read(i+1) 루프",
+    "write(6,150,500) → sleep(1) → read(6)"
+   ],
+   "note": "공식 write→read 왕복 예제. 명령 후 1초 대기 후 읽는다"
+  },
+  {
+   "doc": "08-memory-action.pdf",
+   "code_path": "~/dofbot_pro/dofbot_ctrl/scripts/08.study_mode.ipynb",
+   "calls": [
+    "Arm_Button_Mode(1)",
+    "Arm_Action_Study()",
+    "Arm_Button_Mode(0)",
+    "Arm_Read_Action_Num()",
+    "Arm_Action_Mode(0|1|2)",
+    "Arm_Clear_Action()"
+   ],
+   "note": "모션 가능. 이 게이트는 실행하지 않았다"
+  }
+ ],
+ "verdict": "공식 single-servo 경로 = Arm_Device() → sleep(.1) → Arm_serial_servo_write(id, angle, time_ms) → sleep. 초기화 단계가 없다."
+}

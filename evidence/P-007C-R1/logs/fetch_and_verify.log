@@ -1,0 +1,42 @@
+# P-007C-R1 공식 자료 수집·검증 로그 (재개 세션, 2026-10-27)
+# pin commit 57cc4369af73d65188d33e49227650c789779a7e / tree 8474218c675e73c0dd19a331205db10be6318367
+
+$ gh api "repos/YahboomTechnology/DOFBOT-Pro/git/trees/8474218c675e73c0dd19a331205db10be6318367?recursive=1" --jq '.truncated, (.tree|length)'
+false
+1056
+
+# 1차 세션 스크래치패드 소실 확인 (PDF 전량)
+$ find /private/tmp/claude-501/-Users-woonkil-projects-cad-less-robotics/*/ -type f
+cb876b8e-.../tasks/b3ci6pjtr.output
+# → 공식 PDF 0개. blob SHA 로 재다운로드함.
+
+# 다운로드 + 무결성 검증 (git hash-object == tree blob sha)
+OK   03-control-single-servo.pdf  63b80fe90b6a77b66ef0e3f21d687e54eabe1300
+OK   04-read-servo-position.pdf  45ccfa7bfaec688d1485341e59c11130351f0390
+OK   05-six-servo-sata-time.pdf  8503e1e4da675d6c4be75a154bbeb089c92d7921
+OK   06-control-6-servos.pdf  53910b31806f0b3b0651e6deff8eee9e7d41b97b
+OK   08-memory-action.pdf  9ee1ace0245ac0f920a8802a1e5b8f63dea8b740
+OK   02-calibrating-arm.pdf  3161df1f6eb873109194608ac448fbfc1224c904
+OK   01-2-common-problems.pdf
+OK   01-3-calibration-offset-procedure.pdf
+OK   16-6-i2c-communication.pdf
+OK   04-1-manage-app-services.pdf
+OK   04-2-manage-jupyterlab.pdf
+OK   04-3-manage-oled.pdf
+OK   13-10-driver-library-and-communication.pdf
+OK   nt-01-7-gripping-anomaly-solutions.pdf
+# 14/14 blob SHA 일치.
+
+# 선행 증거 무결성 (착수 시점)
+$ git rev-parse HEAD
+76ebc7085c60a23a6522990f2db872546197afc1
+$ git diff --exit-code HEAD -- evidence/P-007A-R1 evidence/P-007B evidence/P-007C
+선행증거 무결성: CLEAN
+
+# Google Drive annex 1회 시도
+$ curl -sSL --max-time 45 -A "Mozilla/5.0" "https://drive.google.com/drive/folders/13Rp6BC_t_N1sBiD6OY1-aM88_jkhX6nn"
+HTTP=200 bytes=394746
+# 파일명 후보 0개 — JS 셸만 반환. 1회로 종료.
+
+# 이 게이트의 하드웨어 접근
+# ssh 0회 · I2C 0회 · Arm_Lib import 0회 · 서보 명령 0회

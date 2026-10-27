@@ -1,0 +1,36 @@
+{
+ "gate": "P-007C-R1",
+ "base_commit": "76ebc7085c60a23a6522990f2db872546197afc1",
+ "executed_at": "2026-10-27 11:15~13:41 (KST). 사용 한도로 1차 중단 후 같은 날 재개",
+ "robot_host": "yahboom / 192.168.0.94 (이 게이트에서 접속하지 않았다)",
+ "scope": "문서·저장소 읽기 전용. 하드웨어 버스 접근 0, 파일 읽기 포함 로봇 접속 0",
+ "network_access": [
+  "gh api github.com (공식 저장소 pin·tree·blob)",
+  "curl drive.google.com 폴더 1회 (목록 미노출)"
+ ],
+ "servo_position_writes": 0,
+ "torque_change": 0,
+ "button_mode_calls": 0,
+ "reset_calls": 0,
+ "calibration_executed": 0,
+ "offset_write": 0,
+ "i2c_probe_commands": 0,
+ "hardware_queries_executed": 0,
+ "robot_moved_by_this_gate": 0,
+ "p007a_r1_evidence_modified": 0,
+ "p007b_evidence_modified": 0,
+ "p007c_evidence_modified": 0,
+ "prior_evidence_integrity_check": "git diff --exit-code HEAD -- evidence/P-007A-R1 evidence/P-007B evidence/P-007C → 착수 시점 CLEAN, 커밋 직전 재실행 CLEAN (logs/integrity_check.log). 쓰기 배치마다 돌리지는 않았다",
+ "spec_source": "P-007C-R1 게이트 스펙 원문 §0~§29. 세션 1a885caa jsonl 라인 2725 사용자 메시지에서 복원. R1-01~29는 스펙 §27",
+ "credentials_recorded": false,
+ "writes_outside_gate_dir": {
+  "count": 3,
+  "files": [
+   "/tmp/dlmap.txt",
+   "/tmp/dlmap2.txt",
+   "/tmp/dlmap3.txt"
+  ],
+  "nature": "blob sha ↔ 파일명 매핑 임시 목록. 산출물이 아니고 다운로드 루프 입력으로만 썼다",
+  "note": "R1-29 '모든 산출물이 P-007C-R1 에만' 은 지켰다. '외부 쓰기 0' 은 아니다"
+ }
+}

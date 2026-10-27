@@ -1,0 +1,150 @@
+{
+ "basis": "공식 Orin판 코스 PDF(03/04/05/06) vs evidence/P-007B/command_log.json",
+ "p007b_command": {
+  "api": "Arm_serial_servo_write",
+  "id": 2,
+  "angle": 152,
+  "time_ms": 2000,
+  "raw_pos": 1242,
+  "register": "0x12 (0x10+id)",
+  "payload": "[0x04,0xDA,0x07,0xD0]",
+  "call_count": 1,
+  "elapsed_s": 0.000655,
+  "exception": null
+ },
+ "items": [
+  {
+   "n": 1,
+   "item": "constructor",
+   "official": "Arm_Device()",
+   "p007b": "Arm_Device()",
+   "verdict": "Same"
+  },
+  {
+   "n": 2,
+   "item": "bus",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL — 공식 코스가 버스 번호를 적지 않는다",
+   "p007b": "/dev/i2c-7 (라이브러리 기본 i2c_bus=7)",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 3,
+   "item": "slave address",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "p007b": "0x15",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 4,
+   "item": "servo ID",
+   "official": "1~6 유효. 예제는 6·3·4·1 사용",
+   "p007b": "2",
+   "verdict": "Same (공식 범위 안, 예제 대상 ID 만 다름)"
+  },
+  {
+   "n": 5,
+   "item": "angle 반전",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL — 공식 API 설명은 ID2 를 그냥 0~180 이라고만 적는다",
+   "p007b": "라이브러리가 ID2/3/4 에 180-angle 적용",
+   "verdict": "Not comparable (공식 문서에 내부 변환 기술 없음)"
+  },
+  {
+   "n": 6,
+   "item": "angle 변환식",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "p007b": "pos = int((3100-900)*angle/180 + 900)",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 7,
+   "item": "register",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "p007b": "0x12",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 8,
+   "item": "payload",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL",
+   "p007b": "4바이트 [posH,posL,timeH,timeL]",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 9,
+   "item": "time 인자",
+   "official": "ms 단위. 작을수록 빠르고 0 이면 최고속. 예제는 500·1000",
+   "p007b": "2000",
+   "verdict": "Same (공식 의미와 같은 축, 값만 더 느림)"
+  },
+  {
+   "n": 10,
+   "item": "write primitive",
+   "official": "NOT_DOCUMENTED_IN_OFFICIAL — PDF 는 Python API 층까지만 기술한다",
+   "p007b": "smbus write_i2c_block_data",
+   "verdict": "Not comparable"
+  },
+  {
+   "n": 11,
+   "item": "명령 후 지연",
+   "official": "time.sleep(1) (03), sleep(1) 후 read (04)",
+   "p007b": "2000ms 보간 + 3.5s 대기",
+   "verdict": "Same 성격 (공식보다 길다)"
+  },
+  {
+   "n": 12,
+   "item": "torque 처리",
+   "official": "single-servo 예제에 호출 없음",
+   "p007b": "호출 없음",
+   "verdict": "Same"
+  },
+  {
+   "n": 13,
+   "item": "Button_Mode 처리",
+   "official": "single-servo 예제에 호출 없음",
+   "p007b": "호출 없음",
+   "verdict": "Same"
+  },
+  {
+   "n": 14,
+   "item": "startup initialization",
+   "official": "Arm_Device() 직후 time.sleep(.1) 하나뿐",
+   "p007b": "생성 → 해시·AST 검사 → readback → write. sleep(.1) 없음",
+   "verdict": "Different (유일한 실질 차이)"
+  },
+  {
+   "n": 15,
+   "item": "angle ranges (ID1~6) — 스펙 §20 E",
+   "official": "ID5 0~270, 나머지 0~180 (03·06 PDF 가 동일하게 명시)",
+   "p007b_installed": "Arm_serial_servo_write: elif id == 5 → pos=int((3700-380)*angle/270+380); 그 외 → (3100-900)*angle/180+900. write6_array 는 s5>270, 나머지 s1~s4,s6>180 을 범위 거부. (evidence/P-007B/logs/armlib_api_source.txt 46~47·118행)",
+   "verdict": "Same — 공식 각도 범위와 설치본 분기·검증이 ID 별로 정확히 일치한다",
+   "note": "P-007B 가 명령한 ID2 152° 는 공식 ID2 범위 0~180 안이다"
+  }
+ ],
+ "same": 7,
+ "different": 1,
+ "not_comparable": 7,
+ "interpretation": "공식 PDF 는 Python API 층까지만 기술한다. transport·register·payload 는 공식 자료에 없으므로 '일치'로도 '불일치'로도 쓸 수 없다. 비교 가능한 층에서는 P-007B 가 공식 경로와 같다.",
+ "circular_reasoning_guard": "🔴 register·transport 는 설치본 소스에서만 알 수 있다. 설치본이 공식이라는 것이 아직 미증명이므로 '설치본이 0x12 를 쓰니 공식도 0x12' 로 유도하지 않았다.",
+ "the_one_difference": {
+  "what": "Arm_Device() 생성 직후 100ms 지연",
+  "official": "모든 공식 예제가 예외 없이 time.sleep(.1) 을 둔다",
+  "p007b": "없음. 생성 후 수~수십 ms 내 read, 그 뒤 write. 정밀 시각 미기록",
+  "is_it_the_cause": "증거 없음. 같은 조건에서 P-007A-R1·P-007C 의 읽기가 1,290회 이상 성공했고 P-007B 자신도 write 직전 readback 150 을 정상 수신했다. 버스가 살아 있는 상태였다는 뜻이다",
+  "status": "WEAK_CANDIDATE — 공식 경로와의 유일한 차이라서 기록하지만 설명력이 낮다"
+ },
+ "classification": "R1-A — P007B_COMMAND_PATH_OFFICIAL_MATCH",
+ "classification_basis": "스펙 §21 R1-A 는 'P-007B sequence 가 공식 path 와 실질적으로 동일' 을 요구한다. 비교 가능한 14항목 중 Same 6 · Different 1(생성 후 100ms) · 공식 미문서 7 이다. R1-B(공식 path 와 차이 발견)를 주장하려면 공식이 다르게 적은 항목이 있어야 하는데 하나도 없다. R1-D(공식 근거 불충분)는 명령 경로 자체에는 과하다 — 공식이 API·인자·순서·대기까지 명시했고 그 층에서 일치한다. 단 '실질적으로 동일' 의 범위는 Python API 층으로 한정된다",
+ "consequence": "software API misuse 가설(H-C3·H-C4)이 공식 근거로 약화된다.",
+ "item_count": 15,
+ "spec_20_coverage": {
+  "A_API": "items 1,4,9 + official_servo_examples.json",
+  "B_Transport": "items 2,3,10 + block_write_analysis.md",
+  "C_Registers": "item 7 + register_cross_validation.json",
+  "D_Conversion": "items 5,6",
+  "E_AngleRanges": "item 15 (설치본 소스 실측)",
+  "F_Timing": "items 9,11",
+  "G_Torque": "item 12 + torque_official_analysis.md",
+  "H_Startup": "item 14 + startup_cross_validation.md",
+  "I_Calibration": "calibration_semantics.md"
+ }
+}

@@ -1,0 +1,215 @@
+{
+ "gate": "P-007C-R1",
+ "base_commit": "76ebc7085c60a23a6522990f2db872546197afc1",
+ "spec": "P-007C-R1 게이트 스펙 §0~§29 (세션 1a885caa jsonl 라인 2725 사용자 메시지에서 원문 복원). R1-01~29 는 §27",
+ "verdict": "DIAGNOSIS PASS — NO OFFICIAL EXPLANATION FOUND",
+ "verdict_basis": "공식 software·protocol 차이 없음(R1-A). 공식 자료는 P-007B 의 no-motion 을 설명하는 '차이' 를 제시하지 못했다. 대신 공식 문서가 'I2C 에서 ACK 는 되는데 서보가 안 움직이는' 상태 경로 2개를 정의한다 — (1) torque OFF: 'does not receive the level signal' (2) learning mode: 진입 시 자동 torque OFF. 그러나 이것은 설치본과 공식 사이의 차이가 아니라 상태 semantics 이고, 장비가 그 상태였다는 관측이 없다. 따라서 스펙 §28 의 ROOT-CAUSE CANDIDATE('설명할 수 있는 공식 차이 발견')에 해당하지 않는다.",
+ "why_not_candidate": "§28 ROOT-CAUSE CANDIDATE 는 §21 R1-B('공식 path 와 차이 발견 → root-cause candidate')와 같은 어법이다. P-007B 를 R1-A(OFFICIAL_MATCH)로 분류한 이상 그 위에 CANDIDATE 를 얹으면 스펙 안에서 모순이다. 실제로 발견된 유일한 차이는 생성 직후 sleep(.1) 하나인데, 같은 시간 창에서 readback 150 이 성공했으므로 자체 분석이 WEAK 로 판정했다.",
+ "p007b_reclassification": "R1-A — P007B_COMMAND_PATH_OFFICIAL_MATCH (범위: Python API 층)",
+ "installed_library_provenance": "NO_OFFICIAL_MATCH_FOUND (공식 저장소에 소스가 0개이므로 확인 불가. 비공식이라는 뜻이 아니다)",
+ "firmware_version_mapping": "VERSION_MAPPING_UNKNOWN (보드는 EVV01/STM8_32K, 펌웨어 채널은 arm_slave_Vx.y.hex 로 특정됨)",
+ "controller_read_semantics": "CONTROLLER_REPORTED_STATE 유지",
+ "register_semantics": "NOT_DOCUMENTED_IN_OFFICIAL (9/9)",
+ "block_write_semantics": "NOT_DOCUMENTED_IN_OFFICIAL",
+ "hypotheses_after": {
+  "H-C1": "ELIMINATED (변화 없음)",
+  "H-C2": "OFFICIAL_MECHANISM_CONFIRMED / STATE_STILL_UNREADABLE — 반대 정황(운영자 육안) 동반",
+  "H-C3": "NOT_SUPPORTED (공식 근거로 재확인)",
+  "H-C4": "NOT_SUPPORTED (공식 근거로 재확인)",
+  "H-C5": "OPEN — 공식 자료로 좁히지 못한 유일한 가설",
+  "H-C6": "SECOND_OFFICIAL_MECHANISM_IDENTIFIED (learning mode) — H-C2 와 같은 종착점"
+ },
+ "retracted_from_interim_readme": [
+  "§5 '공식 스크린샷의 89 가 int() 절단 편향의 교차확인' → 같은 실행에 commanded 값이 없어 비교 불가. NOT_EVIDENCE 로 강등",
+  "§7 잠정 판정 'DIAGNOSIS PASS — OFFICIAL ROOT-CAUSE CANDIDATE 로 수렴 중' → 스펙 §28 정의와 R1-A 분류에 비추어 철회"
+ ],
+ "next_step_recommended": "P-007D 를 열지 않는다. 먼저 쓰기 0 짜리 관찰 — 운영자가 확장보드 RGB 가 breathing light 인지 육안 확인. 보이면 learning mode 확정이고 원인이 규명된다. 안 보이면 learning mode 만 배제되고 torque OFF 는 남는다.",
+ "carry_forward_risk": "Arm_serial_set_torque(1) 과 Arm_Button_Mode(0) 은 둘 다 토크를 켜는 모션 가능 행위다. 공식은 토크 ON 이 저장된 target 이동을 유발하는지 기술하지 않으므로 P-007B 가 보낸 target(ID2, raw 1242) 래치 가능성을 배제할 근거가 없다. 전체 모션 게이트 절차를 적용한다.",
+ "unsafe_experimentation": 0,
+ "robot_movement": 0,
+ "state_mutation": 0,
+ "hardware_access_this_gate": 0,
+ "p007b_retroactively_changed": false,
+ "p007c_retroactively_changed": false,
+ "checks": [
+  {
+   "id": "R1-01",
+   "result": "PASS",
+   "note": "pin 57cc4369… / tree 8474218c… / 2026-08-26T08:09:05Z. 재개 세션에서 동일 tree 재조회(truncated:false, 1056)",
+   "evidence": "official_repo_pin.json"
+  },
+  {
+   "id": "R1-02",
+   "result": "PASS",
+   "note": "1,056 항목 전수. 확장자 .pdf 765 · .txt 16 · .db 8 · .yml 5 · .xlsx 2 · .jpg 1 · .md 1. .py 0개",
+   "evidence": "official_tree_inventory.json"
+  },
+  {
+   "id": "R1-03",
+   "result": "PASS",
+   "note": "Orin 전용 23.For_JetsonORIN_SUPER_JetPack6.2 22섹션 410항목을 Nano판과 분리. 1차 세션이 놓친 세 번째 트리 NewTutorials(31섹션)를 별도 계층으로 추가 기록",
+   "evidence": "orin_specific_inventory.json"
+  },
+  {
+   "id": "R1-04",
+   "result": "PASS",
+   "note": "sha256 edfcae72… 를 pin 트리 전체에서 탐색. .py 0개·Arm_Lib 경로 0건이라 비교 대상 자체가 없다",
+   "evidence": "installed_library_provenance.json"
+  },
+  {
+   "id": "R1-05",
+   "result": "PASS",
+   "note": "NO_OFFICIAL_MATCH_FOUND. INSTALL_CHANNEL=FACTORY_IMAGE. PyPI 동명 추정 사용 안 함. Drive annex 1회 시도 기록",
+   "evidence": "installed_library_provenance.json"
+  },
+  {
+   "id": "R1-06",
+   "result": "PASS",
+   "note": "G-I2C-DOFBOTPRO(현재) / G-SERIAL-MUTO(타제품, 공식 저장소 안에 혼재) / G-I2C-GENERIC-GPIO 3세대 분리. serial 세대를 근거에서 제외",
+   "evidence": "transport_generations.json"
+  },
+  {
+   "id": "R1-07",
+   "result": "PASS",
+   "note": "Orin판 공식 예제 5종 전문 판독. 공통 전문 Arm_Device()→sleep(.1), 초기화 0",
+   "evidence": "official_servo_examples.json"
+  },
+  {
+   "id": "R1-08",
+   "result": "PASS",
+   "note": "15항목 비교. Same 7 · Different 1 · 공식 미문서 7",
+   "evidence": "p007b_official_diff.json"
+  },
+  {
+   "id": "R1-09",
+   "result": "PASS",
+   "note": "9개 register 전부 NOT_DOCUMENTED_IN_OFFICIAL. API 층에서 비교 가능한 6개는 모순 0",
+   "evidence": "register_cross_validation.json"
+  },
+  {
+   "id": "R1-10",
+   "result": "PASS",
+   "note": "NOT_DOCUMENTED_IN_OFFICIAL. 설치본으로 공식을 유도하는 순환논증을 명시적으로 회피",
+   "evidence": "block_write_analysis.md"
+  },
+  {
+   "id": "R1-11",
+   "result": "PASS",
+   "note": "§13 다섯 질문 모두 답. (a) NO (b) 대체로 YES (c) UNKNOWN (d) UNKNOWN (e) UNKNOWN. 공식 원문 인용 + 반대 정황 명시",
+   "evidence": "torque_official_analysis.md"
+  },
+  {
+   "id": "R1-12",
+   "result": "PASS",
+   "note": "🔴 1차 세션 미판독 자료를 읽었다. learning mode 진입이 자동 torque OFF. RGB breathing light 외부표시. §14 네 질문 모두 답",
+   "evidence": "button_mode_analysis.md"
+  },
+  {
+   "id": "R1-13",
+   "result": "PASS",
+   "note": "공식 factory image 기동 구성과 장비가 일치. autostart 내용이 공식 항목명 App-Arm / app program / start_app.sh 와 문자열 단위로 같다",
+   "evidence": "startup_cross_validation.md"
+  },
+  {
+   "id": "R1-14",
+   "result": "PASS",
+   "note": "EVV01 보드 / STM8_32K / arm_slave_V2.1.hex 확인. 표시값 '0.20' 은 라이브러리 포맷 산물이고 원시값은 10진 20(소스 근거). 매핑은 VERSION_MAPPING_UNKNOWN",
+   "evidence": "firmware_version_analysis.md"
+  },
+  {
+   "id": "R1-15",
+   "result": "PASS",
+   "note": "NOT_DOCUMENTED_IN_OFFICIAL. ping 0xDA 가 증명하는 범위를 '통신 경로'로 제한. 명령 수용성은 증명하지 않는다",
+   "evidence": "ping_semantics.md"
+  },
+  {
+   "id": "R1-16",
+   "result": "PASS",
+   "note": "공식이 commanded/feedback 을 구분하지 않는다. CONTROLLER_REPORTED_STATE 유지. 1차 세션의 '89 교차확인' 철회",
+   "evidence": "controller_read_semantics.md"
+  },
+  {
+   "id": "R1-17",
+   "result": "PASS",
+   "note": "서보 중점 offset 과 카메라/월드 offset 분리. 공식 semantics 가 P-007C 정적 분석과 일치. 실행 0",
+   "evidence": "calibration_semantics.md"
+  },
+  {
+   "id": "R1-18",
+   "result": "PASS",
+   "note": "§20 A~I 전부 매핑. E(angle ranges)는 설치본 소스 실측(ID5 0~270 분기, write6_array 범위검사)으로 Same",
+   "evidence": "p007b_official_diff.json (spec_20_coverage)"
+  },
+  {
+   "id": "R1-19",
+   "result": "PASS",
+   "note": "R1-A — P007B_COMMAND_PATH_OFFICIAL_MATCH. 범위를 Python API 층으로 한정해 기재",
+   "evidence": "p007b_official_diff.json"
+  },
+  {
+   "id": "R1-20",
+   "result": "PASS",
+   "note": "H-C1~H-C6 별도 갱신표. P-007C historical result 미수정",
+   "evidence": "hypothesis_update.json"
+  },
+  {
+   "id": "R1-21",
+   "result": "PASS",
+   "note": "P-007D 를 열지 않는다. 쓰기 0 짜리 선행 관찰(RGB breathing light)을 먼저 권고",
+   "evidence": "README.md · hypothesis_update.json"
+  },
+  {
+   "id": "R1-22",
+   "result": "PASS",
+   "note": "P5 제3자 자료 사용 0. P4 사용 0. 공식 저장소 안의 타제품 serial 자료도 근거에서 분리",
+   "evidence": "transport_generations.json"
+  },
+  {
+   "id": "R1-23",
+   "result": "PASS",
+   "note": "서보 명령 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-24",
+   "result": "PASS",
+   "note": "torque 변경 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-25",
+   "result": "PASS",
+   "note": "Button_Mode 변경 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-26",
+   "result": "PASS",
+   "note": "reset·calibration 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-27",
+   "result": "PASS",
+   "note": "로봇 모션 0. 이 게이트는 ssh·I2C·Arm_Lib import 를 한 번도 하지 않았다",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "R1-28",
+   "result": "PASS",
+   "note": "git diff --exit-code 착수 시점·커밋 직전 모두 exit 0",
+   "evidence": "logs/integrity_check.log"
+  },
+  {
+   "id": "R1-29",
+   "result": "PASS",
+   "note": "모든 산출물이 evidence/P-007C-R1/ 에만. 단 blob↔파일명 매핑용 임시파일 3개(/tmp/dlmap*.txt)가 밖에 쓰였다 — 산출물 아님",
+   "evidence": "environment.json (writes_outside_gate_dir)"
+  }
+ ],
+ "summary": {
+  "total": 29,
+  "PASS": 29,
+  "FAIL": 0
+ }
+}

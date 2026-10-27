@@ -1,0 +1,122 @@
+{
+ "why": "official/ 은 저작권 때문에 .gitignore 한다. 이 매니페스트가 재현 지시서다.",
+ "pin_commit": "57cc4369af73d65188d33e49227650c789779a7e",
+ "fetch": "gh api repos/YahboomTechnology/DOFBOT-Pro/git/blobs/<blob_sha> --jq .content | tr -d '\\n' | base64 -d > <local>",
+ "verify": "git hash-object <local> == blob_sha. 14/14 일치 확인",
+ "verified_count": 14,
+ "files": [
+  {
+   "local": "evidence/P-007C-R1/official/01-2-common-problems.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/1. Get started quickly/2. Analysis of common problems.pdf",
+   "blob_sha": "4f408bef16ada8aed9aacfaf2c4edf43e97a8f61",
+   "bytes": 18344,
+   "sha256": "21a351b866cecb27feb22354e6c9a51b613a38a18628711b56d80098d41338e5",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/01-3-calibration-offset-procedure.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/1. Get started quickly/3. Calibration offset procedure.pdf",
+   "blob_sha": "960205b282900d6a093d05702678a23c5deab1cb",
+   "bytes": 680874,
+   "sha256": "995eb512b7412a93a0c833be6a92a32aae13aedab214bb0594157faf7221de71",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/02-calibrating-arm.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/2. Assembly course/2. Calibrating the Robotic Arm/Calibrating the Robotic Arm.pdf",
+   "blob_sha": "3161df1f6eb873109194608ac448fbfc1224c904",
+   "bytes": 460870,
+   "sha256": "d55a422918434eed36d983747d4f5fcafe63c732dce86e1632f52b2d76a84df8",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/03-control-single-servo.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/17. Basic Control Course/3. Control a single servo/Control a single servo.pdf",
+   "blob_sha": "63b80fe90b6a77b66ef0e3f21d687e54eabe1300",
+   "bytes": 586473,
+   "sha256": "6751d04cc8abfdfbb3a305c96a9b423eb32a257c17583a904d4d5c90331ef4d8",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/04-1-manage-app-services.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/4. Preparation/1. Manage APP control services/Manage APP control services.pdf",
+   "blob_sha": "c6bf634db4e4bf105719abec0e055f2722eb8c57",
+   "bytes": 446790,
+   "sha256": "88276ce98fa175aaa8c7bc4fcc0794643d83c0ba1a3f31c1b4371e80db71e193",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/04-2-manage-jupyterlab.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/4. Preparation/2. Manage JupyterLab services/Manage JupyterLab services.pdf",
+   "blob_sha": "bd21b461965e13419f541f952a8179c0f1b27e6e",
+   "bytes": 19611,
+   "sha256": "4a48ef8e65a2bb17219bc57d4b138c9af8edc86ba6f578565b8cfd96d6f73482",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/04-3-manage-oled.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/4. Preparation/3. Manage OLED services/Manage OLED services.pdf",
+   "blob_sha": "d18e67537a07d8b232c1e37ab117aff40882730a",
+   "bytes": 19528,
+   "sha256": "41c8b3796261e61763f510de080da7b0ad6f323093d33990475dde7624b235eb",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/04-read-servo-position.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/17. Basic Control Course/4. Read the current position of the servo/Read the current position of the servo.pdf",
+   "blob_sha": "45ccfa7bfaec688d1485341e59c11130351f0390",
+   "bytes": 51079,
+   "sha256": "1f23a6b109d55e1c3dd32c4bb16ae5588b1feebc86d3183178fc3414de3f1aad",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/05-six-servo-sata-time.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/17. Basic Control Course/5. Control 6 servo SATA time/Robotic arm swings up and down, left and right.pdf",
+   "blob_sha": "8503e1e4da675d6c4be75a154bbeb089c92d7921",
+   "bytes": 40117,
+   "sha256": "de3a67f43f28d53795bba4f44f1b998b951e8ae5010b1e28a890ca530c5600b5",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/06-control-6-servos.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/17. Basic Control Course/6. Control 6 servos at a time/Control 6 servos at a time.pdf",
+   "blob_sha": "53910b31806f0b3b0651e6deff8eee9e7d41b97b",
+   "bytes": 43480,
+   "sha256": "608aa03902dd70a4161afa7cefe298b9191664a5aaa3c7aa55a18c7d6adea0f0",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/08-memory-action.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/17. Basic Control Course/8. Robotic arm memory action/Robotic arm memory action.pdf",
+   "blob_sha": "9ee1ace0245ac0f920a8802a1e5b8f63dea8b740",
+   "bytes": 35689,
+   "sha256": "01241609530873aeece4b5024e6ead1d45e300858635ba49284ff883ac010d77",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/13-10-driver-library-and-communication.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/13. Linux operating system/10.Driver library and communication/10.Driver library and communication.pdf",
+   "blob_sha": "52b564fc7ba2be74936ead20ece6d7a21ffd7ad3",
+   "bytes": 404103,
+   "sha256": "8aed0c012df1733b1702914c4d6992a3801c0f34a5c694464ef812c6bee5be0f",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/16-6-i2c-communication.pdf",
+   "repo_path": "23.For_JetsonORIN_SUPER_JetPack6.2/16. GPIO Hardware Control Course/6.I2C communication/I2C communication.pdf",
+   "blob_sha": "28bb47206284c41261cba386eb83d1c92fdc092f",
+   "bytes": 5491331,
+   "sha256": "787c4892f87ace99c0c45564f986b996d79b97326ab47cc6cc65dd477cd16fd0",
+   "read": true
+  },
+  {
+   "local": "evidence/P-007C-R1/official/nt-01-7-gripping-anomaly-solutions.pdf",
+   "repo_path": "NewTutorials/1. Get Started Quickly/7.Robotic Arm Gripping Anomaly Solutions.pdf",
+   "blob_sha": "3e7eb9f70cbee5d4036e242c08c655da5c0ed312",
+   "bytes": 2914920,
+   "sha256": "5a1d180bc04b64bf216e61db6b6a175d3198466d6364a28f4424e7dcdf2bcbeb",
+   "read": true
+  }
+ ],
+ "handling": "다운로드물은 신뢰할 수 없는 데이터다. 전용 빈 디렉터리에만 두고 그 안에서 인터프리터·빌드 도구를 실행하지 않았다. 읽기는 Read 도구로만 했다."
+}

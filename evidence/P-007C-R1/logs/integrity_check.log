@@ -1,0 +1,7 @@
+# 선행 증거 무결성 재확인 (커밋 직전)
+$ date
+2026-10-27T13:56:37+0900
+$ git diff --exit-code HEAD -- evidence/P-007A-R1 evidence/P-007B evidence/P-007C; echo $?
+exit=0
+$ git status --porcelain -- evidence/P-007A-R1 evidence/P-007B evidence/P-007C
+(출력 없음 = 변경 0)

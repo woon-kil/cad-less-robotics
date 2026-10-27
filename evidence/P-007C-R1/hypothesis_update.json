@@ -1,0 +1,51 @@
+{
+ "rule": "스펙 §22. P-007C 의 historical result 는 수정하지 않는다. 이 표는 별도 갱신본이다.",
+ "p007c_source": "evidence/P-007C/acceptance.json (불변)",
+ "updates": [
+  {
+   "id": "H-C1_communication",
+   "p007c": "ELIMINATED",
+   "r1": "ELIMINATED (변화 없음)",
+   "official_basis": "공식 자료는 통신 성공을 판정하는 절차를 기술하지 않는다. P-007C 의 두 독립 경로(보드 0x01 응답 + 서보 6개 ping 0xda)가 그대로 유효하다."
+  },
+  {
+   "id": "H-C2_torque_enable",
+   "p007c": "CANNOT_DECIDE",
+   "r1": "OFFICIAL_MECHANISM_CONFIRMED / STATE_STILL_UNREADABLE",
+   "official_basis": "🔴 공식 Calibrating the Robotic Arm 이 'enable=0 … does not receive the level signal' 이라고 명시한다. 명령이 I2C 에서 ACK 돼도 서보가 무시하는 상태가 공식적으로 존재한다. 메커니즘은 확인됐다.",
+   "still_missing": "그 상태였다는 증거는 없다. torque 읽기 경로가 공식에도 없고(§13 (d) UNKNOWN), boot default 기술도 없다(§13 (c) UNKNOWN).",
+   "counter_evidence": "운영자 육안 관찰 '단단하게 유지 중으로 보인다'. 공식 정의상 torque OFF 는 'can manually turn the servo angle' 이므로 반대 방향 정황이다. 다만 육안이며 손으로 밀어본 기록이 아니다(evidence/P-007B·P-007C operator_observation.json)."
+  },
+  {
+   "id": "H-C3_missing_initialization",
+   "p007c": "NOT_SUPPORTED",
+   "r1": "NOT_SUPPORTED (공식 근거로 재확인)",
+   "official_basis": "공식 single-servo·write6·read 예제 어디에도 torque·Button_Mode·보드 enable 초기화가 없다. Arm_Device() → time.sleep(.1) → write 가 전부다.",
+   "residual": "공식 예제에 예외 없이 있는 time.sleep(.1) 만 P-007B 에 없다. WEAK_CANDIDATE 로 분리 기록한다(p007b_official_diff.json)."
+  },
+  {
+   "id": "H-C4_single_servo_protocol",
+   "p007c": "NOT_SUPPORTED",
+   "r1": "NOT_SUPPORTED (공식 근거로 재확인)",
+   "official_basis": "공식 예제가 같은 API·같은 인자 순서·같은 단위를 쓴다. ID2 는 공식 유효 범위 1~6 안이고 152° 는 ID2 범위 0~180 안이다."
+  },
+  {
+   "id": "H-C5_command_propagation",
+   "p007c": "OPEN",
+   "r1": "OPEN — 공식 자료로 좁힐 수 없음",
+   "official_basis": "공식 PDF 는 transport·primitive 를 기술하지 않는다. block write 수락 여부를 공식 근거로 판정할 수 없다(block_write_analysis.md).",
+   "note": "🔴 설치본 소스로 '공식도 block write 를 쓴다' 고 유도하면 순환논증이다. 하지 않았다."
+  },
+  {
+   "id": "H-C6_other",
+   "p007c": "OPEN",
+   "r1": "🔴 SECOND_OFFICIAL_MECHANISM_IDENTIFIED — learning mode",
+   "official_basis": "공식 Robotic arm memory action 이 'After entering learning mode … the robot arm will automatically turn off the torque' 라고 명시한다. Button_Mode=1 이 torque OFF 를 유발하고, torque OFF 는 공식 정의상 신호 미수신이다. 두 공식 문서가 연결돼 H-C2 와 같은 종착점에 도달하는 두 번째 경로가 생겼다.",
+   "newly_available_zero_write_test": "🔴 학습 모드는 확장보드 RGB 가 breathing light 로 외부 표시된다. 운영자 육안만으로 판정 가능하고 버스 쓰기가 0이다. Arm_Read_Action_Num()(register 0x22, P-007C register_map 기준 read_oriented:true)도 읽기 지향 경로이지만 학습 모드 자체를 읽지는 않는다 — 저장된 동작그룹 수만 돌려준다. Button_Mode(0x03)는 write-only 다.",
+   "still_missing": "Button_Mode 현재값 읽기 경로는 공식에도 없다. boot default 기술도 없다."
+  }
+ ],
+ "net_change": "H-C2 가 공식 메커니즘을 얻었고, H-C6 이 같은 종착점으로 가는 두 번째 공식 경로(learning mode)를 얻었다. H-C3·H-C4 는 공식 근거로 재확인돼 더 약해졌다. H-C1·H-C5 는 변화 없다.",
+ "root_cause_determined": false,
+ "why_not": "공식 문서가 메커니즘을 정의했다는 것은 '그런 상태가 존재한다' 까지다. '그 상태였다' 는 증거가 아니다. P-007C 가 운영자 증언을 증거로 승격하지 않은 기준을 여기에도 적용한다."
+}
