@@ -1,0 +1,43 @@
+{
+ "gate": "P-007D-R1",
+ "classification": "A",
+ "verdict": "CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED",
+ "conditions_met": {
+  "command_count_1": true,
+  "no_exception": true,
+  "no_i2c_error_printed": true,
+  "library_stdout_empty": true,
+  "rgb_off_to_lit": true,
+  "color_as_intended": true,
+  "no_robot_motion": true
+ },
+ "🔴 what_is_proven": {
+  "path": "Python → Arm_Lib → SMBus write_i2c_block_data → expansion-board firmware → RGB physical output",
+  "statement": "이 경로가 **실제 장비에서 작동한다**. write_i2c_block_data 가 이 board/firmware 에서 수락되어 물리 출력까지 도달한다",
+  "GLOBAL_BLOCK_WRITE_FAILURE": "ELIMINATED",
+  "channel_mapping": "RGB 순서 확정 — (0,0,255) 가 파랑으로 나왔다. 공식 문서에 없던 사실을 부수적으로 얻었다"
+ },
+ "🔴 what_is_NOT_proven": {
+  "SERVO_0x12_4B_ACCEPTANCE": "UNRESOLVED",
+  "SERVO_BUS_PROPAGATION": "UNRESOLVED",
+  "why": "RGB 는 register 0x02 · payload 3바이트, 서보는 register 0x12 · payload 4바이트다. P-007D 가 관찰한 register↔길이 1:1 대응 구조 때문에, 수락 실패가 **register 또는 길이 의존**이면 이 결과가 서보 경로를 보증하지 못한다",
+  "also_not_proven": "서보 버스(L5) 이후는 RGB 가 전혀 건드리지 않는 경로다. RGB 는 보드 자체의 출력이고 서보 버스를 타지 않는다"
+ },
+ "layer_update": {
+  "L4_firmware_acceptance": "UNKNOWN → **PARTIALLY VERIFIED** — 0x02/3B 에 대해서는 수락이 입증됐다. 0x12/4B 는 UNKNOWN 유지",
+  "L5_board_to_servo_bus": "UNKNOWN 유지 — RGB 는 이 계층을 경유하지 않는다",
+  "L6_servo_execution": "OBSERVED_NO_MOTION 유지 (검수 세션 라벨 정정 반영)"
+ },
+ "hypothesis_effect": {
+  "H-C5_command_propagation": "**범위가 좁아졌다.** '이 보드에서 block-write 가 전면 고장' 가설은 제거됐다. 남은 것은 **0x12/4B 서보 명령 고유의 수락 실패** 또는 **L5 이후**다",
+  "H-C2": "WEAKENED 유지",
+  "H-C6.other_controller_state": "OPEN 유지"
+ },
+ "🔴 state_left_behind": {
+  "what": "확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다",
+  "why": "플랜이 복구 OFF 명령을 금지했다 — 두 번째 block-write 가 되어 command count = 1 조건을 깬다",
+  "⚠️ future_observers": "이후 게이트에서 보드 LED 를 볼 때 **이 파랑은 우리가 켠 것**이다. learning mode(breathing·색 변화)도 아니고 Arm_Clear_Action 완료(녹색)도 아니다. P-007C-R2 가 확보한 'RGB 소등' baseline 은 이 커밋 이후 더 이상 유효하지 않다",
+  "recovery": "별도 승인에서 판단한다. 전원 재투입으로도 해소될 것으로 보이나 재투입은 joystick move_init_pose 위험이 있어 금지 유지"
+ },
+ "next_proposed_only": "0x12/4B 수락 여부를 가르려면 서보 register·길이로 block-write 를 보내야 하는데 그건 모션이다. 대안 후보: (a) write6 경로(0x1E 2바이트 → 0x1D 12바이트)도 모션이다 (b) 부저(0x06 계열)는 write_byte_data 라 block-write 가 아니다. 🔴 **비모션 4바이트 block-write 경로가 설치 라이브러리에 존재하지 않는다** — block_write_comparison.json 의 7경로 중 비모션은 RGB(3바이트) 하나뿐이다. 이 사실 자체가 다음 게이트 설계의 제약이다"
+}

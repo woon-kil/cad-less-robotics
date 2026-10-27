@@ -1,0 +1,53 @@
+{
+ "gate": "P-007D-R1",
+ "guards": [
+  "디스크 소스 sha256 일치",
+  "__init__/__del__ 버스 부작용 0",
+  "APP/joystick/arm_driver/MoveIt 미실행",
+  "i2c-7 보유자가 P-007A-R1 승인 집합(OLED 0x3C · ros2 래퍼)뿐",
+  "런타임 모듈이 egg 이고 egg sha256 이 P-007C-R1 기록과 일치"
+ ],
+ "aborted": null,
+ "bus_write_attempted": true,
+ "disk_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "dunder_methods": [
+  "__change_value",
+  "__init__"
+ ],
+ "dunder_bus_calls": [],
+ "self_pid_chain": [
+  1,
+  1155,
+  2283739,
+  2283771,
+  2283772
+ ],
+ "exclusive_control_violations": [],
+ "other_i2c7_holders": [
+  "2264",
+  "3091",
+  "3092"
+ ],
+ "unknown_i2c7_holders": [],
+ "arm_lib_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+ "egg_sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+ "constructor": "Arm_Device() + sleep(.1)",
+ "rgb_value": {
+  "R": 0,
+  "G": 0,
+  "B": 255,
+  "intended": "BLUE (채널 매핑 미검증)"
+ },
+ "commanded_at": "2026-10-27T14:06:13+0800",
+ "command_count": {
+  "Arm_RGB_set": 1
+ },
+ "exception": null,
+ "elapsed_s": 0.000612,
+ "library_stdout": "",
+ "i2c_error_printed": false,
+ "servo_commands": 0,
+ "torque_commands": 0,
+ "other_armlib_calls": 0,
+ "recovery_command_sent": false
+}

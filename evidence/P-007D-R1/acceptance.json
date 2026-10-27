@@ -1,0 +1,127 @@
+{
+ "gate": "P-007D-R1",
+ "title": "RGB Block-Write Control Experiment",
+ "base_commit": "1a7296c (홀드 포인트)",
+ "verdict": "CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED",
+ "classification": "A",
+ "verdict_basis": "공식 Arm_RGB_set(0,0,255) 1회 호출로 확장보드 5050 RGB LED 가 소등 → **파랑 점등**했다. 예외 0, 'I2C error' 출력 0, 로봇 모션 0. Python → Arm_Lib → SMBus write_i2c_block_data → expansion-board firmware → RGB physical output 경로가 실제 장비에서 작동한다.",
+ "GLOBAL_BLOCK_WRITE_FAILURE": "ELIMINATED",
+ "SERVO_0x12_4B_ACCEPTANCE": "UNRESOLVED",
+ "SERVO_BUS_PROPAGATION": "UNRESOLVED",
+ "incidental_finding": "펌웨어 채널 순서가 **RGB** 임이 확정됐다 — (0,0,255)가 파랑으로 나왔다. 공식 문서에 없던 사실이다",
+ "layer_boundary_now": {
+  "L1": "VERIFIED",
+  "L2": "VERIFIED",
+  "L3": "SUPPORTED",
+  "L4": "**PARTIALLY VERIFIED** — 0x02/3B 수락 입증. 0x12/4B 는 UNKNOWN",
+  "L5": "UNKNOWN — RGB 는 서보 버스를 경유하지 않는다",
+  "L6": "OBSERVED_NO_MOTION"
+ },
+ "🔴 structural_constraint_for_next_gate": "설치 라이브러리의 block-write 7경로 중 **비모션은 RGB(3바이트) 하나뿐**이다. 0x12/4B 수락 여부를 모션 없이 가를 경로가 존재하지 않는다. 이것이 다음 게이트 설계의 제약이다",
+ "🔴 state_left_behind": "확장보드 RGB 가 파랑으로 켜진 채 남아 있다(복구 금지 조항). P-007C-R2 의 'RGB 소등' baseline 은 이 시점 이후 무효다",
+ "rgb_command_count": 1,
+ "servo_commands": 0,
+ "torque_mutation": 0,
+ "button_mode": 0,
+ "robot_motion_command": 0,
+ "actual_robot_motion": 0,
+ "raw_register_write": 0,
+ "controller_state_mutation": 1,
+ "checks": [
+  {
+   "id": "P007D-R1-01",
+   "result": "PASS",
+   "note": "착수 전 94파일 매니페스트, 종료 직전 재비교. 변경 0 · 누락 0 · 추가 0",
+   "evidence": "logs/evidence_manifest_{before,after}.json"
+  },
+  {
+   "id": "P007D-R1-02",
+   "result": "PASS",
+   "note": "디스크 sha256 edfcae72… + 🔴 **런타임 egg** 3aba3583… 둘 다 일치. import 되는 파일을 실제로 검사했다",
+   "evidence": "source_integrity.json · command_log.json"
+  },
+  {
+   "id": "P007D-R1-03",
+   "result": "PASS",
+   "note": "배타적 제어 유지. APP·joystick·arm_driver·MoveIt 0. i2c-7 보유자가 P-007A-R1 승인 집합(OLED 0x3C · ros2 래퍼)뿐",
+   "evidence": "preflight.json · command_log.json"
+  },
+  {
+   "id": "P007D-R1-04",
+   "result": "PASS",
+   "note": "RGB baseline OFF 를 명령 직전 운영자 재확인. R2 사진과 연결",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "P007D-R1-05",
+   "result": "PASS",
+   "note": "RGB command 정확히 1회. 카운트를 호출 **앞**에서 집계(시도 기준)",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007D-R1-06",
+   "result": "PASS",
+   "note": "servo command 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007D-R1-07",
+   "result": "PASS",
+   "note": "torque mutation 0 · Button_Mode 0 · calibration/offset 0 · reset 0 · buzzer 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007D-R1-08",
+   "result": "PASS",
+   "note": "robot motion command 0",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007D-R1-09",
+   "result": "PASS",
+   "note": "실제 robot motion 0 — 운영자 '없었다'. servo buzz·기어음·부저 없음",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "P007D-R1-10",
+   "result": "PASS",
+   "note": "raw register write 0. 공식 Arm_RGB_set API 만 호출. 0x02 직접 쓰기 안 함",
+   "evidence": "command_plan.json"
+  },
+  {
+   "id": "P007D-R1-11",
+   "result": "PASS",
+   "note": "🔴 결과 의미를 RGB block-write 범위 이상으로 확대하지 않았다. SERVO_0x12_4B_ACCEPTANCE·SERVO_BUS_PROPAGATION 을 UNRESOLVED 로 명시",
+   "evidence": "result.json"
+  },
+  {
+   "id": "P007D-R1-12",
+   "result": "PASS",
+   "note": "판정 기준 A/A′/B/C 를 **관찰 전에** 고정. 발광 여부와 색을 분리 질의",
+   "evidence": "command_plan.json"
+  },
+  {
+   "id": "P007D-R1-13",
+   "result": "PASS",
+   "note": "🔴 C 판별을 stdout 캡처로 구현. bare except 때문에 예외만으로는 I2C 오류를 못 잡는다. library_stdout 공백 · i2c_error_printed false",
+   "evidence": "command_log.json"
+  },
+  {
+   "id": "P007D-R1-14",
+   "result": "PASS",
+   "note": "복구 OFF 명령 미발행. RGB ON 상태 그대로 기록",
+   "evidence": "result.json · command_log.json"
+  },
+  {
+   "id": "P007D-R1-15",
+   "result": "PASS",
+   "note": "원시 출력을 파싱 전에 파일로 보존(tee)",
+   "evidence": "logs/command_raw.txt"
+  }
+ ],
+ "summary": {
+  "total": 15,
+  "PASS": 15,
+  "FAIL": 0
+ }
+}

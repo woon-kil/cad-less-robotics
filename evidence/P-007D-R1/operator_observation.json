@@ -1,0 +1,30 @@
+{
+ "gate": "P-007D-R1",
+ "method": "Claude Code AskUserQuestion. 운영자 직접 관찰. Claude 가 추정하지 않았다.",
+ "before": {
+  "question": "좌상단 5050 패키지(큰 백색 사각)가 꺼져 있는가",
+  "answer": "꺼져 있다 (R2와 동일)",
+  "at": "명령 실행 직전",
+  "baseline_link": "evidence/P-007C-R2/board_led_observation.png"
+ },
+ "readiness": {
+  "answer": "준비됨 — 실행하세요",
+  "meaning": "5050 직시 중 + 전원 차단 접근 가능"
+ },
+ "after": {
+  "1_emission": {
+   "question": "5050 패키지가 발광하는가 (색은 따로 물음)",
+   "answer": "발광한다 — 켜졌다"
+  },
+  "2_color": {
+   "question": "색이 무엇인가",
+   "answer": "파랑",
+   "note": "의도값 (0,0,255) 그대로다. 펌웨어 채널 순서가 **RGB** 임이 부수적으로 확인됐다"
+  },
+  "3_motion_and_anomaly": {
+   "answer": "없었다",
+   "covers": "관절 움직임 · servo buzz · 기어음 · 부저 전부 없음"
+  }
+ },
+ "question_design_note": "발광 여부와 색을 **분리해서** 물었다. 채널 매핑이 미검증이라 색을 1차 기준으로 삼으면 A 를 오분류할 수 있어서다. 이 분리는 command_plan.json 에 관찰 전에 고정했다."
+}

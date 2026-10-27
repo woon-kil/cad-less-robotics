@@ -16,13 +16,13 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **DOFBOT 이 위치 명령에 응답하지 않는다** | `evidence/P-007B/acceptance.json` |
-| 최신 닫힌 게이트 | **P-007D `DIAGNOSIS PASS — COMMAND PATH VALID THROUGH HOST, FIRMWARE ACCEPTANCE UNRESOLVED` (D2)** | `evidence/P-007D/acceptance.json` |
+| 최신 닫힌 게이트 | **P-007D-R1 `CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED` (A)** | `evidence/P-007D-R1/acceptance.json` |
 | **게이트가 일으킨** 로봇 모션 | **0** | P-007A·A-R1·B·C·C-R1 `environment.json` 전부 `robot_moved_by_this_gate: 0` (실측 grep). ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **1회** (P-007B, ID2 152°, raw 1242) | `servo_position_writes` 가 P-007B 만 `1`, 나머지 게이트는 전부 `0` (실측 grep) |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | **H-C5 가 L4(펌웨어 수락) 이후로 국소화됨** — 호스트측 배제. H-C6.other `OPEN`, H-C2 `WEAKENED`, H-C6.learning_mode `ELIMINATED` | `evidence/P-007D/acceptance.json` |
+| 미해결 가설 | **H-C5 가 `0x12`/4B 서보 명령 고유 문제 또는 L5 이후로 더 좁혀짐.** block-write 전면 고장은 `ELIMINATED`. H-C6.other `OPEN`, H-C2 `WEAKENED` | `evidence/P-007D-R1/acceptance.json` |
 
 ## 게이트 현황
 
@@ -92,6 +92,13 @@
   - L1-L2 `VERIFIED` · L3 `SUPPORTED` · **L4-L5 `UNKNOWN`** · L6 `CONTRADICTED`
   - 🔴 **`write_i2c_block_data` 가 이 보드에서 수락된 사례 0건** — 7개 함수 중 1개만 실행됐고 그게 실패
   - I2C 0 · 모션 0 · mutation 0. SSH 파일 읽기 1회만(해시+cat, import 0)
+- [x] **P-007D-R1** RGB Block-Write 제어 실험 — **`CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED`** (A)
+  - 🔴 **이 프로젝트 최초의 컨트롤러 상태 변경.** `Arm_RGB_set(0,0,255)` 1회 → 5050 LED 소등→**파랑 점등**
+  - 예외 0 · `I2C error` 출력 0 · 로봇 모션 0 · servo command 0
+  - **`GLOBAL_BLOCK_WRITE_FAILURE = ELIMINATED`** — block-write 가 이 보드에서 물리 출력까지 도달한다
+  - 🔴 `SERVO_0x12_4B_ACCEPTANCE` · `SERVO_BUS_PROPAGATION` 은 **UNRESOLVED 유지** (RGB `0x02`/3B vs 서보 `0x12`/4B)
+  - 부수 획득: 펌웨어 채널 순서 **RGB** 확정 (공식 문서에 없던 사실)
+  - ⚠️ **RGB 가 파랑으로 켜진 채 남아 있다** — 복구 금지 조항. 아래 이월 위험 참조
 
 ## 🔴 다음 행동
 
@@ -99,18 +106,26 @@
 ~~2. ID2 수동 저항 확인~~ → **R3 완료. 토크 ON 쪽**
 ~~3. P-007D 로 H-C5 조사~~ → **완료. 호스트측 정상, L4 이후로 국소화**
 
-**남은 질문: 이 보드의 펌웨어가 `write_i2c_block_data` payload 를 수락하는가.**
+~~4. RGB block-write 실험으로 L4 시험~~ → **R1 완료. block-write 는 이 보드에서 작동한다**
 
-정적 분석은 여기서 끝이다 — 펌웨어는 소스 없는 STM8 바이너리이고, SMBus 쓰기는 ACK 만 받으면 예외를 내지 않는다.
+**남은 질문: `0x12`/4B 서보 명령만 수락되지 않는가, 아니면 L5(보드→서보 버스) 이후인가.**
 
-1. **RGB block-write control experiment** (P-007D 가 제안만 함, 미실행)
-   - 같은 주소 `0x15` · 같은 primitive 로 **서보를 움직이지 않고** L4 를 시험한다
-   - before 기준선 확보됨 — P-007C-R2 의 RGB 소등 사진
-   - 🔴 **한계**: RGB 3바이트 vs 서보 4바이트. 수락 실패가 길이·register 의존이면 보증되지 않는다
-   - ⚠️ controller state mutation + RGB 물리 출력 변화 → **별도 승인 게이트 필요**
-2. 기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
+🔴 **구조적 제약**: 설치 라이브러리의 block-write 7경로 중 **비모션은 RGB(3바이트) 하나뿐**이다. `0x12`/4B 수락 여부를 **모션 없이 가를 경로가 존재하지 않는다**.
+
+| 경로 | register/길이 | 모션 |
+| --- | --- | --- |
+| `Arm_RGB_set` | `0x02` / 3B | **없음 — 이미 사용** |
+| `Arm_serial_servo_write` | `0x12` / 4B | 있음 |
+| `write_any` | `0x19` / 5B · `0x17` / 4B | 있음 |
+| `write6` 계열 | `0x1E`→`0x1D` / 2→12B | 있음 |
+
+→ 다음 단계는 **모션을 수반하는 게이트**가 되거나, 라이브러리 밖(로직 애널라이저·i2c trace 등) 수단이 필요하다. 설계 승인이 선행돼야 한다.
+
+기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
+
+> 🔴 **R1 갱신 — 보드 상태가 바뀌었다.** 확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다(P-007D-R1, 복구 금지 조항). 이후 보드 LED 를 관찰할 때 **이 파랑은 우리가 켠 것**이다 — learning mode(breathing)도 `Arm_Clear_Action` 완료(녹색)도 아니다. **P-007C-R2 의 "RGB 소등" baseline 은 더 이상 유효하지 않다.**
 
 > R3 갱신: 토크가 **이미 켜져 있는** 쪽이 유력해져 "토크를 켜는 순간 래치된 target 으로 움직인다" 경로는 **약해졌다.** 🔴 제거되지는 않았다 — 토크 ON 은 `STRONGLY_SUPPORTED`이지 `VERIFIED`가 아니고, 컨트롤러가 target 을 보관하는지 자체가 미확인이다.
 
@@ -136,7 +151,8 @@
 | 7 | 2026-10-27 13:41~14:06 | P-007C-R1 재개·종료 · PROJECT-STATUS 신설 (세션 `cb876b8e`) | NO OFFICIAL EXPLANATION FOUND. R1-01~29 전부 PASS |
 | 8 | 2026-10-27 14:09~14:35 | P-007C-R2 육안 관찰 게이트 (세션 `cb876b8e`) | LEARNING MODE EXCLUDED. 6라운드 운영자 왕복 |
 | 9 | 2026-10-27 14:35~14:50 | P-007C-R3 수동 토크 관찰 (세션 `cb876b8e`) | TORQUE_ON_STRONGLY_SUPPORTED. H-C5 최우선 승격 |
-| 10 | 2026-10-27 14:50~ | P-007D 정적 진단 (세션 `cb876b8e`) | D2. 호스트측 VERIFIED, L4 이후 UNKNOWN |
+| 10 | 2026-10-27 14:50~14:57 | P-007D 정적 진단 (세션 `cb876b8e`) | D2. 호스트측 VERIFIED, L4 이후 UNKNOWN |
+| 11 | 2026-10-27 14:57~ | P-007D-R1 RGB 제어 실험 (세션 `cb876b8e`) | **A. 최초 상태 변경.** block-write 물리 출력 확인 |
 
 ## 운영 규칙 (이 프로젝트 고유)
 
