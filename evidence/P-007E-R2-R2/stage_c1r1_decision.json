@@ -1,0 +1,62 @@
+{
+  "gate": "P-007E-R2-R2",
+  "stage": "Stage C1-R1 — Stationary Sham Qualification (repaired harness)",
+  "base_commit": "64b32bc",
+  "dependency_chain": ["C1 @64b32bc X-INVALID", "C0-R1 @7e38158 ACQUISITION REPAIR PASS",
+                        "C0-R2 @acc59bd PIXEL FORMAT RECOVERY PASS", "C1-R1 (this gate)"],
+  "preregistration_sha256": "ed44663d9e52611f2dfc0db3f07eabc9b3de40fba88a56544b0e4057111faaff",
+  "harness_sha256": "91457a3529eaf90be4ba9db176060793885c17a7ab20cd555e8527070d249062",
+  "sha_verification": "로컬 ↔ Jetson 배치 위치 실측 둘 다 의뢰서 명시값과 바이트 단위 일치(5개 파일: harness+3 module+preregistration)",
+  "preflight": {
+    "negative_tests_rerun_at_deployment_location": "T0~T12 전부 PASS (self_ast_check pass, acquisition_module_check pass, preregistration match, module_sha match)",
+    "device_identity": "Orbbec DaBai DCW2 RGB Camera, serial CH8R3620170, /dev/video0",
+    "format_before": {"width": 640, "height": 480, "pixelformat": "MJPG"},
+    "video0_holders_before": "none",
+    "motion_capable_processes_before": [],
+    "env_guards_at_start": {"motion_capable_processes": [], "device_holders": [], "pass": true}
+  },
+  "execution": {
+    "opt_in": "P007E_R2R2_C1R1_ALLOW_CAPTURE=1 AND --run-sham (둘 다 충족)",
+    "N_sham_requested": 10, "N_sham_completed": 10, "M_frames_per_window": 60,
+    "manifest_status": "COMPLETED", "last_completed_trial": 9,
+    "elapsed_seconds": 926.97,
+    "harness_not_modified": "harness/module 파일을 결과를 보고 수정하지 않았다. 실행 전 SHA 검증 → 실행 → 집계까지 preregistered analysis.py 그대로 사용"
+  },
+  "format_invariant": {
+    "before_each_trial": "10/10 trial 전부 match=true",
+    "after_each_trial": "10/10 trial 전부 match=true",
+    "post_experiment_readonly_check": {"width": 640, "height": 480, "pixelformat": "MJPG"}
+  },
+  "camera_controls": {
+    "method": "v4l2-ctl --list-ctrls 읽기전용, C1-R1 종료 후 vs C0-R2 baseline 비교",
+    "result": "C1R1_POST_CONTROLS_MATCH_C0R2_BASELINE=true — 전부 동일(diff 확인)",
+    "real_device_S_FMT_during_run": 0, "camera_control_writes_during_run": 0
+  },
+  "trial_summary": "evidence/P-007E-R2-R2/c1r1_run1/trial_summary_table.json 참조 — 10/10 VALID, dropout 0, features 353~375, matches 272~285, inliers 247~260, inlier_ratio 0.897~0.925, residual_rms 0.44~0.48px, brightness_delta -0.07~-0.006, frame_interval_median≈0.729s(robust_sd≈0.0003s — 0.25s 목표 페이싱보다 실제 캡처 왕복시간이 더 길어 그것이 실제 간격을 지배함)",
+  "aggregate": "evidence/P-007E-R2-R2/c1r1_run1/aggregate_classify_run.json (preregistered analysis.classify_run, K=5, sigma_floor_trans=0.70px, sigma_floor_rot=0.060°) 그대로 사용 — 판정 로직 수정 0",
+  "noise_metrics": {
+    "robust_sigma_tx_px": 0.010886792390608153, "robust_sigma_ty_px": 0.015955163901437263,
+    "robust_sigma_rot_deg": 0.0018802184014959206,
+    "note": "robust_sd 가 sigma_floor(0.70px/0.060°) 보다 작아 publication threshold 는 floor 값으로 결정됨(σ_eff=max(σ_rob,σ_floor))"
+  },
+  "publication_thresholds": {"sigma_tx_px": 0.7, "sigma_ty_px": 0.7, "sigma_rot_deg": 0.06,
+                             "thr_tx_px": 3.5, "thr_ty_px": 3.5, "thr_norm_px": 4.949747468305833,
+                             "thr_rot_deg": 0.3, "K": 5, "n_contributing_trials": 10},
+  "false_positive_count": 0, "false_positive_rate": 0.0,
+  "feature_dropout_rate": 0.0, "invalid_trial_rate": 0.0,
+  "q4_photometric_correlation": {"n_pairs": 1200, "abs_spearman_rho": 0.03279557903570768,
+                                 "below_q4_threshold_0.7": true},
+  "🔴_21px_prediction": "PREDICTION ONLY. threshold 계산에 사용하지 않았다. Q1 결과가 '21px 물리 모션 검증됨'을 의미하지 않는다 — C1-R1 에는 실제 robot motion 이 없다",
+  "physical_sensitivity_claimed": "NONE — 이 gate는 정지 상태 노이즈/오탐/dropout/광도안정성만 측정했다",
+  "command_budget": {
+    "servo_reads": 0, "servo_writes": 0, "motion_capable_commands": 0, "torque_writes": 0,
+    "RGB_writes": 0, "raw_I2C": 0, "robot_controller_access": 0,
+    "experiment_generated_motion_commands": 0, "physical_robot_motion_observation": "NOT_OBSERVED",
+    "ROS_launches": 0, "ros2_CLI": 0, "real_device_S_FMT": 0, "camera_control_writes": 0,
+    "DaBai_physical_moves": 0, "Gemini_physical_moves": 0
+  },
+  "prior_evidence_changed": 0,
+  "unexpected_events": "없음 — SIGNAL/크래시/SHA불일치/format위반/예상밖 control변화/evidence저장실패 전부 미발생",
+  "🔴 verdict": "P-007E-R2-R2 STAGE C1-R1 — Q1 OBSERVATION CHANNEL QUALIFIED / 10/10 VALID / 0 FALSE POSITIVE / NO ROBOT MOTION",
+  "next_action": "검수자가 noise/LOO/dropout/photometric/threshold 를 확인한 뒤에만 후속 physical-motion observation gate 를 연다. 이 세션은 여기서 STOP — 다음 robot motion 실험 자동 실행 안 함"
+}

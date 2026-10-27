@@ -1,0 +1,32 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1-R1",
+ "base_commit": "64b32bc",
+ "preregistration_commit": "<set at commit time>",
+ "harness_sha256": "91457a3529eaf90be4ba9db176060793885c17a7ab20cd555e8527070d249062",
+ "acquisition_sha256": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+ "measurement_sha256": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+ "analysis_sha256": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+ "expected_device_identity": {
+  "path": "/dev/video0",
+  "width": 640,
+  "height": 480,
+  "pixelformat": "MJPG"
+ },
+ "expected_format": {
+  "path": "/dev/video0",
+  "width": 640,
+  "height": 480,
+  "pixelformat": "MJPG"
+ },
+ "roi_sha256": "b90e2d346b65f8fbd9ddab5ca987e0da813f3d82c968079f8712c3ed73eb357f",
+ "env_guards_at_start": {
+  "motion_capable_processes": [],
+  "device_holders": [],
+  "pass": true
+ },
+ "status": "COMPLETED",
+ "started_at": 1793135815.8068545,
+ "last_completed_trial": 9,
+ "updated_at": 1793136742.7790377
+}

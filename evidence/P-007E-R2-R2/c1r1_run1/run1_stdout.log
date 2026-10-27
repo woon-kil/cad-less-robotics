@@ -1,0 +1,107 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "C1-R1",
+ "argv": [
+  "--run-sham",
+  "--run-root",
+  "/home/jetson/p007e_r2r2_c1r1/run1"
+ ],
+ "self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "atexit",
+   "cv2",
+   "hashlib",
+   "importlib",
+   "json",
+   "numpy",
+   "os",
+   "p007e_r2r2_acquisition",
+   "p007e_r2r2_measurement",
+   "signal",
+   "subprocess",
+   "sys",
+   "time"
+  ],
+  "forbidden_imports_found": [],
+  "i2c_string_refs": [],
+  "video_capture_refs": [],
+  "pass": true
+ },
+ "acquisition_module_check": {
+  "path": "/home/jetson/p007e_r2r2_c1r1/scripts/p007e_r2r2_acquisition.py",
+  "sha256": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+  "subprocess_call_sites": [
+   {
+    "function": "_run_v4l2ctl",
+    "guarded_by_assert_safe_argv": true
+   }
+  ],
+  "single_entry_point": true,
+  "entry_point_is__run_v4l2ctl": true,
+  "all_sites_guarded": true,
+  "pass": true
+ },
+ "preregistration": {
+  "path": "evidence/P-007E-R2-R2/stage_c1r1_preregistration.json",
+  "expected_sha256": "ed44663d9e52611f2dfc0db3f07eabc9b3de40fba88a56544b0e4057111faaff",
+  "actual_sha256": "ed44663d9e52611f2dfc0db3f07eabc9b3de40fba88a56544b0e4057111faaff",
+  "match": true
+ },
+ "module_sha_check": {
+  "scripts/p007e_r2r2_acquisition.py": {
+   "expected": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+   "actual": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+   "match": true
+  },
+  "scripts/p007e_r2r2_measurement.py": {
+   "expected": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+   "actual": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+   "match": true
+  },
+  "scripts/p007e_r2r2_analysis.py": {
+   "expected": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+   "actual": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+   "match": true
+  }
+ },
+ "capture_opt_in": {
+  "env_P007E_R2R2_C1R1_ALLOW_CAPTURE": "1",
+  "flag_run_sham": true,
+  "granted": true
+ },
+ "run_result": {
+  "gate": "P-007E-R2-R2",
+  "stage": "C1-R1",
+  "base_commit": "64b32bc",
+  "preregistration_commit": "<set at commit time>",
+  "harness_sha256": "91457a3529eaf90be4ba9db176060793885c17a7ab20cd555e8527070d249062",
+  "acquisition_sha256": "dc4cf383d61ddfd96fb322a5bd8522ecb9cb97b9e3c636592f9d2b4f0e7400e1",
+  "measurement_sha256": "024b7b9d3d6a37aca79afe90b2fa65ced6f5885c89fdbd82b85b1c776b7d526c",
+  "analysis_sha256": "fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f",
+  "expected_device_identity": {
+   "path": "/dev/video0",
+   "width": 640,
+   "height": 480,
+   "pixelformat": "MJPG"
+  },
+  "expected_format": {
+   "path": "/dev/video0",
+   "width": 640,
+   "height": 480,
+   "pixelformat": "MJPG"
+  },
+  "roi_sha256": "b90e2d346b65f8fbd9ddab5ca987e0da813f3d82c968079f8712c3ed73eb357f",
+  "env_guards_at_start": {
+   "motion_capable_processes": [],
+   "device_holders": [],
+   "pass": true
+  },
+  "status": "COMPLETED",
+  "started_at": 1793135815.8068545,
+  "last_completed_trial": 9,
+  "updated_at": 1793136742.7790377
+ },
+ "stop": "SHAM_COMPLETE_OR_ABORTED — 결과는 run_result 참조"
+}

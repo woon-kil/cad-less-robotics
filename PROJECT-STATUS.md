@@ -17,7 +17,7 @@
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 진행 중 게이트 | **P-007E-R2-R2** · Stage A/B/C0/C1/C0-R1 CLOSED · **Stage C0-R2 `PIXEL FORMAT RECOVERED TO MJPG / CONTROLS UNCHANGED`** — `/dev/video0` 는 MJPG 640×480 로 복구됨. 🔴 **C1-R1 stationary sham 실행은 검수 승인 대기 중** | `evidence/P-007E-R2-R2/stage_c0r2_decision.json` |
+| 진행 중 게이트 | **P-007E-R2-R2** · Stage A/B/C0/C1/C0-R1/C0-R2 CLOSED · **Stage C1-R1 `Q1 — OBSERVATION CHANNEL QUALIFIED`** — 10/10 VALID, false positive 0/10, dropout 0. 🔴 **다음 physical-motion observation gate 는 검수 승인 전까지 열지 않음** | `evidence/P-007E-R2-R2/stage_c1r1_decision.json` |
 | 선행 게이트 | P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP` — Gemini 고정 포즈로는 팔이 화각에 없다 | `evidence/P-007E-R2/stage1_fov.json` |
 | 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
@@ -255,6 +255,18 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - `evidence/P-007E-R2-R2/stage_c0r2_decision.json` + `c0r2_controls_before.txt`/`c0r2_controls_after.txt`
   - 이제 `stage_c1r1_preregistration.json` 의 `expected_device.pixelformat=MJPG` 가 실측 상태와 일치. **C1-R1 stationary sham 은 이 gate 범위 밖 — 검수 승인 대기**
 
+- [x] **P-007E-R2-R2 Stage C1-R1** Stationary Sham Qualification (repaired harness, 첫 성공한 실캡처) — **`Q1 — OBSERVATION CHANNEL QUALIFIED`**
+  - 실행 전 SHA 재검증: harness+acquisition+measurement+analysis+preregistration **5개 파일 모두** 로컬↔Jetson 배치 위치 실측이 의뢰서 명시값과 바이트 단위 일치. 배치 위치에서 T0~T12 재확인 전부 PASS 후 캡처 진입
+  - `P007E_R2R2_C1R1_ALLOW_CAPTURE=1` + `--run-sham` 이중 opt-in. N_sham=10, M=60 완주(`manifest.status=COMPLETED`, `last_completed_trial=9`), 소요 약 15분
+  - format invariant: 10 trial 전부 before/after match=true(MJPG 640×480 유지), 실험 종료 후 read-only 재확인도 MJPG 640×480. camera controls 종료 후 비교 결과 C0-R2 baseline과 **완전 동일**(diff 확인) — real-device S_FMT=0, camera control write=0
+  - trial 결과: **10/10 VALID, dropout 0**. features 353~375 · matches 272~285 · inliers 247~260 · inlier_ratio 0.897~0.925 · residual_rms 0.44~0.48px(가드 1.50px 이내) · brightness_delta -0.07~-0.006(안정) · frame_interval_median≈0.729s(robust_sd≈0.0003s — 0.25s 목표 페이싱보다 v4l2-ctl subprocess 캡처 왕복시간이 실제 간격을 지배)
+  - 집계는 **preregistered `analysis.py` classify_run 그대로** 사용(판정 로직 0 수정): robust_sigma_tx=0.0109px/ty=0.0160px/rot=0.00188° — 전부 sigma_floor(0.70px/0.060°) 이하라 **publication threshold 는 floor 로 결정**(thr_norm=4.95px, thr_rot=0.3°, K=5). LOO false_positive_count=0/10(rate 0.0), feature_dropout_rate=0.0, invalid_trial_rate=0.0, Q4 photometric `|ρ|=0.033`(0.7 미달)
+  - 🔴 ~21px prediction은 이번에도 PREDICTION ONLY — threshold 계산에 미사용, Q1 결과가 "물리 모션 검증됨"을 의미하지 않음. **이 gate에 실제 robot motion 없음**
+  - command budget 전부 목표치 충족: servo/Arm_Lib/ROS/raw I2C/robot controller access/모션가능명령 전부 0, `experiment_generated_motion_commands=0`, `physical_robot_motion_observation=NOT_OBSERVED`(독립 관측 채널 없음 — 소프트웨어 가드 정상과 물리적 비이동 확인을 혼동하지 않음), DaBai/Gemini 물리 이동 0
+  - 예상 밖 사건(SIGNAL/크래시/SHA불일치/format위반/control변화/저장실패) 전부 미발생. 기존 evidence 수정 0
+  - `evidence/P-007E-R2-R2/stage_c1r1_decision.json` + `c1r1_run1/`(manifest·10 trial JSON·20 anchor frame·aggregate_classify_run.json·trial_summary_table.json·post_experiment_readonly_check.txt)
+  - **검수자가 noise/LOO/dropout/photometric/threshold 를 확인한 뒤에만 다음 physical-motion observation gate 가 열린다. 이번 세션은 여기서 STOP**
+
 ## 🔴 다음 행동
 
 ~~1. RGB breathing 육안 확인~~ → **R2 완료. learning mode 배제**
@@ -402,6 +414,7 @@ operator channel        realtime visual observation
 | 18 | 23:47~23:53 KST (Jetson +0800 22:47:38~22:53 → +1h 환산) · 보고 커밋 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C1** 최초 실캡처 — 10 trial 완주했으나 저장 직전 크래시 | `X — OBSERVATION INVALID` — 이 단계가 보낸 로봇 명령 0, 데이터 전량 소실
 | 19 | 2026-10-28 (세션 `66eb4937`, 커밋 `6f9b9c5`) | **P-007E-R2-R2 Stage C0-R1** acquisition harness repair & re-preregistration — 카메라 기동 0, 2라운드 자체검증 반영 | `ACQUISITION REPAIR PASS / C1-R1 RE-PREREGISTERED`
 | 20 | 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C0-R2** DaBai pixel-format baseline recovery — 승인된 S_FMT 1회, capture 0 | `PIXEL FORMAT RECOVERED TO MJPG 640x480 / CONTROLS UNCHANGED`
+| 21 | 2026-10-28 (세션 `66eb4937`) | **P-007E-R2-R2 Stage C1-R1** stationary sham 첫 성공 실캡처, N=10/M=60 | `Q1 — OBSERVATION CHANNEL QUALIFIED` — 10/10 VALID, false positive 0, dropout 0, robot motion 0
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
