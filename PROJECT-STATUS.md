@@ -16,7 +16,8 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — EVIDENCE PASS / EXPERIMENTAL OBSERVATION INVALID / A-C NOT DISCRIMINATED / CLOSED @ a28e41e`** | `evidence/P-007E-R1/phase_b_acceptance.json` (검수 종결) |
+| 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
+| 진행 중 게이트 | **P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP`** — 운영자 결정 대기 | `evidence/P-007E-R2/stage1_fov.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **2회** (P-007B · P-007E-R1 Phase B — 둘 다 ID2 152°, raw 1242) | P-007B `servo_position_writes: 1` · P-007E-R1 `phase_b_acceptance.json servo_writes: 1`. 나머지 게이트는 전부 `0` |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
@@ -169,6 +170,14 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
     - 🔴 **readback 150 → 152** (5라운드 전부, None 0) — P-007B 는 같은 명령에서 150 불변이었다
     - 🔴 **물리 모션 `UNOBSERVED`** — 운영자가 명령 시각에 자리에 없었다. 사후 사진 비교는 "5mm 판별 불가"로 철회
     - 🔴 `TIMING HYPOTHESIS STRONGLY SUPPORTED` · `NOT SUPPORTED` · `ROOT CAUSE VERIFIED` 어느 것도 쓰지 않는다
+- [ ] **P-007E-R2** Independent Physical Observation System Qualification — Stage 1 **`TARGET_NOT_DETECTED / STOP`**
+  - 승인 범위 (A): 설계 + **motion 0 실증**. command budget 전 항목 0 고정
+  - 카메라 컨테이너가 stale USB 노드를 가리켜 장치 미노출 → `run_humble_camera.sh` 로 재생성(해시 대조 후)
+  - 1 unit sanity: color 1280x720 `fx=610.51` · depth 848x480 `fx=410.41` · 프레임 1.94 MB · 인코딩 0.103 s
+  - sham 부하 추산 600프레임 = **1166 MB / 61.8 s** → 전프레임 PNG 대신 ROI crop 저장이 맞다(미실행)
+  - 🔴 **FOV 1프레임에 DOFBOT 구조물이 없다.** P-006C 고정 포즈는 **작업면**을 본다 — 팔을 보도록 놓인 적이 없다
+  - 🔴 Jetson 접속 0 · I2C 접근 0 · robot motion 0. 드라이버 정지·임시물 삭제로 원복
+  - 다음은 운영자 물리 결정 — 카메라 재배치(P-006C 고정 전제 파기) / 관측 장치 추가 / `OBSERVATION QUALIFICATION BLOCKED`
 
 ## 🔴 다음 행동
 
@@ -220,7 +229,7 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 2. **baseline stale** — `STALE / DO NOT EXECUTE` 3종 표시 완료. 🔴 152→150 복귀 명령은 새로운 physical experiment 이므로 보내지 않는다
 3. **readback 명칭** — `controller-reported servo position`. H1/H2/H3 열림. 다음은 또 다른 +2° 반복이 아니라 **readback ↔ physical pose correspondence** 검증이다
 
-### P-007E-R2 — 목표는 하나
+### P-007E-R2 — 목표는 하나 (🔴 Stage 1 에서 `TARGET_NOT_DETECTED` 로 멈춤)
 
 > **다음 단 한 번의 motion command 가 발생할 때 controller readback 과 independent physical measurement 를 동시에 확보할 방법을 설계한다.**
 
