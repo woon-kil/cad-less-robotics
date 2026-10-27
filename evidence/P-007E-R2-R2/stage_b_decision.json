@@ -2,15 +2,20 @@
  "gate": "P-007E-R2-R2",
  "stage": "B — Passive UVC Observation Qualification",
  "approved_path": "B — Direct UVC (ROS graph 미생성). 검수 결정 2026-10-27",
- "sequence_executed": ["B0 inherited i2c fd classification", "B1 operator visual provenance",
-                       "B2 UVC capability enumeration", "B3 single-frame passive capture", "B4 FOV inspection"],
+ "sequence_executed": [
+  "B0 inherited i2c fd classification",
+  "B1 operator visual provenance",
+  "B2 UVC capability enumeration",
+  "B3 single-frame passive capture",
+  "B4 FOV inspection"
+ ],
  "🔴 verdict": "FOV_PASS",
  "verdict_vocabulary_used": "FOV_PASS / TARGET-SCENE_INADEQUATE / CAPTURE_BLOCKED / SAFETY_ASSUMPTION_VIOLATED 중 FOV_PASS",
  "per_step": {
   "B0": "INHERITED DESCRIPTOR ONLY (3091/3092) + 🔴 ACTIVE NON-SERVO I2C BUS USER (2264 OLED). b0_i2c_fd_classification.json",
-  "B1": "mounted on distal structure = YES · independent articulated camera axis = NO — 예상된 올바른 상태",
+  "B1": "mounted on distal structure = YES · independent articulated camera axis = NO — 예상된 올바른 상태. `b1_operator_provenance.json`",
   "B2": "RGB capture node = /dev/video0 (video1 은 Metadata Capture 전용). 추측 아님",
-  "B3": "1 frame · 44208 B · JPEG · 가드 전후 클린 · Jetson 잔존물 0",
+  "B3": "dequeued/saved 1 frame · 44208 B · 가드 전후 클린 · Jetson 잔존물 0 (센서가 흘린 프레임 수는 미측정)",
   "B4": "정적 외부 장면이 충분히 보인다. 코너 3481(강 917) · 타일 커버리지 76% · 네 사분면 모두 비지 않음"
  },
  "🔴 safety_assumption_status": {
@@ -29,7 +34,9 @@
   "경로 B 는 RGB only · intrinsics 표준 경로 없음 → pixel 영역 분석으로 한정된다",
   "FOV 는 현재 팔 자세에 종속된다 (eye-in-hand 의 본질)",
   "Jetson 디스크 여유 9.3G (86%)",
-  "🔴 OLED 프로세스가 /dev/i2c-7 을 주기적으로 탐색한다 — 다음 motion gate 의 quiet interval 정의에 영향"
+  "🔴 OLED 프로세스가 /dev/i2c-7 을 주기적으로 탐색한다 — 다음 motion gate 의 quiet interval 정의에 영향",
+  "🔴 **ROI 에서 로봇 부착 화소를 마스킹한다.** 프레임 하단 중앙의 어두운 덩어리가 Arm5·그리퍼일 수 있다. eye-in-hand 에서 로봇에 붙은 화소는 ID2 가 돌 때 카메라와 함께 움직여 **화면상 정지로 보이고**, 반대로 ID5·ID6 이 움직이면 **거짓 모션**이 된다. 둘 다 ego-motion 추정을 오염시킨다"
  ],
- "stop": "B4 까지 수행하고 STOP. Stage C(stationary sham · noise floor · ego-motion detectability)는 검수 승인 전 진행하지 않는다"
+ "stop": "B4 까지 수행하고 STOP. Stage C(stationary sham · noise floor · ego-motion detectability)는 검수 승인 전 진행하지 않는다",
+ "stage_A_files_untouched": "🔴 Stage A 는 `CLOSED @ 3579ab5` 다. Stage B 는 Stage A 파일을 수정하지 않고 새 파일로만 기록했다 (`b0_*`, `b1_*`, `b2_*`, `b3_b4_*`, `stage_b_*`, `README_stage_b.md`)"
 }

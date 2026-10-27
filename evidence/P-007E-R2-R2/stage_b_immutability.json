@@ -1,0 +1,31 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "B",
+ "prior_gates": {
+  "gates_checked": 12,
+  "command": "git diff --exit-code b576dbe HEAD -- <12 게이트>",
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "🔴 stage_A_closed_files": {
+  "why": "검수자가 Stage A 를 `CLOSED @ 3579ab5` 로 닫았다. Stage B 는 그 파일을 고치지 않는다",
+  "command": "git diff --exit-code 3579ab5 -- <Stage A 파일 12종, 작업트리 기준>",
+  "files": [
+   "evidence/P-007E-R2-R2/README.md",
+   "evidence/P-007E-R2-R2/static_audit.json",
+   "evidence/P-007E-R2-R2/launch_closure.json",
+   "evidence/P-007E-R2-R2/install_integrity.json",
+   "evidence/P-007E-R2-R2/indirect_path_risk.json",
+   "evidence/P-007E-R2-R2/mounting_provenance.json",
+   "evidence/P-007E-R2-R2/candidate_paths.json",
+   "evidence/P-007E-R2-R2/startup_proposal.json",
+   "evidence/P-007E-R2-R2/decision.json",
+   "evidence/P-007E-R2-R2/command_budget.json",
+   "evidence/P-007E-R2-R2/evidence_immutability.json",
+   "evidence/P-007E-R2-R2/logs/static_audit_raw.txt"
+  ],
+  "exit_code": 0,
+  "result": "PASS"
+ },
+ "r1_evidence": "🔴 `evidence/P-007E-R1/dryrun.json` 의 `exclusive_control_violations: []` 는 B0 의 새 사실에도 불구하고 수정하지 않았다"
+}

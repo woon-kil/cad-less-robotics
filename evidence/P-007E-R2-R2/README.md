@@ -1,7 +1,4 @@
-# P-007E-R2-R2 — DaBai Passive Observation Path Qualification
-
-- **Stage A** 정적 코드 감사 — `STATIC SAFETY AUDIT PASS / CLOSED @ 3579ab5`
-- **Stage B** Passive UVC Observation Qualification — **`FOV_PASS`**
+# P-007E-R2-R2 — DaBai Passive Observation Path Qualification / Stage A: 정적 코드 감사
 
 `P-007E-R2-R1 — CANDIDATE FOUND / PHYSICAL SETUP REQUIRED / PASS / CLOSED @ b576dbe` 종결 후,
 검수 결정에 따라 우선순위가 바뀌었다.
@@ -67,45 +64,3 @@ raw 로그: `logs/static_audit_raw.txt` (168행, 읽기 전용 스크립트 1회
 ## 🔴 불변성 서술 주의
 
 baseline 으로 쓴 sha 맵(R2-R1, 161파일)에는 **R2-R1 자신의 6파일이 없다.** 그 6파일의 `changed 0` 은 비교 대상이 없어 자동으로 나온 값이다. R2-R1 산출물까지 실제로 검증한 근거는 커밋 대조(`git diff --exit-code b576dbe HEAD -- <12 게이트>` → exit 0)이다.
-
----
-
-# Stage B — Passive UVC Observation Qualification
-
-검수 결정으로 **경로 B(Direct UVC)** 가 선택됐다. ROS 그래프를 격리하는 것이 아니라
-`camera topic → color_follow → TargetAngle → arm_driver → Arm_serial_servo_write` 경로를
-**구조적으로 제거**한다.
-
-## 판정
-
-```
-FOV_PASS
-```
-
-| 단계 | 결과 | 파일 |
-|---|---|---|
-| B0 상속 i2c fd 분류 | 3091/3092 = INHERITED DESCRIPTOR ONLY · 🔴 2264(OLED) = **ACTIVE NON-SERVO I2C BUS USER** | `b0_i2c_fd_classification.json` |
-| B1 운영자 육안 provenance | mounted on distal structure = **YES** · independent articulated axis = **NO** | `mounting_provenance.json` (P4) |
-| B2 UVC capability 열거 | RGB capture node = **`/dev/video0`** (video1 은 Metadata 전용) | `b2_uvc_enumeration.json` |
-| B3 단일 프레임 캡처 | 1 frame · 44,208 B · JPEG · 가드 전후 클린 · Jetson 잔존물 0 | `b3_b4_fov.json` |
-| B4 FOV 판정 | 코너 3,481(강 917) · 32×32 타일 커버리지 76% · 네 사분면 모두 비지 않음 | `b3_b4_fov.json` · `logs/b4_feature_availability.png` |
-
-🔴 **eye-in-hand 에서는 Arm3~gripper 가 화면에 보일 필요가 없다.** 필요한 것은
-**로봇과 독립적으로 고정된 외부 장면**이고, 그것이 충분히 들어와 있다.
-
-## Stage B 에서 쓴 예산
-
-```
-camera captures          = 1   (MAX 1 frame 승인분. warm-up skip 0 · S_FMT 0)
-UVC enumeration          = YES (설정 변경 0)
-ros2 CLI · Arm_Lib · I2C · servo read/write · torque · RGB write · robot motion = 전부 0
-camera/robot 물리 이동    = 0
-Jetson 임시파일           = 1 생성 → 1 삭제 → 잔존 0
-```
-
-## 🔴 Stage B 가 드러낸 별건 — 배타적 제어 가정
-
-`yahboom_oled.py` 가 `__BUS_LIST = [1, 0, 7, 8]` 을 영구 순환 탐색한다. **7 번이 로봇 버스다.**
-Stage B 의 행위 때문이 아니라 **이전부터 그랬던 상태**다. 상태 명칭은
-`EXCLUSIVE CONTROL ASSUMPTION — REOPENED FOR CLASSIFICATION`.
-P-007E-R1 의 `exclusive_control_violations: []` 는 **수정하지 않았다.**

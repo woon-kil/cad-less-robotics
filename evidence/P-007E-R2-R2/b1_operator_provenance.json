@@ -1,0 +1,18 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "B1 — operator visual provenance (P4)",
+ "🔴 note": "Stage A 의 `mounting_provenance.json` 은 `CLOSED @ 3579ab5` 시점 기록이므로 **수정하지 않는다**. 그 파일의 P4 는 `NOT YET OBTAINED` 상태 그대로 둔다. 이 파일이 P4 의 확보분이다",
+ "questions_asked": [
+  {"q": "DaBai 가 DOFBOT 팔의 원위 구조(Arm4 부근)에 실제로 장착되어 있는가",
+   "a": "YES — 팔에 장착됨"},
+  {"q": "카메라와 팔 사이에 별도의 능동 관절/가동축(틸트·팬 기구, 꺾이는 힌지)이 눈에 보이는가",
+   "a": "NO — 보이지 않는다"}
+ ],
+ "expected_correct_state": {"mounted_on_distal_structure": "YES", "independent_articulated_camera_axis": "NO"},
+ "matches_expected": true,
+ "method": "🔴 육안 관찰만. 손으로 흔들기 · 체결 확인 · 자세 변경 · 케이블 당기기 **0**. 로봇 명령 0",
+ "why_no_contact": "토크 상태가 불명확한 팔은 접촉으로 움직일 수 있다 (P-007C-R3: TORQUE_ON_STRONGLY_SUPPORTED)",
+ "evidence_level": "OPERATOR_VISUAL_OBSERVATION",
+ "🔴 what_this_does_not_prove": "정밀 rigidity · 강성 · extrinsic 정확도를 증명하지 않는다. URDF 의 fixed joint provenance(P1)와 액추에이터 대차대조(P2)와 mesh 자산(P3)을 **물리 관측으로 보강**할 뿐이다",
+ "combined_sufficiency": "P1(URDF type=fixed) + P2(revolute 6개 = 서보 ID1~6, 카메라용 액추에이터 없음) + P3(mesh) + P4(육안) 네 층이 일치한다. 측정 모델이 요구하는 전제는 이 수준이면 충분하다"
+}

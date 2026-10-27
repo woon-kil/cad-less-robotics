@@ -11,9 +11,10 @@
    "i2c_transaction": "관측 증거 없음 — dash 셸과 `ros2` CLI 래퍼다. pos 가 0 이고 I2C 코드 경로가 없다",
    "servo_command_capability": "NO — Arm_Lib 인스턴스가 없다. 3092 의 fd 4 는 `Arm_Lib-1.0.3-py3.10.egg` **파일**(zipimport 가 sys.path 항목을 연 것)이고 Arm_Device() 생성이 아니다",
    "classification": "INHERITED DESCRIPTOR ONLY",
-   "🔴 provenance": "3091 의 ppid 는 1400 = `/lib/systemd/systemd --user` 이고 systemd 는 i2c fd 를 0개 보유한다. 즉 **원래의 부모가 이미 종료돼 재부모화(re-parenting)된 것**이다. stdio 가 `/dev/pts/0` 인 점과 fd 번호가 11 인 점을 함께 보면, /dev/i2c-7 을 열어둔 터미널 세션(=Arm_Lib 핸들을 가진 프로세스)이 `sh -c ros2 run …` 을 띄우고 fd 를 닫지 않은 채 사라진 형태다",
+   "🔴 provenance": "🔴 **추론이 아니라 선행 게이트 기록으로 뒷받침된다.** P-007A-R1 `process_dependency_map.json` 은 `YahboomArm.pyc`(PID 3022)를 `CONTROL_WRITER + Flask 6500 · servo_write: true` 로 기록했고, `acceptance.json` 은 체인을 `YahboomArm→ros2 run→kinematics` 로 적었다. 3091 의 시작 시각은 `Mon Oct 26 17:08:36 2026` 으로 **P-007A-R1 의 autostart 격리(2026-10-27 08:53)보다 앞선다**. 즉 Arm_Device() 를 연 YahboomArm 이 `sh -c ros2 run …` 을 띄웠고, O_CLOEXEC 없이 열린 /dev/i2c-7 fd 가 상속됐다. 3022 가 격리 때 종료되면서 3091 이 `systemd --user`(1400)로 재부모화됐다. stdio 가 `/dev/pts/0` 인 점과도 일치한다",
    "start": "Mon Oct 26 17:08:36 2026 (ps lstart) — fd 심볼릭링크의 `Jul 16 17:01` 은 날짜로 읽지 않는다(부팅 직후 NTP 동기화 전 시계 값으로 보인다)",
-   "actual_node": "PID 3103 `kinemarics_dofbot` — i2c fd **0개**. 소켓·fastrtps 공유메모리·로그만 보유한다"
+   "actual_node": "PID 3103 `kinemarics_dofbot` — i2c fd **0개**. 소켓·fastrtps 공유메모리·로그만 보유한다",
+   "prior_record": "P-007A-R1 `i2c_after.json fd_holders` 에 이미 3091·3092 가 각각 `i2c_fd_count: 1` 로 기록돼 있었다. 🔴 다만 **어느 버스인지**는 기록되지 않았다"
   },
   {
    "pid": "2264 (python3 yahboom_oled.py)",
@@ -27,13 +28,14 @@
     "main_program():  state = self.begin() 를 매 호출마다 수행",
     "__main__:  while True: main_program(); time.sleep(1)",
     "Adafruit_SSD1306/SSD1306.py:30  SSD1306_I2C_ADDRESS = 0x3C",
-    "🔴 추론: 장치 open 은 성공한다(fd 가 실제로 보인다). 그런데도 except 로 떨어져 버스를 회전한다 → 예외는 open 이후 단계에서 난다 → **버스 7 에 0x3C 를 향한 트랜잭션이 시도된다**"
+    "🔴 라이브러리 경로도 인용으로 확정: Adafruit_SSD1306/SSD1306.py:109 `self._i2c = I2C.get_i2c_device(i2c_address, busnum=i2c_bus)` · :142 `def begin(...)` → `self.reset()` → `self._initialize()` → `self.command(SSD1306_DISPLAYON)` · :152-155 `def reset(): if self._rst is None: return` (호출자가 rst=None 이므로 즉시 반환) · :129 `self._i2c.write8(control, c)` — 즉 begin() 은 **반드시** 지정된 버스의 0x3C 에 write8 까지 간다. open 은 성공하는데도 except 로 떨어져 버스를 회전하므로, 예외는 이 write8 계열에서 난다"
    ],
    "period": "코드상 1 회전/약 1 s, 버스 7 은 4 회전마다 ≈ 약 4 s 주기. 🔴 정확한 트랜잭션 레이트는 버스 분석기 없이는 단정하지 않는다",
    "target_address": "0x3C (OLED). 로봇 확장보드는 0x15 다",
    "servo_command_capability": "NO — Arm_Lib 미사용 · 0x15 접근 코드 없음 · register 0x12 쓰기 없음",
    "classification": "🔴 ACTIVE NON-SERVO I2C BUS USER ON THE ROBOT BUS",
-   "why_it_probes": "OLED 가 어느 버스에서도 발견되지 않아 `[1, 0, 7, 8]` 을 영구 순환 탐색 중이다. /dev/i2c-8 은 존재하지도 않는다(존재 노드: 0,1,2,4,5,7,9,10,11)"
+   "why_it_probes": "OLED 가 어느 버스에서도 발견되지 않아 `[1, 0, 7, 8]` 을 영구 순환 탐색 중이다. /dev/i2c-8 은 존재하지도 않는다(존재 노드: 0,1,2,4,5,7,9,10,11)",
+   "prior_record": "🔴 P-007A-R1 `process_dependency_map.json` 은 이미 2264 를 `NON_SERVO_I2C_CLIENT` 로 분류하고 `__BUS_LIST=[1,0,7,8]` 과 `SSD1306_I2C_ADDRESS=0x3C` 까지 적어두었다. `i2c_after.json fd_holders` 에도 2264 가 있다. **새로 확인된 것은 ①실제로 7번을 포함해 순환 점유 중이라는 런타임 관측 ②그 사실이 quiet interval 정의에 갖는 함의**다. 직전 Stage A 보고의 '로봇 버스와 무관' 서술은 이 선행 기록과도 어긋났다"
   }
  ],
  "🔴 consequence_for_closed_gate": {
@@ -41,7 +43,13 @@
   "what_is_NOT_done": "P-007E-R1 의 `dryrun.json exclusive_control_violations: []` 는 **수정하지 않는다**. 당시 검사의 정의와 당시 관찰을 그대로 보존한다",
   "what_is_new": "그 검사가 무엇을 봤든, **다른 프로세스가 /dev/i2c-7 에 주기적 트랜잭션을 시도하고 있다**는 사실은 그 목록에 들어 있지 않다",
   "🔴 relevance_to_timing_hypothesis": "P-007E-R1 의 `quiet interval` 정의는 **우리 프로세스가** 버스를 건드리지 않은 구간이다. 제3 프로세스의 버스 사용은 그 정의가 배제하지 못한다. 따라서 50 ms quiet interval 은 '버스가 조용했다'를 뜻하지 않는다",
-  "🔴 do_not_conclude": "이것이 P-007B 의 무응답이나 P-007E-R1 의 readback 변화를 **설명한다고 말하지 않는다**. 지금 확보된 것은 '간섭원이 존재한다'는 사실뿐이고, 간섭이 실제로 그 트랜잭션들과 겹쳤는지는 측정되지 않았다"
+  "🔴 do_not_conclude": "이것이 P-007B 의 무응답이나 P-007E-R1 의 readback 변화를 **설명한다고 말하지 않는다**. 지금 확보된 것은 '간섭원이 존재한다'는 사실뿐이고, 간섭이 실제로 그 트랜잭션들과 겹쳤는지는 측정되지 않았다",
+  "exclusive_control_check_definition_quoted": {
+   "source": "scripts/p007e_r1_timing_controlled.py:112-119",
+   "verbatim": "FORB = [\"YahboomArm\", \"joystick\", \"arm_driver\", \"move_group\", \"moveit\", \"start_app\"] / hits = ps 출력 중 자기 조상 PID 를 뺀 행에서 FORB 문자열이 포함된 것 / rec[\"exclusive_control_violations\"] = hits",
+   "🔴 correct_framing": "`[]` 는 **그 검사 정의 안에서 정확하다.** 검사는 이름 기반 프로세스 매칭이었고 `/dev/i2c-7` fd 보유자나 OLED 의 버스 탐색은 **정의 밖**이었다. '긴장 관계'라기보다 **검사 범위의 문제**다",
+   "r1_files_unchanged": true
+  }
  },
  "🔴 actions_deliberately_not_taken": [
   "PID 2264 / 3091 / 3092 kill 또는 재시작",

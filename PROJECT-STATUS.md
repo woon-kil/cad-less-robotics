@@ -208,13 +208,14 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-007E-R2-R2 Stage B** Passive UVC Observation Qualification — **`FOV_PASS`**
   - 검수 결정: **경로 B(Direct UVC)** 채택. ROS 그래프를 격리하는 대신 `camera topic → color_follow → TargetAngle → arm_driver → servo write` 경로를 **구조적으로 제거**한다
   - B0 상속 fd 분류 — 3091/3092 = `INHERITED DESCRIPTOR ONLY`. 🔴 **2264(`yahboom_oled.py`) = ACTIVE NON-SERVO I2C BUS USER** (아래 이월 위험)
-  - B1 운영자 육안 — `mounted on distal structure = YES` · `independent articulated camera axis = NO` (접촉 0)
+  - B1 운영자 육안 — `mounted on distal structure = YES` · `independent articulated camera axis = NO` (접촉 0). `evidence/P-007E-R2-R2/b1_operator_provenance.json`
   - B2 열거 — RGB capture node = **`/dev/video0`**. `/dev/video1` 은 Metadata Capture 전용(ENUM_FMT 빈 목록·G_FMT 실패). 설정 변경 0
-  - B3 캡처 — **1 frame** (예산 MAX 1). warm-up skip 0 · S_FMT 0 · 44,208 B JPEG · Jetson 잔존물 0 · 가드 전후 클린
+  - B3 캡처 — **dequeued/saved 1장** (예산 `MAX 1 frame` 을 저장 1장으로 읽은 해석). S_FMT 0 · 44,208 B JPEG · Jetson 잔존물 0 · 가드 전후 클린. 🔴 센서가 STREAMON~OFF 사이 흘린 프레임 수는 **미측정**
   - B4 FOV — 코너 3,481(강 917) · 32×32 타일 커버리지 **76%** · 네 사분면 모두 비지 않음 · 노출 mean 139(포화 12.7%)
   - 🔴 eye-in-hand 에서는 Arm3~gripper 가 보일 필요가 없다 — 필요한 것은 **로봇과 독립적으로 고정된 외부 장면**이고 충분히 들어와 있다
   - 🔴 Stage C 제약: 자동노출·자동WB·dynamic framerate ON · `power_line_frequency=50Hz`(국내 60Hz 불일치) · 특징 상당수가 변형/이동 가능 대상 위 · 경로 B 는 RGB only·intrinsics 표준 경로 없음
-  - 예산: `camera captures = 1` 외 전 항목 0 (ros2 CLI·Arm_Lib·I2C·servo read/write·torque·RGB write·robot motion·물리 이동 = 0)
+  - 예산: 저장 프레임 1장 외 전 항목 0 (ros2 CLI·Arm_Lib·I2C·servo read/write·torque·RGB write·robot motion·물리 이동 = 0)
+  - 🔴 Stage A 는 `CLOSED @ 3579ab5` — Stage B 는 그 파일을 수정하지 않고 새 파일로만 기록했다 (`git diff --exit-code 3579ab5` exit 0)
 
 ## 🔴 다음 행동
 

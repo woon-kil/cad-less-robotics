@@ -1,0 +1,29 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "B — Passive UVC Observation Qualification",
+ "🔴 note": "Stage A 의 `command_budget.json` 은 `CLOSED @ 3579ab5` 시점 기록이다. 수정하지 않는다. 이 파일이 Stage B 의 예산이다",
+ "approved_budget": {"DaBai UVC enumeration": "YES", "DaBai RGB capture": "MAX 1 frame", "camera physical movement": 0},
+ "used": {
+  "uvc_enumeration": "YES — v4l2-ctl --list-devices / --info / --list-formats / --list-formats-ext / --get-fmt-video / --list-ctrls. 🔴 설정 변경 0 (S_FMT 0 · 제어값 write 0)",
+  "🔴 stream_sessions": 1,
+  "🔴 frames_dequeued_and_saved": 1,
+  "🔴 frames_emitted_by_sensor_between_STREAMON_and_STREAMOFF": "NOT MEASURED — `--stream-mmap` 은 여러 버퍼를 큐에 올리고, STREAMON~STREAMOFF 사이 센서는 계속 프레임을 낸다. 확인된 것은 dequeue 되어 저장된 1장뿐이다",
+  "🔴 budget_interpretation": "승인 문구 `MAX 1 frame` 을 **저장 1장**으로 읽었다. 이것은 해석이다. 센서가 흘린 프레임 수를 1로 보장하는 수단은 이 경로에 없다",
+  "warmup_skip_frames": 0,
+  "camera_starts": "1 (UVC 스트림 세션 1회. 🔴 ROS 카메라 노드 기동은 0)",
+  "recorder_starts": 0,
+  "continuous_stream": 0
+ },
+ "robot_side_all_zero": {
+  "servo_writes": 0, "servo_reads": 0, "motion_capable_commands": 0, "torque_writes": 0,
+  "rgb_writes": 0, "raw_i2c_writes": 0, "i2c_transactions_by_us": 0, "robot_motion": 0,
+  "Arm_Lib_import": 0, "ros2_cli_invocations": 0, "ROS_nodes_started": 0
+ },
+ "physical": {"camera_physical_movement": 0, "robot_physical_movement": 0,
+              "operator_physical_contact_with_robot": 0,
+              "gemini_335l_pose": "DO NOT MOVE — 만지지 않았다"},
+ "jetson_files": {"temp_created": 1, "temp_removed": 1, "residual": 0,
+                  "path": "/tmp/p007e_r2r2_b3_frame.mjpg — 회수 후 삭제, `ls` 로 부재 확인"},
+ "process_actions_deliberately_not_taken": ["PID 2264/3091/3092 kill", "fd 강제 닫기", "autostart 수정", "UVC 제어값 write"],
+ "controller_reported_state": "[86, 152, 0, 18, 93, 178] — 이 스테이지에서 조회하지도 변경하지도 않았다"
+}

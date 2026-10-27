@@ -204,18 +204,5 @@
   "exit_code": 0,
   "meaning": "🔴 커밋된 baseline(b576dbe) 대비 12게이트 전부 변경 0 — R2-R1 자신의 6파일까지 포함해 실제로 검증된 부분은 이것이다",
   "result": "PASS"
- },
- "stage_B_recheck": {
-  "when": "Stage B 완료 직후",
-  "gates_checked": 12,
-  "file_count": 167,
-  "changed": [],
-  "missing": [],
-  "commit_level": {
-   "command": "git diff --exit-code b576dbe HEAD -- <12 게이트>",
-   "exit_code": 0
-  },
-  "result": "PASS",
-  "note": "🔴 P-007E-R1 의 dryrun.json 은 B0 의 반증에도 불구하고 **수정하지 않았다** — 당시 검사 정의와 당시 관찰을 보존한다"
  }
 }
