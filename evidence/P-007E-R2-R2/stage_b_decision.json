@@ -1,0 +1,35 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "B — Passive UVC Observation Qualification",
+ "approved_path": "B — Direct UVC (ROS graph 미생성). 검수 결정 2026-10-27",
+ "sequence_executed": ["B0 inherited i2c fd classification", "B1 operator visual provenance",
+                       "B2 UVC capability enumeration", "B3 single-frame passive capture", "B4 FOV inspection"],
+ "🔴 verdict": "FOV_PASS",
+ "verdict_vocabulary_used": "FOV_PASS / TARGET-SCENE_INADEQUATE / CAPTURE_BLOCKED / SAFETY_ASSUMPTION_VIOLATED 중 FOV_PASS",
+ "per_step": {
+  "B0": "INHERITED DESCRIPTOR ONLY (3091/3092) + 🔴 ACTIVE NON-SERVO I2C BUS USER (2264 OLED). b0_i2c_fd_classification.json",
+  "B1": "mounted on distal structure = YES · independent articulated camera axis = NO — 예상된 올바른 상태",
+  "B2": "RGB capture node = /dev/video0 (video1 은 Metadata Capture 전용). 추측 아님",
+  "B3": "1 frame · 44208 B · JPEG · 가드 전후 클린 · Jetson 잔존물 0",
+  "B4": "정적 외부 장면이 충분히 보인다. 코너 3481(강 917) · 타일 커버리지 76% · 네 사분면 모두 비지 않음"
+ },
+ "🔴 safety_assumption_status": {
+  "violated_during_stage_B": false,
+  "evidence": "캡처 전후 모션 가능 프로세스 0 · /dev/video0 잔존 점유 0 · 포맷 불변 · i2c-7 보유자가 B0 기준선과 동일(새 보유자 없음)",
+  "🔴 but_separately": "B0 에서 **기존 가정 자체에 대한 반증**이 나왔다 — Stage B 의 행위 때문이 아니라 **이전부터 그랬던 상태**다. `EXCLUSIVE CONTROL ASSUMPTION — REOPENED FOR CLASSIFICATION` 유지"
+ },
+ "what_stage_B_did_not_do": [
+  "recorder · continuous stream · sham · feature tracking · marker",
+  "ROS camera launch · ros2 CLI · Arm_Lib · I2C transaction · servo read · servo write",
+  "카메라/로봇 물리 이동 · UVC 제어값 변경 · ~21 px prediction 검증"
+ ],
+ "🔴 carried_into_stage_C_as_constraints": [
+  "자동 노출 ON(Aperture Priority) · 자동 WB ON · exposure_dynamic_framerate ON · power_line_frequency=50 Hz(국내 60 Hz 와 불일치) → 프레임 간 측광 변동이 noise floor 에 들어간다. 고정하려면 control WRITE 승인이 필요하다",
+  "특징의 상당수가 변형/이동 가능 대상(천 더미·걸린 배낭·잡동사니) 위에 있다 → ROI 는 강체 구조에서 고른다",
+  "경로 B 는 RGB only · intrinsics 표준 경로 없음 → pixel 영역 분석으로 한정된다",
+  "FOV 는 현재 팔 자세에 종속된다 (eye-in-hand 의 본질)",
+  "Jetson 디스크 여유 9.3G (86%)",
+  "🔴 OLED 프로세스가 /dev/i2c-7 을 주기적으로 탐색한다 — 다음 motion gate 의 quiet interval 정의에 영향"
+ ],
+ "stop": "B4 까지 수행하고 STOP. Stage C(stationary sham · noise floor · ego-motion detectability)는 검수 승인 전 진행하지 않는다"
+}

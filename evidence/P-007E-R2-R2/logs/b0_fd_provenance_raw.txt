@@ -1,0 +1,139 @@
+### B0 — inherited i2c fd provenance (read-only /proc)
+### host=yahboom date=2026-10-27T21:02:20+08:00
+
+## [0] /dev/i2c-7 fd 를 보유한 프로세스 전수 재확인
+--- PID 2264
+    lrwx------ 1 jetson jetson 64 Jul 16 17:01 4 -> /dev/i2c-7
+--- PID 3091
+    lrwx------ 1 jetson jetson 64 Jul 16 17:01 11 -> /dev/i2c-7
+--- PID 3092
+    lrwx------ 1 jetson jetson 64 Jul 16 17:01 11 -> /dev/i2c-7
+## (전수 스캔 끝)
+
+## [1] 조상 체인 — PID 1 까지
+PID 3091  ppid=1400
+   comm    : sh
+   cmdline : sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+   exe     : /usr/bin/dash
+   cwd     : /home/jetson
+   start   : Mon Oct 26 17:08:36 2026
+   i2c fd  : 1
+PID 1400  ppid=1
+   comm    : systemd
+   cmdline : /lib/systemd/systemd --user 
+   exe     : /usr/lib/systemd/systemd
+   cwd     : /
+   start   : Mon Oct 26 17:08:19 2026
+   i2c fd  : 0
+PID 1 : /sbin/init 2   i2c fd=0
+
+## [2] 3091 / 3092 / 3103 상세
+--- PID 3091
+   cmdline : sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+   exe     : /usr/bin/dash
+   ppid    : 1400
+   fd 전부 :
+       -> 
+      0 -> /dev/pts/0
+      1 -> /dev/pts/0
+      11 -> /dev/i2c-7
+      2 -> /dev/pts/0
+   i2c-7 fdinfo:
+      fd=11 target=/dev/i2c-7
+         pos:	0
+         flags:	0400002
+         mnt_id:	31
+         ino:	160
+--- PID 3092
+   cmdline : /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot 
+   exe     : /usr/bin/python3.10
+   ppid    : 3091
+   fd 전부 :
+       -> 
+      0 -> /dev/pts/0
+      1 -> /dev/pts/0
+      11 -> /dev/i2c-7
+      2 -> /dev/pts/0
+      3 -> /usr/local/lib/python3.10/dist-packages/jetcam-0.0.0-py3.10.egg
+      4 -> /usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg
+      5 -> /usr/local/lib/python3.10/dist-packages/Speech_Lib-0.0.3-py3.10.egg
+   i2c-7 fdinfo:
+      fd=11 target=/dev/i2c-7
+         pos:	0
+         flags:	0400002
+         mnt_id:	31
+         ino:	160
+--- PID 3103
+   cmdline : /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot 
+   exe     : /home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot
+   ppid    : 3092
+   fd 전부 :
+       -> 
+      0 -> /dev/pts/0
+      1 -> /dev/pts/0
+      10 -> socket:[46644]
+      11 -> socket:[46648]
+      12 -> /dev/shm/fastrtps_port7413_el
+      13 -> socket:[46650]
+      14 -> socket:[46653]
+      15 -> socket:[46654]
+      2 -> /dev/pts/0
+      3 -> /home/jetson/.ros/log/kinemarics_dofbot_3103_1784192377589.log
+      4 -> socket:[46635]
+      5 -> socket:[46636]
+      6 -> /dev/shm/fastrtps_0b0b479831e17ba7_el
+      7 -> anon_inode:[eventfd]
+      8 -> anon_inode:[eventpoll]
+      9 -> anon_inode:[timerfd]
+   i2c-7 fdinfo:
+
+## [3] 자식 프로세스
+PID 3091 children: 
+PID 3092 children: 
+PID 3103 children: 
+
+## [4] 기동 환경 — ROS 관련 환경변수만 (read-only)
+--- PID 3091
+   ROS_VERSION=2
+   ROS_PYTHON_VERSION=3
+   AMENT_PREFIX_PATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech:/home/jetson/dofbot_pro_ws/install/orbbec_description:/home/jetson/dofbot_pro_ws/install/orbbec_camera:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_moveit:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface:/home/jetson/dofbot_pro_ws/install/dofbot_pro_info:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver:/home/jetson/dofbot_pro_ws/install/dofbot_pro_description:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF:/home/jetson/LargeModel_ws/install/yahboom_KCF:/home/jetson/LargeModel_ws/install/text_chat:/home/jetson/LargeModel_ws/install/testtime:/home/jetson/LargeModel_ws/install/largemodel_arm:/home/jetson/LargeModel_ws/install/largemodel:/home/jetson/LargeModel_ws/install/interfaces:/home/jetson/LargeModel_ws/install/arm_msgs:/home/jetson/LargeModel_ws/install/arm_interface:/opt/ros/humble
+   PYTHONPATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/text_chat/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/testtime/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel_arm/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/interfaces/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_msgs/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages
+   LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/cv2/../../lib64:/home/jetson/dofbot_pro_ws/install/orbbec_camera/lib:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/lib:/home/jetson/LargeModel_ws/install/interfaces/lib:/home/jetson/LargeModel_ws/install/arm_msgs/lib:/home/jetson/LargeModel_ws/install/arm_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib
+   ROS_LOCALHOST_ONLY=0
+   ROS_DISTRO=humble
+--- PID 3092
+   LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/cv2/../../lib64:/home/jetson/dofbot_pro_ws/install/orbbec_camera/lib:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/lib:/home/jetson/LargeModel_ws/install/interfaces/lib:/home/jetson/LargeModel_ws/install/arm_msgs/lib:/home/jetson/LargeModel_ws/install/arm_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib
+   ROS_PYTHON_VERSION=3
+   ROS_DISTRO=humble
+   ROS_VERSION=2
+   ROS_LOCALHOST_ONLY=0
+   AMENT_PREFIX_PATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech:/home/jetson/dofbot_pro_ws/install/orbbec_description:/home/jetson/dofbot_pro_ws/install/orbbec_camera:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_moveit:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface:/home/jetson/dofbot_pro_ws/install/dofbot_pro_info:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver:/home/jetson/dofbot_pro_ws/install/dofbot_pro_description:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF:/home/jetson/LargeModel_ws/install/yahboom_KCF:/home/jetson/LargeModel_ws/install/text_chat:/home/jetson/LargeModel_ws/install/testtime:/home/jetson/LargeModel_ws/install/largemodel_arm:/home/jetson/LargeModel_ws/install/largemodel:/home/jetson/LargeModel_ws/install/interfaces:/home/jetson/LargeModel_ws/install/arm_msgs:/home/jetson/LargeModel_ws/install/arm_interface:/opt/ros/humble
+   PYTHONPATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/text_chat/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/testtime/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel_arm/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/interfaces/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_msgs/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages
+--- PID 3103
+   LD_LIBRARY_PATH=/usr/local/lib/python3.10/dist-packages/cv2/../../lib64:/home/jetson/dofbot_pro_ws/install/orbbec_camera/lib:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/lib:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/lib:/home/jetson/LargeModel_ws/install/interfaces/lib:/home/jetson/LargeModel_ws/install/arm_msgs/lib:/home/jetson/LargeModel_ws/install/arm_interface/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/aarch64-linux-gnu:/opt/ros/humble/lib
+   ROS_PYTHON_VERSION=3
+   ROS_DISTRO=humble
+   ROS_VERSION=2
+   ROS_LOCALHOST_ONLY=0
+   AMENT_PREFIX_PATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech:/home/jetson/dofbot_pro_ws/install/orbbec_description:/home/jetson/dofbot_pro_ws/install/orbbec_camera:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs:/home/jetson/dofbot_pro_ws/install/dofbot_pro_moveit:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface:/home/jetson/dofbot_pro_ws/install/dofbot_pro_info:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver:/home/jetson/dofbot_pro_ws/install/dofbot_pro_description:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF:/home/jetson/LargeModel_ws/install/yahboom_KCF:/home/jetson/LargeModel_ws/install/text_chat:/home/jetson/LargeModel_ws/install/testtime:/home/jetson/LargeModel_ws/install/largemodel_arm:/home/jetson/LargeModel_ws/install/largemodel:/home/jetson/LargeModel_ws/install/interfaces:/home/jetson/LargeModel_ws/install/arm_msgs:/home/jetson/LargeModel_ws/install/arm_interface:/opt/ros/humble
+   PYTHONPATH=/home/jetson/dofbot_pro_ws/install/yahboom_speech/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/orbbec_camera_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_yolov11/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_voice_ctrl/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_msgs/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_mediapipe/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_interface/local/lib/python3.10/dist-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_driver/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_depth/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_color/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_apriltag/lib/python3.10/site-packages:/home/jetson/dofbot_pro_ws/install/dofbot_pro_KCF/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/text_chat/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/testtime/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel_arm/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/largemodel/lib/python3.10/site-packages:/home/jetson/LargeModel_ws/install/interfaces/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_msgs/local/lib/python3.10/dist-packages:/home/jetson/LargeModel_ws/install/arm_interface/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages
+
+## [5] 읽기/쓰기 흔적 — io 통계 (누적값. 어떤 fd 인지 구분하지는 못한다)
+--- PID 3091  sh
+--- PID 3092  ros2
+--- PID 3103  kinemarics_dofb
+
+## [6] i2c 장치 노드 · 드라이버 측 참고
+crw-rw---- 1 root i2c 89,  0 Nov 22  2023 /dev/i2c-0
+crw-rw---- 1 root i2c 89,  1 Nov 22  2023 /dev/i2c-1
+crw-rw---- 1 root i2c 89, 10 Nov 22  2023 /dev/i2c-10
+crw-rw---- 1 root i2c 89, 11 Jul 16 16:59 /dev/i2c-11
+crw-rw---- 1 root i2c 89,  2 Nov 22  2023 /dev/i2c-2
+crw-rw---- 1 root i2c 89,  4 Nov 22  2023 /dev/i2c-4
+crw-rw---- 1 root i2c 89,  5 Nov 22  2023 /dev/i2c-5
+crw-rw---- 1 root i2c 89,  7 Nov 22  2023 /dev/i2c-7
+crw-rw---- 1 root i2c 89,  9 Nov 22  2023 /dev/i2c-9
+-- i2c 그룹 소속 확인:
+116(i2c)
+
+### B0 END

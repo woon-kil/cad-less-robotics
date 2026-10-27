@@ -1,0 +1,187 @@
+### B2 — UVC capability enumeration
+### host=yahboom date=2026-10-27T21:06:39+08:00
+
+## [0] 사전 상태 — 로봇 모션 가능 노드 / 비디오 점유
+-- image 구독 + Arm_Lib 계열 프로세스:
+   (위 목록이 비어 있으면 0개)
+-- /dev/video0|1 fd 보유 프로세스:
+   (위 목록이 비어 있으면 0개)
+-- 디스크:
+/dev/nvme0n1p1   69G   57G  9.3G  86% /
+
+## [1] v4l2 장치 목록
+NVIDIA Tegra Video Input Device (platform:tegra-camrtc-ca):
+	/dev/media0
+
+Orbbec DaBai DCW2 RGB Camera: O (usb-3610000.usb-2.4.3):
+	/dev/video0
+	/dev/video1
+	/dev/media1
+
+
+## [2] /dev/video0 — capability
+Driver Info:
+	Driver name      : uvcvideo
+	Card type        : Orbbec DaBai DCW2 RGB Camera: O
+	Bus info         : usb-3610000.usb-2.4.3
+	Driver version   : 5.15.148
+	Capabilities     : 0x84a00001
+		Video Capture
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04200001
+		Video Capture
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : uvcvideo
+	Model            : Orbbec DaBai DCW2 RGB Camera: O
+	Serial           : CH8R3620170
+	Bus info         : usb-3610000.usb-2.4.3
+	Media version    : 5.15.148
+	Hardware revision: 0x00000100 (256)
+	Driver version   : 5.15.148
+Interface Info:
+	ID               : 0x03000002
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000001 (1)
+	Name             : Orbbec DaBai DCW2 RGB Camera: O
+	Function         : V4L2 I/O
+	Flags            : default
+	Pad 0x01000007   : 0: Sink
+	  Link 0x02000010: from remote pad 0x100000a of entity 'Extension 3' (Video Pixel Formatter): Data, Enabled, Immutable
+-- 지원 포맷(요약):
+ioctl: VIDIOC_ENUM_FMT
+	Type: Video Capture
+
+	[0]: 'MJPG' (Motion-JPEG, compressed)
+	[1]: 'YUYV' (YUYV 4:2:2)
+-- 현재 설정된 포맷:
+Format Video Capture:
+	Width/Height      : 640/480
+	Pixel Format      : 'MJPG' (Motion-JPEG)
+	Field             : None
+	Bytes per Line    : 0
+	Size Image        : 614989
+	Colorspace        : Default
+	Transfer Function : Default (maps to Rec. 709)
+	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+	Quantization      : Default (maps to Full Range)
+	Flags             : 
+
+## [2] /dev/video1 — capability
+Driver Info:
+	Driver name      : uvcvideo
+	Card type        : Orbbec DaBai DCW2 RGB Camera: O
+	Bus info         : usb-3610000.usb-2.4.3
+	Driver version   : 5.15.148
+	Capabilities     : 0x84a00001
+		Video Capture
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+		Device Capabilities
+	Device Caps      : 0x04a00000
+		Metadata Capture
+		Streaming
+		Extended Pix Format
+Media Driver Info:
+	Driver name      : uvcvideo
+	Model            : Orbbec DaBai DCW2 RGB Camera: O
+	Serial           : CH8R3620170
+	Bus info         : usb-3610000.usb-2.4.3
+	Media version    : 5.15.148
+	Hardware revision: 0x00000100 (256)
+	Driver version   : 5.15.148
+Interface Info:
+	ID               : 0x03000005
+	Type             : V4L Video
+Entity Info:
+	ID               : 0x00000004 (4)
+	Name             : Orbbec DaBai DCW2 RGB Camera: O
+	Function         : V4L2 I/O
+-- 지원 포맷(요약):
+ioctl: VIDIOC_ENUM_FMT
+	Type: Video Capture
+
+-- 현재 설정된 포맷:
+VIDIOC_G_FMT: failed: Invalid argument
+
+## [3] /dev/video0 상세 포맷·프레임레이트
+ioctl: VIDIOC_ENUM_FMT
+	Type: Video Capture
+
+	[0]: 'MJPG' (Motion-JPEG, compressed)
+		Size: Discrete 640x480
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1920x1080
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1440x1080
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1280x960
+			Interval: Discrete 0.033s (30.000 fps)
+			Interval: Discrete 0.040s (25.000 fps)
+			Interval: Discrete 0.050s (20.000 fps)
+			Interval: Discrete 0.067s (15.000 fps)
+			Interval: Discrete 0.100s (10.000 fps)
+			Interval: Discrete 0.200s (5.000 fps)
+		Size: Discrete 1280x720
+			Interval: Discrete 0.033s (30.000 fps)
+
+## [4] USB 토폴로지 — 어느 장치가 어느 노드인지
+-- /dev/video0 → /sys/devices/platform/bus@0/3610000.usb/usb1/1-2/1-2.4/1-2.4.3/1-2.4.3:1.0/video4linux/video0
+   name: Orbbec DaBai DCW2 RGB Camera: O
+   index: 0
+-- /dev/video1 → /sys/devices/platform/bus@0/3610000.usb/usb1/1-2/1-2.4/1-2.4.3/1-2.4.3:1.0/video4linux/video1
+   name: Orbbec DaBai DCW2 RGB Camera: O
+   index: 1
+Bus 001 Device 007: ID 2bc5:0561 Orbbec 3D Technology International, Inc Orbbec DaBai DCW2 RGB Camera
+Bus 001 Device 006: ID 2bc5:06a0 Orbbec 3D Technology International, Inc ORBBEC Depth Sensor
+
+### B2 END
+=== [5] /dev/video0 제어 항목 (read-only 열거. 설정 변경 0) ===
+
+User Controls
+
+                     brightness 0x00980900 (int)    : min=-64 max=64 step=1 default=0 value=30
+                       contrast 0x00980901 (int)    : min=0 max=64 step=1 default=32 value=50
+                     saturation 0x00980902 (int)    : min=0 max=128 step=1 default=64 value=64
+                            hue 0x00980903 (int)    : min=-40 max=40 step=1 default=0 value=0
+        white_balance_automatic 0x0098090c (bool)   : default=1 value=1
+                          gamma 0x00980910 (int)    : min=72 max=500 step=1 default=100 value=100
+                           gain 0x00980913 (int)    : min=0 max=100 step=1 default=0 value=0
+           power_line_frequency 0x00980918 (menu)   : min=0 max=2 default=1 value=1 (50 Hz)
+      white_balance_temperature 0x0098091a (int)    : min=2800 max=6500 step=1 default=4600 value=4600 flags=inactive
+                      sharpness 0x0098091b (int)    : min=0 max=6 step=1 default=3 value=3
+         backlight_compensation 0x0098091c (int)    : min=0 max=2 step=1 default=1 value=1
+
+Camera Controls
+
+                  auto_exposure 0x009a0901 (menu)   : min=0 max=3 default=3 value=3 (Aperture Priority Mode)
+         exposure_time_absolute 0x009a0902 (int)    : min=1 max=5000 step=1 default=157 value=100 flags=inactive
+     exposure_dynamic_framerate 0x009a0903 (bool)   : default=0 value=1
+                        privacy 0x009a0910 (bool)   : default=0 value=0

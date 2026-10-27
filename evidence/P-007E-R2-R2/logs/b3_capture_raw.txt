@@ -1,0 +1,58 @@
+### B3 — single-frame passive capture
+### host=yahboom date=2026-10-27T21:07:36+08:00
+
+## [G1] 캡처 직전 가드
+-- 모션 가능 노드(arm_driver|dofbot_pro_driver|color_follow|grasp|apriltag|KCF|yolov11|voice_ctrl|mediapipe):
+   count=0
+-- /dev/video0 점유 프로세스:
+   count=0
+-- ROS 환경 비상속 확인: ROS_DISTRO=[] ros2=[]
+-- 캡처 전 포맷:
+   Format Video Capture:
+   	Width/Height      : 640/480
+   	Pixel Format      : 'MJPG' (Motion-JPEG)
+   	Field             : None
+   	Bytes per Line    : 0
+   	Size Image        : 614989
+   	Colorspace        : Default
+   	Transfer Function : Default (maps to Rec. 709)
+   	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+   	Quantization      : Default (maps to Full Range)
+   	Flags             : 
+
+## [C] 1프레임 캡처 — stream-count=1 · S_FMT 없음 · skip 없음
+   <
+   v4l2-ctl rc=0
+
+## [R] 결과물
+-rw-rw-r-- 1 jetson jetson 44208 Oct 27 21:07 /tmp/p007e_r2r2_b3_frame.mjpg
+-- file:
+/tmp/p007e_r2r2_b3_frame.mjpg: JPEG image data
+-- sha256:
+1d5091318b3d651b1bf89796764621554f471af14e8b6c47b90995b23c0165bc  /tmp/p007e_r2r2_b3_frame.mjpg
+-- 첫 4바이트(JPEG SOI=ffd8ffe0/ffd8ffdb 계열):
+ ff d8 ff c0
+
+## [G2] 캡처 직후 가드 재확인
+-- 새 모션 가능 노드:
+0
+-- /dev/i2c-7 fd 보유 프로세스 (B0 기준선: 2264 순환 · 3091 · 3092):
+   PID 2264  python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py 
+   PID 3091  sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+   PID 3092  /usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot 
+-- 캡처 후 포맷(변경 없어야 한다):
+   Format Video Capture:
+   	Width/Height      : 640/480
+   	Pixel Format      : 'MJPG' (Motion-JPEG)
+   	Field             : None
+   	Bytes per Line    : 0
+   	Size Image        : 614989
+   	Colorspace        : Default
+   	Transfer Function : Default (maps to Rec. 709)
+   	YCbCr/HSV Encoding: Default (maps to ITU-R 601)
+   	Quantization      : Default (maps to Full Range)
+   	Flags             : 
+-- /dev/video0 잔존 점유:
+   (비어 있으면 0)
+
+### B3 END

@@ -1,0 +1,37 @@
+{
+ "gate": "P-007E-R2-R2",
+ "stage": "B2 — UVC device capability enumeration (READ-ONLY)",
+ "method": "scripts/p007e_r2r2_b2_enum.sh — v4l2-ctl ioctl 질의만. 🔴 스트리밍 0 · 프레임 0 · 설정 변경 0 · ROS 0 · I2C 0",
+ "raw_log": "logs/b2_uvc_enum_raw.txt",
+ "🔴 which_node_is_the_rgb_capture_node": {
+  "answer": "/dev/video0",
+  "evidence": [
+   "/dev/video0 Device Caps 0x04200001 = Video Capture | Streaming | Extended Pix Format",
+   "/dev/video0 VIDIOC_ENUM_FMT → [0] 'MJPG' (Motion-JPEG, compressed) · [1] 'YUYV' (YUYV 4:2:2)",
+   "🔴 /dev/video1 Device Caps 0x04a00000 = **Metadata Capture** | Streaming | Ext Pix Format — **Video Capture 비트가 없다**",
+   "🔴 /dev/video1 VIDIOC_ENUM_FMT → 포맷 목록 **비어 있음** · VIDIOC_G_FMT: failed: Invalid argument"
+  ],
+  "note": "두 노드는 같은 USB 인터페이스(1-2.4.3:1.0)에서 나온다. 추측이 아니라 capability 비트와 포맷 열거로 갈랐다"
+ },
+ "device": {
+  "driver": "uvcvideo 5.15.148",
+  "card": "Orbbec DaBai DCW2 RGB Camera: O",
+  "serial": "CH8R3620170",
+  "bus": "usb-3610000.usb-2.4.3 (Bus 001 Device 007, 2bc5:0561)",
+  "depth_sensor_separate": "2bc5:06a0 ORBBEC Depth Sensor (Bus 001 Device 006) — 🔴 UVC video 노드로 노출되지 않는다. 경로 B 는 RGB only 라는 R2-R1 판단과 일치"
+ },
+ "formats": {
+  "current_setting_at_enumeration": "640x480 MJPG (Size Image 614989)",
+  "MJPG_discrete_sizes": ["640x480", "1920x1080", "1440x1080", "1280x960", "1280x720", "…(로그 40행 제한)"],
+  "frame_intervals": "각 크기에서 30 / 25 / 20 / 15 / 10 / 5 fps"
+ },
+ "🔴 control_state_as_found": {
+  "auto_exposure": "3 = Aperture Priority Mode → **자동 노출 ON**. exposure_time_absolute 는 flags=inactive",
+  "white_balance_automatic": "1 = **자동 화이트밸런스 ON**. white_balance_temperature 는 flags=inactive",
+  "exposure_dynamic_framerate": "1 — 노출에 따라 프레임레이트가 변한다",
+  "power_line_frequency": "1 = 50 Hz. 🔴 한국 상용 전원은 60 Hz 다 — 인공조명 아래에서 밴딩·밝기 진동의 원인이 될 수 있다",
+  "non_default_values": "brightness 30 (기본 0) · contrast 50 (기본 32) — 누군가 바꿔둔 값이다",
+  "🔴 implication_for_stage_C": "자동 노출 + 자동 WB + 동적 프레임레이트 + 50 Hz 설정은 프레임 간 측광 변동을 만든다. ego-motion 의 noise floor 에 직접 들어간다. **고정이 필요하지만 그것은 control WRITE 이므로 현재 예산 밖이다** — 권고로만 남긴다",
+  "measurement_note": "이 값들은 열거만 했다. 하나도 변경하지 않았다"
+ }
+}
