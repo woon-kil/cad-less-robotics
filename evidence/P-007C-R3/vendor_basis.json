@@ -1,0 +1,45 @@
+{
+ "gate": "P-007C-R3",
+ "purpose": "R3 착수 전에 확정한 공식 근거. 모두 이 세션에서 직접 fetch 했다.",
+ "sources": [
+  {
+   "url": "https://www.yahboom.net/study/DOFBOT-Pro/12506/",
+   "title": "1. Mobile APP control - DOFBOT Pro",
+   "product": "DOFBOT Pro",
+   "fetched_by": "이 세션 WebFetch",
+   "quotes": [
+    "【Stop】: After clicking this button, robotic arm turns off the torque, all servos no longer receives control commands.",
+    "Click this button again, robotic arm will turn on the torque, all servos will maintain their current positions, and can receive control commands."
+   ],
+   "🔴 significance": "공식 APP 의 [Stop] 버튼이 **토크 토글**이다. 통념적 비상정지가 아니다. 누르면 토크가 꺼지고 모든 서보가 명령을 받지 않는 상태로 **남는다**."
+  },
+  {
+   "url": "공식 Calibrating the Robotic Arm (저장소 PDF blob 3161df1f… 및 공식 웹)",
+   "quotes": [
+    "enable=0 turns off the torque, the robot arm can manually turn the servo angle, and does not receive the level signal",
+    "enable=1 turns on the torque, the servo receives the level signal to maintain the current angle"
+   ],
+   "significance": "R3 수동 저항 관찰의 판정 근거. 토크 OFF 는 **손으로 각도를 움직일 수 있는 상태**로 공식 정의된다."
+  },
+  {
+   "url": "https://www.yahboom.net/study/DOFBOT-Pro/12621/ (공식 single-servo 예제)",
+   "significance": "별도 torque-on 없이 Arm_Device() → Arm_serial_servo_write() 를 직접 호출한다. P-007C-R1 이 저장소 PDF 로 이미 확인한 것과 같다. H-C3(초기화 누락) NOT_SUPPORTED 재확인"
+  }
+ ],
+ "🔴 new_lead_for_H_C2": {
+  "chain": "공식 APP [Stop] → set_torque(0) → 토크 OFF 지속 → 위치 명령 무시 → P-007B NO_MOTION_RESPONSE",
+  "why_it_matters": "P-007A-R1 정적 분석이 `YahboomArm.py:401` APP 핸들러에서 `set_torque(0)` 을 찾아 뒀다. 공식 문서가 그 핸들러의 **UI 이름이 [Stop]** 임을 확정한다. 토크 OFF 는 보드 상주 상태이므로 **APP 프로세스를 kill 해도 해소되지 않는다** — P-007A-R1 의 격리가 이 상태를 되돌리지 못한다.",
+  "sampling_gap": "P-007C 가 운영자에게 물은 것은 \"torque 끈 이력\" 이었고 답은 '없다 / 기억 없다' 였다(evidence/P-007C/operator_observation.json). 그러나 운영자가 APP 에서 **[Stop] 을 눌렀다면** 그것을 '토크를 껐다' 로 기억할 이유가 없다. 질문이 실제 행동 어휘를 쓰지 않아 **과소표집**됐을 수 있다.",
+  "action": "R3 에서 '[Stop] 버튼을 누른 적이 있는가' 를 행동 어휘로 다시 묻는다. 비용 0, 위험 0.",
+  "status": "🔴 가설 보강 단서다. 증거가 아니다. 눌렀다는 관측이 아직 없다."
+ },
+ "hypothesis_label_refinement": {
+  "ruling": "검수 세션 지적 — P-007C-R2 가 배제한 것은 **H-C6 전체가 아니라 H-C6 의 learning_mode 분기**다.",
+  "correct_labels": {
+   "H-C6.learning_mode": "ELIMINATED (P-007C-R2 관측)",
+   "H-C6.other_controller_state": "OPEN — 읽을 수 없는 다른 컨트롤러/펌웨어 상태는 RGB 관찰로 제거되지 않았다"
+  },
+  "handling": "🔴 P-007C-R2 는 CLOSED 이고 선행 게이트다. 프로젝트 규칙(선행 증거 불변)에 따라 그 디렉터리를 수정하지 않았다. 정정은 이 파일과 PROJECT-STATUS.md(살아 있는 ledger, evidence 와 분리)에만 기록한다.",
+  "note": "P-007C-R2/acceptance.json 은 키 이름을 이미 `H-C6_learning_mode` 로 적어 범위를 한정했다. 범위가 넓게 읽힐 수 있는 곳은 그 README 의 표와 커밋 메시지다."
+ }
+}

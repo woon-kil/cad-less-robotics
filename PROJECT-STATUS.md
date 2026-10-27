@@ -16,13 +16,13 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **DOFBOT 이 위치 명령에 응답하지 않는다** | `evidence/P-007B/acceptance.json` |
-| 최신 닫힌 게이트 | **P-007C-R2 `OBSERVATION PASS — LEARNING MODE EXCLUDED`** | `evidence/P-007C-R2/acceptance.json` |
+| 최신 닫힌 게이트 | **P-007C-R3 `OBSERVATION PASS — TORQUE_ON_STRONGLY_SUPPORTED`** | `evidence/P-007C-R3/acceptance.json` |
 | **게이트가 일으킨** 로봇 모션 | **0** | P-007A·A-R1·B·C·C-R1 `environment.json` 전부 `robot_moved_by_this_gate: 0` (실측 grep). ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **1회** (P-007B, ID2 152°, raw 1242) | `servo_position_writes` 가 P-007B 만 `1`, 나머지 게이트는 전부 `0` (실측 grep) |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
 | 비전 파이프라인 | 기하는 동작, 게이트는 FAIL 유지 | P-004 / P-005 |
 | 제어 권한 독점 | 확보됨 (가역 격리) | `evidence/P-007A-R1/` |
-| 미해결 가설 | **H-C2(torque) · H-C5(block-write)**. H-C6(learning mode)은 P-007C-R2 가 관측으로 `ELIMINATED` | `evidence/P-007C-R2/acceptance.json` |
+| 미해결 가설 | **H-C5(block-write) ← 최우선** · H-C6.other. H-C2(torque)는 R3 가 `WEAKENED`, H-C6.learning_mode 는 R2 가 `ELIMINATED` | `evidence/P-007C-R3/acceptance.json` |
 
 ## 게이트 현황
 
@@ -79,21 +79,32 @@
   - 벤더 근거 `VENDOR_WEB_VERIFIED` — 공식 저장소 PDF + 공식 웹 직접 fetch 2채널
   - 🔴 **torque ON 을 증명하지 않는다.** `set_torque(0)` 직접 호출 경우엔 RGB 표시가 없다 (관찰 전 고정한 비대칭)
   - 덤: `SERVO` 레일 LED 점등 → 서보 전원 부재 가설 약화 (`INFERENCE_NOT_EVIDENCE`)
-- [ ] **P-007D** raw 상태 해상도 · block-write 경로 진단 — **HOLD. 열지 않는다**
-  - 플랜은 작성돼 있다(`docs/261027-1105-*`). 더 싼 선행 관찰이 아직 남아 있다
+- [x] **P-007C-R3** 수동 토크 상태 관찰 — **`OBSERVATION PASS — TORQUE_ON_STRONGLY_SUPPORTED`** (분류 B)
+  - Arm2 극소 힘 → 움직이기 전 명확한 holding resistance. 관절 이동 0 · buzz 0 · 이상 0
+  - P-007C 육안 관찰("단단하게 유지")과 독립적으로 같은 방향 — 시각 + 촉각
+  - 🔴 `VERIFIED` 아님. 능동 토크 vs 감속기 self-locking 이 이 시험만으로 갈리지 않는다
+  - 🔴 **H-C5(block-write)가 최우선으로 승격** — 토크가 켜져 있다면 서보는 명령 수락 상태여야 한다
+  - APP `[Stop]`(공식상 토크 토글) 이력을 행동 어휘로 재질의 → "기억 없다". `UNRESOLVED_BY_RECALL`
+- [ ] **P-007D** raw 상태 해상도 · block-write 경로 진단 — **근거는 생겼다. 플랜 재검토 후 개방**
+  - R3 가 H-C5 를 최우선으로 올렸고 P-007D 의 Q2 가 정확히 그것을 겨냥한다
+  - ⚠️ P-007D 는 **I2C 조회를 수반**한다. R2·R3 관찰 게이트와 위험 등급이 다르다
 
 ## 🔴 다음 행동
 
-~~1. 확장보드 RGB breathing 육안 확인~~ → **완료. P-007C-R2 가 learning mode 를 배제했다**
+~~1. RGB breathing 육안 확인~~ → **완료. R2 가 learning mode 배제**
+~~2. ID2 수동 저항 확인~~ → **완료. R3 가 토크 ON 쪽으로 판정**
 
-**남은 단일 질문: 지금 torque 가 켜져 있는가.** H-C2 가 유일하게 남은 공식 메커니즘이다.
+**최우선 가설이 H-C5(command propagation / block-write)로 바뀌었다.**
 
-1. **ID2 를 아주 약하게 밀어 저항 확인** — 공식 정의상 torque OFF = `can manually turn the servo angle`
-   - 🔴 별도 게이트로 연다. 하드웨어 상호작용이고 **torque ON 상태에서 force 를 주면 기어 손상 위험**이 있다
-   - 절차에 "아주 약하게, 저항이 느껴지면 즉시 멈춘다" 를 명시할 것
-2. 그래도 미해결이면 P-007D(raw 상태 해상도 · block-write 진단) 개방
+근거: 토크가 켜져 있다면 공식 정의상 서보는 `can receive control commands` 상태다. 그런데 P-007B 명령은 효과가 없었다. 그리고 P-007C 가 이미 적었듯 — 성공한 조회는 전부 `write_byte_data` 1바이트 + read 계열이고, **효과가 없었던 유일한 것이 `write_i2c_block_data` 4바이트(`0x12`)** 다.
+
+1. **P-007D 플랜을 R3 결과에 맞춰 재검토** 후 승인받고 개방
+   - ⚠️ P-007D 는 I2C 조회를 수반한다. R2·R3 의 무접촉 관찰과 위험 등급이 다르다
+2. 기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
+
+> R3 갱신: 토크가 **이미 켜져 있는** 쪽이 유력해져 "토크를 켜는 순간 래치된 target 으로 움직인다" 경로는 **약해졌다.** 🔴 제거되지는 않았다 — 토크 ON 은 `STRONGLY_SUPPORTED`이지 `VERIFIED`가 아니고, 컨트롤러가 target 을 보관하는지 자체가 미확인이다.
 
 - `Arm_serial_set_torque(1)` 과 **`Arm_Button_Mode(0)`** 은 둘 다 토크를 켠다. 후자는 공식이 "automatically turn on the torque" 라고 적는다 → **모션 가능 행위**
 - 공식은 토크 ON 이 저장된 target 이동을 유발하는지 **기술하지 않는다**. P-007B 가 보낸 target(ID2, raw 1242) 래치 가능성을 배제할 근거가 없다
@@ -115,7 +126,8 @@
 | 5 | 2026-10-27 08:53~10:12 | P-007A-R1 · `docs/` 추적 해제 | PASS. 쓰기 프로세스 가역 격리 |
 | 6 | 2026-10-27 10:12~11:14 | P-007B · P-007C · P-007C-R1 착수 | NO_MOTION_RESPONSE · DIAGNOSIS PASS D · R1 중간 중단(사용 한도) |
 | 7 | 2026-10-27 13:41~14:06 | P-007C-R1 재개·종료 · PROJECT-STATUS 신설 (세션 `cb876b8e`) | NO OFFICIAL EXPLANATION FOUND. R1-01~29 전부 PASS |
-| 8 | 2026-10-27 14:09~ | P-007C-R2 육안 관찰 게이트 (세션 `cb876b8e`) | LEARNING MODE EXCLUDED. 6라운드 운영자 왕복 |
+| 8 | 2026-10-27 14:09~14:35 | P-007C-R2 육안 관찰 게이트 (세션 `cb876b8e`) | LEARNING MODE EXCLUDED. 6라운드 운영자 왕복 |
+| 9 | 2026-10-27 14:35~ | P-007C-R3 수동 토크 관찰 (세션 `cb876b8e`) | TORQUE_ON_STRONGLY_SUPPORTED. H-C5 최우선 승격 |
 
 ## 운영 규칙 (이 프로젝트 고유)
 
@@ -123,4 +135,5 @@
 - **운영자 관찰은 증거로 승격하지 않는다.** 관찰로만 기록한다 (P-007C 가 세운 기준)
 - **선행 게이트 증거는 불변이다.** 새 게이트는 자기 디렉터리에만 쓴다. `git diff --exit-code HEAD -- evidence/<선행>` 으로 착수·종료 시 확인
 - **플랜 검토는 advisor 가 한다** (codex 자문 대체 — 사용자 지시 2026-10-27)
+- **가설 라벨은 분기까지 적는다** — `H-C6.learning_mode`(ELIMINATED)와 `H-C6.other_controller_state`(OPEN)는 다르다. 상위 라벨만 적어 범위를 넓게 읽히게 하지 않는다 (검수 세션 지적 2026-10-27)
 - 외부 수집 자료는 **gitignore 된 게이트 디렉터리 + 커밋되는 매니페스트**로 둔다. 스크래치패드 금지 (`docs/261027-1358-*-이슈보고서.md`)

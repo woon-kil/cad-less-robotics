@@ -1,0 +1,108 @@
+{
+ "gate": "P-007C-R3",
+ "base_commit": "4670990",
+ "spec": "검수 세션이 정의한 Passive Torque-State Mechanical Observation. 결과 분류 A/B/C 와 표현 제한을 관찰 전에 고정했다.",
+ "verdict": "OBSERVATION PASS — TORQUE_ON_STRONGLY_SUPPORTED",
+ "classification": "B — HOLDING RESISTANCE",
+ "verdict_basis": "운영자가 Arm2(ID2)에 극소 힘을 가했을 때 관절이 움직이기 전에 명확한 holding resistance 를 느꼈다. servo buzz·기어음·예상치 못한 움직임은 없었다. 공식 정의상 torque OFF 는 'the robot arm can manually turn the servo angle' 이므로, 수동으로 자유롭지 않다는 것은 torque ON 쪽 정황이다. P-007C 의 독립적 육안 관찰('단단하게 유지 중으로 보인다')과 방향이 일치한다.",
+ "🔴 expression_limit": "STRONGLY_SUPPORTED 다. VERIFIED 가 아니다. 운영자 촉각 판단이며 정밀 측정이 아니다. 또한 '명확한 저항' 이 능동 holding torque 인지 감속기 self-locking 인지 이 시험만으로 완전히 갈리지 않는다.",
+ "hypothesis_effect": {
+  "H-C2_current_torque_state": "OPEN(최우선) → **WEAKENED**. 토크 OFF 가 P-007B 무반응을 설명한다는 선이 약해졌다. 기각은 아니다 — 표현 한계 때문",
+  "H-C5_command_propagation": "OPEN → **🔴 최우선으로 승격**. 토크가 켜져 있다면 공식 정의상 서보는 'can receive control commands' 상태다. 그런데 P-007B 명령은 효과가 없었다. 명령이 서보가 수락하는 형태로 도달하지 못했다는 쪽이 남는다",
+  "H-C6.other_controller_state": "OPEN → 유지. 읽을 수 없는 다른 컨트롤러·펌웨어 상태",
+  "H-C6.learning_mode": "ELIMINATED (P-007C-R2)",
+  "H-C3": "NOT_SUPPORTED",
+  "H-C4": "NOT_SUPPORTED",
+  "H-C1": "ELIMINATED"
+ },
+ "🔴 convergence": "P-007C 의 most_specific_finding 과 맞물린다 — 성공한 조회(0x01·0x38·0x30+id)는 전부 write_byte_data 1바이트 + read 계열이고, 효과가 없었던 유일한 것이 write_i2c_block_data 4바이트(0x12)다. 토크가 켜져 있다면 '서보가 명령을 무시하는 상태' 설명이 약해지고, **block-write 경로 자체**가 가장 유력한 지점이 된다.",
+ "carry_forward_risk_update": {
+  "previous": "P-007C — 원인이 torque·enable 이면 P-007B 의 target(ID2 raw 1242)이 래치돼 있다가 토크를 켜는 순간 움직일 수 있다",
+  "now": "토크가 이미 켜져 있는 쪽이 유력해졌으므로 **그 특정 위험 경로는 약해진다** — 토크가 켜진 상태에서 팔이 움직이지 않았다면 래치된 target 이 토크 복귀로 발현할 여지가 줄어든다",
+  "🔴 but": "제거되지 않는다. (a) 토크 ON 은 STRONGLY_SUPPORTED 이지 VERIFIED 가 아니다 (b) 컨트롤러가 target 을 보관하는지 자체가 미확인이다 (c) `Arm_Button_Mode(0)`·`set_torque(1)` 은 여전히 모션 가능 행위로 취급한다"
+ },
+ "checks": [
+  {
+   "id": "R3-01",
+   "result": "PASS",
+   "note": "분류 A/B/C 와 표현 제한(STRONGLY_SUPPORTED/NOT_RESOLVED)을 관찰 전에 플랜에 고정",
+   "evidence": "docs/261027-1435-P-007C-R3-*-플랜.md"
+  },
+  {
+   "id": "R3-02",
+   "result": "PASS",
+   "note": "공식 근거 3종을 이 세션에서 직접 fetch. APP [Stop] 이 토크 토글임을 새로 확정",
+   "evidence": "vendor_basis.json"
+  },
+  {
+   "id": "R3-03",
+   "result": "PASS",
+   "note": "대상을 Arm2/ID2 한 관절로 한정. P-007B 와 동일 관절",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "R3-04",
+   "result": "PASS",
+   "note": "사전조건 확인 — LED 상태 P-007C-R2 이후 비정상 변경 없음",
+   "evidence": "P-007C-R2 final_led_state 와 동일"
+  },
+  {
+   "id": "R3-05",
+   "result": "PASS",
+   "note": "극소 힘만 적용. 관절을 실제로 이동시키지 않았다",
+   "evidence": "operator_observation.json 2_joint_actually_moved: NO"
+  },
+  {
+   "id": "R3-06",
+   "result": "PASS",
+   "note": "비정상 현상 0 — servo buzz·기어음·예상치 못한 움직임·base 흔들림 전부 없음",
+   "evidence": "operator_observation.json"
+  },
+  {
+   "id": "R3-07",
+   "result": "PASS",
+   "note": "스펙에 없는 낙하 방지 안전 항목을 추가하고 사유를 운영자에게 먼저 밝혔다",
+   "evidence": "operator_observation.json safety_addition_beyond_spec"
+  },
+  {
+   "id": "R3-08",
+   "result": "PASS",
+   "note": "set_torque 호출 0 · servo write 0 · Button_Mode 0 · calibration/offset 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R3-09",
+   "result": "PASS",
+   "note": "I2C 접근 0 · 코드 실행 0 · ssh 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R3-10",
+   "result": "PASS",
+   "note": "APP·joystick·arm_driver·MoveIt 실행 0 · reboot/relogin 0 · 전원 cycle 0",
+   "evidence": "환경"
+  },
+  {
+   "id": "R3-11",
+   "result": "PASS",
+   "note": "H-C6 라벨 범위 정정을 기록. 선행 게이트 P-007C-R2 디렉터리는 수정하지 않았다",
+   "evidence": "vendor_basis.json hypothesis_label_refinement"
+  },
+  {
+   "id": "R3-12",
+   "result": "PASS",
+   "note": "선행 증거 불변 — git diff --exit-code exit 0",
+   "evidence": "커밋 직전 확인"
+  }
+ ],
+ "robot_command_count": 0,
+ "controller_state_mutation_count": 0,
+ "i2c_access": 0,
+ "code_execution": 0,
+ "torque_change": 0,
+ "servo_write": 0,
+ "robot_motion_commanded": 0,
+ "joint_physically_moved": "NO — 운영자가 저항을 느낀 시점에 멈췄다",
+ "next_recommended": "🔴 이제 P-007D 를 열 근거가 생겼다. 남은 최유력 가설이 H-C5(block-write 경로)이고 P-007D 의 Q2 가 정확히 그것을 겨냥한다('P-007B 에서 효과가 없었던 write_i2c_block_data transport 자체에 별도 의심 근거가 있는가'). P-007D 플랜은 이미 작성돼 있다(docs/261027-1105-*). 다만 P-007D 는 I2C 조회를 수반하므로 이 게이트들과 위험 등급이 다르다 — 플랜을 R3 결과에 맞춰 재검토한 뒤 승인받아야 한다.",
+ "not_recommended_now": "'밀었다 놓으면 서보가 능동적으로 원위치로 돌아오는가' 는 토크 ON/OFF 를 더 날카롭게 가르지만 관절을 실제로 이동시키는 행위다. 이 게이트 범위 밖이고, 지금 가설 지형에서 추가 이득이 크지 않다."
+}
