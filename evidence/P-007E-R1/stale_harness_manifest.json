@@ -1,0 +1,64 @@
+{
+ "gate": "P-007E-R1",
+ "purpose": "🔴 검수 지시 — `ID2 == 150` 을 요구하는 기존 실행 harness 를 `STALE / DO NOT EXECUTE` 로 표시한다",
+ "authoritative_controller_reported_state": {
+  "value": [86, 152, 0, 18, 93, 178],
+  "id2": 152,
+  "source": "evidence/P-007E-R1/phase_b_postread.json (5라운드 전부, None 0, I2C error 0)",
+  "🔴 naming": "`controller-reported servo position` 이다. `physical joint position = 152°` 라고 부르지 않는다"
+ },
+ "baseline_separation": {
+  "P-007B historical baseline": "ID2 = 150",
+  "P-007E-R1 pre-command baseline": "ID2 = 150",
+  "P-007E-R1 post-command state": "ID2 = 152",
+  "current controller-reported state": "ID2 = 152"
+ },
+ "🔴 no_restore_command": "152 → 150 복귀 명령을 baseline 복구 목적으로 보내지 않는다. 그것은 데이터 정리가 아니라 **새로운 physical experiment** 다 (검수 지시)",
+ "🔴 why_files_not_edited": "스크립트 본문을 고치면 acceptance.json 에 기록된 `script_sha256` provenance 가 깨진다. 따라서 파일은 **수정하지 않고** 이 매니페스트로 표시한다. 아래 sha256 은 표시 시점의 값이다",
+ "entries": [
+  {
+   "path": "scripts/p007e_r1_timing_controlled.py",
+   "sha256": "27cefc1c560fbf2a1686fd1fac322ce0042f28a525203b9f5109cbbb3aab3fb5",
+   "assumption": "EXPECTED_BASELINE = [86, 150, 0, 18, 93, 178] · EXPECTED_ID2 = 150",
+   "motion_capable": true,
+   "status": "🔴 STALE / DO NOT EXECUTE",
+   "self_blocking": "실행해도 `PRE_COMMAND_BASELINE_ABORT` 로 멈춘다 (write 경로 도달 전). 그래도 실행하지 않는다"
+  },
+  {
+   "path": "scripts/p007e_phase1_command.py",
+   "sha256": "b7a6c2fba073da857ace8298cca0078ef146f4a17b1fd0747d3c493db033b687",
+   "assumption": "EXPECTED_BASELINE = 150 · TARGET = 155 (+5°)",
+   "motion_capable": true,
+   "status": "🔴 STALE / DO NOT EXECUTE",
+   "note": "P-007E 1차에서 이미 `BASELINE_CHANGED` 로 abort 된 적이 있다"
+  },
+  {
+   "path": "scripts/p007b_write_once.py",
+   "sha256": "091115cd178ee1d46d989840498107f307deaa60a4ae771c3be773c008c25657",
+   "assumption": "baseline 을 호출자가 `expect_base` 로 넘긴다. P-007B 호출은 150 이었다",
+   "motion_capable": true,
+   "status": "🔴 STALE / DO NOT EXECUTE (150 을 넘기는 모든 호출)",
+   "note": "쓰기 직전 readback != expect_base 이면 rc=3 으로 die"
+  },
+  {
+   "path": "scripts/p007e_r1_postread.py",
+   "sha256": "ad7dca94750bf158cdd7471494aec656543ba9aa1f13de89e621206aaafb2e7c",
+   "assumption": "BASELINE = [86, 150, 0, 18, 93, 178] — **보고 필드 전용**(`matches_baseline_all_rounds`). 가드가 아니다",
+   "motion_capable": false,
+   "status": "SAFE TO EXECUTE (읽기 전용) · 단 `matches_baseline_all_rounds` 필드는 이제 의미 없음",
+   "note": "arm.* 호출은 Arm_serial_servo_read 1종뿐"
+  },
+  {
+   "path": "scripts/p007b_fk.py",
+   "sha256": "b7094062cc233b1908bd245e9d2260aa6db37079c2c8e2670265a86b7f101bb9",
+   "assumption": "기본 joint 인자가 [86, 150, 0, 18, 93]",
+   "motion_capable": false,
+   "status": "OFFLINE · 기본 인자가 stale — 인자를 명시해 호출할 것",
+   "note": "하드웨어 접근 0"
+  }
+ ],
+ "not_stale": [
+  {"path": "scripts/p007e_preflight.py",
+   "reason": "baseline 을 읽어서 기록할 뿐 150 하드코딩 가드가 없다"}
+ ]
+}

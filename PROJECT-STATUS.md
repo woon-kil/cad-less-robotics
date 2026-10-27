@@ -16,7 +16,7 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
-| 최신 닫힌 게이트 | **P-007E-R1 Phase B `A/C NOT DISCRIMINATED`** | `evidence/P-007E-R1/phase_b_acceptance.json` |
+| 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — EVIDENCE PASS / EXPERIMENTAL OBSERVATION INVALID / A-C NOT DISCRIMINATED / CLOSED @ a28e41e`** | `evidence/P-007E-R1/phase_b_acceptance.json` (검수 종결) |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **2회** (P-007B · P-007E-R1 Phase B — 둘 다 ID2 152°, raw 1242) | P-007B `servo_position_writes: 1` · P-007E-R1 `phase_b_acceptance.json servo_writes: 1`. 나머지 게이트는 전부 `0` |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
@@ -54,10 +54,12 @@ OBSERVED (P-007E-R1 Phase B):
      → 두 실행의 차이를 timing 단일 변수로 확정할 수 없다 (통제된 대조 아님)
   🔴 물리 모션은 어느 쪽에서도 timing 과 연결되지 않았다 — Phase B 의 모션은 UNOBSERVED
 
-HYPOTHESIS:
-  transaction-spacing / board-processing timing
-  may also affect servo write acceptance
+HYPOTHESIS (🔴 검수 세션이 고정한 문구 — 이대로 쓴다):
+  Timing hypothesis remains OPEN; controlled retest produced a readback
+  change, but the pre-registered physical-motion observation was not obtained.
 ```
+
+🔴 `SUPPORTED` 도 `NOT SUPPORTED` 도 아니다. **OPEN** 이다.
 
 🔴 다음 표현은 **사용하지 않는다** — `timing root cause confirmed` · `board requires 10 ms` · `servo write requires 10 ms` · `P-007B failed because of timing` · `TIMING HYPOTHESIS STRONGLY SUPPORTED` · `TIMING HYPOTHESIS NOT SUPPORTED BY CONTROLLED RETEST` (Phase B 는 A·D 어느 쪽도 성립하지 않았다)
 
@@ -72,7 +74,9 @@ pre     150   ⇒ raw 1267..1278
 raw 이동폭      13..35 counts = 1.06°~2.86°
 ```
 
-readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면 153). target 근처 안착 위치와 모양이 같아 **물리 모션(A)을 배제할 수 없다**. 컨트롤러 내부 보간 보고와 이 데이터만으로는 갈리지 않는다. 근거 식은 `evidence/P-007B/command_api_analysis.md`.
+🔴 현재 evidence 가 지지하는 명칭은 **`controller-reported servo position`** 이다 — `physical joint position = 152°` 라고 부르지 않는다. 열린 모델은 `H1 actual servo position feedback` · `H2 controller-side estimated/interpolated position` · `H3 servo-reported internal position without independently observed shaft motion` 셋이다.
+
+readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면 153) — **단순 command echo 가설만 약화**된다. target 근처 안착 위치와 모양이 같아 **물리 모션(A)을 배제할 수 없다**. 컨트롤러 내부 보간 보고와 이 데이터만으로는 갈리지 않는다. 근거 식은 `evidence/P-007B/command_api_analysis.md`.
 
 ## 게이트 현황
 
@@ -160,7 +164,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 서보 쓰기 0
 - [x] **P-007E-R1** Timing-Controlled Servo Command Experiment
   - Phase A — **`PHASE-A PASS — HARNESS READY / NO MOTION COMMAND EXECUTED`**. 서보 쓰기 0
-  - Phase B — **`A/C NOT DISCRIMINATED`** (`phase_b_acceptance.json`)
+  - Phase B — **`EVIDENCE PASS / EXPERIMENTAL OBSERVATION INVALID / A-C NOT DISCRIMINATED / CLOSED @ a28e41e`** (검수 종결, `phase_b_acceptance.json`)
     - 명령 `Arm_serial_servo_write(2, 152, 2000)` **1회** · quiet interval **60.099 ms** · 예외 0 · `I2C error` 0
     - 🔴 **readback 150 → 152** (5라운드 전부, None 0) — P-007B 는 같은 명령에서 150 불변이었다
     - 🔴 **물리 모션 `UNOBSERVED`** — 운영자가 명령 시각에 자리에 없었다. 사후 사진 비교는 "5mm 판별 불가"로 철회
@@ -206,21 +210,41 @@ L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB    0x02/3B VERI
 
 🔴 n=1 이다. 성질로 일반화하지 않는다. `L6 OBSERVED_NO_MOTION` 은 P-007B 한정이다. Phase B 의 L6 는 **관찰 자체가 없다**(`UNOBSERVED`) — 모션 없음이 관찰된 것이 아니다.
 
-## 🔴 다음 — 검수 세션 판단 대기 (STOP)
+## 🔴 다음 — P-007E-R2 (설계 전용 게이트. motion command 0)
 
-**P-007E-R1 Phase B 가 집행됐고 `A/C NOT DISCRIMINATED` 로 닫혔다.** 승인 지시대로 판정과 raw evidence 까지만 남기고 **STOP** 한다 — 다음 게이트를 열지 않고 원인에 맞춘 코드 수정도 하지 않는다.
+**P-007E-R1 Phase B 는 검수 종결됐다** — `EVIDENCE PASS / EXPERIMENTAL OBSERVATION INVALID / A-C NOT DISCRIMINATED / CLOSED @ a28e41e`.
 
-검수 세션이 결정할 사항:
+검수 세션 결정 3건 (`phase_b_acceptance.json` → `🔴 reviewer_closure`):
 
-1. **A/C 판별을 어떻게 복구할지** — 물리 모션 관찰이 없다. 추가 모션 명령 없이 가능한 관찰 경로가 있는가
-2. **baseline stale 처리** — 현재 readback `[86, 152, 0, 18, 93, 178]`. 150 복귀는 또 하나의 모션 명령이다
-3. **readback 의미** — raw 1243..1254 는 target raw 1242 의 echo 가 아니다. 물리 위치 vs 컨트롤러 보고의 판별 설계
+1. **A/C 복구 불가** — 명령 당시의 pre/post synchronized physical observation 이 없다. 지금 depth 로 재는 것은 `post-state measurement` 일 뿐이다. 🔴 **영구 evidence gap 으로 보존한다.** 사후 복원을 시도하지 않는다
+2. **baseline stale** — `STALE / DO NOT EXECUTE` 3종 표시 완료. 🔴 152→150 복귀 명령은 새로운 physical experiment 이므로 보내지 않는다
+3. **readback 명칭** — `controller-reported servo position`. H1/H2/H3 열림. 다음은 또 다른 +2° 반복이 아니라 **readback ↔ physical pose correspondence** 검증이다
+
+### P-007E-R2 — 목표는 하나
+
+> **다음 단 한 번의 motion command 가 발생할 때 controller readback 과 independent physical measurement 를 동시에 확보할 방법을 설계한다.**
+
+세 채널을 동시에 잡는다.
+
+```
+controller channel      pre/post ID2 readback
+independent physical    synchronized RGB-D pre/post displacement
+operator channel        realtime visual observation
+```
+
+- 🔴 전체 P-006 calibration 은 불필요하다. `T_base_camera` 가 아니라 **"실제로 로봇 링크가 움직였는가"** 라는 독립 센서 증거만 있으면 된다. 고정 카메라에서 동일 physical feature 의 pre/post 3D displacement 로 충분하다
+- 🔴 **명령 전에 카메라 기록이 실제로 시작됐다는 것을 machine-verifiable guard 로** 만든다. 실험 validity 가 운영자 육안 관찰 여부에 다시 의존하지 않도록
+- 🔴 이 게이트에서 보내지 않는 것: **152→150 복귀 · +2° 재시험 · torque**. motion command 0
 
 들고 들어가는 사실: torque `TORQUE_ON_STRONGLY_SUPPORTED` · learning mode 제외 · global block-write failure 제외 · 공식 API encoding 이상 없음 · RGB/STM8 path 동작 · **`0x12`/4B 서보 명령 1회에서 controller readback 이 target 근처 값으로 관측됐다(150→152, quiet interval 60.099 ms, n=1)** · **물리 모션은 어느 실행에서도 양성 관찰이 없다**.
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
 
 > 🔴 **E-R1 갱신 — baseline 이 바뀌었다.** 현재 controller readback 은 **`[86, 152, 0, 18, 93, 178]`** 이다(P-007E-R1 Phase B). **`150` 을 전제한 스크립트는 전부 stale** 이다 — `scripts/p007e_r1_timing_controlled.py` 의 `EXPECTED_BASELINE`/`EXPECTED_ID2`, `scripts/p007b_preflight.py`, `scripts/p007e_preflight.py` 포함. 그 전제를 쓰는 실행은 `PRE_COMMAND_BASELINE_ABORT` 로 끝난다. 🔴 **동일 조건 재실행은 추가 모션 명령(152→150) 없이는 불가능하고, 그것은 승인 예산 밖이다**
+>
+> 🔴 **`STALE / DO NOT EXECUTE`** — `ID2 == 150` 을 요구하는 실행 harness 3종: `scripts/p007e_r1_timing_controlled.py` · `scripts/p007e_phase1_command.py` · `scripts/p007b_write_once.py`(150 을 넘기는 호출). 목록·사유·sha256 은 `evidence/P-007E-R1/stale_harness_manifest.json`. 파일 본문은 **수정하지 않았다** — acceptance 에 기록된 `script_sha256` provenance 를 깨지 않기 위해서다
+>
+> 🔴 **152 → 150 복귀 명령 금지.** baseline 복구 목적이라도 그것은 데이터 정리가 아니라 **새로운 physical experiment** 다 (검수 지시 2026-10-27)
 >
 > 🔴 **물리 위치는 미확인이다.** readback 152 가 실제 관절 위치인지 컨트롤러 보고값인지 갈리지 않았다. 다음 게이트가 FK·clearance 를 계산할 때 `150` 을 실제 자세로 가정하면 안 된다
 
