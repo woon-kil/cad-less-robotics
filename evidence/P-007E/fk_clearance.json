@@ -1,0 +1,400 @@
+{
+ "gate": "P-007E",
+ "phase": "OFFLINE FK / CLEARANCE — 명령 전 계산. 실행 0",
+ "urdf": {
+  "path": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf",
+  "sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28",
+  "matches_p007b": true
+ },
+ "fk_self_check": "PASS — P-007A candidate_fk.json 의 Arm1/Arm2/Arm3_Link 좌표를 오차 0.000e+00 m 로 재현",
+ "convention": "q_urdf = (q_library_deg - 90)*pi/180 — VENDOR_DEFINED_CONVENTION",
+ "baseline_library_deg": [
+  86,
+  150,
+  0,
+  18,
+  93
+ ],
+ "candidate_library_deg": [
+  86,
+  155,
+  0,
+  18,
+  93
+ ],
+ "delta": {
+  "joint": "Arm2 (ID2)",
+  "from_deg": 150,
+  "to_deg": 155,
+  "delta_deg": 5,
+  "duration_ms": 2000,
+  "direction": "P-007B 와 동일 — library angle 증가 방향"
+ },
+ "chain_link_origins": [
+  {
+   "link": "Arm1_Link",
+   "before_mm": [
+    0.0,
+    0.0,
+    89.5
+   ],
+   "after_mm": [
+    0.0,
+    0.0,
+    89.5
+   ],
+   "delta_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "abs_delta_mm": 0.0
+  },
+  {
+   "link": "Arm2_Link",
+   "before_mm": [
+    0.0,
+    0.0,
+    122.5
+   ],
+   "after_mm": [
+    0.0,
+    0.0,
+    122.5
+   ],
+   "delta_mm": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "abs_delta_mm": 0.0
+  },
+  {
+   "link": "Arm3_Link",
+   "before_mm": [
+    -5.55,
+    -71.54,
+    163.92
+   ],
+   "after_mm": [
+    -5.79,
+    -74.87,
+    157.51
+   ],
+   "delta_mm": [
+    -0.23,
+    -3.33,
+    -6.41
+   ],
+   "abs_delta_mm": 7.23
+  },
+  {
+   "link": "Arm4_Link",
+   "before_mm": [
+    -2.71,
+    -30.21,
+    235.68
+   ],
+   "after_mm": [
+    -3.39,
+    -39.93,
+    232.6
+   ],
+   "delta_mm": [
+    -0.68,
+    -9.72,
+    -3.07
+   ],
+   "abs_delta_mm": 10.22
+  },
+  {
+   "link": "Arm5_Link",
+   "before_mm": [
+    2.65,
+    46.49,
+    221.53
+   ],
+   "after_mm": [
+    2.04,
+    37.7,
+    225.21
+   ],
+   "delta_mm": [
+    -0.61,
+    -8.79,
+    3.68
+   ],
+   "abs_delta_mm": 9.55
+  },
+  {
+   "link": "Gripping_point_Link",
+   "before_mm": [
+    8.79,
+    134.31,
+    202.82
+   ],
+   "after_mm": [
+    8.27,
+    126.82,
+    214.24
+   ],
+   "delta_mm": [
+    -0.52,
+    -7.49,
+    11.43
+   ],
+   "abs_delta_mm": 13.67
+  }
+ ],
+ "tcp": {
+  "link": "Gripping_point_Link",
+  "before_mm": [
+   8.79,
+   134.31,
+   202.82
+  ],
+  "after_mm": [
+   8.27,
+   126.82,
+   214.24
+  ],
+  "delta_mm": [
+   -0.52,
+   -7.49,
+   11.42
+  ],
+  "total_displacement_mm": 13.67,
+  "direction": "그리퍼 끝이 약 11.4 mm 위로(+z), 약 7.5 mm base 쪽으로(-y). **테이블에서 멀어지는 방향**"
+ },
+ "linearity_check": {
+  "p007b_plus2deg_mm": 5.47,
+  "this_plus5deg_mm": 13.67,
+  "ratio": 2.5,
+  "angle_ratio": 2.5,
+  "note": "소각 영역이라 변위가 각도에 정확히 선형이다. 근사가 아니라 실제 FK 결과가 그렇다"
+ },
+ "joint_limit": {
+  "joint": "Arm2_Joint",
+  "q_urdf_after_rad": 1.1345,
+  "q_urdf_after_deg": 65.0,
+  "limit_rad": [
+   -1.5708,
+   1.5708
+  ],
+  "margin_to_upper_deg": 25.0,
+  "margin_to_lower_deg": 155.0,
+  "verdict": "PASS"
+ },
+ "🔴 swept_bound": {
+  "method": "링크 원점 FK + **실제 STL 메시 정점 최대반경**(Jetson 에서 계산, 전송 0). 보수적 구 경계",
+  "axis_origin_mm": [
+   0.0,
+   0.0,
+   122.5
+  ],
+  "axis_dir": [
+   0.997564,
+   -0.069756,
+   0.0
+  ],
+  "displacement_coefficient": 0.087239,
+  "formula": "변위 = 2·sin(Δ/2) · r_perp.  Δ=5° → 계수 0.087239",
+  "per_link": [
+   {
+    "link": "Gripping_point_Link",
+    "origin_perp_mm": 156.74,
+    "mesh_R_mm": 85.77,
+    "bound_r_mm": 242.51,
+    "max_disp_mm": 21.16
+   },
+   {
+    "link": "DaBai_DCW2_Link",
+    "origin_perp_mm": 155.79,
+    "mesh_R_mm": 46.51,
+    "bound_r_mm": 202.3,
+    "max_disp_mm": 17.65
+   },
+   {
+    "link": "Arm4_Link",
+    "origin_perp_mm": 117.17,
+    "mesh_R_mm": 82.07,
+    "bound_r_mm": 199.24,
+    "max_disp_mm": 17.38
+   },
+   {
+    "link": "Arm3_Link",
+    "origin_perp_mm": 82.85,
+    "mesh_R_mm": 95.71,
+    "bound_r_mm": 178.56,
+    "max_disp_mm": 15.58
+   },
+   {
+    "link": "llink2",
+    "origin_perp_mm": 123.19,
+    "mesh_R_mm": 52.15,
+    "bound_r_mm": 175.34,
+    "max_disp_mm": 15.3
+   },
+   {
+    "link": "rlink2",
+    "origin_perp_mm": 119.44,
+    "mesh_R_mm": 52.15,
+    "bound_r_mm": 171.59,
+    "max_disp_mm": 14.97
+   },
+   {
+    "link": "Arm5_Link",
+    "origin_perp_mm": 109.43,
+    "mesh_R_mm": 61.22,
+    "bound_r_mm": 170.65,
+    "max_disp_mm": 14.89
+   },
+   {
+    "link": "llink3",
+    "origin_perp_mm": 132.66,
+    "mesh_R_mm": 34.93,
+    "bound_r_mm": 167.59,
+    "max_disp_mm": 14.62
+   },
+   {
+    "link": "rlink3",
+    "origin_perp_mm": 132.27,
+    "mesh_R_mm": 34.93,
+    "bound_r_mm": 167.2,
+    "max_disp_mm": 14.59
+   },
+   {
+    "link": "llink1",
+    "origin_perp_mm": 124.16,
+    "mesh_R_mm": 34.33,
+    "bound_r_mm": 158.49,
+    "max_disp_mm": 13.83
+   },
+   {
+    "link": "rlink1",
+    "origin_perp_mm": 123.21,
+    "mesh_R_mm": 34.33,
+    "bound_r_mm": 157.54,
+    "max_disp_mm": 13.74
+   },
+   {
+    "link": "Arm2_Link",
+    "origin_perp_mm": 0.0,
+    "mesh_R_mm": 95.69,
+    "bound_r_mm": 95.69,
+    "max_disp_mm": 8.35
+   }
+  ],
+  "worst_case": {
+   "link": "Gripping_point_Link",
+   "origin_perp_mm": 156.74,
+   "mesh_R_mm": 85.77,
+   "bound_r_mm": 242.51,
+   "max_disp_mm": 21.16
+  },
+  "statement": "🔴 **로봇 상의 어떤 점도 21.16 mm 를 넘어 움직이지 않는다.** (Gripping_point_Link, r_bound 242.51 mm)"
+ },
+ "🔴 clearance": {
+  "method": "각 가동 링크의 원점 z − 메시 최대반경 = 보수적 최저점 상한",
+  "per_link": [
+   {
+    "link": "Arm2_Link",
+    "z_low_before_mm": 26.81,
+    "z_low_after_mm": 26.81,
+    "delta_mm": 0.0,
+    "mesh_R_mm": 95.69
+   },
+   {
+    "link": "Arm3_Link",
+    "z_low_before_mm": 68.21,
+    "z_low_after_mm": 61.8,
+    "delta_mm": -6.41,
+    "mesh_R_mm": 95.71
+   },
+   {
+    "link": "Gripping_point_Link",
+    "z_low_before_mm": 117.05,
+    "z_low_after_mm": 128.47,
+    "delta_mm": 11.43,
+    "mesh_R_mm": 85.77
+   },
+   {
+    "link": "Arm4_Link",
+    "z_low_before_mm": 153.61,
+    "z_low_after_mm": 150.53,
+    "delta_mm": -3.07,
+    "mesh_R_mm": 82.07
+   },
+   {
+    "link": "Arm5_Link",
+    "z_low_before_mm": 160.31,
+    "z_low_after_mm": 163.99,
+    "delta_mm": 3.68,
+    "mesh_R_mm": 61.22
+   },
+   {
+    "link": "rlink2",
+    "z_low_before_mm": 163.37,
+    "z_low_after_mm": 169.54,
+    "delta_mm": 6.18,
+    "mesh_R_mm": 52.15
+   },
+   {
+    "link": "llink2",
+    "z_low_before_mm": 167.48,
+    "z_low_after_mm": 173.71,
+    "delta_mm": 6.23,
+    "mesh_R_mm": 52.15
+   },
+   {
+    "link": "rlink3",
+    "z_low_before_mm": 180.94,
+    "z_low_after_mm": 188.75,
+    "delta_mm": 7.81,
+    "mesh_R_mm": 34.93
+   },
+   {
+    "link": "llink3",
+    "z_low_before_mm": 181.4,
+    "z_low_after_mm": 189.21,
+    "delta_mm": 7.82,
+    "mesh_R_mm": 34.93
+   },
+   {
+    "link": "rlink1",
+    "z_low_before_mm": 185.11,
+    "z_low_after_mm": 191.37,
+    "delta_mm": 6.26,
+    "mesh_R_mm": 34.33
+   },
+   {
+    "link": "llink1",
+    "z_low_before_mm": 186.14,
+    "z_low_after_mm": 192.42,
+    "delta_mm": 6.27,
+    "mesh_R_mm": 34.33
+   },
+   {
+    "link": "DaBai_DCW2_Link",
+    "z_low_before_mm": 224.33,
+    "z_low_after_mm": 227.92,
+    "delta_mm": 3.58,
+    "mesh_R_mm": 46.51
+   }
+  ],
+  "lowest_moving_before_mm": 26.81,
+  "lowest_moving_after_mm": 26.81,
+  "change_mm": 0.0,
+  "base_mesh_z_min_mm": -15.0,
+  "gap_to_table_before_mm": 41.8,
+  "gap_to_table_after_mm": 41.8,
+  "verdict": "PASS — 최저점이 **전혀 낮아지지 않는다**(Δ 0.00 mm). Arm3_Link 보수 상한만 6.41 mm 내려가나 그 지점도 테이블면에서 76.8 mm 위다"
+ },
+ "🔴 limitations": [
+  "링크 원점 FK + 구(sphere) 메시 경계다. 정확한 swept volume 이 아니라 **상한**이다. 실제 변위는 이보다 작다",
+  "그리퍼·카메라 등 비구동 관절을 0 으로 두고 계산했다. 메시 반경이 국부 형상을 흡수하지만 그리퍼가 크게 벌어져 있으면 r 이 커질 수 있다",
+  "measured TCP 도 calibrated TCP 도 아니다. FK 정확도 자체는 검증되지 않았다(P-007B 와 동일 한계)",
+  "작업공간의 **외부 장애물**은 URDF 에 없다. 운영자 확인 필요"
+ ],
+ "offline_verdict": "PASS — joint limit · swept bound · clearance 전부 통과. 단 운영자 확인 항목(작업공간·자세사진·전원차단)이 남아 있다"
+}
