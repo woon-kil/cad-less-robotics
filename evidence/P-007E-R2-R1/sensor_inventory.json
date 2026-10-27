@@ -1,0 +1,53 @@
+{
+ "gate": "P-007E-R2-R1",
+ "scope": "DESIGN / INVENTORY / FEASIBILITY ONLY — 캡처 0 · 거치 0 · 로봇 모션 0",
+ "method": "비침습 OS 열거 + 저장소 정적 분석. 어떤 카메라도 열지 않았다",
+ "p620": {
+  "lsusb_cameras": ["2bc5:0804 Orbbec Gemini 335L (Bus 002 Device 015)"],
+  "other_video_devices": "없음 — /dev/video0..7 은 전부 Gemini 의 UVC 인터페이스다 (P-003 usb.txt: 'Interfaces: 6 Video (uvcvideo) + 1 HID')",
+  "non_camera_usb": ["17aa:104d / 17aa:1046 Realtek USB Audio (front/rear)"],
+  "v4l2_ctl": "미설치",
+  "verdict": "🔴 **두 번째 카메라 없음**",
+  "evidence_level": "LOCAL_EVIDENCE"
+ },
+ "mac": {
+  "SPCameraDataType": ["MacBook Pro 카메라 (내장)"],
+  "external_usb_cameras": "없음",
+  "verdict": "내장 카메라 1대만 존재",
+  "🔴 unverified": [
+   "Mac 이 로봇과 같은 공간에 있는지 — **운영자만 아는 사실**",
+   "CLI 프로세스의 카메라 접근에 macOS TCC 승인이 필요한지 — 캡처를 유발하지 않으려 시험하지 않았다"
+  ],
+  "evidence_level": "LOCAL_EVIDENCE (존재) · UNKNOWN (배치·권한)"
+ },
+ "jetson": {
+  "access": "🔴 read-only inventory 만. 로봇·컨트롤러·I2C 접근 0",
+  "why_accessed": "기존 evidence 에 Jetson 장치 목록이 없었다 (P-007A-R1 수집 항목은 프로세스·autostart·I2C fd 였다)",
+  "lsusb_cameras": [
+   "2bc5:0561 Orbbec DaBai DCW2 RGB Camera (Bus 001 Device 007)",
+   "2bc5:06a0 ORBBEC Depth Sensor (Bus 001 Device 006)"
+  ],
+  "video_devices": ["/dev/video0", "/dev/video1", "/dev/media0 (tegra)", "/dev/media1 (DaBai)"],
+  "v4l2_list_devices": "Orbbec DaBai DCW2 RGB Camera: O (usb-3610000.usb-2.4.3) → /dev/video0, /dev/video1, /dev/media1",
+  "rgb_discrete_sizes": ["1920x1080", "1440x1080", "1280x960", "1280x720", "640x480", "640x360", "320x240"],
+  "ros_packages_present": ["dofbot_pro_color", "dofbot_pro_depth", "dofbot_pro_vision",
+                           "dofbot_pro_apriltag", "dofbot_pro_KCF", "dofbot_pro_mediapipe"],
+  "evidence_level": "LOCAL_EVIDENCE"
+ },
+ "🔴 mounting_fact": {
+  "source": "/home/jetson/dofbot_pro_ws/src/dofbot_pro_description/urdf/DOFBOT_Pro-V24.urdf (정적 read)",
+  "joint": "DaBai_DCW2_Joint — type=fixed",
+  "parent_link": "Arm4_Link",
+  "child_link": "DaBai_DCW2_Link",
+  "origin_xyz": [-0.0002, 0.0689, 0.0506],
+  "origin_rpy": [0.00872664625997288, 0, 0],
+  "meaning": "🔴 **DaBai 는 팔에 달려 있다 (eye-in-hand, Arm4 에 고정).** ID2 가 돌면 카메라도 함께 움직인다",
+  "evidence_level": "LOCAL_EVIDENCE — 로봇 자신의 description 파일"
+ },
+ "gemini_335l": {
+  "role": "PROCESS / WORKPLANE SENSOR",
+  "physical_pose": "🔴 이 게이트에서 만지지 않았다 (DO NOT MOVE)",
+  "fov_fact": "P-007E-R2 Stage 1 — Arm3~gripper 가 화각에 없다. 🔴 추가 관찰: P-006A `gemini-color.png` 프레임 **상단 가장자리에 DOFBOT 베이스 플레이트**가 걸쳐 있다. 즉 카메라는 테이블을 보고 있고 팔은 화각 위로 벗어난다",
+  "evidence_level": "LOCAL_EVIDENCE"
+ }
+}

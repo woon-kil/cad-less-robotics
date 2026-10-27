@@ -1,0 +1,49 @@
+{
+ "gate": "P-007E-R2-R1",
+ "🔴 verdict": "R2-R1 — CANDIDATE FOUND / PHYSICAL SETUP REQUIRED (분류 B)",
+ "why_B_not_A": "보유 장치 중 §9 의 R1~R7 을 **설치 없이** 모두 만족하는 후보가 없다. 유일하게 설치가 불필요한 DaBai 는 §16 의 '독립 rigid support' 원칙과 충돌하므로 자동 채택할 수 없다",
+ "primary_candidate": {
+  "device": "MacBook Pro 내장 카메라 — 외부 독립 관찰자",
+  "satisfies": {
+   "R1 Arm3~gripper FOV": "배치로 달성 가능 (미검증)",
+   "R2 rigid fixed mounting": "⚠️ 약함 — 노트북 리드. 삼각대·고정대 없이는 준-rigid",
+   "R3 machine-readable 저장": "가능 (TCC 승인 전제)",
+   "R4 동일 feature 반복 추적": "가능",
+   "R5 sham 측정": "가능",
+   "R6 robot/controller 독립": "✅ **완전 독립** — 다른 호스트·다른 채널·로봇에 안 묶임",
+   "R7 recorder-active machine-verifiable": "구현 가능 (heartbeat)"
+  },
+  "required_next_steps": ["physical placement + rigid support 확보 (운영자)",
+                          "macOS 카메라 권한 확인", "FOV qualification", "sham qualification"],
+  "blocking_unknowns": ["Mac 이 로봇과 같은 공간에 있는가 — 운영자만 아는 사실",
+                        "CLI 캡처에 TCC 승인이 필요한가", "해상도·FPS"],
+  "evidence_level": "LOCAL_EVIDENCE (존재) · UNKNOWN (배치·권한·사양)"
+ },
+ "secondary_candidate": {
+  "device": "Orbbec DaBai DCW2 (Arm4 eye-in-hand)",
+  "🔴 measurement_model_inversion": "이 후보는 팔을 **관찰**하지 않는다. 팔에 **실려** 있다. 따라서 질문이 '대상이 움직였는가'에서 '카메라(=Arm4 원위 구조)가 움직였는가'로 바뀐다. 두 질문은 **같은 물리 사실**을 묻는다 — ID2 가 실제로 돌았으면 Arm4 도 돌고 카메라도 돈다",
+  "strength": ["설치 작업 **0** — 이미 고정·연결돼 있다",
+               "ID2 회전에 대한 화소 민감도가 외부 관찰자보다 **한 자릿수 배 크다** (ego-motion)",
+               "sensing 채널이 I2C 컨트롤러와 독립 (USB/UVC)",
+               "드라이버 패키지가 이미 존재 (`dofbot_pro_color`)"],
+  "weakness": ["🔴 §16 '독립 rigid support' 원칙과 충돌 — 로봇과 함께 움직인다",
+               "호스트(Jetson)를 컨트롤러와 공유 — 완전 독립이 아니다",
+               "배경이 정지해 있어야 한다. 조명·자동노출 변화에 취약",
+               "🔴 벤더 launch 파일이 로봇 노드를 함께 띄울 위험 — P-007A 가 발견한 autostart `move_init_pose()` 계열. 사용 전 **정적 검사 필수**"],
+  "🔴 reviewer_decision_required": "ego-motion 측정 모델을 independent physical evidence 로 인정할 것인가. R2-R1 은 이 결정을 **스스로 하지 않는다**",
+  "evidence_level": "LOCAL_EVIDENCE"
+ },
+ "not_recommended": [
+  {"device": "Gemini 335L 재배치",
+   "reason": "🔴 금지. P-003/P-004/P-006C/P-007E-R2 Stage1 의 workplane baseline 이 현재 포즈에 묶여 있다"},
+  {"device": "DOFBOT·작업대 직접 부착 신규 카메라",
+   "reason": "§16 — 로봇 모션과 함께 흔들리는 구조는 primary 로 쓰지 않는다"},
+  {"device": "휴대폰 카메라",
+   "reason": "inventory 로 확인되지 않았다. 보유를 가정하지 않는다. handheld 는 §9 R2 위반"}
+ ],
+ "🔴 what_this_gate_did_not_decide": [
+  "다음 motion command 크기", "ROI·추적 특징", "marker 부착 여부",
+  "카메라 거치 위치 확정", "Stage 2 진입"
+ ],
+ "stop": "보고서 작성·커밋 후 STOP. 거치·캡처·FOV 시험·sham·feature tracking·servo 명령 어느 것도 자동 진행하지 않는다"
+}

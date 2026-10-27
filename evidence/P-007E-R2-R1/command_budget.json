@@ -1,0 +1,19 @@
+{
+ "gate": "P-007E-R2-R1",
+ "servo_writes": 0,
+ "motion_capable_commands": 0,
+ "torque_writes": 0,
+ "rgb_writes": 0,
+ "raw_i2c_writes": 0,
+ "robot_motion": 0,
+ "camera_captures": 0,
+ "camera_physical_moves": 0,
+ "robot_physical_moves": 0,
+ "new_hardware_purchases": 0,
+ "robot_controller_access": 0,
+ "🔴 jetson_access": "read-only inventory 만 — `lsusb` · `ls /dev/video*` · `v4l2-ctl --list-devices/--list-formats-ext`(열거 전용, 스트림 미개방) · URDF 정적 read. **I2C·Arm_Lib·ROS 노드 기동 0**",
+ "p620_access": "read-only — `lsusb` · `ls /dev/video*`. 🔴 이 게이트에서 카메라 드라이버를 띄우지 않았다",
+ "mac_access": "read-only — `system_profiler SPCameraDataType` / `SPUSBDataType`. 카메라 미개방",
+ "controller_reported_state": "[86, 152, 0, 18, 93, 178] — 불변",
+ "stale_harness_status": "ID2==150 전제 harness 3종 `STALE / DO NOT EXECUTE` 유지"
+}
