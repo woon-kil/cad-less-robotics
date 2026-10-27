@@ -1,0 +1,297 @@
+{
+ "gate": "P-007C",
+ "source": "Arm_Lib.py sha256 edfcae72…, 471행, 함수 28개",
+ "model": "allowlist. callable 로 표시된 것만 호출 가능",
+ "functions": [
+  {
+   "name": "__init__",
+   "line": 9,
+   "register": "-",
+   "sequence": "smbus.SMBus(7) 열기, self.addr=0x15 설정만",
+   "returns": "self",
+   "state_mutation": "없음",
+   "motion_capability": "없음",
+   "safe_to_query": "N/A — 생성만으로 버스 쓰기 없음"
+  },
+  {
+   "name": "Arm_serial_servo_write",
+   "line": 15,
+   "register": "0x10+id (id=0은 write6 경로)",
+   "sequence": "write_i2c_block_data 4바이트 [posH,posL,timeH,timeL]. id 2·3·4는 angle=180-angle 반전",
+   "returns": "없음(None)",
+   "state_mutation": "서보 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_servo_write_any",
+   "line": 54,
+   "register": "0x19 (id!=0) / 0x17 (id=0)",
+   "sequence": "write_i2c_block_data. id 바이트 + pos + time",
+   "returns": "없음",
+   "state_mutation": "서보 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_servo_write_offset_switch",
+   "line": 78,
+   "register": "0x1C",
+   "sequence": "write_byte_data(id) 또는 0x00 복원 후 sleep 0.5s",
+   "returns": "없음",
+   "state_mutation": "🔴 중위 offset 영구 저장",
+   "motion_capability": "간접",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_servo_write_offset_state",
+   "line": 89,
+   "register": "0x1B",
+   "sequence": "write_byte_data(0x01) 후 read_byte_data",
+   "returns": "state",
+   "state_mutation": "0x1B 쓰기 발생",
+   "motion_capability": "간접",
+   "safe_to_query": "금지 — 이름은 read지만 쓰기가 선행"
+  },
+  {
+   "name": "Arm_serial_servo_write6_array",
+   "line": 100,
+   "register": "0x1E(time) 후 0x1D(12바이트)",
+   "sequence": "범위검사 후 6축 pos 일괄. s2·s3·s4 는 180-s 반전",
+   "returns": "없음",
+   "state_mutation": "6축 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_servo_write6",
+   "line": 145,
+   "register": "0x1E 후 0x1D",
+   "sequence": "write6_array 와 동일 payload, 인자만 개별",
+   "returns": "없음",
+   "state_mutation": "6축 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_servo_read",
+   "line": 189,
+   "register": "0x30+id",
+   "sequence": "write_byte_data(0x0) → sleep 3ms → read_word_data → 바이트 스왑 → deg 변환. id 2·3·4는 180-pos 역변환",
+   "returns": "0~180 또는 None",
+   "state_mutation": "없음",
+   "motion_capability": "없음",
+   "safe_to_query": "✅ 허용 — P-007A부터 쓰기 0으로 검증"
+  },
+  {
+   "name": "Arm_serial_servo_read_any",
+   "line": 218,
+   "register": "0x37",
+   "sequence": "write_byte_data(id) → read_word_data",
+   "returns": "deg 또는 None",
+   "state_mutation": "없음",
+   "motion_capability": "없음",
+   "safe_to_query": "제외 — ID 1..250 sweep 위험"
+  },
+  {
+   "name": "Arm_ping_servo",
+   "line": 237,
+   "register": "0x38",
+   "sequence": "write_byte_data(id) → sleep 3ms → read_byte_data. 0이면 최대 5회 재시도. 🔴 try/except 없음",
+   "returns": "0xda 정상 / 0x00 무응답 / 기타 서보 에러 / None",
+   "state_mutation": "없음(소스 상)",
+   "motion_capability": "없음",
+   "safe_to_query": "✅ 이번 게이트 승인"
+  },
+  {
+   "name": "Arm_get_hardversion",
+   "line": 257,
+   "register": "0x01",
+   "sequence": "write_byte_data(0x01) → sleep 1ms → read_byte_data",
+   "returns": "'0.N' 문자열 또는 None",
+   "state_mutation": "없음(소스 상)",
+   "motion_capability": "없음",
+   "safe_to_query": "✅ 이번 게이트 승인"
+  },
+  {
+   "name": "Arm_serial_set_torque",
+   "line": 270,
+   "register": "0x1A",
+   "sequence": "write_byte_data(0x01=on / 0x00=off)",
+   "returns": "없음",
+   "state_mutation": "🔴 torque on/off. 읽기 경로 없음",
+   "motion_capability": "간접 — off 시 중력 낙하, on 시 래치된 목표로 이동 가능",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_serial_set_id",
+   "line": 280,
+   "register": "0x18",
+   "sequence": "write_byte_data(id)",
+   "returns": "없음",
+   "state_mutation": "🔴 서보 ID 변경(영구 가능)",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Product_Select",
+   "line": 287,
+   "register": "0x04",
+   "sequence": "write_byte_data(index)",
+   "returns": "없음",
+   "state_mutation": "제품 색상/설정",
+   "motion_capability": "없음",
+   "safe_to_query": "금지 — 펌웨어 효과 불명"
+  },
+  {
+   "name": "Arm_RGB_set",
+   "line": 294,
+   "register": "0x02",
+   "sequence": "write_i2c_block_data [r,g,b]",
+   "returns": "없음",
+   "state_mutation": "LED 색",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Button_Mode",
+   "line": 301,
+   "register": "0x03",
+   "sequence": "write_byte_data(mode)",
+   "returns": "없음",
+   "state_mutation": "🔴 K1 버튼 모드 0=기본 1=학습. 읽기 경로 없음",
+   "motion_capability": "간접 — 학습 모드 영향 불명",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_reset",
+   "line": 308,
+   "register": "0x05",
+   "sequence": "write_byte_data(0x01)",
+   "returns": "없음",
+   "state_mutation": "🔴 드라이버 보드 재시작(重启驱动板)",
+   "motion_capability": "간접",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_PWM_servo_write",
+   "line": 315,
+   "register": "0x50+id / 0x57",
+   "sequence": "write_byte_data(angle)",
+   "returns": "없음",
+   "state_mutation": "PWM 서보 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Clear_Action",
+   "line": 325,
+   "register": "0x23",
+   "sequence": "write_byte_data(0x01) 후 sleep 0.5s",
+   "returns": "없음",
+   "state_mutation": "🔴 저장된 동작그룹 삭제",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Action_Study",
+   "line": 333,
+   "register": "0x24",
+   "sequence": "write_byte_data(0x01)",
+   "returns": "없음",
+   "state_mutation": "🔴 현재 자세를 동작그룹에 기록",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Action_Mode",
+   "line": 340,
+   "register": "0x20",
+   "sequence": "write_byte_data(mode)",
+   "returns": "없음",
+   "state_mutation": "🔴 0=정지 1=단일실행 2=반복실행",
+   "motion_capability": "🔴 MOTION — 재생은 모션이다",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Read_Action_Num",
+   "line": 347,
+   "register": "0x22",
+   "sequence": "write_byte_data(0x01) → sleep 1ms → read_byte_data",
+   "returns": "저장된 동작그룹 수",
+   "state_mutation": "0x22 쓰기 발생",
+   "motion_capability": "없음",
+   "safe_to_query": "제외 — 가설 분리에 기여 없음"
+  },
+  {
+   "name": "Arm_Buzzer_On",
+   "line": 358,
+   "register": "0x06",
+   "sequence": "write_byte_data(delay)",
+   "returns": "없음",
+   "state_mutation": "부저 on",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "Arm_Buzzer_Off",
+   "line": 366,
+   "register": "0x06",
+   "sequence": "write_byte_data(0x00)",
+   "returns": "없음",
+   "state_mutation": "부저 off",
+   "motion_capability": "없음",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "bus_servo_control",
+   "line": 372,
+   "register": "0x10+id",
+   "sequence": "Arm_serial_servo_write 와 동일 register. 입력이 degree 가 아니라 raw counts(900~3100, id5는 ~4200). id 2·3·4는 3100-num+900 반전",
+   "returns": "없음",
+   "state_mutation": "서보 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "__change_value",
+   "line": 409,
+   "register": "-",
+   "sequence": "3100 - value + 900 (내부 헬퍼)",
+   "returns": "int 또는 None",
+   "state_mutation": "없음",
+   "motion_capability": "없음",
+   "safe_to_query": "N/A"
+  },
+  {
+   "name": "bus_servo_control_array6",
+   "line": 416,
+   "register": "0x1E 후 0x1D",
+   "sequence": "raw counts 6축 일괄",
+   "returns": "없음",
+   "state_mutation": "6축 목표 위치",
+   "motion_capability": "🔴 MOTION",
+   "safe_to_query": "금지"
+  },
+  {
+   "name": "get_i2c_bus_num",
+   "line": 470,
+   "register": "-",
+   "sequence": "self.i2c_bus_num 반환",
+   "returns": "int",
+   "state_mutation": "없음",
+   "motion_capability": "없음",
+   "safe_to_query": "N/A — 버스 접근 없음"
+  }
+ ],
+ "motion_capable_count": 8,
+ "callable_in_this_gate": [
+  "Arm_serial_servo_read",
+  "Arm_get_hardversion",
+  "Arm_ping_servo"
+ ],
+ "no_read_path_for": [
+  "torque 상태 (0x1A write-only)",
+  "K1 버튼/학습 모드 (0x03 write-only)"
+ ]
+}

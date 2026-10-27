@@ -1,0 +1,19 @@
+BTIME|1793005682
+SESSION_START|2433
+SESSION_CMD|/usr/libexec/gnome-terminal-server 
+PROC_YAHBOOMARM|0
+PROC_JOYSTICK|0
+PROC_ARMDRIVER|0
+PROC_IPYKERNEL|0
+JUPYTER_ACTIVE|inactive
+JUPYTER_ENABLED|enabled
+PORT_6500|0
+PORT_8888|0
+AUTOSTART_LIST|bash-1.desktop,bash.desktop.p007ar1.bak,
+AUTOSTART_DESKTOP_COUNT|1
+AUTOSTART_BAK_SHA|416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af
+ARMLIB_SHA|edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c
+I2C_FD|2264|1|python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py 
+I2C_FD|3091|1|sh -c ros2 run dofbot_pro_info kinemarics_dofbot 
+I2C_FD|3092|1|/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot 
+DATE|2026-10-27T09:54:50+08:00

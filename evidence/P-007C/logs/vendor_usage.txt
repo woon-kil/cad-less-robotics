@@ -1,0 +1,110 @@
+=== set_torque 사용처 ===
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:277:            print('Arm_serial_set_torque I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:277:            print('Arm_serial_set_torque I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:277:            print('Arm_serial_set_torque I2C error')
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:401:        Arm.Arm_serial_set_torque(state)
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb:43:    "Arm.Arm_serial_set_torque(0)"
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/Dofbot_Calibration.ipynb:97:    "Arm.Arm_serial_set_torque(1)"
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/PC_Control.ipynb:75:    "        Arm.Arm_serial_set_torque(True)\n",
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/PC_Control.ipynb:79:    "        Arm.Arm_serial_set_torque(False)\n",
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/PC_Control.ipynb:170:    "        Arm.Arm_serial_set_torque(True)\n",
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/12.sync_movement/B_arm_ctrl.py:21:    Arm.Arm_serial_set_torque(0)
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/12.sync_movement/B_arm_ctrl.py:54:    Arm.Arm_serial_set_torque(1)
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/12.sync_movement/.ipynb_checkpoints/B_arm_ctrl-checkpoint.py:21:    Arm.Arm_serial_set_torque(0)
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/12.sync_movement/.ipynb_checkpoints/B_arm_ctrl-checkpoint.py:54:    Arm.Arm_serial_set_torque(1)
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/Dofbot_Calibration-checkpoint.ipynb:43:    "Arm.Arm_serial_set_torque(0)"
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/Dofbot_Calibration-checkpoint.ipynb:97:    "Arm.Arm_serial_set_torque(1)"
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/PC_Control-checkpoint.ipynb:75:    "        Arm.Arm_serial_set_torque(True)\n",
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/PC_Control-checkpoint.ipynb:79:    "        Arm.Arm_serial_set_torque(False)\n",
+/home/jetson/dofbot_pro/dofbot_ctrl/scripts/.ipynb_checkpoints/PC_Control-checkpoint.ipynb:170:    "        Arm.Arm_serial_set_torque(True)\n",
+=== Button_Mode / Action_Mode / Action_Study 사용처 ===
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:305:            print('Arm_Button_Mode I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:330:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:337:            print('Arm_Action_Study I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:344:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:305:            print('Arm_Button_Mode I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:330:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:337:            print('Arm_Action_Study I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:344:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:305:            print('Arm_Button_Mode I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:330:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:337:            print('Arm_Action_Study I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:344:            print('Arm_Clear_Action I2C error')
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:424:            Arm.Arm_Button_Mode(1)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:426:            Arm.Arm_Button_Mode(0)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:428:            Arm.Arm_Clear_Action()
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:430:            Arm.Arm_Action_Mode(1)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:432:            Arm.Arm_Action_Mode(2)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:434:            Arm.Arm_Action_Mode(0)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:436:            Arm.Arm_Action_Mode(0)
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:438:            Arm.Arm_Action_Study()
+=== Arm_serial_servo_write( 단일 쓰기 사용처 (상위 25) ===
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:35:            self.arm.Arm_serial_servo_write(6, 180, 100)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:37:            self.arm.Arm_serial_servo_write(6, 30, 100)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:43:        self.arm.Arm_serial_servo_write(6, self.grap_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:52:        self.arm.Arm_serial_servo_write(1, joints_down[0], 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:58:        self.arm.Arm_serial_servo_write(6, 30, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:297:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:305:        self.arm.Arm_serial_servo_write(6, self.grap_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:311:        self.arm.Arm_serial_servo_write(1, joints_down[0], 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:317:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:320:        self.arm.Arm_serial_servo_write(2, 90, 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:94:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:102:        self.arm.Arm_serial_servo_write(6, self.grap_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:108:        self.arm.Arm_serial_servo_write(1, joints_down[0], 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:114:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:117:        self.arm.Arm_serial_servo_write(2, 90, 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage.py:294:        self.arm.Arm_serial_servo_write(6, 30, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage.py:300:        self.arm.Arm_serial_servo_write(6, self.grap_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage.py:306:        self.arm.Arm_serial_servo_write(1, joints_down[0], 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage.py:312:        self.arm.Arm_serial_servo_write(6, 30, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:94:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:102:        self.arm.Arm_serial_servo_write(6, self.grap_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:108:        self.arm.Arm_serial_servo_write(1, joints_down[0], 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:114:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:117:        self.arm.Arm_serial_servo_write(2, 90, 1000)
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/speech_garbage_identify-checkpoint.py:297:        self.arm.Arm_serial_servo_write(6, self.release_joint, 500)
+=== ping / hardversion 사용처 ===
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py:263:            print('Arm_get_hardversion I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/.ipynb_checkpoints/Arm_Lib-checkpoint.py:263:            print('Arm_get_hardversion I2C error')
+/home/jetson/dofbot_pro/Arm_Lib/build/lib/Arm_Lib/Arm_Lib.py:263:            print('Arm_get_hardversion I2C error')
+=== Arm_Device() 생성 직후 초기화 패턴 (Arm_Device 생성 줄) ===
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_identify.py:33:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/garbage_grap.py:13:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage_identify.py:119:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/single_garbage_identify.py:21:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/speech_garbage.py:118:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/single_garbage_identify-checkpoint.py:21:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/speech_garbage_identify-checkpoint.py:119:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_garbage_yolov11/.ipynb_checkpoints/garbage_identify-checkpoint.py:33:        self.arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_face_follow/scripts/face_follow.py:11:        self.Arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_face_follow/scripts/.ipynb_checkpoints/face_follow-checkpoint.py:11:        self.Arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/gesture_stack.py:21:        self.Arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/gesture_grasp.py:25:        self.arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/gesture_stacking.py:33:        self.arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/.ipynb_checkpoints/gesture_grasp-checkpoint.py:25:        self.arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/.ipynb_checkpoints/gesture_stacking-checkpoint.py:33:        self.arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/.ipynb_checkpoints/gesture_action-checkpoint.py:35:        self.arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_gesture/scripts/.ipynb_checkpoints/gesture_stack-checkpoint.py:21:        self.Arm = Arm_Device()
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py:114:Arm = Arm_Device()
+/home/jetson/dofbot_pro/dofbot_color_grab/scripts/color_grab.py:12:        self.Arm = Arm_Lib.Arm_Device()
+/home/jetson/dofbot_pro/dofbot_color_grab/scripts/put_grab.py:16:        self.arm = Arm_Lib.Arm_Device()
+=== setup_i2c_clk_rate.py ===
+import subprocess
+import time
+
+
+# subprocess.run("echo 100000 > /sys/class/i2c-adapter/i2c-7/bus_clk_rate", shell=True)
+
+time.sleep(3)
+
+try:
+    file_path = '/sys/class/i2c-adapter/i2c-7/bus_clk_rate'
+    result = subprocess.run(['cat', file_path], stdout=subprocess.PIPE, text=True)
+    output = str(result.stdout)
+    print("read i2c-7 bus clk rate:", output)
+    if int(output) != 100000:
+        subprocess.run("echo 100000 > /sys/class/i2c-adapter/i2c-7/bus_clk_rate", shell=True)
+        print("set i2c-7 bus clk rate: 100000")
+except:
+    print("set i2c-7 bus clk rate error")

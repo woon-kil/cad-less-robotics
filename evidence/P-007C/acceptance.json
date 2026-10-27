@@ -1,0 +1,236 @@
+{
+ "gate": "P-007C",
+ "base_commit": "b65cdb11a576de1e985ef041310135d7e190334e",
+ "verdict": "DIAGNOSIS PASS — D (COMMUNICATION PATH HEALTHY, MOTION CAUSE UNRESOLVED)",
+ "verdict_basis": "안전 조회가 모두 정상이었다. 보드는 0x01 왕복에 '0.20' 을 응답하고 ping 은 서보 6개 전부 0xda(정상)를 돌려줬다. 그런데 P-007B 의 위치 명령은 효과가 없었다. unsafe experimentation 없이 가설을 좁혔으나 모션 실패 원인을 하나로 특정하지는 못했다.",
+ "hypotheses": {
+  "H-C1_communication": "ELIMINATED — 보드 0x01 응답 + 서보 6개 전부 ping 0xda. 두 독립 경로에서 통신 정상",
+  "H-C2_torque_enable": "CANNOT_DECIDE — 0x1A 는 write-only 이고 소스에 읽기 경로가 없다. §26 은 진단 A 에 read evidence 를 요구한다. 운영자 증언(torque 끈 이력 없음, 팔이 단단히 유지)은 관찰이며 증거로 승격하지 않는다",
+  "H-C3_missing_initialization": "NOT_SUPPORTED — 기동 체인에 set_torque·Button_Mode·보드 enable 호출 0건. 벤더 데모는 Arm_Device() 직후 바로 write 한다. Arm_Device.__init__ 은 SMBus 열기뿐. i2c clk 스크립트는 이 커널에서 경로 부재로 무효",
+  "H-C4_single_servo_protocol": "NOT_SUPPORTED — 0x10+id 는 벤더 표준 경로다. bus_servo_control 도 같은 register 를 쓰고 벤더 데모들이 Arm_serial_servo_write 를 직접 호출한다",
+  "H-C5_command_propagation": "OPEN — 상태 조회는 서보까지 도달하는데 위치 명령은 효과가 없다. 조회는 바이트/워드 트랜잭션이고 위치 명령은 4바이트 block write 다. 이 세션에서 block write 가 의미 있게 수락됐는지는 한 번도 확인된 바 없다",
+  "H-C6_other": "OPEN — 읽을 수 없는 게이팅 상태(torque 0x1A, 학습모드 0x03)가 두 개 있다"
+ },
+ "most_specific_finding": "조회(0x01·0x38·0x30+id)는 전부 write_byte_data 1바이트 + read 계열이고 모두 성공했다. 실패한 유일한 것은 write_i2c_block_data 4바이트(0x12)다. 다만 SMBus 쓰기는 커널이 ACK 를 받으면 예외를 내지 않으므로 '예외 없음'은 보드가 바이트를 ACK 했다는 뜻까지이고 펌웨어가 payload 를 수락했다는 뜻은 아니다.",
+ "carry_forward_risk": "원인이 torque·enable 이면 P-007B 가 보낸 목표(ID2, raw 1242)가 컨트롤러에 래치돼 있을 수 있다. 나중에 torque 를 켜는 순간 ID2 가 그 목표로, 또는 저장된 다른 목표로 움직일 수 있다. 파이썬 정적 분석으로는 어느 쪽인지 알 수 없다. 다음 게이트는 'torque on' 을 모션 가능 행위로 보고 전체 모션 게이트 절차를 적용해야 한다.",
+ "unsafe_experimentation": 0,
+ "robot_movement": 0,
+ "state_mutation": 0,
+ "p007b_retroactively_changed": false,
+ "next_experiment": "권고만 한다. 이 게이트에서 실행하지 않는다.",
+ "checks": [
+  {
+   "id": "P007C-01",
+   "result": "PASS",
+   "note": "Arm_Lib sha256 edfcae72… 일치. 조회 스크립트 안에서 한 번 더 확인. 471행·28함수·__init__.py import 부작용 없음",
+   "evidence": "source_integrity.json"
+  },
+  {
+   "id": "P007C-02",
+   "result": "PASS",
+   "note": "28개 함수 전부 인벤토리. register·시퀀스·반환·state mutation·motion capability·safe_to_query 기재",
+   "evidence": "api_inventory.json"
+  },
+  {
+   "id": "P007C-03",
+   "result": "PASS",
+   "note": "23개 register 정리. 사용 함수·연산·의미·read 지향 여부",
+   "evidence": "register_map.json"
+  },
+  {
+   "id": "P007C-04",
+   "result": "PASS",
+   "note": "ID2 → 180-angle 반전 → pos 1242 → 0x12 → block write [0x04,0xDA,0x07,0xD0] 까지 줄 번호와 함께 추적",
+   "evidence": "single_servo_path.md"
+  },
+  {
+   "id": "P007C-05",
+   "result": "PASS",
+   "note": "0x1E(time) 후 0x1D(12바이트) 구조와 단일 경로 차이 비교. 실행 0",
+   "evidence": "multi_servo_path.md"
+  },
+  {
+   "id": "P007C-06",
+   "result": "PASS",
+   "note": "write_any 는 0x19/0x17, ID 반전 없음. 벤더 사용처 0건. 실행 0",
+   "evidence": "multi_servo_path.md"
+  },
+  {
+   "id": "P007C-07",
+   "result": "PASS",
+   "note": "Arm_serial_servo_write 벤더 사용처 전수 조사. garbage_yolov11 계열에서 직접 호출하고 선행 초기화 없음",
+   "evidence": "single_servo_path.md"
+  },
+  {
+   "id": "P007C-08",
+   "result": "PASS",
+   "note": "torque 관련 API는 Arm_serial_set_torque(270행, 0x1A) 하나뿐",
+   "evidence": "torque_analysis.md"
+  },
+  {
+   "id": "P007C-09",
+   "result": "PASS",
+   "note": "NO_TORQUE_READ_PATH. 0x1A 를 읽는 코드가 소스 전체에 없다. Button_Mode(0x03)도 write-only",
+   "evidence": "query_safety_analysis.json, torque_analysis.md"
+  },
+  {
+   "id": "P007C-10",
+   "result": "PASS",
+   "note": "0x38 write-before-read, 최대 5회 재시도, try/except 없음, servo 조회, 0xda/0x00/기타 의미 기재",
+   "evidence": "ping_analysis.md"
+  },
+  {
+   "id": "P007C-11",
+   "result": "PASS",
+   "note": "0x01 write-then-read, try/except 있음, major는 하드코딩, CONTROLLER_BOARD 레벨",
+   "evidence": "hardware_version_analysis.md"
+  },
+  {
+   "id": "P007C-12",
+   "result": "PASS",
+   "note": "start_app.sh 기동 체인 전체 정적 조사. set_torque·Button_Mode·보드 enable 호출 0건",
+   "evidence": "startup_initialization_analysis.md"
+  },
+  {
+   "id": "P007C-13",
+   "result": "PASS",
+   "note": "Arm_Device.__init__ 은 SMBus 열기와 addr 설정만. 패키지 __init__.py 는 import 한 줄. AST 검사 2회",
+   "evidence": "source_integrity.json, startup_initialization_analysis.md"
+  },
+  {
+   "id": "P007C-14",
+   "result": "PASS",
+   "note": "필수 초기화 0건. move_init_pose·arm_driver 생성자 write6 는 VENDOR_CONVENIENCE_STARTUP 으로 분류. 존재만으로 필수라고 결론내리지 않았다",
+   "evidence": "startup_initialization_analysis.md"
+  },
+  {
+   "id": "P007C-15",
+   "result": "PASS",
+   "note": "CONTROLLER_REPORTED_STATE 유지. 4개 후보 모두 배제 못 함. encoder feedback 승격 안 함",
+   "evidence": "controller_state_semantics.md"
+  },
+  {
+   "id": "P007C-16",
+   "result": "PASS",
+   "note": "target raw 1242 vs baseline raw 1267~1278 기록. 이 차이만으로 원인 단정 안 함",
+   "evidence": "register_map.json, README.md"
+  },
+  {
+   "id": "P007C-17",
+   "result": "PASS",
+   "note": "미문서 register 읽기 0. 조회한 0x01·0x38 은 벤더 주석이 의미를 명시한 register",
+   "evidence": "environment.json, safe_query_plan.json"
+  },
+  {
+   "id": "P007C-18",
+   "result": "PASS",
+   "note": "register sweep 0, i2cdetect·i2cget·i2cset 0, ID sweep 0 (1~6만)",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-19",
+   "result": "PASS",
+   "note": "safe_query_plan.json 을 실행 전에 고정하고 승인 근거·펌웨어 한계를 명시",
+   "evidence": "safe_query_plan.json"
+  },
+  {
+   "id": "P007C-20",
+   "result": "PASS",
+   "note": "allowlist 3개 함수 밖 호출 0. offset_state·Read_Action_Num·read_any 는 근거를 적고 제외",
+   "evidence": "safe_query_plan.json, environment.json"
+  },
+  {
+   "id": "P007C-21",
+   "result": "PASS",
+   "note": "servo position command 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-22",
+   "result": "PASS",
+   "note": "write6 계열 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-23",
+   "result": "PASS",
+   "note": "write_any 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-24",
+   "result": "PASS",
+   "note": "torque 변경 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-25",
+   "result": "PASS",
+   "note": "reset·homing·calibration·offset 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-26",
+   "result": "PASS",
+   "note": "gripper command 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-27",
+   "result": "PASS",
+   "note": "MoveIt execution 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-28",
+   "result": "PASS",
+   "note": "조회 전후 ID1~6 각 5라운드가 동일해 controller state 변화 0. 운영자 관찰 채널은 NOT_OBSERVED(보지 못했다)이며 움직임이 있었다는 보고는 아니다. 움직임 증거 없음",
+   "evidence": "operator_observation.json, pre_query_reads.csv, post_query_reads.csv"
+  },
+  {
+   "id": "P007C-29",
+   "result": "FAIL_THEN_RESTORED",
+   "note": "🔴 위반이 발생했고 복구했다. 조회 직전 preflight 에 scripts/p007b_preflight.py 를 출력 경로 지정 없이 실행해 evidence/P-007B 의 preflight.json·control_ownership.json·logs/preflight_raw.txt 3개를 덮어썼다. git checkout 으로 커밋 상태에서 복구했고, 50개 파일 전체 sha256 이 P-007C 착수 전 기준선과 동일함을 확인했다. 스크립트는 P007_OUT 환경변수로 출력 경로를 받도록 고쳤다. P-007B 의 판정·내용은 소급 변경되지 않았다.",
+   "evidence": "logs/evidence_immutability.txt, docs 이슈보고서"
+  },
+  {
+   "id": "P007C-30",
+   "result": "PASS",
+   "note": "evidence/P-007A-R1 전체 sha256 작업 전후 동일",
+   "evidence": "logs/evidence_immutability.txt"
+  },
+  {
+   "id": "P007C-31",
+   "result": "PASS",
+   "note": "T_base_camera 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-32",
+   "result": "PASS",
+   "note": "P-006D 시작 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-33",
+   "result": "PASS",
+   "note": "P-008 시작 0",
+   "evidence": "environment.json"
+  },
+  {
+   "id": "P007C-34",
+   "result": "PASS",
+   "note": "최종 진단을 증거로 뒷받침. H-C1 제거(ping 6/6 0xda + 보드 0x01 응답), H-C3 비지지(기동 초기화 0건), H-C4/C 비지지(single 경로가 벤더 표준), H-C2 는 read 경로 부재로 판정 불가",
+   "evidence": "README.md, acceptance.json"
+  }
+ ],
+ "incident": {
+  "what": "P-007C 작업 중 P-007B 증거 파일 3개를 덮어썼다",
+  "why": "P-007B preflight 스크립트가 OUT 을 evidence/P-007B 로 하드코딩하고 있었고, 그 스크립트를 P-007C preflight 로 재사용했다. 플랜 1단계가 '도구 분리'로 막으라고 적어둔 사고를 그대로 냈다",
+  "detected_by": "logs/evidence_immutability.txt 의 작업 전후 sha256 비교",
+  "restored": "git checkout -- evidence/P-007B. 50개 파일 전체 sha256 이 기준선과 동일",
+  "prevented_now": "scripts/p007b_preflight.py 가 P007_OUT 환경변수를 받는다",
+  "p007b_verdict_unchanged": true
+ },
+ "verdict_note": "P007C-29 는 FAIL_THEN_RESTORED 다. 나머지 33항목 PASS. 진단 자체는 복구 후 증거로 유지된다."
+}

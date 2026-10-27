@@ -1,0 +1,76 @@
+{
+ "gate": "P-007C",
+ "fixed_before_execution": true,
+ "allowlist_model": "denylist이 아니라 allowlist다. 아래에 없는 Arm_Lib 함수는 호출 금지다.",
+ "callable_functions": [
+  "Arm_serial_servo_read",
+  "Arm_get_hardversion",
+  "Arm_ping_servo"
+ ],
+ "queries": [
+  {
+   "order": 1,
+   "call": "Arm_get_hardversion()",
+   "source_line": 257,
+   "register": "0x01",
+   "sequence": "write_byte_data(0x15, 0x01, 0x01) → sleep 1ms → read_byte_data(0x15, 0x01)",
+   "level": "CONTROLLER_BOARD",
+   "exception_handling": "try/except 로 감싸고 실패 시 None 반환 (262~264행)",
+   "approval_basis": {
+    "position_command": false,
+    "torque_change": false,
+    "reset": false,
+    "calibration": false,
+    "persistent_state_change": "소스 상 없음. 요청 바이트 0x01을 쓰고 같은 register를 읽는다",
+    "undocumented_register_probe": false,
+    "register_shared_with_write_path": false,
+    "register_exclusivity_evidence": "Arm_Lib.py 전체에서 0x01 은 Arm_get_hardversion 에서만 쓰인다. RGB 0x02, Button_Mode 0x03, Product_Select 0x04, reset 0x05, buzzer 0x06 과 겹치지 않는다",
+    "vendor_comment": "读取硬件版本号 (하드웨어 버전 번호 읽기) — 256행"
+   },
+   "purpose": "컨트롤러 보드와의 I2C 왕복이 살아 있는지 확인한다. 읽기 경로(0x30+id) 외의 두 번째 독립 경로다."
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(id) for id in 1..6",
+   "source_line": 237,
+   "register": "0x38",
+   "sequence": "write_byte_data(0x15, 0x38, id) → sleep 3ms → read_byte_data(0x15, 0x38). value==0 이면 최대 5회 재시도 후 None",
+   "level": "SERVO",
+   "exception_handling": "🔴 try/except 가 없다. I2C 예외가 그대로 올라온다. 이 게이트에서는 예외를 잡아 기록만 하고 재시도하지 않는다",
+   "return_semantics": "벤더 주석 236행 — 正常返回0xda(218), 读不到数据返回0x00(0), 其他值为舵机错误. 즉 0xda=정상, 0x00=응답 없음, 그 외=서보 에러",
+   "approval_basis": {
+    "position_command": false,
+    "torque_change": false,
+    "reset": false,
+    "calibration": false,
+    "persistent_state_change": "소스 상 없음. 조회 대상 servo ID를 선택 바이트로 쓰고 상태 바이트를 읽는다",
+    "undocumented_register_probe": false,
+    "register_shared_with_write_path": false,
+    "register_exclusivity_evidence": "Arm_Lib.py 전체에서 0x38 은 Arm_ping_servo 에서만 쓰인다. 위치 명령 0x10+id, 일괄 0x1D/0x1E, any 0x19/0x17, torque 0x1A, offset 0x1B/0x1C, 읽기 0x30+id, read_any 0x37 과 겹치지 않는다",
+    "id_range": "1..6 만 조회한다. 문서화된 범위이고 함수 자체는 1..250 을 허용하지만 넘지 않는다 (스펙 §17 ID sweep 금지)",
+    "vendor_usage": "🔴 벤더 코드에 Arm_ping_servo 사용처가 0건이다. 라이브러리에만 있다. 따라서 '벤더가 실제로 쓰는 경로'라는 근거는 없고, '쓰기 경로와 register를 공유하지 않는다'까지만 말할 수 있다"
+   },
+   "purpose": "컨트롤러가 각 서보와 통신되는지 확인해 H-C1(통신)·H-C5(전파)를 분리한다. ID2는 P-007B 대상이고 나머지는 대조군이다."
+  }
+ ],
+ "firmware_limitation": "🔴 파이썬 정적 분석은 어떤 바이트가 어떤 register로 가는지만 보여준다. 컨트롤러 펌웨어가 그 바이트로 무엇을 하는지는 보여주지 못한다. 따라서 이 두 조회에 대해 쓸 수 있는 가장 강한 표현은 '벤더가 이 register를 이 조회에만 쓰고 어떤 쓰기 경로도 이 register를 공유하지 않는다'까지다. 'proven safe'라고 적지 않는다.",
+ "not_queried": {
+  "Arm_serial_set_torque": "쓰기 전용(0x1A). torque 상태를 읽는 경로가 소스에 없다 → NO_TORQUE_READ_PATH",
+  "Arm_serial_servo_write_offset_state": "이름은 read처럼 보이지만 먼저 0x1B 에 0x01 을 쓴다(91행). offset 계열이라 금지",
+  "Arm_Read_Action_Num": "0x22 에 0x01 을 쓰고 읽는다(349~351행). register 공유는 없으나 이 게이트 가설 분리에 기여하지 않아 제외",
+  "Arm_serial_servo_read_any": "0x37. ID 1..250 범위 조회라 ID sweep 위험. 제외"
+ },
+ "execution_guards": [
+  "Arm_Lib sha256 재확인",
+  "Arm_Device.__init__/__del__ AST 쓰기 호출 검사",
+  "allowlist 밖 함수 호출 0",
+  "조회 전후 ID1~6 각 5라운드 읽기로 state mutation 확인",
+  "조회 직전 preflight (writer 0, jupyter inactive, 6500/8888 absent)",
+  "운영자 관찰 (조회 전 확인, 조회 후 보고)"
+ ],
+ "operator_preconfirmation": {
+  "watching_and_power_in_reach": "YES",
+  "torque_off_history": "없다 / 기억 없다",
+  "arm_appearance": "단단하게 유지 중으로 보인다 (육안, 만지지 않음)"
+ }
+}

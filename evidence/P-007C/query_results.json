@@ -1,0 +1,574 @@
+{
+ "gate": "P-007C",
+ "allowlist": [
+  "Arm_serial_servo_read",
+  "Arm_get_hardversion",
+  "Arm_ping_servo"
+ ],
+ "arm_lib_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "position_commands": 0,
+ "torque_changes": 0,
+ "resets": 0,
+ "started_at": "2026-10-27T09:47:10+0800",
+ "pre_reads": [
+  {
+   "round": 0,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004107
+  },
+  {
+   "round": 0,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00403
+  },
+  {
+   "round": 0,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004019
+  },
+  {
+   "round": 0,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004021
+  },
+  {
+   "round": 0,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004023
+  },
+  {
+   "round": 0,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004071
+  },
+  {
+   "round": 1,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00406
+  },
+  {
+   "round": 1,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.004953
+  },
+  {
+   "round": 1,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006118
+  },
+  {
+   "round": 1,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006152
+  },
+  {
+   "round": 1,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006095
+  },
+  {
+   "round": 1,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006093
+  },
+  {
+   "round": 2,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006126
+  },
+  {
+   "round": 2,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006093
+  },
+  {
+   "round": 2,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006032
+  },
+  {
+   "round": 2,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006042
+  },
+  {
+   "round": 2,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006043
+  },
+  {
+   "round": 2,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006041
+  },
+  {
+   "round": 3,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.005679
+  },
+  {
+   "round": 3,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003993
+  },
+  {
+   "round": 3,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003992
+  },
+  {
+   "round": 3,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00399
+  },
+  {
+   "round": 3,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00399
+  },
+  {
+   "round": 3,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00399
+  },
+  {
+   "round": 4,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00399
+  },
+  {
+   "round": 4,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 4,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003989
+  },
+  {
+   "round": 4,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003993
+  },
+  {
+   "round": 4,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003992
+  },
+  {
+   "round": 4,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003994
+  }
+ ],
+ "queries": [
+  {
+   "order": 1,
+   "call": "Arm_get_hardversion()",
+   "register": "0x01",
+   "value": "0.20",
+   "exception": null,
+   "elapsed_s": 0.001905
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(1)",
+   "register": "0x38",
+   "servo_id": 1,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003925
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(2)",
+   "register": "0x38",
+   "servo_id": 2,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003897
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(3)",
+   "register": "0x38",
+   "servo_id": 3,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003896
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(4)",
+   "register": "0x38",
+   "servo_id": 4,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003895
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(5)",
+   "register": "0x38",
+   "servo_id": 5,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003896
+  },
+  {
+   "order": 2,
+   "call": "Arm_ping_servo(6)",
+   "register": "0x38",
+   "servo_id": 6,
+   "value": 218,
+   "value_hex": "0xda",
+   "interpretation": "NORMAL_0xDA",
+   "exception": null,
+   "elapsed_s": 0.003896
+  }
+ ],
+ "post_reads": [
+  {
+   "round": 0,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 0,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003993
+  },
+  {
+   "round": 0,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003991
+  },
+  {
+   "round": 0,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003992
+  },
+  {
+   "round": 0,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003992
+  },
+  {
+   "round": 0,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003991
+  },
+  {
+   "round": 1,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003992
+  },
+  {
+   "round": 1,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003994
+  },
+  {
+   "round": 1,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.00422
+  },
+  {
+   "round": 1,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006049
+  },
+  {
+   "round": 1,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006048
+  },
+  {
+   "round": 1,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006049
+  },
+  {
+   "round": 2,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006059
+  },
+  {
+   "round": 2,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006049
+  },
+  {
+   "round": 2,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006057
+  },
+  {
+   "round": 2,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006049
+  },
+  {
+   "round": 2,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006048
+  },
+  {
+   "round": 2,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006049
+  },
+  {
+   "round": 3,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.006048
+  },
+  {
+   "round": 3,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.005691
+  },
+  {
+   "round": 3,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003996
+  },
+  {
+   "round": 3,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003998
+  },
+  {
+   "round": 3,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003998
+  },
+  {
+   "round": 3,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 4,
+   "servo_id": 1,
+   "deg": 86,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 4,
+   "servo_id": 2,
+   "deg": 150,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 4,
+   "servo_id": 3,
+   "deg": 0,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003994
+  },
+  {
+   "round": 4,
+   "servo_id": 4,
+   "deg": 18,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003996
+  },
+  {
+   "round": 4,
+   "servo_id": 5,
+   "deg": 93,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003995
+  },
+  {
+   "round": 4,
+   "servo_id": 6,
+   "deg": 178,
+   "error": "",
+   "at": "2026-10-27T09:47:10+0800",
+   "latency_s": 0.003997
+  }
+ ],
+ "finished_at": "2026-10-27T09:47:10+0800"
+}

@@ -1,0 +1,174 @@
+{
+ "gate": "P-007C",
+ "device_address": "0x15",
+ "bus": "/dev/i2c-7",
+ "registers": [
+  {
+   "register": "0x01",
+   "used_by": "Arm_get_hardversion",
+   "operation": "write 0x01 then read",
+   "meaning": "하드웨어 버전. 조회 전용",
+   "read_oriented": true
+  },
+  {
+   "register": "0x02",
+   "used_by": "Arm_RGB_set",
+   "operation": "block write [r,g,b]",
+   "meaning": "RGB LED",
+   "read_oriented": false
+  },
+  {
+   "register": "0x03",
+   "used_by": "Arm_Button_Mode",
+   "operation": "write mode",
+   "meaning": "K1 버튼 모드 0/1. 🔴 읽기 경로 없음",
+   "read_oriented": false
+  },
+  {
+   "register": "0x04",
+   "used_by": "Arm_Product_Select",
+   "operation": "write index",
+   "meaning": "제품 선택",
+   "read_oriented": false
+  },
+  {
+   "register": "0x05",
+   "used_by": "Arm_reset",
+   "operation": "write 0x01",
+   "meaning": "드라이버 보드 재시작",
+   "read_oriented": false
+  },
+  {
+   "register": "0x06",
+   "used_by": "Arm_Buzzer_On / Off",
+   "operation": "write delay / 0x00",
+   "meaning": "부저",
+   "read_oriented": false
+  },
+  {
+   "register": "0x10+id",
+   "used_by": "Arm_serial_servo_write, bus_servo_control",
+   "operation": "block write [posH,posL,timeH,timeL]",
+   "meaning": "🔴 단일 서보 위치 명령. ID2는 0x12. P-007B가 쓴 경로",
+   "read_oriented": false
+  },
+  {
+   "register": "0x17",
+   "used_by": "Arm_serial_servo_write_any (id=0)",
+   "operation": "block write",
+   "meaning": "전 서보 일괄 위치",
+   "read_oriented": false
+  },
+  {
+   "register": "0x18",
+   "used_by": "Arm_serial_set_id",
+   "operation": "write id",
+   "meaning": "서보 ID 설정",
+   "read_oriented": false
+  },
+  {
+   "register": "0x19",
+   "used_by": "Arm_serial_servo_write_any (id!=0)",
+   "operation": "block write [id,posH,posL,timeH,timeL]",
+   "meaning": "임의 ID 단일 위치",
+   "read_oriented": false
+  },
+  {
+   "register": "0x1A",
+   "used_by": "Arm_serial_set_torque",
+   "operation": "write 0x01/0x00",
+   "meaning": "🔴 torque on/off. 읽기 경로 없음",
+   "read_oriented": false
+  },
+  {
+   "register": "0x1B",
+   "used_by": "Arm_serial_servo_write_offset_state",
+   "operation": "write 0x01 then read",
+   "meaning": "offset 설정 상태",
+   "read_oriented": false
+  },
+  {
+   "register": "0x1C",
+   "used_by": "Arm_serial_servo_write_offset_switch",
+   "operation": "write id",
+   "meaning": "중위 offset 저장",
+   "read_oriented": false
+  },
+  {
+   "register": "0x1D",
+   "used_by": "write6 / write6_array / bus_servo_control_array6",
+   "operation": "block write 12바이트",
+   "meaning": "6축 위치 payload",
+   "read_oriented": false
+  },
+  {
+   "register": "0x1E",
+   "used_by": "같은 함수들",
+   "operation": "block write 2바이트",
+   "meaning": "6축 명령의 time",
+   "read_oriented": false
+  },
+  {
+   "register": "0x20",
+   "used_by": "Arm_Action_Mode",
+   "operation": "write mode",
+   "meaning": "동작그룹 실행 모드. 🔴 재생=모션",
+   "read_oriented": false
+  },
+  {
+   "register": "0x22",
+   "used_by": "Arm_Read_Action_Num",
+   "operation": "write 0x01 then read",
+   "meaning": "저장 동작그룹 수",
+   "read_oriented": true
+  },
+  {
+   "register": "0x23",
+   "used_by": "Arm_Clear_Action",
+   "operation": "write 0x01",
+   "meaning": "동작그룹 삭제",
+   "read_oriented": false
+  },
+  {
+   "register": "0x24",
+   "used_by": "Arm_Action_Study",
+   "operation": "write 0x01",
+   "meaning": "현재 자세 기록",
+   "read_oriented": false
+  },
+  {
+   "register": "0x30+id",
+   "used_by": "Arm_serial_servo_read",
+   "operation": "write 0x0 then read_word",
+   "meaning": "🔴 컨트롤러 보고 각도. ID2는 0x32",
+   "read_oriented": true
+  },
+  {
+   "register": "0x37",
+   "used_by": "Arm_serial_servo_read_any",
+   "operation": "write id then read_word",
+   "meaning": "임의 ID 각도",
+   "read_oriented": true
+  },
+  {
+   "register": "0x38",
+   "used_by": "Arm_ping_servo",
+   "operation": "write id then read_byte",
+   "meaning": "🔴 서보 상태. 0xda 정상",
+   "read_oriented": true
+  },
+  {
+   "register": "0x50+id / 0x57",
+   "used_by": "Arm_PWM_servo_write",
+   "operation": "write angle",
+   "meaning": "PWM 서보 위치",
+   "read_oriented": false
+  }
+ ],
+ "why_different_registers": "소스 근거로 말할 수 있는 것은 기능별로 register가 분리돼 있다는 사실까지다. 단일 서보 위치는 0x10+id, 6축 일괄은 0x1D(payload)+0x1E(time), 임의 ID는 0x19/0x17, 조회는 0x30+id·0x37·0x38 이다. 0x10+id 가 '비표준 경로'라는 근거는 없다 — bus_servo_control(372행)도 같은 register를 쓰고 벤더 데모들이 Arm_serial_servo_write 를 직접 쓴다. 각 register를 펌웨어가 어떻게 처리하는지는 소스로 알 수 없다 → UNKNOWN.",
+ "no_read_path": [
+  "0x1A torque",
+  "0x03 button/learning mode"
+ ],
+ "p007b_used": "0x12 (= 0x10 + 2), 4바이트 block write, payload [0x04,0xDA,0x07,0xD0] 에 해당하는 pos 1242 / time 2000"
+}

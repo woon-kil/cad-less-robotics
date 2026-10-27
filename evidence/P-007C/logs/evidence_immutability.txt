@@ -1,0 +1,15 @@
+P-007B·P-007A-R1 증거 불변 검증
+파일 수:       50 →       50
+결과: 차이 발견
+35c35
+< 037994212af60dc0d68aff3afbf4167d9253f0a617816e7b3b3295a4938d17b5  evidence/P-007B/control_ownership.json
+---
+> 466dd908c14fa76077e55718e7fe9cb9538350c223ac6066e484e2351441c9c5  evidence/P-007B/control_ownership.json
+44c44
+< 0be2734da426b2ed8c1f1cfe9ad2a9058a0554700b4882b707fe88d132693d2b  evidence/P-007B/logs/preflight_raw.txt
+---
+> c8676e6ed12c4147b0b5087fba2974e9ee54e3a6e5e0866282a3e27b6f2964a0  evidence/P-007B/logs/preflight_raw.txt
+47c47
+< 942f3ed546087fdf231605f9de6f6ff573124d67027862244f56264e34897b96  evidence/P-007B/preflight.json
+---
+> e43bf533734e83d221ce73f6c967ccecd6e0317ca79ac76d936095bdb1a9e42a  evidence/P-007B/preflight.json

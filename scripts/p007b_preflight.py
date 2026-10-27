@@ -10,7 +10,9 @@ P-007A-R1의 PASS를 재사용하지 않는다 (스펙 §3). 하나라도 실패
 import json, os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-OUT = os.path.join(ROOT, "evidence", "P-007B")
+# 출력 경로는 환경변수로 바꿀 수 있다. 기본값을 그대로 쓰면 닫힌 P-007B 증거를 덮어쓴다.
+# 2026-10-27 P-007C 에서 실제로 그 사고가 났다. 다른 게이트에서는 P007_OUT 을 반드시 지정한다.
+OUT = os.environ.get("P007_OUT") or os.path.join(ROOT, "evidence", "P-007B")
 REMOTE = os.environ.get("P007A_REMOTE", "jetson@192.168.0.94")
 # P-007A-R1 측정값 — 재부팅·재로그인 감지 기준선
 R1_BTIME = "1793005682"

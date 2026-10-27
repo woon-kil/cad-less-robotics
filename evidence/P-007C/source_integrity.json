@@ -1,0 +1,23 @@
+{
+ "path": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py",
+ "sha256_measured": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "sha256_expected": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "matches_p007a_r1": true,
+ "checked_before_command": true,
+ "bytes": 17739,
+ "lines": 471,
+ "function_count": 28,
+ "local_copy_byte_identical": true,
+ "package_init": {
+  "path": "Arm_Lib/Arm_Lib/__init__.py",
+  "content": "from .Arm_Lib import Arm_Device",
+  "import_time_side_effects": "없음. import 한 줄뿐이다"
+ },
+ "sibling_files": [
+  "setup_i2c_clk_rate.py (584 bytes, 이 커널에서 무효)",
+  ".ipynb_checkpoints/Arm_Lib-checkpoint.py"
+ ],
+ "checked_before_query": true,
+ "checked_again_inside_query_script": true,
+ "note": "preflight 재실행이 이 파일을 한 번 덮어써서 상세 항목을 다시 채웠다. 측정값(sha256)은 두 경로에서 동일하다."
+}

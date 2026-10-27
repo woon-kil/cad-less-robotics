@@ -1,0 +1,24 @@
+{
+ "gate": "P-007C",
+ "method": "Claude Code AskUserQuestion. 운영자 직접 응답. Claude가 추정하지 않았다.",
+ "pre_query": {
+  "watching_and_power_in_reach": "YES",
+  "at": "조회 실행 직전"
+ },
+ "during_query_movement": {
+  "answer": "NOT_OBSERVED",
+  "verbatim": "보지 못했다",
+  "note": "움직임이 있었다는 보고가 아니라 그 시점에 보지 못했다는 보고다. 움직임 증거는 없다."
+ },
+ "corroboration": "조회 전후 ID1~6 각 5라운드가 동일하므로 controller state 변화는 없다. 다만 이것이 물리 무동작의 완전한 증명은 아니다.",
+ "torque_off_history": {
+  "answer": "없다 / 기억 없다",
+  "asked_because": "YahboomArm.py:401 APP 핸들러, Dofbot_Calibration.ipynb, 12.sync_movement/B_arm_ctrl.py:21 이 set_torque(0) 을 쓴다"
+ },
+ "arm_appearance": {
+  "answer": "단단하게 유지 중으로 보인다",
+  "method": "육안. 만지지 않았다",
+  "note": "관찰이며 torque 상태의 증거로 승격하지 않는다. §26은 진단 A에 read evidence를 요구한다"
+ },
+ "servo_power_switch": "묻지 않았다. 팔 상태 관찰로 대체했고 스위치 토글은 전원 재투입이라 금지다"
+}
