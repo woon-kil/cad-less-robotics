@@ -1,0 +1,1165 @@
+{
+ "phase": "before",
+ "collected_at": "2026-10-27T08:22:10+08:00",
+ "total_process_count": 161,
+ "processes_of_interest": [
+  {
+   "pid": 3021,
+   "ppid": 2969,
+   "starttime_ticks": 2714,
+   "uid": 1000,
+   "cmdline": "bash -c python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc;exec bash"
+  },
+  {
+   "pid": 3022,
+   "ppid": 3021,
+   "starttime_ticks": 2715,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc"
+  },
+  {
+   "pid": 3047,
+   "ppid": 2969,
+   "starttime_ticks": 2745,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py"
+  },
+  {
+   "pid": 3072,
+   "ppid": 2969,
+   "starttime_ticks": 2781,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py"
+  }
+ ],
+ "identity_note": "pid 하나만으로 종료하지 않는다. cmdline과 starttime_ticks가 같을 때만 같은 프로세스로 본다.",
+ "all_processes": [
+  {
+   "pid": 1,
+   "ppid": 0,
+   "starttime_ticks": 0,
+   "uid": 0,
+   "cmdline": "/sbin/init 2"
+  },
+  {
+   "pid": 246,
+   "ppid": 1,
+   "starttime_ticks": 933,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-journald"
+  },
+  {
+   "pid": 284,
+   "ppid": 1,
+   "starttime_ticks": 963,
+   "uid": 0,
+   "cmdline": "/bin/bash /etc/systemd/nv-tee-supplicant.sh"
+  },
+  {
+   "pid": 286,
+   "ppid": 284,
+   "starttime_ticks": 964,
+   "uid": 0,
+   "cmdline": "/usr/sbin/tee-supplicant"
+  },
+  {
+   "pid": 294,
+   "ppid": 1,
+   "starttime_ticks": 967,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-udevd"
+  },
+  {
+   "pid": 583,
+   "ppid": 1,
+   "starttime_ticks": 1175,
+   "uid": 0,
+   "cmdline": "/usr/sbin/haveged --Foreground --verbose=1"
+  },
+  {
+   "pid": 585,
+   "ppid": 1,
+   "starttime_ticks": 1176,
+   "uid": 129,
+   "cmdline": "/sbin/rpcbind -f -w"
+  },
+  {
+   "pid": 586,
+   "ppid": 1,
+   "starttime_ticks": 1176,
+   "uid": 104,
+   "cmdline": "/lib/systemd/systemd-resolved"
+  },
+  {
+   "pid": 587,
+   "ppid": 1,
+   "starttime_ticks": 1177,
+   "uid": 106,
+   "cmdline": "/lib/systemd/systemd-timesyncd"
+  },
+  {
+   "pid": 645,
+   "ppid": 1,
+   "starttime_ticks": 1382,
+   "uid": 123,
+   "cmdline": "avahi-daemon: running [yahboom.local]"
+  },
+  {
+   "pid": 646,
+   "ppid": 1,
+   "starttime_ticks": 1382,
+   "uid": 0,
+   "cmdline": "/usr/lib/bluetooth/bluetoothd -d --noplugin=audio,a2dp,avrcp"
+  },
+  {
+   "pid": 647,
+   "ppid": 1,
+   "starttime_ticks": 1383,
+   "uid": 105,
+   "cmdline": "@dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only"
+  },
+  {
+   "pid": 648,
+   "ppid": 1,
+   "starttime_ticks": 1383,
+   "uid": 0,
+   "cmdline": "/usr/sbin/NetworkManager --no-daemon"
+  },
+  {
+   "pid": 651,
+   "ppid": 1,
+   "starttime_ticks": 1383,
+   "uid": 1000,
+   "cmdline": "/bin/bash /usr/sbin/jupyterlab-start"
+  },
+  {
+   "pid": 656,
+   "ppid": 1,
+   "starttime_ticks": 1384,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers"
+  },
+  {
+   "pid": 662,
+   "ppid": 1,
+   "starttime_ticks": 1385,
+   "uid": 0,
+   "cmdline": "python3 /opt/nvidia/pva-allow-2/bin/nvidiaPvaAllowd.py"
+  },
+  {
+   "pid": 669,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 0,
+   "cmdline": "/usr/libexec/polkitd --no-debug"
+  },
+  {
+   "pid": 674,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 0,
+   "cmdline": "/usr/libexec/power-profiles-daemon"
+  },
+  {
+   "pid": 677,
+   "ppid": 1,
+   "starttime_ticks": 1386,
+   "uid": 107,
+   "cmdline": "/usr/sbin/rsyslogd -n -iNONE"
+  },
+  {
+   "pid": 682,
+   "ppid": 1,
+   "starttime_ticks": 1387,
+   "uid": 0,
+   "cmdline": "seatd -g video"
+  },
+  {
+   "pid": 692,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/lib/snapd/snapd"
+  },
+  {
+   "pid": 696,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/libexec/accounts-daemon"
+  },
+  {
+   "pid": 698,
+   "ppid": 1,
+   "starttime_ticks": 1388,
+   "uid": 0,
+   "cmdline": "/usr/libexec/switcheroo-control"
+  },
+  {
+   "pid": 700,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/lib/systemd/systemd-logind"
+  },
+  {
+   "pid": 703,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/usr/libexec/udisks2/udisksd"
+  },
+  {
+   "pid": 704,
+   "ppid": 1,
+   "starttime_ticks": 1389,
+   "uid": 0,
+   "cmdline": "/sbin/wpa_supplicant -u -s -O /run/wpa_supplicant"
+  },
+  {
+   "pid": 712,
+   "ppid": 645,
+   "starttime_ticks": 1390,
+   "uid": 123,
+   "cmdline": "avahi-daemon: chroot helper"
+  },
+  {
+   "pid": 752,
+   "ppid": 1,
+   "starttime_ticks": 1394,
+   "uid": 0,
+   "cmdline": "/usr/sbin/ModemManager"
+  },
+  {
+   "pid": 935,
+   "ppid": 1,
+   "starttime_ticks": 1447,
+   "uid": 0,
+   "cmdline": "/bin/bash /etc/systemd/nvmemwarning.sh"
+  },
+  {
+   "pid": 1090,
+   "ppid": 651,
+   "starttime_ticks": 1565,
+   "uid": 1000,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jupyter-lab --ip=0.0.0.0 --no-browser"
+  },
+  {
+   "pid": 1093,
+   "ppid": 1,
+   "starttime_ticks": 1671,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvargus-daemon"
+  },
+  {
+   "pid": 1096,
+   "ppid": 1,
+   "starttime_ticks": 1672,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvs-service"
+  },
+  {
+   "pid": 1102,
+   "ppid": 1,
+   "starttime_ticks": 1673,
+   "uid": 999,
+   "cmdline": "/usr/local/bin/ollama serve"
+  },
+  {
+   "pid": 1109,
+   "ppid": 1,
+   "starttime_ticks": 1673,
+   "uid": 0,
+   "cmdline": "/bin/sh /snap/cups/1147/scripts/run-cups-browsed"
+  },
+  {
+   "pid": 1113,
+   "ppid": 1,
+   "starttime_ticks": 1674,
+   "uid": 0,
+   "cmdline": "/bin/sh /snap/cups/1147/scripts/run-cupsd"
+  },
+  {
+   "pid": 1128,
+   "ppid": 1,
+   "starttime_ticks": 1675,
+   "uid": 0,
+   "cmdline": "/usr/bin/containerd"
+  },
+  {
+   "pid": 1139,
+   "ppid": 1,
+   "starttime_ticks": 1677,
+   "uid": 0,
+   "cmdline": "/usr/sbin/cron -f -P"
+  },
+  {
+   "pid": 1155,
+   "ppid": 1,
+   "starttime_ticks": 1679,
+   "uid": 0,
+   "cmdline": "sshd: /usr/sbin/sshd -D [listener] 0 of 10-100 startups"
+  },
+  {
+   "pid": 1185,
+   "ppid": 1,
+   "starttime_ticks": 1683,
+   "uid": 0,
+   "cmdline": "/usr/sbin/gdm3"
+  },
+  {
+   "pid": 1203,
+   "ppid": 1,
+   "starttime_ticks": 1684,
+   "uid": 111,
+   "cmdline": "/usr/sbin/kerneloops --test"
+  },
+  {
+   "pid": 1216,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 0,
+   "cmdline": "/sbin/agetty -o -p -- \\u --keep-baud 115200,57600,38400,9600 ttyGS0 vt220"
+  },
+  {
+   "pid": 1219,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 0,
+   "cmdline": "/sbin/agetty -o -p -- \\u --keep-baud 115200,57600,38400,9600 ttyTCU0 vt220"
+  },
+  {
+   "pid": 1220,
+   "ppid": 1,
+   "starttime_ticks": 1686,
+   "uid": 111,
+   "cmdline": "/usr/sbin/kerneloops"
+  },
+  {
+   "pid": 1257,
+   "ppid": 1185,
+   "starttime_ticks": 1691,
+   "uid": 0,
+   "cmdline": "gdm-session-worker [pam/gdm-autologin]"
+  },
+  {
+   "pid": 1351,
+   "ppid": 1,
+   "starttime_ticks": 1702,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvphsd"
+  },
+  {
+   "pid": 1362,
+   "ppid": 1351,
+   "starttime_ticks": 1703,
+   "uid": 0,
+   "cmdline": "/usr/sbin/nvphsd"
+  },
+  {
+   "pid": 1399,
+   "ppid": 1,
+   "starttime_ticks": 1708,
+   "uid": 0,
+   "cmdline": "/usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock"
+  },
+  {
+   "pid": 1400,
+   "ppid": 1,
+   "starttime_ticks": 1708,
+   "uid": 1000,
+   "cmdline": "/lib/systemd/systemd --user"
+  },
+  {
+   "pid": 1407,
+   "ppid": 1400,
+   "starttime_ticks": 1710,
+   "uid": 1000,
+   "cmdline": "(sd-pam)"
+  },
+  {
+   "pid": 1591,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pipewire"
+  },
+  {
+   "pid": 1592,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pipewire-media-session"
+  },
+  {
+   "pid": 1593,
+   "ppid": 1400,
+   "starttime_ticks": 1737,
+   "uid": 1000,
+   "cmdline": "/usr/bin/pulseaudio --daemonize=no --log-target=journal"
+  },
+  {
+   "pid": 1600,
+   "ppid": 1,
+   "starttime_ticks": 1740,
+   "uid": 108,
+   "cmdline": "/usr/libexec/rtkit-daemon"
+  },
+  {
+   "pid": 1604,
+   "ppid": 1,
+   "starttime_ticks": 1741,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-keyring-daemon --daemonize --login"
+  },
+  {
+   "pid": 1615,
+   "ppid": 1400,
+   "starttime_ticks": 1743,
+   "uid": 1000,
+   "cmdline": "/usr/bin/dbus-daemon --session --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only"
+  },
+  {
+   "pid": 1616,
+   "ppid": 1257,
+   "starttime_ticks": 1743,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gdm-x-session --run-script env GNOME_SHELL_SESSION_MODE=ubuntu /usr/bin/gnome-session --session=ubuntu"
+  },
+  {
+   "pid": 1626,
+   "ppid": 1616,
+   "starttime_ticks": 1745,
+   "uid": 0,
+   "cmdline": "/usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3"
+  },
+  {
+   "pid": 1915,
+   "ppid": 1616,
+   "starttime_ticks": 1818,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-binary --session=ubuntu"
+  },
+  {
+   "pid": 2041,
+   "ppid": 1400,
+   "starttime_ticks": 1886,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/at-spi-bus-launcher"
+  },
+  {
+   "pid": 2053,
+   "ppid": 2041,
+   "starttime_ticks": 1888,
+   "uid": 1000,
+   "cmdline": "/usr/bin/dbus-daemon --config-file=/usr/share/defaults/at-spi2/accessibility.conf --nofork --print-address 11 --address=unix:path=/run/user/1000/at-spi/bus_0"
+  },
+  {
+   "pid": 2076,
+   "ppid": 1400,
+   "starttime_ticks": 1902,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-remote-desktop-daemon"
+  },
+  {
+   "pid": 2078,
+   "ppid": 1400,
+   "starttime_ticks": 1902,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-ctl --monitor"
+  },
+  {
+   "pid": 2090,
+   "ppid": 1400,
+   "starttime_ticks": 1904,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd"
+  },
+  {
+   "pid": 2097,
+   "ppid": 1400,
+   "starttime_ticks": 1906,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-fuse /run/user/1000/gvfs -f"
+  },
+  {
+   "pid": 2099,
+   "ppid": 1400,
+   "starttime_ticks": 1907,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-session-binary --systemd-service --session=ubuntu"
+  },
+  {
+   "pid": 2145,
+   "ppid": 1400,
+   "starttime_ticks": 1920,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-shell"
+  },
+  {
+   "pid": 2148,
+   "ppid": 648,
+   "starttime_ticks": 1924,
+   "uid": 65534,
+   "cmdline": "/usr/sbin/dnsmasq --conf-file=/dev/null --no-hosts --keep-in-foreground --bind-interfaces --except-interface=lo --clear-on-reload --strict-order --listen-address=192.168.8.88 --dhcp-range=192.168.8.97,192.168.8.254,60m --dhcp-lease-max=50 --dhcp-leasefile=/var/lib/NetworkManager/dnsmasq-wlP1p1s0.leases --pid-file=/run/nm-dnsmasq-wlP1p1s0.pid --conf-dir=/etc/NetworkManager/dnsmasq-shared.d"
+  },
+  {
+   "pid": 2256,
+   "ppid": 1,
+   "starttime_ticks": 1964,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2260,
+   "ppid": 1,
+   "starttime_ticks": 1965,
+   "uid": 1000,
+   "cmdline": "/bin/sh -c python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+  },
+  {
+   "pid": 2264,
+   "ppid": 2260,
+   "starttime_ticks": 1966,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+  },
+  {
+   "pid": 2310,
+   "ppid": 2256,
+   "starttime_ticks": 1998,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2319,
+   "ppid": 2256,
+   "starttime_ticks": 1999,
+   "uid": 0,
+   "cmdline": "/usr/bin/python3 /usr/local/bin/jtop --force"
+  },
+  {
+   "pid": 2472,
+   "ppid": 1400,
+   "starttime_ticks": 2036,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-permission-store"
+  },
+  {
+   "pid": 2476,
+   "ppid": 1400,
+   "starttime_ticks": 2036,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-shell-calendar-server"
+  },
+  {
+   "pid": 2480,
+   "ppid": 1113,
+   "starttime_ticks": 2036,
+   "uid": 0,
+   "cmdline": "cupsd -f -s /var/snap/cups/common/etc/cups/cups-files.conf -c /var/snap/cups/common/etc/cups/cupsd.conf"
+  },
+  {
+   "pid": 2491,
+   "ppid": 1400,
+   "starttime_ticks": 2040,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-source-registry"
+  },
+  {
+   "pid": 2498,
+   "ppid": 1,
+   "starttime_ticks": 2047,
+   "uid": 0,
+   "cmdline": "/usr/libexec/upowerd"
+  },
+  {
+   "pid": 2501,
+   "ppid": 1400,
+   "starttime_ticks": 2047,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/goa-daemon"
+  },
+  {
+   "pid": 2505,
+   "ppid": 1400,
+   "starttime_ticks": 2052,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-calendar-factory"
+  },
+  {
+   "pid": 2515,
+   "ppid": 1400,
+   "starttime_ticks": 2059,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/dconf-service"
+  },
+  {
+   "pid": 2519,
+   "ppid": 1400,
+   "starttime_ticks": 2060,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/goa-identity-service"
+  },
+  {
+   "pid": 2535,
+   "ppid": 1400,
+   "starttime_ticks": 2066,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-udisks2-volume-monitor"
+  },
+  {
+   "pid": 2536,
+   "ppid": 1400,
+   "starttime_ticks": 2066,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-addressbook-factory"
+  },
+  {
+   "pid": 2548,
+   "ppid": 1400,
+   "starttime_ticks": 2071,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-gphoto2-volume-monitor"
+  },
+  {
+   "pid": 2554,
+   "ppid": 1400,
+   "starttime_ticks": 2074,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-mtp-volume-monitor"
+  },
+  {
+   "pid": 2572,
+   "ppid": 1400,
+   "starttime_ticks": 2077,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-goa-volume-monitor"
+  },
+  {
+   "pid": 2576,
+   "ppid": 1400,
+   "starttime_ticks": 2078,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfs-afc-volume-monitor"
+  },
+  {
+   "pid": 2587,
+   "ppid": 1109,
+   "starttime_ticks": 2081,
+   "uid": 0,
+   "cmdline": "cups-browsed -c /var/snap/cups/common/etc/cups/cups-browsed.conf"
+  },
+  {
+   "pid": 2600,
+   "ppid": 2090,
+   "starttime_ticks": 2239,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-trash --spawner :1.17 /org/gtk/gvfs/exec_spaw/0"
+  },
+  {
+   "pid": 2607,
+   "ppid": 1400,
+   "starttime_ticks": 2254,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gjs /usr/share/gnome-shell/org.gnome.Shell.Notifications"
+  },
+  {
+   "pid": 2618,
+   "ppid": 1400,
+   "starttime_ticks": 2259,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/at-spi2-registryd --use-gnome-session"
+  },
+  {
+   "pid": 2625,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "sh -c /usr/bin/ibus-daemon --panel disable $([ \"$XDG_SESSION_TYPE\" = \"x11\" ] && echo \"--xim\")"
+  },
+  {
+   "pid": 2627,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-a11y-settings"
+  },
+  {
+   "pid": 2628,
+   "ppid": 2625,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/bin/ibus-daemon --panel disable --xim"
+  },
+  {
+   "pid": 2629,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-color"
+  },
+  {
+   "pid": 2631,
+   "ppid": 1400,
+   "starttime_ticks": 2266,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-datetime"
+  },
+  {
+   "pid": 2633,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-housekeeping"
+  },
+  {
+   "pid": 2635,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-keyboard"
+  },
+  {
+   "pid": 2638,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-media-keys"
+  },
+  {
+   "pid": 2639,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-power"
+  },
+  {
+   "pid": 2641,
+   "ppid": 1400,
+   "starttime_ticks": 2267,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-print-notifications"
+  },
+  {
+   "pid": 2643,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-rfkill"
+  },
+  {
+   "pid": 2645,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-screensaver-proxy"
+  },
+  {
+   "pid": 2646,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-sharing"
+  },
+  {
+   "pid": 2647,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-smartcard"
+  },
+  {
+   "pid": 2648,
+   "ppid": 1400,
+   "starttime_ticks": 2268,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-sound"
+  },
+  {
+   "pid": 2649,
+   "ppid": 1400,
+   "starttime_ticks": 2269,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-wacom"
+  },
+  {
+   "pid": 2650,
+   "ppid": 1400,
+   "starttime_ticks": 2269,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-xsettings"
+  },
+  {
+   "pid": 2651,
+   "ppid": 2099,
+   "starttime_ticks": 2272,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gnome-software --gapplication-service"
+  },
+  {
+   "pid": 2683,
+   "ppid": 2099,
+   "starttime_ticks": 2276,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/evolution-data-server/evolution-alarm-notify"
+  },
+  {
+   "pid": 2696,
+   "ppid": 2099,
+   "starttime_ticks": 2281,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-disk-utility-notify"
+  },
+  {
+   "pid": 2708,
+   "ppid": 2099,
+   "starttime_ticks": 2283,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2737,
+   "ppid": 2628,
+   "starttime_ticks": 2289,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-memconf"
+  },
+  {
+   "pid": 2747,
+   "ppid": 2628,
+   "starttime_ticks": 2291,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-extension-gtk3"
+  },
+  {
+   "pid": 2757,
+   "ppid": 1400,
+   "starttime_ticks": 2295,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-x11 --kill-daemon"
+  },
+  {
+   "pid": 2767,
+   "ppid": 1400,
+   "starttime_ticks": 2299,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-portal"
+  },
+  {
+   "pid": 2793,
+   "ppid": 1,
+   "starttime_ticks": 2316,
+   "uid": 122,
+   "cmdline": "/usr/libexec/colord"
+  },
+  {
+   "pid": 2801,
+   "ppid": 1400,
+   "starttime_ticks": 2323,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gsd-printer"
+  },
+  {
+   "pid": 2806,
+   "ppid": 1400,
+   "starttime_ticks": 2327,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal"
+  },
+  {
+   "pid": 2846,
+   "ppid": 1400,
+   "starttime_ticks": 2337,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-document-portal"
+  },
+  {
+   "pid": 2861,
+   "ppid": 1400,
+   "starttime_ticks": 2339,
+   "uid": 1000,
+   "cmdline": "/usr/bin/gjs /usr/share/gnome-shell/org.gnome.ScreenSaver"
+  },
+  {
+   "pid": 2884,
+   "ppid": 2846,
+   "starttime_ticks": 2343,
+   "uid": 0,
+   "cmdline": "fusermount3 -o rw,nosuid,nodev,fsname=portal,auto_unmount,subtype=portal -- /run/user/1000/doc"
+  },
+  {
+   "pid": 2896,
+   "ppid": 1400,
+   "starttime_ticks": 2347,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal-gnome"
+  },
+  {
+   "pid": 2906,
+   "ppid": 2708,
+   "starttime_ticks": 2352,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2908,
+   "ppid": 2708,
+   "starttime_ticks": 2352,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2909,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2911,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2913,
+   "ppid": 2708,
+   "starttime_ticks": 2353,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2917,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2918,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2920,
+   "ppid": 2708,
+   "starttime_ticks": 2354,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2925,
+   "ppid": 2708,
+   "starttime_ticks": 2356,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2926,
+   "ppid": 2708,
+   "starttime_ticks": 2356,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2927,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2928,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2929,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2930,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2931,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2932,
+   "ppid": 2708,
+   "starttime_ticks": 2357,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2933,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2934,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2935,
+   "ppid": 2708,
+   "starttime_ticks": 2358,
+   "uid": 1000,
+   "cmdline": "python3 /usr/share/nvpmodel_indicator/nvpmodel_indicator.py"
+  },
+  {
+   "pid": 2941,
+   "ppid": 2628,
+   "starttime_ticks": 2371,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/ibus-engine-libpinyin --ibus"
+  },
+  {
+   "pid": 2945,
+   "ppid": 1400,
+   "starttime_ticks": 2378,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/tracker-miner-fs-3"
+  },
+  {
+   "pid": 2969,
+   "ppid": 1400,
+   "starttime_ticks": 2433,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gnome-terminal-server"
+  },
+  {
+   "pid": 2992,
+   "ppid": 1400,
+   "starttime_ticks": 2503,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/xdg-desktop-portal-gtk"
+  },
+  {
+   "pid": 3021,
+   "ppid": 2969,
+   "starttime_ticks": 2714,
+   "uid": 1000,
+   "cmdline": "bash -c python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc;exec bash"
+  },
+  {
+   "pid": 3022,
+   "ppid": 3021,
+   "starttime_ticks": 2715,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc"
+  },
+  {
+   "pid": 3047,
+   "ppid": 2969,
+   "starttime_ticks": 2745,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/yb-discover.py"
+  },
+  {
+   "pid": 3072,
+   "ppid": 2969,
+   "starttime_ticks": 2781,
+   "uid": 1000,
+   "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py"
+  },
+  {
+   "pid": 3091,
+   "ppid": 3022,
+   "starttime_ticks": 3423,
+   "uid": 1000,
+   "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot"
+  },
+  {
+   "pid": 3092,
+   "ppid": 3091,
+   "starttime_ticks": 3423,
+   "uid": 1000,
+   "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot"
+  },
+  {
+   "pid": 3103,
+   "ppid": 3092,
+   "starttime_ticks": 3545,
+   "uid": 1000,
+   "cmdline": "/home/jetson/dofbot_pro_ws/install/dofbot_pro_info/lib/dofbot_pro_info/kinemarics_dofbot"
+  },
+  {
+   "pid": 3123,
+   "ppid": 1,
+   "starttime_ticks": 4629,
+   "uid": 112,
+   "cmdline": "/usr/sbin/uuidd --socket-activation"
+  },
+  {
+   "pid": 3197,
+   "ppid": 1400,
+   "starttime_ticks": 8097,
+   "uid": 1000,
+   "cmdline": "/usr/libexec/gvfsd-metadata"
+  },
+  {
+   "pid": 3204,
+   "ppid": 2099,
+   "starttime_ticks": 8299,
+   "uid": 1000,
+   "cmdline": "update-notifier"
+  },
+  {
+   "pid": 1669414,
+   "ppid": 935,
+   "starttime_ticks": 5461524,
+   "uid": 0,
+   "cmdline": "sleep 300"
+  },
+  {
+   "pid": 1672919,
+   "ppid": 1090,
+   "starttime_ticks": 5472417,
+   "uid": 1000,
+   "cmdline": "/usr/bin/python3 -m ipykernel_launcher -f /home/jetson/.local/share/jupyter/runtime/kernel-8bdc692a-df38-42f3-ac13-544005f875a7.json"
+  },
+  {
+   "pid": 1676706,
+   "ppid": 1155,
+   "starttime_ticks": 5484862,
+   "uid": 0,
+   "cmdline": "sshd: jetson [priv]"
+  },
+  {
+   "pid": 1676740,
+   "ppid": 1676706,
+   "starttime_ticks": 5484876,
+   "uid": 1000,
+   "cmdline": "sshd: jetson@notty"
+  },
+  {
+   "pid": 1676741,
+   "ppid": 1676740,
+   "starttime_ticks": 5484876,
+   "uid": 1000,
+   "cmdline": "python3 -"
+  }
+ ]
+}

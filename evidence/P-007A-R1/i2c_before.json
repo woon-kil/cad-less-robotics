@@ -1,0 +1,58 @@
+{
+ "devices": {
+  "cmd": "ls -l /dev/i2c-*",
+  "rc": 0,
+  "out": "crw-rw---- 1 root i2c 89,  0 Nov 22  2023 /dev/i2c-0\ncrw-rw---- 1 root i2c 89,  1 Nov 22  2023 /dev/i2c-1\ncrw-rw---- 1 root i2c 89, 10 Nov 22  2023 /dev/i2c-10\ncrw-rw---- 1 root i2c 89, 11 Jul 16 16:59 /dev/i2c-11\ncrw-rw---- 1 root i2c 89,  2 Nov 22  2023 /dev/i2c-2\ncrw-rw---- 1 root i2c 89,  4 Nov 22  2023 /dev/i2c-4\ncrw-rw---- 1 root i2c 89,  5 Nov 22  2023 /dev/i2c-5\ncrw-rw---- 1 root i2c 89,  7 Nov 22  2023 /dev/i2c-7\ncrw-rw---- 1 root i2c 89,  9 Nov 22  2023 /dev/i2c-9",
+  "err": ""
+ },
+ "group_i2c": {
+  "cmd": "getent group i2c",
+  "rc": 0,
+  "out": "i2c:x:116:jetson",
+  "err": ""
+ },
+ "adapters_sysfs": {
+  "cmd": "for d in /sys/class/i2c-dev/*; do echo \"$(basename $d) $(cat $d/name 2>/dev/null)\"; done",
+  "rc": 0,
+  "out": "i2c-0 3160000.i2c\ni2c-1 c240000.i2c\ni2c-10 i2c-2-mux (chan_id 0)\ni2c-11 NVIDIA SOC i2c adapter 0\ni2c-2 3180000.i2c\ni2c-4 Tegra BPMP I2C adapter\ni2c-5 31b0000.i2c\ni2c-7 c250000.i2c\ni2c-9 i2c-2-mux (chan_id 1)",
+  "err": ""
+ },
+ "bus_devices": {
+  "cmd": "ls -l /sys/bus/i2c/devices/ 2>/dev/null",
+  "rc": 0,
+  "out": "total 0\nlrwxrwxrwx 1 root root 0 Nov 22  2023 0-0050 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0/0-0050\nlrwxrwxrwx 1 root root 0 Nov 22  2023 0-0057 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0/0-0057\nlrwxrwxrwx 1 root root 0 Nov 22  2023 10-0010 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-10/10-0010\nlrwxrwxrwx 1 root root 0 Nov 22  2023 1-0025 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1/1-0025\nlrwxrwxrwx 1 root root 0 Nov 22  2023 1-0040 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1/1-0040\nlrwxrwxrwx 1 root root 0 Nov 22  2023 4-003c -> ../../../devices/platform/bpmp/bpmp:i2c/i2c-4/4-003c\nlrwxrwxrwx 1 root root 0 Nov 22  2023 9-0010 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-9/9-0010\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-0 -> ../../../devices/platform/bus@0/3160000.i2c/i2c-0\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-1 -> ../../../devices/platform/bus@0/c240000.i2c/i2c-1\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-10 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-10\nlrwxrwxrwx 1 root root 0 Jul 16 16:59 i2c-11 -> ../../../devices/platform/13800000.display/i2c-11\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-2 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-4 -> ../../../devices/platform/bpmp/bpmp:i2c/i2c-4\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-5 -> ../../../devices/platform/bus@0/31b0000.i2c/i2c-5\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-7 -> ../../../devices/platform/bus@0/c250000.i2c/i2c-7\nlrwxrwxrwx 1 root root 0 Nov 22  2023 i2c-9 -> ../../../devices/platform/bus@0/3180000.i2c/i2c-2/i2c-9",
+  "err": ""
+ },
+ "fd_holders": {
+  "holders": [
+   {
+    "pid": 2264,
+    "i2c_fd_count": 1,
+    "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py"
+   },
+   {
+    "pid": 3022,
+    "i2c_fd_count": 25,
+    "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc"
+   },
+   {
+    "pid": 3072,
+    "i2c_fd_count": 1,
+    "cmdline": "python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py"
+   },
+   {
+    "pid": 3091,
+    "i2c_fd_count": 1,
+    "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot"
+   },
+   {
+    "pid": 3092,
+    "i2c_fd_count": 1,
+    "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot"
+   }
+  ],
+  "unreadable_pid_count": 214
+ },
+ "probe_commands_used": [],
+ "phase": "before"
+}

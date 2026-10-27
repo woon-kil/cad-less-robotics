@@ -11,9 +11,19 @@ WRITE_PATTERNS = ["write6", "Arm_serial_servo_write", "set_torque", "offset_swit
 
 
 def run(cmd, timeout=20):
-    """셸 명령 하나를 돌리고 rc·stdout·stderr를 그대로 담는다."""
+    """셸 명령 하나를 돌리고 rc·stdout·stderr를 그대로 담는다.
+
+    `bash -c`를 쓴다. `-l`(로그인 셸)은 /etc/profile·~/.profile을 소싱하는데,
+    거기에 start_app.sh 같은 벤더 기동 줄이 있으면 그 소싱이 joystick.py를 띄워
+    move_init_pose()로 팔을 움직인다. 로그인 파일은 읽기만 하고 실행하지 않는다.
+    sbin 경로는 로그인 셸 없이도 쓰도록 PATH에 직접 넣는다.
+    """
+    env = dict(os.environ)
+    env["PATH"] = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+    env.setdefault("HOME", "/home/jetson")
+    env["LANG"] = "C.UTF-8"
     try:
-        p = subprocess.run(["bash", "-lc", cmd], capture_output=True, text=True, timeout=timeout)
+        p = subprocess.run(["bash", "-c", cmd], capture_output=True, text=True, timeout=timeout, env=env)
         return {"cmd": cmd, "rc": p.returncode, "out": p.stdout.strip(), "err": p.stderr.strip()[:2000]}
     except subprocess.TimeoutExpired:
         return {"cmd": cmd, "rc": None, "out": "", "err": "timeout %ds" % timeout}

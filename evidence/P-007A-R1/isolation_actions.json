@@ -1,0 +1,73 @@
+{
+ "gate": "P-007A-R1",
+ "dry_run": true,
+ "signal_used": "SIGKILL only. SIGINT·SIGTERM 미사용",
+ "vendor_source_deleted": 0,
+ "package_removed": 0,
+ "vendor_source_modified": 0,
+ "firmware_changed": 0,
+ "process_group_kill": 0,
+ "i2c_probe": 0,
+ "reversible": "scripts/p007a_r1_restore.sh 가 autostart 구성만 되돌린다. 프로세스는 재기동하지 않는다.",
+ "not_stopped_and_why": {
+  "yahboom_oled.py": "NON_SERVO_I2C_CLIENT. Adafruit_SSD1306 기본 주소 0x3C이고 서보 쓰기 호출이 없다",
+  "yb-discover.py": "UDP 8000 discovery 응답기. exec·Arm 호출이 없어 servo-capable 진입점이 아니다",
+  "kinemarics_dofbot": "NON_CONTROLLER_PROCESS. 바이너리에 i2c·smbus·Arm_Lib 참조 0",
+  "sh -c ros2 run / ros2 python wrapper": "상속받은 descriptor만 들고 있고 서보 쓰기 코드가 없다",
+  "bash-1.desktop": "Exec 대상 setting.sh 가 존재하지 않아 기동 불가. 원본 보존"
+ },
+ "manual_steps_required": [
+  "sudo systemctl stop jupyterlab  (system unit, NOPASSWD sudo 없음 — 운영자 실행)"
+ ],
+ "actions": [
+  {
+   "at": "2026-10-27T09:28:23+0900",
+   "action": "autostart_before",
+   "detail": "/home/jetson/.config/autostart 목록·해시",
+   "result": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e  /home/jetson/.config/autostart/bash-1.desktop | 416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af  /home/jetson/.config/autostart/bash.desktop | --- | bash-1.desktop | bash.desktop | ",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:23+0900",
+   "action": "autostart_rename",
+   "detail": "set -e; f=/home/jetson/.config/autostart/bash.desktop; if [ -e \"$f\" ]; then mv -v \"$f\" \"$f.p007ar1.bak\"; else echo 'already isolated'; fi",
+   "result": "DRY_RUN_SKIPPED",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:24+0900",
+   "action": "autostart_after",
+   "detail": "활성 .desktop: ['bash-1.desktop', 'bash.desktop'] | bash-1.desktop -> Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh (대상 존재: no) | bash.desktop -> Exec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh (대상 존재: yes)",
+   "result": "기동 가능 항목: ['bash.desktop']",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:24+0900",
+   "action": "autostart_hash_after",
+   "detail": "해시 재확인",
+   "result": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e  /home/jetson/.config/autostart/bash-1.desktop | 416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af  /home/jetson/.config/autostart/bash.desktop | ",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:24+0900",
+   "action": "kill",
+   "detail": "joystick.py pid 3072 (CONTROL_WRITER. main이 move_init_pose()를 호출한다)",
+   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=2781 CMD=python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/joystick.py",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:24+0900",
+   "action": "kill",
+   "detail": "YahboomArm.pyc pid 3022 (CONTROL_WRITER + NETWORK_CONTROL_ENTRYPOINT (Flask 6500))",
+   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=2715 CMD=python3 /home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc",
+   "dry_run": true
+  },
+  {
+   "at": "2026-10-27T09:28:24+0900",
+   "action": "kill",
+   "detail": "ipykernel_launcher pid 1672919 (UNCONTROLLED_EXECUTION_SURFACE. cwd가 dofbot_color_sorting/scripts)",
+   "result": "DRY_RUN_SKIPPED. 신원 일치 확인: ST=5472417 CMD=/usr/bin/python3 -m ipykernel_launcher -f /home/jetson/.local/share/jupyter/runtime/kernel-8bdc692a-df38-",
+   "dry_run": true
+  }
+ ]
+}

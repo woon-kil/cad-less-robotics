@@ -1,0 +1,35 @@
+{
+ "listeners": {
+  "cmd": "ss -ltnp 2>&1 | head -40",
+  "rc": 0,
+  "out": "State  Recv-Q Send-Q Local Address:Port  Peer Address:PortProcess                                    \nLISTEN 0      4096   127.0.0.53%lo:53         0.0.0.0:*                                              \nLISTEN 0      4096       127.0.0.1:11434      0.0.0.0:*                                              \nLISTEN 0      4096         0.0.0.0:631        0.0.0.0:*                                              \nLISTEN 0      128          0.0.0.0:8888       0.0.0.0:*    users:((\"jupyter-lab\",pid=1090,fd=9))     \nLISTEN 0      4096         0.0.0.0:111        0.0.0.0:*                                              \nLISTEN 0      32      192.168.8.88:53         0.0.0.0:*                                              \nLISTEN 0      128          0.0.0.0:22         0.0.0.0:*                                              \nLISTEN 0      100        127.0.0.1:59941      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=13))     \nLISTEN 0      100        127.0.0.1:51787      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=35))     \nLISTEN 0      100        127.0.0.1:58497      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=22))     \nLISTEN 0      100        127.0.0.1:54395      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=9))      \nLISTEN 0      100        127.0.0.1:33069      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=11))     \nLISTEN 0      100        127.0.0.1:46007      0.0.0.0:*    users:((\"python3\",pid=1672919,fd=27))     \nLISTEN 0      128          0.0.0.0:6500       0.0.0.0:*    users:((\"pt_main_thread\",pid=3022,fd=84)) \nLISTEN 0      10                 *:5900             *:*    users:((\"gnome-remote-de\",pid=2076,fd=23))\nLISTEN 0      4096            [::]:631           [::]:*                                              \nLISTEN 0      4096            [::]:111           [::]:*                                              \nLISTEN 0      128             [::]:22            [::]:*                                              \nLISTEN 0      10                 *:3389             *:*    users:((\"gnome-remote-de\",pid=2076,fd=22))",
+  "err": ""
+ },
+ "listeners_sudo": {
+  "cmd": "sudo -n ss -ltnp 2>&1 | head -40",
+  "rc": 0,
+  "out": "sudo: a password is required",
+  "err": ""
+ },
+ "phase": "before",
+ "ros": {
+  "node_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 node list 2>&1 | head -30",
+   "rc": 0,
+   "out": "WARNING: Be aware that are nodes in the graph that share an exact name, this can have unintended side effects.\n/arm_grap\n/color_identify1\n/dofbot_garbage\n/dofbot_garbage\n/dofbot_snake\n/kinemarics_dofbot",
+   "err": ""
+  },
+  "service_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 service list 2>&1 | head -40",
+   "rc": 0,
+   "out": "/arm_grap/describe_parameters\n/arm_grap/get_parameter_types\n/arm_grap/get_parameters\n/arm_grap/list_parameters\n/arm_grap/set_parameters\n/arm_grap/set_parameters_atomically\n/color_identify1/describe_parameters\n/color_identify1/get_parameter_types\n/color_identify1/get_parameters\n/color_identify1/list_parameters\n/color_identify1/set_parameters\n/color_identify1/set_parameters_atomically\n/dofbot_garbage/describe_parameters\n/dofbot_garbage/get_parameter_types\n/dofbot_garbage/get_parameters\n/dofbot_garbage/list_parameters\n/dofbot_garbage/set_parameters\n/dofbot_garbage/set_parameters_atomically\n/dofbot_kinemarics\n/dofbot_snake/describe_parameters\n/dofbot_snake/get_parameter_types\n/dofbot_snake/get_parameters\n/dofbot_snake/list_parameters\n/dofbot_snake/set_parameters\n/dofbot_snake/set_parameters_atomically\n/get_kinemarics\n/kinemarics_dofbot/describe_parameters\n/kinemarics_dofbot/get_parameter_types\n/kinemarics_dofbot/get_parameters\n/kinemarics_dofbot/list_parameters\n/kinemarics_dofbot/set_parameters\n/kinemarics_dofbot/set_parameters_atomically",
+   "err": ""
+  },
+  "topic_list": {
+   "cmd": "source /opt/ros/humble/setup.bash 2>/dev/null; source /home/jetson/dofbot_pro_ws/install/setup.bash 2>/dev/null; timeout 15 ros2 topic list 2>&1 | head -40",
+   "rc": 0,
+   "out": "/parameter_events\n/rosout",
+   "err": ""
+  }
+ }
+}

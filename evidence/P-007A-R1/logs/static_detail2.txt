@@ -1,0 +1,55 @@
+=== Robot_Controller 종료·쓰기 경로 ===
+3:from Arm_Lib import Arm_Device
+4:import time
+8:    def __init__(self):
+58:        self.P_LOOK_AT = [90, 164, 18, 0, 90, self.gripper_release]
+79:        self.Arm.Arm_serial_servo_write(s_id, angle, int(time_ms))
+86:            self.Arm.Arm_serial_servo_write(s_id, p[i], int(time_ms))
+94:            self.Arm.Arm_serial_servo_write(s_id, p[i], int(time_ms))
+101:            self.Arm.Arm_serial_servo_write6_array(joint6_array, time_ms)
+109:            self.Arm.Arm_serial_servo_write(6, self.gripper_clamp, int(time_ms))
+111:            self.Arm.Arm_serial_servo_write(6, self.gripper_release, int(time_ms))
+119:        self.Arm.Arm_serial_servo_write(6, int(value), int(time_ms))
+130:        self.Arm.Arm_serial_servo_write6_array(self.P_LOOK_MAP, time_ms)
+135:    def move_init_pose(self, time_ms=1000, delay=False):
+136:        self.Arm.Arm_serial_servo_write6_array(self.P_LOOK_AT, time_ms)
+142:        self.Arm.Arm_serial_servo_write6_array(self.P_LOOK_FRONT, time_ms)
+=== move_init_pose 본문 ===
+    def move_init_pose(self, time_ms=1000, delay=False):
+=== ROS 노드 이름 정의 위치 ===
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.py
+/home/jetson/dofbot_pro/APP_DOFBOT_PRO/YahboomArm.pyc
+=== YahboomArm.py 노드 생성 ===
+55:rclpy.init(args=None)
+=== udev 규칙 본문 ===
+--- /lib/udev/rules.d/60-i2c-tools.rules
+SUBSYSTEM=="i2c-dev",KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"
+--- /lib/udev/rules.d/60-sensor.rules
+ACTION=="remove", GOTO="sensor_end"
+SUBSYSTEM=="iio", KERNEL=="iio*", SUBSYSTEMS=="usb|i2c|platform", \
+  IMPORT{builtin}="hwdb 'sensor:modalias:$attr{modalias}:$attr{[dmi/id]modalias}'", \
+  GOTO="sensor_end"
+SUBSYSTEM=="input", ENV{ID_INPUT_ACCELEROMETER}=="1", SUBSYSTEMS=="acpi", \
+  IMPORT{builtin}="hwdb 'sensor:modalias:acpi:$attr{hid}:$attr{[dmi/id]modalias}'", \
+  GOTO="sensor_end"
+SUBSYSTEM=="input", ENV{ID_INPUT_ACCELEROMETER}=="1", SUBSYSTEMS=="platform", \
+  IMPORT{builtin}="hwdb 'sensor:modalias:platform:$id:$attr{[dmi/id]modalias}'", \
+  GOTO="sensor_end"
+=== ipykernel ===
+lrwxrwxrwx 1 jetson jetson 0 Oct 27 08:24 /proc/1672919/cwd -> /home/jetson/dofbot_pro/dofbot_color_sorting/scripts
+/usr/bin/python3 -m ipykernel_launcher -f /home/jetson/.local/share/jupyter/runtime/kernel-8bdc692a-df38-42f3-ac13-544005f875a7.json 
+i2c fd count: 0
+=== Adafruit SSD1306 기본 주소 ===
+30:SSD1306_I2C_ADDRESS = 0x3C    # 011110+SA0+RW - 0x3C or 0x3D
+73:                 gpio=None, spi=None, i2c_bus=None, i2c_address=SSD1306_I2C_ADDRESS,
+102:            self._i2c = i2c.get_i2c_device(i2c_address)
+107:                self._i2c = I2C.get_i2c_device(i2c_address)
+109:                self._i2c = I2C.get_i2c_device(i2c_address, busnum=i2c_bus)
+['gpio=None, spi=None, i2c_bus=None, i2c_address=SSD1306_I2C_ADDRESS,', 'self._i2c = i2c.get_i2c_device(i2c_address)', 'self._i2c = I2C.get_i2c_device(i2c_address)', 'self._i2c = I2C.get_i2c_device(i2c_address, busnum=i2c_bus)']
+=== yb-discover.py 역할 ===
+1:import os
+2:import sys
+3:import getopt
+4:import socket
+11:    udpServer = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+12:    udpServer.bind(addr)

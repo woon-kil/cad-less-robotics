@@ -1,0 +1,32 @@
+{
+ "gate": "P-007A-R1",
+ "robot_host": "yahboom",
+ "robot_user": "jetson",
+ "robot_address": "192.168.0.94",
+ "path": "Mac SSH to Jetson, then /dev/i2c-7 address 0x15",
+ "robot_env": {
+  "hostname": "yahboom",
+  "uname": "Linux yahboom 5.15.148-tegra #1 SMP PREEMPT Tue Jan 7 17:14:38 PST 2025 aarch64 aarch64 aarch64 GNU/Linux",
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"",
+  "date_iso": "2026-10-27T08:22:10+08:00",
+  "whoami": "uid=1000(jetson) gid=1000(jetson) groups=1000(jetson),4(adm),24(cdrom),27(sudo),29(audio),30(dip),44(video),46(plugdev),104(render),116(i2c),120(lpadmin),135(gdm),136(sambashare),993(ollama),994(docker),996(weston-launch),999(gpio),1001(jtop)",
+  "sudo_nopasswd": "rc=1"
+ },
+ "servo_position_writes": 0,
+ "gripper_command": 0,
+ "torque_change": 0,
+ "offset_write": 0,
+ "calibration_executed": 0,
+ "homing_reset_init": 0,
+ "arm_driver_executed": 0,
+ "moveit_executed": 0,
+ "i2c_probe_commands": 0,
+ "reboot_relogin_powercycle": 0,
+ "vendor_source_modified": 0,
+ "vendor_package_removed": 0,
+ "firmware_changed": 0,
+ "p007b_executed": 0,
+ "p006d_started": 0,
+ "t_base_camera_computed": 0,
+ "credentials_recorded": false
+}

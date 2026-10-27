@@ -1,0 +1,36 @@
+{
+ "user_dir": {
+  "cmd": "ls -la /home/jetson/.config/autostart/ 2>/dev/null",
+  "rc": 0,
+  "out": "total 16\ndrwx------  2 jetson jetson 4096 Dec  3  2025 .\ndrwx------ 31 jetson jetson 4096 Nov 26  2025 ..\n-rw-rw-r--  1 jetson jetson  211 Dec  3  2025 bash-1.desktop\n-rw-rw-r--  1 jetson jetson  235 Apr  9  2025 bash.desktop",
+  "err": ""
+ },
+ "system_dir": {
+  "cmd": "ls -la /etc/xdg/autostart/ 2>/dev/null",
+  "rc": 0,
+  "out": "total 208\ndrwxr-xr-x 2 root root  4096 Apr 11  2025 .\ndrwxr-xr-x 8 root root  4096 Apr 11  2025 ..\n-rw-r--r-- 1 root root   193 Mar 26  2022 at-spi-dbus-bus.desktop\n-rw-r--r-- 1 root root   227 Mar 23  2022 geoclue-demo-agent.desktop\n-rw-r--r-- 1 root root   357 Feb  2  2023 gnome-initial-setup-copy-worker.desktop\n-rw-r--r-- 1 root root   454 Feb  2  2023 gnome-initial-setup-first-login.desktop\n-rw-r--r-- 1 root root   485 Jun 21  2022 gnome-keyring-pkcs11.desktop\n-rw-r--r-- 1 root root   478 Jun 21  2022 gnome-keyring-secrets.desktop\n-rw-r--r-- 1 root root   445 Jun 21  2022 gnome-keyring-ssh.desktop\n-rw-r--r-- 1 root root   177 Oct 21  2022 gnome-shell-overrides-migration.desktop\n-rw-r--r-- 1 root root   200 Jul 20  2022 gnome-software-service.desktop\n-rw-r--r-- 1 root root   226 Jan 22  2022 im-launch.desktop\n-rw-r--r-- 1 root root   350 Mar  7  2022 nm-applet.desktop\n-rw-r--r-- 1 root root  1846 Jan  8  2025 nvbackground.desktop\n-rwxr-xr-x 1 root root  2229 Jan  8  2025 nvbackground.sh\n-rwxr-xr-x 1 root root  1492 Jan  8  2025 nvl4t-readme.sh\n-rw-r--r-- 1 root root  1799 Jan  8  2025 nvpmodel_indicator.desktop\n-rw-r--r-- 1 root root   389 Mar 17  2022 onboard-autostart.desktop\n-rw-r--r-- 1 root root   315 May 19  2022 orca-autostart.desktop\n-rw-r--r-- 1 root root   379 May 20  2022 org.gnome.DejaDup.Monitor.desktop\n-rw-r--r-- 1 root root   470 Jul  6  2022 org.gnome.Evolution-alarm-notify.desktop\n-rw-r--r-- 1 root root   299 Apr 30  2022 org.gnome.SettingsDaemon.A11ySettings.desktop\n-rw-r--r-- 1 root root   294 Apr 30  2022 org.gnome.SettingsDaemon.Color.desktop\n-rw-r--r-- 1 root root   292 Apr 30  2022 org.gnome.SettingsDaemon.Datetime.desktop\n-rw-r--r-- 1 root root   246 Mar 19  2022 org.gnome.SettingsDaemon.DiskUtilityNotify.desktop\n-rw-r--r-- 1 root root   314 Apr 30  2022 org.gnome.SettingsDaemon.Housekeeping.desktop\n-rw-r--r-- 1 root root   303 Apr 30  2022 org.gnome.SettingsDaemon.Keyboard.desktop\n-rw-r--r-- 1 root root   301 Apr 30  2022 org.gnome.SettingsDaemon.MediaKeys.desktop\n-rw-r--r-- 1 root root   294 Apr 30  2022 org.gnome.SettingsDaemon.Power.desktop\n-rw-r--r-- 1 root root   313 Apr 30  2022 org.gnome.SettingsDaemon.PrintNotifications.desktop\n-rw-r--r-- 1 root root   293 Apr 30  2022 org.gnome.SettingsDaemon.Rfkill.desktop\n-rw-r--r-- 1 root root   313 Apr 30  2022 org.gnome.SettingsDaemon.ScreensaverProxy.desktop\n-rw-r--r-- 1 root root   292 Apr 30  2022 org.gnome.SettingsDaemon.Sharing.desktop\n-rw-r--r-- 1 root root   291 Apr 30  2022 org.gnome.SettingsDaemon.Smartcard.desktop\n-rw-r--r-- 1 root root   298 Apr 30  2022 org.gnome.SettingsDaemon.Sound.desktop\n-rw-r--r-- 1 root root   301 Apr 30  2022 org.gnome.SettingsDaemon.UsbProtection.desktop\n-rw-r--r-- 1 root root   298 Apr 30  2022 org.gnome.SettingsDaemon.Wacom.desktop\n-rw-r--r-- 1 root root   289 Apr 30  2022 org.gnome.SettingsDaemon.Wwan.desktop\n-rw-r--r-- 1 root root   291 Apr 30  2022 org.gnome.SettingsDaemon.XSettings.desktop\n-rw-r--r-- 1 root root   369 Feb 21  2022 print-applet.desktop\n-rw-r--r-- 1 root root  5330 Sep  7  2022 pulseaudio.desktop\n-rw-r--r-- 1 root root   228 Dec  1  2022 snap-userd-autostart.desktop\n-rw-r--r-- 1 root root   191 Feb 24  2022 spice-vdagent.desktop\n-rw-r--r-- 1 root root   445 Mar 22  2022 tracker-miner-fs-3.desktop\n-rw-r--r-- 1 root root  4057 Feb 28  2023 ubuntu-advantage-notification.desktop\n-rw-r--r-- 1 root root   153 Mar 15  2022 ubuntu-report-on-upgrade.desktop\n-rw-r--r-- 1 root root 11025 Feb 28  2023 update-notifier.desktop\n-rw-r--r-- 1 root root   303 Mar 25  2022 user-dirs-update-gtk.desktop\n-rw-r--r-- 1 root root   250 Mar 25  2022 xdg-user-dirs.desktop",
+  "err": ""
+ },
+ "user_entries": [
+  {
+   "path": "/home/jetson/.config/autostart/bash-1.desktop",
+   "content": "[Desktop Entry]\nType=Application\nExec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/setting.sh\nHidden=false\nNoDisplay=false\nX-GNOME-Autostart-enabled=true\nName[en_US]=setting\nName=setting\nComment[en_US]=\nComment=\n",
+   "sha256": "7834b406e1f9f386a29e50988da5b39ceba720636f68b357b0a060de59d1857e",
+   "bytes": 211
+  },
+  {
+   "path": "/home/jetson/.config/autostart/bash.desktop",
+   "content": "[Desktop Entry]\nType=Application\nExec=bash /home/jetson/dofbot_pro/APP_DOFBOT_PRO/start_app.sh\nHidden=false\nNoDisplay=false\nX-GNOME-Autostart-enabled=true\nName[en_US]=App-Arm\nName=App-Arm\nComment[en_US]=app program\nComment=app program\n",
+   "sha256": "416f63d965ce008b06ce0835f1573c75eebffeb219009fb0acac14dacdde56af",
+   "bytes": 235
+  }
+ ],
+ "system_same_name": [],
+ "xdg_config_dirs": {
+  "cmd": "echo \"${XDG_CONFIG_DIRS:-unset}\"",
+  "rc": 0,
+  "out": "unset",
+  "err": ""
+ },
+ "phase": "before"
+}
