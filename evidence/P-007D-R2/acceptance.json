@@ -1,0 +1,120 @@
+{
+ "gate": "P-007D-R2",
+ "title": "Servo Command Transport Observability Decision Gate",
+ "base_commit": "39d2510",
+ "verdict": "OBSERVABILITY EXHAUSTED / R2-C / CLOSED",
+ "verdict_basis": "Servo-bus passive capture 는 기술적으로 유망하지만 **electrical probe safety 를 공식 근거로 확정하지 못했다**. 공식 GitHub·Yahboom 공식 자료 어디에도 servo-side TXD/RXD logic voltage 와 안전한 probe ground reference 가 없다. 전원 OFF continuity 로 ground 는 특정할 수 있어도 **logic HIGH voltage 는 끝내 해결되지 않고**, 그러려면 powered voltage measurement 게이트와 probe safety 설계가 또 필요하다. 추가 reverse engineering·계측 비용이 현재 프로젝트 목표 대비 과도하다.",
+ "🔴 scope_reminder": "이 프로젝트의 목표는 expansion-board firmware reverse engineering 이 아니라 실제 로봇을 bring-up 해서 CAD→geometry→planning→execution 파이프라인을 검증하는 것이다. 외부 계측으로 얻으려는 것은 결국 **L4 와 L5 사이 한 칸의 분리**다.",
+ "candidate_rulings": {
+  "R2-A_kernel_i2c_trace": "**DEFERRED — not eliminated.** L3 를 SUPPORTED→VERIFIED 로 올리지만 현재 의사결정을 바꿀 가능성이 낮다. 단 NACK 반증 가능성 때문에 제거하지 않고 남긴다",
+  "R2-B_servo_bus_capture": "**BLOCKED BY ELECTRICAL PROBE SAFETY.** 아키텍처는 확인됐으나 logic voltage·ground 미확정",
+  "R2-C_observability_exhausted": "🔴 **SELECTED**"
+ },
+ "boundary_final": {
+  "L1_python_api": "VERIFIED",
+  "L2_armlib_encoding": "VERIFIED",
+  "L3_smbus_invocation": "SUPPORTED",
+  "L4_stm8_rgb_0x02_3B": "VERIFIED — physical effect",
+  "L4_stm8_servo_0x12_4B": "UNKNOWN",
+  "L5_stm8_to_servo_bus": "UNKNOWN",
+  "L6_servo_execution": "OBSERVED_NO_MOTION"
+ },
+ "what_we_know_entering_next_gate": [
+  "torque 는 기계적으로 TORQUE_ON_STRONGLY_SUPPORTED (P-007C-R3)",
+  "learning mode 제외 (P-007C-R2)",
+  "global block-write failure 제외 (P-007D-R1)",
+  "공식 API encoding 이상 없음 (P-007D)",
+  "RGB/STM8 command path 동작 (P-007D-R1)",
+  "🔴 그런데 ID2 servo command 만 physical effect 없음"
+ ],
+ "next_gate_direction": "또 다른 forensic gate 가 아니라 **controlled servo diagnostic** 으로 돌아간다. 🔴 **P-007B 를 그대로 반복하면 안 된다.** 'Arm2 를 또 +2° 보내본다' 가 아니라, 최소 1회 명령으로 **servo subsystem 자체가 현재 command 를 실행할 수 있는지**를 판별하도록 설계해야 한다. 고려 요소: 기존 목표 위치 latch 가능성 · load 방향 · readback quantization · 명령 크기/시간.",
+ "🔴 next_gate_designed_by": "검수 세션. **이 세션은 설계하지 않는다.** R2-C 문서화까지만 하고 STOP",
+ "provenance_boundary_maintained": "제3자 GitHub 에 다른 세대·다른 transport 의 Arm_Lib 가 존재한다. 그것을 현재 YB-EVV01 I2C 구현의 근거로 섞지 않는다. 기준은 계속 **설치본 SHA edfcae72… + pinned 공식 자료 57cc4369…** 다. (P-007C-R1 transport_generations.json 의 세대 분리 원칙과 동일)",
+ "counts": {
+  "hardware_access": 0,
+  "additional_photography": 0,
+  "wiring": 0,
+  "probe": 0,
+  "logic_analyzer_connection": 0,
+  "i2c_access": 0,
+  "controller_mutation": 0,
+  "robot_command": 0,
+  "robot_motion": 0,
+  "sudoers_mutation": 0,
+  "purchase": 0
+ },
+ "rgb_baseline": "P-007D-R1 induced BLUE (유지)",
+ "checks": [
+  {
+   "id": "P007D-R2-01",
+   "result": "PASS",
+   "note": "kernel trace 최대 evidence boundary 를 **L3** 로 명시. 그 이상으로 과장하지 않았다",
+   "evidence": "README.md §R2-2 · README_INTERIM.json"
+  },
+  {
+   "id": "P007D-R2-02",
+   "result": "PASS",
+   "note": "Jetson-side 외부 I2C capture 는 kernel trace 와 정보 중복 → NOT_SELECTED",
+   "evidence": "README.md §후보 B"
+  },
+  {
+   "id": "P007D-R2-03",
+   "result": "PASS",
+   "note": "servo-side capture 가 L4/L5 를 분리한다는 논리를 검증. STM8 TX activity 유무만으로 경계가 갈린다",
+   "evidence": "README.md §후보 C"
+  },
+  {
+   "id": "P007D-R2-04",
+   "result": "PASS",
+   "note": "servo bus 공개 provenance 조사 완료(검수 세션). STM8 경로·UART·115200·PH2.0-3PIN 까지 VENDOR_WEB_VERIFIED",
+   "evidence": "README.md §R2-4"
+  },
+  {
+   "id": "P007D-R2-05",
+   "result": "PASS",
+   "note": "🔴 확인되지 않은 electrical fact 를 추측하지 않았다. logic voltage·ground·pinout·duplex 전부 UNKNOWN 유지",
+   "evidence": "README.md §미확정"
+  },
+  {
+   "id": "P007D-R2-06",
+   "result": "PASS",
+   "note": "계측 요구 사양을 산출했으나 **voltage tolerance 를 적을 수 없다** — 그 자체가 NO-GO 근거다",
+   "evidence": "README.md §R2-5"
+  },
+  {
+   "id": "P007D-R2-07",
+   "result": "PASS",
+   "note": "R2-C 선택. R2-A 는 DEFERRED(not eliminated), R2-B 는 BLOCKED",
+   "evidence": "acceptance.json verdict"
+  },
+  {
+   "id": "P007D-R2-08",
+   "result": "PASS",
+   "note": "hardware interaction 0",
+   "evidence": "counts"
+  },
+  {
+   "id": "P007D-R2-09",
+   "result": "PASS",
+   "note": "controller mutation 0",
+   "evidence": "counts"
+  },
+  {
+   "id": "P007D-R2-10",
+   "result": "PASS",
+   "note": "motion 0",
+   "evidence": "counts"
+  },
+  {
+   "id": "P007D-R2-11",
+   "result": "PASS",
+   "note": "제3자 GitHub 의 다른 세대 Arm_Lib 를 현재 YB-EVV01 I2C 구현 근거로 섞지 않았다",
+   "evidence": "README.md §provenance 경계"
+  }
+ ],
+ "summary": {
+  "total": 11,
+  "PASS": 11,
+  "FAIL": 0
+ }
+}

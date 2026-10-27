@@ -16,7 +16,7 @@
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
 | **블로킹 지점** | **DOFBOT 이 위치 명령에 응답하지 않는다** | `evidence/P-007B/acceptance.json` |
-| 최신 닫힌 게이트 | **P-007D-R1 `CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED` (A)** | `evidence/P-007D-R1/acceptance.json` |
+| 최신 닫힌 게이트 | **P-007D-R2 `OBSERVABILITY EXHAUSTED / R2-C`** | `evidence/P-007D-R2/acceptance.json` |
 | **게이트가 일으킨** 로봇 모션 | **0** | P-007A·A-R1·B·C·C-R1 `environment.json` 전부 `robot_moved_by_this_gate: 0` (실측 grep). ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **1회** (P-007B, ID2 152°, raw 1242) | `servo_position_writes` 가 P-007B 만 `1`, 나머지 게이트는 전부 `0` (실측 grep) |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
@@ -98,6 +98,11 @@
   - **`GLOBAL_BLOCK_WRITE_FAILURE = ELIMINATED`** — block-write 가 이 보드에서 물리 출력까지 도달한다
   - 🔴 `SERVO_0x12_4B_ACCEPTANCE` · `SERVO_BUS_PROPAGATION` 은 **UNRESOLVED 유지** (RGB `0x02`/3B vs 서보 `0x12`/4B)
   - 부수 획득: 펌웨어 채널 순서 **RGB** 확정 (공식 문서에 없던 사실)
+- [x] **P-007D-R2** Observability Decision Gate — **`OBSERVABILITY EXHAUSTED / R2-C / CLOSED`**
+  - 외부 계측을 접는다. probe point 는 S1~S6 가 아니라 STM8 `TXD`/`RXD` 로 특정됐으나 **전기 안전 미확정**
+  - `logic voltage` · `probe ground` 가 blocker. 🔴 **공급전압(6~7.4V) ≠ UART logic voltage**
+  - analyzer 샘플레이트(≥2 MS/s)는 제약이 아니었다 — **voltage tolerance 칸을 못 채우는 것**이 NO-GO 근거
+  - 하드웨어 접근 0 · 촬영 0 · probe 0 · 구매 0
   - ⚠️ **RGB 가 파랑으로 켜진 채 남아 있다.** 검수 세션 판단: **그대로 둔다.** 기능 문제 없고 provenance 가 명확하다. 복구 전용 게이트를 따로 만들지 않고, LED 상태가 후속 관찰을 **실제로 방해하는 시점에** 복구 행위를 함께 설계한다
 
 ## 🔴 다음 행동
@@ -119,30 +124,30 @@
 | `write_any` | `0x19` / 5B · `0x17` / 4B | 있음 |
 | `write6` 계열 | `0x1E`→`0x1D` / 2→12B | 있음 |
 
-**P-007D-R2 — Observability Decision Gate 가 OPEN 이다(미완).** 중간 판정:
+**P-007D-R2 CLOSED — `OBSERVABILITY EXHAUSTED / R2-C`.**
 
-> **`R2-B CANDIDATE SELECTED / BLOCKED BY ELECTRICAL PROBE SAFETY`**
+외부 계측을 접는다. `R2-B`(servo-bus passive capture)는 아키텍처가 확인됐으나 **`TXD/RXD logic voltage` 와 `probe ground reference` 를 공식 근거로 확정하지 못했다.** 전원 OFF continuity 로 ground 는 잡아도 **logic HIGH voltage 는 끝내 안 풀리고**, 그러면 powered voltage measurement 게이트가 또 필요하다. 🔴 이 프로젝트 목표는 expansion-board firmware reverse engineering 이 아니다.
 
 | 후보 | 판정 |
 | --- | --- |
-| R2-A kernel I2C trace | `DEFERRED / LOW INFORMATION GAIN` — ceiling 이 **L3** 다. L4 를 원리상 못 연다 |
-| **R2-B servo-bus capture** | 🔴 **SELECTED** — 단 전기 안전 미확인으로 BLOCKED |
-| R2-C Jetson-side 외부 I2C capture | `NOT_SELECTED` (kernel trace 와 중복) |
+| R2-A kernel I2C trace | `DEFERRED` — **not eliminated**. ceiling 이 L3. 단 NACK 반증 가능성은 남는다 |
+| R2-B servo-bus capture | `BLOCKED BY ELECTRICAL PROBE SAFETY` |
+| **R2-C** | 🔴 **SELECTED** |
 
-🔴 **probe point 가 S1~S6 가 아니라 `Servo/Upload` 점퍼 주변 STM8 `TXD`/`RXD` 로 변경됐다**(검수 세션 설계 변경). 서보 커넥터의 미확정 전기 구조를 안 건드리고 "STM8 이 명령 후 servo 방향으로 데이터를 내보냈는가"를 더 직접 본다. **첫 capture 에는 pinout·packet format·protocol decode 가 필요 없다** — waveform/activity 유무만으로 진단 가치가 있다.
-
-**남은 blocker 정확히 2개**: `TXD/RXD logic voltage` · `probe ground reference`. 이 둘 없이 analyzer 연결은 승인되지 않는다.
-
-확정된 경로:
+**최종 경계**
 ```
-Jetson --I2C 0x15--> YB-EVV01/STM8 --TXD/RXD--> [Upload|Servo 점퍼] --> S1~S6 --> ID1~6 bus servo
+L1 VERIFIED → L2 VERIFIED → L3 SUPPORTED → L4 STM8 ┬ RGB 0x02/3B VERIFIED(물리효과)
+                                                    └ Servo 0x12/4B UNKNOWN
+                                                        → L5 UNKNOWN → L6 OBSERVED_NO_MOTION
 ```
-서보 규격(검수 세션 조사): UART 115200 · PH2.0-3PIN · body 15kg×5 / gripper 6kg×1.
-🔴 **공급전압(6~7.4V)과 UART logic voltage 는 다른 값이다.** logic level 은 `UNKNOWN`.
 
-다음: 검수 세션이 logic level·ground 근거를 조사해 **R2-B GO/NO-GO** 판정. 실패 시 (a) 전원 OFF 비침습 측정 게이트 (b) R2-C → controlled motion.
+## 🔴 다음 — controlled servo diagnostic (검수 세션 설계 중)
 
-기억에 의존하는 경로(APP `[Stop]` 이력 등)는 소진됐다 — `UNRESOLVED_BY_RECALL`
+또 다른 forensic gate 가 아니다. 🔴 **P-007B 를 그대로 반복하면 안 된다** — "Arm2 를 또 +2° 보내본다" 가 아니라 **최소 1회 명령으로 servo subsystem 이 현재 command 를 실행할 수 있는지** 판별하도록 설계한다.
+
+고려 요소: 기존 목표 위치 latch 가능성 · load 방향 · readback quantization · 명령 크기/시간.
+
+들고 들어가는 사실: torque `TORQUE_ON_STRONGLY_SUPPORTED` · learning mode 제외 · global block-write failure 제외 · 공식 API encoding 이상 없음 · RGB/STM8 path 동작 · **그런데 ID2 servo command 만 physical effect 없음**.
 
 ## ⚠️ 이월 위험 (모든 세션에서 유효)
 
