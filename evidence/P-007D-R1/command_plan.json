@@ -1,0 +1,37 @@
+{
+ "gate": "P-007D-R1",
+ "status": "🔴 관찰 전에 고정한다. 실행 후 수정 금지",
+ "script": "scripts/p007d_r1_rgb.py",
+ "script_sha256": "7f2c693798878a1a39718db9cf67e459445e1d9deda2ff19d4ec32bec90dbd90",
+ "api": "Arm_RGB_set(0, 0, 255)",
+ "command_count_allowed": 1,
+ "color_rationale": {
+  "chosen": "(0,0,255) — 의도는 BLUE",
+  "red_rejected": "보드의 5V·SERVO·MCU 표시등이 전부 적색이라 구별 불가",
+  "green_rejected": "공식상 Arm_Clear_Action() 완료 표시가 녹색. 나중에 보드를 본 사람이 동작그룹 삭제로 오독할 수 있다",
+  "🔴 channel_mapping_unverified": "펌웨어의 R/G/B 채널 순서는 공식 문서에 없다(P-007C-R1: 공식은 register 를 한 개도 기술하지 않는다). BGR 매핑이면 (0,0,255)가 5050 에서 **빨강**으로 켜져 적색 표시등과 헷갈릴 수 있다"
+ },
+ "🔴 primary_criterion": "**좌상단 5050 패키지 자체가 발광하는가.** 색은 2차 기준이다. 채널 매핑이 미검증이므로 색을 1차 기준으로 삼으면 A 를 B 로 오분류할 수 있다",
+ "classification_fixed_in_advance": {
+  "A": "5050 발광 + 색이 파랑 + 모션 없음 + I2C error 출력 없음 → CONTROL PASS — BLOCK-WRITE PHYSICAL OUTPUT CONFIRMED",
+  "A_prime": "🔴 5050 발광 + 색 ≠ 파랑 → **L4 수락 성립**. GLOBAL_BLOCK_WRITE_FAILURE = ELIMINATED. 채널 매핑 불일치로 별도 기록. 판정은 A 와 같은 등급",
+  "B": "5050 소등 유지 + I2C error 출력 **없음** → DIAGNOSIS SIGNAL — BLOCK-WRITE ACCEPTANCE SUSPECTED",
+  "C": "🔴 library_stdout 에 'I2C error' 출력 **있음**, 또는 예외, 또는 가드 중단, 또는 예상 밖 상태 → BLOCKED — CONTROL EXPERIMENT ERROR"
+ },
+ "🔴 why_C_detection_matters": "Arm_RGB_set 본문(L294~298)에 bare `except:` 가 있어 I2C 예외를 삼키고 'Arm_RGB_set I2C error' 만 출력한다. 따라서 try/except 는 **항상** exception=None 을 기록한다. stdout 을 캡처하지 않으면 NACK 로 실패한 실험이 B(진단 신호)로 둔갑한다. 스크립트가 redirect_stdout 으로 캡처하고 i2c_error_printed 를 기록한다",
+ "rerun_policy": {
+  "guard_abort": "가드에서 die() 로 중단되면 **버스 쓰기 전**이므로 count 0 이다. 원인 해소 후 재실행 가능",
+  "output_truncated_after_constructor": "출력이 Arm_Device() 이후에 끊기면 **명령이 나간 것으로 간주**한다. 재실행하지 않는다. 판정은 운영자 관찰로만 한다",
+  "never": "어떤 경우에도 두 번째 RGB 명령을 보내지 않는다. 복구 OFF 명령도 보내지 않는다"
+ },
+ "execution_form": "ssh ... 'python3 -' < scripts/p007d_r1_rgb.py 2>&1 | tee evidence/P-007D-R1/logs/command_raw.txt — 🔴 파싱보다 원시 출력 보존이 먼저다",
+ "guards_in_code": [
+  "디스크 소스 sha256",
+  "__init__/__del__ AST 버스 부작용 0",
+  "배타적 제어(자기 조상 제외)",
+  "i2c-7 보유자 승인 집합 대조",
+  "🔴 런타임 모듈이 egg 임을 assert + egg sha256 대조",
+  "RGB 호출 시도를 호출 **앞**에서 카운트",
+  "stdout/stderr 캡처"
+ ]
+}

@@ -1,0 +1,37 @@
+{
+ "gate": "P-007D-R1",
+ "phase": "PREFLIGHT (읽기 전용)",
+ "arm_lib_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+ "sha_matches_baseline": true,
+ "jupyterlab": "inactive",
+ "forbidden_processes": "없음 — 1차 preflight 가 잡은 것은 **자기 자신의 래퍼 셸**이었다(heredoc 본문이 args 에 들어감). 실행 스크립트의 가드를 pid 조상 체인 제외 방식으로 수정했다",
+ "self_match_bug_reference": "docs/261027-0958-cmdline-부분일치가-래퍼셸을-고른-버그-이슈보고서.md — 같은 유형이 재발했고 이번엔 실행 전에 잡았다",
+ "i2c7_holders": [
+  {
+   "pid": 2264,
+   "cmdline": "python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py",
+   "p007a_r1_classification": "NON_SERVO_I2C_CLIENT — Adafruit_SSD1306 기본 주소 0x3C, 주소 인자 미전달, 서보 쓰기 호출 0",
+   "verdict": "ALLOWED"
+  },
+  {
+   "pid": 3091,
+   "cmdline": "sh -c ros2 run dofbot_pro_info kinemarics_dofbot",
+   "p007a_r1_classification": "상속 descriptor 보유. 서보 쓰기 코드 없음",
+   "verdict": "ALLOWED"
+  },
+  {
+   "pid": 3092,
+   "cmdline": "/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot",
+   "p007a_r1_classification": "ros2 CLI wrapper. 상속 descriptor",
+   "verdict": "ALLOWED"
+  }
+ ],
+ "🔴 known_condition": {
+  "what": "같은 버스 /dev/i2c-7 에 OLED(0x3C) 트래픽이 상존한다",
+  "why_acceptable": "슬레이브 주소가 다르고(0x3C vs 0x15) 커널 I2C core 가 어댑터 단위로 트랜잭션을 직렬화한다. 바이트 수준 간섭이 일어나지 않는다",
+  "🔴 but_record_it": "RGB 가 실패할 경우 '버스 경합' 이 약한 대안 설명으로 남는다. 다만 이 OLED 는 **P-007B 를 포함한 모든 게이트에서 내내 떠 있었다** — 새 변수가 아니라 상수다"
+ },
+ "exclusive_control_for_servo_writes": "MAINTAINED — 서보 쓰기 가능 프로세스 0",
+ "rgb_baseline": "OFF — evidence/P-007C-R2/board_led_observation.png (운영자 실물 사진)",
+ "preflight_verdict": "PASS — 사전조건 1~3 충족. 4(운영자 직시)는 홀드 포인트에서 확인"
+}

@@ -1,0 +1,21 @@
+{
+ "gate": "P-007D-R1",
+ "disk_source": {
+  "path": "/home/jetson/software/Arm_Lib/Arm_Lib/Arm_Lib.py",
+  "sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "verified_at": "preflight",
+  "role": "정적 분석(P-007D)이 읽은 바로 그 바이트"
+ },
+ "runtime_module": {
+  "expected_path": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+  "egg_sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "source": "P-007C-R1 이 기록한 값",
+  "verified": "실행 스크립트 가드 5 에서 런타임 assert"
+ },
+ "🔴 why_both": "P-007C-R1 이 발견했듯 파이썬이 실제로 import 하는 것은 디스크 사본이 아니라 egg(zip) 안의 사본이다. 디스크 해시만 검사하면 **실행되지 않는 파일에 대한 주장**이 된다. 둘 다 검사한다",
+ "equivalence": "P-007C-R1 이 egg 내부 Arm_Lib/Arm_Lib.py 가 디스크 사본과 바이트 동일(edfcae72…)임을 확인했다. 따라서 정적 분석 결과가 실행 코드에 그대로 적용된다",
+ "script": {
+  "path": "scripts/p007d_r1_rgb.py",
+  "sha256": "7f2c693798878a1a39718db9cf67e459445e1d9deda2ff19d4ec32bec90dbd90"
+ }
+}
