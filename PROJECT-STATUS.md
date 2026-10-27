@@ -18,7 +18,7 @@
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 진행 중 게이트 | **P-007E-R2 Stage 1 `TARGET_NOT_DETECTED / STOP`** | `evidence/P-007E-R2/stage1_fov.json` |
-| 최신 조사 | **P-007E-R2-R1 `CANDIDATE FOUND / PHYSICAL SETUP REQUIRED`** — 검수 결정 대기 | `evidence/P-007E-R2-R1/decision.json` |
+| 최신 조사 | **P-007E-R2-R2 Stage A `CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`** — 기동 승인 대기 | `evidence/P-007E-R2-R2/decision.json` |
 | **게이트가 일으킨** 로봇 모션 | **P-007E-R1 = `UNKNOWN`** · 그 외 0 | 🔴 P-007E-R1 Phase B 는 모션 명령을 1회 집행했고 **물리 모션 여부가 관찰되지 않았다**(운영자 부재). P-007A·A-R1·B·C·C-R1 `environment.json` 은 전부 `robot_moved_by_this_gate: 0`. ⚠️ 프로젝트 전체가 0 이라는 뜻이 **아니다** — 격리 전에는 벤더 autostart 가 부팅마다 `move_init_pose()` 로 팔을 움직였다 |
 | 서보 위치 명령 누적 | **2회** (P-007B · P-007E-R1 Phase B — 둘 다 ID2 152°, raw 1242) | P-007B `servo_position_writes: 1` · P-007E-R1 `phase_b_acceptance.json servo_writes: 1`. 나머지 게이트는 전부 `0` |
 | `T_base_camera` | **없음** | P-006 BLOCKED. 실측 기준 부재 |
@@ -77,6 +77,8 @@ raw 이동폭      13..35 counts = 1.06°~2.86°
 ```
 
 🔴 현재 evidence 가 지지하는 명칭은 **`controller-reported servo position`** 이다 — `physical joint position = 152°` 라고 부르지 않는다. 열린 모델은 `H1 actual servo position feedback` · `H2 controller-side estimated/interpolated position` · `H3 servo-reported internal position without independently observed shaft motion` 셋이다.
+
+🔴 **독립 물리 관측 채널의 명칭(검수 고정, 2026-10-27)** — DaBai eye-in-hand 로 얻는 증거는 **`independent physical-motion evidence via eye-in-hand visual ego-motion`** 이라고만 부른다. 다음 표현은 **금지**한다: `independent external observer` · `independent robot pose measurement` · `absolute joint angle measurement`. 카메라가 로봇에 붙어 있으므로 robot-independent **mechanical reference** 는 아니다 — 독립인 것은 **sensing modality** 뿐이다.
 
 readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면 153) — **단순 command echo 가설만 약화**된다. target 근처 안착 위치와 모양이 같아 **물리 모션(A)을 배제할 수 없다**. 컨트롤러 내부 보간 보고와 이 데이터만으로는 갈리지 않는다. 근거 식은 `evidence/P-007B/command_api_analysis.md`.
 
@@ -179,13 +181,29 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - 🔴 **FOV 1프레임에 DOFBOT 구조물이 없다.** P-006C 고정 포즈는 **작업면**을 본다 — 팔을 보도록 놓인 적이 없다
   - 🔴 Jetson 접속 0 · I2C 접근 0 · robot motion 0. 드라이버 정지·임시물 삭제로 원복
   - 다음은 운영자 물리 결정 — 카메라 재배치(P-006C 고정 전제 파기) / 관측 장치 추가 / `OBSERVATION QUALIFICATION BLOCKED`
-- [x] **P-007E-R2-R1** 관측장치 선정 조사 — **`CANDIDATE FOUND / PHYSICAL SETUP REQUIRED`** (분류 B)
+- [x] **P-007E-R2-R1** 관측장치 선정 조사 — **`CANDIDATE FOUND / PHYSICAL SETUP REQUIRED / PASS / CLOSED @ b576dbe`** (분류 B, 검수 종결)
   - 성격: DESIGN / INVENTORY / FEASIBILITY ONLY. 캡처 0 · 거치 0 · 로봇 모션 0 · robot controller access 0
   - 🔴 **URDF: `DaBai_DCW2_Joint` parent = `Arm4_Link`** → Jetson 의 Orbbec DaBai DCW2 는 **eye-in-hand**. ID2 와 함께 움직인다
   - p620 에 두 번째 카메라 없음 · Mac 은 내장 1대 · Jetson 에 DaBai RGB-D
   - PRIMARY = Mac 내장(R6 완전 독립, 배치·TCC·사양 미해결) / SECONDARY = DaBai(설치 0, ego-motion 민감도 우위, 🔴 §16 충돌 → 검수 결정)
   - 🔴 Gemini 재배치 NOT RECOMMENDED — workplane baseline 이 현재 포즈에 묶여 있다
   - 🔴 DaBai 사용 시 **벤더 launch 가 로봇 노드를 함께 띄울 위험** 정적 검사 필수 (P-007A `move_init_pose()` 계열)
+  - 🔴 검수 결정으로 우선순위 역전 — **PRIMARY = DaBai eye-in-hand** / SECONDARY = Mac 외부 관찰자 / PRESERVED = Gemini(workplane)
+- [x] **P-007E-R2-R2 Stage A** DaBai 수동관측 경로 **정적 감사** — **`CAMERA-ONLY PATH IDENTIFIED / STATIC EVIDENCE ONLY / START NOT AUTHORIZED`**
+  - 성격: STATIC AUDIT ONLY. 🔴 카메라 기동 0 · 캡처 0 · recorder 0 · `ros2` CLI 0 · 로봇/컨트롤러/I2C 접근 0 · servo readback 0
+  - `dabai_dcw2.launch.py` launch 폐쇄 = **노드 1개** (`rclcpp_components/component_container` + `orbbec_camera::OBCameraNodeDriver`). Include 0 · ExecuteProcess 0 · subprocess 0
+  - Orbbec 트리 전체 `Arm_Lib`·`smbus`·`Arm_serial`·`move_init_pose`·`set_torque`·`Button_Mode`·`Action_Mode`·`dofbot_pro` = **각 0건**. `i2c` 12건은 전부 **카메라 내부 버스** SDK 선언이고 노드 소스 호출 0건
+  - src ↔ install sha256 동일(`b785e5cf…`) · `/opt/ros` 쪽 `orbbec_camera` 중복 없음
+  - 🔴 **위험은 드라이버가 아니라 ROS 그래프다** — `arm_driver.py:51` 은 `__init__` 에서 조건 없이 `Arm_serial_servo_write6(90,90,90,0,90,30, 3000)` 를 호출한다. **기동만으로 6축 모션**이다
+  - 🔴 완전한 간접 사슬: 카메라 → `color_follow.py:36-37`(`/camera/{color,depth}/image_raw` 구독) → `:33` `TargetAngle` 발행 → `arm_driver.py:25` 구독 → `:72` servo write. launch 기본 `camera_name='camera'` 가 그 구독 이름과 **정확히 일치**한다
+  - 🔴 비대화형 ssh 는 ROS 환경 **미상속**(`~/.bashrc` 5-9행 조기 return) · p620 컨테이너 `ROS_DOMAIN_ID` 미설정(=0) · Jetson 대화형 98 → **도메인 명시 없이는 격리가 깨진다**
+  - 🔴 PID 3091(`sh`)·3092(`ros2` 래퍼)가 `/dev/i2c-7` fd 11 을 상속 보유 중. 실행 바이너리(3103)는 보유하지 않는다 — 배타적 제어 가정 재검토 사유
+  - autostart `bash-1.desktop` 의 Exec 대상(`setting.sh`) **부재 → 현재 NO-OP**
+  - 부착 provenance: URDF `type=fixed` + revolute 6개(Arm1~5·grip)가 서보 ID1~6 에 대응해 **카메라용 액추에이터가 없음** + mesh 자산. 🔴 운영자 **육안** 확인(P4)만 미확보 — 만지거나 흔들지 않는다
+  - 비교만: 경로 A(ROS orbbec) vs 경로 B(ROS 없는 UVC 직접 읽기 — 표면적 최소, RGB only, intrinsics 표준 경로 없음). 🔴 **선택하지 않았다**
+  - 🔴 `~21 px` 는 **PREDICTION** (fx≈600 가정, DaBai 실측 intrinsics 아님). 실측 qualification 전 검출 성능으로 승격 금지
+  - 🔴 Jetson 디스크 여유 **9.3G (86% 사용)** — 녹화 예산 제약
+  - 다음은 검수 결정 — ① 최소 기동 승인 ② 경로 A/B 선택 ③ 운영자 육안 provenance
 
 ## 🔴 다음 행동
 
@@ -266,6 +284,11 @@ operator channel        realtime visual observation
 > 🔴 **물리 위치는 미확인이다.** readback 152 가 실제 관절 위치인지 컨트롤러 보고값인지 갈리지 않았다. 다음 게이트가 FK·clearance 를 계산할 때 `150` 을 실제 자세로 가정하면 안 된다
 
 
+> 🔴 **R2-R2 갱신 — 카메라를 띄울 때의 함정 2건.**
+> ① `ros2 run dofbot_pro_driver arm_driver` 는 **기동만으로** `arm_driver.py:51` 의 `Arm_serial_servo_write6(90,90,90,0,90,30, 3000)` 를 집행한다. 이 노드(와 `dofbot_pro_driver`·`grasp`·`apriltag_*`·`voice_ctrl` 계열)는 **어떤 이유로도 띄우지 않는다**.
+> ② 벤더 카메라 launch 를 **기본 `camera_name='camera'`** 로 띄우면 토픽이 `/camera/color/image_raw`·`/camera/depth/image_raw` 로 나가고, 그것은 `color_follow.py:36-37` 등 **앱 노드의 구독 이름과 정확히 일치**한다. 그 앱 노드가 떠 있으면 `TargetAngle` → `arm_driver` 로 모션이 이어진다. 카메라를 띄울 때는 `camera_name` 을 전용 이름으로 바꾸고 `ROS_DOMAIN_ID` 를 명시한다(p620 컨테이너는 도메인 **0**, Jetson 대화형은 **98**, 비대화형 ssh 는 **미설정**).
+> 근거·원문 인용: `evidence/P-007E-R2-R2/indirect_path_risk.json`
+
 > 🔴 **R1 갱신 — 보드 상태가 바뀌었다.** 확장보드 RGB 가 **파랑으로 켜진 채** 남아 있다(P-007D-R1). 이후 보드 LED 를 관찰할 때 baseline 을 **`P-007D-R1 induced BLUE`** 라고 명시한다 — learning mode(breathing)도 `Arm_Clear_Action` 완료(녹색)도 아니다. **P-007C-R2 의 "RGB 소등" baseline 은 더 이상 유효하지 않다.** 복구는 별도 게이트로 만들지 않는다(검수 세션 판단). LED 가 관찰을 실제로 방해하는 시점에 그 게이트 안에서 함께 설계한다.
 
 > R3 갱신: 토크가 **이미 켜져 있는** 쪽이 유력해져 "토크를 켜는 순간 래치된 target 으로 움직인다" 경로는 **약해졌다.** 🔴 제거되지는 않았다 — 토크 ON 은 `STRONGLY_SUPPORTED`이지 `VERIFIED`가 아니고, 컨트롤러가 target 을 보관하는지 자체가 미확인이다.
@@ -296,6 +319,8 @@ operator channel        realtime visual observation
 | 11 | 2026-10-27 14:57~ | P-007D-R1 RGB 제어 실험 (세션 `cb876b8e`) | **A. 최초 상태 변경.** block-write 물리 출력 확인 |
 | 12 | 2026-10-27 15:59~18:39 (KST) | P-007D-R2 · P-007E · P-007E-R1 Phase A | R2-C CLOSED · E 가드 abort(`BASELINE_CHANGED`) · R1 harness READY (서보 쓰기 0) |
 | 13 | 2026-10-27 18:39~19:02 (KST, 커밋 `be1491e`) | **P-007E-R1 Phase B** (세션 `66eb4937`) | **A/C NOT DISCRIMINATED.** 서보 명령 2번째 1회 집행(18:49:06 KST), readback 150→152, 물리 모션 UNOBSERVED |
+| 14 | 2026-10-27 19:02~19:48 (KST, 커밋 `02de7b0`~`b576dbe`) | P-007E-R1 검수 종결 반영 · **P-007E-R2 Stage 1** · **P-007E-R2-R1** (세션 `66eb4937`) | Stage 1 `TARGET_NOT_DETECTED` · R2-R1 `CANDIDATE FOUND` — 로봇 접근 0
+| 15 | 2026-10-27 20:47~21:54 (KST, 커밋 `ee0b2ca`) | **P-007E-R2-R2 Stage A** 정적 감사 (세션 `66eb4937`) | `CAMERA-ONLY PATH IDENTIFIED / START NOT AUTHORIZED` — 카메라 기동 0 · `ros2` CLI 0
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
