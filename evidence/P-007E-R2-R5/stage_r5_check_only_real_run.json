@@ -1,0 +1,78 @@
+{
+ "gate": "P-007E-R2-R5",
+ "stage": "real --check-only executed on Jetson (jetson@192.168.0.94, /home/jetson/cad-less-robotics @ 5211422)",
+ "overall_check_only_pass": true,
+ "arm_lib_integrity": {
+  "disk_sha_match": true,
+  "disk_sha_actual": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "egg_sha_match": true,
+  "egg_sha_actual": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "runtime_is_egg": true,
+  "runtime_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+  "pass": true
+ },
+ "camera_identity_check": {
+  "dabai_identity_valid": true,
+  "serial_observed": "CH8R3620170",
+  "mjpg_640x480_valid": true,
+  "format_invariant": {
+   "current": {
+    "width": 640,
+    "height": 480,
+    "pixelformat": "MJPG"
+   },
+   "expected": {
+    "width": 640,
+    "height": 480,
+    "pixelformat": "MJPG"
+   },
+   "match": true,
+   "mismatches": {}
+  },
+  "camera_control_invariant_valid": true,
+  "camera_controls_observed": {
+   "brightness": "30",
+   "contrast": "50",
+   "saturation": "64",
+   "hue": "0",
+   "white_balance_automatic": "1",
+   "gamma": "100",
+   "gain": "0",
+   "power_line_frequency": "1",
+   "white_balance_temperature": "4600",
+   "sharpness": "3",
+   "backlight_compensation": "1",
+   "auto_exposure": "3",
+   "exposure_time_absolute": "100",
+   "exposure_dynamic_framerate": "1",
+   "privacy": "0"
+  },
+  "camera_control_mismatches": {}
+ },
+ "i2c7_holder_diagnostic": {
+  "holders": [
+   {
+    "pid": "2264",
+    "comm": "python3"
+   },
+   {
+    "pid": "3091",
+    "comm": "sh"
+   },
+   {
+    "pid": "3092",
+    "comm": "ros2"
+   }
+  ]
+ },
+ "git_dirty_tree_check": {
+  "porcelain": "",
+  "dirty": false,
+  "require_clean": true,
+  "abort": null
+ },
+ "module_sha_check_match": true,
+ "self_ast_check_pass": true,
+ "hardware_wiring_selftest_all_pass": true,
+ "note": "camera_identity_check 는 NoNegotiationV4L2Reader.check_format_invariant()/read_controls() 만 호출한다 — capture_one_frame() 은 호출되지 않았다(실제 프레임 캡처 0). Arm_Device() 는 생성되지 않았다(실제 서보 read/write 0). 이 호출로 camera starts=0, servo reads=0, servo writes=0, robot motion=0 를 유지한다."
+}
