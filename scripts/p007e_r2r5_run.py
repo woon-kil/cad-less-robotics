@@ -66,12 +66,13 @@ def do_check_only():
     sys.path.insert(0, os.path.join(ROOT, "scripts"))
     evp = importlib.import_module("p007e_r2r2_evidence_pipeline")
     try:
-        out["git_dirty_tree_check"] = evp.check_dirty_tree(ROOT, require_clean=True, run_fn=None)
+        filtered_run_fn = hw.make_r5_provenance_filtered_git_run_fn()
+        out["git_dirty_tree_check"] = evp.check_dirty_tree(ROOT, require_clean=True, run_fn=filtered_run_fn)
     except Exception as e:  # noqa: BLE001
         out["git_dirty_tree_check"] = {"error": repr(e)}
 
     ok = (out["self_ast_check_execution"]["pass"] and out["module_sha_check"]["match"]
-          and out["hardware_wiring_selftest"]["negative_tests_HW_01_HW_04"]["all_pass"]
+          and out["hardware_wiring_selftest"]["negative_tests_HW_01_HW_13"]["all_pass"]
           and out.get("arm_lib_integrity", {}).get("pass")
           and out.get("camera_identity_check", {}).get("dabai_identity_valid")
           and out.get("camera_identity_check", {}).get("mjpg_640x480_valid")
@@ -138,7 +139,7 @@ def do_execute(run_root):
         workspace_attestation=attestation,
         expected_harness_sha256=R5_EXEC_SHA,
         expected_r3_harness_sha256=r5.R3_MODULE_SHA,
-        git_run_fn=None, repo_root=ROOT,
+        git_run_fn=hw.make_r5_provenance_filtered_git_run_fn(), repo_root=ROOT,
         camera_check_fn=callables["camera_check_fn"],
         capture_pre_window_fn=callables["capture_pre_window_fn"],
         capture_post_window_fn=callables["capture_post_window_fn"],

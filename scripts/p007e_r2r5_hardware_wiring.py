@@ -70,6 +70,65 @@ def sha256(path):
     return hashlib.sha256(open(path, "rb").read()).hexdigest()
 
 
+# ---------------------------------------------------------------------------
+# §6 provenance self-contamination repair (2026-10-28, Attempt #3 ABORT_BEFORE_MOTION
+# root cause) — R5 자신이 생성하는 evidence/P-007E-R2-R5/run_*/ 가 다음 실행에서
+# git dirty-tree 검사에 그대로 잡혀 매 실행마다 ABORT_BEFORE_MOTION 이 반복되는 구조적
+# 결함. R3(scripts/p007e_r2r3_motion_preregistration.py.verify_git_tracked_execution)
+# 와 evidence_pipeline.check_dirty_tree() 는 **전혀 수정하지 않는다** — 둘 다 이미
+# `run_fn` 주입점을 갖고 있고(원래는 mock 음성시험용), 그 주입점에 "실제 git 호출을
+# 그대로 수행하되 `status --porcelain` 응답에서만 R5 자신이 만든 허용된 untracked
+# run_* 디렉터리 줄을 제거하는" wrapper 를 꽂는다. 다른 모든 untracked/modified/staged
+# 변경은 그대로 dirty 로 잡힌다 — "repository 전체가 항상 clean" 을 요구하지 않을
+# 뿐, provenance gate 자체를 느슨하게 만들지 않는다. `git_provenance_valid=True`
+# 를 하드코딩하지 않는다 — 실제 git 호출은 그대로 일어난다.
+# ---------------------------------------------------------------------------
+R5_ALLOWED_UNTRACKED_PREFIXES = ("evidence/P-007E-R2-R5/run_",)
+
+
+def filter_porcelain_allowing_r5_runs(porcelain_text, allowed_prefixes=R5_ALLOWED_UNTRACKED_PREFIXES):
+    """`git status --porcelain` 출력에서, untracked(`??`)이고 경로가
+    allowed_prefixes 중 하나로 시작하는 줄만 제거한다. tracked modified(` M`)/
+    staged(`A `/`M `)/그 외 untracked 줄은 전부 그대로 남겨 dirty 판정에 반영된다.
+    🔴 git 은 untracked **디렉터리**를 그 안의 개별 파일을 나열하지 않고 디렉터리
+    경로 한 줄(`?? evidence/P-007E-R2-R5/run_20261028T205930/`)로만 보고한다 —
+    prefix 비교로 충분하다."""
+    kept = []
+    for line in porcelain_text.splitlines():
+        if not line:
+            continue
+        status, path = line[:2], line[3:].strip()
+        if status == "??" and any(path.startswith(p) for p in allowed_prefixes):
+            continue
+        kept.append(line)
+    return ("\n".join(kept) + "\n") if kept else ""
+
+
+def _default_real_git_run(argv):
+    r = subprocess.run(argv, capture_output=True, text=True, timeout=10)
+    if r.returncode != 0:
+        raise RuntimeError("GIT_CMD_FAILED: %r stderr=%s" % (argv, r.stderr))
+    return r.stdout
+
+
+def make_r5_provenance_filtered_git_run_fn(base_run_fn=None,
+                                           allowed_prefixes=R5_ALLOWED_UNTRACKED_PREFIXES):
+    """R3.verify_git_tracked_execution(git_run_fn=...) 에 그대로 주입할 `run_fn`.
+    `git -C <root> status --porcelain` 호출에만 filter_porcelain_allowing_r5_runs()
+    를 적용하고, `rev-parse --show-toplevel`/`rev-parse HEAD`/`log` 등 다른 모든
+    호출은 base_run_fn(기본값: 실제 subprocess, 읽기전용)에 그대로 통과시킨다 —
+    repo-root 검증(`_verify_repo_root`, HEAD mismatch 시 GitProvenanceUnavailable)은
+    이 wrapper를 거쳐도 전혀 영향받지 않는다."""
+    real_run = base_run_fn or _default_real_git_run
+
+    def run_fn(argv):
+        raw = real_run(argv)
+        if argv[-2:] == ["status", "--porcelain"]:
+            return filter_porcelain_allowing_r5_runs(raw, allowed_prefixes)
+        return raw
+    return run_fn
+
+
 def check_arm_lib_integrity():
     actual_disk = sha256(ARM_LIB_SRC)
     actual_egg = sha256(ARM_LIB_EGG)
@@ -297,12 +356,102 @@ def negative_tests():
         DABAI_EXPECTED_SERIAL == "CH8R3620170" and DABAI_EXPECTED_WIDTH == 640
         and DABAI_EXPECTED_HEIGHT == 480 and DABAI_EXPECTED_PIXELFORMAT == "MJPG")
 
+    # -----------------------------------------------------------------
+    # HW-05..HW-12 — §6 provenance self-contamination repair regression
+    # (Attempt #3 ABORT_BEFORE_MOTION root cause: R5 자신의 evidence/run_*/
+    # 가 다음 실행의 dirty-tree 검사에 그대로 잡히는 구조적 결함). 전부
+    # hardware-free — 가짜 base_run_fn 으로 git 응답을 스크립트하고, 실제
+    # evidence_pipeline.check_dirty_tree() 를(수정 없이) 그대로 호출한다.
+    # -----------------------------------------------------------------
+    evp = importlib.import_module("p007e_r2r2_evidence_pipeline")
+    FAKE_ROOT = "/fake/repo/root"
+
+    def fake_run_fn(porcelain_text, toplevel=FAKE_ROOT):
+        def fn(argv):
+            if "--show-toplevel" in argv:
+                return toplevel + "\n"
+            if "rev-parse" in argv and "HEAD" in argv:
+                return "deadbeef" * 5 + "\n"
+            if argv[-2:] == ["status", "--porcelain"]:
+                return porcelain_text
+            if "log" in argv:
+                return ""
+            raise RuntimeError("unexpected argv in fake_run_fn: %r" % argv)
+        return fn
+
+    # A — clean tree -> PASS (not dirty)
+    filtered_a = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(""))
+    res_a = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_a)
+    rec("HW-05_regressionA_clean_tree_pass", not res_a["dirty"] and res_a["abort"] is None, res_a)
+
+    # B — only R5's own allowed run_* untracked evidence -> PASS (not dirty)
+    porcelain_b = ("?? evidence/P-007E-R2-R5/run_20261028T205930/\n"
+                   "?? evidence/P-007E-R2-R5/run_20261028T210701/\n")
+    filtered_b = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_b))
+    res_b = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_b)
+    rec("HW-06_regressionB_r5_run_evidence_only_pass", not res_b["dirty"] and res_b["abort"] is None, res_b)
+
+    # C — tracked source modification -> FAIL (dirty)
+    porcelain_c = " M scripts/p007e_r2r5_execution.py\n"
+    filtered_c = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_c))
+    res_c = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_c)
+    rec("HW-07_regressionC_tracked_modification_fail", res_c["dirty"] and res_c["abort"] is not None, res_c)
+
+    # D — staged modification -> FAIL (dirty)
+    porcelain_d = "A  scripts/p007e_r2r5_new_unexpected_file.py\n"
+    filtered_d = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_d))
+    res_d = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_d)
+    rec("HW-08_regressionD_staged_modification_fail", res_d["dirty"] and res_d["abort"] is not None, res_d)
+
+    # E — arbitrary untracked source/config at repo root -> FAIL (dirty)
+    porcelain_e = "?? malicious_or_unexpected.py\n"
+    filtered_e = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_e))
+    res_e = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_e)
+    rec("HW-09_regressionE_untracked_root_file_fail", res_e["dirty"] and res_e["abort"] is not None, res_e)
+
+    # F — unexpected untracked artifact from a DIFFERENT gate's evidence dir ->
+    # 기존 정책 유지: R5 run_* 이외의 그 어떤 경로도 허용 목록 밖이면 FAIL
+    porcelain_f = "?? evidence/P-007E-R2-R2/unexpected_new_artifact/\n"
+    filtered_f = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_f))
+    res_f = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_f)
+    rec("HW-10_regressionF_other_gate_untracked_artifact_fail",
+        res_f["dirty"] and res_f["abort"] is not None, res_f)
+
+    # G — repo-root/HEAD provenance verification (기존 R3/evidence_pipeline
+    # 동작, 수정하지 않음) 이 filter wrapper 를 거쳐도 그대로 작동하는지 확인:
+    # --show-toplevel 이 repo_root 와 다른 경로를 반환하면 GitProvenanceUnavailable
+    filtered_g = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn("", toplevel="/different/repo"))
+    g_raised = False
+    try:
+        evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_g)
+    except evp.GitProvenanceUnavailable:
+        g_raised = True
+    rec("HW-11_regressionG_repo_root_mismatch_still_aborts", g_raised)
+
+    # H — module/harness/preregistration SHA 검증은 이 수정과 무관하게 그대로
+    r5exec = importlib.import_module("p007e_r2r5_execution")
+    h_module_check = r5exec.check_module_sha()
+    h_self_ast = r5exec.self_ast_check()
+    rec("HW-12_regressionH_module_and_self_ast_checks_unaffected",
+        h_module_check["match"] and h_self_ast["pass"], {"module": h_module_check, "self_ast": h_self_ast})
+
+    # mixed scenario — allowed R5 run_* line coexists with one genuinely dirty
+    # tracked-modification line in the same porcelain output; only the allowed
+    # line should be filtered out, the modification must still cause dirty=True
+    porcelain_mixed = ("?? evidence/P-007E-R2-R5/run_20261028T205930/\n"
+                       " M scripts/p007e_r2r5_execution.py\n")
+    filtered_mixed = make_r5_provenance_filtered_git_run_fn(base_run_fn=fake_run_fn(porcelain_mixed))
+    res_mixed = evp.check_dirty_tree(FAKE_ROOT, require_clean=True, run_fn=filtered_mixed)
+    rec("HW-13_mixed_allowed_and_real_modification_still_fails",
+        res_mixed["dirty"] and "scripts/p007e_r2r5_execution.py" in res_mixed["porcelain"]
+        and "run_20261028T205930" not in res_mixed["porcelain"], res_mixed)
+
     all_pass = all(v["pass"] for v in results.values())
     return {"all_pass": all_pass, "results": results}
 
 
 def selftest():
-    return {"negative_tests_HW_01_HW_04": negative_tests()}
+    return {"negative_tests_HW_01_HW_13": negative_tests()}
 
 
 if __name__ == "__main__":
