@@ -1,0 +1,59 @@
+{
+ "gate": "P-007E-R2-R3",
+ "stage": "Architecture note — Block 3 relabel + two-channel evidence model (preregistration only)",
+ "note": "이 문서는 evidence/P-007E-R2-R2/stage_c1r1r1_architecture_note.json 을 소급 수정하지 않는다 — 그 문서는 불변 보존된다. 'Block 3' 명칭은 이번 gate에서 처음 정의되며, 이 문서가 그 정본이다.",
+ "block_3": {
+  "label": "Block 3 — Eye-in-Hand Visual Motion Witness",
+  "description": "Pre/post quasi-static visual change against a rigid external scene.",
+  "description_ko": "Eye-in-Hand 시각 움직임 증거 채널",
+  "prohibited_names": [
+   "Independent External Observer",
+   "Independent Robot Pose Observer",
+   "Independent Robot Pose Measurement",
+   "Absolute Robot Pose Measurement",
+   "Absolute Joint-Angle Measurement",
+   "Dynamic Trajectory Tracker"
+  ],
+  "rationale": "DaBai는 Arm4_Link에 장착된 eye-in-hand sensor이므로 외부 독립 관찰자가 아니다. 다만 controller readback과는 다른 sensing modality이므로 physical-motion witness로 사용한다."
+ },
+ "two_channel_model": {
+  "channel_A_controller": {
+   "measures": "controller-reported servo position",
+   "purpose": "command 전/후 controller-reported ID2 변화 확인",
+   "limitation": "이 채널만으로 physical shaft motion을 증명하지 않는다"
+  },
+  "channel_B_visual_witness": {
+   "measures": "DaBai eye-in-hand → rigid external scene → pre/post quasi-static visual displacement",
+   "purpose": "camera-bearing articulated structure의 실제 물리 pose 변화 증거",
+   "limitation": "이 채널도 absolute joint angle을 측정하지 않는다"
+  },
+  "channel_independence": "controller-reported servo position과 DaBai visual observation은 독립 evidence channel이다. 같은 물리량이라고 가정하지 않는다 — evidence/P-007E-R2-R2/stage_c1r1r1_architecture_note.json 의 channel_independence 와 동일한 원칙을 Block 3 명칭 아래 재확인한다."
+ },
+ "result_A_claim_bounds": {
+  "allowed_claim": "The controlled Arm2 command produced a controller-reported state change accompanied by independently sensed eye-in-hand visual displacement against a rigid external scene.",
+  "not_yet_claimed": [
+   "exact Arm2 physical angle = controller value",
+   "2.000 degree physical rotation verified",
+   "absolute robot pose verified",
+   "trajectory accuracy verified",
+   "calibration accuracy verified"
+  ],
+  "applies_only_to_result": "A — B/C/D/X 는 각각 section_6 의 별도 의미를 갖는다 (physical motion evidence 로 쓰지 않음)"
+ },
+ "quasi_static_observation_semantics": {
+  "structure": [
+   "PRE: stable quasi-static visual window (M=60 frames)",
+   "ONE Arm2 command (2000ms)",
+   "settle (3.0s)",
+   "POST: stable quasi-static visual window"
+  ],
+  "primary_evidence": "PRE/POST 차이만 사용한다 — dynamic trajectory sampling requirement 를 적용하지 않는다",
+  "inherits_from": "evidence/P-007E-R2-R2/stage_c1r1r1_architecture_note.json 의 section_24_verbatim 과 동일한 qualification 경계(quasi-static pre/post, not dynamic trajectory tracking)를 Arm2 +2도 실험에도 그대로 적용한다 — 완화하지 않는다"
+ },
+ "prediction_only_boundary": {
+  "value_px_approx": 21,
+  "status": "PREDICTION ONLY — 참고 정보",
+  "rule": "실제 motion threshold나 성공 기준을 이것에 맞춰 변경하지 않는다. 실제 결과가 21px와 다르더라도 실패로 판정하지 않는다"
+ },
+ "frozen_estimator_note": "ROI/masks/ORB/BFMatcher/RANSAC/quality guards/sigma floors/threshold formula 전부 C1-R1 과 동일 — scripts/p007e_r2r2_analysis.py sha256 fd3910ff9d4759244cb3ce1837c2dab099059af006276bee56d5dc8951da4f4f (변경 없음)"
+}
