@@ -1,0 +1,67 @@
+{
+ "gate": "P-007E-R2-R5",
+ "stage": "Single Controlled Physical-Motion Execution — pre-execution design/readiness record",
+ "🔴 status": "CODE AND READINESS CHECKS ONLY — NO REAL CAPTURE, NO CONTROLLER ACCESS, NO SERVO WRITE HAS OCCURRED YET AT THE TIME THIS FILE WAS WRITTEN",
+ "base_commits": {"R3": "03c29c1", "R4": "70071d5"},
+ "dependency": "R3/R4 evidence 및 두 파일(scripts/p007e_r2r3_motion_preregistration.py, scripts/p007e_r2r4_preflight.py)을 1바이트도 수정하지 않았다. SHA-pin import 로만 재사용한다",
+ "module_sha_pins": {
+  "scripts/p007e_r2r3_motion_preregistration.py": "f8eda225b8792285f4a3ce5001f736f0a2cfaae8cce9f2b4aed3cc5742a79466",
+  "scripts/p007e_r2r4_preflight.py": "cc5dd7bce25719cf6d328b302ca7b067d7813b256b042e9687d0e0f3fbc2a616",
+  "scripts/p007e_r2r5_window.py": "31004bea35f31f4b5fe675076a91bce875f0cdc9f0979d0c123ba749d8903053",
+  "scripts/p007e_r2r2_c1r1_sham.py": "86f94437642828741654a34d4eedeccb586c72a9497762e74d1de41aaba785bc",
+  "scripts/p007e_r2r2_evidence_pipeline.py": "298e0656027d5bef4eca42101054658775e0b6d7c24500194297a636f7635133",
+  "scripts/p007e_r2r4_fk.py": "a4e9d2d7891597a6bfa62c8ca87303aeab28ba0a784f23f2640ca8dc145622cb",
+  "scripts/p007e_r2r5_execution.py (self)": "2fc8f6390bb366518df4da838060aa7b5db11b5db08ddcb7ff62ee1be2fafae9"
+ },
+ "file_roles": {
+  "scripts/p007e_r2r5_window.py": "하드웨어 0. run_trial()(sham.py, CLOSED)의 단일 window 루프를 분리호출 가능하게 재구성한 것 — 알고리즘 재구현 없음, anchor 계약 보존",
+  "scripts/p007e_r2r5_execution.py": "하드웨어 0 (self_ast_check 로 구조적 보장). R3/R4 를 SHA-pin import 로 조립. durable ledger(fsync+재읽기 검증) + 재시작보호 + §31 승인게이트를 추가",
+  "scripts/p007e_r2r5_hardware_wiring.py": "Jetson 전용. Arm_Lib/subprocess(v4l2-ctl)/실제 reader 를 execute_r5() 콜백 계약에 맞게 감싼다. self_ast_check 적용 대상 아님(p007e_phase1_command.py 선례와 동일 계층)",
+  "scripts/p007e_r2r5_run.py": "실제 실행 CLI. --check-only(opt-in 0, 서보 read 도 하지 않음) / --execute(운영자 확인 -> workspace 체크리스트 -> PRE 캡처 -> ... -> §31 승인 문구 화면)"
+ },
+ "approval_gate_architecture": {
+  "where": "scripts/p007e_r2r5_execution.py 의 execute_r5() 내부, R3.execute_motion_experiment() 에 넘기는 controller_write_fn wrapper(write_wrapper) 의 **첫 줄**",
+  "why_this_point_is_safe": "R3.execute_motion_experiment() 의 코드 흐름상 controller_write_fn 은 'if not gate[\"pass\"]: return ABORT...' 를 통과한 뒤에만 호출된다 — 즉 이 지점에 도달했다는 사실 자체가 R3 내부 14항목 하드게이트가 전부 PASS 했다는 구조적 불변식이다. 이 불변식을 코드를 읽어 확인했으므로, 승인화면에 'PRE visual: PASS' 등을 그 시점에서 재검증 없이 안전하게 적을 수 있다",
+  "why_not_a_pre_check_dry_run": "git-tracked checkout에서 real PRE window(M=60)·controller baseline 을 승인용으로 한 번, 승인 후 실제 실행용으로 또 한 번 — 총 두 번 real capture 하면 §30 budget(camera session 1회, controller baseline read 최소한) 을 위반한다. 단일 real R3 호출 안에서, write 호출 시점(모든 gate 가 이미 PASS 한 지점)에 승인을 받는 구조를 택했다",
+  "decline_path": "승인 문구가 정확히 일치하지 않으면 ApprovalDeclinedBeforeArming 을 raise 한다 — **ledger 를 ARMED 하기 전**이므로 이 exp_id 의 ledger 에는 어떤 항목도 생기지 않는다. 실제 하드웨어 write 함수(controller_write_fn, Arm_Lib 호출)는 이 경로에서 절대 호출되지 않는다(real_hardware_write_invoked=False)",
+  "ledger_durable_verification": "arm_ledger_durable() 이 R4.arm_ledger()(fsync 쓰기, 수정하지 않고 재사용) 로 쓴 뒤, 그 파일을 **다시 열어 읽어서** status==\"ARMED\" 를 확인한다. 재확인에 실패하면(파일 시스템 오류 등) 역시 ApprovalDeclinedBeforeArming — 실제 write 함수를 호출하지 않는다",
+  "restart_protection": "execute_r5() 시작 시(승인 화면 도달 전) R4.check_ledger_allows_arming() 으로 동일 experiment_id 에 ARMED/SENT 가 이미 있는지 확인한다. 있으면 R3/승인화면까지 가지 않고 즉시 ABORTED(MANUAL REVIEW REQUIRED)"
+ },
+ "🔴 disclosed_limitation_r3_accounting_on_decline": "운영자가 승인을 거부하면, R3.execute_motion_experiment() 는(그 자체를 수정하지 않았으므로) ApprovalDeclinedBeforeArming 예외를 자신의 범용 `except BaseException` 으로 받아 result_code=\"X\", motion_commands_sent=1, invalid_reasons=[\"WRITE_CALL_EXCEPTION\"] 로 기록한다 — 이는 R3 자신의 기존 설계(\"I2C 보드에 도달했는지 모르면 0 으로 적지 않는다\"는 fail-closed 관례)가 '애초에 승인하지 않았다'는 사례에도 그대로 적용된 결과다. 이 필드는 실제 하드웨어 접촉 여부의 권위 있는 기록이 아니다 — 권위 있는 기록은 ledger(해당 experiment_id 에 ARMED/SENT 항목이 전혀 없음)와 결과 dict 의 real_hardware_write_invoked=False 다. negative test R5-20 이 이 디스크 상의 모순(겉보기 X/motion_commands_sent=1 vs 실제 ledger 비어있음+real_hardware_write_invoked=False)을 재확인하고, execute_r5() 가 이 바로 그 경우에 🔴_known_r3_accounting_note 필드를 결과에 덧붙이는 것을 검증한다.",
+ "environment_investigation_2026_10_28": {
+  "finding": "Jetson 에서 /dev/i2c-7 을 연 프로세스 중 `ros2 run dofbot_pro_info kinemarics_dofbot`(와 그 launcher wrapper, PID 변동)가 발견됨 — 기존 §10/env_guards() 가 알고 있던 것은 yahboom_oled.py 뿐이었음",
+  "investigation": "소스(dofbot_pro_ws/src/dofbot_pro_info/src/kinemarics_dofbotpro.cpp, 전체 123줄 직접 읽음)를 확인한 결과 이 노드는 KDL 순수 수학 FK/IK ROS2 서비스로 I2C/Arm_Lib 코드를 전혀 포함하지 않는다. 실제로 spin 중인 컴파일된 바이너리(별도 PID, launcher 의 python/sh wrapper 와 분리됨)는 i2c-7 fd 를 들고 있지 않다 — launcher(sh -c / ros2-python 부트스트랩)만 상위 세션에서 상속받은 fd 를 들고 있으며, 그 fd 생성 시각(2026-10-26 17:08, 조사일로부터 이틀 전)이 활성 트래픽의 증거가 아니라 inherited fd 임을 시사한다",
+  "conclusion": "이 I2C 를 능동적으로 쓰는 프로세스는 기존에 이미 문서화된 yahboom_oled.py 뿐이다(§10 전제와 일치) — kinemarics_dofbot 자체는 R5 실행에 안전 관련 위험을 추가하지 않는다. 비차단으로 공개한다",
+  "diagnostic_only_not_a_gate": "scripts/p007e_r2r5_hardware_wiring.py 의 i2c7_holder_diagnostic() 은 이 holder 목록을 **기록**만 한다 — R3 의 no_unexpected_motion_capable_process 판정은 여전히 sham.py.env_guards()(카메라 device holder + MOTION_CAPABLE_PATTERNS 이름매칭)만 그대로 쓴다(수정 없음)"
+ },
+ "camera_identity_measurement_2026_10_28": {
+  "method": "v4l2-ctl --device=/dev/video0 --info (읽기 전용, acquisition.py.ALLOWED_V4L2CTL_FLAGS 화이트리스트 포함)",
+  "observed": {"model": "Orbbec DaBai DCW2 RGB Camera: O", "serial": "CH8R3620170",
+              "driver": "uvcvideo"},
+  "matches_expected": true
+ },
+ "camera_control_invariant_measurement_2026_10_28": {
+  "method": "v4l2-ctl --device=/dev/video0 --list-ctrls (읽기 전용), Stage B baseline(evidence/P-007E-R2-R2/stage_c1r1_preregistration.json.camera_control_invariant.compared_against)과 대조",
+  "baseline": {"auto_exposure": "3", "white_balance_automatic": "1", "exposure_dynamic_framerate": "1",
+              "power_line_frequency": "1", "brightness": "30", "contrast": "50"},
+  "observed_now": {"auto_exposure": "3", "white_balance_automatic": "1", "exposure_dynamic_framerate": "1",
+                   "power_line_frequency": "1", "brightness": "30", "contrast": "50"},
+  "mismatches": {},
+  "valid": true
+ },
+ "arm_lib_integrity_pin": {
+  "disk_path": "/home/jetson/software/Arm_Lib/Arm_Lib/Arm_Lib.py",
+  "disk_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "egg_path": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg",
+  "egg_sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "provenance": "scripts/p007e_phase1_command.py(이전 gate, 이미 커밋됨) 과 동일한 두 값 — 2026-10-28 ssh 로 재확인, 변경 없음"
+ },
+ "jetson_git_checkout": {
+  "action": "git clone https://github.com/woon-kil/cad-less-robotics.git /home/jetson/cad-less-robotics (2026-10-28, 새로 생성 — 이전 gate 들은 git-tracked checkout 을 쓰지 않았었다)",
+  "note": "R5 §6 이 git-tracked checkout 실행을 처음으로 요구한다"
+ },
+ "approval_phrase": "EXECUTE P-007E-R2-R5 ARM2 152 TO 154 ONCE",
+ "command_budget": {"Arm2_servo_writes_max": 1, "Arm1_3_4_5_6_writes": 0, "automatic_return": 0,
+                    "automatic_retry": 0, "torque_writes": 0, "Gemini_camera_use": 0},
+ "who_must_run_execute": "scripts/p007e_r2r5_run.py --execute 는 실제 로봇을 육안으로 지켜볼 수 있는 운영자가 Jetson 에서 직접 실행해야 한다 — Claude(이 세션)는 로봇을 직접 관찰할 수 없으므로 §12 OPERATOR_VISUAL_READY 확인과 §13 workspace 체크리스트를 대신 승인할 수 없다. Claude 는 --check-only(opt-in 0, 서보 read 조차 하지 않음) 까지만 직접 실행해 준비상태를 확인한다"
+}

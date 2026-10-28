@@ -1,0 +1,61 @@
+{
+ "gate": "P-007E-R2-R5",
+ "stage": "pre-execution self-test (no hardware)",
+ "execution_self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "hashlib",
+   "importlib",
+   "json",
+   "os",
+   "shutil",
+   "sys",
+   "tempfile",
+   "time"
+  ],
+  "forbidden_hardware_imports_found": [],
+  "direct_subprocess_import_in_this_file": false,
+  "pass": true
+ },
+ "execution_module_sha_check_match": true,
+ "execution_negative_tests": {
+  "count": 20,
+  "all_pass": true,
+  "names": [
+   "R5-01_no_opt_in_no_motion",
+   "R5-02_flag_missing_no_motion",
+   "R5-03_no_workspace_attestation_no_motion",
+   "R5-04_r5_harness_sha_mismatch_abort",
+   "R5-05_module_sha_mismatch_abort",
+   "R5-06_workspace_unsafe_abort",
+   "R5-07_approval_declined_ledger_never_armed",
+   "R5-08_approval_phrase_case_mismatch_declined",
+   "R5-09_approval_granted_armed_then_sent_write_once",
+   "R5-10_restart_after_sent_cannot_resend",
+   "R5-11_ledger_durable_arm_verification_detects_missing_file",
+   "R5-12_command_geometry_matches_r3_r4",
+   "R5-13_approval_prompted_before_real_write",
+   "R5-14_self_ast_check_no_hardware_imports",
+   "R5-15_module_sha_pins_six_modules",
+   "R5-16_approval_phrase_exact",
+   "R5-17_write_wrapper_invoked_at_most_once",
+   "R5-18_r4_module_unmodified",
+   "R5-19_no_real_hardware_in_tests",
+   "R5-20_decline_path_carries_disclosure_note"
+  ]
+ },
+ "hardware_wiring_negative_tests": {
+  "count": 4,
+  "all_pass": true,
+  "names": [
+   "HW-01_control_parser_matches_2026_10_28_jetson_sample",
+   "HW-02_control_parser_extracts_all_known_keys",
+   "HW-03_i2c7_diagnostic_returns_list_without_crashing",
+   "HW-04_dabai_identity_constant_matches_2026_10_28_measurement"
+  ]
+ },
+ "window_module_unit_logic_check": "anchor identity preserved across pre/post calls; 0.8*M quality guard rejects <80% valid frames (verified with synthetic FakeReader2, no cv2/hardware dependency, see session transcript) — not re-run here because it needs no external fixtures beyond what capture_window() itself defines",
+ "capture_window_adaptation_note": "run_trial()(sham.py CLOSED) 의 reference/comparison 단일-window 루프(lines 198-244)를 라인 단위로 대조해 동일한 0.25s pacing·anchor-on-first-decoded-frame·0.8*M quality threshold·format_invariant before/after 를 재구현했다 — 알고리즘(estimator/decode_gray/median) 자체는 호출만 한다",
+ "overall_pass": true
+}
