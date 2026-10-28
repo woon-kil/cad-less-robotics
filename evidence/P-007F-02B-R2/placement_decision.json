@@ -1,0 +1,53 @@
+{
+ "gate": "P-007F-02B-R2",
+ "baseline_label": "Baseline B Candidate #2",
+ "baseline_history": {
+  "Baseline A": "역사적 P-003/P-004 위치 — 수정/무효화 없음",
+  "Baseline B Candidate #1": "P-007F-02B-R1(commit abb5016) 에서 평가한 위치 — NEEDS_MINOR_ADJUSTMENT 로 끝남, 운영자가 이후 위치 자체를 재변경해 최종 채택되지 않음. evidence 삭제하지 않고 historical/Rejected placement candidate 로 보존",
+  "Baseline B Candidate #2": "이 gate에서 독립적으로 재평가한 현재 위치"
+ },
+ "robot_motion_this_gate": 0,
+ "dofbot_commands_this_gate": 0,
+ "camera_sessions": 1,
+ "camera_relocation_this_gate": 0,
+
+ "camera_angle": "UNKNOWN / visually oblique — 여전히 수치화하지 않음(§19 지시: 각도 숫자 자체를 최적화하지 않는다). 정성적으로는 R1보다 더 측면(side-oblique)에 가까운 시야로 보임",
+
+ "external_witness_independence": {"verdict": "INDEPENDENT_EXTERNAL_VISION_WITNESS",
+  "basis": "R1과 동일 — 고정 workcell 카메라, 로봇 비부착, DaBai와 구분"},
+
+ "static_baseline_stability": {"verdict": "STATIC_BASELINE_STABLE",
+  "whole_frame_mean_abs_diff": {"mean": 2.554, "max": 2.561, "min": 2.544},
+  "robot_roi_mean_abs_diff": {"mean": 3.572, "max": 3.625, "min": 3.501}},
+
+ "robot_coverage_summary": "base→end-effector 확보, Arm1/Arm2 명확 분리, Arm3/Arm4 PARTIAL, DaBai VISIBLE(robot_visibility.md)",
+ "arm2_witness_verdict": "ARM2_WITNESS_GOOD (arm2_witness_analysis.md)",
+ "workspace_coverage_verdict": "확보, R1보다 넓음(workcell_coverage.md)",
+ "robot_workspace_balance_verdict": "BALANCED (robot_workspace_balance.md)",
+ "depth_quality_verdict": "사용 가능 — R1과 유사 수준(depth_stats.json)",
+ "pointcloud_sanity_verdict": "통과 — R1과 동등 수준(pointcloud_sanity.md)",
+ "occlusion_verdict": {"self_occlusion": "ACCEPTABLE", "robot_to_workspace": "LOW", "camera_to_table": "ACCEPTABLE"},
+ "frame_margin_top_px": 90,
+
+ "r1_vs_r2_comparison_ref": "r1_vs_r2_comparison.md",
+
+ "🔴 final_verdict": "BASELINE_B_PLACEMENT_ACCEPTED",
+ "verdict_reasoning": "Arm2 witness = GOOD, robot/workspace balance = BALANCED, depth = usable 세 가지가 동시에 확보됐다(§0 지시: 이 세 조건이 동시에 나오면 위치를 고정하고 다음 단계로 넘어가는 것이 바람직). full robot coverage·useful workspace coverage·acceptable occlusion·independent fixed camera·static stability 전부 충족. 잔존 한계(Arm3/Arm4 self-overlap 일부, DaBai 인접 영역 배경대비 약함, top margin 12.5%로 여전히 상대적으로 타이트)는 disclosed limitation 으로 남기되, 더 완벽한 위치를 찾기 위해 추가로 카메라를 옮기는 것은 §19(과도한 최적화 금지) 에 따라 권장하지 않는다",
+ "freeze_candidate": "현재 Baseline B Candidate #2 위치를 Gemini Global Workcell Baseline B 로 freeze 후보화한다 — 단, 이 freeze 는 이 gate 의 placement qualification 범위에 한정된다(calibration/absolute pose/Arm2 motion 검증/P006D/RGB-D geometry regression 완료를 의미하지 않음, 아래 not_to_be_confused_with)",
+
+ "disclosed_limitations": [
+  "Arm3/Arm4 사이 self-overlap 잔존(완전한 LOW 아님, ACCEPTABLE 수준)",
+  "DaBai/그리퍼 우측 인접 영역의 배경 대비가 국소적으로 약함(어두운 모니터 베젤과 겹침)",
+  "top frame margin(90px/12.5%)이 좌/우/하 대비 여전히 상대적으로 타이트 — 향후 큰 motion 시 주의 필요",
+  "camera_angle 수치는 추정/미확정으로 남음(§19 지시에 따라 의도적으로 추정하지 않음)"
+ ],
+
+ "not_to_be_confused_with": [
+  "camera↔robot calibration 완료 아님",
+  "absolute robot pose 측정 가능 아님",
+  "Arm2 physical motion 검증 완료 아님(실제 motion 0회)",
+  "P006D 완료 아님",
+  "RGB-D geometry regression 완료 아님",
+  "기존 extrinsic 을 이 새 위치에 재사용하지 않음(물리적으로 이동했으므로)"
+ ]
+}

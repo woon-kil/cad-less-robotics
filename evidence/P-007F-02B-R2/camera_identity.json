@@ -1,0 +1,30 @@
+{
+ "gate": "P-007F-02B-R2",
+ "placement_label": "Baseline B Candidate #2 (R1 Candidate #1 과 독립 평가, R1 선택 전제 없음)",
+ "captured_at_host": "p620",
+ "capture_method": "동일 파이프라인 재사용 — bytesize-robotics-camera 컨테이너(scripts/run_humble_camera.sh), ros2 launch orbbec_camera gemini_330_series.launch.py, scripts/p006c_capture_streams.py(출력 경로만 변경, R1과 동일 코드)",
+ "device": {
+  "model_log": "Orbbec Gemini 335L",
+  "firmware_version": "1.4.60",
+  "ros_wrapper_version": "2.10.6",
+  "sdk_version": "2.10.6",
+  "usb_connect_type": "USB3.2",
+  "device_unique_id": "2-1-17 (R1 캡처 시 2-1-16 이었음 — USB 재연결로 device number 만 변동, 포트 2-1 동일)"
+ },
+ "lsusb_confirmation": "Bus 002: ID 2bc5:0804 Orbbec Gemini 335L — R1과 동일 vid:pid, 다른 Orbbec(DaBai)과 혼동 없음",
+ "streams": {
+  "color": {"resolution": "1280x720", "fps": 30, "format": "MJPG", "encoding": "rgb8",
+            "frame_id": "camera_color_optical_frame"},
+  "depth": {"resolution": "848x480", "fps": 30, "format": "Y16", "encoding": "16UC1",
+           "frame_id": "camera_depth_optical_frame",
+           "depth_units": "밀리미터로 추정(R1과 동일 근거 — 공식 depth_scale 필드 독립확인은 안 됨)"}
+ },
+ "timestamp_availability": "12개 frame set 전부 stamp_delta_sec<=0.0334s — frames/*.json 참조",
+ "capture_budget": {
+  "frames_captured": 12,
+  "camera_sessions": 1,
+  "robot_commands_sent": 0,
+  "robot_motion": 0,
+  "dofbot_touched": false
+ }
+}

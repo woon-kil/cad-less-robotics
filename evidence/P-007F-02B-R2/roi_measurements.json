@@ -1,0 +1,29 @@
+{
+ "gate": "P-007F-02B-R2",
+ "method": "manual_approximation — roi_grid_overlay.png(100px 격자)과 robot_closeup.png(3x 업스케일) 직접 판독. 자동 segmentation 아님",
+ "image_size": {"width": 1280, "height": 720},
+ "robot_bbox": {"x": 595, "y": 90, "width": 210, "height": 255,
+               "area_ratio_of_frame": 0.0582,
+               "note": "base 흰 마운트판부터 DaBai/그리퍼 클러스터 상단까지"},
+ "arm2_bbox": {"x": 650, "y": 220, "width": 120, "height": 70,
+              "area_ratio_of_frame": 0.0091,
+              "note": "Arm1 원통형 몸체 바로 위 흰색 브래킷/피벗 구조 — R1보다 명확히 식별 가능"},
+ "end_effector_bbox": {"x": 600, "y": 180, "width": 180, "height": 80,
+                       "area_ratio_of_frame": 0.0217,
+                       "note": "그리퍼 손가락+손목 관절"},
+ "dabai_approx_location": {"x": 665, "y": 90, "width": 90, "height": 60,
+                           "note": "렌즈가 있는 검은 박스형 모듈, Arm4 상단 — R1에서는 UNKNOWN 이었으나 R2에서 명확히 식별 가능"},
+ "workspace_bbox": {"x": 180, "y": 350, "width": 720, "height": 300,
+                    "area_ratio_of_frame": 0.3255,
+                    "note": "checkerboard 포함 개방 작업영역"},
+ "table_bbox": {"x": 180, "y": 230, "width": 720, "height": 420,
+               "area_ratio_of_frame": 0.4375,
+               "note": "로봇 footprint 포함 전체 나무 작업대"},
+ "frame_margins_px": {
+  "robot_bbox_top_margin": 90,
+  "robot_bbox_bottom_margin": 375,
+  "robot_bbox_left_margin": 595,
+  "robot_bbox_right_margin": 475,
+  "concern": "top_margin=90px(12.5%) — R1(85px/11.8%)과 유사 수준으로 여전히 상대적으로 타이트하나 악화되지 않음"
+ }
+}

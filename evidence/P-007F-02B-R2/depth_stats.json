@@ -1,0 +1,29 @@
+{
+ "gate": "P-007F-02B-R2",
+ "source_frame": "frames/0000-depth.png (848x480, 16UC1)",
+ "overall": {
+  "valid_depth_ratio": 0.8328346108490566,
+  "hole_ratio": 0.16716538915094337,
+  "median_depth_mm": 813.0,
+  "min_depth_mm": 0,
+  "max_depth_mm": 1600,
+  "p5_depth_mm": 502.0,
+  "p95_depth_mm": 1169.0
+ },
+ "roi_breakdown": {
+  "method_note": "color→depth 비례 변환(848/1280, 480/720) 근사, R1과 동일 방법",
+  "robot_roi_depth_coords": {"rows": [60, 230], "cols": [394, 533]},
+  "robot_roi": {"valid_depth_ratio": 0.7542530681337283, "median_depth_mm": 746.0},
+  "workspace_table_roi_depth_coords": {"rows": [230, 430], "cols": [119, 596]},
+  "workspace_table_roi": {"valid_depth_ratio": 0.945193171608266, "median_depth_mm": 652.0}
+ },
+ "comparison_to_r1": {
+  "overall_valid_ratio": "R1 0.8476 vs R2 0.8328 — 유사, 큰 차이 없음",
+  "robot_roi_valid_ratio": "R1 0.7739 vs R2 0.7543 — 유사",
+  "table_roi_valid_ratio": "R1 0.9659 vs R2 0.9452 — 유사, 둘 다 양호"
+ },
+ "pointcloud_unprojection": {
+  "point_count": 338997,
+  "hole_ratio": 0.16716538915094337
+ }
+}
