@@ -1,0 +1,356 @@
+{
+ "gate": "P-007F-01",
+ "stage": "Task C — read-only runtime probes",
+ "executed_on": "jetson@192.168.0.94, /home/jetson/cad-less-robotics @ b3e8481",
+ "self_test_before_run": true,
+ "probe_result": {
+  "gate": "P-007F-01",
+  "stage": "read-only runtime probe",
+  "servo_writes": 0,
+  "torque_writes": 0,
+  "reset_calls": 0,
+  "calibration_writes": 0,
+  "action_playback_calls": 0,
+  "self_ast_check": {
+   "referenced_attrs": [
+    "Arm_Device",
+    "Arm_get_hardversion",
+    "Arm_ping_servo",
+    "Arm_serial_servo_read",
+    "Arm_serial_servo_read_any",
+    "Attribute",
+    "StringIO",
+    "__file__",
+    "abspath",
+    "add",
+    "append",
+    "argv",
+    "attr",
+    "dumps",
+    "exit",
+    "get_i2c_bus_num",
+    "getvalue",
+    "hexdigest",
+    "parse",
+    "path",
+    "read",
+    "redirect_stderr",
+    "redirect_stdout",
+    "sha256",
+    "sleep",
+    "startswith",
+    "strftime",
+    "values",
+    "walk"
+   ],
+   "forbidden_methods_found": [],
+   "not_allowlisted_arm_calls": [],
+   "pass": true
+  },
+  "arm_lib_disk_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "arm_lib_disk_sha_match": true,
+  "arm_lib_egg_sha256": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "arm_lib_egg_sha_match": true,
+  "arm_lib_runtime_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+  "servo_read_rounds": [
+   {
+    "round": 1,
+    "at": "21:31:51",
+    "reads": [
+     {
+      "id": 1,
+      "value": 86,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 2,
+      "value": 154,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 3,
+      "value": 0,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 4,
+      "value": 18,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 5,
+      "value": 93,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 6,
+      "value": 178,
+      "is_none": false,
+      "i2c_error_printed": false
+     }
+    ]
+   },
+   {
+    "round": 2,
+    "at": "21:31:51",
+    "reads": [
+     {
+      "id": 1,
+      "value": 86,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 2,
+      "value": 154,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 3,
+      "value": 0,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 4,
+      "value": 18,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 5,
+      "value": 93,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 6,
+      "value": 178,
+      "is_none": false,
+      "i2c_error_printed": false
+     }
+    ]
+   },
+   {
+    "round": 3,
+    "at": "21:31:52",
+    "reads": [
+     {
+      "id": 1,
+      "value": 86,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 2,
+      "value": 154,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 3,
+      "value": 0,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 4,
+      "value": 18,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 5,
+      "value": 93,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 6,
+      "value": 178,
+      "is_none": false,
+      "i2c_error_printed": false
+     }
+    ]
+   },
+   {
+    "round": 4,
+    "at": "21:31:52",
+    "reads": [
+     {
+      "id": 1,
+      "value": 86,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 2,
+      "value": 154,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 3,
+      "value": 0,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 4,
+      "value": 18,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 5,
+      "value": 93,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 6,
+      "value": 178,
+      "is_none": false,
+      "i2c_error_printed": false
+     }
+    ]
+   },
+   {
+    "round": 5,
+    "at": "21:31:52",
+    "reads": [
+     {
+      "id": 1,
+      "value": 86,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 2,
+      "value": 154,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 3,
+      "value": 0,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 4,
+      "value": 18,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 5,
+      "value": 93,
+      "is_none": false,
+      "i2c_error_printed": false
+     },
+     {
+      "id": 6,
+      "value": 178,
+      "is_none": false,
+      "i2c_error_printed": false
+     }
+    ]
+   }
+  ],
+  "servo_reads_total": 30,
+  "servo_read_any_id2_rounds": [
+   {
+    "round": 1,
+    "value": 26,
+    "is_none": false,
+    "i2c_error_printed": false
+   },
+   {
+    "round": 2,
+    "value": 26,
+    "is_none": false,
+    "i2c_error_printed": false
+   },
+   {
+    "round": 3,
+    "value": 26,
+    "is_none": false,
+    "i2c_error_printed": false
+   },
+   {
+    "round": 4,
+    "value": 26,
+    "is_none": false,
+    "i2c_error_printed": false
+   },
+   {
+    "round": 5,
+    "value": 26,
+    "is_none": false,
+    "i2c_error_printed": false
+   }
+  ],
+  "ping_servo_results": {
+   "1": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   },
+   "2": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   },
+   "3": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   },
+   "4": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   },
+   "5": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   },
+   "6": {
+    "value": 218,
+    "value_hex": "0xda",
+    "is_0xda": true,
+    "i2c_error_printed": false
+   }
+  },
+  "hardversion": {
+   "value": "0.20",
+   "i2c_error_printed": false
+  },
+  "i2c_bus_num": 7,
+  "finished_at": "2026-10-28T21:31:52+0800"
+ },
+ "cross_check_read_vs_read_any": {
+  "read_id2": 154,
+  "read_any_id2": 26,
+  "expected_if_same_raw_value": "180 - 154 = 26",
+  "match": true,
+  "interpretation": "두 독립 레지스터 경로(0x32/0x37)가 동일한 raw 값에서 재구성된 값을 보고한다 — readback_semantics.md Task B 참조. H1/H2 판별에는 기여하지 않으나 디코딩 노이즈/모순을 배제한다"
+ },
+ "id2_stability_across_5_rounds": true,
+ "ping_servo_all_ids_normal_0xda": true,
+ "torque_state_readback_available": false,
+ "torque_state_readback_note": "Arm_Lib 1.0.3 소스 전체에 torque 상태를 읽는 API가 없다 (Arm_serial_set_torque 는 write-only) — arm_lib_source_forensics.md Task A/E"
+}

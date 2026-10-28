@@ -1,0 +1,68 @@
+P-007F-01 Task D — /dev/i2c-7 and Arm_Lib transport ownership
+2026-10-28, read-only inspection on Jetson (jetson@192.168.0.94). No process killed/restarted.
+
+=== /proc/<pid>/fd scan for i2c-7 (all PIDs) ===
+PID=2264 COMM=python3 FD=4  CMD=[python3 /home/jetson/dofbot_pro/Yahboom_Oled/yahboom_oled.py]
+          STARTED=[Mon Oct 26 17:08:21 2026]
+PID=3091 COMM=sh      FD=11 CMD=[sh -c ros2 run dofbot_pro_info kinemarics_dofbot]
+          STARTED=[Mon Oct 26 17:08:36 2026]
+PID=3092 COMM=ros2    FD=11 CMD=[/usr/bin/python3 /opt/ros/humble/bin/ros2 run dofbot_pro_info kinemarics_dofbot]
+          STARTED=[Mon Oct 26 17:08:36 2026]
+
+=== lsof /dev/i2c-7 ===
+COMMAND  PID   USER   FD   TYPE DEVICE SIZE/OFF NODE NAME
+sh      3091 jetson   11u   CHR   89,7      0t0  160 /dev/i2c-7
+ros2    3092 jetson   11u   CHR   89,7      0t0  160 /dev/i2c-7
+(lsof did not list PID 2264 in this invocation — likely a visibility/caching
+ difference between lsof and the direct /proc/<pid>/fd walk, not evidence
+ that 2264 does not hold the fd; the /proc walk is the more direct source.)
+
+=== fuser -v /dev/i2c-7 ===
+                     USER        PID ACCESS COMMAND
+/dev/i2c-7:          jetson     3091 F.... sh
+                     jetson     3092 F.... ros2
+
+=== fd mode ===
+lsof reports "11u" for both 3091/3092 — read+write capable file descriptor
+(this is the mode of the open fd, not evidence of ongoing read/write
+traffic on the bus).
+
+=== expected role / interpretation ===
+PID 2264 (yahboom_oled.py): actively, periodically writes to the OLED
+display over the same I2C bus (addr != 0x15, separate peripheral) —
+already documented in prior P-007E gates (§10 "I2C 버스 전체가 조용하다는
+주장이 아니다" premise). This is the one process that genuinely issues
+I2C transactions on a schedule.
+
+PID 3091/3092 (sh -c ros2 run ... / the ros2 launcher's python bootstrap):
+source of the actual binary it launches
+(dofbot_pro_ws/src/dofbot_pro_info/src/kinemarics_dofbotpro.cpp, 123 lines,
+read in full during P-007E-R2-R5) contains zero I2C/Arm_Lib code — it is a
+pure KDL forward/inverse-kinematics ROS2 service. The fd on 3091/3092 is
+inherited launcher-chain state (fd creation time: 2026-10-26 17:08, two
+days before this probe), not evidence of active traffic from this node's
+own code.
+
+The compiled worker binary itself (separate PID in the process tree,
+confirmed in the P-007E-R2-R5 investigation to NOT hold i2c-7) does not
+appear in this holder list at all — consistent with "no active I2C use by
+the kinematics service."
+
+=== distinguishing fd-holding from actual bus traffic ===
+/proc/<pid>/io byte counters were attempted during the P-007E-R2-R5
+investigation (2026-10-28) to sample read/write bytes before/after a wait
+interval for these PIDs, to directly measure whether traffic was ongoing.
+That attempt returned permission/availability errors ("No such file or
+directory" for /proc/<pid>/io under this unprivileged user) and could not
+be completed — this limitation is disclosed rather than treated as a
+negative result. The conclusion above rests on source-code inspection
+(definitive: the kinemarics_dofbot C++ binary has no I2C code) rather than
+on io-counter sampling.
+
+=== conclusion ===
+No new, previously-undocumented active I2C user was found. The only
+process actively issuing I2C transactions is yahboom_oled.py (known,
+documented in prior gates). This does not change or weaken the §10 premise
+used throughout P-007E/F, and does not by itself explain the R5 readback/
+motion discrepancy — ownership of the bus is not the same question as
+readback semantics (Task B).
