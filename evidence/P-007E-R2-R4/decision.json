@@ -1,0 +1,308 @@
+{
+ "gate": "P-007E-R2-R4",
+ "stage": "Motion Execution Safety Preflight",
+ "base_commit": "03c29c1",
+ "character": "NO CAMERA CAPTURE / NO CONTROLLER ACCESS / NO SERVO READ / NO SERVO WRITE / NO ROBOT MOTION",
+ "pre_controller_state": {
+  "ID1": 86,
+  "ID2": 152,
+  "ID3": 0,
+  "ID4": 18,
+  "ID5": 93,
+  "ID6": 178
+ },
+ "post_candidate_state": {
+  "ID1": 86,
+  "ID2": 154,
+  "ID3": 0,
+  "ID4": 18,
+  "ID5": 93,
+  "ID6": 178
+ },
+ "note": "controller-reported servo position != independently verified physical joint angle. 전부 EXPECTED/MODEL-PREDICTED.",
+ "tcp": {
+  "pre_mm": [
+   8.589176946333948,
+   131.43230514508787,
+   207.4664962874587
+  ],
+  "post_mm": [
+   8.376732006853603,
+   128.39420096765213,
+   212.0113948416467
+  ],
+  "displacement_mm": 5.470951719136575
+ },
+ "dabai": {
+  "pre_mm": [
+   2.1584626997870955,
+   42.33592431817669,
+   272.4148399062583
+  ],
+  "post_mm": [
+   1.7916991169034044,
+   37.09096072424114,
+   273.8026738694565
+  ],
+  "translation_mm": 5.4378526770082125,
+  "rotation_deg": 2.0000000000004943
+ },
+ "max_robot_point_displacement_mm": {
+  "exact_method": 5.925556670344977,
+  "exact_worst_link": "DaBai_DCW2_Link",
+  "sphere_bound_crosscheck": 8.46460839638861,
+  "sphere_bound_worst_link": "Gripping_point_Link",
+  "sanity": "sphere_bound >= exact 전 링크에서 확인됨(swept_motion.json cross_check_sphere_geq_exact)"
+ },
+ "conservative_operator_envelope_mm": 15,
+ "envelope_derivation": {
+  "delta_max_deg": 3.0272727272727273,
+  "D_model_at_delta_max_mm": 12.8114992446169,
+  "model_uncertainty_margin_mm": 2.0,
+  "D_operator_envelope_mm": 15
+ },
+ "joint_limit_margins": {
+  "Arm2_lower_rad": 2.6529041362364842,
+  "Arm2_upper_rad": 0.4886958637635157,
+  "all_joints_pre": {
+   "Arm1_Joint": {
+    "library_deg": 86,
+    "q_urdf_rad": -0.06981317007977318,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 1.5009868299202267,
+    "margin_to_upper_rad": 1.6406131700797733,
+    "status": "PASS"
+   },
+   "Arm2_Joint": {
+    "library_deg": 152,
+    "q_urdf_rad": 1.0821041362364843,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 2.6529041362364842,
+    "margin_to_upper_rad": 0.4886958637635157,
+    "status": "PASS"
+   },
+   "Arm3_Joint": {
+    "library_deg": 0,
+    "q_urdf_rad": -1.5707963267948966,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 3.673205103416066e-06,
+    "margin_to_upper_rad": 3.1415963267948968,
+    "status": "PASS"
+   },
+   "Arm4_Joint": {
+    "library_deg": 18,
+    "q_urdf_rad": -1.2566370614359172,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 0.3141629385640827,
+    "margin_to_upper_rad": 2.8274370614359174,
+    "status": "PASS"
+   },
+   "Arm5_Joint": {
+    "library_deg": 93,
+    "q_urdf_rad": 0.05235987755982988,
+    "lower_rad": -1.5708,
+    "upper_rad": 3.1416,
+    "margin_to_lower_rad": 1.62315987755983,
+    "margin_to_upper_rad": 3.08924012244017,
+    "status": "PASS"
+   }
+  },
+  "all_joints_post": {
+   "Arm1_Joint": {
+    "library_deg": 86,
+    "q_urdf_rad": -0.06981317007977318,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 1.5009868299202267,
+    "margin_to_upper_rad": 1.6406131700797733,
+    "status": "PASS"
+   },
+   "Arm2_Joint": {
+    "library_deg": 154,
+    "q_urdf_rad": 1.117010721276371,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 2.687810721276371,
+    "margin_to_upper_rad": 0.45378927872362906,
+    "status": "PASS"
+   },
+   "Arm3_Joint": {
+    "library_deg": 0,
+    "q_urdf_rad": -1.5707963267948966,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 3.673205103416066e-06,
+    "margin_to_upper_rad": 3.1415963267948968,
+    "status": "PASS"
+   },
+   "Arm4_Joint": {
+    "library_deg": 18,
+    "q_urdf_rad": -1.2566370614359172,
+    "lower_rad": -1.5708,
+    "upper_rad": 1.5708,
+    "margin_to_lower_rad": 0.3141629385640827,
+    "margin_to_upper_rad": 2.8274370614359174,
+    "status": "PASS"
+   },
+   "Arm5_Joint": {
+    "library_deg": 93,
+    "q_urdf_rad": 0.05235987755982988,
+    "lower_rad": -1.5708,
+    "upper_rad": 3.1416,
+    "margin_to_lower_rad": 1.62315987755983,
+    "margin_to_upper_rad": 3.08924012244017,
+    "status": "PASS"
+   }
+  },
+  "verdict": "JOINT_LIMIT_PASS"
+ },
+ "self_collision": {
+  "pre": "PASS",
+  "post": "PASS",
+  "interpolated": "PASS",
+  "primary_authority": "DOFBOT_Pro-V24.srdf — 전체 link pair 가 Adjacent/Never/Default 로 disable, Arm1_Link-Arm2_Link=Adjacent, Arm2_Link-base_link=Never (vendor MoveIt Setup Assistant, 전체 joint 범위 포괄)",
+  "fk_spot_check_min_clearance_mm": {
+   "PRE": {
+    "id2_lib_deg": 152,
+    "min_dist_base_link_Arm2_Link_mm": 16.057761685628748,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.12534989886220804,
+    "downsample_stride": 40
+   },
+   "MID": {
+    "id2_lib_deg": 153,
+    "min_dist_base_link_Arm2_Link_mm": 16.061145666588242,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.13341852888817007,
+    "downsample_stride": 40
+   },
+   "POST": {
+    "id2_lib_deg": 154,
+    "min_dist_base_link_Arm2_Link_mm": 16.07524576958418,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.134932923032074,
+    "downsample_stride": 40
+   }
+  }
+ },
+ "command_api": "Arm_serial_servo_write",
+ "command_target_id2": 154,
+ "command_duration_ms": 2000,
+ "raw_servo_value": 1217,
+ "register_hex": "0x12",
+ "payload_bytes_hex": [
+  "0x04",
+  "0xC1",
+  "0x07",
+  "0xD0"
+ ],
+ "raw152_matches_p007e_r1_precedent_1242": true,
+ "expected_readback_if_exact": 155,
+ "state_machine": "PREPARED/PRE_VALIDATED/MOTION_COMMAND_SENT/POST_OBSERVATION_COMPLETE/COMPLETE (evidence/P-007E-R2-R4/execution_state_machine.json 에 R3 result.status + R4 ledger status 로의 실제 매핑 명시)",
+ "persistent_motion_command_sent": "구현됨 — R4 write-ahead ledger(.cache/p007e_r2r4_ledger/, gitignored), write_fn 호출 **직전** ARMED 기록. R4-19 로 write 중 crash 시에도 ARMED 가 디스크에 남는 것을 직접 확인",
+ "restart_resend_protection": "구현됨 — experiment_id=sha256(R3.PREREG_SHA+servo_id+target+duration)[:32] 결정적 키, ledger 에 ARMED/SENT 존재 시 R3 호출 전에 ABORTED. R4-20 으로 검증",
+ "negative_tests_R4_01_to_R4_25": {
+  "R4-01": true,
+  "R4-02": true,
+  "R4-03": true,
+  "R4-04": true,
+  "R4-05": true,
+  "R4-06": true,
+  "R4-07": true,
+  "R4-08": true,
+  "R4-09": true,
+  "R4-10": true,
+  "R4-11": true,
+  "R4-12": true,
+  "R4-13": true,
+  "R4-14": true,
+  "R4-15": true,
+  "R4-16": true,
+  "R4-17": true,
+  "R4-18": true,
+  "R4-19": true,
+  "R4-20": true,
+  "R4-21": true,
+  "R4-22": true,
+  "R4-23": true,
+  "R4-24": true,
+  "R4-25": true
+ },
+ "negative_tests_all_pass": true,
+ "self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "hashlib",
+   "importlib",
+   "json",
+   "numpy",
+   "os",
+   "p007e_r2r4_fk",
+   "shutil",
+   "sys",
+   "tempfile",
+   "time"
+  ],
+  "forbidden_hardware_imports_found": [],
+  "direct_subprocess_import_in_this_file": false,
+  "forbidden_camera_identity_refs_found": [],
+  "pass": true
+ },
+ "module_sha_check": {
+  "match": true,
+  "mismatches": {}
+ },
+ "r3_reused_not_modified": {
+  "file": "scripts/p007e_r2r3_motion_preregistration.py",
+  "sha256_pinned": "f8eda225b8792285f4a3ce5001f736f0a2cfaae8cce9f2b4aed3cc5742a79466",
+  "verified_unchanged": "module_sha_check.match == true (R4-21)",
+  "reused_functions": [
+   "execute_motion_experiment",
+   "validate_command_request",
+   "reject_automatic_return",
+   "motion_result_matrix",
+   "physical_motion_claim",
+   "_make_mock_git"
+  ],
+  "r4_adds_without_modifying_r3": [
+   "workspace_safety_gate (§9, R3 에는 없던 8항목 attestation)",
+   "write-ahead ledger (§15~17, R3 의 controller_write_fn 주입점을 감싼다)",
+   "§13 서술적 순서 대비 실제 호출순서 기록·비교(dry validation)"
+  ]
+ },
+ "fk_regression_vs_precedent": {
+  "p007b_selfcheck": "PASS(오차 0.0)",
+  "fk_clearance_150_155": "PASS(<=0.005mm)",
+  "p007b_plus2deg_5_47mm": "PASS(5.47095mm)",
+  "p007a_arm3_margin": "PASS(float 완전일치)",
+  "mesh_R_from_real_stl_vs_precedent_table": "PASS(<=0.005mm, 12개 링크 전부)"
+ },
+ "mounting_provenance": "DaBai_DCW2_Joint origin(Arm4_Link 기준 xyz=[-0.0002,0.0689,0.0506]m, rpy=[0.00873,0,0]rad)은 URDF 모델값이다 — 실측 장착 오차 검증 안 됨. DaBai 회전 델타(2.0°)는 Arm2 회전과 100% 동일(강체부착, mounting 오차와 무관) — 이동량(translation)만 장착 위치에 의존한다",
+ "camera_starts": 0,
+ "new_captures": 0,
+ "servo_reads": 0,
+ "servo_writes": 0,
+ "controller_access": 0,
+ "motion_capable_commands": 0,
+ "robot_motion": 0,
+ "prior_evidence_changed": 0,
+ "git_tree_status_note": "evidence/P-007E-R2-R4/, scripts/p007e_r2r4_fk.py, scripts/p007e_r2r4_preflight.py 전부 신규(A). .gitignore 1건 수정(M, .cache/jetson_robot_model/ 캐시 등록). evidence/P-007E-R2-R2/, evidence/P-007E-R2-R3/, scripts/p007e_r2r3_*.py 전부 불변",
+ "input_provenance": {
+  "urdf_sha256": "b626a845cd67998cd5ce47f2b3d302d9cb3e5b9da764d9a1e7e1404a277ccc28",
+  "urdf_sha_matches_fk_clearance_precedent": true,
+  "srdf_sha256": "5c355b844eca2ba277e5df204b59b6d8886768b48e11701d17a23491bdffc1ee",
+  "arm_lib_source_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "fetch_method": "ssh+scp read-only 1회, local cache .cache/jetson_robot_model/(gitignored) + SHA256 manifest, local-remote 양쪽 sha256sum 비교로 전송무결성 확인(14개 파일 전부 일치). 원본은 Jetson 에서 삭제하지 않았다"
+ },
+ "harness_sha256": "cc5dd7bce25719cf6d328b302ca7b067d7813b256b042e9687d0e0f3fbc2a616",
+ "fk_module_sha256": "a4e9d2d7891597a6bfa62c8ca87303aeab28ba0a784f23f2640ca8dc145622cb",
+ "🔴_disclosed_limitations": [
+  "exact swept-displacement 계산에서 그리퍼 passive linkage joint(rlink_joint2/3, llink_joint1/2/3)는 URDF 기본값(0 rad)에서만 평가했다 — grip_joint(주 구동)는 자신의 limit 전 구간을 9점 샘플링했으나, 나머지는 전 구간을 몰랐다(mechanical coupling 이 URDF 에 인코딩돼 있지 않음)",
+  "self-collision FK spot-check 는 stride=40 다운샘플링 + base_link/Arm1_Link vs Arm2_Link 만 수행했다 (scipy 미사용으로 전체 모든 pair 수행은 생략) — 1차 근거는 SRDF(전체 pair·전체 joint범위)이고, 이 spot-check 는 이 2° 구간에 대한 보조 확인일 뿐이다",
+  "PRE_VALIDATED 중간상태는 R4 ledger 에 독립적으로 persist 되지 않는다(execution_state_machine.json 참조)",
+  "model_uncertainty_margin(2mm)은 비실측 고정값이다 — STL/CAD 모델과 실제 로봇 간 치수 불일치를 데이터로 측정하지 않았다"
+ ],
+ "verdict": "P-007E-R2-R4 — MOTION EXECUTION SAFETY PREFLIGHT PASS / ARM2 152->154 CANDIDATE READY FOR SEPARATE EXECUTION APPROVAL / NO CAMERA OR ROBOT EXECUTION"
+}

@@ -1,0 +1,99 @@
+{
+ "gate": "P-007E-R2-R4",
+ "pre": {
+  "Arm1_Joint": {
+   "library_deg": 86,
+   "q_urdf_rad": -0.06981317007977318,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 1.5009868299202267,
+   "margin_to_upper_rad": 1.6406131700797733,
+   "status": "PASS"
+  },
+  "Arm2_Joint": {
+   "library_deg": 152,
+   "q_urdf_rad": 1.0821041362364843,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 2.6529041362364842,
+   "margin_to_upper_rad": 0.4886958637635157,
+   "status": "PASS"
+  },
+  "Arm3_Joint": {
+   "library_deg": 0,
+   "q_urdf_rad": -1.5707963267948966,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 3.673205103416066e-06,
+   "margin_to_upper_rad": 3.1415963267948968,
+   "status": "PASS"
+  },
+  "Arm4_Joint": {
+   "library_deg": 18,
+   "q_urdf_rad": -1.2566370614359172,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 0.3141629385640827,
+   "margin_to_upper_rad": 2.8274370614359174,
+   "status": "PASS"
+  },
+  "Arm5_Joint": {
+   "library_deg": 93,
+   "q_urdf_rad": 0.05235987755982988,
+   "lower_rad": -1.5708,
+   "upper_rad": 3.1416,
+   "margin_to_lower_rad": 1.62315987755983,
+   "margin_to_upper_rad": 3.08924012244017,
+   "status": "PASS"
+  }
+ },
+ "post": {
+  "Arm1_Joint": {
+   "library_deg": 86,
+   "q_urdf_rad": -0.06981317007977318,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 1.5009868299202267,
+   "margin_to_upper_rad": 1.6406131700797733,
+   "status": "PASS"
+  },
+  "Arm2_Joint": {
+   "library_deg": 154,
+   "q_urdf_rad": 1.117010721276371,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 2.687810721276371,
+   "margin_to_upper_rad": 0.45378927872362906,
+   "status": "PASS"
+  },
+  "Arm3_Joint": {
+   "library_deg": 0,
+   "q_urdf_rad": -1.5707963267948966,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 3.673205103416066e-06,
+   "margin_to_upper_rad": 3.1415963267948968,
+   "status": "PASS"
+  },
+  "Arm4_Joint": {
+   "library_deg": 18,
+   "q_urdf_rad": -1.2566370614359172,
+   "lower_rad": -1.5708,
+   "upper_rad": 1.5708,
+   "margin_to_lower_rad": 0.3141629385640827,
+   "margin_to_upper_rad": 2.8274370614359174,
+   "status": "PASS"
+  },
+  "Arm5_Joint": {
+   "library_deg": 93,
+   "q_urdf_rad": 0.05235987755982988,
+   "lower_rad": -1.5708,
+   "upper_rad": 3.1416,
+   "margin_to_lower_rad": 1.62315987755983,
+   "margin_to_upper_rad": 3.08924012244017,
+   "status": "PASS"
+  }
+ },
+ "note_arm3": "Arm3_Joint(library 0°) 는 margin_to_lower=3.67e-6 rad — 모델 하한선에 사실상 걸쳐 있다. '여유 있음'이라고 쓰지 않는다. PASS 판정은 margin>=0 기준으로 유지(음수 아님)하되, 수치를 그대로 공개한다(P-007A joint_limit_check.json 과 완전 일치하는 재현값)",
+ "verdict": "JOINT_LIMIT_PASS (PRE/POST 전부, Arm3 margin 거의 0 이라는 사실을 숨기지 않고 공개)"
+}

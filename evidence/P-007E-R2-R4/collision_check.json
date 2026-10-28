@@ -1,0 +1,34 @@
+{
+ "gate": "P-007E-R2-R4",
+ "primary_authority": {
+  "source": "DOFBOT_Pro-V24.srdf (vendor MoveIt Setup Assistant 생성, author=yahboom, generated_timestamp=1739865535(2025-02-18), sha256 5c355b844eca2ba277e5df204b59b6d8886768b48e11701d17a23491bdffc1ee)",
+  "method": "MoveIt Setup Assistant 의 기본 collision matrix 생성기 — 전체 joint 범위에 대해 조밀 샘플링해 'Never'(전체 범위에서 충돌 없음 확인됨)/'Adjacent'(인접 관절, 접촉이 설계상 정상)/'Default'(항상 비활성)로 disable_collisions 를 자동 생성한다. 이 분석을 Claude 가 재생성한 것이 아니라, 벤더가 이미 수행한 산출물을 읽기전용으로 인용한다",
+  "finding": "SRDF 의 모든 link pair(133줄 전체)가 Adjacent/Never/Default 중 하나로 disable_collisions 되어 있다 — 즉 **어떤 pair도 '충돌 가능'으로 남아있지 않다**. 특히 Arm1_Link-Arm2_Link=Adjacent, Arm2_Link-base_link=Never. 이 분석은 전체 joint 범위를 포괄하므로, 이번 게이트의 152°→154° 부분범위에도 당연히 적용된다",
+  "limitation": "Setup Assistant 의 내부 샘플링 밀도·알고리즘을 Claude 가 재검증하지 않았다 — 벤더 산출물을 신뢰한다는 전제다. 재현 불가능한 black-box 는 아니고 표준 MoveIt 절차이나, 독립 재계산은 아래 spot-check 로 보완한다"
+ },
+ "fk_based_spot_check": {
+  "method": "base_link/Arm1_Link(고정 그룹) 과 Arm2_Link(axis 에 가장 가까운 이동 그룹) 의 STL 정점을 PRE/MID/POST pose 로 변환해 최소 정점간 거리(mm)를 계산 — stride=40 다운샘플링(scipy 미사용, O(n*m) brute-force 를 다루기 위함). **정확한 mesh-mesh 거리의 보수적 추정**이 아니라 희소 표본값이다 — 작은 간극(수 mm 이하)을 놓칠 수 있으나, base_link-Arm2_Link 간극(~16mm)은 표본 밀도에 영향받지 않을 만큼 크다",
+  "samples": {
+   "PRE": {
+    "id2_lib_deg": 152,
+    "min_dist_base_link_Arm2_Link_mm": 16.057761685628748,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.12534989886220804,
+    "downsample_stride": 40
+   },
+   "MID": {
+    "id2_lib_deg": 153,
+    "min_dist_base_link_Arm2_Link_mm": 16.061145666588242,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.13341852888817007,
+    "downsample_stride": 40
+   },
+   "POST": {
+    "id2_lib_deg": 154,
+    "min_dist_base_link_Arm2_Link_mm": 16.07524576958418,
+    "min_dist_Arm1_Link_Arm2_Link_mm": 0.134932923032074,
+    "downsample_stride": 40
+   }
+  },
+  "interpretation": "Arm1_Link-Arm2_Link 최소거리 ~0.13mm(설계상 인접·접촉, SRDF Adjacent 와 정합) · base_link-Arm2_Link 최소거리 ~16mm(명확한 간극, SRDF Never 와 정합) · PRE(152°)→MID(153°)→POST(154°) 전체에서 두 값 모두 안정적(변화 <0.1mm) — 이 2° 구간에서 간극이 닫히는 경향 없음"
+ },
+ "verdict": "SELF_COLLISION PRE PASS / POST PASS / INTERPOLATED PASS — 1차 근거는 SRDF(전체 joint 범위 포괄), 2차 근거는 FK spot-check(이 2° 구간 국소 확인)"
+}

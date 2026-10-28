@@ -13,3 +13,6 @@ __pycache__/
 docs/
 evidence/P-007C-R1/official/
 evidence/P-007D-R2/official_extract/
+
+# P-007E-R2-R4 — read-only robot model cache (URDF/SRDF/STL), fetched from Jetson
+.cache/jetson_robot_model/

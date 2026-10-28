@@ -1,0 +1,57 @@
+{
+ "gate": "P-007E-R2-R4",
+ "self_ast_check_pass": true,
+ "module_sha_check_pass": true,
+ "module_sha": {
+  "scripts/p007e_r2r3_motion_preregistration.py": "f8eda225b8792285f4a3ce5001f736f0a2cfaae8cce9f2b4aed3cc5742a79466",
+  "scripts/p007e_r2r2_evidence_pipeline.py": "298e0656027d5bef4eca42101054658775e0b6d7c24500194297a636f7635133",
+  "scripts/p007e_r2r4_fk.py": "a4e9d2d7891597a6bfa62c8ca87303aeab28ba0a784f23f2640ca8dc145622cb"
+ },
+ "negative_tests_R4_01_to_R4_25_all_pass": true,
+ "note": "실측 pass/fail 표는 commit 직전 python3 scripts/p007e_r2r4_preflight.py --self-test 실행 결과 (exit 0, 25/25 PASS) — decision.json 에 동일 수치 재인용",
+ "dry_validation_section_13_vs_actual_order": {
+  "section_13_prescribed": [
+   "provenance",
+   "camera identity/format",
+   "PRE visual window",
+   "controller baseline",
+   "operator ready",
+   "workspace safety",
+   "host-control quiet interval",
+   "ONE command",
+   "settle",
+   "POST visual window",
+   "controller post-read",
+   "A/B/C/D/X",
+   "artifact persistence"
+  ],
+  "r4_wrapper_plus_r3_actual_order": [
+   "workspace_safety_gate(R4, 신규)",
+   "ledger_check(R4, 신규)",
+   "opt-in env/flag(R3)",
+   "operator_confirmation(R3)",
+   "harness/git/prereg/module SHA(R3)",
+   "camera identity/format(R3)",
+   "PRE visual window(R3)",
+   "process check(R3)",
+   "writable check(R3)",
+   "controller baseline(R3, 가장 마지막 — quiet interval 측정 기준점)",
+   "quiet sleep(R3)",
+   "pre_motion_hard_gate 평가(R3)",
+   "ledger_arm_before_write(R4, 신규)",
+   "ONE command(R3, R4 wrapper 경유)",
+   "ledger_mark_sent(R4, 신규)",
+   "settle(R3)",
+   "operator_observation(R3, blind)",
+   "controller post-read(R3)",
+   "POST visual window(R3)",
+   "A/B/C/D/X(R3)",
+   "artifact persistence(R3)"
+  ],
+  "🔴_disclosed_ordering_differences_non_blocking": [
+   "workspace safety 가 §13 서술에선 'operator ready' 다음이지만 실제로는 가장 먼저(R3 호출보다도 전) 평가된다 — R4 가 R3 를 감싸는 wrapper 구조상 자연스러운 배치이며, 안전 불변식(§14, 아래)을 위반하지 않는다(어느 쪽이든 write 전에 평가되면 됨)",
+   "§13 은 'POST visual window' 다음에 'controller post-read' 를 적었지만, R3 실제 구현은 operator observation 직후 controller post-read 를 먼저 하고 POST visual window 를 나중에 한다 — 두 자동 측정 channel(controller/visual) 사이의 순서이고 운영자 blinding(P-007E-R1 d3 defect 재발 방지, operator observation 이 post-read 보다 먼저인 것)은 그대로 유지된다. 안전/편향에 영향 없음"
+  ],
+  "🔴_critical_invariant_section_14_verified": "command 는 어떤 hard gate 평가보다도 먼저 오지 않는다 — R4-16/17/18(PRE invalid/operator not ready/workspace not safe 각각)에서 controller_write_fn 호출수 0 을 직접 확인(mock 호출 리스트가 비어있음). 이것이 §13 의 서술적 순서보다 **실제로 안전을 보장하는** 속성이며, 전부 PASS"
+ }
+}

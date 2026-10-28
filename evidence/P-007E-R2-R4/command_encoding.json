@@ -1,0 +1,45 @@
+{
+ "gate": "P-007E-R2-R4",
+ "source_reverified": "/home/jetson/dofbot_pro/Arm_Lib/Arm_Lib/Arm_Lib.py (sha256 edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c) — ssh 로 read-only cat, import 하지 않음. Arm_serial_servo_write/read 의 id∈{2,3,4} 분기 공식을 그대로 재확인했다(180-angle 반전, pos=int((3100-900)*angle/180+900), value_H/L=(pos>>8)&0xFF/pos&0xFF, register=0x10+id)",
+ "command": {
+  "api": "Arm_serial_servo_write",
+  "id": 2,
+  "angle": 154,
+  "time_ms": 2000
+ },
+ "raw_conversion": {
+  "raw152": 1242,
+  "raw154": 1217,
+  "payload": {
+   "register": 18,
+   "bytes": [
+    4,
+    193,
+    7,
+    208
+   ]
+  },
+  "readback_if_152_exact": 153,
+  "readback_if_154_exact": 155,
+  "readback_bucket_152": [
+   1243,
+   1254
+  ]
+ },
+ "raw152_matches_p007e_r1_precedent": true,
+ "register_hex": "0x12",
+ "payload_bytes_hex": [
+  "0x04",
+  "0xC1",
+  "0x07",
+  "0xD0"
+ ],
+ "expected_readback_note": "raw154=1217 에 정확히 안착하면 readback=155(180-25=155) — P-007E-R1 의 152→153 패턴(write/read 양쪽 int() 절단의 +1 편향)과 동일 구조. 154→155 를 command semantics 불일치로 오판하지 않는다(홀드포인트로 사전 고정)",
+ "conservative_envelope": {
+  "delta_max_deg": 3.0272727272727273,
+  "D_model_at_delta_max_mm": 12.8114992446169,
+  "model_uncertainty_margin_mm": 2.0,
+  "D_operator_envelope_mm": 15
+ },
+ "envelope_derivation": "Δ_max=3.0273° 는 현재 readback=152 가 의미하는 raw bucket[1243..1254] 과 target raw154=1217 의 최대 차이에서 도출(실측 데이터 기반, P-007E-R1 phase_b_acceptance.json 의 raw bucket 그대로 전재). D_model_at_delta_max=12.811mm 은 sphere-bound worst-link(Gripping_point_Link) 기준. model_uncertainty_margin=2.0mm 은 STL/CAD 모델과 실제 로봇 치수 간 불일치에 대한 **고정·비실측 보수적 pad**(데이터에서 유도하지 않음, 과도한 정밀도를 주장하지 않기 위해 명시적으로 공개) → D_operator_envelope=ceil(12.811+2.0)=15mm"
+}

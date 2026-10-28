@@ -1,0 +1,22 @@
+{
+ "gate": "P-007E-R2-R4",
+ "prescribed_states_section_15": [
+  "PREPARED",
+  "PRE_VALIDATED",
+  "MOTION_COMMAND_SENT",
+  "POST_OBSERVATION_COMPLETE",
+  "COMPLETE"
+ ],
+ "implementation_mapping": {
+  "note": "실제 구현은 두 개의 독립 상태 기록을 조합한다 — R3(scripts/p007e_r2r3_motion_preregistration.py, CLOSED, 수정 안 함)의 r3_result.json(status: COMMAND_SENT_IN_PROGRESS/EXPERIMENT_COMPLETE) + R4 wrapper(scripts/p007e_r2r4_preflight.py)의 write-ahead ledger(status: ARMED/SENT). §15 의 5개 라벨을 문자 그대로 재현하지 않는다 — 아래가 그 대응 관계다",
+  "PREPARED": "R4 ledger 파일이 아직 없는 상태(experiment_id 로 식별)",
+  "PRE_VALIDATED": "R4 workspace_safety_gate PASS + R3 pre_motion_hard_gate PASS — 이 지점은 R3 가 내부에서 best-effort 로 r3_pre_motion_record.json 에 기록하나(강제 아님), R4 자체 persisted marker 는 아직 없다(🔴 비차단 공개 — 아래 disclosures 참조)",
+  "MOTION_COMMAND_SENT": "R4 ledger.status == 'ARMED' — write_fn 호출 **직전** atomic 기록(R4X-19 로 crash-survives 확인: write_fn 이 예외를 던져도 ledger 는 ARMED 로 남는다)",
+  "POST_OBSERVATION_COMPLETE": "R4 ledger.status == 'SENT'(write 반환 후) AND R3 result.status == 'COMMAND_SENT_IN_PROGRESS'(post-write 단계 진행 중)",
+  "COMPLETE": "R3 result.status == 'EXPERIMENT_COMPLETE'"
+ },
+ "crash_semantics": "§15 — motion command 전송 이후 process 가 죽을 수 있다. R4 ledger 가 write_fn 호출 **직전**에 ARMED 를 기록하므로, write 가 성공했는지 실패했는지조차 알기 전에 이미 '보냈을 수 있음'이 디스크에 남는다(R3 자체의 write-exception 처리보다 한 단계 더 이르다 — R3 는 write_fn 호출을 try 로 감싸지만, write_fn 호출 자체가 성공/실패와 무관하게 '시도했다'는 사실이 먼저 남아야 한다는 §15 요구를 R4 ledger 가 충족한다)",
+ "restart_resend_protection": "§16/§17/§20 — experiment_id = sha256(R3.PREREG_SHA + servo_id + target + duration)[:32] 로 결정적 키를 만든다(run_root 단위가 아니다 — 다른 run_root 로 재시작해도 같은 후보 명령이면 같은 experiment_id). ledger 파일에 이미 ARMED/SENT 가 있으면 R3 를 호출하기도 전에 ABORTED(LEDGER_ALREADY_ARMED_OR_SENT) — R4X-20 으로 검증",
+ "ledger_location": ".cache/p007e_r2r4_ledger/ (git 추적 경로 밖, .gitignore 등록) — porcelain 에 `??` 로 잡혀 git-tracked execution 의 dirty-tree guard 와 혼동되는 것을 피한다",
+ "🔴_disclosure_pre_validated_not_separately_persisted": "PRE_VALIDATED 상태 자체를 R4 가 독립적으로 원자적 기록하지는 않는다(ledger 는 ARMED/SENT 2 상태만 가진다) — 이 상태는 R3 의 best-effort r3_pre_motion_record.json 로만 남는다(강제 아님, 실패해도 abort 사유가 안 됨). 안전에는 영향 없다(PRE_VALIDATED 가 기록 안 돼도 write 는 어차피 송신되지 않았으므로 motion_commands_sent=0 로 이미 안전) — 다음 EXECUTION gate 가 원하면 R4 ledger 에 'PRE_VALIDATED' 중간 상태를 추가할 수 있다"
+}

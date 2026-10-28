@@ -1,0 +1,162 @@
+{
+ "gate": "P-007E-R2-R4",
+ "delta_deg": 2,
+ "displacement_coefficient_2sin_half_delta": 0.03490481287456702,
+ "method_exact": "moving-group 전체 STL 정점을 PRE pose 로 base frame 변환 후 Arm2 축으로부터의 수직거리 최댓값(r_perp) x 2sin(Δ/2) — 강체회전이므로 **근사가 아니라 정확한 상한**(메시 정점 신뢰도까지만). grip_joint(그리퍼 주 구동)은 자신의 URDF limit [-1.6,0]rad 을 9점 샘플링, 나머지 passive linkage(rlink_joint2/3, llink_joint1/2/3)는 URDF 기본값(0 rad)에서만 평가 — 이 마지막 항목이 잔여 한계다(disclosed)",
+ "method_sphere_bound_crosscheck": "fk_clearance.json(선례) 과 동일한 origin_perp+mesh_R 구-경계 방법. 모든 링크에서 sphere_bound >= exact 를 실측 확인(아래 cross_check)",
+ "exact": {
+  "per_link_max_rperp_mm": {
+   "Arm2_Link": 93.35000067949693,
+   "Arm3_Link": 127.66682651136036,
+   "Arm4_Link": 138.20615984068573,
+   "Arm5_Link": 125.99569014326103,
+   "DaBai_DCW2_Link": 169.76331291730153,
+   "Gripping_point_Link": 131.08485937970062,
+   "rlink1": 142.66304890337747,
+   "rlink2": 155.12050495402227,
+   "llink1": 132.69943061508866,
+   "llink2": 153.31876082563377,
+   "llink3": 137.6036844640953,
+   "rlink3": 135.84800640610183
+  },
+  "worst_link": "DaBai_DCW2_Link",
+  "worst_rperp_mm": 169.76331291730153,
+  "disp_coeff": 0.03490481287456702,
+  "max_disp_mm": 5.925556670344977
+ },
+ "sphere_bound_crosscheck": {
+  "rows": {
+   "Arm2_Link": {
+    "origin_perp_mm": 0.0,
+    "mesh_R_mm": 95.69409660739879,
+    "bound_r_mm": 95.69409660739879
+   },
+   "Arm3_Link": {
+    "origin_perp_mm": 82.84999999999638,
+    "mesh_R_mm": 95.70526418531695,
+    "bound_r_mm": 178.55526418531332
+   },
+   "Arm4_Link": {
+    "origin_perp_mm": 117.16759364260848,
+    "mesh_R_mm": 82.07196762137353,
+    "bound_r_mm": 199.239561263982
+   },
+   "Arm5_Link": {
+    "origin_perp_mm": 109.43073461394775,
+    "mesh_R_mm": 61.21877617890453,
+    "bound_r_mm": 170.64951079285228
+   },
+   "DaBai_DCW2_Link": {
+    "origin_perp_mm": 155.7909133204497,
+    "mesh_R_mm": 46.508804489141724,
+    "bound_r_mm": 202.2997178095914
+   },
+   "Gripping_point_Link": {
+    "origin_perp_mm": 156.73917917270617,
+    "mesh_R_mm": 85.76630071073552,
+    "bound_r_mm": 242.5054798834417
+   },
+   "rlink1": {
+    "origin_perp_mm": 123.20700248089908,
+    "mesh_R_mm": 34.327025519803534,
+    "bound_r_mm": 157.53402800070262
+   },
+   "rlink2": {
+    "origin_perp_mm": 119.44431279573858,
+    "mesh_R_mm": 52.154436406372206,
+    "bound_r_mm": 171.59874920211078
+   },
+   "llink1": {
+    "origin_perp_mm": 124.1585405950563,
+    "mesh_R_mm": 34.326371326911,
+    "bound_r_mm": 158.4849119219673
+   },
+   "llink2": {
+    "origin_perp_mm": 123.19237219038833,
+    "mesh_R_mm": 52.15443610274721,
+    "bound_r_mm": 175.34680829313555
+   },
+   "llink3": {
+    "origin_perp_mm": 132.6641099244381,
+    "mesh_R_mm": 34.93058952286795,
+    "bound_r_mm": 167.59469944730603
+   },
+   "rlink3": {
+    "origin_perp_mm": 132.26927182766957,
+    "mesh_R_mm": 34.93051207993996,
+    "bound_r_mm": 167.19978390760951
+   }
+  },
+  "worst_link": "Gripping_point_Link",
+  "worst_bound_r_mm": 242.5054798834417,
+  "max_disp_mm": 8.46460839638861
+ },
+ "cross_check_sphere_geq_exact": {
+  "Arm2_Link": {
+   "sphere_mm": 3.3401845352819937,
+   "exact_mm": 3.258364305558545
+  },
+  "Arm3_Link": {
+   "sphere_mm": 6.23243808415724,
+   "exact_mm": 4.456186689668845
+  },
+  "Arm4_Link": {
+   "sphere_mm": 6.954419603130124,
+   "exact_mm": 4.824060147351635
+  },
+  "Arm5_Link": {
+   "sphere_mm": 5.956489241360915,
+   "exact_mm": 4.397855987452455
+  },
+  "DaBai_DCW2_Link": {
+   "sphere_mm": 7.0612337947215025,
+   "exact_mm": 5.925556670344977
+  },
+  "Gripping_point_Link": {
+   "sphere_mm": 8.46460839638861,
+   "exact_mm": 4.575492487337382
+  },
+  "rlink1": {
+   "sphere_mm": 5.498695768741327,
+   "exact_mm": 4.979627026087595
+  },
+  "rlink2": {
+   "sphere_mm": 5.989622230409434,
+   "exact_mm": 5.414452198428494
+  },
+  "llink1": {
+   "sphere_mm": 5.5318861940785045,
+   "exact_mm": 4.63184879418126
+  },
+  "llink2": {
+   "sphere_mm": 6.120447531624474,
+   "exact_mm": 5.351562656779244
+  },
+  "llink3": {
+   "sphere_mm": 5.849861622977518,
+   "exact_mm": 4.803030857070212
+  },
+  "rlink3": {
+   "sphere_mm": 5.836077169963152,
+   "exact_mm": 4.741749242987967
+  }
+ },
+ "statement": "로봇 상의 어떤 점도 이 2° 명령으로 5.93 mm(exact, worst link DaBai_DCW2_Link) 를 넘어 움직이지 않는다. sphere-bound cross-check(worst link Gripping_point_Link) 는 8.46 mm 로 더 느슨한 상한을 준다.",
+ "mesh_R_mm_recomputed_from_stl": {
+  "Arm2_Link": 95.69409660739879,
+  "Arm3_Link": 95.70526418531695,
+  "Arm4_Link": 82.07196762137353,
+  "Arm5_Link": 61.21877617890453,
+  "DaBai_DCW2_Link": 46.508804489141724,
+  "Gripping_point_Link": 85.76630071073552,
+  "rlink1": 34.327025519803534,
+  "rlink2": 52.154436406372206,
+  "llink1": 34.326371326911,
+  "llink2": 52.15443610274721,
+  "llink3": 34.93058952286795,
+  "rlink3": 34.93051207993996,
+  "base_link": 233.92744928139282,
+  "Arm1_Link": 48.45691275136007
+ },
+ "mesh_R_vs_precedent": "fk_clearance.json 의 12개 링크 mesh_R_mm 값을 실제 STL 정점에서 재계산해 전부 0.005mm 이내로 재현(단위: STL 은 meter, 1000배 변환 후 비교) — base_link/Arm1_Link 는 선례 표에 없던 신규 값(233.93mm/48.46mm, 고정 그룹이라 swept 계산에는 불필요, self-collision spot-check 용)"
+}
