@@ -1,0 +1,10 @@
+{
+ "PF04-NEG-01_candidate_generation_deterministic": true,
+ "PF04-NEG-02_exactly_one_candidate_selected": true,
+ "PF04-NEG-03_joint_limit_violation_detected_synthetic_lib185": true,
+ "PF04-NEG-04_all_real_candidates_joint_limit_pass": true,
+ "PF04-NEG-05_sphere_bound_geq_exact_all_candidates": true,
+ "PF04-NEG-06_fk_module_sha_pin_match": true,
+ "PF04-NEG-07_hardware_free_check": "7/7 PASS, see hardware_free_check.txt",
+ "note": "PRE mismatch / visual quality failure / approval phrase mismatch / existing SENT ledger no-retry 는 P-007F-05 실행 스크립트 자체가 아직 존재하지 않으므로(이 gate는 preregistration만, 실행 harness는 구현하지 않음) 이번 gate에서 직접 실행 테스트할 수 없다 — execution_preconditions.md/ledger_design.md 에 설계로만 고정했고, R4/R5 의 이미 검증된 동일 패턴(write-ahead ledger, fsync+재읽기, approval phrase exact-match)을 재사용할 것을 명시했다"
+}

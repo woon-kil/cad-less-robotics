@@ -1,0 +1,54 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§6 — 후보 motion 방향을 먼저 비교",
+ "current_controller_reported_id2": 154,
+ "note": "controller_reported_id2 는 §3 의미론에 따라 model_assumption_only 다",
+ "search_range_deg": [
+  1,
+  2,
+  3
+ ],
+ "directions": [
+  "lower (154 - delta)",
+  "upper (154 + delta)"
+ ],
+ "candidates": [
+  {
+   "delta_deg": -3,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 151,
+   "direction": "lower"
+  },
+  {
+   "delta_deg": -2,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 152,
+   "direction": "lower"
+  },
+  {
+   "delta_deg": -1,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 153,
+   "direction": "lower"
+  },
+  {
+   "delta_deg": 1,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 155,
+   "direction": "upper"
+  },
+  {
+   "delta_deg": 2,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 156,
+   "direction": "upper"
+  },
+  {
+   "delta_deg": 3,
+   "pre_lib_deg": 154,
+   "target_lib_deg": 157,
+   "direction": "upper"
+  }
+ ],
+ "rationale": "±1/±2/±3° 만 탐색한다(§6 — 보수적으로 작은 범위). 더 큰 motion은 이 gate의 기본 후보로 쓰지 않는다. R4 선례(152->154, delta=+2)를 그대로 재탕하지 않고 현재 상태(154) 기준으로 양방향 재비교한다"
+}

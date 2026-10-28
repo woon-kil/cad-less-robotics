@@ -1,0 +1,111 @@
+{
+ "gate": "P-007F-04",
+ "title": "Single-Motion Execution Safety Review & Preregistration",
+ "character": "NO ROBOT MOTION / NO SERVO WRITE / NO CAMERA RELOCATION / NO GEMINI RELOCATION / NO DABAI RELOCATION / NO R5 RERUN",
+ "robot_command_count": 0,
+ "source_of_truth_reused": [
+  "P-007E-R2-R4 (scripts/p007e_r2r4_fk.py sha256 a4e9d2d7891597a6bfa62c8ca87303aeab28ba0a784f23f2640ca8dc145622cb, SHA-pin import, 수정 없음)",
+  "P-007E-R2-R5 (ledger 패턴 참조만, 파일 수정 없음)",
+  "P-007F-01 (readonly_probe.py sha256 43076313a54b61477fc245098f1c4bade1b76add03d5963506eeb988f2ec61f9, 수정 없이 재실행)",
+  "P-007F-02/02A (참조만)",
+  "P-007F-02B-R2 (Baseline B identity/depth_stats, 수정 없음)",
+  "P-007F-03 (threshold T_translation=1.7826px, quality_guard, ROI 정의, 수정 없음)"
+ ],
+ "current_state": {
+  "controller_reported_id2": 154,
+  "stable_5_rounds_this_gate": true,
+  "identical_to_P007F01_2026_10_28": true,
+  "abort_state_changed_triggered": false,
+  "semantics_note": "controller-reported != physical angle (READBACK_SEMANTICS_UNRESOLVED, P-007F-01 유지)"
+ },
+ "baseline_b_check": {
+  "verdict": "BASELINE_B_UNCHANGED",
+  "phase_correlation_shift_px": [
+   -0.1661365256869658,
+   0.19513022965293203
+  ],
+  "phase_correlation_shift_magnitude_px": 0.2563,
+  "phase_correlation_response": 1.0008406761288642,
+  "abort_baseline_b_changed_triggered": false
+ },
+ "candidates_evaluated": "±1/±2/±3 deg, 양방향(lower/upper), 총 6개",
+ "joint_limit_review": "6개 candidate 전부 JOINT_LIMIT_PASS",
+ "fk_sweep": "PRE(154)/POST(candidate 마다) TCP·DaBai 3D translation+rotation 계산 완료, MODEL_ASSUMPTION_ONLY",
+ "conservative_displacement_envelope": "2.963~8.888mm(D_model) + 2.0mm 고정 margin = 4.963~10.888mm(D_conservative), 전부 R4 operator envelope 선례(15mm) 이내",
+ "collision_review": "MODEL_LEVEL_COLLISION_CHECK_PASS — SRDF(1차) + FK spot-check PRE/MID/POST(2차, R4 152/153/154° 선례값과 float 오차 이내로 재현 확인)",
+ "environment_review": "ENVIRONMENT_CLEARANCE_ASSESSED_QUALITATIVELY_SUFFICIENT — 정밀 3D 모델 없음을 공개, envelope(≤10.89mm)가 육안 관찰 clearance(수 cm 이상)보다 현저히 작음",
+ "gemini_visual_detectability": {
+  "method": "VISUAL_DETECTABILITY_APPROXIMATE_ESTIMATE — no camera extrinsic calibration, pinhole order-of-magnitude approximation (9개 가정 조합: depth 3종 x in-plane discount 3종)",
+  "delta_1deg_exceeds_threshold_count": "2/9",
+  "delta_2deg_exceeds_threshold_count": "5/9",
+  "delta_3deg_exceeds_threshold_count": "8/9",
+  "conclusion": "|delta|=3 만이 대부분의 가정 조합에서 안정적으로 threshold(1.7826px) 를 넘김 — 이것이 selection 의 핵심 근거"
+ },
+ "selected_candidate": {
+  "direction": "lower",
+  "delta_deg": -3,
+  "controller_reported_pre": 154,
+  "command_target": 151,
+  "command_duration_ms": 2000,
+  "selection_rationale": "visual detectability margin(8/9) + Arm2 joint-limit margin 관리(현재 더 가까운 upper limit 로부터 멀어지는 방향)"
+ },
+ "future_execution": {
+  "pre_visual_abort_conditions_count": 7,
+  "controller_pre_state_abort": "ABORT_BEFORE_MOTION / CONTROLLER_STATE_MISMATCH if readback != 154",
+  "approval_phrase_exact": "EXECUTE P-007F-05 ARM2 154 TO 151 ONCE",
+  "approval_phrase_informal_accept_rejected": [
+   "yes",
+   "ok",
+   "그래",
+   "진행",
+   "execute"
+  ],
+  "ledger_path": ".cache/p007f05_ledger/ (신규, R5 ledger와 완전 분리, 이번 gate에서 생성하지 않음 — 설계만 고정)",
+  "ledger_states": [
+   "PREPARED",
+   "PRE_VALIDATED",
+   "ARMED",
+   "COMMAND_SENT",
+   "POST_COMPLETE"
+  ],
+  "no_auto_retry_on_sent_or_uncertain": true,
+  "no_auto_resend_after_disconnect": true,
+  "r5_ledger_untouched": true,
+  "no_automatic_return": true,
+  "one_command_maximum": true,
+  "result_matrix": "P-007F-03 matrix 재사용 (claim_boundary.md §24)"
+ },
+ "claim_boundary": "claim_boundary.md 참조 — 최대 claim은 'physical motion accompanied an authorized command, observed independently by Gemini', absolute accuracy/encoder accuracy/controller=physical 주장 금지",
+ "negative_tests": {
+  "PF04-NEG-01_candidate_generation_deterministic": true,
+  "PF04-NEG-02_exactly_one_candidate_selected": true,
+  "PF04-NEG-03_joint_limit_violation_detected_synthetic_lib185": true,
+  "PF04-NEG-04_all_real_candidates_joint_limit_pass": true,
+  "PF04-NEG-05_sphere_bound_geq_exact_all_candidates": true,
+  "PF04-NEG-06_fk_module_sha_pin_match": true,
+  "PF04-NEG-07_hardware_free_check": "7/7 PASS, see hardware_free_check.txt",
+  "note": "PRE mismatch / visual quality failure / approval phrase mismatch / existing SENT ledger no-retry 는 P-007F-05 실행 스크립트 자체가 아직 존재하지 않으므로(이 gate는 preregistration만, 실행 harness는 구현하지 않음) 이번 gate에서 직접 실행 테스트할 수 없다 — execution_preconditions.md/ledger_design.md 에 설계로만 고정했고, R4/R5 의 이미 검증된 동일 패턴(write-ahead ledger, fsync+재읽기, approval phrase exact-match)을 재사용할 것을 명시했다"
+ },
+ "hardware_free_check": "7/7 PASS (scripts/p007f_04_hardware_free_check.py, true-positive 2종 포함) — scripts/p007f_04_candidates.py 는 Arm_* 참조 0건(읽기조차 없음)",
+ "readonly_probe_reused": "scripts/p007f_01_readonly_probe.py 수정 없이 재사용, self-test 10/10 PASS 재확인, 실제 5-round probe 실행(servo_writes=0, torque_writes=0)",
+ "pass_criteria_checklist": {
+  "current_controller_read_only_state_stable": true,
+  "baseline_b_unchanged": true,
+  "candidate_directions_compared": true,
+  "joint_limit_review": true,
+  "fk_sweep": true,
+  "conservative_displacement_envelope": true,
+  "model_level_collision_review": true,
+  "environment_review": true,
+  "gemini_detectability_review": true,
+  "exactly_one_candidate_selected": true,
+  "pre_abort_rules_fixed": true,
+  "exact_approval_phrase_fixed": true,
+  "durable_ledger_design_fixed": true,
+  "robot_command_count_zero": true
+ },
+ "all_pass_criteria_met": true,
+ "🔴 final_verdict": "P-007F-04 = PASS / CLOSED",
+ "p007f05_status": "NOT OPEN — selected_candidate.json 는 PREREGISTERED_COMMAND_CANDIDATE 일 뿐 실행 승인이 아니다. 실제 command 는 별도 검수(ChatGPT) 후 P-007F-05 가 명시적으로 열린 경우에만 허용",
+ "evidence_dir": "evidence/P-007F-04/"
+}

@@ -1,0 +1,39 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§16 — Candidate 선택 (PREREGISTERED_COMMAND_CANDIDATE — 실행 승인 아님)",
+ "status": "PREREGISTERED_COMMAND_CANDIDATE",
+ "not_yet": "실제 execution authorization 아님 — P-007F-05 가 별도로 명시적으로 열린 경우에만 집행",
+ "controller_reported_pre": 154,
+ "command_api": "Arm_serial_servo_write",
+ "command_id": 2,
+ "command_target": 151,
+ "command_delta": -3,
+ "command_duration_ms": 2000,
+ "duration_rationale": "§17 — R3/R4/R5 선례(2000ms)를 그대로 따른다. 더 빠른 motion 보다 관측/안전성을 우선한다는 원칙은 이미 2000ms 로 검증된 선례가 있으므로, 근거 없이 바꾸지 않는다(변경 시 근거 명시 요구 — 변경하지 않으므로 해당 없음)",
+ "raw_servo": {
+  "raw_pre_154": 1217,
+  "raw_target_151": 1254,
+  "register_hex": "0x12",
+  "payload_bytes_hex": [
+   "0x4",
+   "0xe6",
+   "0x7",
+   "0xd0"
+  ]
+ },
+ "model_prediction_summary": {
+  "tcp_translation_mm": 8.205906782044831,
+  "tcp_rotation_deg": 3.000000000000166,
+  "dabai_translation_mm": 8.156261369651538,
+  "dabai_rotation_deg": 3.000000000000166,
+  "D_model_mm": 8.887770933618997,
+  "D_conservative_mm": 10.887770933618997,
+  "worst_link": "DaBai_DCW2_Link",
+  "joint_limit_pass": true,
+  "arm2_margin_to_lower_rad": 2.6354508437165407,
+  "arm2_margin_to_upper_rad": 0.506149156283459
+ },
+ "selection_rationale": "candidate_comparison.md 참조 — |delta|=3° 만이 9개 visual-detectability 가정 조합 중 8개에서 threshold 를 안정적으로 넘기고(noise margin 확보), lower 방향(151)이 upper(157) 대비 Arm2 upper joint limit margin 을 늘리는 방향(현재 더 타이트한 쪽에서 멀어짐)이라 선택했다",
+ "model_assumption_only": true,
+ "all_values_are_predictions_not_measurements": true
+}

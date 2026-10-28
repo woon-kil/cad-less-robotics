@@ -1,0 +1,66 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§10 — Conservative physical envelope",
+ "method": "D_model(exact, 2*sin(delta/2)*r_perp, moving-group STL 전체 정점) + explicit uncertainty margin = D_conservative",
+ "model_uncertainty_margin_mm": 2.0,
+ "margin_rationale": "P-007E-R2-R4 envelope_derivation 과 동일한 고정·비실측 보수적 pad — STL/CAD 모델과 실제 로봇 치수 간 불일치에 대한 것으로, 이 2mm 라는 수치 자체는 데이터에서 유도하지 않았다(명시적으로 공개). 과거 수치를 '그대로 재사용'하는 것이 아니라, candidate 마다 D_model 이 다르므로 D_conservative 도 candidate 마다 다시 계산했다 — margin(2.0mm)만 R4 와 동일 정책을 유지한다(구조적 불확실성이지 delta 에 의존하는 값이 아니므로 줄이거나 늘릴 근거가 없다)",
+ "candidates": [
+  {
+   "delta_deg": -3,
+   "target_lib_deg": 151,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 8.887770933618997,
+   "D_conservative_mm": 10.887770933618997,
+   "sphere_bound_crosscheck_mm": 12.696106822569654,
+   "sphere_geq_exact": true
+  },
+  {
+   "delta_deg": -2,
+   "target_lib_deg": 152,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 5.925556670344979,
+   "D_conservative_mm": 7.925556670344979,
+   "sphere_bound_crosscheck_mm": 8.464608396388611,
+   "sphere_geq_exact": true
+  },
+  {
+   "delta_deg": -1,
+   "target_lib_deg": 153,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 2.962891152988789,
+   "D_conservative_mm": 4.962891152988789,
+   "sphere_bound_crosscheck_mm": 4.23246535750612,
+   "sphere_geq_exact": true
+  },
+  {
+   "delta_deg": 1,
+   "target_lib_deg": 155,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 2.962891152988789,
+   "D_conservative_mm": 4.962891152988789,
+   "sphere_bound_crosscheck_mm": 4.23246535750612,
+   "sphere_geq_exact": true
+  },
+  {
+   "delta_deg": 2,
+   "target_lib_deg": 156,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 5.925556670344979,
+   "D_conservative_mm": 7.925556670344979,
+   "sphere_bound_crosscheck_mm": 8.464608396388611,
+   "sphere_geq_exact": true
+  },
+  {
+   "delta_deg": 3,
+   "target_lib_deg": 157,
+   "worst_link_exact": "DaBai_DCW2_Link",
+   "D_model_mm": 8.887770933618997,
+   "D_conservative_mm": 10.887770933618997,
+   "sphere_bound_crosscheck_mm": 12.696106822569654,
+   "sphere_geq_exact": true
+  }
+ ],
+ "comparison_to_R4_precedent": "R4(delta=2deg, 152->154) D_model=5.926mm, D_conservative=7.926mm — 이 gate의 delta=+-2 candidate 와 정확히 일치(동일 Arm2 각도 구간, 동일 moving-group 질량분포이므로 당연한 재현)",
+ "operator_envelope_precedent_mm": 15,
+ "all_candidates_within_precedent_envelope": true
+}

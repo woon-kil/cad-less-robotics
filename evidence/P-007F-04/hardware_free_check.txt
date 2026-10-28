@@ -1,0 +1,8 @@
+PASS PF04-TP-direct_call-attr hits=[('attr', 'Arm_serial_servo_write', 1)]
+PASS PF04-TP-direct_call-substr hits=[('serial_servo', 1, 'arm.Arm_serial_servo_write(2, 151, 2000)')]
+PASS PF04-TP-ref_then_call-attr hits=[('attr', 'Arm_serial_set_torque', 1)]
+PASS PF04-TP-ref_then_call-substr hits=[('torque', 1, 'fn = arm.Arm_serial_set_torque')]
+PASS PF04-REAL-p007f_04_candidates.py-forbidden_api hits=[]
+PASS PF04-REAL-p007f_04_candidates.py-forbidden_substring hits=[]
+PASS PF04-REAL-p007f_04_candidates.py-no_hardware_imports imports=['hashlib', 'importlib.util', 'json', 'math', 'os', 'sys', 'numpy']
+전체 7건 PASS — p007f_04_candidates.py 는 하드웨어 API 참조 0건(읽기조차 없음)

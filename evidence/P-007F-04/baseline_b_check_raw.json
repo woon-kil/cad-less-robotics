@@ -1,0 +1,15 @@
+{
+  "ref": "evidence/P-007F-03/current_rgb_overview.png",
+  "cur": "evidence/P-007F-04/baseline_check_frames/0002-color.png",
+  "whole_frame_mean_abs_diff": 3.9183224826388887,
+  "roi_mean_abs_diff": {
+    "robot_roi": 5.258338001867414,
+    "arm2_roi": 6.185833333333333,
+    "static_reference_roi": 3.9534
+  },
+  "global_phase_correlation_shift_px": [
+    -0.1661365256869658,
+    0.19513022965293203
+  ],
+  "phase_correlation_response": 1.0008406761288642
+}

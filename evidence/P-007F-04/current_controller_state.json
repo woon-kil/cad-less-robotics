@@ -1,0 +1,342 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§4 — current read-only state confirmation (NEW probe run, not reused evidence)",
+ "method": "scripts/p007f_01_readonly_probe.py 를 1바이트도 수정하지 않고 재사용(sha256 43076313a54b61477fc245098f1c4bade1b76add03d5963506eeb988f2ec61f9, 로컬=원격 일치 확인) — P-007F-01 의 self_ast_check/negative_tests 를 이 gate에서 다시 실행해 10/10 PASS 재확인(아래 self_test), 이후 read-only probe 를 실제로 재실행했다",
+ "self_test_rerun_this_gate": "10/10 PASS (PF01-01..09 + PF01-10 true-positive) — Jetson 에서 재실행",
+ "servo_writes": 0,
+ "torque_writes": 0,
+ "arm_lib_disk_sha_match": true,
+ "arm_lib_egg_sha_match": true,
+ "self_ast_check_pass": true,
+ "servo_read_rounds": [
+  {
+   "round": 1,
+   "at": "05:42:12",
+   "reads": [
+    {
+     "id": 1,
+     "value": 86,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 2,
+     "value": 154,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 3,
+     "value": 0,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 4,
+     "value": 18,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 5,
+     "value": 93,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 6,
+     "value": 178,
+     "is_none": false,
+     "i2c_error_printed": false
+    }
+   ]
+  },
+  {
+   "round": 2,
+   "at": "05:42:12",
+   "reads": [
+    {
+     "id": 1,
+     "value": 86,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 2,
+     "value": 154,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 3,
+     "value": 0,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 4,
+     "value": 18,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 5,
+     "value": 93,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 6,
+     "value": 178,
+     "is_none": false,
+     "i2c_error_printed": false
+    }
+   ]
+  },
+  {
+   "round": 3,
+   "at": "05:42:13",
+   "reads": [
+    {
+     "id": 1,
+     "value": 86,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 2,
+     "value": 154,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 3,
+     "value": 0,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 4,
+     "value": 18,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 5,
+     "value": 93,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 6,
+     "value": 178,
+     "is_none": false,
+     "i2c_error_printed": false
+    }
+   ]
+  },
+  {
+   "round": 4,
+   "at": "05:42:13",
+   "reads": [
+    {
+     "id": 1,
+     "value": 86,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 2,
+     "value": 154,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 3,
+     "value": 0,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 4,
+     "value": 18,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 5,
+     "value": 93,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 6,
+     "value": 178,
+     "is_none": false,
+     "i2c_error_printed": false
+    }
+   ]
+  },
+  {
+   "round": 5,
+   "at": "05:42:13",
+   "reads": [
+    {
+     "id": 1,
+     "value": 86,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 2,
+     "value": 154,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 3,
+     "value": 0,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 4,
+     "value": 18,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 5,
+     "value": 93,
+     "is_none": false,
+     "i2c_error_printed": false
+    },
+    {
+     "id": 6,
+     "value": 178,
+     "is_none": false,
+     "i2c_error_printed": false
+    }
+   ]
+  }
+ ],
+ "servo_reads_total": 30,
+ "servo_read_any_id2_rounds": [
+  {
+   "round": 1,
+   "value": 26,
+   "is_none": false,
+   "i2c_error_printed": false
+  },
+  {
+   "round": 2,
+   "value": 26,
+   "is_none": false,
+   "i2c_error_printed": false
+  },
+  {
+   "round": 3,
+   "value": 26,
+   "is_none": false,
+   "i2c_error_printed": false
+  },
+  {
+   "round": 4,
+   "value": 26,
+   "is_none": false,
+   "i2c_error_printed": false
+  },
+  {
+   "round": 5,
+   "value": 26,
+   "is_none": false,
+   "i2c_error_printed": false
+  }
+ ],
+ "ping_servo_results": {
+  "1": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  },
+  "2": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  },
+  "3": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  },
+  "4": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  },
+  "5": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  },
+  "6": {
+   "value": 218,
+   "value_hex": "0xda",
+   "is_0xda": true,
+   "i2c_error_printed": false
+  }
+ },
+ "hardversion": {
+  "value": "0.20",
+  "i2c_error_printed": false
+ },
+ "i2c_bus_num": 7,
+ "finished_at": "2026-10-29T05:42:13+0800",
+ "stability_analysis": {
+  "ids_1_to_6_all_5_rounds": [
+   86,
+   154,
+   0,
+   18,
+   93,
+   178
+  ],
+  "variance": 0,
+  "id2_stable_across_5_rounds": true,
+  "compared_to_P007F01_2026_10_28_reading": {
+   "P007F01_values": [
+    86,
+    154,
+    0,
+    18,
+    93,
+    178
+   ],
+   "this_gate_values": [
+    86,
+    154,
+    0,
+    18,
+    93,
+    178
+   ],
+   "identical": true,
+   "elapsed": "약 1일(2026-10-28 21:31 -> 2026-10-29) 동안 controller-reported state 완전 불변"
+  }
+ },
+ "abort_state_changed_triggered": false,
+ "current_controller_reported_ids": {
+  "ID1": 86,
+  "ID2": 154,
+  "ID3": 0,
+  "ID4": 18,
+  "ID5": 93,
+  "ID6": 178
+ },
+ "note": "controller-reported ID2=154 는 §3 의미론에 따라 model_assumption_only 다 — physical Arm2 shaft angle 의 확정 증거가 아니다(P-007F-01 READBACK_SEMANTICS_UNRESOLVED 유지)"
+}

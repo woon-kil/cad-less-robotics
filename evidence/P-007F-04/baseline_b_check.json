@@ -1,0 +1,54 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§5 — Baseline B 확인 (신규 capture, R2/P-007F-03 대비)",
+ "camera_identity": {
+  "device": "Orbbec Gemini 335L",
+  "serial": "CP263630009D (driver log, lsusb 2bc5:0804)",
+  "firmware": "1.4.60",
+  "verified_this_gate": "driver 재시작 로그에서 재확인(p620, 2026-10-29)"
+ },
+ "capture_method": "scripts/p007f_03_capture_static.py(수정 없이 재사용, sha256 동일) 로 5프레임 신규 synced RGB+depth capture 후 driver 정지(pkill -9 -f component_container, exit 143 재발 패턴 회피). ROI/threshold 재사용(P-007F-03 roi_definition.json 그대로)",
+ "frames_captured": 5,
+ "frames_path": "evidence/P-007F-04/baseline_check_frames/",
+ "comparison": {
+  "reference": "evidence/P-007F-03/current_rgb_overview.png",
+  "current": "evidence/P-007F-04/baseline_check_frames/0002-color.png",
+  "whole_frame_mean_abs_diff": 3.9183224826388887,
+  "roi_mean_abs_diff": {
+   "robot_roi": 5.258338001867414,
+   "arm2_roi": 6.185833333333333,
+   "static_reference_roi": 3.9534
+  },
+  "global_phase_correlation_shift_px": [
+   -0.1661365256869658,
+   0.19513022965293203
+  ],
+  "global_phase_correlation_shift_magnitude_px": 0.2562755386136996,
+  "phase_correlation_response": 1.0008406761288642
+ },
+ "historical_comparison": {
+  "R2_static_baseline_whole_frame": 2.554,
+  "R2_static_baseline_robot_roi": 3.572,
+  "P007F03_freeze_check_whole_frame": 2.838,
+  "P007F03_freeze_check_robot_roi": 4.582,
+  "P007F03_freeze_check_phase_shift_px": [
+   -0.1154,
+   -0.0347
+  ],
+  "this_gate_whole_frame": 3.9183224826388887,
+  "this_gate_robot_roi": 5.258338001867414,
+  "interpretation": "whole-frame/ROI mean-abs-diff 는 R2/P-007F-03 대비 다소 높지만(3.9/5.3 vs 2.6-2.8/3.6-4.6) 같은 자릿수이며, 결정적 근거인 global phase-correlation shift는 0.166/0.195px(크기 0.256px)로 P-007F-03의 0.12px와 같은 서브픽셀 범위 — 노출/화이트밸런스 자동조정에 의한 whole-frame 밝기 변화로 설명 가능한 수준이지 카메라 위치 변화의 증거가 아니다. response(1.0008)도 1.0에 가까워 단일 선명한 상관 피크(불일치/이중피크 없음)를 뜻한다"
+ },
+ "roi_validity": {
+  "method": "ORB(500 features) keypoint count, 이 gate 신규 캡처 5프레임",
+  "arm2_roi_keypoint_count_mean": 14.4,
+  "robot_roi_keypoint_count_mean": 424.6,
+  "static_reference_roi_keypoint_count_mean": 433.2,
+  "compared_to_P007F03_trackability": "arm2_roi=14(P-007F-03 단일프레임) vs 14.4(이 gate 5프레임 평균) — 일치. MARKER_REQUIRED=false 판정 그대로 유지",
+  "valid": true
+ },
+ "workspace_visual_check": "frame 0002(current_rgb_overview 와 동일 장면: 로봇/책상/모니터/이불/체커보드 전부 동일 배치, 육안 확인) — Read 도구로 직접 확인",
+ "verdict": "BASELINE_B_UNCHANGED — ABORT_BASELINE_B_CHANGED 트리거 없음",
+ "camera_relocation_this_gate": 0,
+ "robot_motion_this_gate": 0
+}

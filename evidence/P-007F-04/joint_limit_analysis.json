@@ -1,0 +1,335 @@
+{
+ "gate": "P-007F-04",
+ "stage": "§8 — Joint-limit margin",
+ "note": "Arm1/Arm3/Arm4/Arm5 는 이 gate에서 command 대상이 아니다(§6 — Arm2 motion 때문에 downstream geometry 가 어떻게 변하는지만 평가, Arm3 에는 command 를 보내지 않는다) — 따라서 이 네 joint 의 margin 은 candidate 마다 불변이다",
+ "arm3_precedent_note": "P-007E-R2-R4 에서 Arm3_Joint margin_to_lower=3.67e-6 rad(모델 하한선에 사실상 걸쳐 있음)로 공개됨 — 이 gate에서도 Arm3 각도(0°)는 변경하지 않으므로 그 margin 은 동일하게 유지된다(재확인: candidate 마다 lim_post['Arm3_Joint'] 값이 전부 동일한지 아래로 확인)",
+ "arm3_margin_identical_across_all_candidates": true,
+ "candidates": [
+  {
+   "delta_deg": -3,
+   "target_lib_deg": 151,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.6354508437165407,
+   "arm2_margin_to_upper_rad": 0.506149156283459,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 151,
+     "q_urdf_rad": 1.064650843716541,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.6354508437165407,
+     "margin_to_upper_rad": 0.506149156283459,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  },
+  {
+   "delta_deg": -2,
+   "target_lib_deg": 152,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.6529041362364842,
+   "arm2_margin_to_upper_rad": 0.4886958637635157,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 152,
+     "q_urdf_rad": 1.0821041362364843,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.6529041362364842,
+     "margin_to_upper_rad": 0.4886958637635157,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  },
+  {
+   "delta_deg": -1,
+   "target_lib_deg": 153,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.670357428756428,
+   "arm2_margin_to_upper_rad": 0.4712425712435724,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 153,
+     "q_urdf_rad": 1.0995574287564276,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.670357428756428,
+     "margin_to_upper_rad": 0.4712425712435724,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  },
+  {
+   "delta_deg": 1,
+   "target_lib_deg": 155,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.705264013796314,
+   "arm2_margin_to_upper_rad": 0.43633598620368574,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 155,
+     "q_urdf_rad": 1.1344640137963142,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.705264013796314,
+     "margin_to_upper_rad": 0.43633598620368574,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  },
+  {
+   "delta_deg": 2,
+   "target_lib_deg": 156,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.7227173063162575,
+   "arm2_margin_to_upper_rad": 0.4188826936837424,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 156,
+     "q_urdf_rad": 1.1519173063162575,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.7227173063162575,
+     "margin_to_upper_rad": 0.4188826936837424,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  },
+  {
+   "delta_deg": 3,
+   "target_lib_deg": 157,
+   "joint_limit_pass": true,
+   "arm2_margin_to_lower_rad": 2.7401705988362006,
+   "arm2_margin_to_upper_rad": 0.4014294011637993,
+   "all_joints": {
+    "Arm1_Joint": {
+     "library_deg": 86,
+     "q_urdf_rad": -0.06981317007977318,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 1.5009868299202267,
+     "margin_to_upper_rad": 1.6406131700797733,
+     "status": "PASS"
+    },
+    "Arm2_Joint": {
+     "library_deg": 157,
+     "q_urdf_rad": 1.1693705988362006,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 2.7401705988362006,
+     "margin_to_upper_rad": 0.4014294011637993,
+     "status": "PASS"
+    },
+    "Arm3_Joint": {
+     "library_deg": 0,
+     "q_urdf_rad": -1.5707963267948966,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 3.673205103416066e-06,
+     "margin_to_upper_rad": 3.1415963267948968,
+     "status": "PASS"
+    },
+    "Arm4_Joint": {
+     "library_deg": 18,
+     "q_urdf_rad": -1.2566370614359172,
+     "lower_rad": -1.5708,
+     "upper_rad": 1.5708,
+     "margin_to_lower_rad": 0.3141629385640827,
+     "margin_to_upper_rad": 2.8274370614359174,
+     "status": "PASS"
+    },
+    "Arm5_Joint": {
+     "library_deg": 93,
+     "q_urdf_rad": 0.05235987755982988,
+     "lower_rad": -1.5708,
+     "upper_rad": 3.1416,
+     "margin_to_lower_rad": 1.62315987755983,
+     "margin_to_upper_rad": 3.08924012244017,
+     "status": "PASS"
+    }
+   }
+  }
+ ],
+ "verdict": "JOINT_LIMIT_PASS — 6개 candidate 전부",
+ "directional_asymmetry_finding": "현재 상태(154°)는 Arm2 upper limit 에 lower limit 보다 훨씬 가깝다(margin_to_upper=0.4887rad=28.0deg vs margin_to_lower=2.6529rad=152.0deg). 양수(+) delta 는 upper margin 을 더 줄이고(157° 에서 0.4014rad=23.0deg), 음수(-) delta 는 upper margin 을 늘린다(151° 에서 0.5061rad=29.0deg) — §14 candidate 선택에서 이 비대칭을 안전 가중치로 사용한다(§26 참조)"
+}
