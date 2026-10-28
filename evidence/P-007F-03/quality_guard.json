@@ -1,0 +1,24 @@
+{
+ "gate": "P-007F-03",
+ "purpose": "R5 의 실패 원인이 POST quality guard failure였다는 점을 반영(§12) — motion 판정보다 window/frame validity 판정을 먼저 수행한다.",
+ "window_level_guards": {
+  "minimum_valid_frames_per_window": {"value": 2, "of": 3, "basis": "WINDOW=3 프레임 중 sync(color/depth timestamp delta<=0.05s)+TF lookup 성공 프레임이 2개 미만이면 평균 프레임(mean_frame)의 대표성이 떨어진다고 보고 window 자체를 무효 처리"},
+  "minimum_feature_matches_ARM2_ROI": {"value": 4, "basis": "cv2.estimateAffinePartial2D(RANSAC) 최소 요구치. 실측 sham 10/10 trial 에서 8~13 matches 로 이 기준을 항상 크게 상회(algorithm_comparison_raw.json) — 기준은 알고리즘 하한, 실측 여유는 별도 disclosed"},
+  "minimum_inliers_ARM2_ROI": {"value": 4, "basis": "match 기준과 동일 근거"},
+  "minimum_inlier_ratio": {"value": 0.5, "basis": "실측 sham ARM2_ROI inlier_ratio 최저 0.909(robot_relative_sham_distribution.json 기반 algorithm_comparison_raw.json 참조) — 0.5는 큰 여유를 둔 보수적 하한"},
+  "maximum_rejected_frame_ratio_per_capture_session": {"value": 0.2, "basis": "70프레임 목표 중 sync/TF 실패로 저장 안 된 비율이 20% 넘으면(즉 56프레임 미만 확보) capture session 자체를 ABORT — 이번 세션은 70/70 전부 확보되어 0%"}
+ },
+ "static_reference_guard": {
+  "ref": "thresholds.json.static_reference_guard_threshold",
+  "rule": "STATIC_REFERENCE_ROI 의 raw(비상대) translation_px 또는 |rotation_deg| 가 S_translation_px/S_rotation_deg 를 넘으면 카메라/조명 자체가 불안정하다는 신호 — VISUAL_WINDOW_INVALID, ARM2_ROI 판정 자체를 하지 않음(§13)"
+ },
+ "other_invalidating_conditions_from_workorder_section13": [
+  "Gemini 자체가 움직인 흔적 (static_reference_guard 로 정량 포착)",
+  "severe lighting transition (향후 실행 시 PRE/POST 평균 밝기 변화율로 추가 점검 필요 — 이번 gate는 static dataset 조명 불변이라 별도 측정 안 함, execution_protocol.md 에 향후 체크 항목으로 명시)",
+  "사람이 frame을 가림 (robot_roi/static_reference_roi valid-frame 비율 급락으로 간접 포착)",
+  "exposure collapse (밝기 평균이 극단값으로 붕괴 — 향후 실행 전 추가 측정 필요, execution_protocol.md 명시)",
+  "excessive depth/RGB dropout (depth valid_ratio — 이번 세션 실측 75.7~80.1%, depth_sham_distribution.json)",
+  "insufficient valid frames (위 minimum_valid_frames_per_window)"
+ ],
+ "evaluation_order": "1) window-level guard  2) static_reference_guard  3) (모두 통과시에만) robot_motion_threshold 적용. 하나라도 실패하면 EXPERIMENT_INVALID(§19) — result matrix 적용 안 함"
+}

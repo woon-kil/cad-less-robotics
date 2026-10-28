@@ -1,0 +1,14 @@
+{
+ "gate": "P-007F-03",
+ "image_size_color": {"width": 1280, "height": 720},
+ "image_size_depth": {"width": 848, "height": 480},
+ "depth_to_color_scale": {"sx": 0.6625, "sy": 0.6667, "note": "depth ROI = color ROI * scale, 반올림 정수"},
+ "method": "R2(evidence/P-007F-02B-R2/roi_measurements.json)의 robot_bbox/arm2_bbox 좌표를 그대로 재사용(수치 재조정 안 함 — 두 gate 사이 카메라 변경 없음을 확인했으므로). STATIC_REFERENCE_ROI/DOWNSTREAM_ROI는 이번 gate에서 신설 — roi_annotated.png 로 사람이 직접 확인 후 결정(manual approximation, 자동 segmentation 아님)",
+ "rois": {
+  "ROBOT_ROI": {"x": 595, "y": 90, "width": 210, "height": 255, "source": "R2 roi_measurements.json robot_bbox 그대로"},
+  "ARM2_ROI": {"x": 650, "y": 220, "width": 120, "height": 70, "source": "R2 roi_measurements.json arm2_bbox 그대로"},
+  "DOWNSTREAM_ROI": {"x": 600, "y": 90, "width": 200, "height": 170, "note": "DaBai+그리퍼+Arm3/Arm4 상부 — 신설, 참고용(이번 gate의 주 판정 대상 아님, §5)"},
+  "STATIC_REFERENCE_ROI": {"x": 900, "y": 150, "width": 300, "height": 300, "note": "모니터+키보드 배경 영역 — robot과 분리된 rigid world feature, 고텍스처(ORB용), 신설"}
+ },
+ "visual_check": "roi_annotated.png 에서 4개 ROI 사람이 직접 확인 완료 — ROBOT_ROI/ARM2_ROI는 로봇 구조와 정확히 겹치고, STATIC_REFERENCE_ROI는 로봇과 분리된 모니터/키보드 영역임을 육안 확인"
+}

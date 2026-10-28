@@ -1,0 +1,95 @@
+{
+  "rows": [
+    {
+      "trial": 0,
+      "robot_relative_translation_px": 0.4979,
+      "robot_relative_rotation_deg": 0.3359,
+      "arm2_match_count": 13,
+      "arm2_inlier_count": 13,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 1,
+      "robot_relative_translation_px": 0.789,
+      "robot_relative_rotation_deg": 0.2274,
+      "arm2_match_count": 9,
+      "arm2_inlier_count": 9,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 2,
+      "robot_relative_translation_px": 1.1779,
+      "robot_relative_rotation_deg": 0.655,
+      "arm2_match_count": 13,
+      "arm2_inlier_count": 12,
+      "arm2_inlier_ratio": 0.923
+    },
+    {
+      "trial": 3,
+      "robot_relative_translation_px": 0.4743,
+      "robot_relative_rotation_deg": -0.0885,
+      "arm2_match_count": 9,
+      "arm2_inlier_count": 9,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 4,
+      "robot_relative_translation_px": 0.7341,
+      "robot_relative_rotation_deg": -0.2459,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 10,
+      "arm2_inlier_ratio": 0.909
+    },
+    {
+      "trial": 5,
+      "robot_relative_translation_px": -0.0206,
+      "robot_relative_rotation_deg": 0.0025,
+      "arm2_match_count": 8,
+      "arm2_inlier_count": 8,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 6,
+      "robot_relative_translation_px": 1.0661,
+      "robot_relative_rotation_deg": 0.7041,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 11,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 7,
+      "robot_relative_translation_px": 0.9376,
+      "robot_relative_rotation_deg": -0.0687,
+      "arm2_match_count": 10,
+      "arm2_inlier_count": 10,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 8,
+      "robot_relative_translation_px": 0.2056,
+      "robot_relative_rotation_deg": 0.0434,
+      "arm2_match_count": 12,
+      "arm2_inlier_count": 12,
+      "arm2_inlier_ratio": 1.0
+    },
+    {
+      "trial": 9,
+      "robot_relative_translation_px": 0.0626,
+      "robot_relative_rotation_deg": 0.236,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 11,
+      "arm2_inlier_ratio": 1.0
+    }
+  ],
+  "translation_stats": {
+    "mean": 0.5924396987804605,
+    "stdev": 0.3967352109965227,
+    "max": 1.1778636874363824,
+    "min": -0.020573199691097582
+  },
+  "rotation_stats": {
+    "mean": 0.1801210590028561,
+    "stdev": 0.2992324841695205,
+    "max_abs": 0.7041097963455524
+  }
+}

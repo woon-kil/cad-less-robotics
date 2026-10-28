@@ -1,0 +1,6 @@
+{
+  "arm2_roi_keypoint_count": 14,
+  "robot_roi_keypoint_count": 429,
+  "threshold_for_adequate_trackability": 15,
+  "marker_required": true
+}

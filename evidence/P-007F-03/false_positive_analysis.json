@@ -1,0 +1,102 @@
+{
+  "threshold_used": {
+    "T_translation_px": 1.7826,
+    "T_rotation_deg": 1.0778
+  },
+  "nsham": 10,
+  "false_positive_count": 0,
+  "false_positive_rate": 0.0,
+  "per_trial": [
+    {
+      "trial": 0,
+      "robot_relative_translation_px": 0.4979,
+      "robot_relative_rotation_deg": 0.3359,
+      "arm2_match_count": 13,
+      "arm2_inlier_count": 13,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 1,
+      "robot_relative_translation_px": 0.789,
+      "robot_relative_rotation_deg": 0.2274,
+      "arm2_match_count": 9,
+      "arm2_inlier_count": 9,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 2,
+      "robot_relative_translation_px": 1.1779,
+      "robot_relative_rotation_deg": 0.655,
+      "arm2_match_count": 13,
+      "arm2_inlier_count": 12,
+      "arm2_inlier_ratio": 0.923,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 3,
+      "robot_relative_translation_px": 0.4743,
+      "robot_relative_rotation_deg": -0.0885,
+      "arm2_match_count": 9,
+      "arm2_inlier_count": 9,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 4,
+      "robot_relative_translation_px": 0.7341,
+      "robot_relative_rotation_deg": -0.2459,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 10,
+      "arm2_inlier_ratio": 0.909,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 5,
+      "robot_relative_translation_px": -0.0206,
+      "robot_relative_rotation_deg": 0.0025,
+      "arm2_match_count": 8,
+      "arm2_inlier_count": 8,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 6,
+      "robot_relative_translation_px": 1.0661,
+      "robot_relative_rotation_deg": 0.7041,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 11,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 7,
+      "robot_relative_translation_px": 0.9376,
+      "robot_relative_rotation_deg": -0.0687,
+      "arm2_match_count": 10,
+      "arm2_inlier_count": 10,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 8,
+      "robot_relative_translation_px": 0.2056,
+      "robot_relative_rotation_deg": 0.0434,
+      "arm2_match_count": 12,
+      "arm2_inlier_count": 12,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    },
+    {
+      "trial": 9,
+      "robot_relative_translation_px": 0.0626,
+      "robot_relative_rotation_deg": 0.236,
+      "arm2_match_count": 11,
+      "arm2_inlier_count": 11,
+      "arm2_inlier_ratio": 1.0,
+      "would_flag_VISUAL_MOTION_DETECTED": false
+    }
+  ],
+  "verdict": "0/10 — 모든 sham trial 이 NO_VISUAL_MOTION 으로 올바르게 분류됨"
+}

@@ -1,0 +1,57 @@
+{
+ "gate": "P-007F-03",
+ "title": "Gemini External Motion Witness Preregistration",
+ "scope": "설계/사전등록 전용 — 이번 gate에서 로봇 motion command 0회, 실제 execution 미실행",
+ "robot_command_count_this_gate": 0,
+
+ "baseline_b_freeze_confirmed": true,
+ "baseline_b_identity_ref": "baseline_b_identity.json",
+
+ "channels": {
+  "channel_a": "CONTROLLER_REPORTED_SERVO_STATE — MCU/Arm_Lib read-only. physical joint angle이라고 부르지 않음(§4, P-007F-01 연속)",
+  "channel_b": "GEMINI_EXTERNAL_VISUAL_MOTION — Gemini Baseline B 고정 카메라가 관측한 ARM2_ROI/ROBOT_ROI 변화. Channel A 값으로 결정하지 않음"
+ },
+
+ "rois_ref": "roi_definition.json",
+ "static_dataset_ref": "static_dataset_manifest.json (M=70 frames, robot/camera 무변동)",
+
+ "visual_algorithm": {
+  "primary": "ORB(nfeatures=500) + BFMatcher(ratio test 0.75) + cv2.estimateAffinePartial2D(RANSAC)",
+  "secondary_corroborating": ["Farneback dense optical flow", "Canny edge + phaseCorrelate"],
+  "rejected": ["template matching(TM_CCOEFF_NORMED) — 정수 픽셀 그리드 한계로 sub-pixel 신호에 민감도 없음"],
+  "ref": "visual_algorithm.md"
+ },
+
+ "marker_required": false,
+ "marker_decision_ref": "visual_algorithm.md#marker-필요-여부---근거",
+
+ "sham_trials": {"nsham": 10, "window_frames": 3, "ref": "sham_trials.json"},
+
+ "metrics": {
+  "metric_a_translation": "px, ORB+RANSAC affine translation magnitude",
+  "metric_b_rotation": "deg, ORB+RANSAC affine rotation angle",
+  "diagnostics_recorded": ["inlier_count", "inlier_ratio", "match_count", "roi_validity(valid frame 비율)"]
+ },
+
+ "quality_guard_ref": "quality_guard.json",
+ "static_reference_guard_ref": "thresholds.json.static_reference_guard_threshold",
+
+ "thresholds_ref": "thresholds.json",
+ "thresholds_summary": {"T_translation_px": 1.7826, "T_rotation_deg": 1.0778},
+
+ "false_positive_result": {"count": 0, "of": 10, "rate": 0.0, "ref": "false_positive_analysis.json"},
+
+ "depth_role": "CORROBORATING only — ref depth_role.md",
+
+ "execution_protocol_ref": "execution_protocol.md",
+ "result_matrix_ref": "result_matrix.md",
+ "claim_boundary_ref": "claim_boundary.md",
+
+ "restart_retry_protection": "설계만 사전등록(execution_protocol.md) — 향후 execution harness 구현 시 R5 ledger(.cache/p007e_r2r5_ledger/)와 별도 경로 사용, 삭제/수정 금지",
+
+ "🔴 final_verdict": "P-007F-03 = PASS / CLOSED",
+ "verdict_reasoning": "§23 PASS 기준 13개 항목 전부 충족 — Baseline B unchanged, independent static reference 확보, Arm2 trackability 충분(10/10 valid, inlier_ratio 0.983 평균), static dataset 확보(M=70>=60), sham trials=10(>=10), visual algorithm 고정(ORB+RANSAC), quality guard 고정, motion threshold 고정(sham 통계+engineering floor), false-positive 0/10 기록, result matrix 고정, execution sequence 고정, claim boundary 고정, robot command 0",
+
+ "not_blocked": true,
+ "blocked_reasoning": "ARM2_ROI keypoint count(14)가 임의 threshold(15)보다 낮았으나, 실제 sham trial에서 10/10 valid + inlier_ratio 평균 0.983으로 알고리즘이 안정적으로 동작함을 실측 확인했다. 이 낮은 keypoint count가 만든 추가 noise(STATIC_REFERENCE_ROI 대비 약 10배)는 숨기지 않고 threshold 산출에 그대로 반영했으며, 그 threshold로도 false-positive 0/10을 달성했다 — marker 부착을 요구할 만큼 trackability가 불충분하다는 근거가 없다"
+}

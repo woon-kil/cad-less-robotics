@@ -1,0 +1,19 @@
+{
+  "method": "T = max(sham-based statistical threshold, engineering floor). 통계적 threshold = robot-relative sham distribution의 mean + 3*stdev(N=10, 소표본 — 여유 확보 목적으로 3-sigma 사용). engineering floor 는 알고리즘 고유 해상도 한계에서 유도(아래 근거).",
+  "robot_motion_threshold": {
+    "T_translation_px": 1.7826,
+    "T_translation_statistical_component": 1.7826,
+    "T_translation_engineering_floor_px": 1.0,
+    "T_translation_floor_basis": "ORB keypoint 검출기의 공간 picking/quantization noise는 통상 1px 내외 — 이보다 작은 차이는 알고리즘이 신뢰성 있게 구분 못함",
+    "T_rotation_deg": 1.0778,
+    "T_rotation_statistical_component": 1.0778,
+    "T_rotation_engineering_floor_deg": 0.4124,
+    "T_rotation_floor_basis": "1px 위치오차를 ARM2_ROI 대각선(120x70px, 대각 ~139px) 기준 각도오차로 환산 — atan(1/139) deg 약 0.41deg"
+  },
+  "static_reference_guard_threshold": {
+    "S_translation_px": 0.2,
+    "S_rotation_deg": 0.05,
+    "basis": "STATIC_REFERENCE_ROI 자체의 raw(비상대) sham 분포 mean+3*stdev, engineering floor 포함. 이 값을 넘으면 카메라/조명 자체가 불안정하다는 신호로 보고 VISUAL_WINDOW_INVALID 처리(SS13) — robot motion threshold와는 별개 게이트"
+  },
+  "detection_rule": "robot-relative change(ARM2_ROI - STATIC_REFERENCE_ROI) 의 translation_px > T_translation_px 이거나 |rotation_deg| > T_rotation_deg 이면 VISUAL_MOTION_DETECTED. 단 static-reference guard 가 먼저 통과해야 함(SS13)."
+}

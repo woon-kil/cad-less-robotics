@@ -1,0 +1,790 @@
+{
+  "orb": [
+    {
+      "valid": true,
+      "match_count": 13,
+      "inlier_count": 13,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.5670454967956656,
+      "rotation_deg": 0.31967546056689317,
+      "kp1": 14,
+      "kp2": 15,
+      "trial": 0,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 380,
+      "inlier_count": 375,
+      "inlier_ratio": 0.9868421052631579,
+      "translation_px": 0.06919266439419085,
+      "rotation_deg": -0.01621354949635459,
+      "kp1": 431,
+      "kp2": 427,
+      "trial": 0,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 9,
+      "inlier_count": 9,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.8699327537829611,
+      "rotation_deg": 0.21406811447731747,
+      "kp1": 12,
+      "kp2": 11,
+      "trial": 1,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 370,
+      "inlier_count": 367,
+      "inlier_ratio": 0.9918918918918919,
+      "translation_px": 0.08094583384014367,
+      "rotation_deg": -0.013310633796705789,
+      "kp1": 431,
+      "kp2": 426,
+      "trial": 1,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 13,
+      "inlier_count": 12,
+      "inlier_ratio": 0.9230769230769231,
+      "translation_px": 1.2877117213255334,
+      "rotation_deg": 0.6623371615537462,
+      "kp1": 14,
+      "kp2": 14,
+      "trial": 2,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 367,
+      "inlier_count": 364,
+      "inlier_ratio": 0.9918256130790191,
+      "translation_px": 0.10984803388915092,
+      "rotation_deg": 0.007381992293473188,
+      "kp1": 432,
+      "kp2": 429,
+      "trial": 2,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 9,
+      "inlier_count": 9,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.5383781530939653,
+      "rotation_deg": -0.08455192423006722,
+      "kp1": 11,
+      "kp2": 12,
+      "trial": 3,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 365,
+      "inlier_count": 364,
+      "inlier_ratio": 0.9972602739726028,
+      "translation_px": 0.06404363002881316,
+      "rotation_deg": 0.003936331776298613,
+      "kp1": 427,
+      "kp2": 432,
+      "trial": 3,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 11,
+      "inlier_count": 10,
+      "inlier_ratio": 0.9090909090909091,
+      "translation_px": 0.7737895918335668,
+      "rotation_deg": -0.23980908159254788,
+      "kp1": 11,
+      "kp2": 12,
+      "trial": 4,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 371,
+      "inlier_count": 369,
+      "inlier_ratio": 0.9946091644204852,
+      "translation_px": 0.039715214430240474,
+      "rotation_deg": 0.006051595729614089,
+      "kp1": 430,
+      "kp2": 428,
+      "trial": 4,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 8,
+      "inlier_count": 8,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.0,
+      "rotation_deg": 0.0,
+      "kp1": 9,
+      "kp2": 14,
+      "trial": 5,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 364,
+      "inlier_count": 361,
+      "inlier_ratio": 0.9917582417582418,
+      "translation_px": 0.020573199691097582,
+      "rotation_deg": -0.0024922464454689686,
+      "kp1": 431,
+      "kp2": 430,
+      "trial": 5,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 11,
+      "inlier_count": 11,
+      "inlier_ratio": 1.0,
+      "translation_px": 1.0945040914290083,
+      "rotation_deg": 0.7021679771761574,
+      "kp1": 13,
+      "kp2": 12,
+      "trial": 6,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 353,
+      "inlier_count": 350,
+      "inlier_ratio": 0.9915014164305949,
+      "translation_px": 0.0283816350844851,
+      "rotation_deg": -0.0019418191693949037,
+      "kp1": 427,
+      "kp2": 428,
+      "trial": 6,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 10,
+      "inlier_count": 10,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.989489279443863,
+      "rotation_deg": -0.0798359340258975,
+      "kp1": 13,
+      "kp2": 15,
+      "trial": 7,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 369,
+      "inlier_count": 364,
+      "inlier_ratio": 0.986449864498645,
+      "translation_px": 0.05192391468240999,
+      "rotation_deg": -0.011152377282350585,
+      "kp1": 428,
+      "kp2": 429,
+      "trial": 7,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 12,
+      "inlier_count": 12,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.28849432262918545,
+      "rotation_deg": 0.02240699008367024,
+      "kp1": 13,
+      "kp2": 16,
+      "trial": 8,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 372,
+      "inlier_count": 371,
+      "inlier_ratio": 0.9973118279569892,
+      "translation_px": 0.08288868266149571,
+      "rotation_deg": -0.021024271107143836,
+      "kp1": 434,
+      "kp2": 427,
+      "trial": 8,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 11,
+      "inlier_count": 11,
+      "inlier_ratio": 1.0,
+      "translation_px": 0.17004732958928737,
+      "rotation_deg": 0.2110315156872208,
+      "kp1": 11,
+      "kp2": 13,
+      "trial": 9,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "match_count": 356,
+      "inlier_count": 352,
+      "inlier_ratio": 0.9887640449438202,
+      "translation_px": 0.10748294341640317,
+      "rotation_deg": -0.02495533283403542,
+      "kp1": 429,
+      "kp2": 431,
+      "trial": 9,
+      "roi": "static_reference_roi"
+    }
+  ],
+  "optical_flow": [
+    {
+      "valid": true,
+      "translation_px": 0.051642682403326035,
+      "translation_px_median": 0.03267896547913551,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 0,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12682205438613892,
+      "translation_px_median": 0.0715881884098053,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 0,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.04405394196510315,
+      "translation_px_median": 0.027323197573423386,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 1,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.13593968749046326,
+      "translation_px_median": 0.06903709471225739,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 1,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.06403427571058273,
+      "translation_px_median": 0.03456563875079155,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 2,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12606780230998993,
+      "translation_px_median": 0.06611102819442749,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 2,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.06594735383987427,
+      "translation_px_median": 0.03689078986644745,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 3,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12270770221948624,
+      "translation_px_median": 0.07154098153114319,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 3,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.05157313495874405,
+      "translation_px_median": 0.031895920634269714,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 4,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.11280914396047592,
+      "translation_px_median": 0.0641356110572815,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 4,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.04671236127614975,
+      "translation_px_median": 0.026895346119999886,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 5,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12675175070762634,
+      "translation_px_median": 0.06733474135398865,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 5,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.05375295877456665,
+      "translation_px_median": 0.025108834728598595,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 6,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12399599701166153,
+      "translation_px_median": 0.07042902708053589,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 6,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.05684807896614075,
+      "translation_px_median": 0.029705358669161797,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 7,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12978823482990265,
+      "translation_px_median": 0.06722855567932129,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 7,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.05221988633275032,
+      "translation_px_median": 0.02992972917854786,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 8,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.11637970805168152,
+      "translation_px_median": 0.06641857326030731,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 8,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.06285936385393143,
+      "translation_px_median": 0.03181256353855133,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 9,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.12623381614685059,
+      "translation_px_median": 0.06914209574460983,
+      "rotation_deg": null,
+      "note": "optical flow \ub294 rotation \uc744 \uc9c1\uc811 \ucd94\uc815\ud558\uc9c0 \uc54a\uc74c(\u00a711 \uba85\uc2dc)",
+      "trial": 9,
+      "roi": "static_reference_roi"
+    }
+  ],
+  "edge_phasecorr": [
+    {
+      "valid": true,
+      "translation_px": 0.1289652666012697,
+      "rotation_deg": null,
+      "phase_response": 0.7663364759749837,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 0,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.02651832738326421,
+      "rotation_deg": null,
+      "phase_response": 0.8438952933417426,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 0,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.040813924611378866,
+      "rotation_deg": null,
+      "phase_response": 0.8340316823235264,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 1,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.01612407280948895,
+      "rotation_deg": null,
+      "phase_response": 0.8509565202501085,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 1,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.010328905330627221,
+      "rotation_deg": null,
+      "phase_response": 0.8128895903075183,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 2,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.07213722748402372,
+      "rotation_deg": null,
+      "phase_response": 0.8055916639539931,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 2,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.016698465682149416,
+      "rotation_deg": null,
+      "phase_response": 0.8501585415116063,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 3,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.031897994588318594,
+      "rotation_deg": null,
+      "phase_response": 0.8300601081000434,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 3,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.07212616892258221,
+      "rotation_deg": null,
+      "phase_response": 0.7811507328792855,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 4,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.031112746668077156,
+      "rotation_deg": null,
+      "phase_response": 0.8410152481079102,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 4,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.04116369880185899,
+      "rotation_deg": null,
+      "phase_response": 0.8432607295336547,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 5,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.03628650762651349,
+      "rotation_deg": null,
+      "phase_response": 0.8113231492784289,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 5,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.045969517041838645,
+      "rotation_deg": null,
+      "phase_response": 0.7825335010334298,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 6,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.05795176362334983,
+      "rotation_deg": null,
+      "phase_response": 0.8300747757805719,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 6,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.04808119729956607,
+      "rotation_deg": null,
+      "phase_response": 0.830719902559563,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 7,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.004462513628276373,
+      "rotation_deg": null,
+      "phase_response": 0.8360137529585097,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 7,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.06584203574192904,
+      "rotation_deg": null,
+      "phase_response": 0.8583298104780691,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 8,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.024836029718020968,
+      "rotation_deg": null,
+      "phase_response": 0.876177109781901,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 8,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.07636452242868576,
+      "rotation_deg": null,
+      "phase_response": 0.7955680954235571,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 9,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.023878540640651147,
+      "rotation_deg": null,
+      "phase_response": 0.8556781728108724,
+      "note": "edge+phaseCorrelate \ub294 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 9,
+      "roi": "static_reference_roi"
+    }
+  ],
+  "template_match": [
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9977773427963257,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 0,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979297518730164,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 0,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979674220085144,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 1,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979380369186401,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 1,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9976218938827515,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 2,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979545474052429,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 2,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9975374937057495,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 3,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979039430618286,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 3,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9978322386741638,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 4,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9978989958763123,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 4,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9977668523788452,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 5,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9978595972061157,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 5,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9980118870735168,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 6,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979275465011597,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 6,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9978804588317871,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 7,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979156851768494,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 7,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.997739315032959,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 8,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979251623153687,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 8,
+      "roi": "static_reference_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9978859424591064,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 9,
+      "roi": "arm2_roi"
+    },
+    {
+      "valid": true,
+      "translation_px": 0.0,
+      "rotation_deg": null,
+      "match_score": 0.9979326128959656,
+      "note": "template matching \uc740 translation \ub9cc \ucd94\uc815, rotation \ubbf8\ucd94\uc815",
+      "trial": 9,
+      "roi": "static_reference_roi"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "gate": "P-007F-03",
+  "frame_count": 70,
+  "requested": 70,
+  "conditions_during_capture": {
+    "robot_untouched": true,
+    "gemini_untouched": true,
+    "workspace_untouched": true,
+    "person_entered_frame": false,
+    "robot_commands_sent": 0
+  },
+  "color_resolution": {
+    "width": 1280,
+    "height": 720
+  },
+  "depth_resolution": {
+    "width": 848,
+    "height": 480
+  },
+  "timestamp_range_sec": {
+    "first": 1793203711.107364,
+    "last": 1793203740.742643,
+    "span_sec": 29.635279178619385
+  },
+  "max_stamp_delta_sec": 0.03339099884033203,
+  "camera_serial": "CP263630009D (driver log — R2와 동일, p620 bytesize-robotics-camera 컨테이너)",
+  "note": "frames/ 디렉터리의 {index:04d}-color.png / {index:04d}-depth.png / {index:04d}.json 원본 전부 보존"
+}

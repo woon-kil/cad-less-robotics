@@ -1,0 +1,136 @@
+{
+  "window": 3,
+  "nsham": 10,
+  "trials": [
+    {
+      "trial": 0,
+      "pre_frames": [
+        0,
+        1,
+        2
+      ],
+      "post_frames": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "trial": 1,
+      "pre_frames": [
+        7,
+        8,
+        9
+      ],
+      "post_frames": [
+        11,
+        12,
+        13
+      ]
+    },
+    {
+      "trial": 2,
+      "pre_frames": [
+        14,
+        15,
+        16
+      ],
+      "post_frames": [
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "trial": 3,
+      "pre_frames": [
+        21,
+        22,
+        23
+      ],
+      "post_frames": [
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "trial": 4,
+      "pre_frames": [
+        28,
+        29,
+        30
+      ],
+      "post_frames": [
+        32,
+        33,
+        34
+      ]
+    },
+    {
+      "trial": 5,
+      "pre_frames": [
+        35,
+        36,
+        37
+      ],
+      "post_frames": [
+        39,
+        40,
+        41
+      ]
+    },
+    {
+      "trial": 6,
+      "pre_frames": [
+        42,
+        43,
+        44
+      ],
+      "post_frames": [
+        46,
+        47,
+        48
+      ]
+    },
+    {
+      "trial": 7,
+      "pre_frames": [
+        49,
+        50,
+        51
+      ],
+      "post_frames": [
+        53,
+        54,
+        55
+      ]
+    },
+    {
+      "trial": 8,
+      "pre_frames": [
+        56,
+        57,
+        58
+      ],
+      "post_frames": [
+        60,
+        61,
+        62
+      ]
+    },
+    {
+      "trial": 9,
+      "pre_frames": [
+        63,
+        64,
+        65
+      ],
+      "post_frames": [
+        67,
+        68,
+        69
+      ]
+    }
+  ]
+}

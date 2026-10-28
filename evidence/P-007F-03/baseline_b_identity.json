@@ -1,0 +1,27 @@
+{
+ "gate": "P-007F-03",
+ "source": "evidence/P-007F-02B-R2/ (commit 8e1b1c0) — 수정하지 않고 읽기만 함",
+ "baseline_label": "Gemini Global Workcell Baseline B (Candidate #2, ACCEPTED)",
+ "camera_identity": {
+  "device": "Orbbec Gemini 335L",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "verified_this_gate": "driver 재시작 로그에서 동일 serial/firmware 재확인(driver log, p620 2026-10-29)"
+ },
+ "approved_placement": "R2 placement_decision.json final_verdict=BASELINE_B_PLACEMENT_ACCEPTED, freeze_candidate 그대로 — 이번 gate에서 카메라 재배치 없음(camera_relocation_this_gate=0)",
+ "camera_resolution": {"color": {"width": 1280, "height": 720}, "depth": {"width": 848, "height": 480}},
+ "rgb_depth_configuration": "color rgb8 1280x720@30fps MJPG, depth 16UC1 848x480@30fps Y16 — R1/R2와 동일 driver 설정(gemini_330_series.launch.py 기본값)",
+ "robot_roi": {"x": 595, "y": 90, "width": 210, "height": 255, "source": "R2 roi_measurements.json 그대로 재사용"},
+ "arm2_roi": {"x": 650, "y": 220, "width": 120, "height": 70, "source": "R2 roi_measurements.json 그대로 재사용"},
+ "workspace_roi": {"x": 180, "y": 350, "width": 720, "height": 300, "source": "R2 roi_measurements.json 그대로 재사용"},
+ "static_baseline_r2": {"whole_frame_mean_abs_diff": 2.554, "robot_roi_mean_abs_diff": 3.572, "verdict": "STATIC_BASELINE_STABLE"},
+ "current_session_freeze_check": {
+  "whole_frame_mean_abs_diff_vs_r2": 2.838,
+  "robot_roi_mean_abs_diff_vs_r2": 4.582,
+  "global_phase_correlation_shift_px": [-0.1154, -0.0347],
+  "phase_correlation_response": 1.0302,
+  "verdict": "BASELINE_B_UNCHANGED — ABORT_BASELINE_B_CHANGED 트리거 없음(static_reference_analysis.md)"
+ },
+ "robot_motion_this_gate": 0,
+ "camera_relocation_this_gate": 0
+}

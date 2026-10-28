@@ -1,0 +1,7 @@
+PASS PF03-TP-direct_call hits=[('attr', 'Arm_serial_servo_write', 1)]
+PASS PF03-TP-ref_then_call hits=[('attr', 'Arm_serial_servo_write', 1)]
+PASS PF03-REAL-p007f_03_capture_static.py-forbidden_api hits=[]
+PASS PF03-REAL-p007f_03_capture_static.py-forbidden_substring hits=[]
+PASS PF03-REAL-p007f_03_visual_analysis.py-forbidden_api hits=[]
+PASS PF03-REAL-p007f_03_visual_analysis.py-forbidden_substring hits=[]
+전체 6건 PASS — hardware API 참조 0건 확인
