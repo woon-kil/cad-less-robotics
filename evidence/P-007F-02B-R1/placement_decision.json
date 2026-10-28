@@ -1,0 +1,46 @@
+{
+ "gate": "P-007F-02B-R1",
+ "baseline_label": "Baseline B Candidate",
+ "baseline_a_preserved": "기존 Gemini evidence(P-003/P-004/P-006/P-006A/P-006C* 등) 수정·무효화 없음 — 전부 Baseline A(historical)로 보존",
+ "robot_motion_this_gate": 0,
+ "dofbot_commands_this_gate": 0,
+ "camera_sessions": 1,
+ "camera_relocation_this_gate": 0,
+
+ "camera_angle": "UNKNOWN / visually oblique — extrinsic calibration 전까지 수치화하지 않음(§15 지시). 정성적으로는 상당히 가파른(거의 top-down에 가까운) 하향 시점으로 보임(pointcloud_sanity.md 근거)",
+
+ "external_witness_independence": {
+  "verdict": "INDEPENDENT_EXTERNAL_VISION_WITNESS",
+  "basis": "Gemini 335L 은 p620 호스트에 연결된 고정 workcell 카메라로, 로봇(Jetson 제어)에 물리적으로 부착되지 않았고 stationary support(책상/선반, evidence/P-006/camera-target/requirement-redesign-r1/sensor-role.md 의 기존 역할 정의와 일치)에 고정되어 있다. DaBai(eye-in-hand, Jetson 부착)와 센서 채널·호스트·마운트 전부 분리됨"
+ },
+
+ "static_baseline_stability": {
+  "verdict": "STATIC_BASELINE_STABLE",
+  "method": "로봇 무변동 상태에서 연속 12프레임 중 인접 11쌍의 grayscale mean absolute pixel diff 계산(numpy, 전체 프레임 + robot ROI 각각)",
+  "whole_frame_mean_abs_diff": {"mean": 2.2326, "max": 2.2388, "min": 2.2224},
+  "robot_roi_mean_abs_diff": {"mean": 3.4965, "max": 3.562, "min": 3.426},
+  "note": "11개 프레임쌍 전부 좁은 범위(전체 ~2.22-2.24, robot ROI ~3.43-3.56) 안에 있고 급격한 outlier 없음 — jitter 가 일관되게 낮고 안정적"
+ },
+
+ "robot_coverage_summary": "base→end-effector 프레임 내 확보(robot_visibility.md), 다만 중간 링크(Arm1-Arm4)는 self-overlap으로 개별 구분 어려움",
+ "arm2_witness_verdict": "ARM2_WITNESS_MARGINAL (arm2_witness_analysis.md)",
+ "workspace_coverage_verdict": "확보 — robot close-up 치우침 없음(workcell_coverage.md)",
+ "depth_quality_verdict": "사용 가능 — workspace/table ROI 96.6% valid, robot ROI 77.4% valid, 양쪽 모두 정상 범위(depth_stats.json)",
+ "occlusion_verdict": {"self_occlusion": "HIGH", "robot_to_workspace": "LOW", "workspace_to_robot": "ACCEPTABLE"},
+ "frame_margin_concern": "top_margin=85px(11.8%) 만 타이트 — roi_measurements.json",
+
+ "🔴 final_verdict": "BASELINE_B_PLACEMENT_NEEDS_MINOR_ADJUSTMENT",
+ "verdict_reasoning": "robot coverage·workspace coverage·depth 품질·external witness independence·baseline stability 는 전부 양호하거나 수용 가능. 유일한 구조적 약점은 Arm2 witness suitability(MARGINAL, self-occlusion HIGH)로, 현재 시야각이 지나치게 가파른 하향이라 Arm2 의 pitch 평면과 카메라 시선축이 가까워 foreshortening + 링크간 self-overlap 이 생긴다. 이는 완전 거부(FAIL) 사유가 아니라 시야각을 소폭 조정하면 개선 가능한 종류의 문제로 판단한다",
+ "adjustment_direction": [
+  "REDUCE_DOWNWARD_TILT — 현재보다 덜 가파르게(더 수평에 가깝게) 기울여, Arm2 pitch 평면이 image plane 에 더 가깝게 놓이도록 한다. 정확한 각도·거리 수치는 제시하지 않는다(증거 없이 임의 수치화 금지, §15/§11 지시) — '얼마나'는 재검수 후 운영자가 소폭씩 조정하며 이 gate 의 재캡처로 확인하는 것을 권장",
+  "참고(필수 아님): top_margin 이 85px 로 타이트한데, REDUCE_DOWNWARD_TILT 조정이 일반적으로 로봇을 프레임 중앙 쪽으로 이동시키는 효과도 겸할 수 있어 이 margin 문제도 함께 완화될 가능성이 있다 — 별도의 독립적 조정으로 요구하지 않는다"
+ ],
+ "not_to_be_confused_with": [
+  "camera↔robot calibration 완료 아님",
+  "absolute robot pose 측정 가능 아님",
+  "Arm2 physical motion 검증 완료 아님(실제 motion 0회)",
+  "P006D 완료 아님",
+  "RGB-D geometry regression 완료 아님",
+  "기존 extrinsic 을 이 새 위치에 재사용하지 않음(물리적으로 이동했으므로)"
+ ]
+}

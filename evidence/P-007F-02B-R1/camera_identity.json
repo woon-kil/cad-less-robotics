@@ -1,0 +1,53 @@
+{
+ "gate": "P-007F-02B-R1",
+ "captured_at_host": "p620 (jetson 아님 — Gemini 335L은 p620에 연결된 고정 workcell 카메라)",
+ "capture_method": "ros2 launch orbbec_camera gemini_330_series.launch.py (기존 docker 컨테이너 bytesize-robotics-camera, 기존 scripts/run_humble_camera.sh 재사용) + scripts/p006c_capture_streams.py 를 출력 경로만 scratch 디렉터리로 바꿔 재사용(알고리즘/파싱 로직 수정 없음)",
+ "device": {
+  "model_log": "Orbbec Gemini 335L",
+  "serial_number": "CP263630009D",
+  "firmware_version": "1.4.60",
+  "ros_wrapper_version": "2.10.6",
+  "sdk_version": "2.10.6",
+  "hardware_version": "0.1",
+  "usb_connect_type": "USB3.2",
+  "device_unique_id": "2-1-16 (USB bus/port 기준, USB 재연결 시 device number 는 바뀔 수 있음 — 설치 중 002/014→002/016→002/017 로 변동 관측, 포트 자체는 동일 2-1)"
+ },
+ "lsusb_confirmation": "Bus 002: ID 2bc5:0804 Orbbec 3D Technology International, Inc Orbbec Gemini 335L — evidence/P-006/hardware-inventory.txt 와 동일 vid:pid(2bc5:0804), P-007E-R2-R1/sensor_inventory.json 의 p620 lsusb_cameras 항목과 일치. 다른 Orbbec(DaBai, Jetson 소속)과 혼동하지 않음 확인 — DaBai 는 Jetson(192.168.0.94)에만 연결되어 있고 p620 USB 목록에는 Gemini 335L(2bc5:0804) 외 다른 Orbbec 제품 없음",
+ "streams": {
+  "color": {
+   "topic": "/camera/color/image_raw",
+   "resolution": "1280x720",
+   "fps_from_launch_log": 30,
+   "format_from_launch_log": "MJPG",
+   "encoding_in_capture": "rgb8",
+   "frame_id": "camera_color_optical_frame",
+   "k_matrix": [610.5073852539062, 0.0, 641.7918090820312, 0.0, 610.349853515625, 364.4433288574219, 0.0, 0.0, 1.0],
+   "distortion_model": "rational_polynomial"
+  },
+  "depth": {
+   "topic": "/camera/depth/image_raw",
+   "resolution": "848x480",
+   "fps_from_launch_log": 30,
+   "format_from_launch_log": "Y16",
+   "encoding_in_capture": "16UC1",
+   "frame_id": "camera_depth_optical_frame",
+   "k_matrix": [410.4136657714844, 0.0, 423.66876220703125, 0.0, 410.4136657714844, 240.9937744140625, 0.0, 0.0, 1.0],
+   "depth_units": "밀리미터로 추정(픽셀값 범위 0~1687 이 작업거리 0.3~1.7m 와 직접 대응 — Orbbec ROS wrapper 의 표준 16UC1=mm 관례와 일치). camera_info 토픽에 별도 depth_scale 필드가 없어 이 캡처만으로 공식 선언값을 독립 확인하지는 못함 — 추정이라고 명시"
+  }
+ },
+ "timestamp_availability": "color_stamp/depth_stamp 모두 ROS header.stamp 로 제공됨, 12개 프레임 모두 stamp_delta_sec <= 0.0334s(frame sync 활성화 로그와 일치) — evidence/P-007F-02B-R1/frames/*.json 전체 참조",
+ "T_depth_color": {
+  "parent": "camera_depth_optical_frame",
+  "child": "camera_color_optical_frame",
+  "translation_m": [0.02380398750305176, -3.868519095704542e-06, -0.00024192810058594472],
+  "quaternion_xyzw": [0.00023462735471305177, 0.0013354254224321462, -0.004136464569786975, 0.9999905255800219],
+  "note": "~23.8mm 베이스라인, Gemini 335L 공개 스펙과 상식적으로 부합(정밀 공식 스펙 대조는 하지 않음)"
+ },
+ "capture_budget": {
+  "frames_captured": 12,
+  "camera_sessions": 1,
+  "robot_commands_sent": 0,
+  "robot_motion": 0,
+  "dofbot_touched": false
+ }
+}

@@ -1,0 +1,30 @@
+{
+ "gate": "P-007F-02B-R1",
+ "source_frame": "frames/0000-depth.png (848x480, 16UC1)",
+ "method": "numpy 로 직접 로드(사람이 작성한 1회성 분석, 커밋된 helper 스크립트 없음 — 이번 gate 는 카메라 캡처 외 hardware I/O 가 전혀 없는 offline 분석이라 'hardware helper 작성 금지' 와 무관하지만, 재사용되는 별도 코드 파일을 만들지 않고 분석만 수행)",
+ "overall": {
+  "valid_depth_ratio": 0.8476341391509434,
+  "hole_ratio": 0.15236586084905657,
+  "median_depth_mm": 680.0,
+  "min_depth_mm": 0,
+  "max_depth_mm": 1687,
+  "p5_depth_mm": 524.0,
+  "p95_depth_mm": 1456.0
+ },
+ "roi_breakdown": {
+  "🔴 method_note": "ROI 는 color 이미지 좌표(roi_measurements.json)에서 color→depth 해상도 비율(848/1280=0.6625, 480/720=0.6667)로 단순 비례 변환한 근사치다 — 정식 depth-color extrinsic/intrinsic 정합을 쓰지 않았다(명시적 근사, 자동 정합 아님)",
+  "robot_roi_depth_coords": {"rows": [13, 233], "cols": [364, 643]},
+  "robot_roi": {"valid_depth_ratio": 0.7738677093515803, "median_depth_mm": 811.0},
+  "workspace_table_roi_depth_coords": {"rows": [250, 470], "cols": [100, 750]},
+  "workspace_table_roi": {"valid_depth_ratio": 0.9659090909090909, "median_depth_mm": 646.0, "z_std_m_within_roi": 0.055456687,
+                           "z_std_note": "넓은 ROI 가 경사진 작업면 전체를 가로질러서 생기는 깊이 변화(오블리크 뷰에서 테이블이 멀어지며 깊이가 증가)이지 노이즈가 아니다 — 국소 평탄성 검사가 아니라 ROI 전체 분산임을 명시"}
+ },
+ "pointcloud_unprojection": {
+  "method": "depth_info K(fx,fy,cx,cy) 로 직접 역투영(픽셀→카메라 depth frame XYZ), Open3D 미사용(가용성 확인 안 함 — numpy 로 충분)",
+  "point_count": 345021,
+  "x_range_m": [-0.6656159441277525, 1.5096189200268708],
+  "y_range_m": [-0.7718841287100915, 0.6524076221508301],
+  "z_range_m": [0.474, 1.687]
+ },
+ "interpretation": "작업영역(workspace/table ROI)의 depth 품질이 로봇 ROI보다 더 양호(96.6% vs 77.4% valid) — robot ROI 의 낮은 비율은 로봇 금속/반사 표면과 좁은 틈새(그리퍼 손가락 사이 등)에서 흔한 depth dropout 패턴과 일치, 비정상 신호로 보지 않음"
+}

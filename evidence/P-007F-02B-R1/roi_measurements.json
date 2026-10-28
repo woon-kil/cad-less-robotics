@@ -1,0 +1,24 @@
+{
+ "gate": "P-007F-02B-R1",
+ "🔴 method": "manual_approximation — 자동 segmentation 이 아니다. roi_grid_overlay.png(100px 격자)와 robot_closeup.png(3x 업스케일 크롭)를 직접 눈으로 보고 픽셀 좌표를 추정했다. 숫자는 근사치이며 ±20-30px 수준의 눈대중 오차를 가정해야 한다",
+ "image_size": {"width": 1280, "height": 720},
+ "robot_bbox": {"x": 640, "y": 85, "width": 200, "height": 250,
+               "area_ratio_of_frame": 0.0543,
+               "note": "base 흰색 마운트판부터 그리퍼/손목 클러스터 상단까지. y=55~150 부근의 검은 사각 물체(공유기로 추정되는 전자기기, 벽쪽 선반 위)는 로봇에 포함하지 않았다"},
+ "arm2_bbox": {"x": 660, "y": 140, "width": 130, "height": 120,
+              "area_ratio_of_frame": 0.0169,
+              "note": "🔴 Arm1/Arm2/Arm3 이 이 시야각에서 서로 명확히 분리되지 않아(강한 self-overlap) 이 bbox 는 'Arm2 가 있을 것으로 추정되는 영역'일 뿐 Arm2 단독 윤곽이 아니다 — arm2_witness_analysis.md 참조"},
+ "workspace_bbox": {"x": 555, "y": 330, "width": 420, "height": 370,
+                    "area_ratio_of_frame": 0.1686,
+                    "note": "로봇 전면의 개방 작업영역 — checkerboard calibration target 이 이 영역 안에 있음(향후 shoe/last 배치 후보 영역)"},
+ "table_bbox": {"x": 555, "y": 140, "width": 425, "height": 560,
+               "area_ratio_of_frame": 0.2579,
+               "note": "로봇 footprint 포함 전체 나무 작업대 표면"},
+ "frame_margins_px": {
+  "robot_bbox_top_margin": 85,
+  "robot_bbox_bottom_margin": 385,
+  "robot_bbox_left_margin": 640,
+  "robot_bbox_right_margin": 440,
+  "🔴 concern": "top_margin=85px(frame height 720px 의 11.8%) 만 상대적으로 타이트하다. 나머지 세 방향은 여유가 크다. 그리퍼/손목이 향후 더 위로 스윙하면 margin 이 줄어들 수 있음 — placement_decision.json 의 조정 권고 근거"
+ }
+}
