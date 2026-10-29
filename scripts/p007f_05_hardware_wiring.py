@@ -221,10 +221,36 @@ def _load_window_mean_gray(local_dir):
 def build_real_callables(local_run_dir, frame_count=5):
     """execute_p007f05() 에 그대로 주입할 콜백 dict. §34 에서는 이 함수가 실제
     execute_p007f05() 에 주입된 채로 호출되지 않는다 — 준비 단계 산출물로만
-    존재한다(이 함수가 끝까지 engage 되는 것은 실제 P-007F-05 실행 시점뿐)."""
+    존재한다(이 함수가 끝까지 engage 되는 것은 실제 P-007F-05 실행 시점뿐).
+
+    🔴 2026-10-29 실측 버그(첫 실제 §36 시도에서 발견) — 이 함수가 반환하는
+    `gemini_identity_check_fn`/`capture_*_window_fn` 들은 Gemini driver 가 이미
+    돌고 있다고 가정했으나, **아무도 `start_gemini_driver()` 를 호출하지
+    않았다**. `gemini_identity_check()` 는 고정 로그 파일(`/tmp/p007f05_gemini_driver.log`)
+    을 grep 하는데, driver 가 정지된 뒤에도 이전 실행의 **stale 로그가 그대로
+    남아** `identity_valid=True` 를 거짓으로 반환했고(driver 꺼진 상태를
+    "확인됨"으로 오판), 그 다음 실제 캡처가 빈 이미지로 실패했다 — write 이전
+    예외로 안전하게 멈췄지만(`motion_commands_sent=0`), identity check 자체가
+    "라이브 상태"가 아니라 "과거 로그 파일 존재"를 확인하는 구조적 결함이었다.
+    해결: 이 함수가 반환하는 첫 Gemini 관련 콜백(`gemini_identity_check_fn`)이
+    호출될 때마다 매번 `start_gemini_driver()`(내부적으로 기존 프로세스를
+    stop 하고 재시작 — idempotent) + settle 을 먼저 수행해, 로그가 항상 **이
+    호출 시점의 실제 기동**을 반영하도록 만든다."""
     pre_local_dir_holder = {}
+    driver_started_holder = {"done": False}
+
+    def ensure_driver_fresh():
+        if not driver_started_holder["done"]:
+            start_gemini_driver()
+            time.sleep(10.0)
+            driver_started_holder["done"] = True
+
+    def gemini_identity_check_fresh():
+        ensure_driver_fresh()
+        return gemini_identity_check()
 
     def capture_pre_window_fn():
+        ensure_driver_fresh()
         rc, out, err, remote = capture_window_on_p620("pre_" + str(int(time.time())), frame_count)
         local_dir = os.path.join(local_run_dir, "pre_frames", os.path.basename(remote))
         fetch_capture_dir(remote, os.path.join(local_run_dir, "pre_frames"))
@@ -233,6 +259,7 @@ def build_real_callables(local_run_dir, frame_count=5):
         return mean, valid, "ANCHOR"
 
     def capture_post_window_fn(anchor):
+        ensure_driver_fresh()
         rc, out, err, remote = capture_window_on_p620("post_" + str(int(time.time())), frame_count)
         local_dir = os.path.join(local_run_dir, "post_frames", os.path.basename(remote))
         fetch_capture_dir(remote, os.path.join(local_run_dir, "post_frames"))
@@ -243,6 +270,7 @@ def build_real_callables(local_run_dir, frame_count=5):
         """§7 — PRE window 의 첫 프레임을 P-007F-03 reference 와 비교한다. PRE
         capture 가 아직 없으면(= capture_pre_window_fn 이 먼저 호출되지 않았으면)
         독립적으로 1프레임을 새로 받아온다."""
+        ensure_driver_fresh()
         pre_dir = pre_local_dir_holder.get("dir")
         if pre_dir is None:
             rc, out, err, remote = capture_window_on_p620("baselinecheck_" + str(int(time.time())), 1)
@@ -252,7 +280,7 @@ def build_real_callables(local_run_dir, frame_count=5):
         return baseline_b_check(sample)
 
     return {
-        "gemini_identity_check_fn": gemini_identity_check,
+        "gemini_identity_check_fn": gemini_identity_check_fresh,
         "baseline_b_check_fn": baseline_b_check_fn,
         "capture_pre_window_fn": capture_pre_window_fn,
         "capture_post_window_fn": capture_post_window_fn,
