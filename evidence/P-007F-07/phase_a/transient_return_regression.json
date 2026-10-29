@@ -1,0 +1,20 @@
+{
+ "gate": "P-007F-07 Phase A",
+ "section": "§18 critical regression",
+ "description": "PRE==POST but motion occurred in between -- the classifier MUST NOT report NO_MOTION for this case (would be the exact failure mode of the P-007F-05-style PRE/POST-only comparison).",
+ "result": {
+  "pass": true,
+  "detail": {
+   "pre_equals_post_static_comparison_would_say": "NO_CHANGE",
+   "continuous_classifier_says": {
+    "code": "M3",
+    "label": "TRANSIENT_MOTION_AND_RETURN_SUPPORTED",
+    "end_above_fraction": 0.0,
+    "up_crossings": 1,
+    "sign_reversals": 0
+   }
+  }
+ },
+ "phase_a_fails_if_this_fails": true,
+ "actual_outcome": "PASS"
+}

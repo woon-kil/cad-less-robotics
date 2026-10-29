@@ -1,0 +1,14 @@
+{
+ "call_site_count": 1,
+ "call_sites": [
+  {
+   "line": 66,
+   "inside_do_write": true,
+   "in_loop": false,
+   "in_except": false,
+   "in_finally": false,
+   "ok": true
+  }
+ ],
+ "pass": true
+}

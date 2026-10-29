@@ -1,0 +1,90 @@
+{
+ "all_pass": true,
+ "threshold_used_placeholder": 1.5,
+ "disclosure": "T=1.5 is a PLACEHOLDER for verifying classifier LOGIC only -- not a preregistered detection threshold. Real threshold set after marker static qualification (§16/§27).",
+ "results": {
+  "CASE_A_MOVE_AND_HOLD": {
+   "pass": true,
+   "detail": {
+    "code": "M2",
+    "label": "RIGID_MOTION_AND_HOLD_SUPPORTED",
+    "end_above_fraction": 1.0,
+    "up_crossings": 1,
+    "sign_reversals": 0
+   }
+  },
+  "CASE_B_TWITCH_AND_RETURN": {
+   "pass": true,
+   "detail": {
+    "code": "M3",
+    "label": "TRANSIENT_MOTION_AND_RETURN_SUPPORTED",
+    "end_above_fraction": 0.0,
+    "up_crossings": 1,
+    "sign_reversals": 0
+   }
+  },
+  "CASE_C_OSCILLATION": {
+   "pass": true,
+   "detail": {
+    "code": "M4",
+    "label": "OSCILLATION_OR_VIBRATION_SUPPORTED",
+    "end_above_fraction": 0.3333333333333333,
+    "up_crossings": 1,
+    "sign_reversals": 2
+   }
+  },
+  "CASE_D_NO_MOTION": {
+   "pass": true,
+   "detail": {
+    "code": "M1",
+    "label": "NO_EXTERNAL_MOTION_DETECTED",
+    "reason": "no frame exceeds threshold"
+   }
+  },
+  "CASE_E_DOWNSTREAM_LOCAL": {
+   "pass": true,
+   "detail": {
+    "code": "M5",
+    "label": "DOWNSTREAM_LOCAL_MOTION_SUPPORTED",
+    "reason": "primary marker stays below threshold throughout; secondary marker exceeds threshold"
+   }
+  },
+  "CRITICAL_REGRESSION_PRE_EQ_POST_TRANSIENT_DETECTED": {
+   "pass": true,
+   "detail": {
+    "pre_equals_post_static_comparison_would_say": "NO_CHANGE",
+    "continuous_classifier_says": {
+     "code": "M3",
+     "label": "TRANSIENT_MOTION_AND_RETURN_SUPPORTED",
+     "end_above_fraction": 0.0,
+     "up_crossings": 1,
+     "sign_reversals": 0
+    }
+   }
+  },
+  "MARKER_LOSS_ABORT": {
+   "pass": true,
+   "detail": {
+    "code": "MX",
+    "label": "EXPERIMENT_INVALID",
+    "reason": "INSUFFICIENT_VALID_FRAMES: 0.25 < 0.70"
+   }
+  },
+  "BACKGROUND_INSTABILITY_ABORT": {
+   "pass": true,
+   "detail": {
+    "code": "MX",
+    "label": "EXPERIMENT_INVALID",
+    "reason": "BACKGROUND_REFERENCE_UNSTABLE"
+   }
+  },
+  "THRESHOLD_FORMULA_USES_FLOOR_WHEN_SHAM_LOW": {
+   "pass": true,
+   "detail": 1.0
+  },
+  "THRESHOLD_FORMULA_USES_SHAM_WHEN_HIGHER": {
+   "pass": true,
+   "detail": 3.5
+  }
+ }
+}

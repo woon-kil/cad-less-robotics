@@ -1,0 +1,85 @@
+{
+ "results": {
+  "execution_py": {
+   "path": "scripts/p007f_07_execution.py",
+   "imports": [
+    "ast",
+    "hashlib",
+    "json",
+    "os",
+    "shutil",
+    "sys",
+    "tempfile",
+    "time"
+   ],
+   "forbidden_imports_found": [],
+   "forbidden_calls_found": [],
+   "pass": true
+  },
+  "marker_detector_py": {
+   "path": "scripts/p007f_07_marker_detector.py",
+   "imports": [
+    "cv2",
+    "math",
+    "numpy"
+   ],
+   "forbidden_imports_found": [],
+   "forbidden_calls_found": [],
+   "pass": true
+  },
+  "trajectory_classifier_py": {
+   "path": "scripts/p007f_07_trajectory_classifier.py",
+   "imports": [
+    "math"
+   ],
+   "forbidden_imports_found": [],
+   "forbidden_calls_found": [],
+   "pass": true
+  },
+  "synthetic_tests_py": {
+   "path": "scripts/p007f_07_synthetic_tests.py",
+   "imports": [
+    "json",
+    "os",
+    "p007f_07_trajectory_classifier",
+    "sys"
+   ],
+   "forbidden_imports_found": [],
+   "forbidden_calls_found": [],
+   "pass": true
+  },
+  "continuous_capture_py": {
+   "path": "scripts/p007f_07_continuous_capture.py",
+   "imports": [
+    "json",
+    "numpy",
+    "pathlib",
+    "rclpy",
+    "sensor_msgs",
+    "struct",
+    "sys",
+    "time",
+    "zlib"
+   ],
+   "forbidden_imports_found": [],
+   "forbidden_calls_found": [],
+   "pass": true
+  },
+  "jetson_controller_single_write": {
+   "call_site_count": 1,
+   "call_sites": [
+    {
+     "line": 66,
+     "inside_do_write": true,
+     "in_loop": false,
+     "in_except": false,
+     "in_finally": false,
+     "ok": true
+    }
+   ],
+   "pass": true
+  }
+ },
+ "pass": true,
+ "robot_command_count": 0
+}
