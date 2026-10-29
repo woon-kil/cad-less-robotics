@@ -87,6 +87,7 @@ ros2 launch robot_controller system_bringup.launch.py \
 
 ## 참고
 
+- 에이전트 운영 원칙은 `AGENTS.md`의 Evidence-First Engineering이다.
 - [MoveIt 2 Humble Move Group C++ Interface](https://moveit.picknik.ai/humble/doc/examples/move_group_interface/move_group_interface_tutorial.html)
 - [MoveGroupInterface Humble API](https://moveit.picknik.ai/humble/api/html/classmoveit_1_1planning__interface_1_1MoveGroupInterface.html)
 - [Yahboom DOFBOT Pro MoveIt2 Configuration](https://www.yahboom.net/public/upload/upload-html/1768547833/MoveIt2%20Configuration.html)
