@@ -1,0 +1,29 @@
+{
+ "dictionary": "DICT_4X4_50",
+ "marker_id": 0,
+ "marker_id_source": "scripts/p007f_07_marker_detector.py PRIMARY_MARKER_ID (Phase A preregistered, reused unmodified)",
+ "black_square_physical_size_mm": 30.0,
+ "pdf_path": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/marker_print/aruco_4x4_50_id0_30mm_A4.pdf",
+ "png_path": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/marker_print/aruco_4x4_50_id0_30mm.png",
+ "pdf_mediabox_pt": [
+  [
+   0.0,
+   0.0,
+   595.2755905512,
+   841.8897637795
+  ]
+ ],
+ "pdf_mediabox_expected_pt": [
+  0.0,
+  0.0,
+  595.28,
+  841.89
+ ],
+ "pdf_mediabox_matches_a4": true,
+ "png_verify_dpi": 300,
+ "png_measured_marker_width_mm": 29.972,
+ "png_measured_marker_height_mm": 29.972,
+ "geometry_verification_passed": true,
+ "robot_command_count": 0,
+ "servo_write_count": 0
+}
