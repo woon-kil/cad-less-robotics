@@ -1,0 +1,97 @@
+{
+ "source_frame": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/marker_setup_capture/raw_frames/marker_setup_capture_1793278747/0004-color.png",
+ "closeup_box_xyxy": [
+  640,
+  80,
+  820,
+  300
+ ],
+ "closeup_scale": 6,
+ "arm2_rotation_axis_x": 712,
+ "arm3_boundary_y": 155,
+ "candidates": {
+  "M1": {
+   "box_xywh": [
+    675,
+    255,
+    65,
+    30
+   ],
+   "physical_part": "Joint1 rotating disc/horn top surface (established ARM2_ROI region, P-007F-03~06 witness)",
+   "rigid_with_arm2": "YES",
+   "rigid_with_arm2_note": "이 영역 자체가 ARM2_ROI로 정의된 구조물이다 -- 정의상 YES",
+   "surface_shape": "FLAT",
+   "approx_available_width_mm": 72.8,
+   "approx_available_height_mm": 33.6,
+   "camera_view_angle": "steep downward oblique (Baseline B fixed workcell view, not corrected for foreshortening)",
+   "expected_occlusion": "cables/center hub visible in some frames",
+   "direct_marker_attachment": "YES",
+   "largest_directly_attachable_marker_mm": 30,
+   "depth_sample": {
+    "sample_color_px": [
+     707,
+     268
+    ],
+    "local_depth_mm_median": 684.0,
+    "local_depth_valid_samples": 224,
+    "mm_per_px": 1.1203795670965202
+   }
+  },
+  "M2": {
+   "box_xywh": [
+    745,
+    95,
+    55,
+    55
+   ],
+   "physical_part": "cream/white rectangular bracket panel above the shoulder-joint cylinder (DaBai 방향 상단 브래킷)",
+   "rigid_with_arm2": "UNCERTAIN",
+   "rigid_with_arm2_note": "M1보다 최소 1개 이상 상위 joint seam(ARM3_BOUNDARY_Y 선) 너머에 있다 -- Arm2 단독 명령 실험(§single-motion, MAX_MOTION_COMMANDS=1)에서는 다른 servo가 움직이지 않으므로 witness로 유효하지만, DOFBOT 자체 joint 번호 체계와 이 프로젝트의 'Arm2'(servo_id=2) 대응관계는 P-007F-01 READBACK_SEMANTICS_UNRESOLVED 로 미해결 상태라 구조적으로 Arm2 '자신의 몸체'인지는 단정하지 않는다.",
+   "surface_shape": "FLAT",
+   "approx_available_width_mm": 52.3,
+   "approx_available_height_mm": 52.3,
+   "camera_view_angle": "steep downward oblique (Baseline B fixed workcell view, not corrected for foreshortening)",
+   "expected_occlusion": "minimal in this frame, not verified across full range of motion",
+   "direct_marker_attachment": "YES",
+   "largest_directly_attachable_marker_mm": 50,
+   "depth_sample": {
+    "sample_color_px": [
+     772,
+     122
+    ],
+    "local_depth_mm_median": 580.0,
+    "local_depth_valid_samples": 342,
+    "mm_per_px": 0.9500294574795055
+   }
+  },
+  "M3": {
+   "box_xywh": [
+    697,
+    123,
+    28,
+    17
+   ],
+   "physical_part": "shoulder-joint cylindrical servo body의 라벨 스티커 부착면(밀링된 평평한 facet으로 추정)",
+   "rigid_with_arm2": "UNCERTAIN",
+   "rigid_with_arm2_note": "M2와 동일한 이유로 UNCERTAIN. 또한 몸체 자체는 원통형(CURVED)이라 marker 부착면은 스티커가 붙은 평평한 facet 부분으로 한정된다.",
+   "surface_shape": "FLAT",
+   "approx_available_width_mm": 24.8,
+   "approx_available_height_mm": 15.1,
+   "camera_view_angle": "steep downward oblique (Baseline B fixed workcell view, not corrected for foreshortening)",
+   "expected_occlusion": "minimal in this frame, not verified across full range of motion",
+   "direct_marker_attachment": "NO",
+   "largest_directly_attachable_marker_mm": "NONE_OF_TESTED_SIZES_FIT",
+   "depth_sample": {
+    "sample_color_px": [
+     711,
+     131
+    ],
+    "local_depth_mm_median": 541.0,
+    "local_depth_valid_samples": 231,
+    "mm_per_px": 0.886148166373125
+   }
+  }
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0
+}
