@@ -1,0 +1,24 @@
+servo ID2 (Jetson Arm_Lib channel, commanded 152/154/151 throughout P-007F-04/05)
+  |
+  v  (scripts/p007e_r2r4_fk.py full_angles(): base["Arm2_Joint"] = id2_lib_deg)
+URDF joint: Arm2_Joint  (type=revolute, axis_local=1 0 0, parent=Arm1_Link)
+  |
+  v
+child link: Arm2_Link  (mesh bbox z-extent=107.0mm)
+  |
+  v  URDF joint: Arm3_Joint (parent=Arm2_Link, child=Arm3_Link)
+child link: Arm3_Link  (mesh bbox z-extent=107.0mm, ~same size as Arm2_Link)
+  |
+  v  URDF joint: Arm4_Joint -> Arm4_Link -> (DaBai_DCW2_Joint fixed) -> DaBai_DCW2_Link
+  v  URDF joint: Arm5_Joint -> Arm5_Link -> grip_joint/llink*/rlink* -> Gripping_point_Link
+  |
+  v
+M2 physical structure (cream/white bracket, close-up box_xywh=[745, 95, 55, 55])
+  == located at/near the Arm2_Link -> Arm3_Joint -> Arm3_Link transition
+  == both Arm2_Link and Arm3_Link are in RIGID_MOVING_LINKS -> downstream regardless of exact boundary
+
+full downstream link set (independently derived from parent/child graph):
+  Arm2_Link, Arm3_Link, Arm4_Link, Arm5_Link, DaBai_DCW2_Link, Gripping_point_Link, llink1, llink2, llink3, rlink1, rlink2, rlink3
+
+corollary: Arm1_Link (M1/disc) is NOT in this set -- it is the PARENT of Arm2_Joint,
+  i.e. FIXED under ID2-only rotation (moves only under Arm1_Joint).

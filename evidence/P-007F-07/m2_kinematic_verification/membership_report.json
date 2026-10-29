@@ -1,0 +1,167 @@
+{
+ "servo_id2_to_urdf_joint": "Arm2_Joint",
+ "servo_id2_mapping_source": "scripts/p007e_r2r4_fk.py full_angles() literal source (grep-confirmed, P-007E-R2-R4 validated module, reused unmodified, SHA-pin)",
+ "joint_parent_link": "Arm1_Link",
+ "joint_child_link": "Arm2_Link",
+ "joint_axis_local": "1 0 0",
+ "downstream_links_independently_derived": [
+  "Arm2_Link",
+  "Arm3_Link",
+  "Arm4_Link",
+  "Arm5_Link",
+  "DaBai_DCW2_Link",
+  "Gripping_point_Link",
+  "llink1",
+  "llink2",
+  "llink3",
+  "rlink1",
+  "rlink2",
+  "rlink3"
+ ],
+ "fk_module_rigid_moving_links": [
+  "Arm2_Link",
+  "Arm3_Link",
+  "Arm4_Link",
+  "Arm5_Link",
+  "DaBai_DCW2_Link",
+  "Gripping_point_Link"
+ ],
+ "fk_module_fixed_links": [
+  "Arm1_Link",
+  "base_link"
+ ],
+ "cross_check_rigid_moving_links_subset_of_independent_downstream": true,
+ "cross_check_note": "독립 재계산(parent/child 그래프)은 그리퍼 손가락 link(rlink/llink 계열)도 topology상 downstream으로 포함하지만, FK 모듈의 RIGID_MOVING_LINKS는 grip_joint 등 자체 DOF를 추가로 갖는 그 link들을 의도적으로 제외한 더 좁은 부분집합이다 -- 모순이 아니라 서로 다른 질문(순수 rigid-body 여부 vs topology상 downstream 여부). cross_check는 'FK 모듈이 rigid라 선언한 link는 전부 내 독립 downstream 집합의 부분집합이어야 한다'는 올바른 불변식으로 검증했다.",
+ "links_downstream_but_excluded_from_fk_module_rigid_set": [
+  "llink1",
+  "llink2",
+  "llink3",
+  "rlink1",
+  "rlink2",
+  "rlink3"
+ ],
+ "mesh_bbox_profile_mm": {
+  "base_link": {
+   "bbox_min_mm": [
+    -92.5,
+    -221.5,
+    -15.0
+   ],
+   "bbox_max_mm": [
+    92.45,
+    78.5,
+    97.8
+   ],
+   "size_mm": [
+    184.95,
+    300.0,
+    112.8
+   ]
+  },
+  "Arm1_Link": {
+   "bbox_min_mm": [
+    -27.45,
+    -27.49,
+    0.0
+   ],
+   "bbox_max_mm": [
+    27.49,
+    27.45,
+    43.5
+   ],
+   "size_mm": [
+    54.94,
+    54.94,
+    43.5
+   ]
+  },
+  "Arm2_Link": {
+   "bbox_min_mm": [
+    -23.8,
+    -17.6,
+    -13.65
+   ],
+   "bbox_max_mm": [
+    23.8,
+    11.46,
+    93.35
+   ],
+   "size_mm": [
+    47.6,
+    29.06,
+    107.0
+   ]
+  },
+  "Arm3_Link": {
+   "bbox_min_mm": [
+    -23.85,
+    -17.6,
+    -13.65
+   ],
+   "bbox_max_mm": [
+    23.75,
+    11.46,
+    93.33
+   ],
+   "size_mm": [
+    47.6,
+    29.06,
+    106.98
+   ]
+  },
+  "Arm4_Link": {
+   "bbox_min_mm": [
+    -18.1,
+    -13.65,
+    -32.4
+   ],
+   "bbox_max_mm": [
+    17.02,
+    76.67,
+    17.6
+   ],
+   "size_mm": [
+    35.12,
+    90.32,
+    50.0
+   ]
+  },
+  "DaBai_DCW2_Link": {
+   "bbox_min_mm": [
+    -45.0,
+    -30.84,
+    -35.0
+   ],
+   "bbox_max_mm": [
+    44.82,
+    12.65,
+    12.46
+   ],
+   "size_mm": [
+    89.82,
+    43.49,
+    47.46
+   ]
+  }
+ },
+ "m2_closeup_box_xywh_px": [
+  745,
+  95,
+  55,
+  55
+ ],
+ "m2_structural_correspondence_note": "Arm1_Link z-extent=43.5mm(짧은 disc)와 Arm2_Link/Arm3_Link z-extent=107.0mm/107.0mm(거의 동일한 긴 원통형)를 Gemini close-up에서 관측된 '짧은 흰색 디스크 1개 + 그 위 긴 검은 원통형 몸체 2개(거의 동일한 외관)' 구조와 대조. M2(cream bracket)는 이 두 긴 원통형 몸체 중 아래쪽(Arm2_Link로 추정)이 끝나고 위쪽(Arm3_Link로 추정) 몸체로 전환되는 지점 부근에 위치 -- 즉 Arm2_Link 말단 또는 Arm3_Link 시작부 중 하나이며, 두 가능성 모두 Arm2_Joint 의 downstream(RIGID_MOVING_LINKS)에 포함된다. M1(disc top)은 Arm1_Link z-extent(43.5mm, 디스크 형태)와 정확히 일치 -- 즉 M1 은 FIXED_LINKS 에 속해 ID2 단독 회전으로는 움직이지 않는다는 corollary 가 도출된다(§7 참조, 이번 작업에서 새로 발견됨).",
+ "m2_candidate_links": [
+  "Arm2_Link",
+  "Arm3_Link"
+ ],
+ "m2_candidate_links_both_downstream_of_arm2_joint": true,
+ "m1_corollary_fixed_link": "Arm1_Link",
+ "m1_corollary_in_fixed_links": true,
+ "M2_DOWNSTREAM_OF_ID2": "YES",
+ "fk_module_sha256": "a4e9d2d7891597a6bfa62c8ca87303aeab28ba0a784f23f2640ca8dc145622cb",
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "m2_mapping_png": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/m2_kinematic_verification/m2_mapping.png",
+ "closeup_module_sha256": "1eb150ded312796cebb50f3a4357e7bc81946a3aa757eba215c5ae15134e68bf"
+}
