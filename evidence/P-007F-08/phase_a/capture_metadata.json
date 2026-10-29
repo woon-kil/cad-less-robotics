@@ -1,0 +1,132 @@
+{
+ "duration_s": 25.955691618,
+ "frame_count": 228,
+ "fps": 8.786488265892007,
+ "color_sha256_of_sha256": "f09632534351c20bf8a8d87c6b37e37bcecb4579ac8e9c766897db6fa2594c87",
+ "command_events": {
+  "clock_domain": "host_monotonic_ns",
+  "events": []
+ },
+ "identity": {
+  "identity_valid": true,
+  "serial_found": true,
+  "firmware_found": true,
+  "log_excerpt": "[component_container-1] [INFO] [1793289433.021816622] [camera.camera]: Set firmware log to OFF\n[component_container-1] [INFO] [1793289433.338973599] [camera.camera]: Serial number: CP263630009D\n[component_container-1] [INFO] [1793289433.338985541] [camera.camera]: Firmware version: 1.4.60\n[component_container-1] [INFO] [1793289433.339100057] [camera.camera]: ISP firmware version: 20241125\n"
+ },
+ "baseline_b": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 10.184981553819444,
+  "global_phase_correlation_shift_px": [
+   -0.42806813956792666,
+   -0.13921822151206698
+  ],
+  "phase_correlation_response": 0.6223356478744083,
+  "shift_magnitude_px": 0.4501378070259472,
+  "max_allowed_px": 1.0
+ },
+ "m2_roi_vs_historical": {
+  "dx": -9.191606856973067e-05,
+  "dy": 0.16281894733184998,
+  "magnitude": 0.16281897327650546,
+  "response": 0.986386374367608
+ },
+ "m2_initial_features": 13,
+ "static_initial_features": 18,
+ "classification": "NO_MOTION",
+ "false_positive_frames": [],
+ "static_guard_runs": [],
+ "checks": {
+  "baseline_b_unchanged": true,
+  "m2_roi_visible": true,
+  "static_reference_valid": true,
+  "m2_initial_features": true,
+  "m2_survival": true,
+  "static_survival": true,
+  "phase_correlation_valid": true,
+  "duration": true,
+  "threshold_valid": true,
+  "false_positive_count_zero": true,
+  "static_guard_clear": true,
+  "classified_no_motion": true,
+  "command_events_empty": true,
+  "identity_valid": true
+ },
+ "ready_and_armed": true,
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "phase_b_executed": false,
+ "statistics": {
+  "m2_raw": {
+   "n": 228,
+   "mean": 0.013900352441633405,
+   "std": 0.007822205499617936,
+   "median": 0.012160639416179484,
+   "min": 0.0,
+   "max": 0.038703219879120336,
+   "p95": 0.028531480530590517
+  },
+  "static": {
+   "n": 228,
+   "mean": 0.075336501367138,
+   "std": 0.030760850545913928,
+   "median": 0.07571899522445227,
+   "min": 0.0,
+   "max": 0.1593020216256365,
+   "p95": 0.1267735062043644
+  },
+  "relative": {
+   "n": 228,
+   "mean": 0.06741428611371546,
+   "std": 0.029298728895847198,
+   "median": 0.06456359411409054,
+   "min": 0.0,
+   "max": 0.15544773087314892,
+   "p95": 0.11566754152142303
+  },
+  "m2_phase": {
+   "n": 228,
+   "mean": 0.03992259810874182,
+   "std": 0.020676775068025746,
+   "median": 0.038538147936927926,
+   "min": 0.0,
+   "max": 0.10485909148874568,
+   "p95": 0.07710272448757491
+  },
+  "static_phase": {
+   "n": 228,
+   "mean": 0.04014418283984044,
+   "std": 0.02156033764420143,
+   "median": 0.03791352733531771,
+   "min": 0.0,
+   "max": 0.1056955526015726,
+   "p95": 0.07732827593978688
+  },
+  "relative_phase": {
+   "n": 228,
+   "mean": 0.05255547409028705,
+   "std": 0.026945152988561923,
+   "median": 0.047125710940332015,
+   "min": 0.0,
+   "max": 0.13010698992529077,
+   "p95": 0.09763934260969263
+  },
+  "m2_phase_response": {
+   "n": 228,
+   "mean": 0.9998381739624761,
+   "std": 0.009211906297286368,
+   "median": 0.9996881873342727,
+   "min": 0.9718202393849691,
+   "max": 1.021485493765937,
+   "p95": 1.0141022104581197
+  },
+  "static_phase_response": {
+   "n": 228,
+   "mean": 0.9874857736085351,
+   "std": 0.010494195140636615,
+   "median": 0.9869899637500446,
+   "min": 0.9584949300686518,
+   "max": 1.0128206394116084,
+   "p95": 1.0062944414019586
+  }
+ }
+}

@@ -1,0 +1,63 @@
+{
+ "gate": "P-007F-08",
+ "phase": "A",
+ "primary": "sparse pyramidal Lucas-Kanade",
+ "secondary": "phase correlation, not used for the motion call",
+ "template_matching": "not used",
+ "marker_id_detection_used": false,
+ "feature_params": {
+  "maxCorners": 100,
+  "qualityLevel": 0.3,
+  "minDistance": 7,
+  "blockSize": 7
+ },
+ "lk_win_size": [
+  15,
+  15
+ ],
+ "lk_max_level": 2,
+ "lk_criteria": [
+  3,
+  10,
+  0.03
+ ],
+ "forward_backward_max_px": 1.0,
+ "sources": {
+  "lk_tutorial": "https://docs.opencv.org/4.10.0/d4/dee/tutorial_optical_flow.html",
+  "lk_sample_fb": "https://github.com/opencv/opencv/blob/master/samples/python/lk_track.py",
+  "phase_correlate": "scripts/p007f_06_forensics.py _phasecorr",
+  "floors": "evidence/P-007F-03/thresholds.json engineering floor 1.0 px and static guard 0.2 px"
+ },
+ "m2_roi": {
+  "x": 738,
+  "y": 92,
+  "width": 100,
+  "height": 85
+ },
+ "static_reference_roi": {
+  "x": 1040,
+  "y": 300,
+  "width": 160,
+  "height": 120,
+  "what": "keyboard on the workcell, not a robot-mounted part"
+ },
+ "formula": "frames [1, n) 를 반으로 나눈다. 앞쪽은 추정, 뒤쪽은 홀드아웃. frame 0 은 기준 프레임이라 변위가 0 이므로 분포에 넣지 않는다. sigma = 1.4826 * MAD. T_stat = median + 6 * sigma. T_motion = max(1.0 px, T_stat of relative LK displacement). T_static = max(0.2 px, T_stat of static LK displacement). 홀드아웃에서 relative displacement > T_motion 인 프레임이 1장이라도 있으면 false positive 로 보고 READY_AND_ARMED 를 주지 않는다. 분류의 연속 구간은 3프레임 이상만 사건으로 센다. 이 공식은 sham 을 보기 전에 고정한다.",
+ "K_SIGMA": 6.0,
+ "mad_to_sigma": 1.4826,
+ "motion_floor_px": 1.0,
+ "static_guard_floor_px": 0.2,
+ "min_initial_features": 8,
+ "survival_fraction_of_initial": 0.5,
+ "survival_frame_fraction": 0.95,
+ "min_duration_s": 20.0,
+ "min_frame_count": 150,
+ "roi_confirmation": {
+  "shift_max_px": 15.0,
+  "phase_response_min": 0.2,
+  "against": "attempt-02 representative frame 000128, same ROI, phase correlation"
+ },
+ "baseline_b_max_shift_px": 1.0,
+ "false_positive_rule": "holdout frames with relative LK displacement > T_motion must be 0",
+ "static_guard_rule": "a holdout run of >= 3 frames above T_static invalidates the window",
+ "phase_b_executed_by_this_module": false
+}
