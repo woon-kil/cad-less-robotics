@@ -1,0 +1,143 @@
+{
+ "gate": "P-007F-07B-R1",
+ "stage": "precheck",
+ "decision": "ABORT_DUPLICATE_ID0_STILL_PRESENT",
+ "long_capture_started": false,
+ "reason": "decoded ID0 is not the M2 cluster from P-007F-07B; a second printed marker remains in the FOV",
+ "frame_count": 24,
+ "duration_s": 2.446763284,
+ "max_id0_in_one_frame": 1,
+ "non_m2_id0": [
+  {
+   "frame_index": 3,
+   "center_x": 1085.7823486328125,
+   "center_y": 371.51751708984375,
+   "side_length_mean_px": 15.40601372718811,
+   "distance_from_b_m2_cluster_px": 395.06157322798236
+  }
+ ],
+ "m2_cluster_reference_px": {
+  "x": 775.8,
+  "y": 126.6,
+  "radius_px": 80.0,
+  "source": "P-007F-07B upper cluster, not a new acceptance threshold"
+ },
+ "baseline_b_check": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 10.622802734375,
+  "global_phase_correlation_shift_px": [
+   -0.43946171877223605,
+   -0.16892853467754776
+  ],
+  "phase_correlation_response": 0.6209183377689785,
+  "shift_magnitude_px": 0.470811482543227,
+  "max_allowed_px": 1.0
+ },
+ "camera_expected_serial": "CP263630009D",
+ "camera_expected_firmware": "1.4.60",
+ "local_capture_dir": "/Users/woonkil/projects/cad-less-robotics/.cache/p007f07b_r1/precheck",
+ "color_sha256": [
+  {
+   "file": "000000-color.png",
+   "sha256": "f19ade12772eb954604614036aae0873d37366cf86fc467f1cfe1bf780f55ce1"
+  },
+  {
+   "file": "000001-color.png",
+   "sha256": "f19ade12772eb954604614036aae0873d37366cf86fc467f1cfe1bf780f55ce1"
+  },
+  {
+   "file": "000002-color.png",
+   "sha256": "1e9f89b11022c0abffd58774998325258683a29ed10478dd4404971ee6b83f2f"
+  },
+  {
+   "file": "000003-color.png",
+   "sha256": "d726a182e24dc4179158dd38a2fbde8b821b30a17546767887a2596d222e1dd0"
+  },
+  {
+   "file": "000004-color.png",
+   "sha256": "4669b08572b2efeeccd14e8192bc15e26e0fa6e5dfe6efea4f4cb8c86143a886"
+  },
+  {
+   "file": "000005-color.png",
+   "sha256": "4a3721df55bc7cf9249ca41a7608b45d6b2a6e8c8d7d7a6c308bcfee9a5792f4"
+  },
+  {
+   "file": "000006-color.png",
+   "sha256": "acf0fd1f9aa0ee77e07a6fe95c52fff07e6bd9699e89e555a4c4f1659980f0c7"
+  },
+  {
+   "file": "000007-color.png",
+   "sha256": "affea4c7bc5692ff2af22c459a374a93c64a0e50fcad505d4cc0b36964d5459e"
+  },
+  {
+   "file": "000008-color.png",
+   "sha256": "9573f6825c513d0108fe03ee0e391510fca0823a82f7d6c5b5702fd021c6f2fe"
+  },
+  {
+   "file": "000009-color.png",
+   "sha256": "29fc76fc83edbf6e08465a1ff63a6d45663885c307012a9401b416ad5f49bceb"
+  },
+  {
+   "file": "000010-color.png",
+   "sha256": "5aef22b6c769711292783478eff91fc7026178ecb69a0af139c40e98cf7cdfe7"
+  },
+  {
+   "file": "000011-color.png",
+   "sha256": "800a9e3a0881e45b028fdb73f9203f281d37c8244d3299f931eca7117cccdfba"
+  },
+  {
+   "file": "000012-color.png",
+   "sha256": "0e13886dbd3e9b0fcf92d300cab4f00c37ee09530db3b1c1a55fce22ec04d156"
+  },
+  {
+   "file": "000013-color.png",
+   "sha256": "089aca5335403e72e519bee4b4d29b121e97cf61bdd69eaf80d08a6409e5d3e0"
+  },
+  {
+   "file": "000014-color.png",
+   "sha256": "95e086e730cf51453d78533998d25733b4fab6d53c7d65709e65ed2428dfaabc"
+  },
+  {
+   "file": "000015-color.png",
+   "sha256": "02e33d9e5fbe137d8870368d90edc20bcf0999e22d559f1dac61878308bda4a0"
+  },
+  {
+   "file": "000016-color.png",
+   "sha256": "fd855d25d1000bfc4a9319103bd231ba5b51b7e041fdea111e32be9a8559f7f1"
+  },
+  {
+   "file": "000017-color.png",
+   "sha256": "dd60cc52b9eea74638d91b0a30c35d896f3ce582a240340f6e97a4e9c37e61ff"
+  },
+  {
+   "file": "000018-color.png",
+   "sha256": "a1d4a858af1ec18f31d7084935c9eba046c977c712fb53cc194fea4645dce362"
+  },
+  {
+   "file": "000019-color.png",
+   "sha256": "91af4df675025531f7130ca88ad0ee5dfe0a7104e9c093b42de111a566c26082"
+  },
+  {
+   "file": "000020-color.png",
+   "sha256": "759d3e50c555a27699d816b735c0e56db28a02edf135cad6a4e00f8b1b68e59e"
+  },
+  {
+   "file": "000021-color.png",
+   "sha256": "2d40f88c3756cbd74bd42d3e7513a8296f99d1b9f6cfc857ad5c52084be700bf"
+  },
+  {
+   "file": "000022-color.png",
+   "sha256": "9e14b1323935abe1d4a773b95f0f2082c0421a13418085f7c969a19e0d973571"
+  },
+  {
+   "file": "000023-color.png",
+   "sha256": "9d8bfb432872b0c4746bb3e40039e90cd886ca8d2bdb17807e0549492e5da7f0"
+  }
+ ],
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "torque_command_count": 0,
+ "READY_FOR_MOTION_PREREGISTRATION": "NO",
+ "MOTION_AUTHORIZED": "NO",
+ "MARKER_STATIC_QUALIFICATION_R1": "NOT_ISSUED"
+}
