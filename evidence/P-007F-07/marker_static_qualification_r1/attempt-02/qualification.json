@@ -1,0 +1,363 @@
+{
+ "gate": "P-007F-07B-R1",
+ "attempt": 2,
+ "MARKER_STATIC_QUALIFICATION_R1": "FAIL",
+ "acceptance_fail": [
+  "DETECTION_RATE_BELOW_95_PCT",
+  "VALID_FOUR_CORNER_BELOW_95_PCT",
+  "PERSISTENT_OCCLUSION",
+  "BACKGROUND_COMPENSATION_NOT_OPERATIONAL"
+ ],
+ "root_cause_classification": [
+  "INSUFFICIENT_DETECTION_RATE",
+  "VIEWING_GEOMETRY_LIMITATION",
+  "CAUSE_UNRESOLVED"
+ ],
+ "cause_rules_note": "diagnostic detector rates are not acceptance. size below 35px is the only footprint cause.",
+ "n_frames": 258,
+ "duration_s": 25.94196617,
+ "fps": 9.94527547793807,
+ "resolution": {
+  "width": 1280,
+  "height": 720
+ },
+ "detected_frames": 17,
+ "detection_rate": 0.06589147286821706,
+ "detection_rate_acceptance": 0.95,
+ "side_px": {
+  "n": 17,
+  "mean": 41.64575161653406,
+  "std": 0.4653551793047417,
+  "median": 41.69477081298828,
+  "min": 40.112667083740234,
+  "max": 42.33008670806885,
+  "peak_to_peak": 2.2174196243286133
+ },
+ "side_mean_acceptance_px": 35.0,
+ "valid_four_corner_rate": 0.06589147286821706,
+ "valid_four_corner_acceptance": 0.95,
+ "valid_four_corner_definition": "ID0 detected and no corner within 3 px of the frame border, divided by all frames",
+ "longest_detection_loss_run": 45,
+ "loss_run_count": 14,
+ "loss_pattern": "burst",
+ "duplicate_id0_frames": [],
+ "other_marker_ids": [
+  {
+   "frame_index": 16,
+   "ids": [
+    37
+   ]
+  },
+  {
+   "frame_index": 157,
+   "ids": [
+    17
+   ]
+  }
+ ],
+ "clip_count": 0,
+ "systematic_clipping": false,
+ "persistent_occlusion": true,
+ "static_jitter_detected_frames_only": {
+  "center_x_px": {
+   "n": 17,
+   "mean": 776.042376349954,
+   "std": 0.3040663706811082,
+   "median": 776.01953125,
+   "min": 775.6505126953125,
+   "max": 776.7822265625,
+   "peak_to_peak": 1.1317138671875
+  },
+  "center_y_px": {
+   "n": 17,
+   "mean": 126.62703525318818,
+   "std": 0.393096579533062,
+   "median": 126.48001861572266,
+   "min": 126.36592102050781,
+   "max": 128.09449768066406,
+   "peak_to_peak": 1.72857666015625
+  },
+  "orientation_deg": {
+   "n": 17,
+   "mean": -32.6974611048508,
+   "std": 2.1272120847617177,
+   "median": -33.83180594584779,
+   "min": -34.7070846331893,
+   "max": -25.55642662916744,
+   "peak_to_peak": 9.150658004021857
+  },
+  "side_length_px": {
+   "n": 17,
+   "mean": 41.64575161653406,
+   "std": 0.4653551793047417,
+   "median": 41.69477081298828,
+   "min": 40.112667083740234,
+   "max": 42.33008670806885,
+   "peak_to_peak": 2.2174196243286133
+  }
+ },
+ "raw_displacement_detected_frames_only": {
+  "n": 17,
+  "mean": 0.4232767902309956,
+  "std": 0.423857456245716,
+  "median": 0.21440372542980807,
+  "min": 0.0,
+  "max": 1.7385652310145994,
+  "peak_to_peak": 1.7385652310145994
+ },
+ "background_compensation_operational": false,
+ "background_compensation_reason": "NO_VALID_BASELINE_FRAMES",
+ "background_compensated_displacement_px": null,
+ "geometry_detected_frames_only": {
+  "aspect_ratio": {
+   "n": 17,
+   "mean": 1.0946899325519142,
+   "std": 0.030583926973594973,
+   "median": 1.0880885562593365,
+   "min": 1.0595791940128467,
+   "max": 1.1717381068941575,
+   "peak_to_peak": 0.11215891288131075
+  },
+  "max_corner_angle_deviation_deg": {
+   "n": 17,
+   "mean": 31.850475166541152,
+   "std": 3.880378248260971,
+   "median": 30.83432269099012,
+   "min": 28.483329586553452,
+   "max": 46.84274535254926,
+   "peak_to_peak": 18.359415765995806
+  },
+  "opposite_side_ratio_max": {
+   "n": 17,
+   "mean": 1.0867552813987562,
+   "std": 0.025870517711496163,
+   "median": 1.0763628757074395,
+   "min": 1.0527034017677215,
+   "max": 1.1556666846097277,
+   "peak_to_peak": 0.10296328284200618
+  }
+ },
+ "sharpness_fixed_roi": {
+  "detected_median": 1491.0462498882946,
+  "failed_median": 1485.7126364200662,
+  "detected": {
+   "n": 17,
+   "mean": 1486.3325393625244,
+   "std": 14.59740717875652,
+   "median": 1491.0462498882946,
+   "min": 1464.1649958669334,
+   "max": 1512.759672592958,
+   "peak_to_peak": 48.594676726024545
+  },
+  "failed": {
+   "n": 241,
+   "mean": 1484.7090343979896,
+   "std": 11.758356463328738,
+   "median": 1485.7126364200662,
+   "min": 1453.836754215696,
+   "max": 1514.6879230839663,
+   "peak_to_peak": 60.851168868270406
+  }
+ },
+ "intensity_fixed_roi": {
+  "detected": {
+   "mean_intensity": {
+    "n": 17,
+    "mean": 98.66351606805293,
+    "std": 0.03472707214447408,
+    "median": 98.66974834593573,
+    "min": 98.609463610586,
+    "max": 98.71402410207939,
+    "peak_to_peak": 0.10456049149338753
+   },
+   "std_intensity": {
+    "n": 17,
+    "mean": 58.665124925998725,
+    "std": 0.03847745690239132,
+    "median": 58.66139176781791,
+    "min": 58.59108545607157,
+    "max": 58.7496170502339,
+    "peak_to_peak": 0.15853159416233353
+   },
+   "p10_intensity": {
+    "n": 17,
+    "mean": 36.0,
+    "std": 0.0,
+    "median": 36.0,
+    "min": 36.0,
+    "max": 36.0,
+    "peak_to_peak": 0.0
+   },
+   "p90_intensity": {
+    "n": 17,
+    "mean": 183.11764705882354,
+    "std": 0.32218973970892123,
+    "median": 183.0,
+    "min": 183.0,
+    "max": 184.0,
+    "peak_to_peak": 1.0
+   },
+   "contrast_p90_p10": {
+    "n": 17,
+    "mean": 147.11764705882354,
+    "std": 0.32218973970892123,
+    "median": 147.0,
+    "min": 147.0,
+    "max": 148.0,
+    "peak_to_peak": 1.0
+   },
+   "near_black_ratio": {
+    "n": 17,
+    "mean": 0.018926178694540195,
+    "std": 0.00038035748084554644,
+    "median": 0.019051275992438565,
+    "min": 0.018312854442344047,
+    "max": 0.019553402646502835,
+    "peak_to_peak": 0.0012405482041587881
+   },
+   "near_white_ratio": {
+    "n": 17,
+    "mean": 0.0019390081174246638,
+    "std": 0.00013702841205055565,
+    "median": 0.0019198960302457466,
+    "min": 0.0017426748582230623,
+    "max": 0.0022448015122873348,
+    "peak_to_peak": 0.0005021266540642725
+   }
+  },
+  "failed": {
+   "mean_intensity": {
+    "n": 241,
+    "mean": 98.65951253637569,
+    "std": 0.040046002681315515,
+    "median": 98.66135987712666,
+    "min": 98.55774456521739,
+    "max": 98.77309782608695,
+    "peak_to_peak": 0.21535326086956275
+   },
+   "std_intensity": {
+    "n": 241,
+    "mean": 58.67066785845164,
+    "std": 0.032772958120689484,
+    "median": 58.66903634995699,
+    "min": 58.598207183479964,
+    "max": 58.75045758518969,
+    "peak_to_peak": 0.15225040170972903
+   },
+   "p10_intensity": {
+    "n": 241,
+    "mean": 36.010373443983404,
+    "std": 0.09606503653767823,
+    "median": 36.0,
+    "min": 36.0,
+    "max": 37.0,
+    "peak_to_peak": 1.0
+   },
+   "p90_intensity": {
+    "n": 241,
+    "mean": 183.2551867219917,
+    "std": 0.4323822680404583,
+    "median": 183.0,
+    "min": 183.0,
+    "max": 184.0,
+    "peak_to_peak": 1.0
+   },
+   "contrast_p90_p10": {
+    "n": 241,
+    "mean": 147.2448132780083,
+    "std": 0.4347747859668166,
+    "median": 147.0,
+    "min": 146.0,
+    "max": 148.0,
+    "peak_to_peak": 2.0
+   },
+   "near_black_ratio": {
+    "n": 241,
+    "mean": 0.018969161064876186,
+    "std": 0.0005007996145759624,
+    "median": 0.01893312854442344,
+    "min": 0.01733813799621928,
+    "max": 0.020350897920604915,
+    "peak_to_peak": 0.0030127599243856343
+   },
+   "near_white_ratio": {
+    "n": 241,
+    "mean": 0.0019486975346892671,
+    "std": 0.0001669323750297575,
+    "median": 0.0019494328922495274,
+    "min": 0.001476843100189036,
+    "max": 0.002510633270321361,
+    "peak_to_peak": 0.0010337901701323253
+   }
+  }
+ },
+ "roi_box": {
+  "center_x": 776.01953125,
+  "center_y": 126.48001861572266,
+  "half_px": 92,
+  "x0": 684,
+  "y0": 34,
+  "x1": 868,
+  "y1": 218
+ },
+ "diagnostic_detector_variants": {
+  "no_corner_refine": {
+   "id0_frames": 17,
+   "detection_rate": 0.06589147286821706,
+   "frames_with_two_or_more_id0": 0,
+   "used_for_qualification": false
+  },
+  "adaptive_wide": {
+   "id0_frames": 17,
+   "detection_rate": 0.06589147286821706,
+   "frames_with_two_or_more_id0": 0,
+   "used_for_qualification": false
+  },
+  "adaptive_narrow": {
+   "id0_frames": 0,
+   "detection_rate": 0.0,
+   "frames_with_two_or_more_id0": 0,
+   "used_for_qualification": false
+  }
+ },
+ "production_detector": "scripts/p007f_07_marker_detector.py create_detector",
+ "baseline_b_check": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 10.125702039930555,
+  "global_phase_correlation_shift_px": [
+   -0.43735007965847217,
+   -0.15166208777844759
+  ],
+  "phase_correlation_response": 0.6262369685702853,
+  "shift_magnitude_px": 0.46290007674074707,
+  "max_allowed_px": 1.0
+ },
+ "precheck_detector": {
+  "frame_count": 24,
+  "duration_s": 2.4358585,
+  "detector_id0_frames": 1,
+  "detector_frames_with_two_or_more_id0": 0,
+  "detector_id0_centers": [
+   {
+    "frame_index": 19,
+    "center_x": 775.7503662109375,
+    "center_y": 126.72154998779297,
+    "side_length_mean_px": 41.639540672302246
+   }
+  ]
+ },
+ "command_event_count": 0,
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "torque_command_count": 0,
+ "READY_FOR_MOTION_PREREGISTRATION": "NO",
+ "MOTION_AUTHORIZED": "NO",
+ "local_capture_dir": "/Users/woonkil/projects/cad-less-robotics/.cache/p007f07b_r1/attempt2_run",
+ "color_frame_count": 258,
+ "color_sha256_of_sha256": "b5c9e8d953241512995e02b3ed6977d55714fb04eb6c8b8cbd96452b4c853943",
+ "depth_frames_location": "/home/woonkil/cad-less-robotics/.cache/p007f07b_r1/attempt2_run on p620; not copied into git",
+ "root_cause_note": "Mean side is 41.65 px, so footprint is not the failure. Failed and detected fixed-ROI sharpness and contrast match, clip_count is 0, and the marker code stays fully inside the frame. OCCLUSION_OR_SURFACE_LIMITATION is not used: persistent_occlusion is only the loss-run rule (longest run 45 >= 10% of frames). Corner angles on detected frames deviate about 31 deg from 90, with aspect ratio 1.09. That oblique view is also present on failed frames, so it does not explain the flicker. The three offline detector variants do not raise the detection rate. The frame-to-frame miss on a stable image is therefore unresolved.",
+ "physical_id0_instances_visible": 1,
+ "physical_instance_basis": "Operator removed the table card and the keyboard sheet. Visual review of attempt2 precheck frame 0: one ArUco card remains beside DaBai; the table spot and the keyboard are clear. The checkerboard is not an ArUco ID0.",
+ "detector_count_is_not_physical_count": true
+}

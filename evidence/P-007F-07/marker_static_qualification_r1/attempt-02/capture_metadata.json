@@ -1,0 +1,29 @@
+{
+ "camera": "Gemini 335L",
+ "serial": "CP263630009D",
+ "firmware": "1.4.60",
+ "launch": "ros2 launch orbbec_camera gemini_330_series.launch.py",
+ "settings_changed": false,
+ "frame_count": 258,
+ "duration_s": 25.94196617,
+ "resolution": {
+  "width": 1280,
+  "height": 720
+ },
+ "baseline_b_check": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 10.125702039930555,
+  "global_phase_correlation_shift_px": [
+   -0.43735007965847217,
+   -0.15166208777844759
+  ],
+  "phase_correlation_response": 0.6262369685702853,
+  "shift_magnitude_px": 0.46290007674074707,
+  "max_allowed_px": 1.0
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "torque_command_count": 0,
+ "local_capture_dir": "/Users/woonkil/projects/cad-less-robotics/.cache/p007f07b_r1/attempt2_run",
+ "color_sha256_of_sha256": "b5c9e8d953241512995e02b3ed6977d55714fb04eb6c8b8cbd96452b4c853943"
+}

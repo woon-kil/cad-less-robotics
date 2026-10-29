@@ -487,6 +487,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
   - **Phase B1 STOP — 다음은 사용자가 50mm PDF를 100%/Actual Size로 출력 → reference bar 50mm 실측 확인 → M2에 평평하게 부착 가능한지 확인한 뒤에만 Phase B2(물리 부착) 이후 진행. MOTION_AUTHORIZED=NO, READY_FOR_MOTION_PREREGISTRATION=NO**
 - [x] **P-007F-07B Phase B2 이후 — 정지 qualification** — 사용자 확인 `50 mm 실측 OK, M2 평면 부착 완료`. 마커·로봇 미이동. Gemini 119 frame / 11.981 s. Baseline B shift 0.470 px (`unchanged`). ID 0 이 두 군집으로 갈린다: 상단 41.76 px × 12 frame, 책상 카드 21.85 px × 47 frame. 검출률 0.496, 혼합 평균 변 25.90 px. **`MARKER_STATIC_QUALIFICATION = FAIL`**. `MOTION_AUTHORIZED = NO`. single-motion preregistration 은 열지 않음. `evidence/P-007F-07/marker_static_qualification/report.md`
 - [x] **P-007F-07B-R1 사전확인 중단** — 책상 단일 카드는 없고, 키보드 위 ArUco 시트가 ID 0으로 1회 검출(중심 1085.8,371.5 / 15.41 px, M2 군집에서 395 px). Baseline B shift 0.471 px. 본촬영 미시작. `ABORT / DUPLICATE_ID0_STILL_PRESENT`. `MARKER_STATIC_QUALIFICATION_R1` 미발급. `MOTION_AUTHORIZED=NO`
+- [x] **P-007F-07B-R1 attempt 2** — 물리 ID0는 M2 하나(책상 카드·키보드 시트 없음). 검출은 사전 1/24, 본촬영 17/258(6.6%), 변 길이 평균 41.65 px. Baseline B shift 0.463 px. 밝기·선명도는 검출/미검출이 같다. `MARKER_STATIC_QUALIFICATION_R1 = FAIL`. `MOTION_AUTHORIZED=NO`
 
   - EPC-01~27 전부 충족 + EPC 외 추가 자체검증 1건(self_transfer_verification, advisor 요구). `evidence/P-007E-R2-R2/stage_c1r1r1_decision.json` + `stage_c1r1r1_architecture_note.json`(§24 원문 verbatim 추가) + `c1r1r1_repair_tests/repair_result.json`
   - 🔴 **advisor 2차 재검토 반영**: §24 원문("qualified only for ... rigid external scene / not qualified for dynamic trajectory tracking...")이 §11 문구로 잘못 들어가 있던 것을 architecture_note 에 `section_24_verbatim` 로 보완(코드 상수는 SHA 재시험 비용 때문에 그대로 둠, divergence 명시) · verdict 를 조건부로 수정(배포방식 결정 전까지 무조건 READY 아님) · 실제(non-mock) `build_runtime_provenance`/`check_dirty_tree` 1회 실행해 git_head=`7798e80`·dirty=False 확인 · 🔴 **이 gate의 evidence 회수 자체가 §14~16 을 어김**(`repair_result.json` scp 후 SHA diff 없이 Jetson rm -rf, 2회) — `TRANSFER_INTEGRITY_NOT_VERIFIED_BEFORE_SOURCE_DELETION` 로 공개(판정 영향 없음, 재현 가능한 pass/fail 로그라 재실행 불요)
@@ -665,6 +666,8 @@ operator channel        realtime visual observation
 | 43 | 2026-10-29 | **P-007F-07B Phase B2 이후** — 사용자 50mm 실측·M2 평면 부착 확인 후 Gemini 정지 119 frame. Baseline B unchanged(shift 0.470px). ID 0 두 군집(상단 41.76px×12, 책상 21.85px×47). 검출률 0.496. robot/servo 0 | `MARKER_STATIC_QUALIFICATION = FAIL — 다음 Gate 미개방, MOTION_AUTHORIZED=NO` |
 
 | 44 | 2026-10-30 | **P-007F-07B-R1** — 중복 ID0 제거 후 사전확인 24 frame. 책상 카드는 없고 키보드 위 시트가 ID0 1회. Baseline B unchanged. 본촬영 미시작, robot/servo/torque 0 | `ABORT / DUPLICATE_ID0_STILL_PRESENT — qualification 미발급, MOTION_AUTHORIZED=NO` |
+
+| 45 | 2026-10-30 | **P-007F-07B-R1 attempt 2** — 중복 시트 제거 후 재실행. 물리 ID0=1, detector 17/258, side mean 41.65 px, Baseline B unchanged. robot/servo/torque 0 | `MARKER_STATIC_QUALIFICATION_R1 = FAIL — 다음 Gate 미개방, MOTION_AUTHORIZED=NO` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
