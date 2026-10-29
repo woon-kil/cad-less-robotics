@@ -1,0 +1,11 @@
+{
+ "code": "F2",
+ "label": "POST_HOC_LOCAL_CHANGE_DETECTED_BUT_MOTION_NOT_ESTABLISHED",
+ "reasons": [
+  "ARM2_ROI exceeds noise and STATIC_REFERENCE_ROI does not, but non-robot ROI(s) ['DOWNSTREAM_ROI'] (DOWNSTREAM/ROBOT background-adjacent regions) also exceed noise -- weakens confidence that the signal is specific to robot geometry."
+ ],
+ "localization_label": "ROBOT_LOCALIZED",
+ "coherence_label": "COHERENT_ROBOT_MOTION",
+ "arm2_exceeds_noise": true,
+ "static_exceeds_noise": false
+}

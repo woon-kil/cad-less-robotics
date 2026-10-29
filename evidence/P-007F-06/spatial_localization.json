@@ -1,0 +1,92 @@
+{
+ "per_roi_registered_diff": {
+  "ROBOT_ROI": {
+   "registered_diff_mean": 13.206125116713352,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "ARM2_ROI": {
+   "registered_diff_mean": 8.047738095238095,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "DOWNSTREAM_ROI": {
+   "registered_diff_mean": 19.412,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": false,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "STATIC_REFERENCE_ROI": {
+   "registered_diff_mean": 12.998044444444444,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": false,
+   "exceeds_within_window_noise_any_metric": false
+  },
+  "END_EFFECTOR_ROI": {
+   "registered_diff_mean": 18.23611111111111,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "DABAI_ROI": {
+   "registered_diff_mean": 33.385,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": true,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "ARM4_ROI": {
+   "registered_diff_mean": 33.385,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": true,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  },
+  "ARM1_ROI": {
+   "registered_diff_mean": 2.397922077922078,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": false,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": false
+  },
+  "ARM3_ROI": {
+   "registered_diff_mean": 20.75387755102041,
+   "static_reference_diff_mean": 12.998044444444444,
+   "above_static_background_raw_heuristic": true,
+   "is_robot_geometry_roi": true,
+   "exceeds_within_window_noise_any_metric": true
+  }
+ },
+ "noise_exceed_any_metric_by_roi": {
+  "ROBOT_ROI": true,
+  "ARM2_ROI": true,
+  "DOWNSTREAM_ROI": true,
+  "STATIC_REFERENCE_ROI": false,
+  "END_EFFECTOR_ROI": true,
+  "DABAI_ROI": true,
+  "ARM4_ROI": true,
+  "ARM1_ROI": false,
+  "ARM3_ROI": true
+ },
+ "arm2_roi_exceeds_within_window_noise_any_metric": true,
+ "static_reference_roi_exceeds_within_window_noise_any_metric": false,
+ "other_robot_rois_also_exceeding": [
+  "ARM3_ROI",
+  "ARM4_ROI",
+  "DABAI_ROI",
+  "END_EFFECTOR_ROI",
+  "ROBOT_ROI"
+ ],
+ "non_robot_non_static_rois_also_exceeding": [
+  "DOWNSTREAM_ROI"
+ ],
+ "localization_label": "ROBOT_LOCALIZED",
+ "localization_note": "ARM2_ROI exceeds noise and STATIC_REFERENCE_ROI does not, but other approximate robot-geometry ROIs (['ARM3_ROI', 'ARM4_ROI', 'DABAI_ROI', 'END_EFFECTOR_ROI', 'ROBOT_ROI']) also exceed -- change may not be ARM2-specific; could reflect diffuse robot-region signal or imprecise ROI boundaries (ARM1/ARM3/ARM4/DABAI are approximate, unmeasured)."
+}

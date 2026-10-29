@@ -1,0 +1,6 @@
+{
+ "status": "LIMITED",
+ "reason": "RGB<->depth pixel-exact registration not proven (see rgb_depth_alignment.json) and no robot segmentation mask exists. A quantitative point-cloud robot-region residual would require projecting ARM2_ROI pixels through unverified extrinsics -- doing so would manufacture false precision.",
+ "qualitative_check_performed": "ARM2 depth-ROI valid_ratio and median depth compared PRE vs POST (see depth_analysis.json) as a coarse proxy; no full 3D point-cloud alignment attempted.",
+ "verdict": "POINTCLOUD_FORENSIC_NOT_ATTEMPTED_DUE_TO_UNVERIFIED_REGISTRATION"
+}

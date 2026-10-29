@@ -1,0 +1,7 @@
+{
+ "localization_label": "ROBOT_LOCALIZED",
+ "arm2_directional_coherence_R": 0.6690530776977539,
+ "coherence_threshold": 0.5,
+ "is_coherent": true,
+ "final_coherence_label": "COHERENT_ROBOT_MOTION"
+}

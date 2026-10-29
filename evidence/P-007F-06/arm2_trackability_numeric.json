@@ -1,0 +1,21 @@
+{
+ "pre_keypoints": {
+  "count": 14,
+  "x_std_px": 13.752179790112978,
+  "y_std_px": 2.1992577597629506,
+  "x_range_px": 41.0,
+  "y_range_px": 6.0,
+  "roi_width_px": 120,
+  "roi_height_px": 70
+ },
+ "post_keypoints": {
+  "count": 11,
+  "x_std_px": 14.924603902713551,
+  "y_std_px": 2.3141676475196102,
+  "x_range_px": 41.0,
+  "y_range_px": 6.0,
+  "roi_width_px": 120,
+  "roi_height_px": 70
+ },
+ "p007f_03_reference_count": 14
+}

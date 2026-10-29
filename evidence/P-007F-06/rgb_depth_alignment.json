@@ -1,0 +1,41 @@
+{
+ "color_resolution": [
+  1280,
+  720
+ ],
+ "depth_resolution": [
+  848,
+  480
+ ],
+ "color_frame_id": "camera_color_optical_frame",
+ "depth_frame_id": "camera_depth_optical_frame",
+ "stamp_delta_sec": 1.7881393432617188e-05,
+ "T_depth_color_translation_mm": [
+  23.803987503051758,
+  -0.0038685190957045423,
+  -0.24192810058594472
+ ],
+ "T_depth_color_quaternion_xyzw": [
+  0.00023462735471305177,
+  0.0013354254224321462,
+  -0.004136464569786975,
+  0.9999905255800219
+ ],
+ "nonzero_baseline_mm": 23.80398781739909,
+ "color_fx_fy": [
+  610.5073852539062,
+  610.349853515625
+ ],
+ "depth_fx_fy": [
+  410.4136657714844,
+  410.4136657714844
+ ],
+ "simple_scaled_roi_mapping_used": {
+  "sx": 0.6625,
+  "sy": 0.6667,
+  "source": "evidence/P-007F-03/roi_definition.json, unmodified"
+ },
+ "registered_depth_stream_proven": false,
+ "verdict": "DEPTH_SPATIAL_LOCALIZATION_LIMITED",
+ "reason": "Non-zero depth<->color extrinsic baseline (23.80mm) exists; depth and color intrinsics differ beyond simple resolution scaling. The scaled-ROI mapping from P-007F-03 is reused as-is but is NOT a proven pixel-exact registration -- depth-based spatial localization conclusions are disclosed as approximate, not precise."
+}

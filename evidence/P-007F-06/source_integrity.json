@@ -1,0 +1,11 @@
+{
+ "prior_manifest_existed": false,
+ "note": "evidence/P-007F-05/run_1793274484/ never recorded a SHA256 manifest for pre_frames/post_frames (gemini_pre_manifest.json/gemini_post_manifest.json only held capture-summary.json's {frames,requested} counts). This is the FIRST hash freeze of these files -- no prior hash to diff against.",
+ "pre_declared_frames": 5,
+ "pre_actual_rgb_files": 5,
+ "post_declared_frames": 5,
+ "post_actual_rgb_files": 5,
+ "counts_match": true,
+ "all_files_readable": true,
+ "verdict": "SOURCE_INTEGRITY_FROZEN_FIRST_TIME"
+}

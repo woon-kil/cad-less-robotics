@@ -1,0 +1,17 @@
+{
+ "imports": [
+  "cv2",
+  "hashlib",
+  "importlib",
+  "json",
+  "matplotlib",
+  "numpy",
+  "os",
+  "sys",
+  "time"
+ ],
+ "forbidden_imports_found": [],
+ "forbidden_calls_found": [],
+ "pass": true,
+ "robot_command_count": 0
+}

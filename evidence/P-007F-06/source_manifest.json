@@ -1,0 +1,308 @@
+{
+ "pre": {
+  "label": "pre_frames",
+  "dir": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-05/run_1793274484/pre_frames/pre_1793274498",
+  "entries": [
+   {
+    "filename": "0000-color.png",
+    "size_bytes": 1698237,
+    "sha256": "459193ec17df2c5d6c3bff8046e807241ba20704ff6137d40f7e777cae829c55",
+    "mtime": 1793274502.051706,
+    "pre_post": "PRE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0000-depth.png",
+    "size_bytes": 191522,
+    "sha256": "aaf6243c79c87488581f80738add4ce6247162d80ac79d7423367fab34dc34db",
+    "mtime": 1793274501.850168,
+    "pre_post": "PRE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0000.json",
+    "size_bytes": 2244,
+    "sha256": "92683d81c6900f96e59ef9ff0fd53f77387f00c0d04f5b6176f82425d4cea43d",
+    "mtime": 1793274501.822978,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0001-color.png",
+    "size_bytes": 1697308,
+    "sha256": "8be1d715d1d73057c69d049e4ee9f21b623f31466dce6c71d888d602cb0fe00d",
+    "mtime": 1793274501.9648604,
+    "pre_post": "PRE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0001-depth.png",
+    "size_bytes": 188805,
+    "sha256": "32dbf4d5e2e0d678aa76edd7369a1f0eee88ccedc5e343e71b369f0ea15b392d",
+    "mtime": 1793274502.1665735,
+    "pre_post": "PRE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0001.json",
+    "size_bytes": 2242,
+    "sha256": "323232947ffe97e781362c9579d1c827d7a5f31abb95195c78675dee983e230b",
+    "mtime": 1793274501.5663986,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0002-color.png",
+    "size_bytes": 1690003,
+    "sha256": "0128ad235031de472f6885f324a01b64f41bdfc7edb3b4a826c07f76c3b5eeeb",
+    "mtime": 1793274501.6882455,
+    "pre_post": "PRE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0002-depth.png",
+    "size_bytes": 189556,
+    "sha256": "9c3398d97847dd3a6f9fc87f8fbe1469ec7e8878f1f235165cadc730d3b2732d",
+    "mtime": 1793274502.2312741,
+    "pre_post": "PRE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0002.json",
+    "size_bytes": 2245,
+    "sha256": "e8762f1b8cf59776b0f6f3d8c22c0af5e7fcc5884f82f9a82c78e19d901cac13",
+    "mtime": 1793274502.1876988,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0003-color.png",
+    "size_bytes": 1694826,
+    "sha256": "c7d90624763ce3d7ee55936c88a68cdff345429b565cc8260ef8874caa84b2f6",
+    "mtime": 1793274502.1377285,
+    "pre_post": "PRE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0003-depth.png",
+    "size_bytes": 188110,
+    "sha256": "bf885c058b0784720b70588832afd242cec42a08378c34a6fb230c21f4ad6f7d",
+    "mtime": 1793274501.8745391,
+    "pre_post": "PRE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0003.json",
+    "size_bytes": 2244,
+    "sha256": "64748e47e06e0348d1e7294d5a714ff74af180741ae4e3d755e2f06147759719",
+    "mtime": 1793274501.584135,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0004-color.png",
+    "size_bytes": 1702270,
+    "sha256": "c25a72191f27a66ed62c4f86bb116f2c5ed72e82b506eaf9419e6ebff97bccb5",
+    "mtime": 1793274501.779904,
+    "pre_post": "PRE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0004-depth.png",
+    "size_bytes": 188047,
+    "sha256": "1a12dd99026617da502b8fbf4d6fcba5ee40b2328dc4d4e97e24ac8428a5e355",
+    "mtime": 1793274501.8041291,
+    "pre_post": "PRE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0004.json",
+    "size_bytes": 2242,
+    "sha256": "3b98aa70c6dfc7cd9108e95ec1c38e563d158ff758d344af2aa0d7ac3eed0335",
+    "mtime": 1793274501.5466986,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "capture-summary.json",
+    "size_bytes": 36,
+    "sha256": "ee53b9e562b753b29042620e288339cd5728c83237f43493d164854fded4aa5f",
+    "mtime": 1793274502.2063882,
+    "pre_post": "PRE",
+    "modality": "metadata"
+   }
+  ]
+ },
+ "post": {
+  "label": "post_frames",
+  "dir": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-05/run_1793274484/post_frames/post_1793274506",
+  "entries": [
+   {
+    "filename": "0000-color.png",
+    "size_bytes": 1699063,
+    "sha256": "5618b5e1c1a859066fb255b8439daf890421a4b0194b183f8c23351a10a58381",
+    "mtime": 1793274510.4020605,
+    "pre_post": "POST",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0000-depth.png",
+    "size_bytes": 186474,
+    "sha256": "248ec4e333b6b4a7565efe39c6f759a3d4e38722afa71ea7e11e2d3c4a5caf10",
+    "mtime": 1793274510.2054822,
+    "pre_post": "POST",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0000.json",
+    "size_bytes": 2242,
+    "sha256": "e5b3e1d8037a3e6a87ffa044de760895ebeaec203b9f7dbefef091651ae3336d",
+    "mtime": 1793274510.1809776,
+    "pre_post": "POST",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0001-color.png",
+    "size_bytes": 1662654,
+    "sha256": "dfe50d88f55ebc701a6ad6f69679a7ea1687b1ccce32556a4b5bd057f756e5ca",
+    "mtime": 1793274510.3148339,
+    "pre_post": "POST",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0001-depth.png",
+    "size_bytes": 193295,
+    "sha256": "271cd6d2d56a4896ad48190e31f0fc792cbf21f630d0abef5f6929c18b65679a",
+    "mtime": 1793274510.5119898,
+    "pre_post": "POST",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0001.json",
+    "size_bytes": 2242,
+    "sha256": "56cdf31231f7bccc2c3239d38bad4c5e5ff0671100c03bcf7e8ebeac463622ce",
+    "mtime": 1793274509.920211,
+    "pre_post": "POST",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0002-color.png",
+    "size_bytes": 1651508,
+    "sha256": "5d3eabc5032175da646ac3980a973761d3f229fb885014252c10820d443ea22d",
+    "mtime": 1793274510.0447853,
+    "pre_post": "POST",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0002-depth.png",
+    "size_bytes": 185118,
+    "sha256": "ace7cc91cedc1b94f461957153fe22537c3889d6a71c5c311fa18384a5782bd6",
+    "mtime": 1793274510.5746605,
+    "pre_post": "POST",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0002.json",
+    "size_bytes": 2245,
+    "sha256": "c4dfc3ff7ddc00b539283b5827c315cb94cad86fdc75ec84ce1014af7d69f805",
+    "mtime": 1793274510.5299802,
+    "pre_post": "POST",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0003-color.png",
+    "size_bytes": 1646137,
+    "sha256": "4d67b781340b6ef89c1bc1766b1d627a9d5151e6cd1122877d2174457cbb1af8",
+    "mtime": 1793274510.4864018,
+    "pre_post": "POST",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0003-depth.png",
+    "size_bytes": 179193,
+    "sha256": "75f102adb2aca02c891e190bc286cc0b52e300b2a68579ca158a47574befd9c6",
+    "mtime": 1793274510.2297406,
+    "pre_post": "POST",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0003.json",
+    "size_bytes": 2242,
+    "sha256": "20be51190fc859d468c6556f1bf83b6a4249e85828ea3558cf6a6a44936e3a99",
+    "mtime": 1793274509.9383695,
+    "pre_post": "POST",
+    "modality": "metadata"
+   },
+   {
+    "filename": "0004-color.png",
+    "size_bytes": 1640924,
+    "sha256": "8bcbb9fbfdba6e366a8172e4a016644df7b0a9e52979b05565357b64b8748158",
+    "mtime": 1793274510.1376252,
+    "pre_post": "POST",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0004-depth.png",
+    "size_bytes": 180785,
+    "sha256": "484c4c56b60d5798328fda5aaee2be30831ec49c4536781a25624adf7dbd86f3",
+    "mtime": 1793274510.162639,
+    "pre_post": "POST",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0004.json",
+    "size_bytes": 2242,
+    "sha256": "60ce343ed45bf9b4ef2571c41104a2efd7981884fae8440223fdff584c8a8af0",
+    "mtime": 1793274509.9016798,
+    "pre_post": "POST",
+    "modality": "metadata"
+   },
+   {
+    "filename": "capture-summary.json",
+    "size_bytes": 36,
+    "sha256": "ee53b9e562b753b29042620e288339cd5728c83237f43493d164854fded4aa5f",
+    "mtime": 1793274510.5480044,
+    "pre_post": "POST",
+    "modality": "metadata"
+   }
+  ]
+ },
+ "baseline_check": {
+  "label": "baseline_check_frame",
+  "dir": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-05/run_1793274484/baseline_check_frame/baselinecheck_1793274496",
+  "entries": [
+   {
+    "filename": "0000-color.png",
+    "size_bytes": 1687600,
+    "sha256": "abe4a171d5c2305d96f351dc335f5046d77f3c2679efbd9186e449d60e3c43e6",
+    "mtime": 1793274498.2297556,
+    "pre_post": "BASELINE",
+    "modality": "RGB"
+   },
+   {
+    "filename": "0000-depth.png",
+    "size_bytes": 192890,
+    "sha256": "f4a4d70336f6f19f5e41f8c3a51a238a05b53466e03eb1d3119cd442ef7587ac",
+    "mtime": 1793274498.1384137,
+    "pre_post": "BASELINE",
+    "modality": "Depth"
+   },
+   {
+    "filename": "0000.json",
+    "size_bytes": 2241,
+    "sha256": "57772248ebc68942b547c6a9ab99f96d4223f1e0dda77cb8a6570c51f0e40d8e",
+    "mtime": 1793274498.1010778,
+    "pre_post": "BASELINE",
+    "modality": "metadata"
+   },
+   {
+    "filename": "capture-summary.json",
+    "size_bytes": 36,
+    "sha256": "0833240b864a41c82cc7456d9da670782955215ef76479700a6541c3773bd760",
+    "mtime": 1793274498.2481072,
+    "pre_post": "BASELINE",
+    "modality": "metadata"
+   }
+  ]
+ }
+}

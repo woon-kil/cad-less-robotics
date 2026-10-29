@@ -1,0 +1,195 @@
+{
+ "alignment_caveat": "DEPTH_SPATIAL_LOCALIZATION_LIMITED",
+ "per_roi": {
+  "ROBOT_ROI": {
+   "depth_roi_px": [
+    394,
+    60,
+    139,
+    170
+   ],
+   "pre": {
+    "valid_ratio": 0.7849767245027507,
+    "median_depth_mm": 738.0,
+    "mean_depth_mm": 711.6781066364763,
+    "robust_spread_mm": 243.79999999999995
+   },
+   "post": {
+    "valid_ratio": 0.772196360558612,
+    "median_depth_mm": 732.4,
+    "mean_depth_mm": 709.4642735792186,
+    "robust_spread_mm": 231.60000000000002
+   },
+   "median_depth_diff_mm": -5.600000000000023
+  },
+  "ARM2_ROI": {
+   "depth_roi_px": [
+    431,
+    147,
+    80,
+    47
+   ],
+   "pre": {
+    "valid_ratio": 0.8074468085106383,
+    "median_depth_mm": 677.6,
+    "mean_depth_mm": 714.7623188405798,
+    "robust_spread_mm": 172.9000000000001
+   },
+   "post": {
+    "valid_ratio": 0.8289893617021277,
+    "median_depth_mm": 675.4,
+    "mean_depth_mm": 704.7471286493422,
+    "robust_spread_mm": 165.79999999999995
+   },
+   "median_depth_diff_mm": -2.2000000000000455
+  },
+  "DOWNSTREAM_ROI": {
+   "depth_roi_px": [
+    398,
+    60,
+    132,
+    113
+   ],
+   "pre": {
+    "valid_ratio": 0.6893939393939394,
+    "median_depth_mm": 661.2,
+    "mean_depth_mm": 680.7610035981717,
+    "robust_spread_mm": 328.80000000000007
+   },
+   "post": {
+    "valid_ratio": 0.6698846875838026,
+    "median_depth_mm": 659.8,
+    "mean_depth_mm": 676.5979183346677,
+    "robust_spread_mm": 321.20000000000005
+   },
+   "median_depth_diff_mm": -1.400000000000091
+  },
+  "STATIC_REFERENCE_ROI": {
+   "depth_roi_px": [
+    596,
+    100,
+    199,
+    200
+   ],
+   "pre": {
+    "valid_ratio": 0.8751005025125628,
+    "median_depth_mm": 1058.2,
+    "mean_depth_mm": 981.559625599357,
+    "robust_spread_mm": 113.20000000000005
+   },
+   "post": {
+    "valid_ratio": 0.8671608040201005,
+    "median_depth_mm": 1034.8,
+    "mean_depth_mm": 933.0512560484456,
+    "robust_spread_mm": 294.0
+   },
+   "median_depth_diff_mm": -23.40000000000009
+  },
+  "END_EFFECTOR_ROI": {
+   "depth_roi_px": [
+    398,
+    120,
+    119,
+    53
+   ],
+   "pre": {
+    "valid_ratio": 0.6797209449817663,
+    "median_depth_mm": 661.6,
+    "mean_depth_mm": 657.3645439701423,
+    "robust_spread_mm": 213.10000000000002
+   },
+   "post": {
+    "valid_ratio": 0.6632313302679562,
+    "median_depth_mm": 660.8,
+    "mean_depth_mm": 652.3722208940951,
+    "robust_spread_mm": 128.10000000000002
+   },
+   "median_depth_diff_mm": -0.8000000000000682
+  },
+  "DABAI_ROI": {
+   "depth_roi_px": [
+    441,
+    60,
+    60,
+    40
+   ],
+   "pre": {
+    "valid_ratio": 0.4429166666666667,
+    "median_depth_mm": 519.2,
+    "mean_depth_mm": 483.8549388523048,
+    "robust_spread_mm": 226.60000000000002
+   },
+   "post": {
+    "valid_ratio": 0.4116666666666667,
+    "median_depth_mm": 515.6,
+    "mean_depth_mm": 455.3712550607288,
+    "robust_spread_mm": 209.2
+   },
+   "median_depth_diff_mm": -3.6000000000000227
+  },
+  "ARM4_ROI": {
+   "depth_roi_px": [
+    441,
+    60,
+    60,
+    40
+   ],
+   "pre": {
+    "valid_ratio": 0.4429166666666667,
+    "median_depth_mm": 519.2,
+    "mean_depth_mm": 483.8549388523048,
+    "robust_spread_mm": 226.60000000000002
+   },
+   "post": {
+    "valid_ratio": 0.4116666666666667,
+    "median_depth_mm": 515.6,
+    "mean_depth_mm": 455.3712550607288,
+    "robust_spread_mm": 209.2
+   },
+   "median_depth_diff_mm": -3.6000000000000227
+  },
+  "ARM1_ROI": {
+   "depth_roi_px": [
+    394,
+    193,
+    139,
+    37
+   ],
+   "pre": {
+    "valid_ratio": 0.9784172661870504,
+    "median_depth_mm": 752.2,
+    "mean_depth_mm": 743.8739268680445,
+    "robust_spread_mm": 45.0
+   },
+   "post": {
+    "valid_ratio": 0.97900058331713,
+    "median_depth_mm": 752.0,
+    "mean_depth_mm": 742.5809731876863,
+    "robust_spread_mm": 44.799999999999955
+   },
+   "median_depth_diff_mm": -0.20000000000004547
+  },
+  "ARM3_ROI": {
+   "depth_roi_px": [
+    394,
+    100,
+    139,
+    47
+   ],
+   "pre": {
+    "valid_ratio": 0.705954385427828,
+    "median_depth_mm": 588.9,
+    "mean_depth_mm": 656.0560277536861,
+    "robust_spread_mm": 303.0
+   },
+   "post": {
+    "valid_ratio": 0.7053421092912904,
+    "median_depth_mm": 651.2,
+    "mean_depth_mm": 666.5600260416667,
+    "robust_spread_mm": 305.20000000000005
+   },
+   "median_depth_diff_mm": 62.30000000000007
+  }
+ },
+ "robot_relative_depth_change_mm": 21.200000000000045
+}

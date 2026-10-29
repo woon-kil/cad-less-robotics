@@ -1,0 +1,82 @@
+{
+ "label": "SYNTHETIC_SENSITIVITY_TEST",
+ "disclosure": "NOT REAL MOTION EVIDENCE -- synthetic warps of a stored ARM2_ROI PRE crop, used only to characterize detector sensitivity.",
+ "translation_tests": [
+  {
+   "synthetic_translation_px": 0.25,
+   "orb_detected_translation_px": 0.0,
+   "orb_valid": true,
+   "flow_median_mag": 0.24851614236831665,
+   "edge_centroid_shift_px": 1.7487719842696385,
+   "phasecorr_magnitude": 0.2335556776676085
+  },
+  {
+   "synthetic_translation_px": 0.5,
+   "orb_detected_translation_px": 1.7362917848778556,
+   "orb_valid": true,
+   "flow_median_mag": 0.49765220284461975,
+   "edge_centroid_shift_px": 2.1739416690775557,
+   "phasecorr_magnitude": 0.4586309574464027
+  },
+  {
+   "synthetic_translation_px": 1.0,
+   "orb_detected_translation_px": 1.0,
+   "orb_valid": true,
+   "flow_median_mag": 0.9999499320983887,
+   "edge_centroid_shift_px": 2.002540442946831,
+   "phasecorr_magnitude": 1.0502650154506148
+  },
+  {
+   "synthetic_translation_px": 2.0,
+   "orb_detected_translation_px": 2.0,
+   "orb_valid": true,
+   "flow_median_mag": 1.9999759197235107,
+   "edge_centroid_shift_px": 1.4865526473622421,
+   "phasecorr_magnitude": 1.9856639879217253
+  },
+  {
+   "synthetic_translation_px": 3.0,
+   "orb_detected_translation_px": 3.0,
+   "orb_valid": true,
+   "flow_median_mag": 2.9999208450317383,
+   "edge_centroid_shift_px": 1.1279253001889766,
+   "phasecorr_magnitude": 2.997275332078404
+  },
+  {
+   "synthetic_translation_px": 5.0,
+   "orb_detected_translation_px": 5.0,
+   "orb_valid": true,
+   "flow_median_mag": 4.999841213226318,
+   "edge_centroid_shift_px": 0.24109262778741292,
+   "phasecorr_magnitude": 4.979817724801475
+  }
+ ],
+ "rotation_tests": [
+  {
+   "synthetic_rotation_deg": 0.25,
+   "orb_detected_rotation_deg": 0.0,
+   "orb_valid": true
+  },
+  {
+   "synthetic_rotation_deg": 0.5,
+   "orb_detected_rotation_deg": 0.0,
+   "orb_valid": true
+  },
+  {
+   "synthetic_rotation_deg": 1.0,
+   "orb_detected_rotation_deg": -0.5913928482680092,
+   "orb_valid": true
+  },
+  {
+   "synthetic_rotation_deg": 2.0,
+   "orb_detected_rotation_deg": -1.6512461982228206,
+   "orb_valid": true
+  },
+  {
+   "synthetic_rotation_deg": 3.0,
+   "orb_detected_rotation_deg": -2.716332334004946,
+   "orb_valid": true
+  }
+ ],
+ "note": "Compare orb_detected_* against synthetic_* to see how much the ORB/RANSAC pipeline under- or over-estimates small synthetic warps, and at what magnitude edge/flow/phase-correlation become reliably non-zero."
+}

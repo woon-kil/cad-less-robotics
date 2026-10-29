@@ -1,0 +1,74 @@
+{
+ "image_size": {
+  "width": 1280,
+  "height": 720
+ },
+ "rois": {
+  "ROBOT_ROI": [
+   595,
+   90,
+   210,
+   255
+  ],
+  "ARM2_ROI": [
+   650,
+   220,
+   120,
+   70
+  ],
+  "DOWNSTREAM_ROI": [
+   600,
+   90,
+   200,
+   170
+  ],
+  "STATIC_REFERENCE_ROI": [
+   900,
+   150,
+   300,
+   300
+  ],
+  "END_EFFECTOR_ROI": [
+   600,
+   180,
+   180,
+   80
+  ],
+  "DABAI_ROI": [
+   665,
+   90,
+   90,
+   60
+  ],
+  "ARM4_ROI": [
+   665,
+   90,
+   90,
+   60
+  ],
+  "ARM1_ROI": [
+   595,
+   290,
+   210,
+   55
+  ],
+  "ARM3_ROI": [
+   595,
+   150,
+   210,
+   70
+  ]
+ },
+ "source": {
+  "ROBOT_ROI": "evidence/P-007F-03/roi_definition.json (unmodified)",
+  "ARM2_ROI": "evidence/P-007F-03/roi_definition.json (unmodified) -- primary detector ROI",
+  "DOWNSTREAM_ROI": "evidence/P-007F-03/roi_definition.json (unmodified)",
+  "STATIC_REFERENCE_ROI": "evidence/P-007F-03/roi_definition.json (unmodified)",
+  "END_EFFECTOR_ROI": "evidence/P-007F-02B-R2/roi_measurements.json end_effector_bbox (unmodified)",
+  "DABAI_ROI": "evidence/P-007F-02B-R2/roi_measurements.json dabai_approx_location (unmodified)",
+  "ARM4_ROI": "same pixel region as DABAI_ROI -- DaBai is mounted on/near the Arm4 link, no separate measured bbox exists",
+  "ARM1_ROI": "APPROXIMATE -- lower y-band of ROBOT_ROI (base end of kinematic chain), no precision measurement exists. Fixed geometrically BEFORE running any diff analysis (not chosen post-hoc from where change appears).",
+  "ARM3_ROI": "APPROXIMATE -- middle y-band of ROBOT_ROI (between ARM2_ROI and END_EFFECTOR_ROI), same caveat as ARM1_ROI."
+ },
+ "policy": "All ROIs fixed before running any PRE/POST difference analysis -- none chosen post-hoc based on where a visual change appeared (§7 requirement)."
+}

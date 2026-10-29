@@ -1,0 +1,154 @@
+{
+ "global_shift_applied_px": [
+  0.09282998709946355,
+  -0.047431192512419784
+ ],
+ "raw_diff_per_roi": {
+  "ROBOT_ROI": {
+   "median": 2.0,
+   "mean": 13.160242763772176,
+   "p95": 80.0,
+   "changed_pixel_ratio_gt5": 0.31292250233426705,
+   "changed_pixel_ratio_gt10": 0.22479925303454715,
+   "max": 222.0
+  },
+  "ARM2_ROI": {
+   "median": 2.0,
+   "mean": 7.832738095238096,
+   "p95": 34.04999999999927,
+   "changed_pixel_ratio_gt5": 0.2613095238095238,
+   "changed_pixel_ratio_gt10": 0.14214285714285715,
+   "max": 187.0
+  },
+  "DOWNSTREAM_ROI": {
+   "median": 4.0,
+   "mean": 19.482382352941176,
+   "p95": 102.0,
+   "changed_pixel_ratio_gt5": 0.4465882352941177,
+   "changed_pixel_ratio_gt10": 0.34694117647058825,
+   "max": 222.0
+  },
+  "STATIC_REFERENCE_ROI": {
+   "median": 7.0,
+   "mean": 12.979966666666666,
+   "p95": 42.0,
+   "changed_pixel_ratio_gt5": 0.5687333333333333,
+   "changed_pixel_ratio_gt10": 0.41175555555555554,
+   "max": 109.0
+  },
+  "END_EFFECTOR_ROI": {
+   "median": 5.0,
+   "mean": 18.377152777777777,
+   "p95": 90.0,
+   "changed_pixel_ratio_gt5": 0.4897222222222222,
+   "changed_pixel_ratio_gt10": 0.36527777777777776,
+   "max": 187.0
+  },
+  "DABAI_ROI": {
+   "median": 11.0,
+   "mean": 33.41111111111111,
+   "p95": 152.0,
+   "changed_pixel_ratio_gt5": 0.6522222222222223,
+   "changed_pixel_ratio_gt10": 0.5011111111111111,
+   "max": 222.0
+  },
+  "ARM4_ROI": {
+   "median": 11.0,
+   "mean": 33.41111111111111,
+   "p95": 152.0,
+   "changed_pixel_ratio_gt5": 0.6522222222222223,
+   "changed_pixel_ratio_gt10": 0.5011111111111111,
+   "max": 222.0
+  },
+  "ARM1_ROI": {
+   "median": 1.0,
+   "mean": 2.1256277056277058,
+   "p95": 6.0,
+   "changed_pixel_ratio_gt5": 0.07748917748917748,
+   "changed_pixel_ratio_gt10": 0.00813852813852814,
+   "max": 27.0
+  },
+  "ARM3_ROI": {
+   "median": 6.0,
+   "mean": 20.912312925170067,
+   "p95": 94.0,
+   "changed_pixel_ratio_gt5": 0.5183673469387755,
+   "changed_pixel_ratio_gt10": 0.41768707482993195,
+   "max": 183.0
+  }
+ },
+ "registered_diff_per_roi": {
+  "ROBOT_ROI": {
+   "median": 2.0,
+   "mean": 13.206125116713352,
+   "p95": 79.0,
+   "changed_pixel_ratio_gt5": 0.3245191409897292,
+   "changed_pixel_ratio_gt10": 0.2279925303454715,
+   "max": 221.0
+  },
+  "ARM2_ROI": {
+   "median": 2.0,
+   "mean": 8.047738095238095,
+   "p95": 34.0,
+   "changed_pixel_ratio_gt5": 0.2854761904761905,
+   "changed_pixel_ratio_gt10": 0.15166666666666667,
+   "max": 187.0
+  },
+  "DOWNSTREAM_ROI": {
+   "median": 4.0,
+   "mean": 19.412,
+   "p95": 101.0,
+   "changed_pixel_ratio_gt5": 0.44844117647058823,
+   "changed_pixel_ratio_gt10": 0.3461764705882353,
+   "max": 221.0
+  },
+  "STATIC_REFERENCE_ROI": {
+   "median": 7.0,
+   "mean": 12.998044444444444,
+   "p95": 42.0,
+   "changed_pixel_ratio_gt5": 0.5682222222222222,
+   "changed_pixel_ratio_gt10": 0.4121111111111111,
+   "max": 111.0
+  },
+  "END_EFFECTOR_ROI": {
+   "median": 5.0,
+   "mean": 18.23611111111111,
+   "p95": 88.0,
+   "changed_pixel_ratio_gt5": 0.4930555555555556,
+   "changed_pixel_ratio_gt10": 0.3651388888888889,
+   "max": 187.0
+  },
+  "DABAI_ROI": {
+   "median": 10.0,
+   "mean": 33.385,
+   "p95": 151.0,
+   "changed_pixel_ratio_gt5": 0.6492592592592593,
+   "changed_pixel_ratio_gt10": 0.49666666666666665,
+   "max": 221.0
+  },
+  "ARM4_ROI": {
+   "median": 10.0,
+   "mean": 33.385,
+   "p95": 151.0,
+   "changed_pixel_ratio_gt5": 0.6492592592592593,
+   "changed_pixel_ratio_gt10": 0.49666666666666665,
+   "max": 221.0
+  },
+  "ARM1_ROI": {
+   "median": 1.0,
+   "mean": 2.397922077922078,
+   "p95": 8.0,
+   "changed_pixel_ratio_gt5": 0.1103030303030303,
+   "changed_pixel_ratio_gt10": 0.018095238095238095,
+   "max": 28.0
+  },
+  "ARM3_ROI": {
+   "median": 6.0,
+   "mean": 20.75387755102041,
+   "p95": 92.0,
+   "changed_pixel_ratio_gt5": 0.5182312925170068,
+   "changed_pixel_ratio_gt10": 0.41653061224489796,
+   "max": 183.0
+  }
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "method": "cv2.phaseCorrelate on STATIC_REFERENCE_ROI (PRE_MEAN vs POST_MEAN, 5-frame mean each)",
+ "global_translation_px": [
+  0.09282998709946355,
+  -0.047431192512419784
+ ],
+ "global_translation_magnitude_px": 0.10424550123644087,
+ "global_rotation_deg": null,
+ "phase_correlation_response": 0.839794168387519,
+ "registration_residual_mean_abs_diff": 13.013422222222221,
+ "raw_mean_abs_diff_before_shift_correction": 12.979966666666666
+}
