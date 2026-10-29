@@ -1,0 +1,16 @@
+{
+  "gate": "P-007F-08A",
+  "extrinsic_status": "EXTRINSIC_NOT_VERIFIED",
+  "observability_verdict": "OBSERVABILITY_UNRESOLVED",
+  "ready_for_phase_b_review": "NO",
+  "motion_authorized": "NO",
+  "phase_b_executed": "NO",
+  "T_motion_px": 1.0,
+  "T_motion_changed": false,
+  "qualified_forbidden_because": "A positive image displacement is not implied by the verified evidence. Unknown camera orientation can put the marker motion along the viewing ray.",
+  "insufficient_not_chosen_because": "INSUFFICIENT would require a verified prediction that the displacement stays at or below 1.0 px. That prediction was not computed.",
+  "follow_up_calibration_started": false,
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "torque_command_count": 0
+}

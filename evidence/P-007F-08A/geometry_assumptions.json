@@ -1,0 +1,71 @@
+{
+  "gate": "P-007F-08A",
+  "question": "Does existing evidence show that a small allowed ID2 rotation produces an image displacement larger than the frozen T_motion of 1.0 px?",
+  "T_motion_px": 1.0,
+  "T_motion_source": "evidence/P-007F-08/phase_a/thresholds.json",
+  "T_motion_changed": false,
+  "new_empirical_threshold": false,
+  "extrinsic_name": "T_Gemini_from_RobotBase",
+  "extrinsic_status": "EXTRINSIC_NOT_VERIFIED",
+  "extrinsic_basis": "PROJECT-STATUS T_base_camera 없음. P-006 BLOCKED. README hand-eye 미측정. P-007F-07A와 P-007F-04가 같은 부재를 이미 기록.",
+  "not_an_extrinsic": [
+    "T_depth_color 23.80 mm (camera internal, evidence/P-007F-06/rgb_depth_alignment.json)",
+    "P-007F-07C solvePnP marker pose in the color camera (marker, not the robot base)",
+    "Gemini Baseline B placement freeze"
+  ],
+  "methods_considered": [
+    "pinhole projection",
+    "calibrated color intrinsics",
+    "existing forward kinematics",
+    "rigid-body transform",
+    "image Jacobian and finite-difference projection"
+  ],
+  "why_projection_was_not_run": "Image displacement needs the marker motion in the camera frame. FK supplies motion in the robot base frame. The rigid transform between those frames is not in the evidence. Filling it with a guessed camera pose is forbidden.",
+  "why_no_lower_bound": "Over an unknown camera orientation, a rotation can move the marker along the viewing ray. The first-order image displacement of that point is then 0. The listed evidence does not exclude that direction, so a positive lower bound is not justified.",
+  "inputs": {
+    "intrinsics": {
+      "class": "LOCAL_EVIDENCE",
+      "source": "evidence/P-006/camera-target/color-camera-info.yaml"
+    },
+    "id2_joint": {
+      "class": "OFFICIAL_IMPLEMENTATION_VERIFIED",
+      "source": "scripts/p007e_r2r4_fk.py and evidence/P-007F-07/m2_kinematic_verification/membership_report.json",
+      "frame_of_axis": "robot base via FK, not the camera"
+    },
+    "m2_downstream": {
+      "class": "LOCAL_EVIDENCE",
+      "value": "YES",
+      "link_identity": "Arm2_Link end or Arm3_Link start, not resolved"
+    },
+    "m2_image_center_px": {
+      "class": "LOCAL_EVIDENCE",
+      "xy": [776.02, 126.48],
+      "source": "P-007F-07B-R1 attempt-02 median of 17 detections"
+    },
+    "m2_range_m": {
+      "class": "LOCAL_EVIDENCE",
+      "value": 0.681,
+      "what_it_locates": "marker origin in the color camera",
+      "what_it_does_not_locate": "ID2 axis"
+    },
+    "controller_reported_id2": {
+      "class": "LOCAL_EVIDENCE",
+      "library_deg": 152,
+      "source": "evidence/P-007F-05/run_1793274484/controller_post.json",
+      "physical_angle": "not claimed"
+    },
+    "p007f04_pixel_range": {
+      "class": "PROJECT_ADAPTATION",
+      "adopted": false
+    }
+  },
+  "free_quantities_that_can_change_the_verdict": [
+    "camera orientation relative to the robot base",
+    "camera position relative to the robot base",
+    "metric offset from the ID2 axis to the marker",
+    "which downstream link the bracket belongs to"
+  ],
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "physical_change": false
+}

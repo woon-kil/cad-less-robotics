@@ -490,6 +490,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-007F-07B-R1 attempt 2** — 물리 ID0는 M2 하나(책상 카드·키보드 시트 없음). 검출은 사전 1/24, 본촬영 17/258(6.6%), 변 길이 평균 41.65 px. Baseline B shift 0.463 px. 밝기·선명도는 검출/미검출이 같다. `MARKER_STATIC_QUALIFICATION_R1 = FAIL`. `MOTION_AUTHORIZED=NO`
 - [x] **P-007F-07C — M2 marker mount geometry redesign** — 설계만. 17프레임 solvePnP. 영상 각 30.8°는 물리 장착각으로 쓰지 않음. 권장 쐐기 26.7° ESTIMATED, 판 56×56 mm, 경첩은 DaBai 쪽. `MOUNT_REDIRECTION_RECOMMENDED` / `DESIGN_READY`. 간섭 `POTENTIAL_INTERFERENCE`. robot/servo/torque 0. `MARKER_MOUNT_INSTALLATION_AUTHORIZED=NO`
 - [x] **P-007F-08 Phase A — continuous external motion witness** — 마커 ID 검출 없이 LK+phase correlation. 정지 228 frame / 26.0 s. M2 특징점 13/13 생존, relative 최대 0.155 px. T_motion 은 바닥값 1.0 px로 고정(통계값 0.179). `READY_AND_ARMED=YES`. Phase B 미실행. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-007F-08A — motion observability qualification** — offline. `T_Gemini<-RobotBase` 없음. ±1/±2/±3° 픽셀 예측을 만들지 않음. `T_motion=1.0 px` 유지. `OBSERVABILITY_UNRESOLVED`. `READY_FOR_PHASE_B_REVIEW=NO`. 추가 calibration 없음. robot/servo 0. `MOTION_AUTHORIZED=NO`
 
   - EPC-01~27 전부 충족 + EPC 외 추가 자체검증 1건(self_transfer_verification, advisor 요구). `evidence/P-007E-R2-R2/stage_c1r1r1_decision.json` + `stage_c1r1r1_architecture_note.json`(§24 원문 verbatim 추가) + `c1r1r1_repair_tests/repair_result.json`
   - 🔴 **advisor 2차 재검토 반영**: §24 원문("qualified only for ... rigid external scene / not qualified for dynamic trajectory tracking...")이 §11 문구로 잘못 들어가 있던 것을 architecture_note 에 `section_24_verbatim` 로 보완(코드 상수는 SHA 재시험 비용 때문에 그대로 둠, divergence 명시) · verdict 를 조건부로 수정(배포방식 결정 전까지 무조건 READY 아님) · 실제(non-mock) `build_runtime_provenance`/`check_dirty_tree` 1회 실행해 git_head=`7798e80`·dirty=False 확인 · 🔴 **이 gate의 evidence 회수 자체가 §14~16 을 어김**(`repair_result.json` scp 후 SHA diff 없이 Jetson rm -rf, 2회) — `TRANSFER_INTEGRITY_NOT_VERIFIED_BEFORE_SOURCE_DELETION` 로 공개(판정 영향 없음, 재현 가능한 pass/fail 로그라 재실행 불요)
@@ -672,6 +673,7 @@ operator channel        realtime visual observation
 | 45 | 2026-10-30 | **P-007F-07B-R1 attempt 2** — 중복 시트 제거 후 재실행. 물리 ID0=1, detector 17/258, side mean 41.65 px, Baseline B unchanged. robot/servo/torque 0 | `MARKER_STATIC_QUALIFICATION_R1 = FAIL — 다음 Gate 미개방, MOTION_AUTHORIZED=NO` |
 | 46 | 2026-10-30 | **P-007F-07C** — 기존 attempt-02 검출 17프레임과 Gemini RGB intrinsics로 M2 면 자세를 추정. 영상 각 30.8°는 쐐기각으로 쓰지 않음. 절반 보정 26.7°(ESTIMATED), 모서리 이동 16 mm, 판 56×56 mm. 새 촬영·로봇 동작 0 | `DESIGN_READY / MOUNT_REDIRECTION_RECOMMENDED — 설치 미승인, MOTION_AUTHORIZED=NO` |
 | 47 | 2026-10-30 | **P-007F-08 Phase A** — M2 50 mm 마커를 검출 대상이 아니라 LK 추적 패턴으로 사용. 경사판 미설치. 정지 sham 228 frame. 공식은 촬영 전 고정. robot/servo 0 | `READY_AND_ARMED=YES — PHASE_B_EXECUTED=NO, MOTION_AUTHORIZED=NO` |
+| 48 | 2026-10-30 | **P-007F-08A** — 기존 evidence만으로 ID2 소회전의 영상 변위가 1.0 px를 넘는지 검토. extrinsic 부재. 예측 미계산. robot/servo 0 | `OBSERVABILITY_UNRESOLVED — READY_FOR_PHASE_B_REVIEW=NO, MOTION_AUTHORIZED=NO` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

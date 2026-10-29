@@ -1,0 +1,7 @@
+candidate_deg,predicted_3d_displacement_m,predicted_u_px,predicted_v_px,predicted_pixel_displacement_px,predicted_px_over_1px,status,reason
+-1,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
+1,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
+-2,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
+2,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
+-3,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
+3,,,,,,,NOT_COMPUTED,EXTRINSIC_NOT_VERIFIED
