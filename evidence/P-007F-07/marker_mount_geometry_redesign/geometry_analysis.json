@@ -1,0 +1,403 @@
+{
+ "gate": "P-007F-07C",
+ "image_distortion_is_not_physical_mount_angle": "30.8° image distortion != 30.8° physical mounting correction",
+ "intrinsics": {
+  "source": "/Users/woonkil/projects/cad-less-robotics/evidence/P-006/camera-target/color-camera-info.yaml",
+  "also_identical_in": [
+   "evidence/P-007F-03/frames",
+   "evidence/P-007F-05/run_1793274484"
+  ],
+  "width": 1280,
+  "height": 720,
+  "frame_id": "camera_color_optical_frame",
+  "distortion_model": "rational_polynomial",
+  "k": [
+   610.5073852539062,
+   0.0,
+   641.7918090820312,
+   0.0,
+   610.349853515625,
+   364.4433288574219,
+   0.0,
+   0.0,
+   1.0
+  ],
+  "d": [
+   -0.03170262649655342,
+   0.0341622568666935,
+   7.964719407027587e-05,
+   -6.973547897359822e-06,
+   -0.01190638542175293,
+   0.0,
+   0.0,
+   0.0
+  ],
+  "focal_length_assumed": false
+ },
+ "marker_square_m": 0.05,
+ "object_point_convention": "TL TR BR BL matches OpenCV aruco CCW_center object points; +Z out of the printed face",
+ "solve_method": "SOLVEPNP_IPPE_SQUARE",
+ "detected_frame_count": 17,
+ "image_plane": {
+  "side_px": {
+   "0": {
+    "n": 17,
+    "mean": 40.60047873203622,
+    "std": 1.1410155875567278,
+    "median": 40.275939922609695,
+    "min": 37.71191820537913,
+    "max": 43.67349686974091
+   },
+   "1": {
+    "n": 17,
+    "mean": 40.20839872511235,
+    "std": 1.4578275176483728,
+    "median": 40.855014894294214,
+    "min": 37.272404654913146,
+    "max": 41.88542904096136
+   },
+   "2": {
+    "n": 17,
+    "mean": 43.27620869714286,
+    "std": 0.3418035941103021,
+    "median": 43.136459330291196,
+    "min": 42.76446005375168,
+    "max": 44.123454515023795
+   },
+   "3": {
+    "n": 17,
+    "mean": 42.49792109862552,
+    "std": 0.37122875007625644,
+    "median": 42.609018756961035,
+    "min": 41.633586593112426,
+    "max": 42.85810232035461
+   }
+  },
+  "side_mean_px": {
+   "n": 17,
+   "mean": 41.64575181322923,
+   "std": 0.4653553296892832,
+   "median": 41.694770868854384,
+   "min": 40.11266639777029,
+   "max": 42.33008676259127
+  },
+  "diagonal_px": {
+   "0": {
+    "n": 17,
+    "mean": 70.57168421838298,
+    "std": 0.5462357525662246,
+    "median": 70.41890215148632,
+    "min": 69.8356948638095,
+    "max": 71.81887306311225
+   },
+   "1": {
+    "n": 17,
+    "mean": 44.02528645647844,
+    "std": 1.5148307784437292,
+    "median": 44.653780545553566,
+    "min": 38.17353412717944,
+    "max": 44.71617552504127
+   }
+  },
+  "max_corner_deviation_from_90_deg": {
+   "n": 17,
+   "mean": 31.85047516656332,
+   "std": 3.88037824826629,
+   "median": 30.8343226910104,
+   "min": 28.48332958657228,
+   "max": 46.8427453525924
+  },
+  "aspect_ratio": {
+   "n": 17,
+   "mean": 1.0946899325519142,
+   "std": 0.030583926973594973,
+   "median": 1.0880885562593365,
+   "min": 1.0595791940128467,
+   "max": 1.1717381068941575
+  },
+  "opposite_side_ratio_max": {
+   "n": 17,
+   "mean": 1.0867552813987562,
+   "std": 0.025870517711496163,
+   "median": 1.0763628757074395,
+   "min": 1.0527034017677215,
+   "max": 1.1556666846097277
+  },
+  "area_px": {
+   "n": 17,
+   "mean": 1552.8133771103835,
+   "std": 58.26510661776976,
+   "median": 1569.7682889022399,
+   "min": 1334.5833787047304,
+   "max": 1603.8013937682845
+  },
+  "center_px": {
+   "x": {
+    "n": 17,
+    "mean": 776.0423790426815,
+    "std": 0.3040662831051593,
+    "median": 776.0195770263672,
+    "min": 775.6505126953125,
+    "max": 776.7822418212891
+   },
+   "y": {
+    "n": 17,
+    "mean": 126.62703693614287,
+    "std": 0.3930965061168532,
+    "median": 126.48001670837402,
+    "min": 126.36592292785645,
+    "max": 128.0944995880127
+   }
+  }
+ },
+ "pose": {
+  "incidence_to_viewing_ray_deg": {
+   "n": 17,
+   "mean": 53.64098097839231,
+   "std": 1.8358735353338125,
+   "median": 53.37399598879748,
+   "min": 52.38261518287382,
+   "max": 60.74869159266056
+  },
+  "distance_m": {
+   "n": 17,
+   "mean": 0.6797235386321415,
+   "std": 0.00532244731513866,
+   "median": 0.6807961140926003,
+   "min": 0.6683772269984699,
+   "max": 0.6875314900751435
+  },
+  "reprojection_error_px": {
+   "n": 17,
+   "mean": 0.9285639390426106,
+   "std": 0.4086400456788311,
+   "median": 0.7550001976626917,
+   "min": 0.5265161908823107,
+   "max": 2.3636012922067287
+  },
+  "yaw_of_normal_deg": {
+   "n": 17,
+   "mean": -9.933227104121215,
+   "std": 0.9982584354221528,
+   "median": -9.536300387007714,
+   "min": -12.396794206750098,
+   "max": -8.499935242842287
+  },
+  "pitch_of_normal_deg": {
+   "n": 17,
+   "mean": -33.01875238527913,
+   "std": 1.922074815084872,
+   "median": -32.668463570101544,
+   "min": -40.42245363016683,
+   "max": -31.580676783571242
+  },
+  "normal_median_camera": [
+   -0.14098261894088762,
+   -0.534802806078885,
+   -0.8340504265932205
+  ],
+  "representative_frame_index": 12,
+  "definitions": {
+   "incidence": "angle between marker +Z and the direction from the marker origin toward the camera. 0 means the face looks along the viewing ray.",
+   "yaw_pitch": "atan2 of the normal against camera -Z. These are not the plate wedge angle.",
+   "image_corner_deviation": "not a physical angle"
+  }
+ },
+ "candidates": [
+  {
+   "name": "A_current",
+   "fraction_of_incidence": 0.0,
+   "correction_deg": 0.0,
+   "evidence_level": "MEASURED_IMAGE_ONLY",
+   "remaining_incidence_deg": 52.38261518287382,
+   "max_corner_travel_mm": 0.0,
+   "corner_index_moved_toward_camera": 3,
+   "projected": {
+    "sides_px": [
+     40.69382428748757,
+     41.53435932540595,
+     41.82500626233573,
+     41.7986988047651
+    ],
+    "side_mean_px": 41.462972169998594,
+    "aspect_ratio": 1.0277973868186177,
+    "opposite_side_ratio_max": 1.0277973868186177,
+    "area_px": 1558.1775091958698,
+    "max_corner_deviation_from_90_deg": 26.490342280355904,
+    "corners_px": [
+     [
+      740.9927829614427,
+      128.38541520532615
+     ],
+     [
+      774.1928261052113,
+      104.85363944588093
+     ],
+     [
+      810.8036658707805,
+      124.46866981118387
+     ],
+     [
+      777.1672569399341,
+      149.32672973309448
+     ]
+    ]
+   },
+   "projected_from_detected_corners": {
+    "corners": [
+     [
+      741.2743530273438,
+      127.91898345947266
+     ],
+     [
+      773.9586791992188,
+      105.28130340576172
+     ],
+     [
+      811.0,
+      124.0
+     ],
+     [
+      776.922607421875,
+      149.83660888671875
+     ]
+    ],
+    "sides_px": [
+     39.758392013808795,
+     41.50239810966997,
+     42.76446005375168,
+     41.84710677868043
+    ],
+    "diagonals_px": [
+     69.8356948638095,
+     44.653780545553566
+    ],
+    "corner_angles_deg": [
+     66.29154323685559,
+     118.48332958657228,
+     63.978061071252526,
+     111.2470661053196
+    ],
+    "max_corner_deviation_from_90_deg": 28.48332958657228,
+    "opposite_side_ratio_max": 1.0756083907744263,
+    "aspect_ratio": 1.0756083907744263,
+    "area_px": 1559.13154320186,
+    "center_px": [
+     775.7889099121094,
+     126.75922393798828
+    ]
+   },
+   "note": "A의 설계 비교는 재투영이고, detected_corners는 그 프레임의 실제 검출이다."
+  },
+  {
+   "name": "B_partial",
+   "fraction_of_incidence": 0.5,
+   "correction_deg": 26.68699799439874,
+   "evidence_level": "ESTIMATED",
+   "remaining_incidence_deg": 25.695617188475083,
+   "max_corner_travel_mm": 16.259500315963116,
+   "corner_index_moved_toward_camera": 2,
+   "projected": {
+    "sides_px": [
+     49.03833282844821,
+     46.74757118606169,
+     49.7871990528718,
+     46.49812722835223
+    ],
+    "side_mean_px": 48.01780757393348,
+    "aspect_ratio": 1.0707355762602424,
+    "opposite_side_ratio_max": 1.0152710375991647,
+    "area_px": 2298.511537102284,
+    "max_corner_deviation_from_90_deg": 4.406604026831332,
+    "corners_px": [
+     [
+      741.0030740239362,
+      129.28024701422035
+     ],
+     [
+      774.867310428939,
+      93.81235196391128
+     ],
+     [
+      810.9388990183797,
+      123.54744753177582
+     ],
+     [
+      776.4122456881657,
+      159.41770539738783
+     ]
+    ]
+   }
+  },
+  {
+   "name": "C_face_viewing_ray",
+   "fraction_of_incidence": 1.0,
+   "correction_deg": 53.37399598879748,
+   "evidence_level": "ESTIMATED",
+   "remaining_incidence_deg": 0.9913808059240828,
+   "max_corner_travel_mm": 31.641115687826236,
+   "corner_index_moved_toward_camera": 1,
+   "projected": {
+    "sides_px": [
+     52.72495031583975,
+     49.41747017058681,
+     52.25273204926863,
+     47.87302227802496
+    ],
+    "side_mean_px": 50.56704370343004,
+    "aspect_ratio": 1.101349942137285,
+    "opposite_side_ratio_max": 1.0322613409195767,
+    "area_px": 2551.3935257210396,
+    "max_corner_deviation_from_90_deg": 3.1285313942550204,
+    "corners_px": [
+     [
+      741.0560705398037,
+      129.5788111457985
+     ],
+     [
+      775.0947049393296,
+      89.31354380503468
+     ],
+     [
+      811.0366929770627,
+      123.22902484181628
+     ],
+     [
+      776.1552775537868,
+      162.13448544417287
+     ]
+    ]
+   }
+  }
+ ],
+ "chosen_candidate": "B_partial",
+ "decision": "MOUNT_REDIRECTION_RECOMMENDED",
+ "decision_reason": "시선까지의 전량 보정은 모서리 이동이 커서, 절반만 돌리는 안을 고른다.",
+ "plate": {
+  "minimum_width_mm": 56.0,
+  "minimum_height_mm": 56.0,
+  "recommended_width_mm": 56.0,
+  "recommended_height_mm": 56.0,
+  "optional_larger_width_mm": 70.0,
+  "optional_larger_height_mm": 70.0,
+  "recommended_size_level": "APPROXIMATE",
+  "minimum_size_basis": "50 mm black square plus the print sheet quiet-zone guide of 3 mm per side",
+  "wedge_angle_deg": 26.68699799439874,
+  "wedge_angle_level": "ESTIMATED",
+  "hinge": "image-left edge, DaBai side. opposite corner index 2 which moves toward the camera",
+  "lift_side": "image-right edge, toward the monitor and toward Gemini",
+  "attachment": "removable tape or clip on the existing M2 card face. no screw into a servo, no glue on a moving shaft"
+ },
+ "interference": {
+  "result": "POTENTIAL_INTERFERENCE",
+  "basis": "still image plus the estimated lift direction. no motion and no mesh sweep",
+  "lift_direction": "corner 2, image right, away from DaBai",
+  "dabai": "immediately image-left of the card. a plate wider than the current card can overhang into it",
+  "id2_plus_minus_3_deg": "not swept",
+  "collision_free_claimed": false
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "torque_command_count": 0,
+ "physical_change": false
+}
