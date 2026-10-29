@@ -1,0 +1,28 @@
+{
+ "quality_pass": true,
+ "reason": null,
+ "pre_window": {
+  "pass": true,
+  "valid_frames": 5,
+  "minimum_required": 2,
+  "reason": null
+ },
+ "post_window": {
+  "pass": true,
+  "valid_frames": 5,
+  "minimum_required": 2,
+  "reason": null
+ },
+ "pre_session": {
+  "pass": true,
+  "rejected_frame_ratio": 0.0,
+  "maximum_allowed": 0.2,
+  "reason": null
+ },
+ "post_session": {
+  "pass": true,
+  "rejected_frame_ratio": 0.0,
+  "maximum_allowed": 0.2,
+  "reason": null
+ }
+}

@@ -1,0 +1,9 @@
+{
+  "gate": "P-007F-05",
+  "stage": "§22 — operator execution-time observation (SECONDARY, immutable provenance)",
+  "collected_via": "AskUserQuestion, immediately after driver stop + result review, same turn as execution",
+  "question": "Did you visually observe physical robot motion?",
+  "answer": "YES",
+  "note": "SECONDARY only — does NOT override Channel A (controller readback 154→152) or Channel B (Gemini robot-relative translation/rotation below threshold → motion_yes_no=NO). Recorded as a separate field per §22; execution_result.json's operator_observation_secondary stays null (that is what the live run actually captured in-process) — this file is the out-of-band correction added immediately after.",
+  "divergence_disclosed": "operator reports YES physical motion observed; Gemini external witness classifies NO (robot_relative translation_px=0.2297 < T=1.7826, rotation_deg=0.3976 < T=1.0778); controller readback changed but landed at 152, not the commanded target 151. This three-way divergence is reported as-is — no field is adjusted to make them agree."
+}

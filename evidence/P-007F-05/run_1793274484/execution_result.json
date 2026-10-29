@@ -1,0 +1,128 @@
+{
+ "status": "STATUS_EXPERIMENT_COMPLETE",
+ "motion_commands_sent": 1,
+ "experiment_id": "b06c53d8bd52348d35eae6583df8aeec",
+ "pre_gate": {
+  "pass": true,
+  "failed_checks": [],
+  "checks": {
+   "p007f04_consistency_confirmed": true,
+   "harness_sha_valid": true,
+   "module_sha_valid": true,
+   "git_provenance_valid": true,
+   "workspace_safe": true,
+   "gemini_identity_valid": true,
+   "baseline_b_unchanged": true,
+   "no_unexpected_process": true,
+   "controller_pre_matches_154": true,
+   "pre_window_valid": true
+  }
+ },
+ "real_hardware_write_invoked": true,
+ "write_result": {
+  "mode": "write",
+  "result": {
+   "servo_id": 2,
+   "target_degrees": 151,
+   "duration_ms": 2000,
+   "elapsed_s": 0.000691,
+   "write_call_count": 1
+  },
+  "integrity": {
+   "disk_sha_match": true,
+   "disk_sha_actual": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+   "egg_sha_match": true,
+   "egg_sha_actual": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+   "runtime_is_egg": true,
+   "runtime_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+   "pass": true
+  }
+ },
+ "approval": {
+  "granted": true,
+  "declined_reason": null
+ },
+ "controller_pre_read_values": [
+  154,
+  154,
+  154,
+  154,
+  154
+ ],
+ "controller_post_read_values": [
+  152,
+  152,
+  152,
+  152,
+  152
+ ],
+ "controller_change": true,
+ "post_visual_quality": {
+  "quality_pass": true,
+  "reason": null,
+  "pre_window": {
+   "pass": true,
+   "valid_frames": 5,
+   "minimum_required": 2,
+   "reason": null
+  },
+  "post_window": {
+   "pass": true,
+   "valid_frames": 5,
+   "minimum_required": 2,
+   "reason": null
+  },
+  "pre_session": {
+   "pass": true,
+   "rejected_frame_ratio": 0.0,
+   "maximum_allowed": 0.2,
+   "reason": null
+  },
+  "post_session": {
+   "pass": true,
+   "rejected_frame_ratio": 0.0,
+   "maximum_allowed": 0.2,
+   "reason": null
+  },
+  "arm2_result": {
+   "valid": true,
+   "match_count": 12,
+   "inlier_count": 11,
+   "inlier_ratio": 0.9166666666666666,
+   "translation_px": 0.3859067552312597,
+   "rotation_deg": 0.42446423489910257,
+   "kp1": 14,
+   "kp2": 11
+  },
+  "static_result": {
+   "valid": true,
+   "match_count": 55,
+   "inlier_count": 51,
+   "inlier_ratio": 0.9272727272727272,
+   "translation_px": 0.15619942119912053,
+   "rotation_deg": 0.026906932310263285,
+   "kp1": 395,
+   "kp2": 118
+  },
+  "static_reference_guard": {
+   "pass": true,
+   "static_translation_px": 0.15619942119912053,
+   "static_rotation_deg": 0.026906932310263285,
+   "S_translation_px": 0.2,
+   "S_rotation_deg": 0.05,
+   "reason": null
+  },
+  "robot_relative": {
+   "translation_px": 0.2297073340321392,
+   "rotation_deg": 0.39755730258883926,
+   "T_translation_px": 1.7826,
+   "T_rotation_deg": 1.0778
+  },
+  "motion_yes_no": "NO"
+ },
+ "operator_observation_secondary": null,
+ "result_matrix_cell": "CONTROLLER_CHANGE_WITHOUT_EXTERNAL_MOTION",
+ "result_code": "CONTROLLER_CHANGE_WITHOUT_EXTERNAL_MOTION",
+ "no_automatic_return": true,
+ "no_automatic_retry": true
+}

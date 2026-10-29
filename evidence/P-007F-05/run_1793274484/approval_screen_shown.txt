@@ -1,0 +1,18 @@
+P-007F-05 READY FOR SINGLE PHYSICAL MOTION
+
+Expected current controller-reported ID2: 154
+Command target:                           151
+Command delta:                             -3
+Duration:                                  2000 ms
+Max command count:                         1
+
+PRE hard gate:                            PASS
+Controller PRE read:                      154 (confirmed x5)
+Operator watching:                        YES
+Power cutoff:                             REACHABLE
+
+NO AUTOMATIC RETURN
+NO AUTOMATIC RETRY
+
+Type exact approval phrase:
+EXECUTE P-007F-05 ARM2 154 TO 151 ONCE

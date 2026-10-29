@@ -1,0 +1,12 @@
+{
+ "gate": "P-007F-05",
+ "section": "§36 real execution",
+ "experiment_id": "b06c53d8bd52348d35eae6583df8aeec",
+ "run_root": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-05/run_1793274484",
+ "git_head_at_execution_start": "a6655dd (committed before this run started)",
+ "git_head_now": "a6655dd9f188aa4de7a6d0e47ebffe31e5838f0f",
+ "p007f03_commit": "fb695da",
+ "p007f04_commit": "906c8b9",
+ "motion_commands_sent": 1,
+ "status": "STATUS_EXPERIMENT_COMPLETE"
+}

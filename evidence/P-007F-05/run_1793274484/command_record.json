@@ -1,0 +1,19 @@
+{
+ "mode": "write",
+ "result": {
+  "servo_id": 2,
+  "target_degrees": 151,
+  "duration_ms": 2000,
+  "elapsed_s": 0.000691,
+  "write_call_count": 1
+ },
+ "integrity": {
+  "disk_sha_match": true,
+  "disk_sha_actual": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "egg_sha_match": true,
+  "egg_sha_actual": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "runtime_is_egg": true,
+  "runtime_file": "/usr/local/lib/python3.10/dist-packages/Arm_Lib-1.0.3-py3.10.egg/Arm_Lib/__init__.py",
+  "pass": true
+ }
+}

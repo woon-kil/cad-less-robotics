@@ -1,0 +1,12 @@
+{
+ "status": "POST_COMPLETE",
+ "armed_at": 1793274503.683313,
+ "detail": {
+  "servo_id": 2,
+  "target": 151,
+  "duration_ms": 2000,
+  "post_complete": true,
+  "result_code": "CONTROLLER_CHANGE_WITHOUT_EXTERNAL_MOTION"
+ },
+ "sent_at": 1793274512.06257
+}

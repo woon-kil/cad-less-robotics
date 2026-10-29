@@ -1,0 +1,4 @@
+{
+ "status": "DEPTH_FRAMES_CAPTURED_NOT_SEPARATELY_ANALYZED",
+ "note": "P-007F-03 design: depth is CORROBORATING only, RGB/ORB is PRIMARY Channel B. Raw depth PNGs are preserved in pre_frames/post_frames for later corroborating analysis if needed; no depth-based motion statistic was computed for this run's result_classification."
+}

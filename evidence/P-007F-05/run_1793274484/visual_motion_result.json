@@ -1,0 +1,29 @@
+{
+ "arm2_result": {
+  "valid": true,
+  "match_count": 12,
+  "inlier_count": 11,
+  "inlier_ratio": 0.9166666666666666,
+  "translation_px": 0.3859067552312597,
+  "rotation_deg": 0.42446423489910257,
+  "kp1": 14,
+  "kp2": 11
+ },
+ "static_result": {
+  "valid": true,
+  "match_count": 55,
+  "inlier_count": 51,
+  "inlier_ratio": 0.9272727272727272,
+  "translation_px": 0.15619942119912053,
+  "rotation_deg": 0.026906932310263285,
+  "kp1": 395,
+  "kp2": 118
+ },
+ "robot_relative": {
+  "translation_px": 0.2297073340321392,
+  "rotation_deg": 0.39755730258883926,
+  "T_translation_px": 1.7826,
+  "T_rotation_deg": 1.0778
+ },
+ "motion_yes_no": "NO"
+}

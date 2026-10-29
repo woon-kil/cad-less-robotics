@@ -1,0 +1,6 @@
+{
+ "required_approval_phrase": "EXECUTE P-007F-05 ARM2 154 TO 151 ONCE",
+ "typed_phrase_matched_exactly": true,
+ "declined_reason": null,
+ "approval_screen_file": "approval_screen_shown.txt"
+}

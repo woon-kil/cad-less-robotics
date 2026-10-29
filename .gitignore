@@ -17,3 +17,12 @@ evidence/P-007D-R2/official_extract/
 # P-007E-R2-R4 — read-only robot model cache (URDF/SRDF/STL), fetched from Jetson
 .cache/jetson_robot_model/
 .venv-p007f03/
+
+# write-ahead execution ledgers (local operational state, not evidence-of-record —
+# the authoritative snapshot of each ledger entry is copied into
+# evidence/<gate>/run_*/ledger_snapshot_final.json). Previously assumed to already
+# be gitignored (P-007F-04 ledger_design.md) — that assumption was wrong; fixed here
+# 2026-10-29 after .cache/p007f05_ledger/ showed up untracked following a real §36 run.
+.cache/p007e_r2r4_ledger/
+.cache/p007e_r2r5_ledger/
+.cache/p007f05_ledger/

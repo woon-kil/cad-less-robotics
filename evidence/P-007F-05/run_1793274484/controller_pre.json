@@ -1,0 +1,12 @@
+{
+ "expected_baseline_id2": 154,
+ "read_rounds": [
+  154,
+  154,
+  154,
+  154,
+  154
+ ],
+ "all_match_154": true,
+ "model_assumption_disclosure": "controller-reported value, not proven to equal physical shaft angle (P-007F-01 READBACK_SEMANTICS_UNRESOLVED still unresolved)"
+}

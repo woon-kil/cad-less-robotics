@@ -1,0 +1,7 @@
+{
+ "channel_a_controller_change": true,
+ "channel_b_gemini_motion": "NO",
+ "result_matrix_cell": "CONTROLLER_CHANGE_WITHOUT_EXTERNAL_MOTION",
+ "result_code": "CONTROLLER_CHANGE_WITHOUT_EXTERNAL_MOTION",
+ "operator_observation_secondary": "YES (see operator_observation.json) -- does not override this classification"
+}

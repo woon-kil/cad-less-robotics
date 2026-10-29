@@ -1,0 +1,11 @@
+{
+ "read_rounds": [
+  152,
+  152,
+  152,
+  152,
+  152
+ ],
+ "controller_change_vs_baseline_154": true,
+ "note": "commanded target was 151; observed readback landed at 152, not the commanded value -- raw/readback bucket uncertainty, consistent with prior R4/R5 disclosures. Not interpreted as physical angle."
+}

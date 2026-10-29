@@ -1,0 +1,15 @@
+{
+ "operator_presence_confirmation": "YES",
+ "workspace_safety_attestation": {
+  "workspace_clear": true,
+  "no_human_body_in_workspace": true,
+  "no_loose_object": true,
+  "cables_clear": true,
+  "dabai_cable_has_slack": true,
+  "camera_mount_secure": true,
+  "robot_base_stable": true,
+  "power_cutoff_reachable": true,
+  "obstacle_envelope_clear": true
+ },
+ "collected_via": "AskUserQuestion, immediately before real execution, same turn"
+}
