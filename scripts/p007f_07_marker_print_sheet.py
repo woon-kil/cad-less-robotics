@@ -111,24 +111,33 @@ def build_figure(marker_img, dict_name, marker_id):
            "%s  /  ID %d  /  %.0f mm (outer black square)" % (dict_name, marker_id, BLACK_SQUARE_MM),
            ha="center", va="center", fontsize=11, fontweight="bold")
 
-    # -- 30mm reference ruler, independent of the marker, for post-print measurement --
+    # -- reference ruler, independent of the marker, for post-print measurement --
+    # 🔴 자체발견·수정(P-007F-07B, 50mm 버전 재사용 중 발견): bar 자체는 BLACK_SQUARE_MM
+    # 폭으로 그려지는데 눈금/라벨은 "30"에 하드코딩돼 있어, BLACK_SQUARE_MM>30일 때
+    # bar가 마지막 눈금(30) 너머까지 라벨 없이 뻗어나가는 버그였다. 눈금/라벨 모두
+    # BLACK_SQUARE_MM에서 유도한다 -- bar 길이가 항상 marker 물리 크기와 정확히 일치한다.
     ruler_left = marker_left
     ruler_bottom = marker_bottom - QUIET_ZONE_MARGIN_MM - 28
     ruler_h = 4.0
     bar = mpatches.Rectangle((ruler_left, ruler_bottom), BLACK_SQUARE_MM, ruler_h,
                              facecolor="black", edgecolor="black", zorder=3)
     ax.add_patch(bar)
-    for tick_mm in (0, 10, 20, 30):
+    tick_step = 10
+    ticks_mm = list(range(0, int(round(BLACK_SQUARE_MM)) + 1, tick_step))
+    if ticks_mm[-1] != int(round(BLACK_SQUARE_MM)):
+        ticks_mm.append(int(round(BLACK_SQUARE_MM)))
+    for tick_mm in ticks_mm:
         x = ruler_left + tick_mm
         ax.plot([x, x], [ruler_bottom - 1.5, ruler_bottom + ruler_h + 1.5], color="black", linewidth=0.8, zorder=4)
         ax.text(x, ruler_bottom - 4, "%d" % tick_mm, ha="center", va="top", fontsize=7)
     ax.text(ruler_left + BLACK_SQUARE_MM / 2, ruler_bottom + ruler_h + 6,
-           "30 mm REFERENCE BAR -- measure this with a ruler after printing", ha="center", va="bottom",
-           fontsize=8)
+           "%g mm REFERENCE BAR -- measure this with a ruler after printing" % BLACK_SQUARE_MM,
+           ha="center", va="bottom", fontsize=8)
 
-    # -- footer --
-    ax.text(PAGE_W_MM / 2, 20,
-           "evidence/P-007F-07/marker_print/print_verification.md -- geometry verification method",
+    # -- footer -- OUT_DIR 모듈 전역에서 상대경로를 유도(하드코딩 금지 -- 호출측이
+    # OUT_DIR를 override하면 이 라벨도 그에 맞춰 바뀐다, 자체발견·수정과 함께 정리)
+    footer_rel = os.path.relpath(os.path.join(OUT_DIR, "print_verification.md"), ROOT)
+    ax.text(PAGE_W_MM / 2, 20, "%s -- geometry verification method" % footer_rel,
            ha="center", va="center", fontsize=7, color="gray")
 
     return fig

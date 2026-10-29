@@ -1,0 +1,35 @@
+{
+ "gate": "P-007F-07B Phase B1",
+ "dictionary": "DICT_4X4_50",
+ "marker_id": 0,
+ "marker_id_source": "scripts/p007f_07_marker_detector.py PRIMARY_MARKER_ID (reused unmodified, unchanged from P-007F-07 30mm print)",
+ "black_square_physical_size_mm": 50.0,
+ "pdf_path": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/marker_print_50mm/aruco_4x4_50_id0_50mm_A4.pdf",
+ "png_path": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-07/marker_print_50mm/aruco_4x4_50_id0_50mm.png",
+ "pdf_mediabox_pt": [
+  [
+   0.0,
+   0.0,
+   595.2755905512,
+   841.8897637795
+  ]
+ ],
+ "pdf_mediabox_expected_pt": [
+  0.0,
+  0.0,
+  595.28,
+  841.89
+ ],
+ "pdf_mediabox_matches_a4": true,
+ "png_verify_dpi": 300,
+ "png_measured_marker_width_mm": 49.953,
+ "png_measured_marker_height_mm": 49.953,
+ "geometry_verification_passed": true,
+ "authoritative_geometry_source": "PDF vector MediaBox + axes-fraction placement (dpi-independent); PNG raster measurement is a supplementary cross-check only",
+ "print30_module_sha256_before": "03dbc924e37bea7e140a8767da934af7b09a1fbdf46d4ae17b947f2d83ff6ac3",
+ "print30_module_sha256_after": "03dbc924e37bea7e140a8767da934af7b09a1fbdf46d4ae17b947f2d83ff6ac3",
+ "print30_module_unmodified": true,
+ "print_ready": true,
+ "robot_command_count": 0,
+ "servo_write_count": 0
+}
