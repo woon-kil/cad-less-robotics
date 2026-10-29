@@ -1,0 +1,10 @@
+{
+ "status": "ABORT_BEFORE_MOTION",
+ "reason": "P007F04_SAFETY_CALCULATION_INCONSISTENT",
+ "detail": {
+  "pass": false,
+  "verdict": "P007F04_MARGIN_REPORT_TYPO_CONFIRMED",
+  "decision": "PROCEED — calculation data and candidate safety conclusion are normal; documentation typo only"
+ },
+ "motion_commands_sent": 0
+}

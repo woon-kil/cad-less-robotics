@@ -39,5 +39,6 @@
   "qualitative_conclusion_impact": "NONE — asymmetry finding (current state closer to upper limit than lower limit) remains valid and is actually stronger with correct numbers: margin_to_upper=26.0deg (not 28.0deg) vs margin_to_lower=154.0deg (not 152.0deg). The selection of lower/-3deg (target=151, moving away from the closer upper limit) is unaffected.",
   "existing_evidence_modification_policy": "evidence/P-007F-04/*.json and *.md are NOT modified — per gate instruction §2 and global policy against silently overwriting existing evidence. This correction is recorded only here, in P-007F-05 preparation evidence.",
   "verdict": "P007F04_MARGIN_REPORT_TYPO_CONFIRMED",
-  "decision": "PROCEED — calculation data and candidate safety conclusion are normal; documentation typo only"
+  "decision": "PROCEED",
+  "decision_note": "calculation data and candidate safety conclusion are normal; documentation typo only"
 }
