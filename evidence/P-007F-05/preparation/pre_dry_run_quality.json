@@ -1,0 +1,38 @@
+{
+ "capture_rc": 1,
+ "capture_stderr_tail": "동기 프레임이 목표의 절반 미만이다: 5/5\n",
+ "fetch_rc": 0,
+ "local_dir": "/Users/woonkil/projects/cad-less-robotics/evidence/P-007F-05/preparation/pre_dry_run_frames/predryrun_1793273394",
+ "valid_frames": 5,
+ "requested_frames": 5,
+ "gemini_identity": {
+  "identity_valid": true,
+  "serial_found": true,
+  "firmware_found": true,
+  "log_excerpt": "[component_container-1] [INFO] [1793273387.793652282] [camera.camera]: Set firmware log to OFF\n[component_container-1] [INFO] [1793273388.112226370] [camera.camera]: Serial number: CP263630009D\n[component_container-1] [INFO] [1793273388.112238633] [camera.camera]: Firmware version: 1.4.60\n[component_container-1] [INFO] [1793273388.112325607] [camera.camera]: ISP firmware version: 20241125\n"
+ },
+ "baseline_b_check": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 4.715366753472222,
+  "global_phase_correlation_shift_px": [
+   -0.1310350217929681,
+   0.18394974470271563
+  ],
+  "phase_correlation_response": 0.9542753887176514,
+  "shift_magnitude_px": 0.2258488111823436,
+  "max_allowed_px": 1.0
+ },
+ "window_level_guard": {
+  "pass": true,
+  "valid_frames": 5,
+  "minimum_required": 2,
+  "reason": null
+ },
+ "session_level_guard": {
+  "pass": true,
+  "rejected_frame_ratio": 0.0,
+  "maximum_allowed": 0.2,
+  "reason": null
+ },
+ "pre_dry_run_quality_pass": true
+}

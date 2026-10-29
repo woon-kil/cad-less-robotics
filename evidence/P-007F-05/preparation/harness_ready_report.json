@@ -1,0 +1,31 @@
+{
+ "gate": "P-007F-05",
+ "stage": "§34/§35 — HARDWARE-FREE PREPARATION ONLY, no real motion authorized this gate",
+ "report": {
+  "self_tests": "PASS",
+  "negative_tests": "15/15",
+  "hardware_write_count": 0,
+  "baseline_b": "PASS",
+  "pre_dry_run_quality": "PASS",
+  "controller_pre_read": 154,
+  "p007f04_consistency": "PASS (P007F04_MARGIN_REPORT_TYPO_CONFIRMED / PROCEED)"
+ },
+ "READY_FOR_EXPLICIT_APPROVAL": "YES",
+ "detail": {
+  "self_ast_check_execution_py": true,
+  "module_sha_check": true,
+  "hardware_free_check_execution_and_jetson_controller": true,
+  "true_positive_selftests_hardware_free_check": "8/8",
+  "negative_tests_detail": "scripts/p007f_05_execution.py negative_tests() NT-01..NT-15, all mock, 0 real hardware writes",
+  "gemini_identity": {"serial": "CP263630009D", "firmware": "1.4.60", "identity_valid": true},
+  "baseline_b_shift_px": 0.2258488111823436,
+  "baseline_b_max_allowed_px": 1.0,
+  "pre_dry_run_valid_frames": "5/5",
+  "controller_pre_read_rounds": [154, 154, 154, 154, 154],
+  "arm_lib_integrity_pass": true,
+  "selected_candidate_source": "evidence/P-007F-04/selected_candidate.json (delta=-3, target=151, duration=2000ms)",
+  "approval_phrase_fixed": "EXECUTE P-007F-05 ARM2 154 TO 151 ONCE",
+  "ledger_dir_not_yet_created": true,
+  "robot_command_count_this_gate": 0
+ }
+}

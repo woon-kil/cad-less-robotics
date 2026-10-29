@@ -1,0 +1,18 @@
+{
+ "gate": "P-007F-05",
+ "stage": "§10/§34 — read-only controller PRE-state recheck (no write)",
+ "method": "scripts/p007f_05_jetson_controller.py --read 5 (Jetson, ssh), Arm_serial_servo_read(2) only",
+ "jetson_host": "jetson@192.168.0.94",
+ "rounds": 5,
+ "values": [154, 154, 154, 154, 154],
+ "all_match_expected_baseline_154": true,
+ "arm_lib_integrity": {
+  "disk_sha_match": true,
+  "disk_sha_actual": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "egg_sha_match": true,
+  "egg_sha_actual": "3aba35832587428b83a231a94856fe89e36f93507c911fcf39c1b8ad27f13371",
+  "runtime_is_egg": true,
+  "pass": true
+ },
+ "servo_writes_this_check": 0
+}

@@ -1,0 +1,187 @@
+{
+ "all_pass": true,
+ "results": {
+  "AN-01_module_sha_pin_matches": {
+   "pass": true,
+   "detail": {
+    "match": true,
+    "expected": "5ded8c75349cd91018cb6c024812e6fa07c80a2a77c525f21136ff6b11931ed2",
+    "actual": "5ded8c75349cd91018cb6c024812e6fa07c80a2a77c525f21136ff6b11931ed2"
+   }
+  },
+  "AN-02_identical_frames_no_motion_detected": {
+   "pass": true,
+   "detail": {
+    "quality_pass": true,
+    "reason": null,
+    "pre_window": {
+     "pass": true,
+     "valid_frames": 3,
+     "minimum_required": 2,
+     "reason": null
+    },
+    "post_window": {
+     "pass": true,
+     "valid_frames": 3,
+     "minimum_required": 2,
+     "reason": null
+    },
+    "pre_session": {
+     "pass": true,
+     "rejected_frame_ratio": 0.0,
+     "maximum_allowed": 0.2,
+     "reason": null
+    },
+    "post_session": {
+     "pass": true,
+     "rejected_frame_ratio": 0.0,
+     "maximum_allowed": 0.2,
+     "reason": null
+    },
+    "arm2_result": {
+     "valid": true,
+     "match_count": 44,
+     "inlier_count": 44,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 44,
+     "kp2": 44
+    },
+    "static_result": {
+     "valid": true,
+     "match_count": 477,
+     "inlier_count": 477,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 477,
+     "kp2": 477
+    },
+    "static_reference_guard": {
+     "pass": true,
+     "static_translation_px": 0.0,
+     "static_rotation_deg": 0.0,
+     "S_translation_px": 0.2,
+     "S_rotation_deg": 0.05,
+     "reason": null
+    },
+    "robot_relative": {
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "T_translation_px": 1.7826,
+     "T_rotation_deg": 1.0778
+    },
+    "motion_yes_no": "NO"
+   }
+  },
+  "AN-03_insufficient_valid_frames_invalid": {
+   "pass": true,
+   "detail": {
+    "quality_pass": false,
+    "reason": "WINDOW_OR_FEATURE_GUARD_FAILED",
+    "pre_window": {
+     "pass": false,
+     "valid_frames": 1,
+     "minimum_required": 2,
+     "reason": "INSUFFICIENT_VALID_FRAMES"
+    },
+    "post_window": {
+     "pass": true,
+     "valid_frames": 3,
+     "minimum_required": 2,
+     "reason": null
+    },
+    "pre_session": {
+     "pass": false,
+     "rejected_frame_ratio": 0.6666666666666667,
+     "maximum_allowed": 0.2,
+     "reason": "EXCESSIVE_REJECTED_FRAME_RATIO"
+    },
+    "post_session": {
+     "pass": true,
+     "rejected_frame_ratio": 0.0,
+     "maximum_allowed": 0.2,
+     "reason": null
+    },
+    "arm2_result": {
+     "valid": true,
+     "match_count": 44,
+     "inlier_count": 44,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 44,
+     "kp2": 44
+    },
+    "static_result": {
+     "valid": true,
+     "match_count": 477,
+     "inlier_count": 477,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 477,
+     "kp2": 477
+    },
+    "static_reference_guard": null,
+    "robot_relative": null,
+    "motion_yes_no": null
+   }
+  },
+  "AN-04_excessive_rejected_ratio_invalid": {
+   "pass": true,
+   "detail": {
+    "quality_pass": false,
+    "reason": "WINDOW_OR_FEATURE_GUARD_FAILED",
+    "pre_window": {
+     "pass": true,
+     "valid_frames": 3,
+     "minimum_required": 2,
+     "reason": null
+    },
+    "post_window": {
+     "pass": true,
+     "valid_frames": 3,
+     "minimum_required": 2,
+     "reason": null
+    },
+    "pre_session": {
+     "pass": false,
+     "rejected_frame_ratio": 0.7,
+     "maximum_allowed": 0.2,
+     "reason": "EXCESSIVE_REJECTED_FRAME_RATIO"
+    },
+    "post_session": {
+     "pass": true,
+     "rejected_frame_ratio": 0.0,
+     "maximum_allowed": 0.2,
+     "reason": null
+    },
+    "arm2_result": {
+     "valid": true,
+     "match_count": 44,
+     "inlier_count": 44,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 44,
+     "kp2": 44
+    },
+    "static_result": {
+     "valid": true,
+     "match_count": 477,
+     "inlier_count": 477,
+     "inlier_ratio": 1.0,
+     "translation_px": 0.0,
+     "rotation_deg": 0.0,
+     "kp1": 477,
+     "kp2": 477
+    },
+    "static_reference_guard": null,
+    "robot_relative": null,
+    "motion_yes_no": null
+   }
+  }
+ }
+}

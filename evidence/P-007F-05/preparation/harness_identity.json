@@ -1,0 +1,20 @@
+{
+ "gate": "P-007F-05",
+ "stage": "§1/§34 — harness identity (SHA256 of every newly written script)",
+ "new_scripts": {
+  "scripts/p007f_05_execution.py": "4bc0041018f474f94f09791aca9c99cc82e7bb0ecb4ab3acaebb18bc8e8e01fd",
+  "scripts/p007f_05_analysis.py": "0b4e094644bcd9915f712e59da9cd16e624d3786a7c35db2a732ad05fe86e073",
+  "scripts/p007f_05_hardware_wiring.py": "1fa327fce9494eda41ea3acc29fde78922bf34bbb14474a3e24fb7226bc04e50",
+  "scripts/p007f_05_jetson_controller.py": "b15f9ff2724252e832e412bf1b230175c3c977843eedb4ed92a344de0f03ca54",
+  "scripts/p007f_05_hardware_free_check.py": "70a0dc42bcb9bb8c9cdf5d2fcc44d987aa0ad85fe82fe779473d3f2026eaafcf",
+  "scripts/p007f_05_run.py": "b41ceb4c29703fff27ad6883a45492045875f7bfec63e0785bf5825c9ad88852"
+ },
+ "reused_unmodified_modules_sha_pinned": {
+  "scripts/p007e_r2r4_preflight.py": "cc5dd7bce25719cf6d328b302ca7b067d7813b256b042e9687d0e0f3fbc2a616",
+  "scripts/p007e_r2r2_evidence_pipeline.py": "298e0656027d5bef4eca42101054658775e0b6d7c24500194297a636f7635133",
+  "scripts/p007f_03_visual_analysis.py": "5ded8c75349cd91018cb6c024812e6fa07c80a2a77c525f21136ff6b11931ed2",
+  "scripts/p007f_04_candidates.py": "40e3207d7a5400ed733bdaa79d1adab1cdfe4f99632614467d8171989f09a956",
+  "scripts/p007f_03_capture_static.py": "unpinned_but_invoked_verbatim_no_modification_this_gate"
+ },
+ "note": "scripts/p007e_r2r3_motion_preregistration.py/p007e_r2r5_execution.py/p007e_r2r5_hardware_wiring.py 는 §2 콘읍션 설개에 따를 전혀 재사용하지 않았다(내뮶이 EXPECTED_BASELINE_ID2=152/COMMAND_TARGET_ID2=154 에 default-bound) — 상세 사유는 scripts/p007f_05_execution.py 나낙말의 docstring에 기록."
+}

@@ -1,0 +1,43 @@
+{
+  "gate": "P-007F-05",
+  "stage": "§2 — P-007F-04 numeric consistency check (mandatory before execution)",
+  "discrepancy_reported_by_user": "linear progression of Arm2 margin_to_upper_rad across candidates (151:0.5061, 152:0.4887, 153:0.4712, 155:0.4363, 156:0.4189, 157:0.4014) predicts current(154) ≈ 0.4538 rad, but P-007F-04 prose states current(154) = 0.4887 rad",
+  "source_of_truth_checked": [
+    "evidence/P-007F-04/candidate_raw.json (joint_limit_pre.Arm2_Joint, all 6 candidates, pre_lib_deg=154)",
+    "evidence/P-007F-04/joint_limit_analysis.json (candidates[].arm2_margin_to_upper_rad, post-state per target)"
+  ],
+  "actual_pre_154_values_from_candidate_raw_json": {
+    "arm2_margin_to_upper_rad": 0.45378927872362906,
+    "arm2_margin_to_upper_deg": 25.994,
+    "arm2_margin_to_lower_rad": 2.687810721276371,
+    "arm2_margin_to_lower_deg": 153.995,
+    "identical_across_all_6_candidates": true,
+    "note": "joint_limit_pre is computed once per candidate from the same pre_lib_deg=154 input — verified identical across all 6 candidate blocks in candidate_raw.json"
+  },
+  "candidate_generation_integrity_check": {
+    "target_151_post_margin_to_upper_rad": 0.506149156283459,
+    "target_152_post_margin_to_upper_rad": 0.4886958637635157,
+    "target_153_post_margin_to_upper_rad": 0.4712425712435724,
+    "target_155_post_margin_to_upper_rad": 0.43633598620368574,
+    "target_156_post_margin_to_upper_rad": 0.4188826936837424,
+    "target_157_post_margin_to_upper_rad": 0.4014294011637993,
+    "progression_step_rad_per_deg": 0.01745,
+    "progression_is_linear_and_consistent": true,
+    "verdict": "candidate_raw.json and joint_limit_analysis.json candidates[] are internally consistent and correct — no calculation error"
+  },
+  "root_cause": "joint_limit_analysis.json's free-text field 'directional_asymmetry_finding' and candidate_comparison.md line 43 both mislabeled the POST-state margin for target=152 (delta=-2) candidate — margin_to_upper_rad=0.4886958637635157 (28.0deg), margin_to_lower_rad=2.6529041362364842 (152.0deg) — as if these were the PRE-state (current=154) values. This is a prose/documentation authoring error, not a computation error in the underlying JSON arrays.",
+  "affected_files": [
+    "evidence/P-007F-04/joint_limit_analysis.json (field: directional_asymmetry_finding)",
+    "evidence/P-007F-04/candidate_comparison.md (line 43, and table row for lower -2deg line 9 label only — the 152-candidate row itself is correct, only the 's요약' free text mislabeled it as 'current')"
+  ],
+  "not_affected": [
+    "candidate_raw.json — all numeric fields correct",
+    "joint_limit_analysis.json candidates[] array — all numeric fields correct",
+    "selected_candidate.json — selection logic based on correct underlying numbers",
+    "fk_sweep.json / displacement_envelope.json / collision_analysis.md — independent of this prose field"
+  ],
+  "qualitative_conclusion_impact": "NONE — asymmetry finding (current state closer to upper limit than lower limit) remains valid and is actually stronger with correct numbers: margin_to_upper=26.0deg (not 28.0deg) vs margin_to_lower=154.0deg (not 152.0deg). The selection of lower/-3deg (target=151, moving away from the closer upper limit) is unaffected.",
+  "existing_evidence_modification_policy": "evidence/P-007F-04/*.json and *.md are NOT modified — per gate instruction §2 and global policy against silently overwriting existing evidence. This correction is recorded only here, in P-007F-05 preparation evidence.",
+  "verdict": "P007F04_MARGIN_REPORT_TYPO_CONFIRMED",
+  "decision": "PROCEED — calculation data and candidate safety conclusion are normal; documentation typo only"
+}

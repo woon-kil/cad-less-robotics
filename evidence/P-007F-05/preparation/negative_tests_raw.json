@@ -1,0 +1,450 @@
+{
+ "self_ast_check": {
+  "imports": [
+   "argparse",
+   "ast",
+   "hashlib",
+   "importlib",
+   "json",
+   "numpy",
+   "os",
+   "shutil",
+   "sys",
+   "tempfile",
+   "time"
+  ],
+  "forbidden_hardware_imports_found": [],
+  "direct_subprocess_import_in_this_file": false,
+  "pass": true
+ },
+ "module_sha_check": {
+  "match": true,
+  "mismatches": {}
+ },
+ "negative_tests_NT_01_NT_15": {
+  "all_pass": true,
+  "results": {
+   "NT-01_approval_phrase_mismatch_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "APPROVAL_PHRASE_NOT_CONFIRMED",
+     "detail": "ApprovalDeclinedBeforeArming('approval phrase not confirmed exactly; ledger never armed, real write never invoked')",
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_gate": {
+      "pass": true,
+      "failed_checks": [],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": true
+      }
+     },
+     "approval": {
+      "granted": false,
+      "declined_reason": "APPROVAL_PHRASE_NOT_CONFIRMED"
+     }
+    }
+   },
+   "NT-02_controller_pre_not_154_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "PRE_HARD_GATE_FAILED",
+     "pre_gate": {
+      "pass": false,
+      "failed_checks": [
+       "controller_pre_matches_154"
+      ],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": false,
+       "pre_window_valid": true
+      }
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_window_guard": {
+      "pass": true,
+      "valid_frames": 5,
+      "minimum_required": 2,
+      "reason": null
+     },
+     "pre_session_guard": {
+      "pass": true,
+      "rejected_frame_ratio": 0.0,
+      "maximum_allowed": 0.2,
+      "reason": null
+     },
+     "pre_read_values": [
+      152,
+      152,
+      152,
+      152,
+      152
+     ]
+    }
+   },
+   "NT-03_gemini_identity_mismatch_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "PRE_HARD_GATE_FAILED",
+     "pre_gate": {
+      "pass": false,
+      "failed_checks": [
+       "gemini_identity_valid"
+      ],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": false,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": true
+      }
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_window_guard": {
+      "pass": true,
+      "valid_frames": 5,
+      "minimum_required": 2,
+      "reason": null
+     },
+     "pre_session_guard": {
+      "pass": true,
+      "rejected_frame_ratio": 0.0,
+      "maximum_allowed": 0.2,
+      "reason": null
+     },
+     "pre_read_values": [
+      154,
+      154,
+      154,
+      154,
+      154
+     ]
+    }
+   },
+   "NT-04_baseline_b_changed_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "PRE_HARD_GATE_FAILED",
+     "pre_gate": {
+      "pass": false,
+      "failed_checks": [
+       "baseline_b_unchanged"
+      ],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": false,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": true
+      }
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_window_guard": {
+      "pass": true,
+      "valid_frames": 5,
+      "minimum_required": 2,
+      "reason": null
+     },
+     "pre_session_guard": {
+      "pass": true,
+      "rejected_frame_ratio": 0.0,
+      "maximum_allowed": 0.2,
+      "reason": null
+     },
+     "pre_read_values": [
+      154,
+      154,
+      154,
+      154,
+      154
+     ]
+    }
+   },
+   "NT-05_pre_visual_quality_failure_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "PRE_HARD_GATE_FAILED",
+     "pre_gate": {
+      "pass": false,
+      "failed_checks": [
+       "pre_window_valid"
+      ],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": false
+      }
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_window_guard": {
+      "pass": false,
+      "valid_frames": 1,
+      "minimum_required": 2,
+      "reason": "INSUFFICIENT_VALID_FRAMES"
+     },
+     "pre_session_guard": {
+      "pass": false,
+      "rejected_frame_ratio": 0.8,
+      "maximum_allowed": 0.2,
+      "reason": "EXCESSIVE_REJECTED_FRAME_RATIO"
+     },
+     "pre_read_values": [
+      154,
+      154,
+      154,
+      154,
+      154
+     ]
+    }
+   },
+   "NT-06_post_quality_or_static_ref_failure_no_second_write": {
+    "pass": true,
+    "detail": {
+     "status": "STATUS_EXPERIMENT_COMPLETE",
+     "motion_commands_sent": 1,
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "pre_gate": {
+      "pass": true,
+      "failed_checks": [],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": true
+      }
+     },
+     "real_hardware_write_invoked": true,
+     "write_result": {
+      "servo_id": 2,
+      "target_degrees": 151,
+      "duration_ms": 2000
+     },
+     "approval": {
+      "granted": true,
+      "declined_reason": null
+     },
+     "controller_pre_read_values": [
+      154,
+      154,
+      154,
+      154,
+      154
+     ],
+     "controller_post_read_values": [
+      151,
+      151,
+      151,
+      151,
+      151
+     ],
+     "controller_change": true,
+     "post_visual_quality": {
+      "quality_pass": false,
+      "reason": "WINDOW_OR_FEATURE_GUARD_FAILED",
+      "pre_window": {
+       "pass": true,
+       "valid_frames": 5,
+       "minimum_required": 2,
+       "reason": null
+      },
+      "post_window": {
+       "pass": true,
+       "valid_frames": 5,
+       "minimum_required": 2,
+       "reason": null
+      },
+      "pre_session": {
+       "pass": true,
+       "rejected_frame_ratio": 0.0,
+       "maximum_allowed": 0.2,
+       "reason": null
+      },
+      "post_session": {
+       "pass": true,
+       "rejected_frame_ratio": 0.0,
+       "maximum_allowed": 0.2,
+       "reason": null
+      },
+      "arm2_result": {
+       "valid": false,
+       "reason": "insufficient_matches",
+       "match_count": 0
+      },
+      "static_result": {
+       "valid": false,
+       "reason": "insufficient_matches",
+       "match_count": 0
+      },
+      "static_reference_guard": null,
+      "robot_relative": null,
+      "motion_yes_no": null
+     },
+     "operator_observation_secondary": "YES",
+     "result_matrix_cell": null,
+     "result_code": "EXPERIMENT_INVALID",
+     "no_automatic_return": true,
+     "no_automatic_retry": true
+    }
+   },
+   "NT-07_existing_command_sent_ledger_no_retry": {
+    "pass": true,
+    "detail": {
+     "status": "ABORTED",
+     "reason": "LEDGER_ALREADY_ARMED_OR_SENT_MANUAL_REVIEW_REQUIRED",
+     "ledger_check": {
+      "allowed": false,
+      "existing_status": "POST_COMPLETE"
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0
+    }
+   },
+   "NT-08_armed_ambiguous_restart_no_automatic_retry": {
+    "pass": true,
+    "detail": {
+     "status": "ABORTED",
+     "reason": "LEDGER_ALREADY_ARMED_OR_SENT_MANUAL_REVIEW_REQUIRED",
+     "ledger_check": {
+      "allowed": false,
+      "existing_status": "ARMED"
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0
+    }
+   },
+   "NT-09_camera_capture_failure_no_write": {
+    "pass": true,
+    "detail": {
+     "status": "ABORT_BEFORE_MOTION",
+     "reason": "PRE_HARD_GATE_FAILED",
+     "pre_gate": {
+      "pass": false,
+      "failed_checks": [
+       "pre_window_valid"
+      ],
+      "checks": {
+       "p007f04_consistency_confirmed": true,
+       "harness_sha_valid": true,
+       "module_sha_valid": true,
+       "git_provenance_valid": true,
+       "workspace_safe": true,
+       "gemini_identity_valid": true,
+       "baseline_b_unchanged": true,
+       "no_unexpected_process": true,
+       "controller_pre_matches_154": true,
+       "pre_window_valid": false
+      }
+     },
+     "experiment_id": "4de52bc7e01eace9e201692e7f466a46",
+     "motion_commands_sent": 0,
+     "pre_window_guard": {
+      "pass": false,
+      "valid_frames": 0,
+      "minimum_required": 2,
+      "reason": "INSUFFICIENT_VALID_FRAMES"
+     },
+     "pre_session_guard": {
+      "pass": false,
+      "rejected_frame_ratio": 1.0,
+      "maximum_allowed": 0.2,
+      "reason": "EXCESSIVE_REJECTED_FRAME_RATIO"
+     },
+     "pre_read_values": [
+      154,
+      154,
+      154,
+      154,
+      154
+     ]
+    }
+   },
+   "NT-10_exception_before_command_no_write": {
+    "pass": true,
+    "detail": {
+     "raised": true
+    }
+   },
+   "NT-11_duplicate_execution_request_no_second_write": {
+    "pass": true,
+    "detail": {
+     "r1_status": "STATUS_EXPERIMENT_COMPLETE",
+     "r2_status": "ABORTED"
+    }
+   },
+   "NT-12_post_command_failure_no_retry": {
+    "pass": true,
+    "detail": {
+     "write_calls": [
+      [
+       2,
+       151,
+       2000
+      ]
+     ]
+    }
+   },
+   "NT-13_cleanup_never_sends_return_command": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "no_arg_call_count": 1
+    }
+   },
+   "NT-14_wrong_target_injection_detected": {
+    "pass": true,
+    "detail": null
+   },
+   "NT-15_wrong_servo_id_injection_detected": {
+    "pass": true,
+    "detail": null
+   }
+  }
+ }
+}

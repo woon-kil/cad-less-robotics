@@ -1,0 +1,263 @@
+{
+ "static_check": {
+  "execution_no_hardware_imports": {
+   "imports": [
+    "argparse",
+    "ast",
+    "hashlib",
+    "importlib",
+    "json",
+    "numpy",
+    "os",
+    "shutil",
+    "sys",
+    "tempfile",
+    "time"
+   ],
+   "forbidden_found": [],
+   "direct_subprocess_import": false,
+   "pass": true
+  },
+  "jetson_controller_single_write": {
+   "call_site_count": 1,
+   "call_sites": [
+    {
+     "line": 73,
+     "resolved_args": [
+      2,
+      151,
+      2000
+     ],
+     "args_ok": true,
+     "placement": {
+      "in_loop": false,
+      "in_except_handler": false,
+      "in_finally": false
+     },
+     "placement_ok": true
+    }
+   ],
+   "module_level_consts_checked": {
+    "SERVO_ID": 2,
+    "COMMAND_TARGET_ID2": 151,
+    "COMMAND_DURATION_MS": 2000
+   },
+   "pass": true
+  },
+  "pass": true
+ },
+ "true_positive_selftest": {
+  "all_pass": true,
+  "results": {
+   "TP-01_detects_cv2_and_arm_lib_import": {
+    "pass": true,
+    "detail": {
+     "imports": [
+      "Arm_Lib",
+      "cv2"
+     ],
+     "forbidden_found": [
+      "Arm_Lib",
+      "cv2"
+     ],
+     "direct_subprocess_import": false,
+     "pass": false
+    }
+   },
+   "TP-02_real_execution_file_passes": {
+    "pass": true,
+    "detail": null
+   },
+   "TP-03_detects_write_inside_for_loop": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "call_sites": [
+      {
+       "line": 6,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": true,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": false
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": false
+    }
+   },
+   "TP-04_detects_write_inside_finally": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "call_sites": [
+      {
+       "line": 8,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": true
+       },
+       "placement_ok": false
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": false
+    }
+   },
+   "TP-05_detects_wrong_target_literal": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "call_sites": [
+      {
+       "line": 5,
+       "resolved_args": [
+        2,
+        154,
+        2000
+       ],
+       "args_ok": false,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": true
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": false
+    }
+   },
+   "TP-06_detects_second_call_site": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 2,
+     "call_sites": [
+      {
+       "line": 5,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": true
+      },
+      {
+       "line": 7,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": true
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": false
+    }
+   },
+   "TP-07_good_synthetic_sample_passes": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "call_sites": [
+      {
+       "line": 5,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": true
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": true
+    }
+   },
+   "TP-08_real_jetson_controller_file_passes": {
+    "pass": true,
+    "detail": {
+     "call_site_count": 1,
+     "call_sites": [
+      {
+       "line": 73,
+       "resolved_args": [
+        2,
+        151,
+        2000
+       ],
+       "args_ok": true,
+       "placement": {
+        "in_loop": false,
+        "in_except_handler": false,
+        "in_finally": false
+       },
+       "placement_ok": true
+      }
+     ],
+     "module_level_consts_checked": {
+      "SERVO_ID": 2,
+      "COMMAND_TARGET_ID2": 151,
+      "COMMAND_DURATION_MS": 2000
+     },
+     "pass": true
+    }
+   }
+  }
+ },
+ "overall_pass": true
+}
