@@ -1,0 +1,57 @@
+{
+  "sensor": "Orbbec Gemini 335L",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "identity_source": "p620 driver log /tmp/p008a_gemini_driver.log, this session",
+  "expected_baseline_b": {
+    "serial": "CP263630009D",
+    "firmware": "1.4.60"
+  },
+  "identity_match": true,
+  "usb": "2bc5:0804",
+  "launch": "ros2 launch orbbec_camera gemini_330_series.launch.py",
+  "device_preset": "Default",
+  "sync_mode_log": "OB_MULTI_DEVICE_SYNC_MODE_STANDALONE",
+  "frame_sync_log": "Enable frame sync",
+  "hardware_synchronized_verified": false,
+  "hardware_synchronized_note": "드라이버 로그의 frame sync 문장만으로는 hardware sync를 검증했다고 하지 않는다. 각 파일의 ROS stamp를 기록했다.",
+  "color_profile": {
+    "width": 1280,
+    "height": 720,
+    "fps": 30,
+    "format": "MJPG",
+    "encoding": "rgb8",
+    "frame_id": "camera_color_optical_frame",
+    "topic": "/camera/color/image_raw"
+  },
+  "depth_profile": {
+    "width": 848,
+    "height": 480,
+    "fps": 30,
+    "format": "Y16",
+    "encoding": "16UC1",
+    "frame_id": "camera_depth_optical_frame",
+    "topic": "/camera/depth/image_raw",
+    "scale_in_message": null,
+    "scale_note": "CameraInfo에 depth scale 필드가 없다. 16UC1 값과 점군 z(미터)의 자릿수는 밀리미터 해석과 맞지만, 이번 게이트가 scale을 교정하지는 않았다."
+  },
+  "point_cloud": {
+    "topic": "/camera/depth/points",
+    "frame_id": "camera_depth_optical_frame",
+    "organized": false,
+    "coordinate_units": "meters",
+    "is_dense": true
+  },
+  "camera_info": {
+    "status": "CURRENT_SESSION",
+    "color": "evidence/P-008A/camera_info/color_camera_info.json",
+    "depth": "evidence/P-008A/camera_info/depth_camera_info.json",
+    "color_k": [610.5073852539062, 0.0, 641.7918090820312, 0.0, 610.349853515625, 364.4433288574219, 0.0, 0.0, 1.0],
+    "color_distortion_model": "rational_polynomial",
+    "depth_k": [410.4136657714844, 0.0, 423.66876220703125, 0.0, 410.4136657714844, 240.9937744140625, 0.0, 0.0, 1.0],
+    "depth_distortion_model": "plumb_bob"
+  },
+  "scene": "작업대 검은 원판 위의 운동화 전체가 컬러 프레임 안에 있다. 카메라는 Baseline B에서 움직이지 않았다.",
+  "shoe_fov": "PASS",
+  "algorithm_executed": false
+}

@@ -1,0 +1,39 @@
+{
+  "captures": 5,
+  "requested": 5,
+  "hardware_synchronized_verified": false,
+  "color_camera_info_captured": true,
+  "depth_camera_info_captured": true,
+  "saved": [
+    {
+      "capture": "capture_01",
+      "color_stamp_sec": 1793291194.224658,
+      "depth_stamp_sec": 1793291194.258052,
+      "cloud_stamp_sec": 1793291194.224676
+    },
+    {
+      "capture": "capture_02",
+      "color_stamp_sec": 1793291194.691914,
+      "depth_stamp_sec": 1793291194.691931,
+      "cloud_stamp_sec": 1793291194.691931
+    },
+    {
+      "capture": "capture_03",
+      "color_stamp_sec": 1793291195.392796,
+      "depth_stamp_sec": 1793291195.426189,
+      "cloud_stamp_sec": 1793291195.392814
+    },
+    {
+      "capture": "capture_04",
+      "color_stamp_sec": 1793291196.127053,
+      "depth_stamp_sec": 1793291196.127072,
+      "cloud_stamp_sec": 1793291196.127072
+    },
+    {
+      "capture": "capture_05",
+      "color_stamp_sec": 1793291196.827937,
+      "depth_stamp_sec": 1793291196.861329,
+      "cloud_stamp_sec": 1793291196.827955
+    }
+  ]
+}

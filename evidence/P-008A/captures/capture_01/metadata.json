@@ -1,0 +1,41 @@
+{
+  "capture": "capture_01",
+  "hardware_synchronized_verified": false,
+  "pairing_rule_sec": 0.05,
+  "host_monotonic_sec": 619579.790450551,
+  "color": {
+    "topic": "/camera/color/image_raw",
+    "stamp_sec": 1793291194.224658,
+    "frame_id": "camera_color_optical_frame",
+    "width": 1280,
+    "height": 720,
+    "encoding": "rgb8",
+    "step": 3840
+  },
+  "depth": {
+    "topic": "/camera/depth/image_raw",
+    "stamp_sec": 1793291194.258052,
+    "frame_id": "camera_depth_optical_frame",
+    "width": 848,
+    "height": 480,
+    "encoding": "16UC1",
+    "step": 1696,
+    "scale_in_message": null
+  },
+  "cloud": {
+    "topic": "/camera/depth/points",
+    "stamp_sec": 1793291194.224676,
+    "frame_id": "camera_depth_optical_frame",
+    "width": 341698,
+    "height": 1,
+    "point_step": 16,
+    "is_dense": true,
+    "is_bigendian": false,
+    "point_count": 341698,
+    "finite_xyz_count": 341698,
+    "coordinate_units": "meters",
+    "organized": false
+  },
+  "stamp_delta_color_depth_sec": 0.03339409828186035,
+  "stamp_delta_cloud_depth_sec": 0.033376216888427734
+}

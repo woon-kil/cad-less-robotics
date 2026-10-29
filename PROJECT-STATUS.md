@@ -15,7 +15,8 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
-| **P-008** | **`BLOCKED_REAL_SHOE_INPUT_REQUIRED`**. 신발 Gemini point cloud 없음. 파이프라인 미실행. P-009 미개방. robot/servo 0 | `evidence/P-008/verdict.json` |
+| **P-008A** | **`PASS`**. Baseline B serial `CP263630009D`, firmware `1.4.60`. 정지 운동화 RGB+depth+point cloud 5/5. 기하 알고리즘 없음. P-008 미재개. robot/servo 0 | `evidence/P-008A/verdict.json` |
+| **P-008** | 입력 부재로 막혀 있던 상태 뒤에 P-008A dataset이 생겼다. 기하 파이프라인은 아직 실행하지 않음. `READY_TO_RESUME`, 자동 재개 아님 | `evidence/P-008/verdict.json`, `evidence/P-008A/verdict.json` |
 | **P-007 최종** | **`CLOSED / BLOCKED`**. command path `VERIFIED`. physical Arm2 motion `UNRESOLVED`, angle `UNKNOWN`. static tracking `VERIFIED`. observability `UNRESOLVED`. 추가 진단 `STOPPED`. P-006D는 열지 않음 | `evidence/P-007/P-007_FINAL_CLOSURE.md` |
 | **블로킹 지점** | **ID2 가 명령대로 물리 이동했는지 확인되지 않았다.** 🔴 "위치 명령에 응답하지 않는다"는 더 이상 맞지 않다 — P-007E-R1 Phase B 에서 **controller readback 이 150 → 152 로 응답했다**. 물리 모션은 `UNOBSERVED` | `evidence/P-007E-R1/phase_b_acceptance.json` |
 | 최신 닫힌 게이트 | **`P-007E-R1 PHASE-B — … / CLOSED @ a28e41e`** (검수 종결) | `evidence/P-007E-R1/phase_b_acceptance.json` |
@@ -495,6 +496,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-007F-08A — motion observability qualification** — offline. `T_Gemini<-RobotBase` 없음. ±1/±2/±3° 픽셀 예측을 만들지 않음. `T_motion=1.0 px` 유지. `OBSERVABILITY_UNRESOLVED`. `READY_FOR_PHASE_B_REVIEW=NO`. 추가 calibration 없음. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-007 final closure** — 새 실험 없음. `CLOSED / BLOCKED`. physical motion `UNRESOLVED`. 추가 진단 `STOPPED`. P-006D 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`. `evidence/P-007/P-007_FINAL_CLOSURE.md`
 - [x] **P-008 — shoe geometry pipeline** — 실제 신발 point cloud 없음. `BLOCKED_REAL_SHOE_INPUT_REQUIRED`. 촬영·파이프라인 없음. P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-008A — real shoe static dataset** — Gemini Baseline B에서 정지 운동화 RGB/depth/cloud 5장. identity 일치. FOV 충분. hash 서로 다름. 기하 추출 없음. P-008 미재개. robot/servo 0. `MOTION_AUTHORIZED=NO`
 
   - EPC-01~27 전부 충족 + EPC 외 추가 자체검증 1건(self_transfer_verification, advisor 요구). `evidence/P-007E-R2-R2/stage_c1r1r1_decision.json` + `stage_c1r1r1_architecture_note.json`(§24 원문 verbatim 추가) + `c1r1r1_repair_tests/repair_result.json`
   - 🔴 **advisor 2차 재검토 반영**: §24 원문("qualified only for ... rigid external scene / not qualified for dynamic trajectory tracking...")이 §11 문구로 잘못 들어가 있던 것을 architecture_note 에 `section_24_verbatim` 로 보완(코드 상수는 SHA 재시험 비용 때문에 그대로 둠, divergence 명시) · verdict 를 조건부로 수정(배포방식 결정 전까지 무조건 READY 아님) · 실제(non-mock) `build_runtime_provenance`/`check_dirty_tree` 1회 실행해 git_head=`7798e80`·dirty=False 확인 · 🔴 **이 gate의 evidence 회수 자체가 §14~16 을 어김**(`repair_result.json` scp 후 SHA diff 없이 Jetson rm -rf, 2회) — `TRANSFER_INTEGRITY_NOT_VERIFIED_BEFORE_SOURCE_DELETION` 로 공개(판정 영향 없음, 재현 가능한 pass/fail 로그라 재실행 불요)
@@ -680,6 +682,7 @@ operator channel        realtime visual observation
 | 48 | 2026-10-30 | **P-007F-08A** — 기존 evidence만으로 ID2 소회전의 영상 변위가 1.0 px를 넘는지 검토. extrinsic 부재. 예측 미계산. robot/servo 0 | `OBSERVABILITY_UNRESOLVED — READY_FOR_PHASE_B_REVIEW=NO, MOTION_AUTHORIZED=NO` |
 | 49 | 2026-10-30 | **P-007 closure** — 하드웨어 motion qualification을 새 실험 없이 종료. 기존 evidence 불변. P-006D 미개방. robot/servo 0 | `P-007 = CLOSED / BLOCKED — PHYSICAL_ARM2_MOTION=UNRESOLVED, ADDITIONAL_DIAGNOSTICS=STOPPED` |
 | 50 | 2026-10-30 | **P-008** — 신발 Gemini point cloud를 찾지 못해 geometry 파이프라인을 실행하지 않음. P-004 점군은 신발 입력이 아님. 컬러 신발 프레임은 point cloud가 아님. robot/servo 0 | `BLOCKED_REAL_SHOE_INPUT_REQUIRED — P-009=NOT OPENED` |
+| 51 | 2026-10-30 | **P-008A** — Baseline B Gemini로 작업대 위 정지 운동화 RGB/depth/point cloud 5회 저장. 카메라와 신발은 움직이지 않음. 기하 파이프라인 없음. robot/servo 0 | `PASS — P-008=READY_TO_RESUME, NOT OPENED` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
