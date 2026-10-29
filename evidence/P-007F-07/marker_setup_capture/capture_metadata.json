@@ -1,0 +1,91 @@
+{
+ "camera": "Gemini 335L",
+ "serial": "CP263630009D",
+ "firmware": "1.4.60",
+ "resolution": {
+  "width": 1280,
+  "height": 720
+ },
+ "timestamp_unix": 1793278751.614778,
+ "baseline_b_status": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 13.515043402777778,
+  "global_phase_correlation_shift_px": [
+   -0.48758829155758576,
+   0.0566006634948053
+  ],
+  "phase_correlation_response": 0.6655685261885325,
+  "shift_magnitude_px": 0.4908624829543377,
+  "max_allowed_px": 1.0
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "frames_requested": 5,
+ "frames_captured": 5,
+ "frame_scores_laplacian_var": [
+  {
+   "frame": "0004-color.png",
+   "sharpness": 544.6403536807167,
+   "mean_brightness": 114.79974934895833
+  },
+  {
+   "frame": "0003-color.png",
+   "sharpness": 528.515493667168,
+   "mean_brightness": 111.45176649305556
+  },
+  {
+   "frame": "0002-color.png",
+   "sharpness": 524.1145006338567,
+   "mean_brightness": 109.14394422743055
+  },
+  {
+   "frame": "0001-color.png",
+   "sharpness": 518.2556889982707,
+   "mean_brightness": 108.6070529513889
+  },
+  {
+   "frame": "0000-color.png",
+   "sharpness": 509.317378187222,
+   "mean_brightness": 107.99576171875
+  }
+ ],
+ "selected_reference_frame": "0004-color.png",
+ "selection_criterion": "max Laplacian variance (sharpest) among 5 captured frames",
+ "identity_check": {
+  "identity_valid": true,
+  "serial_found": true,
+  "firmware_found": true,
+  "log_excerpt": "[component_container-1] [INFO] [1793278746.378565798] [camera.camera]: Set firmware log to OFF\n[component_container-1] [INFO] [1793278746.696549486] [camera.camera]: Serial number: CP263630009D\n[component_container-1] [INFO] [1793278746.696561699] [camera.camera]: Firmware version: 1.4.60\n[component_container-1] [INFO] [1793278746.696645458] [camera.camera]: ISP firmware version: 20241125\n"
+ },
+ "marker_candidates": {
+  "PRIMARY_A": {
+   "box_xywh": [
+    655,
+    225,
+    70,
+    50
+   ],
+   "label": "PRIMARY_A: white disc (ARM2_ROI), offset from axis"
+  },
+  "PRIMARY_B": {
+   "box_xywh": [
+    650,
+    195,
+    90,
+    30
+   ],
+   "label": "PRIMARY_B: diagonal link (ARM2<->ARM3 boundary)"
+  },
+  "SECONDARY_A": {
+   "box_xywh": [
+    600,
+    180,
+    90,
+    50
+   ],
+   "label": "SECONDARY_A: wrist housing (END_EFFECTOR_ROI edge)"
+  }
+ },
+ "marker_location_status": "CANDIDATE_ONLY",
+ "wiring_module_sha256": "07713efc194e741149c5d2666939dcdc2dd766a4e9249a53d31f7fba13f638f6"
+}
