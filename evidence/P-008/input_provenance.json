@@ -1,0 +1,43 @@
+{
+  "searched": [
+    "Mac 저장소 evidence 와 스크립트",
+    "p620 /home/woonkil/cad-less-robotics 의 *.pcd *.ply",
+    "파일명 shoe / sneaker"
+  ],
+  "candidates": [
+    {
+      "path": "p620:/home/woonkil/cad-less-robotics/evidence/P-004/artifacts/snapshot.pcd",
+      "kind": "Gemini PointCloud2 PCD",
+      "sensor": "Orbbec Gemini 335L",
+      "topic": "/camera/depth/points",
+      "frame_id": "camera_depth_optical_frame",
+      "stamp_sec": 1792995971,
+      "stamp_nanosec": 582898000,
+      "organized": false,
+      "width": 254957,
+      "height": 1,
+      "point_count": 254957,
+      "units": "meters (ROS PointCloud2 xyz)",
+      "sha256": "09fa059c0ae4fbda4a1b90dcc4c769936562ad1040aa8824b370aed8e1a16a60",
+      "object_label": "없음. P-004 README는 장면 물체를 신발로 적지 않는다",
+      "accepted_as_shoe": false,
+      "why": "실제 Gemini 점군이지만 신발 capture로 기록되어 있지 않다. P-004 결과를 P-008 입력으로 승격하지 않는다"
+    },
+    {
+      "path": "evidence/P-007E-R2/logs/stage1_fov_color.png",
+      "kind": "color PNG",
+      "sensor": "Orbbec Gemini 335L",
+      "launch": "orbbec_camera gemini_330_series.launch.py",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5b9c725cce92266a4de260c35104d0d97542dab3ebac35c93d4da86b712dd594",
+      "scene_note": "stage1_fov.json이 체커보드 위의 신발을 기록한다",
+      "depth_saved": false,
+      "point_cloud_saved": false,
+      "accepted_as_shoe": false,
+      "why": "신발은 컬러 한 장으로만 남아 있다. 같은 sanity의 depth는 수신 후 p620 런타임 디렉터리에서 삭제되었고 evidence에 point cloud가 없다"
+    }
+  ],
+  "other_depth_png": "p620 .cache의 depth PNG는 P-007F-07 마커 qualification이다. 신발 작업물 점군이 아니다",
+  "pcd_or_ply_in_repo": "P-004 snapshot.pcd 하나뿐. Mac checkout에는 gitignore로 없다"
+}

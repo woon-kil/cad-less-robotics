@@ -1,0 +1,19 @@
+{
+  "gate": "P-008",
+  "verdict": "BLOCKED_REAL_SHOE_INPUT_REQUIRED",
+  "question": "실제 Gemini 335L point cloud에서 작업 대상 신발을 배경/작업대와 분리하고, ordered shoe boundary를 추출할 수 있는가",
+  "pipeline_executed": false,
+  "real_gemini_point_cloud_of_shoe": false,
+  "new_capture": false,
+  "synthetic_used_for_acceptance": false,
+  "p004_promoted": false,
+  "shoe_isolation": "NOT_RUN",
+  "boundary_topology": "NOT_RUN",
+  "boundary_support": "NOT_MEASURED",
+  "repeatability": "NOT_MEASURED",
+  "p009_opened": false,
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "motion_authorized": false,
+  "next": "정지 운동화의 Gemini 335L point cloud를 별도 capture에서 확보한 뒤에만 P-008 파이프라인을 실행한다"
+}
