@@ -1,0 +1,28 @@
+{
+ "camera": "Gemini 335L",
+ "serial": "CP263630009D",
+ "firmware": "1.4.60",
+ "capture_dir_source": "/Users/woonkil/projects/cad-less-robotics/.cache/p007f07b_capture_full/run2_50mm",
+ "frame_count": 119,
+ "duration_s": 11.980526175,
+ "target_fps_hint": 10,
+ "actual_mean_fps": 9.932785777666398,
+ "resolution": {
+  "width": 1280,
+  "height": 720
+ },
+ "baseline_b_check": {
+  "unchanged": true,
+  "whole_frame_mean_abs_diff": 10.863424479166667,
+  "global_phase_correlation_shift_px": [
+   -0.44304929919803726,
+   -0.15738100136059074
+  ],
+  "phase_correlation_response": 0.6055659055709839,
+  "shift_magnitude_px": 0.4701717357616621,
+  "max_allowed_px": 1.0
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0,
+ "raw_frames_committed_to_git": "representative subset only (stride=10, 13 of 119 frames). full sequence stays local at /Users/woonkil/projects/cad-less-robotics/.cache/p007f07b_capture_full/run2_50mm and is not committed"
+}
