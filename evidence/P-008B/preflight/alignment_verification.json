@@ -1,0 +1,18 @@
+{
+  "launch_argument_alone": false,
+  "align_log": true,
+  "frame_sync_log": true,
+  "hardware_sync": "NOT_VERIFIED",
+  "color_resolution": [
+    1280,
+    720
+  ],
+  "depth_resolution": [
+    1280,
+    720
+  ],
+  "color_frame": "camera_color_optical_frame",
+  "depth_frame": "camera_color_optical_frame",
+  "cloud_frame": "camera_color_optical_frame",
+  "stamp_span_sec": 2.002716064453125e-05
+}

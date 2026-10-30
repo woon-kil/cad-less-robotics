@@ -1,0 +1,32 @@
+[
+  {
+    "capture": "capture_01",
+    "depth_passed": true,
+    "color_passed": true,
+    "positive_depth_ratio": 0.8211176215277778
+  },
+  {
+    "capture": "capture_02",
+    "depth_passed": true,
+    "color_passed": true,
+    "positive_depth_ratio": 0.8191189236111112
+  },
+  {
+    "capture": "capture_03",
+    "depth_passed": true,
+    "color_passed": true,
+    "positive_depth_ratio": 0.8219346788194445
+  },
+  {
+    "capture": "capture_04",
+    "depth_passed": true,
+    "color_passed": true,
+    "positive_depth_ratio": 0.8206694878472223
+  },
+  {
+    "capture": "capture_05",
+    "depth_passed": true,
+    "color_passed": true,
+    "positive_depth_ratio": 0.8214605034722222
+  }
+]

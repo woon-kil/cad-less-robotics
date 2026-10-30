@@ -1,0 +1,391 @@
+{
+  "captures": [
+    {
+      "capture": "capture_01",
+      "color_shape": [
+        720,
+        1280,
+        3
+      ],
+      "color_dtype": "uint8",
+      "depth_shape": [
+        720,
+        1280
+      ],
+      "depth_dtype": "uint16",
+      "depth_positive_pixel_ratio": 0.8211176215277778,
+      "cloud_point_count": 756742,
+      "cloud_finite_count": 756742,
+      "cloud_fields": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "depth_frame": "camera_color_optical_frame",
+      "color_frame": "camera_color_optical_frame",
+      "sha256": {
+        "color": "cd2ec76a494d458f483915383c82fd2d631510b0822898366d735b8bbf4ec450",
+        "depth": "a8392ae959e7a5c4edea170db863424101789582bbd94a3e759b544e4df283bc",
+        "cloud": "2891c0e16ff602d6e7dfac867e7bfd610b4f6b8683b1d23d7c06baae6b847a1c"
+      },
+      "timestamps": {
+        "color": 1793367536.606351,
+        "depth": 1793367536.606371,
+        "cloud": 1793367536.606371,
+        "color_depth_delta": 2.002716064453125e-05,
+        "depth_cloud_delta": 0.0,
+        "color_cloud_delta": 2.002716064453125e-05
+      },
+      "depth_cloud": {
+        "sample_count": 756742,
+        "in_bounds_count": 756742,
+        "positive_depth_ratio": 1.0,
+        "mean_m": 2.8573905798977183e-08,
+        "median_m": 2.5281561956768074e-08,
+        "p95_m": 6.245397937012279e-08,
+        "max_m": 1.538630431765747e-07,
+        "passed": true,
+        "criteria": {
+          "positive_depth_ratio_min": 0.99,
+          "p95_max_m": 0.005
+        }
+      },
+      "color_correspondence": {
+        "projected_point_count": 756742,
+        "in_bounds_count": 756742,
+        "in_bounds_ratio": 1.0,
+        "median_abs_channel": 0.0,
+        "passed": true,
+        "registration_accuracy": "NOT_CLAIMED",
+        "criteria": {
+          "in_bounds_ratio_min": 0.999,
+          "median_abs_channel_max": 15.0
+        }
+      },
+      "depth_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "color_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "readable": true
+    },
+    {
+      "capture": "capture_02",
+      "color_shape": [
+        720,
+        1280,
+        3
+      ],
+      "color_dtype": "uint8",
+      "depth_shape": [
+        720,
+        1280
+      ],
+      "depth_dtype": "uint16",
+      "depth_positive_pixel_ratio": 0.8191189236111112,
+      "cloud_point_count": 754900,
+      "cloud_finite_count": 754900,
+      "cloud_fields": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "depth_frame": "camera_color_optical_frame",
+      "color_frame": "camera_color_optical_frame",
+      "sha256": {
+        "color": "d36f19a284d7a7120641c171e85faf6b92e483fe848e83911dafe9ff5826d22e",
+        "depth": "4e07d28958fcea6f413784249bae28f32dbf25b5b35e793456244e16c72ff88d",
+        "cloud": "564582f007e2c6638a16981993b66933c9cec461cf2cbb261abf575b6d70be5c"
+      },
+      "timestamps": {
+        "color": 1793367536.706443,
+        "depth": 1793367536.706462,
+        "cloud": 1793367536.706462,
+        "color_depth_delta": 1.8835067749023438e-05,
+        "depth_cloud_delta": 0.0,
+        "color_cloud_delta": 1.8835067749023438e-05
+      },
+      "depth_cloud": {
+        "sample_count": 754900,
+        "in_bounds_count": 754900,
+        "positive_depth_ratio": 1.0,
+        "mean_m": 2.8554130507186723e-08,
+        "median_m": 2.5259307635917407e-08,
+        "p95_m": 6.263288376857953e-08,
+        "max_m": 1.5949923411206012e-07,
+        "passed": true,
+        "criteria": {
+          "positive_depth_ratio_min": 0.99,
+          "p95_max_m": 0.005
+        }
+      },
+      "color_correspondence": {
+        "projected_point_count": 754900,
+        "in_bounds_count": 754900,
+        "in_bounds_ratio": 1.0,
+        "median_abs_channel": 0.0,
+        "passed": true,
+        "registration_accuracy": "NOT_CLAIMED",
+        "criteria": {
+          "in_bounds_ratio_min": 0.999,
+          "median_abs_channel_max": 15.0
+        }
+      },
+      "depth_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "color_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "readable": true
+    },
+    {
+      "capture": "capture_03",
+      "color_shape": [
+        720,
+        1280,
+        3
+      ],
+      "color_dtype": "uint8",
+      "depth_shape": [
+        720,
+        1280
+      ],
+      "depth_dtype": "uint16",
+      "depth_positive_pixel_ratio": 0.8219346788194445,
+      "cloud_point_count": 757495,
+      "cloud_finite_count": 757495,
+      "cloud_fields": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "depth_frame": "camera_color_optical_frame",
+      "color_frame": "camera_color_optical_frame",
+      "sha256": {
+        "color": "83a49d7b55e76522da839296109403ad56c2792a13d13ad968953418a8e40a5f",
+        "depth": "987745158060960c14135ae1c168716b86b47dcbc0c654373a110b27709ea145",
+        "cloud": "4539836b44d2633357261cadd90406466b35b2d1295e9f125f0c2c70dcfdba48"
+      },
+      "timestamps": {
+        "color": 1793367538.341757,
+        "depth": 1793367538.341776,
+        "cloud": 1793367538.341776,
+        "color_depth_delta": 1.8835067749023438e-05,
+        "depth_cloud_delta": 0.0,
+        "color_cloud_delta": 1.8835067749023438e-05
+      },
+      "depth_cloud": {
+        "sample_count": 757495,
+        "in_bounds_count": 757495,
+        "positive_depth_ratio": 1.0,
+        "mean_m": 2.8613211066624674e-08,
+        "median_m": 2.5319484785432382e-08,
+        "p95_m": 6.267134046953415e-08,
+        "max_m": 1.6031682631486483e-07,
+        "passed": true,
+        "criteria": {
+          "positive_depth_ratio_min": 0.99,
+          "p95_max_m": 0.005
+        }
+      },
+      "color_correspondence": {
+        "projected_point_count": 757495,
+        "in_bounds_count": 757495,
+        "in_bounds_ratio": 1.0,
+        "median_abs_channel": 0.0,
+        "passed": true,
+        "registration_accuracy": "NOT_CLAIMED",
+        "criteria": {
+          "in_bounds_ratio_min": 0.999,
+          "median_abs_channel_max": 15.0
+        }
+      },
+      "depth_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "color_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "readable": true
+    },
+    {
+      "capture": "capture_04",
+      "color_shape": [
+        720,
+        1280,
+        3
+      ],
+      "color_dtype": "uint8",
+      "depth_shape": [
+        720,
+        1280
+      ],
+      "depth_dtype": "uint16",
+      "depth_positive_pixel_ratio": 0.8206694878472223,
+      "cloud_point_count": 756329,
+      "cloud_finite_count": 756329,
+      "cloud_fields": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "depth_frame": "camera_color_optical_frame",
+      "color_frame": "camera_color_optical_frame",
+      "sha256": {
+        "color": "4bddd282d2a71996f0c193fded6efc7fbbdc4f673f2309a47211220abeb40c23",
+        "depth": "3ff711dfee8ae43d384ecd855d472796ddd0462498d782b8444e2b2443865317",
+        "cloud": "57e0e41f3f0cfaaf5e75c686fd7234ecee4b0dd8fce46de084204899c18469d7"
+      },
+      "timestamps": {
+        "color": 1793367539.810164,
+        "depth": 1793367539.810182,
+        "cloud": 1793367539.810182,
+        "color_depth_delta": 1.811981201171875e-05,
+        "depth_cloud_delta": 0.0,
+        "color_cloud_delta": 1.811981201171875e-05
+      },
+      "depth_cloud": {
+        "sample_count": 756329,
+        "in_bounds_count": 756329,
+        "positive_depth_ratio": 1.0,
+        "mean_m": 2.8542834191191823e-08,
+        "median_m": 2.529172695417315e-08,
+        "p95_m": 6.252379823520934e-08,
+        "max_m": 1.6344415051656196e-07,
+        "passed": true,
+        "criteria": {
+          "positive_depth_ratio_min": 0.99,
+          "p95_max_m": 0.005
+        }
+      },
+      "color_correspondence": {
+        "projected_point_count": 756329,
+        "in_bounds_count": 756329,
+        "in_bounds_ratio": 1.0,
+        "median_abs_channel": 0.0,
+        "passed": true,
+        "registration_accuracy": "NOT_CLAIMED",
+        "criteria": {
+          "in_bounds_ratio_min": 0.999,
+          "median_abs_channel_max": 15.0
+        }
+      },
+      "depth_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "color_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "readable": true
+    },
+    {
+      "capture": "capture_05",
+      "color_shape": [
+        720,
+        1280,
+        3
+      ],
+      "color_dtype": "uint8",
+      "depth_shape": [
+        720,
+        1280
+      ],
+      "depth_dtype": "uint16",
+      "depth_positive_pixel_ratio": 0.8214605034722222,
+      "cloud_point_count": 757058,
+      "cloud_finite_count": 757058,
+      "cloud_fields": [
+        "x",
+        "y",
+        "z",
+        "rgb"
+      ],
+      "depth_frame": "camera_color_optical_frame",
+      "color_frame": "camera_color_optical_frame",
+      "sha256": {
+        "color": "f898b93fdd06c5157c8475e2661fa5f50b59cb187dfbad04d862a9b54e5d5e85",
+        "depth": "eb04ea834f26128c0421e3d4347fea66a77056d44b7addf8f0e6ac7a60e61892",
+        "cloud": "054957aa905659598e13aa4ec24ce28b16317cf57d124a5ac9b0c5473545a0e1"
+      },
+      "timestamps": {
+        "color": 1793367543.514476,
+        "depth": 1793367543.514494,
+        "cloud": 1793367543.514494,
+        "color_depth_delta": 1.7881393432617188e-05,
+        "depth_cloud_delta": 0.0,
+        "color_cloud_delta": 1.7881393432617188e-05
+      },
+      "depth_cloud": {
+        "sample_count": 757058,
+        "in_bounds_count": 757058,
+        "positive_depth_ratio": 1.0,
+        "mean_m": 2.8573368542835102e-08,
+        "median_m": 2.5324494850681172e-08,
+        "p95_m": 6.244952189657847e-08,
+        "max_m": 1.5966835027459066e-07,
+        "passed": true,
+        "criteria": {
+          "positive_depth_ratio_min": 0.99,
+          "p95_max_m": 0.005
+        }
+      },
+      "color_correspondence": {
+        "projected_point_count": 757058,
+        "in_bounds_count": 757058,
+        "in_bounds_ratio": 1.0,
+        "median_abs_channel": 0.0,
+        "passed": true,
+        "registration_accuracy": "NOT_CLAIMED",
+        "criteria": {
+          "in_bounds_ratio_min": 0.999,
+          "median_abs_channel_max": 15.0
+        }
+      },
+      "depth_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "color_k": [
+        610.5073852539062,
+        610.349853515625,
+        641.7918090820312,
+        364.4433288574219
+      ],
+      "readable": true
+    }
+  ],
+  "registration_accuracy": "NOT_CLAIMED",
+  "hardware_sync": "NOT_VERIFIED"
+}

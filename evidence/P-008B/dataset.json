@@ -1,0 +1,25 @@
+{
+  "dataset_version": 2,
+  "purpose": "Gemini 335L에서 RGB, aligned depth, XYZRGB point cloud, CameraInfo, depth↔color extrinsic provenance를 함께 보존한 정지 운동화 dataset",
+  "camera": "Orbbec Gemini 335L",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "driver": "OrbbecSDK_ROS2 v2.10.6",
+  "alignment": "SW_D2C",
+  "extrinsic_source": "tf2 lookup_transform(camera_color_optical_frame, camera_depth_optical_frame) and /camera/depth_to_color",
+  "captures": 5,
+  "development_capture": "capture_01",
+  "holdout_captures": [
+    "capture_02",
+    "capture_03",
+    "capture_04",
+    "capture_05"
+  ],
+  "previous_dataset": "P-008A Dataset v1",
+  "previous_dataset_role": "HISTORICAL_DIAGNOSTIC",
+  "hardware_sync": "NOT_VERIFIED",
+  "registration_accuracy": "NOT_CLAIMED",
+  "colored_pointcloud": "AVAILABLE",
+  "pointcloud_topic": "/camera/depth_registered/points",
+  "point_fields": ["x", "y", "z", "rgb"]
+}

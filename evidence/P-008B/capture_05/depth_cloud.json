@@ -1,0 +1,14 @@
+{
+  "sample_count": 757058,
+  "in_bounds_count": 757058,
+  "positive_depth_ratio": 1.0,
+  "mean_m": 2.85733685428351e-08,
+  "median_m": 2.5324494850681172e-08,
+  "p95_m": 6.244952189657847e-08,
+  "max_m": 1.5966835027459066e-07,
+  "passed": true,
+  "criteria": {
+    "positive_depth_ratio_min": 0.99,
+    "p95_max_m": 0.005
+  }
+}

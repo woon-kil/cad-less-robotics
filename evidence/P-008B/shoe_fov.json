@@ -1,0 +1,14 @@
+{
+  "method": "HUMAN_VISUAL_RGB",
+  "segmentation": false,
+  "workpiece": "검은 원판 위의 남색 아동 운동화",
+  "captures": {
+    "capture_01": {"toe_visible": true, "heel_visible": true, "left_boundary_visible": true, "right_boundary_visible": true, "severe_clipping": false, "passed": true},
+    "capture_02": {"toe_visible": true, "heel_visible": true, "left_boundary_visible": true, "right_boundary_visible": true, "severe_clipping": false, "passed": true},
+    "capture_03": {"toe_visible": true, "heel_visible": true, "left_boundary_visible": true, "right_boundary_visible": true, "severe_clipping": false, "passed": true},
+    "capture_04": {"toe_visible": true, "heel_visible": true, "left_boundary_visible": true, "right_boundary_visible": true, "severe_clipping": false, "passed": true},
+    "capture_05": {"toe_visible": true, "heel_visible": true, "left_boundary_visible": true, "right_boundary_visible": true, "severe_clipping": false, "passed": true}
+  },
+  "passed": "5/5",
+  "note": "다섯 장 모두 같은 정지 장면이다. 앞코, 뒤꿈치, 좌우 경계가 화면 안에 있고 신발 실루엣이 잘리지 않는다. 다른 신발은 작업물이 아니다. 칼라 안쪽은 depth가 비는 구멍이 있으나 이것은 FOV clipping이 아니다."
+}

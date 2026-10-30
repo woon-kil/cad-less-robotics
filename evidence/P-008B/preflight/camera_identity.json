@@ -1,0 +1,9 @@
+{
+  "device_name": "Orbbec Gemini 335L",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "ros_wrapper_version": "2.10.6",
+  "sdk_version": "2.10.6",
+  "align_log": true,
+  "frame_sync_log": true
+}

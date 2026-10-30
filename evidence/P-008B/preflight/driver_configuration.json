@@ -1,0 +1,12 @@
+{
+  "identity": {
+    "device_name": "Orbbec Gemini 335L",
+    "serial": "CP263630009D",
+    "firmware": "1.4.60",
+    "ros_wrapper_version": "2.10.6",
+    "sdk_version": "2.10.6",
+    "align_log": true,
+    "frame_sync_log": true
+  },
+  "contract_launch": "ros2 launch orbbec_camera gemini_330_series.launch.py depth_registration:=true align_mode:=SW align_target_stream:=COLOR enable_colored_point_cloud:=true enable_publish_extrinsic:=true enable_point_cloud:=true enable_frame_sync:=true"
+}
