@@ -1,0 +1,10 @@
+{
+  "gate": "P-008-R1F",
+  "verdict": "PASS_DIAGNOSIS",
+  "distance_separation": "NOT_FEASIBLE",
+  "separation_interval": "NONE",
+  "normal_constrained_clustering_input": "UNSUITABLE",
+  "parameters_changed": false,
+  "parameters_frozen": false,
+  "capture_02_05_used": false
+}

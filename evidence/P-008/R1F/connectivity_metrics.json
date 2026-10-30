@@ -1,0 +1,23 @@
+{
+  "t_internal_definition": "full_prism_radius_graph",
+  "t_env_definition": "tracked_component_size_gt_2_times_seed_count",
+  "search_min_m": 0.001,
+  "search_max_m": 0.050000000000000003,
+  "search_step_m": 0.0001,
+  "margin_steps": 20,
+  "seed_count": 2861,
+  "tracked_index": 14288,
+  "ten_mm_component_points": 23734,
+  "ten_mm_seed_points": 2505,
+  "ten_mm_seed_component_count": 2,
+  "ten_mm_cluster_count_min50": 18,
+  "t_internal_m": 0.026700000000000002,
+  "t_env_m": 0.0036000000000000003,
+  "delta_m": -0.023100000000000002,
+  "separation_interval": "NONE",
+  "distance_separation": "NOT_FEASIBLE",
+  "induced_seed_distance_m": 0.044600000000000001,
+  "bridge_edge_length_m": 0.0035822080414420537,
+  "bridge_shoe_height_m": 0.021113808585011329,
+  "bridge_environment_height_m": 0.02111075345212976
+}

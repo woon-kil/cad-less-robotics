@@ -1,0 +1,11 @@
+{
+  "normal_constrained_clustering_input": "UNSUITABLE",
+  "reason": "MEASURED",
+  "normal_estimation_k": 20,
+  "density_10nn_median_m": 0.0040104226403506697,
+  "density_fraction_within_0_01": 0.99965047186298495,
+  "bridge_normal_angle_rad": 0.076838004473410645,
+  "interior_normal_angle_median_rad": 0.079531937571177574,
+  "interior_normal_angle_p95_rad": 0.26710253872819939,
+  "segmentation_ran": false
+}
