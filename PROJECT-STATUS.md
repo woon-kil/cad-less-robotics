@@ -15,6 +15,7 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
+| **P-008-R1G** | **`FAIL_DEPTH_CLOUD_CORRESPONDENCE`**. capture_01 depth↔cloud 중앙값 1.08 mm이나 고정한 p95·양수 depth 비율 미달. color↔depth 행렬은 저장본에 없음. RGB 투영 없음. robot/servo 0 | `evidence/P-008/R1G/verdict.json` |
 | **P-008A** | **`PASS`**. Baseline B serial `CP263630009D`, firmware `1.4.60`. 정지 운동화 RGB+depth+point cloud 5/5. 기하 알고리즘 없음. P-008 미재개. robot/servo 0 | `evidence/P-008A/verdict.json` |
 | **P-008-R1F** | **`PASS_DIAGNOSIS`**. 10 mm 연결은 재현. 환경은 3.6 mm에서 붙고 원판 전체는 26.7 mm에야 한 component. 거리 분리 `NOT_FEASIBLE`. tolerance 불변. robot/servo 0 | `evidence/P-008/R1F/verdict.json` |
 | **P-007 최종** | **`CLOSED / BLOCKED`**. command path `VERIFIED`. physical Arm2 motion `UNRESOLVED`, angle `UNKNOWN`. static tracking `VERIFIED`. observability `UNRESOLVED`. 추가 진단 `STOPPED`. P-006D는 열지 않음 | `evidence/P-007/P-007_FINAL_CLOSURE.md` |
@@ -501,6 +502,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-008-R1D — isolation failure diagnosis** — capture_01만. 매트 중심 원판은 RAW·voxel·SOR에 있고 clustering 입력에는 0점. height 반공간이 제거. id 3은 0.20 m 밖. `PASS_DIAGNOSIS`. 파라미터 불변. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1E — polygonal prism extraction** — capture_01만. viewpoint prism이 신발 원판을 전부 유지. cluster 1은 매트와 연결. `FAIL_CLUSTERING`. height·tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1F — Euclidean connectivity diagnosis** — capture_01 prism만. 10 mm component 재현. 환경 합류 3.6 mm, 원판 전체 연결 26.7 mm. `PASS_DIAGNOSIS` / `NOT_FEASIBLE`. tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-008-R1G — RGB↔depth correspondence** — capture_01만. depth↔cloud는 중앙값 1.08 mm이나 사전 p95 0.005 m과 양수 depth 비율 0.99를 넘지 못함. 공식 extrinsic 행렬은 저장되지 않음. RGB 투영·segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 
   - EPC-01~27 전부 충족 + EPC 외 추가 자체검증 1건(self_transfer_verification, advisor 요구). `evidence/P-007E-R2-R2/stage_c1r1r1_decision.json` + `stage_c1r1r1_architecture_note.json`(§24 원문 verbatim 추가) + `c1r1r1_repair_tests/repair_result.json`
   - 🔴 **advisor 2차 재검토 반영**: §24 원문("qualified only for ... rigid external scene / not qualified for dynamic trajectory tracking...")이 §11 문구로 잘못 들어가 있던 것을 architecture_note 에 `section_24_verbatim` 로 보완(코드 상수는 SHA 재시험 비용 때문에 그대로 둠, divergence 명시) · verdict 를 조건부로 수정(배포방식 결정 전까지 무조건 READY 아님) · 실제(non-mock) `build_runtime_provenance`/`check_dirty_tree` 1회 실행해 git_head=`7798e80`·dirty=False 확인 · 🔴 **이 gate의 evidence 회수 자체가 §14~16 을 어김**(`repair_result.json` scp 후 SHA diff 없이 Jetson rm -rf, 2회) — `TRANSFER_INTEGRITY_NOT_VERIFIED_BEFORE_SOURCE_DELETION` 로 공개(판정 영향 없음, 재현 가능한 pass/fail 로그라 재실행 불요)
@@ -691,6 +693,7 @@ operator channel        realtime visual observation
 | 53 | 2026-10-30 | **P-008-R1D** — R1 파라미터를 유지한 채 매트 중심 점의 단계별 잔존을 확인. 신발은 height gate 이전에만 있고 cluster에는 없다. id 3을 신발로 보지 않음. robot/servo 0 | `PASS_DIAGNOSIS — SHOE_REMOVED_BY_PREPROCESSING, P-008-R1_RETRY=NOT OPENED` |
 | 54 | 2026-10-30 | **P-008-R1E** — majority orientation 대신 PCL polygonal prism을 capture_01에 적용. 신발 점은 전부 남고, 1 cm cluster는 매트와 이어짐. height와 tolerance는 유지. robot/servo 0 | `FAIL_CLUSTERING — PARAMETERS_FROZEN=NO, P-008-R1_RETRY=NOT OPENED` |
 | 55 | 2026-10-30 | **P-008-R1F** — R1E prism 이후 10 mm 연결을 진단. 매트는 3.6 mm에서 붙고 진단 원판 전체는 26.7 mm에야 한 component가 된다. tolerance는 바꾸지 않음. robot/servo 0 | `PASS_DIAGNOSIS — DISTANCE_SEPARATION=NOT_FEASIBLE, P-008-R1_RETRY=NOT OPENED` |
+| 56 | 2026-10-30 | **P-008-R1G** — capture_01에서 depth 점과 점군의 pinhole 대응을 측정. 중앙값은 1.08 mm이나 고정한 꼬리 기준은 실패. color↔depth 행렬은 캡처에 없어 RGB로 투영하지 않음. robot/servo 0 | `FAIL_DEPTH_CLOUD_CORRESPONDENCE — COLOR_DEPTH_EXTRINSIC=NOT_VERIFIED, P-008-R1H=NOT OPENED` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

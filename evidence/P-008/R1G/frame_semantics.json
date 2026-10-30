@@ -1,0 +1,12 @@
+{
+  "rgb_frame": "camera_color_optical_frame",
+  "depth_frame": "camera_depth_optical_frame",
+  "cloud_frame": "camera_depth_optical_frame",
+  "rgb_topic": "/camera/color/image_raw",
+  "depth_topic": "/camera/depth/image_raw",
+  "cloud_topic": "/camera/depth/points",
+  "same_rgb_and_depth_frame": false,
+  "depth_and_cloud_same_frame": true,
+  "FRAME_SEMANTICS": "VERIFIED",
+  "frame_note": "color와 depth/cloud의 frame_id는 서로 다르다. 그 사이 강체변환 행렬은 저장되지 않았다."
+}

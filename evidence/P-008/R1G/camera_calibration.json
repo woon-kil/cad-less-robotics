@@ -1,0 +1,55 @@
+{
+  "color": {
+    "frame_id": "camera_color_optical_frame",
+    "model": "rational_polynomial",
+    "width": 1280,
+    "height": 720,
+    "fx": 610.5073852539062,
+    "fy": 610.349853515625,
+    "cx": 641.7918090820312,
+    "cy": 364.4433288574219,
+    "d": [
+      -0.03170262649655342,
+      0.0341622568666935,
+      7.964719407027587e-05,
+      -6.973547897359822e-06,
+      -0.01190638542175293,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "distortion_all_zero": false,
+    "p_translation_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "r_is_identity": true
+  },
+  "depth": {
+    "frame_id": "camera_depth_optical_frame",
+    "model": "plumb_bob",
+    "width": 848,
+    "height": 480,
+    "fx": 410.4136657714844,
+    "fy": 410.4136657714844,
+    "cx": 423.66876220703125,
+    "cy": 240.9937744140625,
+    "d": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "distortion_all_zero": true,
+    "p_translation_m": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "r_is_identity": true
+  },
+  "pinhole_used_for_depth": true,
+  "pinhole_reason": "depth distortion은 전부 0이고 R은 단위행렬이다."
+}

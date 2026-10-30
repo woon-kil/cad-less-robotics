@@ -1,0 +1,36 @@
+{
+  "method": "cloud_point_to_depth_pixel_then_pinhole_backproject",
+  "depth_unit_hypothesis_m": "published_16UC1 / 1000",
+  "depth_unit_basis": "OrbbecSDK_ROS2 v2.10.6 ob_camera_node.cpp:6281 divides point filter output by 1000. The saved depth image has no scale field.",
+  "valid_samples": 337715,
+  "finite_cloud_points": 341698,
+  "in_bounds_count": 341698,
+  "in_bounds_ratio": 1.0,
+  "positive_depth_count": 337715,
+  "positive_depth_ratio": 0.9883435080099972,
+  "error_3d_mean_m": 0.001519773312356354,
+  "error_3d_median_m": 0.0010788352621479878,
+  "error_3d_p95_m": 0.005053621708983286,
+  "error_3d_max_m": 0.7782596135106133,
+  "z_residual_median_mm": 0.9999833106994629,
+  "z_residual_p95_mm": 4.000001430511475,
+  "z_residual_max_mm": 706.0000157356262,
+  "adjacent_pixel_diagnostic": {
+    "role": "DIAGNOSTIC_NOT_A_PASS_CRITERION",
+    "large_z_residual_count": 10890,
+    "explained_by_adjacent_pixel": 4513,
+    "adjacent_agreement_mm": 2.0
+  },
+  "criteria": {
+    "min_valid_samples": 100000,
+    "min_in_bounds_ratio": 0.999,
+    "min_positive_depth_ratio": 0.99,
+    "max_median_m": 0.002,
+    "max_p95_m": 0.005
+  },
+  "passed": false,
+  "failed_criteria": [
+    "positive_depth_ratio",
+    "error_3d_p95_m"
+  ]
+}

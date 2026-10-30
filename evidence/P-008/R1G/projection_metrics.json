@@ -1,0 +1,8 @@
+{
+  "RGB_DEPTH_PROJECTION": "NOT_RUN",
+  "reason": "저장본에 공식 T_color_depth 또는 T_depth_color가 없다.",
+  "projected_point_count": null,
+  "in_bounds_count": null,
+  "in_bounds_ratio": null,
+  "OFFICIAL_ALIGNMENT_COMPARISON": "NOT_AVAILABLE_FROM_SAVED_CAPTURE"
+}

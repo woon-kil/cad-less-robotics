@@ -1,0 +1,11 @@
+{
+  "capture": "capture_01",
+  "rgb": "RAW_DECODED_NOT_RECTIFIED",
+  "rgb_basis": "topic image_raw, rgb8, rational_polynomial 왜곡이 0이 아님, enable_color_undistortion 기본값 false",
+  "depth": "RAW_UNALIGNED",
+  "depth_basis": "topic image_raw, frame camera_depth_optical_frame. 정합 depth는 color optical frame으로 바뀐다. launch 기본 depth_registration false",
+  "cloud": "RAW_DEPTH_PROJECTION",
+  "cloud_basis": "topic /camera/depth/points, XYZ only, frame camera_depth_optical_frame. colored point cloud 기본값 false",
+  "driver": "OrbbecSDK_ROS2 v2.10.6",
+  "launch": "ros2 launch orbbec_camera gemini_330_series.launch.py"
+}

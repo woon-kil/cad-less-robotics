@@ -1,0 +1,27 @@
+{
+  "matrix_in_capture_metadata": false,
+  "camera_info_p_translation_m": {
+    "color": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "depth": [
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "camera_info_contains_baseline": false,
+  "tf_saved_with_capture": false,
+  "depth_to_color_topic_saved": false,
+  "matrix": null,
+  "source": null,
+  "official_driver_path": "OBExtrinsic via stream profile getExtrinsicTo",
+  "official_topic": "/camera/depth_to_color",
+  "official_topic_default": "disabled, enable_publish_extrinsic false",
+  "static_tf_published_by_driver": true,
+  "static_tf_saved_in_capture_01": false,
+  "COLOR_DEPTH_EXTRINSIC": "NOT_VERIFIED",
+  "reused_other_session": false
+}
