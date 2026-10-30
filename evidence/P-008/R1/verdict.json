@@ -1,0 +1,22 @@
+{
+  "gate": "P-008-R1",
+  "verdict": "FAIL_SHOE_ISOLATION",
+  "parameters_frozen": false,
+  "frozen_parameters_written": false,
+  "shoe_isolation": "FAIL",
+  "pca_frame": "FAIL",
+  "boundary_topology": "FAIL",
+  "boundary_support": "MEASURED_ON_SELECTED_COMPONENT_ONLY",
+  "boundary_continuity": "MEASURED_ON_SELECTED_COMPONENT_ONLY",
+  "determinism": "PASS",
+  "regression": "PASS",
+  "capture_02_05_used_for_tuning": false,
+  "p008_r2": "NOT OPENED",
+  "p009": "NOT OPENED",
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "motion_authorized": false,
+  "selected_cluster_id": 8,
+  "selected_component_is_workpiece": false,
+  "reason": "사전 envelope를 통과한 cluster는 작업대 매트 중심이 아니라 깊이 영상 왼쪽 가장자리의 두 조각이다. 매트 중심에 가까운 큰 cluster는 신발 치수 창을 벗어나 기각되었다. 창을 사후에 넓히지 않았다."
+}

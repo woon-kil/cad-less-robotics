@@ -1,0 +1,14 @@
+{
+  "gate": "P-008-R1",
+  "input": "evidence/P-008A/captures/capture_01/cloud.pcd",
+  "sha256": "51b5af9855e01e67610f0a24bc427ea0d257f68c34a6829ab709084e2517a928",
+  "manifest": "evidence/P-008A/manifest.sha256",
+  "manifest_match": true,
+  "p620_copy_sha256": "51b5af9855e01e67610f0a24bc427ea0d257f68c34a6829ab709084e2517a928",
+  "sensor": "Gemini 335L",
+  "serial": "CP263630009D",
+  "frame": "camera_depth_optical_frame",
+  "units": "meter",
+  "point_count": 341698,
+  "holdout_not_opened": ["capture_02", "capture_03", "capture_04", "capture_05"]
+}

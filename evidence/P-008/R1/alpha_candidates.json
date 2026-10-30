@@ -1,0 +1,11 @@
+{
+  "rule": "smallest_topology_ok_area_ratio_ge_0.55_perimeter_ratio_le_3",
+  "candidates": [
+    {"alpha_m": 0.0047263893065974116, "loops": 2, "intersections": 0, "vertices": 0, "area_m2": 0, "perimeter_m": 0, "area_ratio": 0, "perimeter_ratio": 0, "valid": false, "reason": "loop_count", "selected": false},
+    {"alpha_m": 0.0070895839598961174, "loops": 1, "intersections": 0, "vertices": 116, "area_m2": 0.0082818740762760079, "perimeter_m": 0.4194953795324331, "area_ratio": 0.87815641805901234, "perimeter_ratio": 1.1206594887716765, "valid": true, "reason": "topology_ok", "selected": true},
+    {"alpha_m": 0.0094527786131948233, "loops": 1, "intersections": 0, "vertices": 99, "area_m2": 0.00844195351688737, "perimeter_m": 0.40679667583035362, "area_ratio": 0.89513020767202389, "perimeter_ratio": 1.0867355804447312, "valid": true, "reason": "topology_ok", "selected": false},
+    {"alpha_m": 0.014179167919792235, "loops": 1, "intersections": 0, "vertices": 71, "area_m2": 0.0088116876949941719, "perimeter_m": 0.38528747183309059, "area_ratio": 0.93433443107483349, "perimeter_ratio": 1.0292748914084773, "valid": true, "reason": "topology_ok", "selected": false},
+    {"alpha_m": 0.018905557226389647, "loops": 1, "intersections": 0, "vertices": 61, "area_m2": 0.0089358455491244607, "perimeter_m": 0.38083727588041782, "area_ratio": 0.94749932774589884, "perimeter_ratio": 1.0173864307374332, "valid": true, "reason": "topology_ok", "selected": false},
+    {"alpha_m": 0.02835833583958447, "loops": 1, "intersections": 0, "vertices": 55, "area_m2": -0.0090420286151245942, "perimeter_m": 0.37812411329526879, "area_ratio": 0.95875829401831636, "perimeter_ratio": 1.0101383618814268, "valid": true, "reason": "topology_ok", "selected": false}
+  ]
+}

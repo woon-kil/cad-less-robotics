@@ -1,0 +1,17 @@
+{
+  "vertex_count": 116,
+  "loop_count": 1,
+  "closed": true,
+  "ordered": true,
+  "self_intersection_count": 0,
+  "signed_area_m2": 0.0082818740762760079,
+  "perimeter_m": 0.4194953795324331,
+  "alpha_m": 0.0070895839598961174,
+  "reprojection": "nearest_observed_surface_point",
+  "support_is_lift_distance": true,
+  "support": {"mean": 0.0030677902609725074, "median": 0.002735263085924089, "p95": 0.006369571783579886, "max": 0.0087530454620718956},
+  "worst_gap_index": 7,
+  "worst_gap_m": 0.012545887830776543,
+  "selected_cluster_id": 8,
+  "selected_point_count": 1644
+}
