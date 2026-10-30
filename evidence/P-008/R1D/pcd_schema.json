@@ -1,0 +1,14 @@
+{
+  "file": "evidence/P-008A/captures/capture_01/cloud.pcd",
+  "fields": ["x", "y", "z"],
+  "size": [4, 4, 4],
+  "type": ["F", "F", "F"],
+  "width": 341698,
+  "height": 1,
+  "points": 341698,
+  "data": "binary",
+  "organized": false,
+  "color_in_pointcloud": false,
+  "ros_message_point_step": 16,
+  "note": "저장된 PCD에는 rgb 필드가 없다. capture metadata의 point_step 16은 PointCloud2 레이아웃이며 PCD FIELDS는 x y z뿐이다."
+}

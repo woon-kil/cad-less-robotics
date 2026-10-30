@@ -1,0 +1,31 @@
+{
+  "diagnostic_disk": {
+    "definition": "R1 지지평면 inlier 중심에서 평면 반지름 0.08 m. 파라미터는 바꾸지 않았다.",
+    "plane_unchanged": true,
+    "inlier_hole_starts_m": 0.06,
+    "sensitivity_radii_m": [0.06, 0.08, 0.10],
+    "sensitivity_kept_points": [0, 0, 0]
+  },
+  "radius_0_08_m": {
+    "raw": {"points": 4220, "kept_by_height_gate": 0, "signed_median_m": -0.0516},
+    "voxel": {"points": 2989, "kept_by_height_gate": 0, "scene_points": 287710, "matches_r1": true},
+    "sor": {"points": 2941, "kept_by_height_gate": 0, "removed_from_voxel": 48, "plane_inliers": 80, "signed_median_m": -0.0468, "signed_min_m": -0.1134, "signed_max_m": -0.0026},
+    "plane_removal_keeps_non_inliers": 2861,
+    "height_filter": {"remaining": 0},
+    "clustering": {"remaining": 0}
+  },
+  "orientation_sums": {
+    "non_inlier_signed_sum": 11232.580259835015,
+    "disk_signed_sum": -144.80048062806645,
+    "outside_non_inlier_signed_sum": 11377.110874901493
+  },
+  "gap_to_kept_cloud_m": {"min": 0.09218119745902435, "median": 0.17029282160485196, "p10": 0.10867814360630189, "p90": 0.19790211253879236},
+  "gap_by_cluster_m": {
+    "0": {"min": 0.092, "median": 0.172},
+    "3": {"min": 0.204, "median": 0.293},
+    "8": {"min": 0.534, "median": 0.625},
+    "9": {"min": 0.511, "median": 0.601},
+    "26": {"min": 0.102, "median": 0.217}
+  },
+  "cluster_tolerance_m": 0.01
+}

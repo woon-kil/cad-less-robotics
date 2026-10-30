@@ -1,0 +1,18 @@
+{
+  "gate": "P-008-R1D",
+  "verdict": "PASS_DIAGNOSIS",
+  "shoe_membership": "REMOVED_BY_PREPROCESSING",
+  "color_in_pointcloud": false,
+  "rgb_depth_registration": "UNREGISTERED_RGB_DIAGNOSTIC_LIMITATION",
+  "root_cause": "HEIGHT_HALFSPACE_REMOVAL",
+  "secondary_root_cause": "MAJORITY_NONINLIER_ORIENTATION",
+  "id3_is_the_shoe": false,
+  "parameters_changed": false,
+  "capture_02_05_used": false,
+  "p008_r1_retry": "NOT OPENED",
+  "p008_r2": "NOT OPENED",
+  "p009": "NOT OPENED",
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "motion_authorized": false
+}
