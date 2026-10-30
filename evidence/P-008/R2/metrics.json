@@ -1,0 +1,20 @@
+{
+  "path_point_count_raw": 29,
+  "path_point_count_final": 147,
+  "target_spacing_m": 0.002,
+  "segment_length": {
+    "min": 0.0012322054716102369,
+    "median": 0.0019999999999999914,
+    "p95": 0.002000000000000035,
+    "max": 0.0020000000000000686
+  },
+  "total_path_length_m": 0.29065568852455137,
+  "surface_distance": {
+    "min": 0.0,
+    "median": 0.001678673530026994,
+    "p95": 0.007031161759884127,
+    "max": 0.012559936934196346
+  },
+  "ordering_violation_count": 0,
+  "surface_reprojection_used": false
+}

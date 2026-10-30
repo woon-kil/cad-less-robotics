@@ -1,0 +1,8 @@
+{
+  "dataset": "P-008B_DATASET_V2",
+  "capture": "capture_01",
+  "input": "evidence/P-008/R1GEO/05_shoe_candidate.pcd",
+  "input_sha256": "cf5d7e8013d9087e9bc578ef6356fafd379fb36781e5ccdd896a8641211fbc8d",
+  "support_plane": "evidence/P-008/R1GEO/support_plane.json",
+  "capture_02_05_used": false
+}

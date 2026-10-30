@@ -1,0 +1,11 @@
+{
+  "bin_width_m": 0.008,
+  "height_quantile": 0.75,
+  "min_bin_points": 8,
+  "end_fraction": 0.15,
+  "jump_reject_m": 0.12,
+  "smooth_passes": 1,
+  "target_spacing_m": 0.002,
+  "surface_reprojection": false,
+  "selected_path_semantic": "LONGITUDINAL_SURFACE"
+}
