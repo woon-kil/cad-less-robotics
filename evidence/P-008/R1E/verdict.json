@@ -1,0 +1,14 @@
+{
+  "gate": "P-008-R1E",
+  "verdict": "FAIL_CLUSTERING",
+  "tool_numeric_screen": "PASS_EXTRACTION_FIX",
+  "method": "PCL_EXTRACT_POLYGONAL_PRISM_DATA",
+  "method_evidence": "OFFICIAL_IMPLEMENTATION_VERIFIED",
+  "shoe_retained": true,
+  "background_rejection": "PASS",
+  "shoe_cluster_identified": false,
+  "plane_sign_invariance": "PASS",
+  "parameters_frozen": false,
+  "majority_orientation_used": false,
+  "reason": "viewpoint prism은 진단 원판 2861점을 모두 남겼다. 다만 1 cm clustering에서 그중 2505점이 매트와 이어진 23734점 component에 들어간다. tolerance와 height는 바꾸지 않았다."
+}

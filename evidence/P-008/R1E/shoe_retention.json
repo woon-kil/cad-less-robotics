@@ -1,0 +1,9 @@
+{
+  "diagnostic_radius_m": 0.080000000000000002,
+  "shoe_region_before_prism": 2861,
+  "shoe_region_after_prism": 2861,
+  "retention_ratio": 1,
+  "shoe_cluster_id": 1,
+  "shoe_region_membership_ratio": 0.87556798322264939,
+  "shoe_cluster_point_count": 23734
+}
