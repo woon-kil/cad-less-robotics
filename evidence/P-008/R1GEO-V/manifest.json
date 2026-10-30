@@ -1,0 +1,37 @@
+{
+  "dataset": "P-008B_DATASET_V2",
+  "development_capture_excluded": "capture_01",
+  "baseline_commit": "dd06f59b03497680dd97f34456815794d23db3ea",
+  "parameter_path": "evidence/P-008/R1GEO/parameters.json",
+  "parameter_sha256": "7e67ddfb2dd8bcf699ed37bc4cee2441097cb3cd3c2ab1cb318417eb6b95f1db",
+  "captures": [
+    {
+      "capture": "capture_02",
+      "cloud": "evidence/P-008B/capture_02/cloud.pcd",
+      "sha256": "564582f007e2c6638a16981993b66933c9cec461cf2cbb261abf575b6d70be5c",
+      "input_point_count": 754900,
+      "stage_name": "holdout_b"
+    },
+    {
+      "capture": "capture_03",
+      "cloud": "evidence/P-008B/capture_03/cloud.pcd",
+      "sha256": "4539836b44d2633357261cadd90406466b35b2d1295e9f125f0c2c70dcfdba48",
+      "input_point_count": 757495,
+      "stage_name": "holdout_c"
+    },
+    {
+      "capture": "capture_04",
+      "cloud": "evidence/P-008B/capture_04/cloud.pcd",
+      "sha256": "57e0e41f3f0cfaaf5e75c686fd7234ecee4b0dd8fce46de084204899c18469d7",
+      "input_point_count": 756329,
+      "stage_name": "holdout_d"
+    },
+    {
+      "capture": "capture_05",
+      "cloud": "evidence/P-008B/capture_05/cloud.pcd",
+      "sha256": "054957aa905659598e13aa4ec24ce28b16317cf57d124a5ac9b0c5473545a0e1",
+      "input_point_count": 757058,
+      "stage_name": "holdout_e"
+    }
+  ]
+}

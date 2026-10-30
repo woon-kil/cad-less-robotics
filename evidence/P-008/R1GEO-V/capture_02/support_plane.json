@@ -1,0 +1,14 @@
+{
+  "identifiable": true,
+  "coefficients": [0.008285721374877382, -0.69611190344581197, -0.71788548160716159, 0.50719175081614221],
+  "normal": [0.008285721374877382, -0.69611190344581197, -0.71788548160716159],
+  "flipped_once": true,
+  "ransac_distance": 0.0040000000000000001,
+  "ransac_iterations": 200,
+  "inlier_count": 28740,
+  "workspace_voxel_count": 53581,
+  "inlier_ratio": 0.53638416602900285,
+  "residual_median": 0.0011031477862878947,
+  "residual_p95": 0.0032991383867570557,
+  "workspace_count": 139329
+}

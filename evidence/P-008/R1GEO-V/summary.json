@@ -1,0 +1,31 @@
+{
+  "gate": "P-008-R1GEO-V",
+  "verdict": "PASS_HOLDOUT_VALIDATION",
+  "baseline_commit": "dd06f59b03497680dd97f34456815794d23db3ea",
+  "dataset": "P-008B_DATASET_V2",
+  "development_capture": "capture_01",
+  "holdout_captures": [
+    "capture_02",
+    "capture_03",
+    "capture_04",
+    "capture_05"
+  ],
+  "frozen_parameters_used": true,
+  "parameter_sha256": "7e67ddfb2dd8bcf699ed37bc4cee2441097cb3cd3c2ab1cb318417eb6b95f1db",
+  "parameter_modification_count": 0,
+  "capture_results": {
+    "capture_02": "PASS",
+    "capture_03": "PASS",
+    "capture_04": "PASS",
+    "capture_05": "PASS"
+  },
+  "holdout_success": "4/4",
+  "holdout_success_rate": 1.0,
+  "segmentation_track": "CLOSED",
+  "path_extraction_authorized": true,
+  "path_extraction_started": false,
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "motion_authorized": false,
+  "note": "capture_02 \ud6c4\ubcf4 5319\uc810 \uc911 x<-0.22 m \uc778 \uc810\uc740 150\uac1c\ub2e4. \uc587\uc740 \uc794\uc5ec\uc774\uba70 \ud6c4\ubcf4\uc758 \ub300\ubd80\ubd84\uc774 \uc544\ub2c8\ub2e4."
+}

@@ -1,0 +1,44 @@
+{
+  "capture": "capture_02",
+  "input_sha256": "564582f007e2c6638a16981993b66933c9cec461cf2cbb261abf575b6d70be5c",
+  "input_point_count": 754900,
+  "support_plane_identifiable": true,
+  "plane_coefficients": [
+    0.008285721374877382,
+    -0.696111903445812,
+    -0.7178854816071616,
+    0.5071917508161422
+  ],
+  "plane_inliers": 28740,
+  "plane_inlier_ratio": 0.5363841660290029,
+  "plane_residual_median": 0.0011031477862878947,
+  "plane_residual_p95": 0.0032991383867570557,
+  "object_cluster_count": 5,
+  "selected_cluster": 0,
+  "selected_cluster_points": 5319,
+  "selected_cluster_centroid": [
+    -0.12334538650234787,
+    0.0580220794603127,
+    0.5794690691521571
+  ],
+  "selected_cluster_bounds": {
+    "min": [
+      -0.3213920593261719,
+      -0.016874568536877632,
+      0.5180000066757202
+    ],
+    "max": [
+      -0.03658425435423851,
+      0.13289813697338104,
+      0.6930000185966492
+    ]
+  },
+  "selected_cluster_height_min": 0.004000553357292103,
+  "selected_cluster_height_median": 0.050126839167880244,
+  "selected_cluster_height_p95": 0.09863662686165682,
+  "selected_cluster_height_max": 0.10877976625020597,
+  "shoe_candidate_generated": true,
+  "next_stage_input_usable": true,
+  "capture_result": "PASS",
+  "failure_class": null
+}
