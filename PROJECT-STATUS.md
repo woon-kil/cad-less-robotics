@@ -15,6 +15,7 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
+| **P-008-R1GEO** | **`PASS_GEOMETRY_SEGMENTATION`**. capture_01 XYZ만. 매트 평면 분리 후 신발 후보 5182점. R1H는 동결. capture_02–05 미사용. robot/servo 0 | `evidence/P-008/R1GEO/result.json` |
 | **P-008-R1H** | **`PASS_METHOD_SELECTION`**. capture_01만. 내부 색상 LOW, 높이 HIGH. 접촉 매트 쪽 0점이라 `NOT_IDENTIFIABLE`. `SEGMENTATION_STOP_RULE`. segmentation 없음. R1I 미개방. robot/servo 0 | `evidence/P-008/R1H/verdict.json` |
 | **P-008B** | **`PASS_DATASET_V2`**. Dataset v2. SW D2C, XYZRGB, optical extrinsic 실측. depth↔cloud 5/5. 등록 정확도는 `NOT_CLAIMED`. hardware sync `NOT_VERIFIED`. segmentation 없음. R1H 미개방. robot/servo 0 | `evidence/P-008B/verdict.json` |
 | **P-008-R1G** | **`FAIL_DEPTH_CLOUD_CORRESPONDENCE`**. capture_01 depth↔cloud 중앙값 1.08 mm이나 고정한 p95·양수 depth 비율 미달. color↔depth 행렬은 저장본에 없음. RGB 투영 없음. robot/servo 0 | `evidence/P-008/R1G/verdict.json` |
@@ -505,6 +506,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-008-R1E — polygonal prism extraction** — capture_01만. viewpoint prism이 신발 원판을 전부 유지. cluster 1은 매트와 연결. `FAIL_CLUSTERING`. height·tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1F — Euclidean connectivity diagnosis** — capture_01 prism만. 10 mm component 재현. 환경 합류 3.6 mm, 원판 전체 연결 26.7 mm. `PASS_DIAGNOSIS` / `NOT_FEASIBLE`. tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1G — RGB↔depth correspondence** — capture_01만. depth↔cloud는 중앙값 1.08 mm이나 사전 p95 0.005 m과 양수 depth 비율 0.99를 넘지 못함. 공식 extrinsic 행렬은 저장되지 않음. RGB 투영·segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-008-R1GEO — geometry segmentation** — capture_01만. RANSAC 지지 평면과 Euclidean clustering으로 신발 후보를 하나 골랐다. RGB는 특징으로 쓰지 않음. R1H 판정은 유지. 파라미터 동결. capture_02–05 미사용. 추가 segmentation 없음. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1H — feature separability** — capture_01 진단 영역만. 색상 spatial-block은 LOW, 지지면 높이는 HIGH. 고정한 접촉 띠의 매트 쪽은 0점이라 접촉 분리는 `NOT_IDENTIFIABLE`. 방법은 `SEGMENTATION_STOP_RULE`. threshold는 고정하지 않음. capture_02–05 미사용. segmentation/R1I/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008B — Dataset v2** — 계약 고정 후 SW D2C와 optical extrinsic을 확인하고 정지 운동화 5장을 저장. depth↔cloud 5/5. color 대응은 내부 일치만 통과, 등록 정확도는 주장하지 않음. capture_01은 development, 02–05는 holdout. P-008A는 historical. segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 
@@ -700,6 +702,7 @@ operator channel        realtime visual observation
 | 56 | 2026-10-30 | **P-008-R1G** — capture_01에서 depth 점과 점군의 pinhole 대응을 측정. 중앙값은 1.08 mm이나 고정한 꼬리 기준은 실패. color↔depth 행렬은 캡처에 없어 RGB로 투영하지 않음. robot/servo 0 | `FAIL_DEPTH_CLOUD_CORRESPONDENCE — COLOR_DEPTH_EXTRINSIC=NOT_VERIFIED, P-008-R1H=NOT OPENED` |
 | 57 | 2026-10-30 | **P-008B** — SW depth→color와 colored cloud, optical extrinsic을 이번 세션에서 읽고 정지 운동화 5장을 저장. depth↔cloud p95는 1e-7 m 아래. 물리 등록 정확도는 주장하지 않음. robot/servo 0 | `PASS_DATASET_V2 — HARDWARE_SYNC=NOT_VERIFIED, P-008-R1H=NOT OPENED` |
 | 58 | 2026-10-30 | **P-008-R1H** — capture_01에서 갑피·매트 진단 영역의 색과 지지면 높이를 비교. 색은 분리되지 않고 높이는 내부에서 갈린다. 접촉 매트 쪽을 고정 기준으로 모으지 못해 방법을 고르지 않고 멈춘다. robot/servo 0 | `PASS_METHOD_SELECTION — NOT_ROBUSTLY_SEPARABLE, STOP_RULE=YES, P-008-R1I=NOT OPENED` |
+| 59 | 2026-10-30 | **P-008-R1GEO** — capture_01 작업대에서 지지 평면을 제거하고 가장 큰 유효 군집을 신발 후보로 저장. 색 특징은 쓰지 않음. R1H는 그대로 둠. robot/servo 0 | `PASS_GEOMETRY_SEGMENTATION — PARAMETERS_FROZEN=YES, CAPTURE_02_05_USED=NO` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

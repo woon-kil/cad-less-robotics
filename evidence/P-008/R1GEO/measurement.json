@@ -1,0 +1,26 @@
+{
+  "gate": "P-008-R1GEO",
+  "support_plane_identifiable": true,
+  "plane_coefficients": [
+    0.0027092691279249994,
+    -0.6932103812899141,
+    -0.7207302041212679,
+    0.5077562463279133
+  ],
+  "plane_inliers": 28556,
+  "plane_inlier_ratio": 0.5291675932102884,
+  "plane_residual_median": 0.000957443962204152,
+  "plane_residual_p95": 0.0030878717248615795,
+  "plane_relative_height_used": true,
+  "object_cluster_count": 5,
+  "selected_cluster": 0,
+  "selected_cluster_points": 5182,
+  "shoe_candidate_generated": true,
+  "geometry_only": true,
+  "color_feature_used": false,
+  "ml_segmentation_used": false,
+  "capture_02_05_used": false,
+  "production_robot_command_count": 0,
+  "servo_write_count": 0,
+  "motion_authorized": false
+}
