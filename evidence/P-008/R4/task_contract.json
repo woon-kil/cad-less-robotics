@@ -1,0 +1,13 @@
+{
+  "task_type": "NON_CONTACT_SURFACE_FOLLOWING",
+  "surface_clearance_m": 0.02,
+  "hard_orientation_step_deg": 45.0,
+  "window_policy": "LONGEST_PREFIX_BEFORE_HARD_ORIENTATION_DISCONTINUITY",
+  "min_executable_path_length_m": 0.15,
+  "min_executable_waypoints": 50,
+  "clearance_offset": "p_surface - clearance * Z_tool",
+  "physical_tcp_verified": false,
+  "tool_geometry_verified": false,
+  "tcp_calibrated": false,
+  "nominal_target": "NOMINAL_TASK_FRAME_TARGET"
+}

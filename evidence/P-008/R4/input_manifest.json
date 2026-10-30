@@ -1,0 +1,8 @@
+{
+  "r3_waypoints": "evidence/P-008/R3/waypoints_6d.csv",
+  "r3_sha256": "ce021e1fef4881d569cda56924104c50029b2b227d2e1767c0a19e0fd479a21a",
+  "shoe_candidate": "evidence/P-008/R1GEO/05_shoe_candidate.pcd",
+  "shoe_candidate_sha256": "cf5d7e8013d9087e9bc578ef6356fafd379fb36781e5ccdd896a8641211fbc8d",
+  "waypoint_position_frame": "camera_color_optical_frame",
+  "robot_base_transform_applied": false
+}

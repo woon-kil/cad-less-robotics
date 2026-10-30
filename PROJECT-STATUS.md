@@ -15,6 +15,7 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
+| **P-008-R4** | **`PASS_TASK_CONTRACT`**. 비접촉 표면 추종. 45° 초과 첫 구간은 index 125. 실행 구간 0–124, 125점, 247 mm. 내부 hard discontinuity 0. clearance 20 mm, 표면에서 멀어짐. R3 불변. robot/servo 0 | `evidence/P-008/R4/result.json` |
 | **P-008-R3** | **`PASS_6D_WAYPOINT_GENERATION`**. R2 147점 XYZ 유지. k=20 PCA, 카메라 방향, tool Z=`-N`. 퇴화 0. 자세 변화 중앙값 7.2°, 최대 160.8°는 index 125. 기하 불연속 1. base 변환 없음. robot/servo 0 | `evidence/P-008/R3/result.json` |
 | **P-008-R2** | **`PASS_PATH_EXTRACTION`**. capture_01 신발 후보에서 장축 측면 3D path 147점, 간격 중앙값 2.0 mm. ordering 위반 0. 표면 거리 중앙값 1.7 mm. crest/boundary 없음. capture_02–05 미사용. 6D waypoint 미개방. robot/servo 0 | `evidence/P-008/R2/result.json` |
 | **P-008-R1GEO-V** | **`PASS_HOLDOUT_VALIDATION`**. capture_02–05에 동결 파라미터 그대로 적용. 4/4. segmentation track `CLOSED`. 경로 추출은 시작하지 않음. robot/servo 0 | `evidence/P-008/R1GEO-V/summary.json` |
@@ -509,6 +510,7 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-008-R1E — polygonal prism extraction** — capture_01만. viewpoint prism이 신발 원판을 전부 유지. cluster 1은 매트와 연결. `FAIL_CLUSTERING`. height·tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1F — Euclidean connectivity diagnosis** — capture_01 prism만. 10 mm component 재현. 환경 합류 3.6 mm, 원판 전체 연결 26.7 mm. `PASS_DIAGNOSIS` / `NOT_FEASIBLE`. tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1G — RGB↔depth correspondence** — capture_01만. depth↔cloud는 중앙값 1.08 mm이나 사전 p95 0.005 m과 양수 depth 비율 0.99를 넘지 못함. 공식 extrinsic 행렬은 저장되지 않음. RGB 투영·segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-008-R4 — task contract** — 비접촉 표면 추종. 45°를 넘는 첫 자세 변화 앞까지를 실행 구간으로 고정. index 0–124, 125점, 247 mm. 20 mm clearance는 표면 바깥. R3 파일은 바꾸지 않음. TCP 미검증. base 변환과 로봇 명령 없음. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R3 — 6D surface pose** — R2 147개 점 위치는 유지하고 tool frame만 붙였다. 법선은 k=20 국소 PCA, 부호는 카메라 방향. 퇴화 frame 0. 앞코 쪽 index 125에서 자세 변화가 160.8°이고 기하 불연속은 1건. quaternion 부호는 정렬. base 변환과 로봇 명령은 없음. 파라미터 동결. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R2 — shoe surface path** — capture_01 신발 후보만. 장축을 덮는 한쪽 측면의 위쪽 점을 2 mm 간격으로 이음. ordering 위반 0. crest와 boundary는 만들지 않음. 파라미터 동결. capture_02–05 미사용. 6D waypoint 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1GEO-V — frozen hold-out** — capture_02–05에 R1GEO 동결 파라미터를 그대로 적용. 4/4 PASS. 파라미터 변경 0. segmentation track `CLOSED`. 경로 추출은 시작하지 않음. robot/servo 0. `MOTION_AUTHORIZED=NO`
@@ -712,6 +714,7 @@ operator channel        realtime visual observation
 | 60 | 2026-10-30 | **P-008-R1GEO-V** — 동결된 기하 분할을 capture_02–05에 그대로 적용. 네 장 모두 신발 후보가 나왔다. 파라미터는 바꾸지 않음. robot/servo 0 | `PASS_HOLDOUT_VALIDATION — HOLDOUT_SUCCESS=4/4, SEGMENTATION_TRACK=CLOSED` |
 | 61 | 2026-10-30 | **P-008-R2** — capture_01 신발 후보의 장축 측면을 따라 연속 3D path를 만들었다. 중심선은 칼라 개구라 쓰지 않음. normal과 로봇 명령은 없음. robot/servo 0 | `PASS_PATH_EXTRACTION — PARAMETERS_FROZEN=YES, CAPTURE_02_05_USED=NO, 6D_WAYPOINT=NOT_OPENED` |
 | 62 | 2026-10-30 | **P-008-R3** — R2의 147개 점에 카메라 방향 법선과 접선으로 tool frame을 붙였다. 점 위치는 바꾸지 않음. 앞코 쪽 큰 자세 변화는 기하 불연속으로 기록. robot/servo 0 | `PASS_6D_WAYPOINT_GENERATION — PARAMETERS_FROZEN=YES, ROBOT_EXECUTABLE=NO, CAMERA_TO_BASE=NOT_OPENED` |
+| 63 | 2026-10-31 | **P-008-R4** — 45°를 넘는 첫 자세 변화 앞의 연속 구간을 비접촉 작업 대상으로 정했다. 20 mm clearance는 표면 바깥이다. R3는 수정하지 않음. robot/servo 0 | `PASS_TASK_CONTRACT — EXECUTABLE=0-124, ROBOT_EXECUTABLE=NO, CAMERA_TO_BASE=NOT_OPENED` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

@@ -1,0 +1,18 @@
+{
+  "hard_discontinuity_first_index": 125,
+  "executable_start_index": 0,
+  "executable_end_index": 124,
+  "executable_waypoint_count": 125,
+  "executable_path_length_m": 0.24744007225846998,
+  "executable_path_ratio": 0.8503401360544217,
+  "executable_length_ratio": 0.8513168055115116,
+  "window_orientation_step_median_deg": 7.251862725726909,
+  "window_orientation_step_p95_deg": 22.991866939787524,
+  "window_orientation_step_max_deg": 36.306586894715416,
+  "window_hard_discontinuity_count": 0,
+  "clearance_direction_valid": true,
+  "median_surface_distance_m": 0.0016253015789704961,
+  "median_task_distance_m": 0.018081159477660112,
+  "r3_csv_sha256_before": "ce021e1fef4881d569cda56924104c50029b2b227d2e1767c0a19e0fd479a21a",
+  "r3_csv_sha256_after": "ce021e1fef4881d569cda56924104c50029b2b227d2e1767c0a19e0fd479a21a"
+}

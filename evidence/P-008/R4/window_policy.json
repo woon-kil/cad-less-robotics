@@ -1,0 +1,6 @@
+{
+  "policy": "LONGEST_PREFIX_BEFORE_HARD_ORIENTATION_DISCONTINUITY",
+  "hard_orientation_step_deg": 45.0,
+  "comparison": "strictly_greater_than",
+  "start_side": "heel_index_0"
+}
