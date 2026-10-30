@@ -1,0 +1,9 @@
+{
+  "neighbor_count_min": 20,
+  "neighbor_count_max": 20,
+  "lambda0_median": 2.5025919731967475e-07,
+  "lambda1_median": 5.029950892591374e-06,
+  "lambda2_median": 9.099506927084067e-06,
+  "axis_separation_median": 0.9530238454935361,
+  "sign_ambiguity_corrected": 0
+}

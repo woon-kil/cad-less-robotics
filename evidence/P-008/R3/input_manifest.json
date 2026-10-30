@@ -1,0 +1,11 @@
+{
+  "dataset": "P-008B_DATASET_V2",
+  "capture": "capture_01",
+  "path": "evidence/P-008/R2/resampled_path.csv",
+  "path_sha256": "8c10a4821fdb8e49ef82238c332f75c712b61020a64aa796945a3cefb85fd549",
+  "shoe_candidate": "evidence/P-008/R1GEO/05_shoe_candidate.pcd",
+  "shoe_candidate_sha256": "cf5d7e8013d9087e9bc578ef6356fafd379fb36781e5ccdd896a8641211fbc8d",
+  "waypoint_position_frame": "camera_color_optical_frame",
+  "robot_base_transform_applied": false,
+  "capture_02_05_used": false
+}

@@ -1,0 +1,14 @@
+{
+  "finite": true,
+  "degenerate_frame_count": 0,
+  "orthonormality_error_max": 4.440892098500626e-16,
+  "determinant_min": 0.9999999999999998,
+  "determinant_max": 1.0000000000000004,
+  "quaternion_norm_error_max": 0.0,
+  "quaternion_sign_breaks": 0,
+  "orientation_step_median_deg": 7.185763240119975,
+  "orientation_step_p95_deg": 23.112924996491596,
+  "orientation_step_max_deg": 160.76682838511593,
+  "orientation_step_max_index": 125,
+  "position_delta_max": 0.0
+}

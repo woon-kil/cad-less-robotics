@@ -1,0 +1,17 @@
+{
+  "normal_k": 20,
+  "viewpoint": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "degenerate_perpendicular_min": 1e-06,
+  "tangent_method": "centered_difference",
+  "tangent_smoothing": false,
+  "normal_method": "local_pca_smallest_eigenvector",
+  "normal_orientation_rule": "camera_facing",
+  "tool_z": "negative_surface_normal",
+  "sparse_frame_stride": 10,
+  "axis_length_m": 0.015,
+  "max_segment_gap_m": 0.02
+}
