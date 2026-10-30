@@ -1,0 +1,146 @@
+{
+  "decision_metric": "spatial_block_balanced_accuracy",
+  "random_point_split_used_for_selection": false,
+  "thresholds": {
+    "high": 0.9,
+    "medium": 0.75,
+    "min_valid_folds": 3
+  },
+  "global": {
+    "RGB": {
+      "spatial_block_balanced_accuracy": 0.6178056140276567,
+      "valid_folds": 4,
+      "folds": [
+        0.648709315375982,
+        0.6526436949654634,
+        0.6502732240437159,
+        0.5195962217254653
+      ],
+      "grade": "LOW",
+      "point_count": 10785
+    },
+    "HSV": {
+      "spatial_block_balanced_accuracy": 0.4923266242815116,
+      "valid_folds": 4,
+      "folds": [
+        0.30096267842746716,
+        0.6615648622608679,
+        0.6737704918032787,
+        0.33300846463443246
+      ],
+      "grade": "LOW",
+      "point_count": 10785
+    },
+    "Lab": {
+      "spatial_block_balanced_accuracy": 0.6284071138666794,
+      "valid_folds": 4,
+      "folds": [
+        0.7087542087542087,
+        0.6297149348812907,
+        0.6633879781420765,
+        0.5117713336891418
+      ],
+      "grade": "LOW",
+      "point_count": 10785
+    },
+    "Height": {
+      "spatial_block_balanced_accuracy": 0.995148401826484,
+      "valid_folds": 4,
+      "folds": [
+        1.0,
+        1.0,
+        1.0,
+        0.980593607305936
+      ],
+      "grade": "HIGH",
+      "point_count": 10785
+    },
+    "HSV+Height": {
+      "spatial_block_balanced_accuracy": 0.9556221461187214,
+      "valid_folds": 4,
+      "folds": [
+        1.0,
+        1.0,
+        1.0,
+        0.8224885844748858
+      ],
+      "grade": "HIGH",
+      "point_count": 10785
+    },
+    "Lab+Height": {
+      "spatial_block_balanced_accuracy": 0.975083360901012,
+      "valid_folds": 4,
+      "folds": [
+        1.0,
+        0.9945115257958288,
+        1.0,
+        0.9058219178082192
+      ],
+      "grade": "HIGH",
+      "point_count": 10785
+    },
+    "RGB+Height": {
+      "spatial_block_balanced_accuracy": 0.985445205479452,
+      "valid_folds": 4,
+      "folds": [
+        1.0,
+        1.0,
+        1.0,
+        0.9417808219178082
+      ],
+      "grade": "HIGH",
+      "point_count": 10785
+    }
+  },
+  "contact": {
+    "RGB": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "HSV": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Lab": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "HSV+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Lab+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "RGB+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    }
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "pcl_version": "1.12.1",
+  "hull_vertex_count": 17,
+  "hull_dimension": 2,
+  "hull_area_m2": 1.5601666991767935,
+  "viewpoint": [0, 0, 0],
+  "height_min_m": 0,
+  "height_max_m": 0.17999999999999999,
+  "height_min_basis": "PCL_CONSTRUCTOR_DEFAULT",
+  "height_max_basis": "GEOMETRIC_SCALE_DERIVED",
+  "shoe_height_min_m": 0.013814820804906036,
+  "shoe_height_median_m": 0.020086395716367444,
+  "shoe_height_max_m": 0.2117253730148585,
+  "total_nonplane_points": 351860,
+  "prism_selected_points": 129382,
+  "outside_prism_points": 222478,
+  "selection_ratio": 0.36770874779741941,
+  "voxel_points": 427045,
+  "sor_points": 384162,
+  "cluster_count": 35
+}

@@ -1,0 +1,7 @@
+{
+  "feature_separability": "NOT_ROBUSTLY_SEPARABLE",
+  "selected_feature_family": "NONE",
+  "selected_segmentation_strategy": "SEGMENTATION_STOP_RULE",
+  "stop_rule_triggered": true,
+  "reason": "contact_not_identifiable"
+}

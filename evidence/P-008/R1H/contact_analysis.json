@@ -1,0 +1,70 @@
+{
+  "identifiable": false,
+  "shoe_side_count": 390,
+  "support_side_count": 0,
+  "shoe_side_height": {
+    "count": 390,
+    "mean": 0.02242703075156243,
+    "median": 0.02242297716458097,
+    "std": 0.001435342290948249,
+    "p05": 0.020055871560513007,
+    "p25": 0.021333983754247637,
+    "p75": 0.023580109166575103,
+    "p95": 0.024666501868064305
+  },
+  "support_side_height": {
+    "count": 0
+  },
+  "sets": {
+    "RGB": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "HSV": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Lab": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "HSV+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "Lab+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    },
+    "RGB+Height": {
+      "spatial_block_balanced_accuracy": null,
+      "valid_folds": 0,
+      "folds": [],
+      "grade": "LOW",
+      "point_count": 390
+    }
+  },
+  "separability": "NOT_IDENTIFIABLE"
+}

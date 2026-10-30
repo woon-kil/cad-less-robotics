@@ -1,0 +1,37 @@
+{
+  "label": "DIAGNOSTIC_ONLY_MANUAL_REFERENCE",
+  "production_segmentation": false,
+  "note": "capture_01 RGB에서 갑피 안쪽과 매트 안쪽을 한 번 지정했다. segmentation 결과에 맞춰 옮기지 않는다.",
+  "regions": [
+    {
+      "region_id": "shoe_interior",
+      "class": "shoe",
+      "definition_method": "manual_pixel_rectangle",
+      "manual": true,
+      "pixel_polygon": [[485, 365], [550, 365], [550, 430], [485, 430]],
+      "point_count": 3598,
+      "bounds_xyz_min_m": [-0.1602570116519928, 0.0005143976886756718, 0.5329999923706055],
+      "bounds_xyz_max_m": [-0.08374679833650589, 0.0645524188876152, 0.6269999742507935]
+    },
+    {
+      "region_id": "support_interior",
+      "class": "support",
+      "definition_method": "manual_pixel_rectangle",
+      "manual": true,
+      "pixel_polygon": [[650, 430], [740, 430], [740, 510], [650, 510]],
+      "point_count": 7187,
+      "bounds_xyz_min_m": [0.0077173542231321335, 0.06831171363592148, 0.5740000009536743],
+      "bounds_xyz_max_m": [0.10492943972349167, 0.14092117547988892, 0.6600000262260437]
+    }
+  ],
+  "contact": {
+    "definition_method": "support_plane_horizontal_band",
+    "manual": false,
+    "shoe_side_height_m": [0.005, 0.025],
+    "shoe_side_horizontal_max_m": 0.015,
+    "support_side_height_max_m": 0.005,
+    "support_side_horizontal_m": [0.015, 0.035],
+    "min_points_per_side": 100,
+    "height_cap_basis": "R1F bridge height 0.021 m. cap 0.025 m frozen before metrics"
+  }
+}
