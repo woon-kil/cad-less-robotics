@@ -1,0 +1,121 @@
+{
+  "work_order": "W-002E-R1",
+  "status": "PASS_DIAGNOSIS",
+  "closed": true,
+  "diagnosis_only": true,
+  "w002e_status_immutable": "FAIL_REPROJECTION",
+  "validated_registration_transform": null,
+  "diagnostic_transform": "FAILED_GATE_DIAGNOSTIC_TRANSFORM",
+  "diagnostic_transform_source": "W-002E medoid index 7",
+  "reprojection_residual_pattern": "COMMON_SCALE",
+  "pattern_flags": [
+    "COMMON_SCALE"
+  ],
+  "radius_error_correlation": -0.2321095194375446,
+  "per_marker": {
+    "0": {
+      "mean_du_px": -0.43496273236461036,
+      "mean_dv_px": 0.5527487591939746,
+      "mean_error_px": 1.6272421846849112,
+      "max_error_px": 2.7497524338163872,
+      "centroid_residual_px": [
+        -0.43496273236461036,
+        0.5527487591939746
+      ],
+      "centroid_norm_px": 0.7033660279943623,
+      "internal_rms_px": 1.7055492981263292,
+      "corner_residual_spread_px": 0.8693129758939854,
+      "observed_over_projected_side": 0.974996011964644,
+      "scale_residual": -0.025003988035355973,
+      "dominant": "INTERNAL"
+    },
+    "1": {
+      "mean_du_px": 0.29577175578441484,
+      "mean_dv_px": -0.3794655600192698,
+      "mean_error_px": 1.834622808074971,
+      "max_error_px": 2.7562668054802084,
+      "centroid_residual_px": [
+        0.29577175578441484,
+        -0.3794655600192698
+      ],
+      "centroid_norm_px": 0.4811185329630668,
+      "internal_rms_px": 1.8762714661574227,
+      "corner_residual_spread_px": 0.6213121675680968,
+      "observed_over_projected_side": 0.9598150922143068,
+      "scale_residual": -0.04018490778569317,
+      "dominant": "INTERNAL"
+    },
+    "2": {
+      "mean_du_px": -0.7967298959402171,
+      "mean_dv_px": 0.6555616523437067,
+      "mean_error_px": 2.0845656714698997,
+      "max_error_px": 2.551945629327804,
+      "centroid_residual_px": [
+        -0.7967298959402171,
+        0.6555616523437067
+      ],
+      "centroid_norm_px": 1.0317652868305467,
+      "internal_rms_px": 1.859903666601756,
+      "corner_residual_spread_px": 0.42233543241885574,
+      "observed_over_projected_side": 0.9458592156945392,
+      "scale_residual": -0.054140784305460765,
+      "dominant": "MIXED"
+    },
+    "3": {
+      "mean_du_px": 1.0232796207953783,
+      "mean_dv_px": -0.6944465141557856,
+      "mean_error_px": 1.828642251045915,
+      "max_error_px": 2.7351031182630994,
+      "centroid_residual_px": [
+        1.0232796207953783,
+        -0.6944465141557856
+      ],
+      "centroid_norm_px": 1.2366718009877378,
+      "internal_rms_px": 1.726824872149032,
+      "corner_residual_spread_px": 1.080439170023238,
+      "observed_over_projected_side": 0.9655067197643603,
+      "scale_residual": -0.03449328023563969,
+      "dominant": "MIXED"
+    }
+  },
+  "leave_one_marker_out_isolated_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "center_geometry_sensitivity": "MATERIAL",
+  "marker_size_sensitivity": "MATERIAL",
+  "plane_residual_dominant_component": "OFFSET",
+  "rgb_failure_root_cause": "INCONCLUSIVE",
+  "depth_failure_root_cause": "INCONCLUSIVE",
+  "common_root_cause": false,
+  "root_cause": "INCONCLUSIVE",
+  "primary_suspect": "INCONCLUSIVE",
+  "secondary_suspect": "INCONCLUSIVE",
+  "unresolved": [
+    "installed_center_metrology",
+    "nominal_print_size",
+    "corner_localization",
+    "intrinsic_distortion",
+    "correspondence_convention",
+    "rgb_depth_correspondence",
+    "depth_bias",
+    "roi_contamination",
+    "physical_board_or_paper_height",
+    "transform_error"
+  ],
+  "print_size_measured": false,
+  "markers_repositioned": false,
+  "camera_moved": false,
+  "robot_moved": false,
+  "workboard_moved": false,
+  "thresholds_changed": false,
+  "solver_changed": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "historical_evidence_modified": false,
+  "corner_source": "REDETECT_MEDOID_PNG",
+  "recomputed_mean_px": 1.8437682288189243
+}

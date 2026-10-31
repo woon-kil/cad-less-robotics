@@ -1,0 +1,7 @@
+{
+  "applied": false,
+  "if_commanded_arm1_delta_deg": 5.0,
+  "planning_axis_in_joint_frame": [0, 0, 1],
+  "camera_frame_prediction": null,
+  "reason": "T_base_camera가 없고 witness link 변환도 없다. 카메라 축으로 환산하지 않았다."
+}

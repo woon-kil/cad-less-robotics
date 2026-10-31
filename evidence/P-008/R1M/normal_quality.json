@@ -1,0 +1,32 @@
+{
+  "view_a": {
+    "population": "\uc2e0\ubc1c \uc791\uc5c5 \ub192\uc774\uc758 \uc606\uba74 voxel. \uc720\ud6a8 \ube44\uc728\uc740 \uadf8 voxel\uacfc \ub9de\ub2ff\uc740 \ubb34\ud6a8 voxel\uc744 \ud3ec\ud568\ud55c\ub2e4.",
+    "valid_ratio": 0.998003992015968,
+    "median_deg": 3.678789237827623,
+    "p95_deg": 9.441286093518507,
+    "unstable_ratio": 0.02610441767068273,
+    "mean_support_angle_deg": 52.425214670142644,
+    "elevated_valid_ratio": 0.9712460063897763,
+    "elevated_neighbor_median_deg": 3.94468931602973
+  },
+  "view_b": {
+    "population": "\uc2e0\ubc1c \uc791\uc5c5 \ub192\uc774\uc758 \uc606\uba74 voxel. \uc720\ud6a8 \ube44\uc728\uc740 \uadf8 voxel\uacfc \ub9de\ub2ff\uc740 \ubb34\ud6a8 voxel\uc744 \ud3ec\ud568\ud55c\ub2e4.",
+    "valid_ratio": 0.9717114568599717,
+    "median_deg": 3.2813894601934748,
+    "p95_deg": 11.523830057830047,
+    "unstable_ratio": 0.03056768558951965,
+    "mean_support_angle_deg": 58.458532528325364,
+    "elevated_valid_ratio": 0.9645852749301025,
+    "elevated_neighbor_median_deg": 3.7123793562777854
+  },
+  "view_c": {
+    "population": "\uc2e0\ubc1c \uc791\uc5c5 \ub192\uc774\uc758 \uc606\uba74 voxel. \uc720\ud6a8 \ube44\uc728\uc740 \uadf8 voxel\uacfc \ub9de\ub2ff\uc740 \ubb34\ud6a8 voxel\uc744 \ud3ec\ud568\ud55c\ub2e4.",
+    "valid_ratio": 0.9880478087649402,
+    "median_deg": 4.841760448137991,
+    "p95_deg": 9.698975528855918,
+    "unstable_ratio": 0.0,
+    "mean_support_angle_deg": 40.824661537318626,
+    "elevated_valid_ratio": 0.9959839357429718,
+    "elevated_neighbor_median_deg": 4.3920621911812505
+  }
+}

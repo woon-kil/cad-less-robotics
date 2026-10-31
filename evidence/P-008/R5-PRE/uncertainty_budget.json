@@ -1,0 +1,19 @@
+{
+  "status": "NOT_ESTIMATED",
+  "values_fabricated": false,
+  "sources": {
+    "checkerboard_geometry": "칸 20.0 mm는 P-006에서 PHYSICALLY VERIFIED. 이번 게이트에서 다시 재지 않았다. 휨은 확인하지 않았다.",
+    "target_origin_datum": "실물 원점 표시가 없다. 인쇄 여백은 측정하지 않았다.",
+    "x_measurement": "도구와 datum이 없다.",
+    "y_measurement": "도구와 datum이 없다.",
+    "z_measurement": "P-006A의 z=0은 UNRESOLVED. 작업판을 z=0으로 두지 않는다.",
+    "roll_constraint": "기준 평면과 보드 평면의 접촉이 없다.",
+    "pitch_constraint": "기준 평면과 보드 평면의 접촉이 없다.",
+    "yaw_constraint": "P-006A의 yaw는 UNRESOLVED. 눈맞춤을 0으로 두지 않는다.",
+    "pnp_observation": "NOT_RUN. base datum을 대신하지 않는다."
+  },
+  "expected_x_uncertainty_m": null,
+  "expected_y_uncertainty_m": null,
+  "expected_z_uncertainty_m": null,
+  "expected_rotation_uncertainty": null
+}

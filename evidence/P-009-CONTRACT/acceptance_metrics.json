@@ -1,0 +1,45 @@
+{
+  "id": "P009_ACCEPTANCE_METRICS",
+  "status": "FROZEN",
+  "pass_verdict": "PASS_ROBOT_INDEPENDENT_6D_PROCESSPATH",
+  "evaluation_authorized_by_this_freeze": false,
+  "layers": {
+    "A_surface_association": {
+      "SOURCE_SURFACE_DISTANCE_P95_M": 0.003,
+      "SOURCE_SURFACE_DISTANCE_MAX_M": 0.005,
+      "SOURCE_SURFACE_DISTANCE_IS_ABSOLUTE_ACCURACY": false,
+      "unsupported_geometry_bridged": false
+    },
+    "B_differential_geometry": {
+      "NORMAL_VALID_RATIO_MIN": 0.95,
+      "abs_dot_normal_tangent_max": 0.05,
+      "compliance_ratio_min": 0.95
+    },
+    "C_path_quality": {
+      "PROCESS_PATH_LENGTH_MIN_M": 0.100,
+      "R1L_100MM_CRITERION_REUSED": false,
+      "R1L_CRITERIA_CHANGED": false,
+      "SPACING_WITHIN_TOLERANCE_RATIO_MIN": 0.95,
+      "MAX_POSITION_JUMP_M": 0.010,
+      "UNEXPLAINED_ORIENTATION_JUMPS": 0,
+      "INVALID_POSE_COUNT": 0,
+      "MAX_SMOOTHING_DISPLACEMENT_M": 0.003
+    },
+    "D_robot_independence": {
+      "ROBOT_MODEL_REQUIRED": false,
+      "ROBOT_JOINTS_USED": false,
+      "MOVEIT_USED": false,
+      "ROBOT_BASE_TRANSFORM_REQUIRED": false,
+      "HAND_EYE_REQUIRED": false
+    }
+  },
+  "primary_verdict_rule": "record every blocker; primary verdict is the earliest pipeline-level failure",
+  "fail_verdicts": [
+    "FAIL_PROCESS_SPEC_CONTRACT",
+    "FAIL_MEASURED_SURFACE_CONTRACT",
+    "FAIL_SURFACE_ASSOCIATION",
+    "FAIL_DIFFERENTIAL_GEOMETRY",
+    "FAIL_PATH_CONTINUITY",
+    "FAIL_ROBOT_INDEPENDENCE"
+  ]
+}

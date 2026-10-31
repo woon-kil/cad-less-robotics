@@ -1,0 +1,29 @@
+{
+  "executed": true,
+  "point_count": 28829,
+  "min_points": 500,
+  "roi_u": [
+    480,
+    700
+  ],
+  "roi_v": [
+    430,
+    560
+  ],
+  "roi_source": "W-002C candidate, marker quads expanded 1.8x excluded",
+  "depth_z_gate_m": [
+    0.3,
+    1.5
+  ],
+  "marker_pixels_excluded": true,
+  "abs_z_mean_mm": 2.34289456026592,
+  "abs_z_p95_mm": 4.018965442925282,
+  "abs_z_median_mm": 2.3274397756450904,
+  "normal_sign_rule": "flip so normal_z >= 0, then angle to +Z",
+  "normal_workboard": [
+    0.00845038358,
+    0.005932535488,
+    0.999946696599
+  ],
+  "normal_angle_deg": 0.5915848148131425
+}

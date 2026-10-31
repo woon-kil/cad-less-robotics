@@ -1,0 +1,23 @@
+[
+  {
+    "parameter": "support_tolerance_m",
+    "value": 0.003,
+    "vote_purity": 0.8148148148148148,
+    "winning_components": 4,
+    "count_ratio": 1.0135527589545015
+  },
+  {
+    "parameter": "support_tolerance_m",
+    "value": 0.004,
+    "vote_purity": 0.9583333333333334,
+    "winning_components": 2,
+    "count_ratio": 1.0
+  },
+  {
+    "parameter": "support_tolerance_m",
+    "value": 0.005,
+    "vote_purity": 0.9565217391304348,
+    "winning_components": 2,
+    "count_ratio": 0.9864472410454985
+  }
+]

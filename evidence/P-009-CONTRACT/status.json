@@ -1,0 +1,64 @@
+{
+  "id": "P-009-CONTRACT",
+  "title": "Robot-Independent 6D ProcessPath Generation",
+  "status": "FROZEN",
+  "date": "2026-10-31",
+  "p009": "NOT_OPENED",
+  "p010": "NOT_OPENED",
+  "p011": "NOT_OPENED",
+  "implementation_authorized": false,
+  "contracts_frozen": true,
+  "preconditions": {
+    "ADR-008": "ACCEPTED",
+    "R1_PERCEPTION_INVESTIGATION": "CLOSED",
+    "P-008-R1N": "FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY",
+    "P-008-R1N_STATE": "CLOSED"
+  },
+  "non_claims": {
+    "AUTOMATIC_SHOE_SEGMENTATION": "UNSOLVED",
+    "AUTOMATIC_PROCESS_BOUNDARY": "UNSOLVED",
+    "TRUE_MANUFACTURING_BONDING_LINE": "NOT_ESTABLISHED",
+    "FULL_SHOE_TOPOLOGY": "NOT_ESTABLISHED",
+    "MULTIVIEW_RECONSTRUCTION": "NOT_JUSTIFIED"
+  },
+  "resolved_review": {
+    "id": "SURFACE_ANCHOR_VS_COMMAND_POSITION",
+    "blocks_freeze": false,
+    "source_surface_distance_target": "surface_anchor"
+  },
+  "contracts": {
+    "P009_PROCESS_SPEC_CONTRACT": "FROZEN",
+    "P009_MEASURED_SURFACE_CONTRACT": "FROZEN",
+    "P009_PROCESSPATH_CONTRACT": "FROZEN",
+    "P009_FRAME_CONVENTION": "FROZEN",
+    "P009_NORMAL_CONVENTION": "FROZEN",
+    "P009_TANGENT_CONVENTION": "FROZEN",
+    "P009_ORIENTATION_CONVENTION": "FROZEN",
+    "P009_SPACING_CONTRACT": "FROZEN",
+    "P009_SMOOTHING_CONTRACT": "FROZEN",
+    "P009_CONFIDENCE_CONTRACT": "FROZEN",
+    "P009_CONTINUITY_CONTRACT": "FROZEN",
+    "P009_ACCEPTANCE_METRICS": "FROZEN"
+  },
+  "canonical_files": {
+    "P009_PROCESS_SPEC_CONTRACT": "process_spec_contract.json",
+    "P009_MEASURED_SURFACE_CONTRACT": "measured_surface_contract.json",
+    "P009_PROCESSPATH_CONTRACT": "process_path_contract.json",
+    "P009_FRAME_CONVENTION": "frame_convention.json",
+    "P009_NORMAL_CONVENTION": "normal_convention.json",
+    "P009_TANGENT_CONVENTION": "tangent_convention.json",
+    "P009_ORIENTATION_CONVENTION": "orientation_convention.json",
+    "P009_SURFACE_ASSOCIATION_CONTRACT": "surface_association_contract.json",
+    "P009_SPACING_CONTRACT": "spacing_contract.json",
+    "P009_SMOOTHING_CONTRACT": "smoothing_contract.json",
+    "P009_CONFIDENCE_CONTRACT": "confidence_contract.json",
+    "P009_CONTINUITY_CONTRACT": "continuity_contract.json",
+    "P009_ACCEPTANCE_METRICS": "acceptance_metrics.json"
+  },
+  "historical_evidence_modified": false,
+  "r1l_criteria_changed": false,
+  "r1_perception_reopened": false,
+  "holdout_touched": false,
+  "robot_moved": false,
+  "next_gate_opened": false
+}

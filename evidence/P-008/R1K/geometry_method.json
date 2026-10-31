@@ -1,0 +1,29 @@
+{
+  "nominal": {
+    "ransac_distance_m": 0.004,
+    "support_tolerance_m": 0.004,
+    "height_ceiling_m": 0.1,
+    "voxel_m": 0.005,
+    "connectivity": "26",
+    "normal_voxel_radius": 2,
+    "table_window_px": {"u0": 150, "u1": 950, "v0": 250, "v1": 620}
+  },
+  "sensitivity": {
+    "support_tolerance_m": [0.003, 0.004, 0.005],
+    "voxel_m": [0.004, 0.005, 0.007],
+    "height_ceiling_m": [0.08, 0.1, 0.12],
+    "normal_voxel_radius": [1, 2, 3]
+  },
+  "acceptance": {
+    "boundary_match_m": 0.025,
+    "coverage_min": 0.75,
+    "largest_gap_max_m": 0.04,
+    "count_ratio_min": 0.5,
+    "count_ratio_max": 1.5,
+    "normal_valid_min": 0.8,
+    "normal_median_angle_max_deg": 25.0
+  },
+  "reference_role": "EVALUATION_ONLY",
+  "color_used_for_extraction": false,
+  "reference_placement_uncertainty_m": 0.01
+}

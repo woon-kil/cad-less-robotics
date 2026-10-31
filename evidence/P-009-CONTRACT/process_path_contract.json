@@ -1,0 +1,29 @@
+{
+  "id": "P009_PROCESSPATH_CONTRACT",
+  "status": "FROZEN",
+  "robot_joints": false,
+  "withheld_field": "position",
+  "point_fields": [
+    "sequence_id",
+    "process_coordinate.u",
+    "process_coordinate.requested_surface_offset_m",
+    "base_surface_anchor",
+    "surface_anchor",
+    "command_position",
+    "surface_normal",
+    "tangent",
+    "lateral",
+    "orientation",
+    "source_surface_distance_m",
+    "applied_surface_offset_m",
+    "applied_standoff_m",
+    "confidence",
+    "flags"
+  ],
+  "quaternion_order": ["x", "y", "z", "w"],
+  "lateral_meaning": "Y_process after the frozen right-handed construction",
+  "source_surface_distance_target": "surface_anchor",
+  "command_position": "surface_anchor + tool_standoff_m * surface_normal",
+  "positive_standoff": "away from workpiece, along surface_normal toward camera/free-space",
+  "command_position_is_robot_base": false
+}

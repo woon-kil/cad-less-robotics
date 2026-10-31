@@ -1,0 +1,4519 @@
+[
+  {
+    "sequence_id": 0,
+    "requested_u": 0.2,
+    "requested_target": [
+      -0.3716118060625516,
+      0.05835051232805619,
+      0.6555384626755347
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 123166,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0068764974079304885,
+    "pca_eigenvalues": [
+      3.836361074180184e-07,
+      9.092638475064314e-06,
+      2.1548929359625387e-05
+    ],
+    "local_normal": [
+      0.3049419210166481,
+      0.9494021370677578,
+      -0.07513991574290496
+    ],
+    "projected_anchor": [
+      -0.37158215752987894,
+      0.05844281967689987,
+      0.6555311570606179
+    ],
+    "source_surface_distance_m": 0.00464753073066417
+  },
+  {
+    "sequence_id": 1,
+    "requested_u": 0.20284914593415998,
+    "requested_target": [
+      -0.3673340401479176,
+      0.05739366901772363,
+      0.656714277608054
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 123054,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008263686698724453,
+    "pca_eigenvalues": [
+      3.9215256444142006e-07,
+      3.7797505017250053e-06,
+      4.033937527121048e-05
+    ],
+    "local_normal": [
+      0.2447576843179143,
+      0.969494771381035,
+      -0.0131743778664105
+    ],
+    "projected_anchor": [
+      -0.3673486742906484,
+      0.05733570260534859,
+      0.656715065308455
+    ],
+    "source_surface_distance_m": 0.005408881607075543
+  },
+  {
+    "sequence_id": 2,
+    "requested_u": 0.20569829186831995,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 3,
+    "requested_u": 0.2085474378024799,
+    "requested_target": [
+      -0.3073515519499779,
+      0.15886621549725533,
+      0.5684999972581863
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 4,
+    "requested_u": 0.21139658373663986,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 5,
+    "requested_u": 0.21424572967079983,
+    "requested_target": [
+      -0.2844160056632498,
+      0.1770511023376299,
+      0.5478695682857347
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 6,
+    "requested_u": 0.2170948756049598,
+    "requested_target": [
+      -0.4146070652886441,
+      -0.0855196712440566,
+      0.7913157908540023
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 7,
+    "requested_u": 0.21994402153911974,
+    "requested_target": [
+      -0.40973938300329094,
+      -0.09038285834386069,
+      0.7903823554515839
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 8,
+    "requested_u": 0.2227931674732797,
+    "requested_target": [
+      -0.40691661544971997,
+      -0.09904460132949883,
+      0.7900694484512011
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 9,
+    "requested_u": 0.22564231340743968,
+    "requested_target": [
+      -0.40238959059234736,
+      -0.10533968743312266,
+      0.7857596883478091
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 10,
+    "requested_u": 0.22849145934159962,
+    "requested_target": [
+      -0.39768857128766116,
+      -0.10893552882128021,
+      0.784346939349661
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": 94695,
+    "neighbor_count": 3,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 11,
+    "requested_u": 0.2313406052757596,
+    "requested_target": [
+      -0.39610894130122276,
+      -0.1193224317123813,
+      0.7880193533435944
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92356,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007913950517867707,
+    "pca_eigenvalues": [
+      2.9674000382653296e-07,
+      2.995506707449103e-06,
+      5.356560118894249e-06
+    ],
+    "local_normal": [
+      -0.2138322299411737,
+      0.5937124087192042,
+      -0.7757456755736546
+    ],
+    "projected_anchor": [
+      -0.39466544397583336,
+      -0.12333035079114904,
+      0.7932561074483476
+    ],
+    "source_surface_distance_m": 0.0011967081790590112
+  },
+  {
+    "sequence_id": 12,
+    "requested_u": 0.23418975120991956,
+    "requested_target": [
+      -0.39204392091117124,
+      -0.12261590869589285,
+      0.7894943224435503
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92358,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004949159446163619,
+    "pca_eigenvalues": [
+      3.1285524390199465e-07,
+      3.1096913759936863e-06,
+      4.415066419990378e-06
+    ],
+    "local_normal": [
+      -0.0003551078191250456,
+      0.66595664452024,
+      -0.7459903628853255
+    ],
+    "projected_anchor": [
+      -0.3920427682469496,
+      -0.1247775744096873,
+      0.7919157740553621
+    ],
+    "source_surface_distance_m": 0.0009770578625647587
+  },
+  {
+    "sequence_id": 13,
+    "requested_u": 0.23703889714407952,
+    "requested_target": [
+      -0.38565274234861135,
+      -0.12167109455913305,
+      0.7863749998311201
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92363,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007506172800786082,
+    "pca_eigenvalues": [
+      2.1872773113310834e-07,
+      2.2684347585579904e-06,
+      4.3104693001847875e-06
+    ],
+    "local_normal": [
+      -0.0197053108459382,
+      0.5646295241057867,
+      -0.8251092056404037
+    ],
+    "projected_anchor": [
+      -0.3855302045403122,
+      -0.12518225279083245,
+      0.7915059553616929
+    ],
+    "source_surface_distance_m": 0.0006202179967560159
+  },
+  {
+    "sequence_id": 14,
+    "requested_u": 0.23988804307823947,
+    "requested_target": [
+      -0.38174547313475143,
+      -0.12530027094351895,
+      0.7880490194348728
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92366,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004733032511001259,
+    "pca_eigenvalues": [
+      7.285872440691446e-08,
+      1.920211743842892e-06,
+      3.764831163239231e-06
+    ],
+    "local_normal": [
+      -0.005965257062984392,
+      0.2129612497436277,
+      -0.9770424360363295
+    ],
+    "projected_anchor": [
+      -0.38172765580574886,
+      -0.12593635428601643,
+      0.7909672987895631
+    ],
+    "source_surface_distance_m": 0.00041171113805214127
+  },
+  {
+    "sequence_id": 15,
+    "requested_u": 0.24273718901239943,
+    "requested_target": [
+      -0.37633757280266805,
+      -0.1252944238645875,
+      0.7876434823741083
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92370,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004602698187537135,
+    "pca_eigenvalues": [
+      7.956778145264386e-08,
+      2.0003885776398164e-06,
+      3.7545727261288447e-06
+    ],
+    "local_normal": [
+      0.003618952779686775,
+      0.11431003412959491,
+      -0.993438533215855
+    ],
+    "projected_anchor": [
+      -0.3763493658746916,
+      -0.12566692567590387,
+      0.7908807979420036
+    ],
+    "source_surface_distance_m": 0.0007524657960320187
+  },
+  {
+    "sequence_id": 16,
+    "requested_u": 0.2455863349465594,
+    "requested_target": [
+      -0.37186574586764537,
+      -0.12810977051135886,
+      0.7882761548752565
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 91610,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0044406239083693445,
+    "pca_eigenvalues": [
+      9.797272611307978e-08,
+      2.267190837819144e-06,
+      2.7101745703649443e-06
+    ],
+    "local_normal": [
+      0.19225768127639337,
+      0.08056187234201992,
+      -0.9780320898186178
+    ],
+    "projected_anchor": [
+      -0.3724121122140283,
+      -0.12833871478842002,
+      0.7910555695442146
+    ],
+    "source_surface_distance_m": 0.0007120485156762109
+  },
+  {
+    "sequence_id": 17,
+    "requested_u": 0.24843548088071937,
+    "requested_target": [
+      -0.3691539314843841,
+      -0.13496700576427628,
+      0.7911610184079509
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 89294,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0036153426899580322,
+    "pca_eigenvalues": [
+      1.5346815493936704e-07,
+      2.086351272917894e-06,
+      3.855978284698046e-06
+    ],
+    "local_normal": [
+      0.006356742320138971,
+      0.5232204108569685,
+      -0.8521736873957917
+    ],
+    "projected_anchor": [
+      -0.3691453024368881,
+      -0.13425675300448714,
+      0.7900042234880027
+    ],
+    "source_surface_distance_m": 0.0007226118028842698
+  },
+  {
+    "sequence_id": 18,
+    "requested_u": 0.25128462681487934,
+    "requested_target": [
+      -0.3638716311264439,
+      -0.13562568896567495,
+      0.7905168075020573
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 89298,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003295888609826375,
+    "pca_eigenvalues": [
+      2.3264691309160908e-07,
+      2.5282914024330527e-06,
+      2.8454834674507735e-06
+    ],
+    "local_normal": [
+      0.18089521878237147,
+      0.5328550898015021,
+      -0.8266452522662374
+    ],
+    "projected_anchor": [
+      -0.36376458238127685,
+      -0.13531036018527337,
+      0.7900276218975453
+    ],
+    "source_surface_distance_m": 0.0009743556603556365
+  },
+  {
+    "sequence_id": 19,
+    "requested_u": 0.2541337727490393,
+    "requested_target": [
+      -0.35706643341109157,
+      -0.13190517874681973,
+      0.7887539062649012
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 89692,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004482544895627551,
+    "pca_eigenvalues": [
+      1.0765978573870152e-07,
+      2.2100159347594345e-06,
+      2.7381811705732164e-06
+    ],
+    "local_normal": [
+      0.1548407416286374,
+      0.2598399096233004,
+      -0.9531566325105484
+    ],
+    "projected_anchor": [
+      -0.3575455766678319,
+      -0.1327092341860956,
+      0.791703379176753
+    ],
+    "source_surface_distance_m": 0.00043868696953931155
+  },
+  {
+    "sequence_id": 20,
+    "requested_u": 0.2569829186831992,
+    "requested_target": [
+      -0.3524281414876501,
+      -0.13377144575552888,
+      0.789530121418367
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 89696,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004069410146477372,
+    "pca_eigenvalues": [
+      1.127437558221343e-07,
+      2.3305979242277255e-06,
+      3.3830830246347797e-06
+    ],
+    "local_normal": [
+      0.17429898944096492,
+      0.40474849993218265,
+      -0.8976628064493407
+    ],
+    "projected_anchor": [
+      -0.3528863523787905,
+      -0.1348354804434895,
+      0.7918899680004153
+    ],
+    "source_surface_distance_m": 0.0006830270474850264
+  },
+  {
+    "sequence_id": 21,
+    "requested_u": 0.2598320646173592,
+    "requested_target": [
+      -0.3482836040890651,
+      -0.13725535892070787,
+      0.790457492415239
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 88510,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003485785813339703,
+    "pca_eigenvalues": [
+      1.5877512985624542e-07,
+      2.460405315246463e-06,
+      2.9029803198647684e-06
+    ],
+    "local_normal": [
+      0.2185790585195008,
+      0.5321938577289893,
+      -0.8179198573040423
+    ],
+    "projected_anchor": [
+      -0.34857910092320005,
+      -0.13797483132199892,
+      0.7915632375403506
+    ],
+    "source_surface_distance_m": 0.0006486754011904986
+  },
+  {
+    "sequence_id": 22,
+    "requested_u": 0.26268121055151916,
+    "requested_target": [
+      -0.3413783146147562,
+      -0.13344036307186788,
+      0.7884749029133771
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 88514,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007530426072161682,
+    "pca_eigenvalues": [
+      2.592633441935522e-07,
+      2.4910911957142204e-06,
+      7.81419369514416e-06
+    ],
+    "local_normal": [
+      0.35315498722118543,
+      0.38434014722343046,
+      -0.852973742991586
+    ],
+    "projected_anchor": [
+      -0.3435978957043593,
+      -0.13585594306824522,
+      0.793835847706396
+    ],
+    "source_surface_distance_m": 0.001423725950598029
+  },
+  {
+    "sequence_id": 23,
+    "requested_u": 0.26553035648567913,
+    "requested_target": [
+      -0.3384021943996823,
+      -0.13964740450873728,
+      0.7910912739379066
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 87701,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0038994584362792347,
+    "pca_eigenvalues": [
+      1.8301373962416797e-07,
+      2.1350089950881973e-06,
+      2.9944077585854057e-06
+    ],
+    "local_normal": [
+      0.2569183322842103,
+      0.4285014133343065,
+      -0.8662444858738219
+    ],
+    "projected_anchor": [
+      -0.3389830481795871,
+      -0.1406161818763034,
+      0.7930497226771148
+    ],
+    "source_surface_distance_m": 0.0003686913185769543
+  },
+  {
+    "sequence_id": 24,
+    "requested_u": 0.2683795024198391,
+    "requested_target": [
+      -0.33329545388944815,
+      -0.14074913314620002,
+      0.7909877151250839
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 87705,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0046417100946920435,
+    "pca_eigenvalues": [
+      1.2807898180484385e-07,
+      1.751196379983092e-06,
+      3.863605683301419e-06
+    ],
+    "local_normal": [
+      0.22555464583467383,
+      0.33034101736479005,
+      -0.916515092068205
+    ],
+    "projected_anchor": [
+      -0.3340578420130487,
+      -0.1418657054404442,
+      0.7940855906696456
+    ],
+    "source_surface_distance_m": 0.0005225367857157167
+  },
+  {
+    "sequence_id": 25,
+    "requested_u": 0.27122864835399907,
+    "requested_target": [
+      -0.32727075591393484,
+      -0.13848872313589394,
+      0.7904980581558169
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 88528,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006360128156181251,
+    "pca_eigenvalues": [
+      1.664130946835504e-07,
+      2.0196337097739106e-06,
+      4.236999799951052e-06
+    ],
+    "local_normal": [
+      0.07419868355884834,
+      0.3044218608967492,
+      -0.9496430308101537
+    ],
+    "projected_anchor": [
+      -0.32767221185813244,
+      -0.14013581388924637,
+      0.7956361525437343
+    ],
+    "source_surface_distance_m": 0.0007210351666796208
+  },
+  {
+    "sequence_id": 26,
+    "requested_u": 0.27407779428815904,
+    "requested_target": [
+      -0.32378796629003576,
+      -0.14223510557722702,
+      0.7938146706253405
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 86865,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003623322987410486,
+    "pca_eigenvalues": [
+      1.9487338598703544e-07,
+      2.208484810076726e-06,
+      2.855145884141801e-06
+    ],
+    "local_normal": [
+      0.20789411045475562,
+      0.3812006315130391,
+      -0.9008141414144685
+    ],
+    "projected_anchor": [
+      -0.32414127733481557,
+      -0.14288294688978748,
+      0.7953455826110596
+    ],
+    "source_surface_distance_m": 0.000713657391711496
+  },
+  {
+    "sequence_id": 27,
+    "requested_u": 0.276926940222319,
+    "requested_target": [
+      -0.32017784991434645,
+      -0.1470083234802125,
+      0.7955872974698506
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85586,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0035697016985775016,
+    "pca_eigenvalues": [
+      1.5747055365286381e-07,
+      2.3351005424288756e-06,
+      2.9908884529743095e-06
+    ],
+    "local_normal": [
+      -0.012907976393306859,
+      0.35574431119984057,
+      -0.9344941782560129
+    ],
+    "projected_anchor": [
+      -0.32019741853985306,
+      -0.1464690114308361,
+      0.7941705946455503
+    ],
+    "source_surface_distance_m": 0.0005899308815340108
+  },
+  {
+    "sequence_id": 28,
+    "requested_u": 0.2797760861564789,
+    "requested_target": [
+      -0.3153890105745485,
+      -0.1484475326874564,
+      0.7961532269274035
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 86017,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004206261983221839,
+    "pca_eigenvalues": [
+      1.2618585369085067e-07,
+      2.371804122171972e-06,
+      3.1915531814627938e-06
+    ],
+    "local_normal": [
+      0.025837238566126464,
+      0.40871016374389973,
+      -0.9122984375497482
+    ],
+    "projected_anchor": [
+      -0.3153182111058279,
+      -0.14732758086366918,
+      0.793653337299965
+    ],
+    "source_surface_distance_m": 0.0006583161946830794
+  },
+  {
+    "sequence_id": 29,
+    "requested_u": 0.2826252320906389,
+    "requested_target": [
+      -0.3104552029376011,
+      -0.1488373855433141,
+      0.7971832697609981
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85154,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0044563970817416585,
+    "pca_eigenvalues": [
+      2.2036532350094067e-07,
+      2.371853448239832e-06,
+      3.3449455419149894e-06
+    ],
+    "local_normal": [
+      0.3523970652830395,
+      0.43191577431211875,
+      -0.8302198939318812
+    ],
+    "projected_anchor": [
+      -0.3093397603195658,
+      -0.14747024231332576,
+      0.7945553742894833
+    ],
+    "source_surface_distance_m": 0.0005709716062036997
+  },
+  {
+    "sequence_id": 30,
+    "requested_u": 0.28547437802479886,
+    "requested_target": [
+      -0.30572714195365,
+      -0.15039629184655726,
+      0.7980515864633378
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84716,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004091977201722189,
+    "pca_eigenvalues": [
+      1.5572595932058925e-07,
+      1.8644758423146606e-06,
+      3.516842285731743e-06
+    ],
+    "local_normal": [
+      0.37459453477843646,
+      0.09173326978261426,
+      -0.9226396597421537
+    ],
+    "projected_anchor": [
+      -0.3047838318401551,
+      -0.15016528761906345,
+      0.7957281801096894
+    ],
+    "source_surface_distance_m": 0.0004792213510606932
+  },
+  {
+    "sequence_id": 31,
+    "requested_u": 0.2883235239589588,
+    "requested_target": [
+      -0.3003980016007143,
+      -0.14964491605174307,
+      0.7990431406918694
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85163,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0038002626847307174,
+    "pca_eigenvalues": [
+      1.3966261344879747e-07,
+      2.162341350840316e-06,
+      3.0899692606544464e-06
+    ],
+    "local_normal": [
+      0.18203797809083624,
+      0.3644175751522365,
+      -0.9132699521241047
+    ],
+    "projected_anchor": [
+      -0.3001141244136609,
+      -0.14907662894356943,
+      0.7976189515872203
+    ],
+    "source_surface_distance_m": 0.0007153915693703018
+  },
+  {
+    "sequence_id": 32,
+    "requested_u": 0.2911726698931188,
+    "requested_target": [
+      -0.2952843430068563,
+      -0.14885107444270568,
+      0.8005294120487045
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85606,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0036227155816732784,
+    "pca_eigenvalues": [
+      1.1708287553192115e-07,
+      2.4194938993803676e-06,
+      2.8825352447671957e-06
+    ],
+    "local_normal": [
+      0.19319654208277384,
+      0.40946762574021844,
+      -0.8916340951297945
+    ],
+    "projected_anchor": [
+      -0.2949834366342197,
+      -0.14821332276948573,
+      0.7991406792153309
+    ],
+    "source_surface_distance_m": 0.0006143910890846112
+  },
+  {
+    "sequence_id": 33,
+    "requested_u": 0.29402181582727877,
+    "requested_target": [
+      -0.2899363309478582,
+      -0.14826111576116796,
+      0.8012350735379689
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85611,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0035152644322764843,
+    "pca_eigenvalues": [
+      1.1065445346006095e-07,
+      2.4561297943651508e-06,
+      2.8631942229448805e-06
+    ],
+    "local_normal": [
+      0.1339236221711086,
+      0.28490566069358575,
+      -0.9491539537553019
+    ],
+    "projected_anchor": [
+      -0.2897787491926641,
+      -0.14792588039828725,
+      0.8001182478162819
+    ],
+    "source_surface_distance_m": 0.0007196705084520856
+  },
+  {
+    "sequence_id": 34,
+    "requested_u": 0.29687096176143873,
+    "requested_target": [
+      -0.2847867575748002,
+      -0.14766456465483369,
+      0.8023713307783884
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 86469,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003671480508562498,
+    "pca_eigenvalues": [
+      1.4176541370193458e-07,
+      2.158338997672716e-06,
+      3.0622488028897203e-06
+    ],
+    "local_normal": [
+      0.12178924479967436,
+      0.3010139435412635,
+      -0.9458107557248765
+    ],
+    "projected_anchor": [
+      -0.2845580081802256,
+      -0.1470991883159226,
+      0.8005948714686184
+    ],
+    "source_surface_distance_m": 0.0008133923775654188
+  },
+  {
+    "sequence_id": 35,
+    "requested_u": 0.29972010769559865,
+    "requested_target": [
+      -0.28107206783773286,
+      -0.15124793273144052,
+      0.8050817858330822
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85181,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005339199190314881,
+    "pca_eigenvalues": [
+      2.5517351072391e-07,
+      2.624534277431966e-06,
+      4.48451710002135e-06
+    ],
+    "local_normal": [
+      0.5486595220847245,
+      0.25765280126806595,
+      -0.7953538601304959
+    ],
+    "projected_anchor": [
+      -0.27876569481120445,
+      -0.15016485033309587,
+      0.8017383959606524
+    ],
+    "source_surface_distance_m": 0.0006394876913472621
+  },
+  {
+    "sequence_id": 36,
+    "requested_u": 0.3025692536297586,
+    "requested_target": [
+      -0.2764328404593824,
+      -0.15209964835154477,
+      0.8068320866840989
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85183,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004887580978559536,
+    "pca_eigenvalues": [
+      2.0059992956911447e-07,
+      2.7736717382608777e-06,
+      4.8170609804487025e-06
+    ],
+    "local_normal": [
+      0.6430412776192115,
+      0.15654769175011637,
+      -0.7496604134443562
+    ],
+    "projected_anchor": [
+      -0.2744032016513223,
+      -0.15160553501613863,
+      0.8044659246336217
+    ],
+    "source_surface_distance_m": 0.0009476996726180532
+  },
+  {
+    "sequence_id": 37,
+    "requested_u": 0.3054183995639186,
+    "requested_target": [
+      -0.2715550218467359,
+      -0.15249782523347272,
+      0.8082851855843155
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 85188,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0037586251137593537,
+    "pca_eigenvalues": [
+      8.848848512582392e-08,
+      2.185668139039395e-06,
+      3.1746478240390625e-06
+    ],
+    "local_normal": [
+      0.26619765241060983,
+      -0.035863433916076964,
+      -0.9632510700533
+    ],
+    "projected_anchor": [
+      -0.2710235909195756,
+      -0.15256942217568684,
+      0.8063621730986269
+    ],
+    "source_surface_distance_m": 0.0007578195315130207
+  },
+  {
+    "sequence_id": 38,
+    "requested_u": 0.30826754549807855,
+    "requested_target": [
+      -0.26700584618764234,
+      -0.1533225845588024,
+      0.8104068537175428
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84749,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0042099163538640285,
+    "pca_eigenvalues": [
+      7.807164364002227e-08,
+      2.50779120214529e-06,
+      2.7360575813045877e-06
+    ],
+    "local_normal": [
+      0.26143287320311975,
+      0.04904144171036553,
+      -0.9639749943871628
+    ],
+    "projected_anchor": [
+      -0.26624033676445086,
+      -0.1531789848450548,
+      0.8075842096755635
+    ],
+    "source_surface_distance_m": 0.0007355442214299155
+  },
+  {
+    "sequence_id": 39,
+    "requested_u": 0.3111166914322385,
+    "requested_target": [
+      -0.26211297669500677,
+      -0.15411609577120475,
+      0.8113849124818479
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84306,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004587122244312714,
+    "pca_eigenvalues": [
+      6.453146735240577e-08,
+      2.100194999521152e-06,
+      3.3693759349604943e-06
+    ],
+    "local_normal": [
+      0.08236790059819792,
+      0.0363083496803614,
+      -0.995940376074057
+    ],
+    "projected_anchor": [
+      -0.26184105357749043,
+      -0.15399623014921784,
+      0.8080969907313159
+    ],
+    "source_surface_distance_m": 0.00019432568224223845
+  },
+  {
+    "sequence_id": 40,
+    "requested_u": 0.3139658373663985,
+    "requested_target": [
+      -0.2571882242546942,
+      -0.15512351198752122,
+      0.8119962443982748
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84311,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004175873192123686,
+    "pca_eigenvalues": [
+      1.0590209038530485e-07,
+      1.7903538080473267e-06,
+      3.976824162124013e-06
+    ],
+    "local_normal": [
+      0.27080879468930946,
+      -0.07202989643501839,
+      -0.9599345241934389
+    ],
+    "projected_anchor": [
+      -0.25650050331656166,
+      -0.15530643244254821,
+      0.8095584835704498
+    ],
+    "source_surface_distance_m": 0.0007288761261744491
+  },
+  {
+    "sequence_id": 41,
+    "requested_u": 0.31681498330055846,
+    "requested_target": [
+      -0.2516331523111015,
+      -0.15410031693486068,
+      0.812161168772659
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84315,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0037722149496995025,
+    "pca_eigenvalues": [
+      1.4550460932941788e-07,
+      2.412991761585255e-06,
+      3.2826330027535364e-06
+    ],
+    "local_normal": [
+      0.06761701306160693,
+      -0.03125418290410166,
+      -0.9972216983176928
+    ],
+    "projected_anchor": [
+      -0.25150063340237716,
+      -0.15416157030918157,
+      0.8102067681679339
+    ],
+    "source_surface_distance_m": 0.0005251574481619623
+  },
+  {
+    "sequence_id": 42,
+    "requested_u": 0.31966412923471843,
+    "requested_target": [
+      -0.24689116897025784,
+      -0.15483450111701114,
+      0.8135862053582494
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84318,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004822208629557449,
+    "pca_eigenvalues": [
+      7.259371026449009e-08,
+      2.511498447901434e-06,
+      3.653450934848573e-06
+    ],
+    "local_normal": [
+      -0.12728624505890845,
+      -0.10627550989988624,
+      -0.9861560362408794
+    ],
+    "projected_anchor": [
+      -0.24732761033914355,
+      -0.15519890049887888,
+      0.810204855785146
+    ],
+    "source_surface_distance_m": 0.0008545347423312876
+  },
+  {
+    "sequence_id": 43,
+    "requested_u": 0.32251327516887834,
+    "requested_target": [
+      -0.2422097737264449,
+      -0.15617920786257417,
+      0.8147104276653422
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84322,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005978808906512523,
+    "pca_eigenvalues": [
+      2.0939476356537852e-07,
+      3.3133413886854893e-06,
+      3.701252668834788e-06
+    ],
+    "local_normal": [
+      -0.007219390409333332,
+      0.01109475867908342,
+      -0.9999123895281878
+    ],
+    "projected_anchor": [
+      -0.24224594573905323,
+      -0.1561236187161128,
+      0.8097004695510832
+    ],
+    "source_surface_distance_m": 0.000836186738490874
+  },
+  {
+    "sequence_id": 44,
+    "requested_u": 0.3253624211030383,
+    "requested_target": [
+      -0.2358928121455753,
+      -0.15457634695357722,
+      0.812938928604126
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 84773,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0038461486706233205,
+    "pca_eigenvalues": [
+      1.225654507410927e-07,
+      2.147562950150805e-06,
+      3.3528194651116937e-06
+    ],
+    "local_normal": [
+      0.3066727275019963,
+      0.27530651052128735,
+      -0.9111301572613425
+    ],
+    "projected_anchor": [
+      -0.23528451961742003,
+      -0.15403027005046716,
+      0.8111316806256261
+    ],
+    "source_surface_distance_m": 0.000828356161928431
+  },
+  {
+    "sequence_id": 45,
+    "requested_u": 0.3282115670371983,
+    "requested_target": [
+      -0.21815264219971928,
+      -0.12746582068880466,
+      0.7933276980309873
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 46,
+    "requested_u": 0.33106071297135825,
+    "requested_target": [
+      -0.19215772406030923,
+      -0.08646393445535348,
+      0.7580615344720009
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 47,
+    "requested_u": 0.3339098589055182,
+    "requested_target": [
+      -0.15555102339008572,
+      -0.023665370444710978,
+      0.7032617562710305
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 48,
+    "requested_u": 0.3367590048396782,
+    "requested_target": [
+      -0.14328112513632388,
+      -0.011128475585939816,
+      0.6893364886979799
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 49,
+    "requested_u": 0.33960815077383816,
+    "requested_target": [
+      -0.14338329463450025,
+      -0.024669738871406655,
+      0.6955584977496633
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 50,
+    "requested_u": 0.3424572967079981,
+    "requested_target": [
+      -0.14377882734618402,
+      -0.039471672532884194,
+      0.7029484849084507
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 51,
+    "requested_u": 0.34530644264215804,
+    "requested_target": [
+      -0.12971915809687265,
+      -0.026218269382279124,
+      0.6831224236598948
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108774,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.012566502170826036,
+    "pca_eigenvalues": [
+      3.628367053783478e-07,
+      1.4078232009041844e-06,
+      9.783723868701806e-06
+    ],
+    "local_normal": [
+      0.4514442222751703,
+      -0.17931417742823816,
+      -0.8740964134165069
+    ],
+    "projected_anchor": [
+      -0.12457350590431497,
+      -0.02826212850088776,
+      0.6731592966460289
+    ],
+    "source_surface_distance_m": 0.0012581910854654664
+  },
+  {
+    "sequence_id": 52,
+    "requested_u": 0.348155588576318,
+    "requested_target": [
+      -0.12204557934812471,
+      -0.02377496139738736,
+      0.6770000009998387
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 109749,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004940653640354513,
+    "pca_eigenvalues": [
+      8.738253418376237e-08,
+      1.662895759295875e-06,
+      2.9666756914323137e-06
+    ],
+    "local_normal": [
+      0.3415655303980459,
+      -0.09177138891975475,
+      -0.9353667733138914
+    ],
+    "projected_anchor": [
+      -0.1207861897439403,
+      -0.02411333258206872,
+      0.6735512010315332
+    ],
+    "source_surface_distance_m": 0.0007637572704876718
+  },
+  {
+    "sequence_id": 53,
+    "requested_u": 0.351004734510478,
+    "requested_target": [
+      -0.10944532787337494,
+      -0.010300117197658366,
+      0.6632285121226961
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 112616,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0038226918856738737,
+    "pca_eigenvalues": [
+      1.681643716737411e-07,
+      2.65339920505804e-06,
+      2.9689807572015157e-06
+    ],
+    "local_normal": [
+      -0.1793347095366166,
+      -0.7108980760360212,
+      -0.68004631271973
+    ],
+    "projected_anchor": [
+      -0.10975507589550511,
+      -0.011527984761931188,
+      0.6620539319152944
+    ],
+    "source_surface_distance_m": 0.0005067465389039822
+  },
+  {
+    "sequence_id": 54,
+    "requested_u": 0.35385388044463795,
+    "requested_target": [
+      -0.09997099834850164,
+      -0.004024962683527009,
+      0.653656501898436
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 114017,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0038578267751156643,
+    "pca_eigenvalues": [
+      1.812972565729289e-07,
+      3.223793174021627e-06,
+      3.822570026367748e-06
+    ],
+    "local_normal": [
+      -0.23556694939797473,
+      -0.818978897280436,
+      -0.5232416059151384
+    ],
+    "projected_anchor": [
+      -0.10019342002867875,
+      -0.004798240356087816,
+      0.6531624585811386
+    ],
+    "source_surface_distance_m": 0.000883908794019453
+  },
+  {
+    "sequence_id": 55,
+    "requested_u": 0.3567030263787979,
+    "requested_target": [
+      -0.0956544632468954,
+      -0.00547421559394671,
+      0.6561722529416828
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 113792,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003908178224087527,
+    "pca_eigenvalues": [
+      1.5271453920827407e-07,
+      2.287593125335363e-06,
+      3.111224405623208e-06
+    ],
+    "local_normal": [
+      -0.2683250549072111,
+      -0.6531851679818805,
+      -0.7080612976554534
+    ],
+    "projected_anchor": [
+      -0.09630557058144934,
+      -0.007059209786315074,
+      0.6544540984280215
+    ],
+    "source_surface_distance_m": 0.0004939157532044653
+  },
+  {
+    "sequence_id": 56,
+    "requested_u": 0.3595521723129579,
+    "requested_target": [
+      -0.08898177778583631,
+      -0.0035708579965295336,
+      0.6532266810624349
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 113568,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00604268288043976,
+    "pca_eigenvalues": [
+      5.677007779569086e-08,
+      7.785526485376221e-07,
+      7.224913367148259e-06
+    ],
+    "local_normal": [
+      0.041807279306148894,
+      -0.2875889953455304,
+      -0.9568410114293628
+    ],
+    "projected_anchor": [
+      -0.08893902839328792,
+      -0.0038649277149772334,
+      0.6522482779545824
+    ],
+    "source_surface_distance_m": 0.0031948137804033595
+  },
+  {
+    "sequence_id": 57,
+    "requested_u": 0.36240131824711785,
+    "requested_target": [
+      -0.08332593142986297,
+      -0.0009566847752048377,
+      0.6545509201617329
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 113111,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.010792217691707042,
+    "pca_eigenvalues": [
+      1.9755620467658646e-07,
+      8.582048700413919e-07,
+      1.0915742787997163e-05
+    ],
+    "local_normal": [
+      -0.38199320260557296,
+      -0.635458184435634,
+      -0.6710246560275602
+    ],
+    "projected_anchor": [
+      -0.0862612928289223,
+      -0.005839754454417668,
+      0.6493945460176773
+    ],
+    "source_surface_distance_m": 0.005041516149960212
+  },
+  {
+    "sequence_id": 58,
+    "requested_u": 0.3652504641812778,
+    "requested_target": [
+      -0.0788465567760478,
+      -0.0007951444487360282,
+      0.6579711420772366
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 112883,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.013865348579660014,
+    "pca_eigenvalues": [
+      2.397323512846185e-07,
+      3.7855184872392354e-06,
+      7.794630567002574e-06
+    ],
+    "local_normal": [
+      -0.46298360904423247,
+      -0.8051444877010816,
+      -0.37065959002963916
+    ],
+    "projected_anchor": [
+      -0.0845747574195305,
+      -0.01075668322127876,
+      0.6533852075848603
+    ],
+    "source_surface_distance_m": 0.0011740816784400437
+  },
+  {
+    "sequence_id": 59,
+    "requested_u": 0.36809961011543774,
+    "requested_target": [
+      -0.07255533088003267,
+      0.0006482984259890469,
+      0.6561245320742929
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 60,
+    "requested_u": 0.3709487560495977,
+    "requested_target": [
+      -0.06619585024465512,
+      0.0012469793572984977,
+      0.652681707172859
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 61,
+    "requested_u": 0.3737979019837577,
+    "requested_target": [
+      -0.06187961846633664,
+      -0.0009836847938537768,
+      0.6542576111730982
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 62,
+    "requested_u": 0.37664704791791764,
+    "requested_target": [
+      -0.059018110605944515,
+      -0.007036736590074578,
+      0.6575479809985016
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 63,
+    "requested_u": 0.3794961938520776,
+    "requested_target": [
+      -0.056566359560102905,
+      -0.01423575389948894,
+      0.6605394555301201
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 64,
+    "requested_u": 0.3823453397862376,
+    "requested_target": [
+      -0.06629095891275938,
+      -0.040885465699716406,
+      0.6907578132813796
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 65,
+    "requested_u": 0.38519448572039755,
+    "requested_target": [
+      -0.07752454618691203,
+      -0.06590403551716133,
+      0.7276160431796296
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 66,
+    "requested_u": 0.38804363165455746,
+    "requested_target": [
+      -0.11600170267203527,
+      -0.14520477169170612,
+      0.8130926812567362
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 67,
+    "requested_u": 0.39089277758871743,
+    "requested_target": [
+      -0.12445562473044564,
+      -0.17149432886105317,
+      0.8390153826811375
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 79426,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00868018810183326,
+    "pca_eigenvalues": [
+      2.4509860840899046e-07,
+      3.344712345334357e-06,
+      6.418316288081746e-06
+    ],
+    "local_normal": [
+      0.604254308788069,
+      0.5120692153808696,
+      -0.6104603582299785
+    ],
+    "projected_anchor": [
+      -0.12877841160692613,
+      -0.17515763097061987,
+      0.8433825671377297
+    ],
+    "source_surface_distance_m": 0.0009738387433771419
+  },
+  {
+    "sequence_id": 68,
+    "requested_u": 0.3937419235228774,
+    "requested_target": [
+      -0.12280884245654364,
+      -0.180180511939588,
+      0.8440837707194982
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 78181,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0039069749762788136,
+    "pca_eigenvalues": [
+      3.3463447912865554e-07,
+      2.656582065956742e-06,
+      3.943883591138913e-06
+    ],
+    "local_normal": [
+      0.4937145109511274,
+      0.42281186532652626,
+      -0.7599184878757673
+    ],
+    "projected_anchor": [
+      -0.12317736552045377,
+      -0.18049611117884778,
+      0.8446509962785251
+    ],
+    "source_surface_distance_m": 0.0007870910767888758
+  },
+  {
+    "sequence_id": 69,
+    "requested_u": 0.39659106945703737,
+    "requested_target": [
+      -0.11439198970227786,
+      -0.17314578934494182,
+      0.839858698780122
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 79014,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.012353862380970226,
+    "pca_eigenvalues": [
+      2.238363290411215e-07,
+      5.3768913690610716e-06,
+      9.097957493842311e-06
+    ],
+    "local_normal": [
+      0.5481069497363904,
+      0.49099077503589306,
+      -0.6771313243975078
+    ],
+    "projected_anchor": [
+      -0.12054754446073013,
+      -0.17865989677065852,
+      0.8474632711140375
+    ],
+    "source_surface_distance_m": 0.001939438876520718
+  },
+  {
+    "sequence_id": 70,
+    "requested_u": 0.39944021539119734,
+    "requested_target": [
+      -0.11122382534367423,
+      -0.17649501504661935,
+      0.844424727142498
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 79435,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.009417506585083751,
+    "pca_eigenvalues": [
+      2.0782356169017707e-07,
+      3.689237823904926e-06,
+      5.239189819972916e-06
+    ],
+    "local_normal": [
+      0.4932171768619275,
+      0.4885971425862454,
+      -0.71972887166273
+    ],
+    "projected_anchor": [
+      -0.11532949880779274,
+      -0.1805622300931911,
+      0.8504159453489412
+    ],
+    "source_surface_distance_m": 0.0005946105910243202
+  },
+  {
+    "sequence_id": 71,
+    "requested_u": 0.4022893613253573,
+    "requested_target": [
+      -0.11197139864224334,
+      -0.1897086286700742,
+      0.8541220925575079
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 76410,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005420663804914706,
+    "pca_eigenvalues": [
+      7.534186557136449e-08,
+      2.501408588341992e-06,
+      3.8442170692039956e-06
+    ],
+    "local_normal": [
+      0.27747724121210915,
+      0.057945154170538624,
+      -0.9589831801014393
+    ],
+    "projected_anchor": [
+      -0.1108556871580054,
+      -0.18947563632201136,
+      0.8502661058734963
+    ],
+    "source_surface_distance_m": 0.0006481612939040821
+  },
+  {
+    "sequence_id": 72,
+    "requested_u": 0.4051385072595173,
+    "requested_target": [
+      -0.10684106538400931,
+      -0.18972576830316992,
+      0.8548705924959744
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 76413,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0049685813103215685,
+    "pca_eigenvalues": [
+      6.852442730986989e-08,
+      2.4851460774535725e-06,
+      3.751307106249982e-06
+    ],
+    "local_normal": [
+      0.21403446287185396,
+      0.08684896866931202,
+      -0.9729576071670513
+    ],
+    "projected_anchor": [
+      -0.1060935381375004,
+      -0.18942244345753337,
+      0.8514724840264476
+    ],
+    "source_surface_distance_m": 0.000712147449250486
+  },
+  {
+    "sequence_id": 73,
+    "requested_u": 0.40798765319367725,
+    "requested_target": [
+      -0.10283407073860105,
+      -0.192121807191717,
+      0.8572039482624907
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 75427,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005804103065978534,
+    "pca_eigenvalues": [
+      1.344264442516355e-07,
+      2.226226799127124e-06,
+      5.174064482568958e-06
+    ],
+    "local_normal": [
+      0.39871518164905817,
+      -0.053072009116832346,
+      -0.9155378560009746
+    ],
+    "projected_anchor": [
+      -0.10106081140599388,
+      -0.19235784143319584,
+      0.8531321543548841
+    ],
+    "source_surface_distance_m": 0.0007115436886212598
+  },
+  {
+    "sequence_id": 74,
+    "requested_u": 0.41083679912783716,
+    "requested_target": [
+      -0.09888313395472673,
+      -0.19561721510612048,
+      0.8585384616485009
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 75104,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005823771786498554,
+    "pca_eigenvalues": [
+      1.233188286276412e-07,
+      3.057204962673434e-06,
+      3.3840802566728003e-06
+    ],
+    "local_normal": [
+      0.30368280219042304,
+      0.1352290504322614,
+      -0.9431277005649668
+    ],
+    "projected_anchor": [
+      -0.09757808718350076,
+      -0.19503608165249833,
+      0.8544854637454313
+    ],
+    "source_surface_distance_m": 0.0006182268437539741
+  },
+  {
+    "sequence_id": 75,
+    "requested_u": 0.41368594506199713,
+    "requested_target": [
+      -0.09596166197283595,
+      -0.20560400553193747,
+      0.8578627465986738
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 72065,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005124622783142774,
+    "pca_eigenvalues": [
+      1.925703136957244e-07,
+      2.957284294885118e-06,
+      4.720457469401186e-06
+    ],
+    "local_normal": [
+      0.29690443686689894,
+      -0.39006127184605466,
+      -0.8716076867344551
+    ],
+    "projected_anchor": [
+      -0.09497718338901087,
+      -0.20689737444405032,
+      0.8549726614583427
+    ],
+    "source_surface_distance_m": 0.0011497602658732474
+  },
+  {
+    "sequence_id": 76,
+    "requested_u": 0.4165350909961571,
+    "requested_target": [
+      -0.08924284920096398,
+      -0.20164471745491028,
+      0.8572500002384186
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 73804,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0037734044200199066,
+    "pca_eigenvalues": [
+      2.097950432353688e-07,
+      3.080606641681202e-06,
+      3.790112636669032e-06
+    ],
+    "local_normal": [
+      0.3716667626699854,
+      -0.18364853405888962,
+      -0.9100203478298899
+    ],
+    "projected_anchor": [
+      -0.08880719611289575,
+      -0.20185998300732935,
+      0.8561833103577067
+    ],
+    "source_surface_distance_m": 0.0009521629845425091
+  },
+  {
+    "sequence_id": 77,
+    "requested_u": 0.41938423693031707,
+    "requested_target": [
+      -0.08371996467263954,
+      -0.1996068546494234,
+      0.8581262138283369
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 74136,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004547633936109952,
+    "pca_eigenvalues": [
+      1.7100187326507568e-07,
+      3.1688181532830193e-06,
+      4.58342839177028e-06
+    ],
+    "local_normal": [
+      0.2816345202878967,
+      -0.3981584734043034,
+      -0.8730130738073519
+    ],
+    "projected_anchor": [
+      -0.0833929827787447,
+      -0.20006912259715556,
+      0.8571126325813482
+    ],
+    "source_surface_distance_m": 0.000554970107794835
+  },
+  {
+    "sequence_id": 78,
+    "requested_u": 0.42223338286447704,
+    "requested_target": [
+      -0.07906543041268985,
+      -0.2006264777410598,
+      0.8598761865070887
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 73811,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005522695497736998,
+    "pca_eigenvalues": [
+      5.706281122191491e-07,
+      3.7948680231054095e-06,
+      7.371647134953305e-06
+    ],
+    "local_normal": [
+      -0.10866411468187095,
+      -0.6529832463385375,
+      -0.7495365169100102
+    ],
+    "projected_anchor": [
+      -0.07929729252541663,
+      -0.2020197810916139,
+      0.8582768625638953
+    ],
+    "source_surface_distance_m": 0.0017207479411469196
+  },
+  {
+    "sequence_id": 79,
+    "requested_u": 0.425082528798637,
+    "requested_target": [
+      -0.06268950953530386,
+      -0.17568585337099865,
+      0.8444017090349116
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 80,
+    "requested_u": 0.427931674732797,
+    "requested_target": [
+      -0.03620946965714067,
+      -0.12688614075871113,
+      0.8137704928716024
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 81,
+    "requested_u": 0.43078082066695694,
+    "requested_target": [
+      -0.022035473887651303,
+      -0.10819806866347789,
+      0.799172974277187
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 82,
+    "requested_u": 0.43362996660111686,
+    "requested_target": [
+      -0.009294689535517651,
+      -0.09177291109834028,
+      0.78772608326829
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 83,
+    "requested_u": 0.4364791125352768,
+    "requested_target": [
+      0.006012447328792032,
+      -0.07052347039706616,
+      0.771558234490544
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 102295,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007143021635549269,
+    "pca_eigenvalues": [
+      5.16433672410567e-07,
+      2.269001223775037e-06,
+      6.8906606998193364e-06
+    ],
+    "local_normal": [
+      0.007090421516314266,
+      -0.7973747533417633,
+      -0.6034428130783258
+    ],
+    "projected_anchor": [
+      0.005983914773625165,
+      -0.0673147557831263,
+      0.7739865478587394
+    ],
+    "source_surface_distance_m": 0.0019416709609707972
+  },
+  {
+    "sequence_id": 84,
+    "requested_u": 0.4393282584694368,
+    "requested_target": [
+      0.013904632905015736,
+      -0.06532107250054749,
+      0.7680575558178716
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 103061,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005641505037551536,
+    "pca_eigenvalues": [
+      1.0497560654049712e-07,
+      1.5897273943569232e-06,
+      6.342413624499436e-06
+    ],
+    "local_normal": [
+      0.2101025792745811,
+      -0.46137097063249427,
+      -0.8619708426854116
+    ],
+    "projected_anchor": [
+      0.013172236148192051,
+      -0.06371277904812762,
+      0.7710623006993437
+    ],
+    "source_surface_distance_m": 0.0002874090878937599
+  },
+  {
+    "sequence_id": 85,
+    "requested_u": 0.44217740440359676,
+    "requested_target": [
+      0.024067970888732193,
+      -0.054751636882477035,
+      0.7601584154780548
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105060,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00509127363306708,
+    "pca_eigenvalues": [
+      2.7613512722499947e-07,
+      3.904797382728986e-06,
+      1.0864898906385108e-05
+    ],
+    "local_normal": [
+      0.02837612625933235,
+      -0.8885019725653073,
+      -0.4579945853458015
+    ],
+    "projected_anchor": [
+      0.024017070076294358,
+      -0.05315785090045561,
+      0.7609799616000723
+    ],
+    "source_surface_distance_m": 0.0020202658935604073
+  },
+  {
+    "sequence_id": 86,
+    "requested_u": 0.44502655033775673,
+    "requested_target": [
+      0.029785593345375925,
+      -0.05426921626407755,
+      0.7592212648569853
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105065,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004899158002264342,
+    "pca_eigenvalues": [
+      2.8243697236187334e-07,
+      4.084280084847801e-06,
+      5.62108684568327e-06
+    ],
+    "local_normal": [
+      0.06824386320313017,
+      -0.8336069399179197,
+      -0.5481261213040246
+    ],
+    "projected_anchor": [
+      0.029647080782156235,
+      -0.05257726876072377,
+      0.7603337803340693
+    ],
+    "source_surface_distance_m": 0.0006517267675693376
+  },
+  {
+    "sequence_id": 87,
+    "requested_u": 0.4478756962719167,
+    "requested_target": [
+      0.035932839739301774,
+      -0.053584088569057664,
+      0.7571565419714027
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105071,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004239463517323884,
+    "pca_eigenvalues": [
+      2.826250953815008e-07,
+      2.7849108639141547e-06,
+      5.416950369396343e-06
+    ],
+    "local_normal": [
+      -0.3296292018564886,
+      -0.6651860545253726,
+      -0.6699791803843032
+    ],
+    "projected_anchor": [
+      0.03641785164661889,
+      -0.052605342889945894,
+      0.7581423401904647
+    ],
+    "source_surface_distance_m": 0.0008816624706371567
+  },
+  {
+    "sequence_id": 88,
+    "requested_u": 0.45072484220607667,
+    "requested_target": [
+      0.04874590919834786,
+      -0.04075390735163418,
+      0.7422448281584115
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107231,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0037777634798351646,
+    "pca_eigenvalues": [
+      1.6930634483200552e-07,
+      2.3081742104877783e-06,
+      2.812074167971532e-06
+    ],
+    "local_normal": [
+      -0.47238619868780163,
+      0.02026995485481685,
+      -0.8811585602032546
+    ],
+    "projected_anchor": [
+      0.04967904430221256,
+      -0.04079394790845257,
+      0.7439854378266884
+    ],
+    "source_surface_distance_m": 0.0005405615092382825
+  },
+  {
+    "sequence_id": 89,
+    "requested_u": 0.45357398814023664,
+    "requested_target": [
+      0.05780601841232456,
+      -0.040193436741795895,
+      0.72766383066245
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106740,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004802666224481168,
+    "pca_eigenvalues": [
+      3.478944919072656e-07,
+      3.7062262567848672e-06,
+      4.760405572153635e-06
+    ],
+    "local_normal": [
+      -0.6638015553998519,
+      0.5228802078521011,
+      -0.534755816504394
+    ],
+    "projected_anchor": [
+      0.05958634918169573,
+      -0.041595813273097554,
+      0.729098057844472
+    ],
+    "source_surface_distance_m": 0.0010841454223014144
+  },
+  {
+    "sequence_id": 90,
+    "requested_u": 0.45642313407439655,
+    "requested_target": [
+      0.0640389568222861,
+      -0.040646296669404086,
+      0.7242298832863618
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106993,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005519705832494408,
+    "pca_eigenvalues": [
+      2.9443856919533673e-07,
+      7.1149020577792885e-06,
+      9.81222610608e-06
+    ],
+    "local_normal": [
+      -0.653769880191653,
+      0.7382331117424528,
+      -0.1661228957165352
+    ],
+    "projected_anchor": [
+      0.06339429052063587,
+      -0.039918343265121795,
+      0.7240660736095232
+    ],
+    "source_surface_distance_m": 0.0031432315240742933
+  },
+  {
+    "sequence_id": 91,
+    "requested_u": 0.4592722800085565,
+    "requested_target": [
+      0.06481050782520863,
+      -0.05149673892383902,
+      0.7302876690932786
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106258,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.011435255519212937,
+    "pca_eigenvalues": [
+      1.7435826700606676e-07,
+      4.086173272409871e-06,
+      1.1301397186080208e-05
+    ],
+    "local_normal": [
+      -0.6924734435371073,
+      0.6512950782962087,
+      -0.31031476114261164
+    ],
+    "projected_anchor": [
+      0.05789159868180728,
+      -0.044989267028226226,
+      0.7271871319416514
+    ],
+    "source_surface_distance_m": 0.00082799479342514
+  },
+  {
+    "sequence_id": 92,
+    "requested_u": 0.4621214259427165,
+    "requested_target": [
+      0.0734182880746609,
+      -0.05083516578459811,
+      0.718235744166264
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106268,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.011592521049964765,
+    "pca_eigenvalues": [
+      2.5369913913624816e-07,
+      1.7102111821239515e-06,
+      9.316127434821122e-06
+    ],
+    "local_normal": [
+      -0.5692985287900568,
+      0.6436577672704449,
+      -0.5114722512022551
+    ],
+    "projected_anchor": [
+      0.06759287689280409,
+      -0.04424886533742273,
+      0.7130020468691788
+    ],
+    "source_surface_distance_m": 0.0018587679340182465
+  },
+  {
+    "sequence_id": 93,
+    "requested_u": 0.46497057187687646,
+    "requested_target": [
+      0.08286740667754051,
+      -0.04243634912396509,
+      0.7116231868972936
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107009,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005714679923331431,
+    "pca_eigenvalues": [
+      1.3140792875221463e-07,
+      2.695654094190441e-06,
+      4.469973833173059e-06
+    ],
+    "local_normal": [
+      -0.026097130532544952,
+      0.649043603238771,
+      -0.7603034531506484
+    ],
+    "projected_anchor": [
+      0.08275014370126088,
+      -0.03951998310601831,
+      0.7082068938423562
+    ],
+    "source_surface_distance_m": 0.0012967643748410386
+  },
+  {
+    "sequence_id": 94,
+    "requested_u": 0.46781971781103643,
+    "requested_target": [
+      0.08817561317243641,
+      -0.0430163034788726,
+      0.7109841976155008
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107015,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005258352292853543,
+    "pca_eigenvalues": [
+      1.604142389948235e-07,
+      2.2970701064189033e-06,
+      3.530579966866288e-06
+    ],
+    "local_normal": [
+      0.08334035158746828,
+      0.603437779372332,
+      -0.7930430204115448
+    ],
+    "projected_anchor": [
+      0.08852729318285957,
+      -0.040469913878912064,
+      0.7076377109212177
+    ],
+    "source_surface_distance_m": 0.0006479151223664223
+  },
+  {
+    "sequence_id": 95,
+    "requested_u": 0.4706688637451964,
+    "requested_target": [
+      0.09188740551339919,
+      -0.04543131888052778,
+      0.7147334929344789
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107019,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008726886751046386,
+    "pca_eigenvalues": [
+      1.3630879666264063e-07,
+      2.9458542315774915e-06,
+      6.477719746241777e-06
+    ],
+    "local_normal": [
+      0.2105167178099389,
+      0.6856281311858723,
+      -0.6968477432331248
+    ],
+    "projected_anchor": [
+      0.0935235036007552,
+      -0.04010274029664808,
+      0.7093177175426575
+    ],
+    "source_surface_distance_m": 0.0005004019504438329
+  },
+  {
+    "sequence_id": 96,
+    "requested_u": 0.47351800967935637,
+    "requested_target": [
+      0.09747713285491684,
+      -0.046585077244009725,
+      0.7129881263062393
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106296,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007111534949824962,
+    "pca_eigenvalues": [
+      1.6912845494592419e-07,
+      2.8136504953180146e-06,
+      4.526027757705023e-06
+    ],
+    "local_normal": [
+      0.34929577256903765,
+      0.7092305964444081,
+      -0.6123597180844838
+    ],
+    "projected_anchor": [
+      0.0995595447279019,
+      -0.042356826200896376,
+      0.7093373946122997
+    ],
+    "source_surface_distance_m": 0.0006512456407377306
+  },
+  {
+    "sequence_id": 97,
+    "requested_u": 0.4763671556135163,
+    "requested_target": [
+      0.10370880438765483,
+      -0.03987433216986316,
+      0.7155164193751207
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107027,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003533539797022083,
+    "pca_eigenvalues": [
+      1.7812616134526896e-07,
+      2.955579004970415e-06,
+      3.3522228026674283e-06
+    ],
+    "local_normal": [
+      0.2968436662881769,
+      0.6806909829736939,
+      -0.6697339945701576
+    ],
+    "projected_anchor": [
+      0.10404736456034895,
+      -0.03909798123865219,
+      0.7147525652572407
+    ],
+    "source_surface_distance_m": 0.0008045210703037303
+  },
+  {
+    "sequence_id": 98,
+    "requested_u": 0.47921630154767625,
+    "requested_target": [
+      0.10955381166857125,
+      -0.0335061271929481,
+      0.7206604460726923
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108175,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004201741940971548,
+    "pca_eigenvalues": [
+      2.181974013033773e-07,
+      2.8102440932354124e-06,
+      5.670075507912897e-06
+    ],
+    "local_normal": [
+      0.44269361985255445,
+      0.6955101112748184,
+      -0.5659399650637262
+    ],
+    "projected_anchor": [
+      0.1089575135166357,
+      -0.03444296336001054,
+      0.721422754224742
+    ],
+    "source_surface_distance_m": 0.0007004314611661232
+  },
+  {
+    "sequence_id": 99,
+    "requested_u": 0.4820654474818362,
+    "requested_target": [
+      0.11200219996857877,
+      -0.039615962745201794,
+      0.7255647056242999
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107744,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006375223949139185,
+    "pca_eigenvalues": [
+      2.025491914709921e-07,
+      5.246961508342319e-06,
+      7.631953816995764e-06
+    ],
+    "local_normal": [
+      0.5236892881178685,
+      0.7536761621336009,
+      -0.39714200500849367
+    ],
+    "projected_anchor": [
+      0.11404552763677045,
+      -0.03667527369563412,
+      0.7240151393729994
+    ],
+    "source_surface_distance_m": 0.0005654641747612834
+  },
+  {
+    "sequence_id": 100,
+    "requested_u": 0.4849145934159962,
+    "requested_target": [
+      0.1149180715246765,
+      -0.0432010054138966,
+      0.7304589365415527
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107747,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008977981822613116,
+    "pca_eigenvalues": [
+      3.415902239087347e-07,
+      4.595220230350544e-06,
+      1.1684398480639404e-05
+    ],
+    "local_normal": [
+      0.553826110046697,
+      0.5994569139075261,
+      -0.5778650778503651
+    ],
+    "projected_anchor": [
+      0.11871389914596264,
+      -0.03909243221681623,
+      0.726498350025153
+    ],
+    "source_surface_distance_m": 0.0022243316743708152
+  },
+  {
+    "sequence_id": 101,
+    "requested_u": 0.48776373935015616,
+    "requested_target": [
+      0.11763551865350193,
+      -0.03651568367847727,
+      0.7480633825483457
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108183,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008879151128887972,
+    "pca_eigenvalues": [
+      4.7267041409922507e-07,
+      1.8240118809461978e-06,
+      1.1105839089808572e-05
+    ],
+    "local_normal": [
+      0.6352633945054331,
+      -0.433693118850595,
+      -0.6390232376549996
+    ],
+    "projected_anchor": [
+      0.12186121542369355,
+      -0.03940055887738284,
+      0.7438126757473684
+    ],
+    "source_surface_distance_m": 0.0021613475869245702
+  },
+  {
+    "sequence_id": 102,
+    "requested_u": 0.49061288528431607,
+    "requested_target": [
+      0.12538385559390816,
+      -0.032222556674646005,
+      0.7432986150185267
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108894,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00388533239414915,
+    "pca_eigenvalues": [
+      1.1661707935945332e-07,
+      2.4794241743658057e-06,
+      3.927358860523747e-06
+    ],
+    "local_normal": [
+      0.35618544286714765,
+      -0.44185088899136005,
+      -0.8233466597898353
+    ],
+    "projected_anchor": [
+      0.1257180109386986,
+      -0.032637079050878946,
+      0.7425261924153751
+    ],
+    "source_surface_distance_m": 0.0006606413400201858
+  },
+  {
+    "sequence_id": 103,
+    "requested_u": 0.49346203121847604,
+    "requested_target": [
+      0.12607114633205552,
+      -0.04185916213963017,
+      0.7520377354801826
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106790,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004736385918460898,
+    "pca_eigenvalues": [
+      8.226356800949215e-08,
+      2.444168808551602e-06,
+      3.766801268949167e-06
+    ],
+    "local_normal": [
+      0.2898795810000473,
+      -0.24228532495369454,
+      -0.9258874930742501
+    ],
+    "projected_anchor": [
+      0.12695448268166898,
+      -0.04259746676174658,
+      0.7492163222731419
+    ],
+    "source_surface_distance_m": 0.000516636437037966
+  },
+  {
+    "sequence_id": 104,
+    "requested_u": 0.49631117715263595,
+    "requested_target": [
+      0.12757791628012027,
+      -0.04856382196116122,
+      0.7583735629744913
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105614,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0073995784349577985,
+    "pca_eigenvalues": [
+      2.666751935042767e-07,
+      3.2114892296211236e-06,
+      1.4909624525981283e-05
+    ],
+    "local_normal": [
+      0.4829080084475197,
+      -0.7003939680408384,
+      -0.525593136284388
+    ],
+    "projected_anchor": [
+      0.12936881154911,
+      -0.05116127783650649,
+      0.7564243671758727
+    ],
+    "source_surface_distance_m": 0.00222141829201909
+  },
+  {
+    "sequence_id": 105,
+    "requested_u": 0.4991603230867959,
+    "requested_target": [
+      0.14247413806376918,
+      -0.03054747595902412,
+      0.7413032277937859
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108908,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0036400869679961982,
+    "pca_eigenvalues": [
+      1.4243904959979048e-07,
+      2.0061616612831577e-06,
+      3.11290438364452e-06
+    ],
+    "local_normal": [
+      -0.0385650566082902,
+      -0.3247804116796247,
+      -0.9450028680369246
+    ],
+    "projected_anchor": [
+      0.1424042326673746,
+      -0.031136192932793218,
+      0.7395902574031251
+    ],
+    "source_surface_distance_m": 0.0008575307501715269
+  },
+  {
+    "sequence_id": 106,
+    "requested_u": 0.5020094690209559,
+    "requested_target": [
+      0.1454091687412823,
+      -0.03542643234900692,
+      0.7452176479732289
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107986,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004371330176907428,
+    "pca_eigenvalues": [
+      1.844776739459736e-07,
+      2.7446804028786857e-06,
+      3.6911249819423856e-06
+    ],
+    "local_normal": [
+      -0.18894377317124655,
+      -0.6523252107827198,
+      -0.7340109467556276
+    ],
+    "projected_anchor": [
+      0.1449193735590528,
+      -0.03711744200825955,
+      0.743314886006584
+    ],
+    "source_surface_distance_m": 0.000357662745568784
+  },
+  {
+    "sequence_id": 107,
+    "requested_u": 0.5048586149551159,
+    "requested_target": [
+      0.14884373198257633,
+      -0.03931861775327314,
+      0.7485521464991424
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107312,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0044753524824759135,
+    "pca_eigenvalues": [
+      2.2224464225709966e-07,
+      2.8047068397187442e-06,
+      4.65222951602257e-06
+    ],
+    "local_normal": [
+      -0.13064890073083874,
+      -0.7597893207011698,
+      -0.6369074131192684
+    ],
+    "projected_anchor": [
+      0.14861234507726223,
+      -0.0406642494319502,
+      0.7474241459230265
+    ],
+    "source_surface_distance_m": 0.001298373872834303
+  },
+  {
+    "sequence_id": 108,
+    "requested_u": 0.5077077608892758,
+    "requested_target": [
+      0.1521671089259061,
+      -0.04516468426202708,
+      0.750620320519024
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106566,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004129871333748324,
+    "pca_eigenvalues": [
+      1.3124036626039705e-07,
+      2.5177806942149616e-06,
+      3.959085817388592e-06
+    ],
+    "local_normal": [
+      -0.04799494103000263,
+      -0.6309128275542696,
+      -0.7743677999910658
+    ],
+    "projected_anchor": [
+      0.1521715611286097,
+      -0.04510615826457235,
+      0.7506921539735236
+    ],
+    "source_surface_distance_m": 0.0007329264529766415
+  },
+  {
+    "sequence_id": 109,
+    "requested_u": 0.5105569068234358,
+    "requested_target": [
+      0.1533822631784554,
+      -0.05670321121779752,
+      0.754896552398287
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105396,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0075892759259587415,
+    "pca_eigenvalues": [
+      2.6871656869054835e-07,
+      4.961374878981868e-06,
+      8.343157089685833e-06
+    ],
+    "local_normal": [
+      -0.10002308361883186,
+      -0.8010713710881789,
+      -0.5901525575360029
+    ],
+    "projected_anchor": [
+      0.15399045160653183,
+      -0.051832312217964825,
+      0.7584849636260481
+    ],
+    "source_surface_distance_m": 0.0007323546932068061
+  },
+  {
+    "sequence_id": 110,
+    "requested_u": 0.5134060527575958,
+    "requested_target": [
+      0.156222588400425,
+      -0.06407741864138265,
+      0.7562915554488387
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 102652,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008407628300933974,
+    "pca_eigenvalues": [
+      1.5639115797173425e-07,
+      2.1126175352869655e-06,
+      6.357392603298689e-06
+    ],
+    "local_normal": [
+      -0.6771374065814589,
+      0.009734110191373987,
+      -0.7357922123173894
+    ],
+    "projected_anchor": [
+      0.16120530479255812,
+      -0.0641490471025221,
+      0.7617058832970474
+    ],
+    "source_surface_distance_m": 0.00031067935454432517
+  },
+  {
+    "sequence_id": 111,
+    "requested_u": 0.5162551986917557,
+    "requested_target": [
+      0.16057498714683766,
+      -0.06815555778089954,
+      0.7559250595977212
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 102190,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0056540257714335655,
+    "pca_eigenvalues": [
+      1.7185613645692464e-07,
+      2.6320227715211765e-06,
+      3.6002670583922713e-06
+    ],
+    "local_normal": [
+      -0.6577503136227398,
+      -0.05846959951699223,
+      -0.750963268650012
+    ],
+    "projected_anchor": [
+      0.16348870966329557,
+      -0.06789654735534367,
+      0.7592516997217628
+    ],
+    "source_surface_distance_m": 0.0007706903679330262
+  },
+  {
+    "sequence_id": 112,
+    "requested_u": 0.5191043446259157,
+    "requested_target": [
+      0.16282532057111346,
+      -0.07849885510119396,
+      0.7557795285552819
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 100665,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0066919557786828746,
+    "pca_eigenvalues": [
+      2.9650486176758834e-07,
+      2.2086517096928037e-06,
+      7.055592510363933e-06
+    ],
+    "local_normal": [
+      -0.31600759901243164,
+      -0.14470145642555465,
+      -0.9376570193171497
+    ],
+    "projected_anchor": [
+      0.16441506881376633,
+      -0.0777709014482415,
+      0.7604966258761343
+    ],
+    "source_surface_distance_m": 0.0013667779689909426
+  },
+  {
+    "sequence_id": 113,
+    "requested_u": 0.5219534905600757,
+    "requested_target": [
+      0.1637916302819944,
+      -0.09172709039388312,
+      0.759502591246768
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 98549,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005723573754957504,
+    "pca_eigenvalues": [
+      3.0889701570595097e-07,
+      1.8699381486970568e-06,
+      4.3638549716474585e-06
+    ],
+    "local_normal": [
+      0.11110314161858617,
+      0.6101277641629794,
+      -0.7844744758881351
+    ],
+    "projected_anchor": [
+      0.16417682816377918,
+      -0.08961175936948707,
+      0.756782795010369
+    ],
+    "source_surface_distance_m": 0.0004046116572887584
+  },
+  {
+    "sequence_id": 114,
+    "requested_u": 0.5248026364942356,
+    "requested_target": [
+      0.16714067822927003,
+      -0.09724602033686522,
+      0.7618233813867941
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 98551,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.01043328792616197,
+    "pca_eigenvalues": [
+      1.2560494470968604e-06,
+      5.9992291612593965e-06,
+      5.4201889124432125e-05
+    ],
+    "local_normal": [
+      0.19109897817559712,
+      0.09260180220649206,
+      -0.9771929629138517
+    ],
+    "projected_anchor": [
+      0.1680917975854188,
+      -0.09678513160091434,
+      0.7569597910599755
+    ],
+    "source_surface_distance_m": 0.006752001852286494
+  },
+  {
+    "sequence_id": 115,
+    "requested_u": 0.5276517824283956,
+    "requested_target": [
+      0.1716534600752156,
+      -0.09983693173427771,
+      0.7620682928620315
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96795,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008112199988429393,
+    "pca_eigenvalues": [
+      1.6548502436175566e-07,
+      5.001737137139616e-06,
+      6.148649689733662e-06
+    ],
+    "local_normal": [
+      0.4382157839582407,
+      -0.6305346585015003,
+      -0.6406192091392992
+    ],
+    "projected_anchor": [
+      0.1743694325346039,
+      -0.10374485753218343,
+      0.7580978650667075
+    ],
+    "source_surface_distance_m": 0.0014891314763487021
+  },
+  {
+    "sequence_id": 116,
+    "requested_u": 0.5305009283625555,
+    "requested_target": [
+      0.17659642566975794,
+      -0.10066049425911747,
+      0.7623710488018237
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96797,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006067138747976694,
+    "pca_eigenvalues": [
+      1.682786046595733e-07,
+      2.0885394212100525e-06,
+      5.432485681430962e-06
+    ],
+    "local_normal": [
+      0.31509087875854574,
+      -0.41438806504740533,
+      -0.8538151261657495
+    ],
+    "projected_anchor": [
+      0.17771605300243618,
+      -0.10213295898355099,
+      0.7593371471031274
+    ],
+    "source_surface_distance_m": 0.0010533335952773693
+  },
+  {
+    "sequence_id": 117,
+    "requested_u": 0.5333500742967154,
+    "requested_target": [
+      0.18049372465890132,
+      -0.10394563850728267,
+      0.764561727459048
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96289,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00477489821086732,
+    "pca_eigenvalues": [
+      8.862390814081414e-08,
+      2.3666824287622042e-06,
+      3.300352468253585e-06
+    ],
+    "local_normal": [
+      0.10622185631502597,
+      -0.28299552716974274,
+      -0.953221091270493
+    ],
+    "projected_anchor": [
+      0.18084458284949764,
+      -0.10488039244638876,
+      0.7614131717952348
+    ],
+    "source_surface_distance_m": 0.0006002678588557222
+  },
+  {
+    "sequence_id": 118,
+    "requested_u": 0.5361992202308754,
+    "requested_target": [
+      0.18542921410075255,
+      -0.10351712354237125,
+      0.7668660705288252
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96015,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00618041306905809,
+    "pca_eigenvalues": [
+      1.1517680426629091e-07,
+      2.6294420010718894e-06,
+      4.606234064062749e-06
+    ],
+    "local_normal": [
+      0.1442631760292742,
+      -0.5026370921622924,
+      -0.8523755566794382
+    ],
+    "projected_anchor": [
+      0.1861486630644434,
+      -0.1060238043532481,
+      0.7626152233770616
+    ],
+    "source_surface_distance_m": 0.000863005650077569
+  },
+  {
+    "sequence_id": 119,
+    "requested_u": 0.5390483661650354,
+    "requested_target": [
+      0.19028276347595713,
+      -0.1037990776633007,
+      0.7686405791752581
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96019,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007145908061944956,
+    "pca_eigenvalues": [
+      2.2228862446365935e-07,
+      2.868391846078924e-06,
+      8.347623915681011e-06
+    ],
+    "local_normal": [
+      0.2550526295144957,
+      -0.6955794364799633,
+      -0.6716527404276397
+    ],
+    "projected_anchor": [
+      0.1916429116773164,
+      -0.10750847333285969,
+      0.7650587801223738
+    ],
+    "source_surface_distance_m": 0.0011427024700448982
+  },
+  {
+    "sequence_id": 120,
+    "requested_u": 0.5418975120991953,
+    "requested_target": [
+      0.19551364841356955,
+      -0.1031340771593927,
+      0.7695956292048178
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 96021,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007964640171420942,
+    "pca_eigenvalues": [
+      2.518497466062607e-07,
+      3.894164327370881e-06,
+      7.246535784622689e-06
+    ],
+    "local_normal": [
+      -0.10551879376105612,
+      -0.838436569021702,
+      -0.5346867343504311
+    ],
+    "projected_anchor": [
+      0.19488684100328568,
+      -0.10811459518640733,
+      0.7664194593934925
+    ],
+    "source_surface_distance_m": 0.0007832688902432041
+  },
+  {
+    "sequence_id": 121,
+    "requested_u": 0.5447466580333553,
+    "requested_target": [
+      0.19978881015045807,
+      -0.10646485508244374,
+      0.769915839380557
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 95454,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006339396758467733,
+    "pca_eigenvalues": [
+      1.8212591614344483e-07,
+      3.444518926633424e-06,
+      6.647498686937473e-06
+    ],
+    "local_normal": [
+      -0.35712503561788406,
+      -0.7507714955735391,
+      -0.5557012420079664
+    ],
+    "projected_anchor": [
+      0.19824983774468272,
+      -0.10970018304742753,
+      0.7675211350277084
+    ],
+    "source_surface_distance_m": 0.0007580021573135847
+  },
+  {
+    "sequence_id": 122,
+    "requested_u": 0.5475958039675153,
+    "requested_target": [
+      0.2038529713315015,
+      -0.11040657713096969,
+      0.7709260225600126
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 95169,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005830481193348101,
+    "pca_eigenvalues": [
+      2.0469163353124298e-07,
+      3.092261815903447e-06,
+      4.888397417635152e-06
+    ],
+    "local_normal": [
+      -0.5309891082163699,
+      -0.6234873457284531,
+      -0.5738589518967816
+    ],
+    "projected_anchor": [
+      0.20167083450618462,
+      -0.11296884192356264,
+      0.7685677091179949
+    ],
+    "source_surface_distance_m": 0.0010821756845334678
+  },
+  {
+    "sequence_id": 123,
+    "requested_u": 0.5504449499016753,
+    "requested_target": [
+      0.2077448838002359,
+      -0.11398134889896028,
+      0.7727161459624767
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 93981,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00690074690446506,
+    "pca_eigenvalues": [
+      2.145488380291607e-07,
+      2.7026646837769307e-06,
+      5.889996662805966e-06
+    ],
+    "local_normal": [
+      -0.4637922781583086,
+      -0.6189840335474496,
+      -0.6338418485190574
+    ],
+    "projected_anchor": [
+      0.20548175574863672,
+      -0.11700175306648089,
+      0.7696232413687282
+    ],
+    "source_surface_distance_m": 0.0008233860429986238
+  },
+  {
+    "sequence_id": 124,
+    "requested_u": 0.5532940958358352,
+    "requested_target": [
+      0.21201688376263247,
+      -0.11689986992447977,
+      0.7735580695587244
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92961,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006575941278026369,
+    "pca_eigenvalues": [
+      3.181243000825737e-07,
+      2.5057757304558037e-06,
+      5.920667536724093e-06
+    ],
+    "local_normal": [
+      -0.21913323959141429,
+      -0.6930961090418278,
+      -0.6867302286467741
+    ],
+    "projected_anchor": [
+      0.21092670998636737,
+      -0.1203479784995076,
+      0.7701416308293232
+    ],
+    "source_surface_distance_m": 0.000916780434534752
+  },
+  {
+    "sequence_id": 125,
+    "requested_u": 0.5561432417699952,
+    "requested_target": [
+      0.21744016175570727,
+      -0.11659299355011182,
+      0.7740498539988946
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92965,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007784011837322915,
+    "pca_eigenvalues": [
+      1.2483125663504306e-07,
+      3.1453773586297104e-06,
+      5.216095557302013e-06
+    ],
+    "local_normal": [
+      -0.14405074512788482,
+      -0.6688589234429182,
+      -0.7292990630453887
+    ],
+    "projected_anchor": [
+      0.21651322870506087,
+      -0.12089694520137605,
+      0.7693569841026503
+    ],
+    "source_surface_distance_m": 0.0008168074264493446
+  },
+  {
+    "sequence_id": 126,
+    "requested_u": 0.5589923877041552,
+    "requested_target": [
+      0.22292669522576034,
+      -0.11490110012236983,
+      0.774793752655387
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92971,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.009515951361109712,
+    "pca_eigenvalues": [
+      1.773820520383289e-07,
+      3.2626824629382976e-06,
+      7.085755993591803e-06
+    ],
+    "local_normal": [
+      0.029361046191797757,
+      -0.6841883812623786,
+      -0.7287140645768333
+    ],
+    "projected_anchor": [
+      0.22317539293200783,
+      -0.12069640046519894,
+      0.7686213051483501
+    ],
+    "source_surface_distance_m": 0.000900328717803216
+  },
+  {
+    "sequence_id": 127,
+    "requested_u": 0.5618415336383151,
+    "requested_target": [
+      0.22789009937218258,
+      -0.11599905232765845,
+      0.7755714267492294
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 92977,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.009106674077872665,
+    "pca_eigenvalues": [
+      1.0523671378231333e-07,
+      3.2223505708803776e-06,
+      4.43376645280484e-06
+    ],
+    "local_normal": [
+      0.1732971177275925,
+      -0.566922263092002,
+      -0.8053367349115226
+    ],
+    "projected_anchor": [
+      0.22930642256034464,
+      -0.12063239624953878,
+      0.7689895683381341
+    ],
+    "source_surface_distance_m": 0.0004318159471022001
+  },
+  {
+    "sequence_id": 128,
+    "requested_u": 0.5646906795724751,
+    "requested_target": [
+      0.2317465403280805,
+      -0.11972527896257712,
+      0.7775125407403515
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 91854,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008249326575212643,
+    "pca_eigenvalues": [
+      1.7731171736145278e-07,
+      2.5085816153197756e-06,
+      6.607965813397158e-06
+    ],
+    "local_normal": [
+      0.10208078300694251,
+      -0.5646006274333332,
+      -0.819027255494331
+    ],
+    "projected_anchor": [
+      0.23247549391612676,
+      -0.12375706282098178,
+      0.7716639094993502
+    ],
+    "source_surface_distance_m": 0.0009487991174170579
+  },
+  {
+    "sequence_id": 129,
+    "requested_u": 0.5675398255066351,
+    "requested_target": [
+      0.23592684824803942,
+      -0.12162232572997086,
+      0.7797927627045858
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 91859,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.008490124693582112,
+    "pca_eigenvalues": [
+      1.0344154638519033e-07,
+      3.1283381413631556e-06,
+      6.127361393383187e-06
+    ],
+    "local_normal": [
+      0.13156291439670226,
+      -0.6250825328205873,
+      -0.7693913352241794
+    ],
+    "projected_anchor": [
+      0.23689699680704662,
+      -0.12623170156553434,
+      0.7741192497803457
+    ],
+    "source_surface_distance_m": 0.0011639888467458279
+  },
+  {
+    "sequence_id": 130,
+    "requested_u": 0.570388971440795,
+    "requested_target": [
+      0.24196825211956388,
+      -0.12032664225747187,
+      0.7785059564879963
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 91862,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00813574912159116,
+    "pca_eigenvalues": [
+      2.96309506454147e-07,
+      2.9750754521362444e-06,
+      6.946073717872531e-06
+    ],
+    "local_normal": [
+      0.19954592009941916,
+      -0.6793961945502296,
+      -0.7061177214900805
+    ],
+    "projected_anchor": [
+      0.24324839029022785,
+      -0.1246851428031822,
+      0.7739760305049876
+    ],
+    "source_surface_distance_m": 0.001191544520478322
+  },
+  {
+    "sequence_id": 131,
+    "requested_u": 0.5732381173749549,
+    "requested_target": [
+      0.2463440500665456,
+      -0.12247138956736307,
+      0.7796718731522561
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 91865,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007038907635631557,
+    "pca_eigenvalues": [
+      1.4992412808158058e-07,
+      1.7680068678557348e-06,
+      6.4573414242399826e-06
+    ],
+    "local_normal": [
+      0.1721733428207097,
+      -0.4255607359890508,
+      -0.8883999099540701
+    ],
+    "projected_anchor": [
+      0.24716315855927884,
+      -0.12449597947955071,
+      0.7754453424985265
+    ],
+    "source_surface_distance_m": 0.0009198920848034178
+  },
+  {
+    "sequence_id": 132,
+    "requested_u": 0.5760872633091149,
+    "requested_target": [
+      0.26494701492104367,
+      -0.08869228323814991,
+      0.7651094543696636
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": 98620,
+    "neighbor_count": 19,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 133,
+    "requested_u": 0.5789364092432748,
+    "requested_target": [
+      0.276588592655547,
+      -0.07299623347803677,
+      0.756244395998005
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": 102033,
+    "neighbor_count": 3,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 134,
+    "requested_u": 0.5817855551774348,
+    "requested_target": [
+      0.28261553067991985,
+      -0.07322330652313036,
+      0.7537332058175287
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 102033,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.013036448305725751,
+    "pca_eigenvalues": [
+      1.6160770054046725e-06,
+      3.750379174070678e-06,
+      3.742187785037371e-05
+    ],
+    "local_normal": [
+      -0.7949290635757965,
+      0.5353750369213833,
+      -0.2854143544461893
+    ],
+    "projected_anchor": [
+      0.28468699250352725,
+      -0.07461841081747636,
+      0.7544769513493442
+    ],
+    "source_surface_distance_m": 0.007638721636924547
+  },
+  {
+    "sequence_id": 135,
+    "requested_u": 0.5846347011115948,
+    "requested_target": [
+      0.2856277397466362,
+      -0.0808403861879824,
+      0.754596330922678
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 98981,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.011659336892938963,
+    "pca_eigenvalues": [
+      3.7554874061782925e-07,
+      3.1222752729209533e-06,
+      7.38168602514656e-06
+    ],
+    "local_normal": [
+      0.2595184231063792,
+      -0.6285296992569152,
+      -0.733212523911308
+    ],
+    "projected_anchor": [
+      0.2879098717021766,
+      -0.08636749942530521,
+      0.7481486663946975
+    ],
+    "source_surface_distance_m": 0.0021323518325778094
+  },
+  {
+    "sequence_id": 136,
+    "requested_u": 0.5874838470457547,
+    "requested_target": [
+      0.284412469761641,
+      -0.09688824487296732,
+      0.7620690363969763
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 137,
+    "requested_u": 0.5903329929799147,
+    "requested_target": [
+      0.2824784171742362,
+      -0.11422775668419294,
+      0.7723864811497766
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 94653,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.006533330817403462,
+    "pca_eigenvalues": [
+      6.813251598452883e-07,
+      2.330182364469382e-06,
+      8.92151179891676e-06
+    ],
+    "local_normal": [
+      -0.33337289819730304,
+      -0.8550605419724269,
+      -0.39715737473871787
+    ],
+    "projected_anchor": [
+      0.28248000319631594,
+      -0.11422368873233968,
+      0.7723883706266023
+    ],
+    "source_surface_distance_m": 0.002713503861348142
+  },
+  {
+    "sequence_id": 138,
+    "requested_u": 0.5931821389140747,
+    "requested_target": [
+      0.28786583003260546,
+      -0.11152145300905901,
+      0.7760548578236168
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 95520,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.007290637470431516,
+    "pca_eigenvalues": [
+      1.3311119872467848e-06,
+      2.8380890041404807e-06,
+      8.78836621110559e-06
+    ],
+    "local_normal": [
+      0.5723495974044436,
+      0.6782459188109595,
+      -0.46086702200010854
+    ],
+    "projected_anchor": [
+      0.28546413550743327,
+      -0.11436750988988108,
+      0.7779887489429425
+    ],
+    "source_surface_distance_m": 0.0019021087797136769
+  },
+  {
+    "sequence_id": 139,
+    "requested_u": 0.5960312848482345,
+    "requested_target": [
+      0.2957206141048421,
+      -0.11010171451440935,
+      0.7672604098916054
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 93727,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.011393984035530377,
+    "pca_eigenvalues": [
+      7.901122618740226e-07,
+      5.634662988076551e-06,
+      2.3385976172442732e-05
+    ],
+    "local_normal": [
+      0.06514321398885069,
+      0.9978462896394581,
+      -0.007690508693807949
+    ],
+    "projected_anchor": [
+      0.29524939756802887,
+      -0.11731968311135856,
+      0.7673160395520279
+    ],
+    "source_surface_distance_m": 0.0068968807759729744
+  },
+  {
+    "sequence_id": 140,
+    "requested_u": 0.5988804307823946,
+    "requested_target": [
+      0.300636744924954,
+      -0.11586683801609234,
+      0.7629884751985699
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 93384,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005360883889025913,
+    "pca_eigenvalues": [
+      1.0613564620892685e-07,
+      2.416082748216534e-06,
+      4.840660588692698e-06
+    ],
+    "local_normal": [
+      0.11539704737763956,
+      -0.4834655789479701,
+      -0.8677237783010368
+    ],
+    "projected_anchor": [
+      0.30097990487057147,
+      -0.11730453530168022,
+      0.7604080968324035
+    ],
+    "source_surface_distance_m": 0.0007361210435143646
+  },
+  {
+    "sequence_id": 141,
+    "requested_u": 0.6017295767165545,
+    "requested_target": [
+      0.30929063497720893,
+      -0.11005720014207752,
+      0.7558498495333904
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 93730,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.012451384293527093,
+    "pca_eigenvalues": [
+      4.1110898527690746e-07,
+      9.527857355131891e-07,
+      1.552409842800243e-05
+    ],
+    "local_normal": [
+      0.24738525868228436,
+      -0.42761410348561185,
+      -0.8694519608850714
+    ],
+    "projected_anchor": [
+      0.30860989925959786,
+      -0.10888052455862757,
+      0.7582423405317388
+    ],
+    "source_surface_distance_m": 0.00965148190674173
+  },
+  {
+    "sequence_id": 142,
+    "requested_u": 0.6045787226507146,
+    "requested_target": [
+      0.32485355253088966,
+      -0.08851634365608534,
+      0.7399794536910645
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 143,
+    "requested_u": 0.6074278685848744,
+    "requested_target": [
+      0.33127343180504715,
+      -0.08577528162365497,
+      0.7371969694892565
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 144,
+    "requested_u": 0.6102770145190345,
+    "requested_target": [
+      0.34896869089913696,
+      -0.06698643821546782,
+      0.7112328759203218
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 145,
+    "requested_u": 0.6131261604531943,
+    "requested_target": [
+      0.3644057372037102,
+      -0.03249295396742478,
+      0.7068431404680987
+    ],
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "nearest_source_point_index": null,
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null,
+    "pca_eigenvalues": null,
+    "local_normal": null,
+    "projected_anchor": null,
+    "source_surface_distance_m": null
+  },
+  {
+    "sequence_id": 146,
+    "requested_u": 0.6159753063873543,
+    "requested_target": [
+      0.3657283164671998,
+      -0.021779776411826043,
+      0.7344029910528838
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 110904,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.004102398008299977,
+    "pca_eigenvalues": [
+      3.468891891684373e-07,
+      2.9295135100077425e-06,
+      5.28387238234664e-06
+    ],
+    "local_normal": [
+      -0.2571478723239779,
+      -0.8566393712587785,
+      -0.44726274086784373
+    ],
+    "projected_anchor": [
+      0.3655882848575058,
+      -0.022246265164000068,
+      0.7341594311081957
+    ],
+    "source_surface_distance_m": 0.0012131375928998045
+  },
+  {
+    "sequence_id": 147,
+    "requested_u": 0.6188244523215143,
+    "requested_target": [
+      0.366644384283008,
+      -0.028052536333262018,
+      0.7443636366815278
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 109958,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003913131844700543,
+    "pca_eigenvalues": [
+      3.132475612958e-07,
+      3.812936163994079e-06,
+      4.22648925629069e-06
+    ],
+    "local_normal": [
+      -0.5529894350760733,
+      -0.7525947347736187,
+      -0.35749664318042473
+    ],
+    "projected_anchor": [
+      0.3669190974197941,
+      -0.027678663620323257,
+      0.7445412332466866
+    ],
+    "source_surface_distance_m": 0.0006470006857706513
+  },
+  {
+    "sequence_id": 148,
+    "requested_u": 0.6216735982556743,
+    "requested_target": [
+      0.3698039457753853,
+      -0.0326422770611114,
+      0.747722221745385
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 108750,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003179215164625679,
+    "pca_eigenvalues": [
+      2.7174291352204224e-07,
+      2.2969434249642635e-06,
+      2.507097412961924e-06
+    ],
+    "local_normal": [
+      -0.4411669786005851,
+      -0.4217599859649916,
+      -0.792142797247593
+    ],
+    "projected_anchor": [
+      0.36936687729875417,
+      -0.03306011883874037,
+      0.7469374380637833
+    ],
+    "source_surface_distance_m": 0.0006689979390358341
+  },
+  {
+    "sequence_id": 149,
+    "requested_u": 0.6245227441898342,
+    "requested_target": [
+      0.371116138897933,
+      -0.03961691221633515,
+      0.7574805199325859
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 107842,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0051277804754779905,
+    "pca_eigenvalues": [
+      1.5990328641852708e-07,
+      2.655852073303433e-06,
+      4.532691207764163e-06
+    ],
+    "local_normal": [
+      -0.29664743531472093,
+      -0.670398250625669,
+      -0.6801224041885706
+    ],
+    "projected_anchor": [
+      0.3716777158883382,
+      -0.03834779545636764,
+      0.7587680452821517
+    ],
+    "source_surface_distance_m": 0.0006227153887366662
+  },
+  {
+    "sequence_id": 150,
+    "requested_u": 0.6273718901239942,
+    "requested_target": [
+      0.37308413457203576,
+      -0.04612086995967202,
+      0.7634685327123095
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106651,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003438781408517355,
+    "pca_eigenvalues": [
+      1.2694493568434175e-07,
+      2.050098552926477e-06,
+      2.9833236299883027e-06
+    ],
+    "local_normal": [
+      -0.15395496912028903,
+      -0.34004789474932295,
+      -0.9277204841759852
+    ],
+    "projected_anchor": [
+      0.37307686175063354,
+      -0.0461369337971749,
+      0.7634247072649651
+    ],
+    "source_surface_distance_m": 0.0007822725014746905
+  },
+  {
+    "sequence_id": 151,
+    "requested_u": 0.6302210360581542,
+    "requested_target": [
+      0.3777830798725982,
+      -0.047663218660892306,
+      0.7634405614612819
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 106176,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.0031301431955264676,
+    "pca_eigenvalues": [
+      1.56107473134843e-07,
+      2.0784008356590798e-06,
+      2.9898866640276377e-06
+    ],
+    "local_normal": [
+      -0.29362701095973226,
+      -0.43147323091006423,
+      -0.8530029480856932
+    ],
+    "projected_anchor": [
+      0.3776394525696706,
+      -0.04787427327824009,
+      0.7630233160844945
+    ],
+    "source_surface_distance_m": 0.00019311975414061555
+  },
+  {
+    "sequence_id": 152,
+    "requested_u": 0.6330701819923141,
+    "requested_target": [
+      0.3811447675092311,
+      -0.052338757092439674,
+      0.765575946131839
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 105253,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.003736747908105788,
+    "pca_eigenvalues": [
+      2.4651188930111447e-07,
+      2.6706379059947323e-06,
+      2.994933231341386e-06
+    ],
+    "local_normal": [
+      -0.6440338195252199,
+      -0.5007343315000359,
+      -0.5783472733271668
+    ],
+    "projected_anchor": [
+      0.38012894169614886,
+      -0.053128558565612626,
+      0.764663726817635
+    ],
+    "source_surface_distance_m": 0.0008701570496202728
+  },
+  {
+    "sequence_id": 153,
+    "requested_u": 0.635919327926474,
+    "requested_target": [
+      0.382535335563478,
+      -0.06201303093915894,
+      0.769452385249592
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 103540,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.00463786645282981,
+    "pca_eigenvalues": [
+      4.46558659334899e-07,
+      3.615942450906183e-06,
+      5.539083585442198e-06
+    ],
+    "local_normal": [
+      -0.9385425604782762,
+      -0.3235500028501267,
+      -0.12022170281011824
+    ],
+    "projected_anchor": [
+      0.3821795223984188,
+      -0.06213569277189496,
+      0.7694068077058694
+    ],
+    "source_surface_distance_m": 0.0017082316073196997
+  },
+  {
+    "sequence_id": 154,
+    "requested_u": 0.6387684738606341,
+    "requested_target": [
+      0.38482335458199185,
+      -0.06624255313848455,
+      0.7733333458503088
+    ],
+    "association_status": "ACCEPTED",
+    "nearest_source_point_index": 103282,
+    "neighbor_count": 20,
+    "kth_neighbor_distance_m": 0.005534565795073751,
+    "pca_eigenvalues": [
+      1.1946486236005032e-06,
+      1.8482154339904199e-06,
+      6.351303658818516e-06
+    ],
+    "local_normal": [
+      0.7863142953336251,
+      -0.3529611560882073,
+      -0.5070781510249293
+    ],
+    "projected_anchor": [
+      0.3826975058210025,
+      -0.06528830107820739,
+      0.774704262626817
+    ],
+    "source_surface_distance_m": 0.0023954776708643103
+  },
+  {
+    "sequence_id": 155,
+    "requested_u": 0.6416176197947939,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 156,
+    "requested_u": 0.644466765728954,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 157,
+    "requested_u": 0.6473159116631139,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 158,
+    "requested_u": 0.6501650575972739,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 159,
+    "requested_u": 0.6530142035314338,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 160,
+    "requested_u": 0.6558633494655939,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 161,
+    "requested_u": 0.6587124953997537,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 162,
+    "requested_u": 0.6615616413339137,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 163,
+    "requested_u": 0.6644107872680737,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 164,
+    "requested_u": 0.6672599332022336,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 165,
+    "requested_u": 0.6701090791363936,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 166,
+    "requested_u": 0.6729582250705536,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 167,
+    "requested_u": 0.6758073710047136,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 168,
+    "requested_u": 0.6786565169388735,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 169,
+    "requested_u": 0.6815056628730334,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 170,
+    "requested_u": 0.6843548088071935,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 171,
+    "requested_u": 0.6872039547413533,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 172,
+    "requested_u": 0.6900531006755134,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 173,
+    "requested_u": 0.6929022466096733,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 174,
+    "requested_u": 0.6957513925438333,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 175,
+    "requested_u": 0.6986005384779932,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 176,
+    "requested_u": 0.7014496844121533,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 177,
+    "requested_u": 0.7042988303463131,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 178,
+    "requested_u": 0.7071479762804731,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 179,
+    "requested_u": 0.7099971222146331,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 180,
+    "requested_u": 0.712846268148793,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 181,
+    "requested_u": 0.715695414082953,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 182,
+    "requested_u": 0.718544560017113,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 183,
+    "requested_u": 0.721393705951273,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 184,
+    "requested_u": 0.7242428518854329,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 185,
+    "requested_u": 0.7270919978195928,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 186,
+    "requested_u": 0.7299411437537529,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 187,
+    "requested_u": 0.7327902896879127,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 188,
+    "requested_u": 0.7356394356220728,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 189,
+    "requested_u": 0.7384885815562326,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 190,
+    "requested_u": 0.7413377274903927,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 191,
+    "requested_u": 0.7441868734245526,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 192,
+    "requested_u": 0.7470360193587127,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 193,
+    "requested_u": 0.7498851652928725,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 194,
+    "requested_u": 0.7527343112270325,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 195,
+    "requested_u": 0.7555834571611925,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 196,
+    "requested_u": 0.7584326030953524,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 197,
+    "requested_u": 0.7612817490295124,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 198,
+    "requested_u": 0.7641308949636724,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 199,
+    "requested_u": 0.7669800408978322,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 200,
+    "requested_u": 0.7698291868319923,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 201,
+    "requested_u": 0.7726783327661522,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 202,
+    "requested_u": 0.7755274787003122,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 203,
+    "requested_u": 0.7783766246344721,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 204,
+    "requested_u": 0.7812257705686322,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 205,
+    "requested_u": 0.784074916502792,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 206,
+    "requested_u": 0.7869240624369519,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 207,
+    "requested_u": 0.789773208371112,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 208,
+    "requested_u": 0.792622354305272,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 209,
+    "requested_u": 0.7954715002394319,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  },
+  {
+    "sequence_id": 210,
+    "requested_u": 0.7983206461735918,
+    "requested_target": null,
+    "association_status": "REJECTED_UNSUPPORTED_GEOMETRY",
+    "neighbor_count": 0,
+    "kth_neighbor_distance_m": null
+  }
+]

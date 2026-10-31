@@ -1,0 +1,17 @@
+{
+  "verdict": "FAIL_GEOMETRY_FEASIBILITY",
+  "shoe_points": 9717,
+  "dominant_voxels": 1033,
+  "largest_component_voxels": 2413,
+  "component_identity": "EVALUATION_ASSOCIATED",
+  "vote_purity": 0.9583333333333334,
+  "coverage_within_0_025m": 0.7142857142857143,
+  "largest_gap_m": 0.12502648194091365,
+  "reference_median_distance_m": 0.002556296207026429,
+  "normal_valid_ratio": 0.9805269186712485,
+  "normal_median_angle_deg": 3.726651981079398,
+  "topology_stable": false,
+  "position_feasible_nominal": true,
+  "normal_feasible": true,
+  "color_used_for_extraction": false
+}

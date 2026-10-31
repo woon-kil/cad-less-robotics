@@ -1,0 +1,13 @@
+{
+  "quaternion_order": [
+    "x",
+    "y",
+    "z",
+    "w"
+  ],
+  "step_median_deg": 30.146139257375644,
+  "step_p95_deg": 124.610970205624,
+  "step_max_deg": 158.99012779208215,
+  "unexplained_jumps": 83,
+  "invalid_pose_count": 0
+}

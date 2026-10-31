@@ -1,0 +1,29 @@
+{
+  "gate": "P-008-R5-PRE",
+  "verdict": "BLOCKED",
+  "block_reason": "T_BASE_TARGET_NOT_DEFINED",
+  "target": "EXISTING_CHECKERBOARD",
+  "squares": [7, 10],
+  "inner_corners": [6, 9],
+  "square_size_m": 0.02,
+  "source": "evidence/P-006/camera-target/checkerboard.yaml",
+  "inherited_nulls_not_filled": ["T_base_target", "board_pose_in_base"],
+  "p006_evidence_modified": false,
+  "aruco_dict_4x4_50_id0_50mm": "FORBIDDEN",
+  "frames": {
+    "B": "base_link",
+    "C": "camera_color_optical_frame",
+    "T": "checkerboard_target_frame"
+  },
+  "camera_depth_optical_frame_copied": false,
+  "table_plane_is_base_z0": false,
+  "visual_alignment_is_yaw0": false,
+  "solve_pnp": "NOT_RUN",
+  "depth_used_for_pnp": false,
+  "t_base_target_computable": false,
+  "camera_acquisition_authorized": false,
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "robot_motion": false,
+  "moveit_planning": false
+}

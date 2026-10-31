@@ -1,6 +1,8 @@
 # CAD-less 3D Vision-Guided Robotics
 
-CAD 없이 뎁스 카메라 포인트 클라우드에서 3D 작업 경로를 만들고, DOFBOT Pro가 MoveIt 2 Cartesian 궤적으로 따라가게 하는 ROS 2 Humble PoC다. 이 저장소 루트가 colcon 워크스페이스다.
+CAD 없이 측정한 표면에서 로봇에 묶이지 않은 6D ProcessPath를 만드는 ROS 2 Humble PoC다. 이 저장소 루트가 colcon 워크스페이스다.
+
+2026-10-31 ADR-008은 공정 정의와 측정 표면 경로 생성을 나눈다. Gemini 335L 한 장에서 공정 경계를 자동으로 찾는 일은 핵심의 필수 책임이 아니다. R1 조사는 그 자동 경계를 현재 촬영으로 입증하지 못했고, 기준은 결과를 본 뒤에 낮추지 않았다. 산업에서 점군에서 궤적까지 가는 사례가 있으므로, 그 방식을 불가능하다고 말하지 않는다. 결정 기록은 `evidence/ADR-008/README.md`다. P-009 평가는 `FAIL_SURFACE_ASSOCIATION`이고 P-010은 열지 않았다.
 
 하드웨어 드라이버, URDF, MoveIt 설정 패키지는 Yahboom DOFBOT Pro 워크스페이스를 그대로 쓴다. 여기서 만드는 것은 점군에서 웨이포인트를 뽑는 노드와, 그 포즈를 Cartesian 궤적으로 실행하는 노드다.
 

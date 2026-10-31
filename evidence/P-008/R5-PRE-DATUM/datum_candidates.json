@@ -1,0 +1,25 @@
+{
+  "base_xy_origin": "UNRESOLVED",
+  "base_xy_physical_datum": "J1_ROTATION_CENTER_CANDIDATE",
+  "base_z_zero": "UNRESOLVED",
+  "base_z_physical_datum": null,
+  "base_positive_x": "UNRESOLVED",
+  "base_positive_y": "UNRESOLVED",
+  "base_positive_z": "RESOLVED",
+  "base_positive_z_physical_direction": "J1 axis, from the low plate toward the arm",
+  "j1_center_match": "UNVERIFIED",
+  "plate_edge_to_base_x": "UNVERIFIED",
+  "servo_zero_physical_alignment": "UNVERIFIED",
+  "checkerboard_fixture_datum_candidates": [],
+  "physical_datum_confidence": "LOW",
+  "mesh_bbox_m": {
+    "x_min": -0.0925,
+    "x_max": 0.092453,
+    "y_min": -0.221496,
+    "y_max": 0.0785,
+    "z_min": -0.015,
+    "z_max": 0.0978
+  },
+  "arm1_joint_origin_xyz_m": [0, 0, 0.0895],
+  "arm1_joint_axis_xyz": [0, 0, 1]
+}

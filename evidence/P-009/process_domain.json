@@ -1,0 +1,29 @@
+{
+  "method": "support_plane_pca",
+  "note": "\uc9c0\uc9c0\uba74 \uc704 \uc810\uc758 \ud3c9\uba74 PCA\ub2e4. \uc131\ubd84 \uc120\ud0dd, \uc0c9 \ubd84\ub958, \ub458\ub808, \ub2e8\uba74 \ud2b9\uc9d5 \uaddc\uce59\uc740 \uc4f0\uc9c0 \uc54a\ub294\ub2e4.",
+  "support_normal": [
+    0.00409461811560246,
+    -0.6878654814040137,
+    -0.7258266415579632
+  ],
+  "support_d": 0.5274127220403608,
+  "height_band_m": [
+    0.004,
+    0.1
+  ],
+  "longitudinal_axis": [
+    0.9356752996263726,
+    -0.2534684197057209,
+    0.24549031321211542
+  ],
+  "lateral_axis": [
+    0.3528384442936815,
+    0.6801432494002342,
+    -0.6425808840322793
+  ],
+  "domain_length_m": 1.7549118632542764,
+  "domain_start_m": -0.5251035056825568,
+  "domain_end_m": 0.5278436122700091,
+  "elevated_points": 129940,
+  "station_count": 211
+}

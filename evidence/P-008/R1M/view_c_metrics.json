@@ -1,0 +1,41 @@
+{
+  "view": "view_c",
+  "sha256": "b8949d2c3a7c40c49e1ee304479a8acc9ea0fe63858ba8cbbe942fb4384d7e1a",
+  "finite_xyz": 753697,
+  "contract_passed": true,
+  "plane_normal": [
+    0.0039087053497406255,
+    -0.6871339280052615,
+    -0.7265202591852129
+  ],
+  "plane_d": 0.5279527203332137,
+  "component_count": 40,
+  "shoe_found": true,
+  "shoe_ambiguous": false,
+  "shoe_voxels": 808,
+  "shoe_contact_points": 310,
+  "shoe_u": 578.7365978152728,
+  "shoe_v": 444.02982089991116,
+  "elevated_points": 11125,
+  "top_points": 4892,
+  "side_points": 3253,
+  "side_voxels": 248,
+  "largest_side_voxels": 153,
+  "side_valid_ratio": 0.9880478087649402,
+  "side_neighbor": {
+    "count": 248,
+    "median_deg": 4.841760448137991,
+    "p95_deg": 9.698975528855918,
+    "unstable_ratio": 0.0
+  },
+  "elevated_valid_ratio": 0.9959839357429718,
+  "elevated_voxels": 747,
+  "largest_elevated_voxels": 747,
+  "elevated_neighbor": {
+    "count": 744,
+    "median_deg": 4.3920621911812505,
+    "p95_deg": 10.219006941238387,
+    "unstable_ratio": 0.0
+  },
+  "mean_support_angle_deg": 40.824661537318626
+}

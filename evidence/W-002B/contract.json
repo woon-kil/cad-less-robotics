@@ -1,0 +1,144 @@
+{
+  "id": "W-002B",
+  "title": "Workboard Fiducial Layout and Registration Contract",
+  "status": "PASS_REGISTRATION_CONTRACT",
+  "closed": true,
+  "date": "2026-10-31",
+  "design_only": true,
+  "registration_executed": false,
+  "markers_installed": false,
+  "workpiece_instance_mechanism_selected": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "inputs_immutable": {
+    "W-001": "BLOCKED_WORKBOARD_OBSERVABILITY",
+    "W-002A": "PASS_FIDUCIAL_OBSERVABILITY",
+    "ADR-009": "ACCEPTED",
+    "P-009": "FAIL_SURFACE_ASSOCIATION"
+  },
+  "survey_points_are_install_coordinates": false,
+  "continuous_visibility_claim": false,
+  "workboard": {
+    "frame_id": "workboard",
+    "handedness": "RIGHT_HANDED",
+    "x_length_mm": 801,
+    "y_length_mm": 400,
+    "depends_on_marker_id": false,
+    "origin_mm": [0, 0, 0],
+    "origin_definition": "CAMERA_STAND_SHORT_EDGE_MEETS_NEAR_LONG_EDGE",
+    "plus_x": "ALONG_NEAR_LONG_EDGE_TOWARD_ROBOT",
+    "plus_y": "ALONG_CAMERA_STAND_SHORT_EDGE_TOWARD_FAR_LONG_EDGE",
+    "plus_z": "FREE_SPACE_ABOVE_TOP_SURFACE",
+    "corners_mm": {
+      "origin": [0, 0, 0],
+      "plus_x": [801, 0, 0],
+      "plus_y": [0, 400, 0],
+      "diagonal": [801, 400, 0]
+    }
+  },
+  "fiducial": {
+    "dictionary": "DICT_4X4_50",
+    "ids": [0, 1, 2, 3],
+    "black_square_size_mm": 60,
+    "quiet_zone_requirement_mm": 10,
+    "center_z_mm": 0,
+    "thickness_modeled": false,
+    "thickness_measured_mm": null,
+    "thickness_declared_negligible": false,
+    "identity_from_rotation": false
+  },
+  "marker_local_frame": {
+    "source": "scripts/p007f_07c_mount_geometry.py object_points",
+    "corner_order": ["TOP_LEFT", "TOP_RIGHT", "BOTTOM_RIGHT", "BOTTOM_LEFT"],
+    "object_points_at_half_s": [
+      [-1, 1, 0],
+      [1, 1, 0],
+      [1, -1, 0],
+      [-1, -1, 0]
+    ],
+    "plus_x": "CORNER0_TO_CORNER1",
+    "plus_y": "TOWARD_TOP_EDGE",
+    "plus_z": "OUT_OF_PRINTED_FACE"
+  },
+  "orientation": {
+    "same_for_all_markers": true,
+    "rotation_about_workboard_z_deg": 0,
+    "marker_plus_x": "workboard +X",
+    "marker_plus_y": "workboard +Y",
+    "marker_plus_z": "workboard +Z",
+    "printed_top_edge": "PARALLEL_TO_WORKBOARD_PLUS_X"
+  },
+  "layout_status": "REQUIRES_VISIBILITY_VALIDATION",
+  "layout_selection": "A_OBSERVED_CORNERS_AS_CANDIDATES_NOT_INSTALL_FREEZE",
+  "proposed_markers_mm": [
+    {"marker_id": 0, "center_x_mm": 150, "center_y_mm": 70, "center_z_mm": 0, "rotation_about_workboard_z_deg": 0, "black_square_size_mm": 60, "quiet_zone_requirement_mm": 10},
+    {"marker_id": 1, "center_x_mm": 500, "center_y_mm": 70, "center_z_mm": 0, "rotation_about_workboard_z_deg": 0, "black_square_size_mm": 60, "quiet_zone_requirement_mm": 10},
+    {"marker_id": 2, "center_x_mm": 500, "center_y_mm": 330, "center_z_mm": 0, "rotation_about_workboard_z_deg": 0, "black_square_size_mm": 60, "quiet_zone_requirement_mm": 10},
+    {"marker_id": 3, "center_x_mm": 150, "center_y_mm": 330, "center_z_mm": 0, "rotation_about_workboard_z_deg": 0, "black_square_size_mm": 60, "quiet_zone_requirement_mm": 10}
+  ],
+  "unused_survey_points_mm": [[300, 70], [300, 330]],
+  "registration_inputs": [
+    "rgb_image",
+    "camera_intrinsics",
+    "detected_aruco_corners",
+    "known_marker_geometry",
+    "known_marker_poses_in_workboard"
+  ],
+  "center_depth_is_registration_method": false,
+  "transform": {
+    "name": "T_camera_workboard",
+    "camera_frame": "camera_color_optical_frame",
+    "equation": "p_camera = T_camera_workboard * p_workboard",
+    "inverse_is_independent_calibration": false
+  },
+  "multi_marker_method": "B_SINGLE_PNP",
+  "methods_compared": {
+    "A_PER_MARKER_THEN_AGGREGATE": "REJECTED",
+    "B_SINGLE_PNP": "SELECTED",
+    "C_GRIDBOARD": "REJECTED"
+  },
+  "acceptance": {
+    "frozen_before_registration_execution": true,
+    "nominal_detected_markers": 4,
+    "pass_minimum_detected_markers": 3,
+    "mean_reprojection_error_px_max": 1.0,
+    "p95_reprojection_error_px_max": 2.0,
+    "max_reprojection_error_px_max": 3.0,
+    "plane_z_mean_abs_mm_max": 2.0,
+    "plane_z_p95_abs_mm_max": 4.0,
+    "plane_normal_angle_error_deg_max": 1.0,
+    "repeat_frames_min": 10,
+    "translation_repeatability_mm_max": 2.0,
+    "rotation_repeatability_deg_max": 0.4,
+    "pixel_scale": {
+      "fx_px": 610.5073852539062,
+      "source": "evidence/P-008/R1I/capture_dev/color_camera_info.json",
+      "z_far_m": 0.795,
+      "z_far_source": "W-002A (500,330) center depth",
+      "mm_per_px_at_z_far": 1.302,
+      "baseline_x_mm": 350,
+      "rounding": "smallest_1mm_or_0.1deg_at_or_above_the_pixel_budget"
+    }
+  },
+  "known_distance": {
+    "pose_recovered_model_distance": "NOT_INDEPENDENT",
+    "independent_checks": ["WORKBOARD_PLANE_FROM_DEPTH", "SEPARATE_RULER_OF_INSTALLED_CENTERS"]
+  },
+  "plane_roi": "BARE_WOOD_MARKED_BEFORE_RESIDUALS",
+  "failure_states": [
+    "INSUFFICIENT_MARKERS",
+    "MARKER_ID_MISMATCH",
+    "FIDUCIAL_LAYOUT_ERROR",
+    "PNP_FAILURE",
+    "HIGH_REPROJECTION_ERROR",
+    "POOR_REPEATABILITY",
+    "WORKBOARD_PLANE_INCONSISTENT",
+    "MARKER_PHYSICAL_MEASUREMENT_ERROR",
+    "FRAME_CONVENTION_ERROR"
+  ],
+  "automatic_threshold_relaxation": false,
+  "conflict_with_adr009": false,
+  "conflict_with_frozen_p009_contract": false,
+  "historical_evidence_modified": false
+}

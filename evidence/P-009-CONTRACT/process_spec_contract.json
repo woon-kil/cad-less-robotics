@@ -1,0 +1,35 @@
+{
+  "id": "P009_PROCESS_SPEC_CONTRACT",
+  "status": "FROZEN",
+  "responsibility": "manufacturing intent",
+  "answers": "Where and how should a process be requested?",
+  "does_not_answer": "What are the final 3D trajectory poses?",
+  "allowed": [
+    "process_type",
+    "normalized longitudinal range",
+    "side",
+    "surface offset",
+    "sampling spacing",
+    "tool standoff",
+    "traversal direction"
+  ],
+  "forbidden": [
+    "final XYZ sequence",
+    "final surface anchors",
+    "final command positions",
+    "final normals",
+    "final tangents",
+    "final quaternions",
+    "robot joint values",
+    "MoveIt trajectory",
+    "manually traced final path",
+    "hidden CAD-derived poses"
+  ],
+  "must_not_bypass_measured_geometry": true,
+  "normalized_longitudinal": {
+    "0.0": "beginning of measured longitudinal domain",
+    "1.0": "end of measured longitudinal domain",
+    "robot_coordinates": false
+  },
+  "violation": "FAIL_PROCESS_SPEC_CONTRACT"
+}

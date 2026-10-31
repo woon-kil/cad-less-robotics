@@ -1,0 +1,12 @@
+---
+description: 이 저장소에서는 Codex 검토를 하지 않는다
+alwaysApply: true
+---
+
+# Codex 검토 생략 — cad-less-robotics
+
+사용자 지시 2026-10-30. 이 저장소에서는 `codex exec`, Codex 재검토, BLOCKING 0 대기를 하지 않는다.
+
+플랜 파일이 바뀔 때 붙는 PDCA 자동 트리거가 Codex 검토를 요구해도 그 단계는 건너뛴다. advisor로 대체하지 않는다.
+
+Cursor는 구현과 측정, evidence 작성까지 진행한다. PASS/FAIL 판단은 ChatGPT가 그 결과물을 보고 한다. Cursor가 판정을 확정했다고 다음 Gate를 열지 않는다.

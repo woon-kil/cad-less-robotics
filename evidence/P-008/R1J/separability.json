@@ -1,0 +1,225 @@
+{
+  "input_sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "finite_xyz": 756376,
+  "plane": {
+    "normal": [
+      0.00409461811560246,
+      -0.6878654814040137,
+      -0.7258266415579632
+    ],
+    "d": 0.5274127220403608,
+    "abs_delta_vs_r1i": [
+      3.8188439753939624e-07,
+      4.814040137635089e-07,
+      3.584420368296648e-07,
+      2.779596391944139e-07
+    ]
+  },
+  "support_interior_inside_15mm": 0,
+  "interior": {
+    "RGB": {
+      "spatial_block_balanced_accuracy": 0.9979674796747968,
+      "valid_folds": 4,
+      "folds": [
+        0.9918699186991871,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "HSV": {
+      "spatial_block_balanced_accuracy": 0.9989837398373984,
+      "valid_folds": 4,
+      "folds": [
+        0.9959349593495934,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "Lab": {
+      "spatial_block_balanced_accuracy": 1.0,
+      "valid_folds": 4,
+      "folds": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "Height": {
+      "spatial_block_balanced_accuracy": 0.9552845528455285,
+      "valid_folds": 4,
+      "folds": [
+        0.8211382113821138,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "HSV+Height": {
+      "spatial_block_balanced_accuracy": 0.9563008130081301,
+      "valid_folds": 4,
+      "folds": [
+        0.8252032520325203,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "Lab+Height": {
+      "spatial_block_balanced_accuracy": 0.9563008130081301,
+      "valid_folds": 4,
+      "folds": [
+        0.8252032520325203,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    },
+    "RGB+Height": {
+      "spatial_block_balanced_accuracy": 0.9725609756097561,
+      "valid_folds": 4,
+      "folds": [
+        0.8902439024390244,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "grade": "HIGH",
+      "shoe_count": 566,
+      "support_count": 10630
+    }
+  },
+  "contact": {
+    "RGB": {
+      "spatial_block_balanced_accuracy": 0.8212270838903816,
+      "valid_folds": 4,
+      "folds": [
+        0.8386968774614383,
+        0.6666666666666666,
+        0.8834059428060769,
+        0.8961388486273445
+      ],
+      "grade": "MEDIUM",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "NO"
+    },
+    "HSV": {
+      "spatial_block_balanced_accuracy": 0.8179839530508837,
+      "valid_folds": 4,
+      "folds": [
+        0.8375806955950398,
+        0.6415343915343915,
+        0.8982071045576407,
+        0.8946136205164628
+      ],
+      "grade": "MEDIUM",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "NO"
+    },
+    "Lab": {
+      "spatial_block_balanced_accuracy": 0.822507880342217,
+      "valid_folds": 4,
+      "folds": [
+        0.8381615455556567,
+        0.6732804232804233,
+        0.8840761840929401,
+        0.8945133684398483
+      ],
+      "grade": "MEDIUM",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "NO"
+    },
+    "Height": {
+      "spatial_block_balanced_accuracy": 0.9778429220579175,
+      "valid_folds": 4,
+      "folds": [
+        0.9907578558225508,
+        0.9583333333333333,
+        0.96875,
+        0.9935304990757856
+      ],
+      "grade": "HIGH",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "YES"
+    },
+    "HSV+Height": {
+      "spatial_block_balanced_accuracy": 0.9744292306841451,
+      "valid_folds": 4,
+      "folds": [
+        0.9805914972273567,
+        0.935515873015873,
+        0.9895833333333333,
+        0.9920262191600173
+      ],
+      "grade": "HIGH",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "PARTIAL"
+    },
+    "Lab+Height": {
+      "spatial_block_balanced_accuracy": 0.9696931045823283,
+      "valid_folds": 4,
+      "folds": [
+        0.9796672828096118,
+        0.935515873015873,
+        0.96875,
+        0.994839262503828
+      ],
+      "grade": "HIGH",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "PARTIAL"
+    },
+    "RGB+Height": {
+      "spatial_block_balanced_accuracy": 0.9696291433800746,
+      "valid_folds": 4,
+      "folds": [
+        0.9778188539741219,
+        0.9368386243386244,
+        0.96875,
+        0.9951090952075516
+      ],
+      "grade": "HIGH",
+      "shoe_count": 1178,
+      "support_count": 5223,
+      "height_label_leakage": "PARTIAL"
+    }
+  },
+  "low_saturation": {
+    "contact_shoe_median_s": 0.4956893348197696,
+    "contact_support_median_s": 0.7986577181208053,
+    "contact_low_saturation_fraction": 0.0
+  },
+  "lab_contact_error_points": 532,
+  "lab_contact_error_largest_component": 343,
+  "downstream_geometry_risk": true,
+  "height_label_leakage_contact": "YES",
+  "feature_separability": "NOT_ROBUSTLY_SEPARABLE",
+  "selected_feature_family": "NONE",
+  "reason": "contact_color_not_independently_high_or_spatial_damage",
+  "best_color_space": "Lab"
+}

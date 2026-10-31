@@ -1,0 +1,32 @@
+{
+  "views": {
+    "view_a": {
+      "sha256": "fb17400cca2871f001fac0cf6a7ecd23defba84e71d9fb7b13be681981eff82d",
+      "finite_xyz": 757507,
+      "contract_passed": true
+    },
+    "view_b": {
+      "sha256": "f8fa1ca1ca7dc80ebcc9ba8b83006b5da28cc1e3a136ebbfa7222b19032e8d07",
+      "finite_xyz": 755248,
+      "contract_passed": true
+    },
+    "view_c": {
+      "sha256": "b8949d2c3a7c40c49e1ee304479a8acc9ea0fe63858ba8cbbe942fb4384d7e1a",
+      "finite_xyz": 753697,
+      "contract_passed": true
+    }
+  },
+  "frame": "camera_color_optical_frame",
+  "fields": [
+    "x",
+    "y",
+    "z",
+    "rgb"
+  ],
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "driver": "OrbbecSDK_ROS2 2.10.6",
+  "registration_accuracy": "NOT_CLAIMED",
+  "holdout": "NOT_USED",
+  "color_used_for_extraction": false
+}

@@ -1,0 +1,10 @@
+{
+  "id": "P009_TANGENT_CONVENTION",
+  "status": "FROZEN",
+  "source": "surface_anchor",
+  "not_source": "command_position",
+  "interior": "normalize(anchor_(i+1) - anchor_(i-1))",
+  "endpoints": "one-sided difference",
+  "projection": "normalize(t - dot(t, n) * n)",
+  "follows_traversal": true
+}

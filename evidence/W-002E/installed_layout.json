@@ -1,0 +1,70 @@
+{
+  "center_xy_source": "W-002D-R1_MEASURED",
+  "marker_size_source": "USER_ACCEPTED_NOMINAL",
+  "z_source": "NOMINAL_PLANAR_INSTALLATION",
+  "yaw_source": "INSTALLATION_CONTRACT",
+  "black_square_mm": 60,
+  "measurement_resolution_mm": 1,
+  "measurement_resolution_is_accuracy_claim": false,
+  "centers_m": {
+    "0": [
+      0.148,
+      0.071,
+      0.0
+    ],
+    "1": [
+      0.5,
+      0.069,
+      0.0
+    ],
+    "2": [
+      0.5,
+      0.336,
+      0.0
+    ],
+    "3": [
+      0.149,
+      0.332,
+      0.0
+    ]
+  },
+  "local_corners_m": [
+    [
+      -0.03,
+      0.03,
+      0.0
+    ],
+    [
+      0.03,
+      0.03,
+      0.0
+    ],
+    [
+      0.03,
+      -0.03,
+      0.0
+    ],
+    [
+      -0.03,
+      -0.03,
+      0.0
+    ]
+  ],
+  "corner_order": [
+    "TOP_LEFT",
+    "TOP_RIGHT",
+    "BOTTOM_RIGHT",
+    "BOTTOM_LEFT"
+  ],
+  "corner_order_source": "scripts/p007f_07c_mount_geometry.py object_points",
+  "yaw_deg": 0,
+  "reference_distance_mm": {
+    "ID0_ID1": 352.006,
+    "ID1_ID2": 267.0,
+    "ID2_ID3": 351.023,
+    "ID3_ID0": 261.002,
+    "ID0_ID2": 440.601,
+    "ID1_ID3": 438.6
+  },
+  "reference_distances_are_separate_measurements": false
+}

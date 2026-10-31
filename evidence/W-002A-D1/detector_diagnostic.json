@@ -1,0 +1,60 @@
+{
+  "image_width": 1280,
+  "image_height": 720,
+  "channel_order": "RGB",
+  "image_encoding": "rgb8",
+  "frame_id": "camera_color_optical_frame",
+  "expected_dictionary": "DICT_4X4_50",
+  "actual_dictionary": "DICT_4X4_50",
+  "dictionary_enum": 0,
+  "opencv_version": "4.5.4",
+  "detector_parameters": "DetectorParameters_create default",
+  "live_ids": [],
+  "live_markers": [],
+  "rejected_candidates": [
+    [
+      [
+        685.0,
+        94.0
+      ],
+      [
+        707.0,
+        90.0
+      ],
+      [
+        736.0,
+        103.0
+      ],
+      [
+        697.0,
+        102.0
+      ]
+    ],
+    [
+      [
+        737.0,
+        171.0
+      ],
+      [
+        741.0,
+        175.0
+      ],
+      [
+        733.0,
+        188.0
+      ],
+      [
+        732.0,
+        172.0
+      ]
+    ]
+  ],
+  "rejected_candidate_count": 2,
+  "source_marker_file": "/ws/cad-less-robotics/evidence/W-002A-D1-src.png",
+  "source_ids": [
+    3,
+    2,
+    1,
+    0
+  ]
+}

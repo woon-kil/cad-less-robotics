@@ -1,0 +1,14 @@
+{
+  "id": "P009_ORIENTATION_CONVENTION",
+  "status": "FROZEN",
+  "axes": {
+    "X_process": "tangent",
+    "Z_process": "-surface_normal",
+    "Y_process": "normalize(Z_process × X_process)",
+    "X_reorthogonalized": "normalize(Y_process × Z_process)"
+  },
+  "required": ["right-handed", "det(R) ≈ +1", "R^T R ≈ I", "||q|| ≈ 1"],
+  "quaternion_order": ["x", "y", "z", "w"],
+  "quaternion_meaning": "process/tool-command frame orientation in the MeasuredSurface frame",
+  "sign_continuity": "q and -q are the same rotation. Sign alignment does not change physical orientation."
+}

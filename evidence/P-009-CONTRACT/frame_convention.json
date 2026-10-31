@@ -1,0 +1,13 @@
+{
+  "id": "P009_FRAME_CONVENTION",
+  "status": "FROZEN",
+  "geometry_frame": "MEASURED_SURFACE_FRAME",
+  "development_frame": "camera_color_optical_frame",
+  "invariant": "ProcessPath.frame_id == MeasuredSurface.frame_id",
+  "forbidden_transforms": [
+    "robot base",
+    "tool frame",
+    "MoveIt planning frame"
+  ],
+  "robot_frame_transform": "downstream"
+}

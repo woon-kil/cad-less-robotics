@@ -1,0 +1,66 @@
+{
+  "sizes_mm": [
+    {
+      "size_mm": 58.0,
+      "reprojection": {
+        "mean_px": 1.3849289459666556,
+        "median_px": 1.3601894151993665,
+        "p95_px": 2.346907723884061,
+        "max_px": 2.4269905495249358,
+        "count": 16
+      },
+      "adopted": false
+    },
+    {
+      "size_mm": 59.0,
+      "reprojection": {
+        "mean_px": 1.5216769640178405,
+        "median_px": 1.4915393107775587,
+        "p95_px": 2.4233145977802737,
+        "max_px": 2.5457501096881443,
+        "count": 16
+      },
+      "adopted": false
+    },
+    {
+      "size_mm": 60.0,
+      "reprojection": {
+        "mean_px": 1.8437682288189243,
+        "median_px": 1.904551221646259,
+        "p95_px": 2.7513810267323424,
+        "max_px": 2.7562668054802084,
+        "count": 16
+      },
+      "adopted": false
+    },
+    {
+      "size_mm": 61.0,
+      "reprojection": {
+        "mean_px": 2.351404087483716,
+        "median_px": 2.5714758525286827,
+        "p95_px": 3.4449108221955194,
+        "max_px": 3.5442785913556847,
+        "count": 16
+      },
+      "adopted": false
+    },
+    {
+      "size_mm": 62.0,
+      "reprojection": {
+        "mean_px": 2.9006449016135605,
+        "median_px": 3.1216999391020366,
+        "p95_px": 4.197011804768617,
+        "max_px": 4.350720934005455,
+        "count": 16
+      },
+      "adopted": false
+    }
+  ],
+  "nominal_mm": 60.0,
+  "best_drop_from_60_px": 0.4588392828522687,
+  "max_abs_delta_from_60_px": 1.0568766727946362,
+  "label": "MATERIAL",
+  "rule": "MATERIAL if any size moves the mean by >= 0.30 px; LOW if all stay within 0.15 px",
+  "print_size_measured": false,
+  "size_adopted": false
+}

@@ -1,0 +1,20 @@
+{
+  "association": "R1I_CONTACT_WINDOW_MAX_COUNT",
+  "ambiguous": false,
+  "selected_contact_points": 1115,
+  "selected_voxels": 1033,
+  "runner_up_contact_points": 19,
+  "largest_candidate_voxels": 2413,
+  "safe_component_count": 5,
+  "largest_safe_points": 809,
+  "largest_safe_voxels": 106,
+  "graph_extent_m": 0.07292528739883944,
+  "plane_aligned_span_m": {
+    "u_m": 0.06394858571119998,
+    "v_m": 0.03488456844393311,
+    "height_m": 0.020891916308558356
+  },
+  "projected_area_m2": 0.001325,
+  "surface_area": "NOT_CLAIMED",
+  "elevated_points": 8602
+}

@@ -1,0 +1,7 @@
+{
+  "robot_model_required": false,
+  "robot_joints_used": false,
+  "moveit_used": false,
+  "robot_base_transform_required": false,
+  "hand_eye_required": false
+}

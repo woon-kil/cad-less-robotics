@@ -1,0 +1,95 @@
+{
+  "parameter_sensitivity": "STABLE",
+  "variants": [
+    {
+      "parameter": "slice_spacing_m",
+      "value": 0.008,
+      "passed": false,
+      "valid_ratio": 0.7,
+      "unique_ratio": 0.15,
+      "coverage": 0.14782907835396725,
+      "max_consecutive_missing": 8,
+      "unexplained_jumps": 2
+    },
+    {
+      "parameter": "slice_spacing_m",
+      "value": 0.01,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.125,
+      "coverage": 0.123190898628306,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 1
+    },
+    {
+      "parameter": "slice_spacing_m",
+      "value": 0.012,
+      "passed": false,
+      "valid_ratio": 0.6923076923076923,
+      "unique_ratio": 0.15384615384615385,
+      "coverage": 0.14782907835396716,
+      "max_consecutive_missing": 5,
+      "unexplained_jumps": 0
+    },
+    {
+      "parameter": "slab_thickness_m",
+      "value": 0.006,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.125,
+      "coverage": 0.123190898628306,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 1
+    },
+    {
+      "parameter": "slab_thickness_m",
+      "value": 0.008,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.125,
+      "coverage": 0.123190898628306,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 1
+    },
+    {
+      "parameter": "slab_thickness_m",
+      "value": 0.01,
+      "passed": false,
+      "valid_ratio": 0.75,
+      "unique_ratio": 0.1875,
+      "coverage": 0.184786347942459,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 1
+    },
+    {
+      "parameter": "neighborhood_m",
+      "value": 0.006,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.25,
+      "coverage": 0.24638179725661194,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 2
+    },
+    {
+      "parameter": "neighborhood_m",
+      "value": 0.008,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.125,
+      "coverage": 0.123190898628306,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 1
+    },
+    {
+      "parameter": "neighborhood_m",
+      "value": 0.01,
+      "passed": false,
+      "valid_ratio": 0.6875,
+      "unique_ratio": 0.1875,
+      "coverage": 0.184786347942459,
+      "max_consecutive_missing": 6,
+      "unexplained_jumps": 2
+    }
+  ]
+}

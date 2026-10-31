@@ -1,0 +1,17 @@
+{
+  "method": "KNN_LOCAL_PLANE_PROJECTION",
+  "k": 20,
+  "min_valid_neighbors": 12,
+  "max_kth_neighbor_distance_m": 0.015,
+  "attempts": 211,
+  "accepted": 121,
+  "rejected": 90,
+  "source_surface_distance_p95_m": 0.00464753073066417,
+  "source_surface_distance_max_m": 0.00965148190674173,
+  "source_surface_distance_is_absolute_accuracy": false,
+  "unsupported_geometry_interpolated": false,
+  "requested_surface_offset_m": 0.0,
+  "applied_surface_offset_m": 0.0,
+  "offset_error_m": 0.0,
+  "surface_offset_reassociation": false
+}

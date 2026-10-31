@@ -1,0 +1,18 @@
+{
+  "purpose": "MOTION_WITNESS_STATIC_DETECTION",
+  "dataset_v2": "UNCHANGED",
+  "hand_eye_camera_acquisition": false,
+  "motion_witness_acquisition": true,
+  "hand_eye_sample_count": 0,
+  "t_base_camera": null,
+  "camera_model": "Orbbec Gemini 335L",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "driver": "OrbbecSDK_ROS2 v2.10.6",
+  "color_frame": "camera_color_optical_frame",
+  "published_depth_frame_id": "camera_color_optical_frame",
+  "depth_note": "SW D2C, align_target_stream COLOR. 발행 frame_id가 color와 같다. native depth optical을 포즈 프레임으로 쓰지 않았다. 등록 정확도는 주장하지 않는다.",
+  "launch": "ros2 launch orbbec_camera gemini_330_series.launch.py depth_registration:=true align_mode:=SW align_target_stream:=COLOR enable_colored_point_cloud:=true enable_publish_extrinsic:=true enable_point_cloud:=true enable_frame_sync:=true",
+  "servo_write": false,
+  "command_delta_deg": 0
+}

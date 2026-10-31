@@ -1,0 +1,196 @@
+[
+  {
+    "index": 0,
+    "t_m": -0.09153449309858835,
+    "raw_points": 295,
+    "eligible_points": 287,
+    "contour_points": 33,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 1,
+    "t_m": -0.08153449309858836,
+    "raw_points": 337,
+    "eligible_points": 332,
+    "contour_points": 33,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 2,
+    "t_m": -0.07153449309858836,
+    "raw_points": 365,
+    "eligible_points": 336,
+    "contour_points": 35,
+    "valid": true,
+    "label": "unique",
+    "reason": null,
+    "scores_deg": {
+      "negative": 30.572593857370258
+    },
+    "side": "negative",
+    "xyz": [
+      -0.10948585718870163,
+      0.006918156985193491,
+      0.6439999938011169
+    ],
+    "height_m": 0.05477330521705126,
+    "across_m": 0.06630169319552819
+  },
+  {
+    "index": 3,
+    "t_m": -0.061534493098588355,
+    "raw_points": 239,
+    "eligible_points": 239,
+    "contour_points": 21,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 4,
+    "t_m": -0.05153449309858836,
+    "raw_points": 199,
+    "eligible_points": 199,
+    "contour_points": 14,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 5,
+    "t_m": -0.04153449309858836,
+    "raw_points": 199,
+    "eligible_points": 199,
+    "contour_points": 11,
+    "valid": false,
+    "label": "missing",
+    "reason": "short_envelope"
+  },
+  {
+    "index": 6,
+    "t_m": -0.031534493098588356,
+    "raw_points": 123,
+    "eligible_points": 118,
+    "contour_points": 5,
+    "valid": false,
+    "label": "missing",
+    "reason": "short_envelope"
+  },
+  {
+    "index": 7,
+    "t_m": -0.02153449309858836,
+    "raw_points": 501,
+    "eligible_points": 390,
+    "contour_points": 34,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 8,
+    "t_m": -0.011534493098588353,
+    "raw_points": 452,
+    "eligible_points": 352,
+    "contour_points": 37,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 9,
+    "t_m": -0.0015344930985883576,
+    "raw_points": 896,
+    "eligible_points": 817,
+    "contour_points": 40,
+    "valid": true,
+    "label": "ambiguous",
+    "reason": "ambiguous",
+    "scores_deg": {
+      "positive": 40.03640386208456,
+      "negative": 48.16493451920229
+    }
+  },
+  {
+    "index": 10,
+    "t_m": 0.008465506901411637,
+    "raw_points": 401,
+    "eligible_points": 225,
+    "contour_points": 16,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  },
+  {
+    "index": 11,
+    "t_m": 0.018465506901411646,
+    "raw_points": 285,
+    "eligible_points": 120,
+    "contour_points": 3,
+    "valid": false,
+    "label": "missing",
+    "reason": "short_envelope"
+  },
+  {
+    "index": 12,
+    "t_m": 0.02846550690141164,
+    "raw_points": 330,
+    "eligible_points": 303,
+    "contour_points": 7,
+    "valid": false,
+    "label": "missing",
+    "reason": "short_envelope"
+  },
+  {
+    "index": 13,
+    "t_m": 0.03846550690141165,
+    "raw_points": 432,
+    "eligible_points": 432,
+    "contour_points": 10,
+    "valid": false,
+    "label": "missing",
+    "reason": "short_envelope"
+  },
+  {
+    "index": 14,
+    "t_m": 0.04846550690141163,
+    "raw_points": 849,
+    "eligible_points": 849,
+    "contour_points": 26,
+    "valid": true,
+    "label": "unique",
+    "reason": null,
+    "scores_deg": {
+      "negative": 73.24705924823095
+    },
+    "side": "negative",
+    "xyz": [
+      -0.035455476492643356,
+      0.04896310344338417,
+      0.5580000281333923
+    ],
+    "height_m": 0.08857623027358963,
+    "across_m": 0.06825467184019031
+  },
+  {
+    "index": 15,
+    "t_m": 0.05846550690141164,
+    "raw_points": 964,
+    "eligible_points": 948,
+    "contour_points": 22,
+    "valid": true,
+    "label": "missing",
+    "reason": "missing",
+    "scores_deg": {}
+  }
+]

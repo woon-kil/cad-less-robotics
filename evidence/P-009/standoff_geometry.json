@@ -1,0 +1,5 @@
+{
+  "standoff_error_max_m": 5.204170427930421e-17,
+  "lateral_command_residual_max_m": 5.545691462697296e-17,
+  "pass_threshold_invented": false
+}

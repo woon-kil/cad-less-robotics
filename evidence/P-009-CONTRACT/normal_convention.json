@@ -1,0 +1,18 @@
+{
+  "id": "P009_NORMAL_CONVENTION",
+  "status": "FROZEN",
+  "direction": "surface → camera/free-space",
+  "sign_rule": "deterministic camera/free-space convention. Do not flip only to reduce consecutive angle.",
+  "pca": {
+    "eigenvalue_order": "λ0 <= λ1 <= λ2",
+    "normal_raw": "eigenvector(λ0)"
+  },
+  "invalid_when": [
+    "neighbor_count < 12",
+    "kth_neighbor_distance > 0.015 m",
+    "non-finite",
+    "degenerate local PCA"
+  ],
+  "invalid_normals_become_poses": false,
+  "normal_valid_ratio_min": 0.95
+}

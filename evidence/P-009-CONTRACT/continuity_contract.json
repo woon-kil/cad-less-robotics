@@ -1,0 +1,13 @@
+{
+  "id": "P009_CONTINUITY_CONTRACT",
+  "status": "FROZEN",
+  "evaluated_on": "surface_anchor",
+  "MAX_POSITION_JUMP_M": 0.010,
+  "automatic_bridge": false,
+  "MAX_ORIENTATION_STEP_DEG": 20,
+  "UNEXPLAINED_ORIENTATION_JUMPS": 0,
+  "orientation_difference": "2 * acos(abs(dot(q_i, q_(i+1))))",
+  "raw_quaternion_component_difference": false,
+  "ORIENTATION_STEP_P95": "report only",
+  "orientation_step_p95_pass_threshold": null
+}

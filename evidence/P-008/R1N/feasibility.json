@@ -1,0 +1,13 @@
+{
+  "verdict": "FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY",
+  "ordered_process_feature": false,
+  "true_manufacturing_boundary": false,
+  "terminology": "ORDERED_PROCESS_FEATURE",
+  "blockers": [
+    "\uc720\ud6a8 \ub2e8\uba74 \ube44\uc728",
+    "\ub2e8\uc77c \ud2b9\uc9d5 \ube44\uc728",
+    "\uc5f0\uc18d \uacb0\uc190",
+    "\uc138\ub85c \ub36e\uc784",
+    "\uac04\uaca9 \ucd08\uacfc \uc810\ud504"
+  ]
+}

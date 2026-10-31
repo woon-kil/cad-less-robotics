@@ -1,0 +1,24 @@
+{
+  "id": "P009_MEASURED_SURFACE_CONTRACT",
+  "status": "FROZEN",
+  "required": ["frame_id", "timestamp", "points_xyz"],
+  "optional": ["rgb", "normals", "confidence", "source_metadata"],
+  "invariants": {
+    "xyz_finite": true,
+    "units": "meters",
+    "single_declared_frame": true,
+    "preserve_measured_geometry": true,
+    "provenance_required": true
+  },
+  "development_source": {
+    "sensor": "Orbbec Gemini 335L",
+    "serial": "CP263630009D",
+    "frame": "camera_color_optical_frame",
+    "units": "SI / meters"
+  },
+  "normal_source": {
+    "preferred": "COMPUTED",
+    "allowed_alternative": "PRECOMPUTED_VALIDATED",
+    "precomputed_requires_provenance": true
+  }
+}

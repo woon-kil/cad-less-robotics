@@ -1,0 +1,45 @@
+{
+  "plane": {
+    "normal": [
+      0.004094618115601551,
+      -0.6878654814040047,
+      -0.7258266415579717
+    ],
+    "d": 0.5274127220403652,
+    "inlier_count": 148529,
+    "candidate_count": 276452,
+    "inlier_ratio": 0.5372686759365097,
+    "residual_median_m": 0.000723040401233499,
+    "residual_p95_m": 0.0024270742025172664
+  },
+  "shoe_side": {
+    "count": 1178,
+    "mean": 0.011502225111149154,
+    "median": 0.011212999390160183,
+    "p05": 0.004339872397604222,
+    "p95": 0.01919012732353453,
+    "rgb_available": true,
+    "nearest_horizontal_m": {
+      "min": 8.833175424306696e-06,
+      "median": 0.0007587197908674077
+    },
+    "largest_component": 1088
+  },
+  "support_side": {
+    "count": 5223,
+    "mean": 0.00012390883236731653,
+    "median": -2.3535074295977232e-05,
+    "p05": -0.0019455381954258776,
+    "p95": 0.0028321680815942877,
+    "rgb_available": true,
+    "nearest_horizontal_m": {
+      "min": 8.833175424306696e-06,
+      "median": 0.007663527081642497
+    },
+    "largest_component": 3967
+  },
+  "contact_window_support_inliers": 33573,
+  "contact_window_shoe_band": 1178,
+  "contiguous": true,
+  "both_sides_present": true
+}

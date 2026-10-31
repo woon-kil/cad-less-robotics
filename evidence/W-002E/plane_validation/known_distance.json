@@ -1,0 +1,51 @@
+{
+  "status": "COMPUTED_NOT_INDEPENDENT",
+  "source": "DERIVED_FROM_W002D_R1_MEASURED_CENTERS",
+  "independent_physical_metrology": false,
+  "distances": {
+    "ID0_ID1": {
+      "depth_derived_mm": 350.8869223643166,
+      "layout_derived_mm": 352.006,
+      "delta_mm": -1.119077635683368
+    },
+    "ID1_ID2": {
+      "depth_derived_mm": 269.10404851889035,
+      "layout_derived_mm": 267.0,
+      "delta_mm": 2.1040485188903517
+    },
+    "ID2_ID3": {
+      "depth_derived_mm": 353.36083414723964,
+      "layout_derived_mm": 351.023,
+      "delta_mm": 2.3378341472396187
+    },
+    "ID3_ID0": {
+      "depth_derived_mm": 264.0388560952882,
+      "layout_derived_mm": 261.002,
+      "delta_mm": 3.036856095288215
+    },
+    "ID0_ID2": {
+      "depth_derived_mm": 443.82495889928396,
+      "layout_derived_mm": 440.601,
+      "delta_mm": 3.223958899283957
+    },
+    "ID1_ID3": {
+      "depth_derived_mm": 439.42290523745083,
+      "layout_derived_mm": 438.6,
+      "delta_mm": 0.8229052374508115
+    }
+  },
+  "markers": {
+    "0": {
+      "valid_pixels_in_7x7": 49
+    },
+    "3": {
+      "valid_pixels_in_7x7": 49
+    },
+    "1": {
+      "valid_pixels_in_7x7": 49
+    },
+    "2": {
+      "valid_pixels_in_7x7": 49
+    }
+  }
+}

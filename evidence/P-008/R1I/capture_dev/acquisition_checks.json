@@ -1,0 +1,31 @@
+{
+  "identity": {
+    "device_name": "Orbbec Gemini 335L",
+    "serial": "CP263630009D",
+    "firmware": "1.4.60",
+    "ros_wrapper_version": "2.10.6",
+    "sdk_version": "2.10.6",
+    "align_log": true,
+    "frame_sync_log": true
+  },
+  "checks": {
+    "serial": true,
+    "firmware": true,
+    "wrapper": true,
+    "color_frame": true,
+    "depth_frame": true,
+    "cloud_frame": true,
+    "fields_rgb": true,
+    "stamp_span_sec": 1.9073486328125e-05,
+    "stamp_span_ok": true,
+    "depth_cloud_passed": true,
+    "color_correspondence_passed": true,
+    "extrinsic_ok": true,
+    "finite_xyz": 756376,
+    "registration_accuracy": "NOT_CLAIMED",
+    "color.png_sha256": "f6bb88ffd6e3a87eeff0239d0ec5aac1c2ba25ea7a723ec9c85f97fa0f2c15b3",
+    "depth.png_sha256": "703654329ee34c9ad47525cbc28de1340c3d313e925f115ff8f1ed0a57dff824",
+    "cloud.pcd_sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377"
+  },
+  "span_sec": 1.9073486328125e-05
+}

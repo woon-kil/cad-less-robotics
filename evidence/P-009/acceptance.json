@@ -1,0 +1,11 @@
+{
+  "verdict": "FAIL_SURFACE_ASSOCIATION",
+  "blockers": [
+    "FAIL_SURFACE_ASSOCIATION",
+    "FAIL_PATH_CONTINUITY"
+  ],
+  "contract_violation_count": 0,
+  "r1_responsibility_leakage": false,
+  "r1l_criteria_changed": false,
+  "r1l_100mm_criterion_reused": false
+}

@@ -1,0 +1,27 @@
+{
+  "specification": {
+    "version": "1.0",
+    "process_type": "SURFACE_STRIP",
+    "region": {
+      "side": "LATERAL_POSITIVE",
+      "longitudinal": {
+        "start_normalized": 0.2,
+        "end_normalized": 0.8
+      }
+    },
+    "sampling": {
+      "spacing_m": 0.005
+    },
+    "geometry": {
+      "surface_offset_m": 0.0
+    },
+    "tool": {
+      "standoff_m": 0.02
+    },
+    "direction": {
+      "traversal": "FORWARD"
+    }
+  },
+  "forbidden_process_input_used": false,
+  "forbidden_keys": []
+}

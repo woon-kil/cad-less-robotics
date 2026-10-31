@@ -1,0 +1,17 @@
+{
+  "gate": "P-008-R1N",
+  "fixed_before_scoring": true,
+  "input": "evidence/P-008/R1I/capture_dev/cloud.pcd",
+  "expected_sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "color_used_for_extraction": false,
+  "r1m_views_used": false,
+  "holdout_used": false,
+  "registration_performed": false,
+  "feature_interpolation_used": false,
+  "true_manufacturing_boundary_claimed": false,
+  "support": "R1K와 같은 RANSAC. 계수를 다시 맞추지 않는다.",
+  "shoe_component": "R1L과 같다. 테이블 창에서 0.004 < h ≤ 0.100 인 26-연결 성분 중 R1I 접촉 창의 접촉 띠 점이 가장 많은 성분.",
+  "longitudinal_axis_method": "지지 평면에 투영한 신발 점의 2D PCA. 카메라 x 성분이 음수면 뒤집는다.",
+  "axis_stability_rule": "h > 0.020 m 부분 집합의 축과 각도가 15° 이하면 안정.",
+  "stop_rule": "FAIL이면 R1O를 만들지 않는다. 문턱, 색, SAM, ICP, R1L 100 mm, R1L 10 mm를 낮추지 않는다."
+}

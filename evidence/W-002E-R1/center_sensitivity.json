@@ -1,0 +1,23 @@
+{
+  "case_a": "W-002D-R1 measured centers",
+  "case_b": "W-002B target centers",
+  "case_a_reprojection": {
+    "mean_px": 1.8437682288189243,
+    "median_px": 1.904551221646259,
+    "p95_px": 2.7513810267323424,
+    "max_px": 2.7562668054802084,
+    "count": 16
+  },
+  "case_b_reprojection": {
+    "mean_px": 2.193634525342764,
+    "median_px": 1.8895619606803293,
+    "p95_px": 3.842766183034068,
+    "max_px": 3.8631356205252625,
+    "count": 16
+  },
+  "abs_mean_delta_px": 0.3498662965238395,
+  "case_b_improvement_px": -0.3498662965238395,
+  "label": "MATERIAL",
+  "rule": "MATERIAL if |mean difference| >= 0.30 px; LOW if < 0.15 px; else INCONCLUSIVE",
+  "target_coordinates_adopted": false
+}

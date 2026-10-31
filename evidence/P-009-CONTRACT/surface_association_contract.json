@@ -1,0 +1,85 @@
+{
+  "id": "P009_SURFACE_ASSOCIATION_CONTRACT",
+  "status": "FROZEN",
+  "source_surface_distance_target": "surface_anchor",
+  "surface_anchor": {
+    "meaning": "MeasuredSurface geometry supporting the requested process coordinate",
+    "properties": [
+      "measured-geometry-derived",
+      "surface-associated",
+      "source-surface-distance evaluation target",
+      "tangent calculation source",
+      "normal association source",
+      "spacing and continuity evaluation source"
+    ],
+    "not": ["final TCP location", "robot position", "manually supplied XYZ"]
+  },
+  "command_position": "surface_anchor + tool_standoff_m * surface_normal",
+  "surface_offset": {
+    "is_normal_standoff": false,
+    "meaning": "surface-tangential process request",
+    "procedure": [
+      "base_surface_anchor",
+      "local process frame",
+      "requested offset along Y_process",
+      "offset target",
+      "MeasuredSurface reassociation",
+      "surface_anchor"
+    ],
+    "SURFACE_OFFSET_REQUIRES_REASSOCIATION": true,
+    "forbidden_assumption": "surface_anchor = base_anchor + offset * Y without reassociation"
+  },
+  "method": {
+    "SURFACE_ASSOCIATION_METHOD": "KNN_LOCAL_PLANE_PROJECTION",
+    "K": 20,
+    "MIN_VALID_NEIGHBORS": 12,
+    "MAX_KTH_NEIGHBOR_DISTANCE_M": 0.015,
+    "max_kth_neighbor_distance_meaning": "distance from the association target neighborhood to the kth neighbor of the fixed kNN. Not an expandable search radius.",
+    "OFFSET_REASSOCIATION_METHOD": "KNN_LOCAL_PLANE_PROJECTION",
+    "UNSUPPORTED_GEOMETRY_POLICY": "REJECT"
+  },
+  "procedure": [
+    "target",
+    "kNN",
+    "support validation",
+    "local PCA",
+    "local plane",
+    "orthogonal projection",
+    "association validation",
+    "surface_anchor"
+  ],
+  "projection": "surface_anchor = target - dot(target - centroid, normal) * normal",
+  "projection_alone_is_validity": false,
+  "reject_when": [
+    "neighbor_count < 12",
+    "kth_neighbor_distance > 0.015 m",
+    "non-finite geometry",
+    "invalid or degenerate local PCA",
+    "final association contract fails"
+  ],
+  "rejection": "REJECTED_UNSUPPORTED_GEOMETRY",
+  "forbidden_fallback": [
+    "larger radius",
+    "different K",
+    "nearest-point fallback",
+    "MLS fallback",
+    "mesh fallback",
+    "distant-surface search",
+    "gap interpolation",
+    "manual replacement"
+  ],
+  "acceptance": {
+    "SOURCE_SURFACE_DISTANCE_P95_M": 0.003,
+    "SOURCE_SURFACE_DISTANCE_MAX_M": 0.005,
+    "SOURCE_SURFACE_DISTANCE_IS_ABSOLUTE_ACCURACY": false,
+    "not_a_claim_of": [
+      "Gemini absolute accuracy",
+      "real-world TCP accuracy",
+      "robot accuracy"
+    ]
+  },
+  "standoff_invariant": "command_position - surface_anchor = tool_standoff * surface_normal",
+  "standoff_reports": ["STANDOFF_ERROR_MAX", "LATERAL_COMMAND_RESIDUAL_MAX"],
+  "standoff_reports_are_sensor_accuracy": false,
+  "standoff_pass_threshold_invented": false
+}

@@ -1,0 +1,187 @@
+{
+  "residual_definition": "projected - observed",
+  "arrow": "observed to projected",
+  "corner_source": "REDETECT_MEDOID_PNG",
+  "mean_px_vs_w002e": {
+    "recomputed": 1.8437682288189243,
+    "stored": 1.8437682288188695
+  },
+  "corners": [
+    {
+      "marker_id": 0,
+      "corner_index": 0,
+      "observed_u": 406.0,
+      "observed_v": 644.0,
+      "projected_u": 404.9544468034695,
+      "projected_v": 645.1353963288907,
+      "du": -1.0455531965304772,
+      "dv": 1.1353963288906925,
+      "error_px": 1.5434721605631767
+    },
+    {
+      "marker_id": 0,
+      "corner_index": 1,
+      "observed_u": 470.0,
+      "observed_v": 601.0,
+      "projected_u": 469.00404405559755,
+      "projected_v": 599.3964081276367,
+      "du": -0.9959559444024535,
+      "dv": -1.6035918723632676,
+      "error_px": 1.8877063162208556
+    },
+    {
+      "marker_id": 0,
+      "corner_index": 2,
+      "observed_u": 505.0,
+      "observed_v": 655.0,
+      "projected_u": 505.3203729469856,
+      "projected_v": 654.9295018331438,
+      "du": 0.3203729469855716,
+      "dv": -0.07049816685616861,
+      "error_px": 0.32803782813922555
+    },
+    {
+      "marker_id": 0,
+      "corner_index": 3,
+      "observed_u": 439.0,
+      "observed_v": 704.0,
+      "projected_u": 438.9812852644889,
+      "projected_v": 706.7496887471046,
+      "du": -0.01871473551108238,
+      "dv": 2.749688747104642,
+      "error_px": 2.7497524338163872
+    },
+    {
+      "marker_id": 1,
+      "corner_index": 0,
+      "observed_u": 712.0,
+      "observed_v": 430.0,
+      "projected_u": 710.6396792237699,
+      "projected_v": 428.64305841581785,
+      "du": -1.3603207762300826,
+      "dv": -1.3569415841821524,
+      "error_px": 1.9213961270716624
+    },
+    {
+      "marker_id": 1,
+      "corner_index": 1,
+      "observed_u": 747.0,
+      "observed_v": 403.0,
+      "projected_u": 748.9432454571519,
+      "projected_v": 401.0453123532772,
+      "du": 1.9432454571518747,
+      "dv": -1.954687646722789,
+      "error_px": 2.7562668054802084
+    },
+    {
+      "marker_id": 1,
+      "corner_index": 2,
+      "observed_u": 789.0,
+      "observed_v": 434.0,
+      "projected_u": 790.0085315735396,
+      "projected_v": 434.2164397147898,
+      "du": 1.0085315735395852,
+      "dv": 0.21643971478977164,
+      "error_px": 1.0314950726806744
+    },
+    {
+      "marker_id": 1,
+      "corner_index": 3,
+      "observed_u": 752.0,
+      "observed_v": 463.0,
+      "projected_u": 751.5916307686763,
+      "projected_v": 464.5773272760381,
+      "du": -0.40836923132371794,
+      "dv": 1.5773272760380905,
+      "error_px": 1.6293332270673384
+    },
+    {
+      "marker_id": 2,
+      "corner_index": 0,
+      "observed_u": 569.0,
+      "observed_v": 303.0,
+      "projected_u": 566.9779554842027,
+      "projected_v": 302.57640480264246,
+      "du": -2.0220445157973472,
+      "dv": -0.4235951973575425,
+      "error_px": 2.0659372969890697
+    },
+    {
+      "marker_id": 2,
+      "corner_index": 1,
+      "observed_u": 604.0,
+      "observed_v": 285.0,
+      "projected_u": 603.4489544387795,
+      "projected_v": 283.6952416841811,
+      "du": -0.5510455612204623,
+      "dv": -1.3047583158189013,
+      "error_px": 1.4163493471736943
+    },
+    {
+      "marker_id": 2,
+      "corner_index": 2,
+      "observed_u": 631.0,
+      "observed_v": 304.0,
+      "projected_u": 631.6960984844644,
+      "projected_v": 306.4551727831197,
+      "du": 0.6960984844644145,
+      "dv": 2.4551727831196786,
+      "error_px": 2.551945629327804
+    },
+    {
+      "marker_id": 2,
+      "corner_index": 3,
+      "observed_u": 596.0,
+      "observed_v": 325.0,
+      "projected_u": 594.6900720087925,
+      "projected_v": 326.8954273394316,
+      "du": -1.3099279912074735,
+      "dv": 1.895427339431592,
+      "error_px": 2.3040304123890314
+    },
+    {
+      "marker_id": 3,
+      "corner_index": 0,
+      "observed_u": 297.0,
+      "observed_v": 446.0,
+      "projected_u": 296.9372153701068,
+      "projected_v": 446.0278157116294,
+      "du": -0.06278462989320133,
+      "dv": 0.027815711629386897,
+      "error_px": 0.06867039802036594
+    },
+    {
+      "marker_id": 3,
+      "corner_index": 1,
+      "observed_u": 352.0,
+      "observed_v": 420.0,
+      "projected_u": 351.9848460656583,
+      "projected_v": 417.2649388625103,
+      "du": -0.015153934341697095,
+      "dv": -2.7350611374897085,
+      "error_px": 2.7351031182630994
+    },
+    {
+      "marker_id": 3,
+      "corner_index": 2,
+      "observed_u": 372.0,
+      "observed_v": 453.0,
+      "projected_u": 374.5462998351407,
+      "projected_v": 452.1180734382433,
+      "du": 2.546299835140701,
+      "dv": -0.8819265617566998,
+      "error_px": 2.694705421891149
+    },
+    {
+      "marker_id": 3,
+      "corner_index": 3,
+      "observed_u": 316.0,
+      "observed_v": 483.0,
+      "projected_u": 317.6247572122757,
+      "projected_v": 483.8113859309939,
+      "du": 1.6247572122757106,
+      "dv": 0.8113859309938789,
+      "error_px": 1.8160900660090462
+    }
+  ]
+}

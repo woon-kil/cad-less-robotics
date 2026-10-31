@@ -1,0 +1,7 @@
+joint,servo_or_driver,ros_joint,urdf_joint,axis,sign_mapping,zero_mapping,status
+Arm1,ID1 no 180-flip,Arm1_Joint,Arm1_Joint,0 0 1,+1 after library degree,library 90 deg maps to 0 rad in source,UNRESOLVED
+Arm2,ID2 library 180-pos,Arm2_Joint,Arm2_Joint,1 0 0,+1 on the already flipped library degree,library 90 deg maps to 0 rad in source,UNRESOLVED
+Arm3,ID3 library 180-pos,Arm3_Joint,Arm3_Joint,1 0 0,+1 on the already flipped library degree,library 90 deg maps to 0 rad in source,UNRESOLVED
+Arm4,ID4 library 180-pos,Arm4_Joint,Arm4_Joint,1 0 0,+1 on the already flipped library degree,library 90 deg maps to 0 rad in source,UNRESOLVED
+Arm5,ID5 no 180-flip,Arm5_Joint,Arm5_Joint,planning 0 1 0,driver sign +1 does not flip Arm5,library 90 deg maps to 0 rad in source,CONFLICT
+gripper,ID6 interpolated,grip_joint,grip_joint,0 0 -1,map 30..180 deg toward 0..90 then subtract 90,not the arm zero,UNRESOLVED

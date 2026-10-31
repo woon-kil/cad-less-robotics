@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>W-002A ArUco</title>
+  <style>
+    body { margin: 0; background: #111; color: #eee; font-family: sans-serif; }
+    img { width: 100%; height: auto; }
+    pre { margin: 12px; font-size: 18px; }
+  </style>
+</head>
+<body>
+  <img id="view" alt="Gemini RGB">
+  <pre id="status">대기</pre>
+  <script>
+    async function refresh() {
+      const now = Date.now();
+      document.getElementById("view").src = "preview.jpg?" + now;
+      try {
+        const response = await fetch("status.json?" + now);
+        document.getElementById("status").textContent = JSON.stringify(await response.json(), null, 2);
+      } catch (error) {
+        document.getElementById("status").textContent = "상태 파일을 아직 받지 못했다.";
+      }
+    }
+    setInterval(refresh, 200);
+    refresh();
+  </script>
+</body>
+</html>

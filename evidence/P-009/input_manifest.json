@@ -1,0 +1,18 @@
+{
+  "input_file": "evidence/P-008/R1I/capture_dev/cloud.pcd",
+  "sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "camera_model": "Orbbec Gemini 335L",
+  "camera_serial": "CP263630009D",
+  "frame_id": "camera_color_optical_frame",
+  "point_fields": [
+    "x",
+    "y",
+    "z",
+    "rgb"
+  ],
+  "finite_xyz_count": 756376,
+  "timestamp": 1793395796.970484,
+  "units": "meters",
+  "holdout_used": false,
+  "r1m_bc_used": false
+}

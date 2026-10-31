@@ -1,0 +1,21 @@
+{
+  "verdict": "FAIL_SURFACE_ASSOCIATION",
+  "sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "accepted": 121,
+  "rejected": 90,
+  "length_m": 1.9654199941839527,
+  "distance_p95_m": 0.00464753073066417,
+  "distance_max_m": 0.00965148190674173,
+  "normal_valid_ratio": 1.0,
+  "orthogonal_ratio": 1.0,
+  "spacing_within_tolerance_ratio": 0.37815126050420167,
+  "max_position_jump_m": 0.25510905766252756,
+  "orientation_step_max_deg": 158.99012779208215,
+  "unexplained_orientation_jumps": 83,
+  "invalid_pose_count": 0,
+  "smoothing_max_m": 0.0,
+  "blockers": [
+    "FAIL_SURFACE_ASSOCIATION",
+    "FAIL_PATH_CONTINUITY"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "topic": "/camera/depth_registered/points",
+  "frame_id": "camera_color_optical_frame",
+  "stamp_sec": 1793395797.103974,
+  "width": 756376,
+  "height": 1,
+  "point_step": 20,
+  "is_dense": true,
+  "is_bigendian": false,
+  "fields": [
+    {
+      "name": "x",
+      "offset": 0,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "y",
+      "offset": 4,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "z",
+      "offset": 8,
+      "datatype": 7,
+      "count": 1
+    },
+    {
+      "name": "rgb",
+      "offset": 16,
+      "datatype": 7,
+      "count": 1
+    }
+  ],
+  "point_count": 756376
+}

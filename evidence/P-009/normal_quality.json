@@ -1,0 +1,9 @@
+{
+  "normal_source": "COMPUTED",
+  "valid_count": 121,
+  "invalid_count": 0,
+  "rejected_associations": 90,
+  "valid_ratio": 1.0,
+  "angle_median_deg": 13.903859453181646,
+  "angle_p95_deg": 64.23296162260307
+}

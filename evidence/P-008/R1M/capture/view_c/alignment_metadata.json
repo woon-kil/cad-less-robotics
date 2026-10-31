@@ -1,0 +1,14 @@
+{
+  "mode": "SW_D2C",
+  "color_frame": "camera_color_optical_frame",
+  "depth_frame": "camera_color_optical_frame",
+  "cloud_frame": "camera_color_optical_frame",
+  "color_resolution": [
+    1280,
+    720
+  ],
+  "depth_resolution": [
+    1280,
+    720
+  ]
+}

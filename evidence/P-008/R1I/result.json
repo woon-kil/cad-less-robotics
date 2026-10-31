@@ -1,0 +1,17 @@
+{
+  "gate": "P-008-R1I",
+  "verdict": "PASS_CONTACT_OBSERVABILITY",
+  "change": "BLACK_MAT_REMOVED",
+  "shoe_repositioned": true,
+  "r1h_blocker_removed": true,
+  "shoe_side_near_contact_points": 1178,
+  "support_side_near_contact_points": 5223,
+  "contact_boundary_contiguity": true,
+  "registration_accuracy": "NOT_CLAIMED",
+  "holdout_touched": false,
+  "historical_r1h_modified": false,
+  "dataset_v2_modified": false,
+  "robot_moved": false,
+  "next_gate_opened": false,
+  "segmentation": false
+}

@@ -1,0 +1,13 @@
+{
+  "verdict": "FAIL_PROCESS_SURFACE_FEASIBILITY",
+  "spray_position_feasible": false,
+  "spray_orientation_feasible": true,
+  "parameter_sensitivity": "FRAGILE",
+  "unknown_geometry_interpolated": false,
+  "process_path_blocking_errors": [
+    "\uc791\uc5c5\uba74 \uadf8\ub798\ud504 \uae38\uc774\uac00 0.10 m \ubbf8\ub9cc",
+    "\ubbfc\uac10 \uc870\ud569\uc5d0\uc11c 0.10 m \uc791\uc5c5\uba74\uc774 \uc0ac\ub77c\uc9d0"
+  ],
+  "r1k_status_changed": false,
+  "color_used_for_extraction": false
+}

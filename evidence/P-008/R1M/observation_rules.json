@@ -1,0 +1,40 @@
+{
+  "declared_before_view_b_and_view_c": true,
+  "known_exact_object_transform": false,
+  "registration_performed": false,
+  "fusion_performed": false,
+  "r1l_100mm_retested": false,
+  "color_used_for_extraction": false,
+  "support": {
+    "ransac_distance_m": 0.004,
+    "table_window_px": {"u0": 150, "u1": 950, "v0": 250, "v1": 620},
+    "source": "evidence/P-008/R1K/geometry_method.json nominal"
+  },
+  "robot_exclusion_px": {"u": 771, "v": 311, "radius": 180},
+  "robot_exclusion_source": "R1K 테이블 창에서 가장 큰 성분의 영상 중심. 카메라는 고정이다. 신발 정합은 아니다.",
+  "shoe_component": "로봇 원 밖의 26-연결 성분 중, 접촉 띠 점이 100 이상이고 작업 높이 점이 가장 많은 성분. 없으면 신발을 정하지 않는다.",
+  "contact_band_m": [0.004, 0.02],
+  "height_process_m": [0.02, 0.1],
+  "voxel_m": 0.005,
+  "normal": {
+    "radius_voxels": 2,
+    "min_points": 8,
+    "eigen_ratio_max": 0.25,
+    "unstable_angle_deg": 25.0,
+    "source": "R1L geometry_confidence.json. 뷰마다 바꾸지 않는다."
+  },
+  "surface_class_deg": {"top_max": 35.0, "side_min": 50.0, "side_max": 130.0},
+  "surface_class_meaning": "지지 법선과 점 법선의 각. top은 위를 보는 면, side는 옆면이다.",
+  "complementary": {
+    "min_side_points": 400,
+    "min_side_voxels": 80,
+    "min_valid_normal_ratio": 0.8,
+    "max_median_neighbor_angle_deg": 25.0,
+    "min_count_ratio_vs_a": 2.0,
+    "tilt_delta_min_deg": 15.0,
+    "tilt_min_elevated_points": 1000,
+    "tilt_min_component_voxels": 150
+  },
+  "complementary_rule": "B 또는 C가 A보다 옆면 점이 2배 이상이고 그 옆면이 위 품질을 넘거나, 작업면 법선 평균각이 A와 15° 이상 다르고 품질을 넘으면 보완 기하가 있다. 정합 없이 mm 겹침은 말하지 않는다.",
+  "not_used": "R1L MIN_USABLE_PATH_EXTENT 0.10 m"
+}

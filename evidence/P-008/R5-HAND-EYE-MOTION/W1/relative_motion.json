@@ -1,0 +1,4 @@
+{
+  "computed": false,
+  "reason": "서보 명령 전에 정지 검출이 실패했다. before/after 상대운동은 없다."
+}

@@ -1,0 +1,87 @@
+{
+  "purpose": "MOTION_WITNESS_STATIC_BEFORE_WRITE",
+  "dataset_v2": "UNCHANGED",
+  "hand_eye_sample_count": 0,
+  "frames": [
+    {
+      "index": 0,
+      "color_stamp": 1793394336.870492,
+      "depth_stamp": 1793394336.903886,
+      "stamp_delta_sec": 0.03339409828186035,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 1,
+      "color_stamp": 1793394337.404473,
+      "depth_stamp": 1793394337.404493,
+      "stamp_delta_sec": 2.002716064453125e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 2,
+      "color_stamp": 1793394337.93825,
+      "depth_stamp": 1793394337.938269,
+      "stamp_delta_sec": 1.8835067749023438e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 3,
+      "color_stamp": 1793394338.472151,
+      "depth_stamp": 1793394338.47217,
+      "stamp_delta_sec": 1.9073486328125e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 4,
+      "color_stamp": 1793394339.006255,
+      "depth_stamp": 1793394339.006274,
+      "stamp_delta_sec": 1.9073486328125e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 5,
+      "color_stamp": 1793394339.540218,
+      "depth_stamp": 1793394339.540238,
+      "stamp_delta_sec": 1.9788742065429688e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 6,
+      "color_stamp": 1793394340.073941,
+      "depth_stamp": 1793394340.07396,
+      "stamp_delta_sec": 1.9073486328125e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    },
+    {
+      "index": 7,
+      "color_stamp": 1793394340.607891,
+      "depth_stamp": 1793394340.60791,
+      "stamp_delta_sec": 1.8835067749023438e-05,
+      "color_frame_id": "camera_color_optical_frame",
+      "depth_frame_id": "camera_color_optical_frame",
+      "color_encoding": "rgb8",
+      "depth_encoding": "16UC1"
+    }
+  ]
+}

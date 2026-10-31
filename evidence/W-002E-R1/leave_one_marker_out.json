@@ -1,0 +1,88 @@
+{
+  "rows": [
+    {
+      "excluded_id": 0,
+      "pnp_success": true,
+      "fit_reprojection": {
+        "mean_px": 1.851156374235303,
+        "median_px": 1.9153049763388086,
+        "p95_px": 2.748858262130952,
+        "max_px": 3.0290476676696203,
+        "count": 12
+      },
+      "held_out_marker_reprojection": {
+        "mean_px": 5.8971647255289374,
+        "median_px": 5.724030600386854,
+        "p95_px": 6.975815526187646,
+        "max_px": 7.1306299658743955,
+        "count": 4
+      },
+      "adopted": false
+    },
+    {
+      "excluded_id": 1,
+      "pnp_success": true,
+      "fit_reprojection": {
+        "mean_px": 1.9098697486359122,
+        "median_px": 1.8075558789299997,
+        "p95_px": 2.844471324486262,
+        "max_px": 2.942011573419245,
+        "count": 12
+      },
+      "held_out_marker_reprojection": {
+        "mean_px": 5.720794511378016,
+        "median_px": 5.721062781847547,
+        "p95_px": 7.21224873879422,
+        "max_px": 7.364909289147419,
+        "count": 4
+      },
+      "adopted": false
+    },
+    {
+      "excluded_id": 2,
+      "pnp_success": true,
+      "fit_reprojection": {
+        "mean_px": 1.6292227804820911,
+        "median_px": 1.5572038420156167,
+        "p95_px": 2.3132861964052975,
+        "max_px": 2.631020885968564,
+        "count": 12
+      },
+      "held_out_marker_reprojection": {
+        "mean_px": 4.8566837897981125,
+        "median_px": 4.89570082843416,
+        "p95_px": 6.090203751039785,
+        "max_px": 6.203940429859819,
+        "count": 4
+      },
+      "adopted": false
+    },
+    {
+      "excluded_id": 3,
+      "pnp_success": true,
+      "fit_reprojection": {
+        "mean_px": 1.6385649312622315,
+        "median_px": 1.797302545488578,
+        "p95_px": 2.5699870753691405,
+        "max_px": 2.603717445385321,
+        "count": 12
+      },
+      "held_out_marker_reprojection": {
+        "mean_px": 3.6215694489503774,
+        "median_px": 3.712239599331052,
+        "p95_px": 4.379804511149213,
+        "max_px": 4.418375077993308,
+        "count": 4
+      },
+      "adopted": false
+    }
+  ],
+  "isolated_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "removed_from_registration": false,
+  "new_registration_candidate": false
+}

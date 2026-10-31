@@ -1,0 +1,15 @@
+{
+  "population": "\uac01\ub3c4 \ubb38\ud131\uc744 \uc801\uc6a9\ud558\uae30 \uc804\uc758 \uac04\uaca9\u00b7\ubc00\ub3c4 \uc9d1\ud569",
+  "valid_ratio": 1.0,
+  "median_deg": 3.150913484044616,
+  "p95_deg": 6.378825766440461,
+  "unstable_ratio": 0.0,
+  "unstable_voxels": 0,
+  "safe_population": {
+    "valid_ratio": 1.0,
+    "median_deg": 3.150913484044616,
+    "p95_deg": 6.378825766440461,
+    "unstable_ratio": 0.0,
+    "note": "SAFE \uc9d1\ud569\uc740 \uc774\ubbf8 25\u00b0 \ubb38\ud131\uc744 \ud1b5\uacfc\ud55c \uc810\uc774\ub2e4. \ud569\uaca9 \ud310\ub2e8\uc740 \uadf8 \uc774\uc804 \uc9d1\ud569\uc744 \uc4f4\ub2e4."
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "id": "ADR-009",
+  "title": "Workboard and Workpiece Instance Responsibility",
+  "status": "ACCEPTED",
+  "closed": true,
+  "date": "2026-10-31",
+  "decision": "SEPARATE_WORKBOARD_OBSERVATION_WORKPIECE_AND_PROCESS_DOMAIN",
+  "workboard_frame": "workboard",
+  "workboard_size_mm": {"x": 801, "y": 400},
+  "handedness": "RIGHT_HANDED",
+  "axes": {
+    "origin": "PHYSICALLY_REPRODUCIBLE_DATUM_CONCEPT_ONLY",
+    "plus_x": "801_MM_LENGTH",
+    "plus_y": "400_MM_WIDTH",
+    "plus_z": "FREE_SPACE_ABOVE_WORKBOARD_SURFACE"
+  },
+  "origin_realized": false,
+  "workboard_is_robot_base": false,
+  "workboard_robot_independent": true,
+  "questions": {
+    "Q1_workboard_robot_independent": "YES",
+    "Q2_observable_equals_reachable": "NO",
+    "Q3_placement_envelope_equals_process_domain": "NO",
+    "Q4_above_plane_scene_without_workpiece_instance": "NO",
+    "Q5_workpiece_instance_means_segmentation_solved": "NO",
+    "Q6_p009_uses_reachability": "NO",
+    "Q7_p010_judges_robot_feasibility": "YES"
+  },
+  "fiducial_role": "CAMERA_TO_WORKBOARD_REFERENCE",
+  "w002a": "PASS_FIDUCIAL_OBSERVABILITY",
+  "w002a_continuous_visibility_claim": false,
+  "placement_envelope_numeric_bounds_frozen": false,
+  "camera_observable_region_polygon_frozen": false,
+  "workpiece_instance_mechanism_selected": false,
+  "workpiece_instance_mechanisms_compared": [
+    "OPERATOR_DEFINED_ROI",
+    "FIDUCIAL_ASSISTED_PLACEMENT_ZONE",
+    "GEOMETRY_ASSISTED_CONNECTED_COMPONENT",
+    "LIMITED_COMBINATION"
+  ],
+  "automatic_shoe_segmentation": "UNSOLVED",
+  "complete_shoe_boundary": "UNSOLVED",
+  "complete_shoe_topology": "UNSOLVED",
+  "true_bonding_line": "UNSOLVED",
+  "p009_scored_verdict_unchanged": "FAIL_SURFACE_ASSOCIATION",
+  "fiducial_layout_frozen": false,
+  "markers_installed": false,
+  "workboard_registration_completed": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "conflict_with_adr008": false,
+  "conflict_with_frozen_p009_contract": false,
+  "frozen_p009_files_modified": false,
+  "historical_evidence_modified": false,
+  "external_sources": [
+    {
+      "statement": "ROS 계열은 오른손 좌표계와 REP-103 계열 관례를 쓰고, tf2는 rigid transform을 관리하며, 고정 관계는 static transform으로 둘 수 있다.",
+      "url": "https://index.ros.org/p/myahrs_driver/",
+      "classification": "REVIEWER_SUPPLIED",
+      "note": "검토자가 첨부한 URL이다. 이 ADR은 그 페이지를 다시 열지 않았고, 그 페이지를 REP-103 본문으로 쓰지 않는다."
+    }
+  ]
+}

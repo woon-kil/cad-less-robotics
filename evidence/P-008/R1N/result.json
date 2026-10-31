@@ -1,0 +1,51 @@
+{
+  "verdict": "FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY",
+  "sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "axis_vector": [
+    0.6228614875148789,
+    0.5695935957031535,
+    -0.5362897566658391
+  ],
+  "axis_extent_m": 0.19103231378411695,
+  "axis_angle_deg": 0.936024743457234,
+  "axis_stable": true,
+  "summary": {
+    "evaluated": 16,
+    "valid": 11,
+    "valid_ratio": 0.6875,
+    "unique": 2,
+    "unique_ratio": 0.125,
+    "ambiguous_ratio": 0.0625,
+    "missing_ratio": 0.8125,
+    "max_consecutive_missing": 6,
+    "coverage": 0.123190898628306,
+    "spacing": {
+      "median_m": 0.12101350702927856,
+      "p95_m": 0.12101350702927856,
+      "max_m": 0.12101350702927856
+    },
+    "jump_limit_m": 0.03,
+    "unexplained_jumps": 1,
+    "range_m": [
+      -0.09653449309858836,
+      0.06581516278260136
+    ]
+  },
+  "normal": {
+    "count": 2,
+    "median_deg": 7.03349160125671,
+    "p95_deg": 9.494787837697329,
+    "unstable_ratio": 0.0,
+    "valid_ratio": 1.0
+  },
+  "parameter_sensitivity": "STABLE",
+  "blockers": [
+    "\uc720\ud6a8 \ub2e8\uba74 \ube44\uc728",
+    "\ub2e8\uc77c \ud2b9\uc9d5 \ube44\uc728",
+    "\uc5f0\uc18d \uacb0\uc190",
+    "\uc138\ub85c \ub36e\uc784",
+    "\uac04\uaca9 \ucd08\uacfc \uc810\ud504"
+  ],
+  "feature_interpolation_used": false,
+  "true_manufacturing_boundary_claimed": false
+}

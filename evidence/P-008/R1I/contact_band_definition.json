@@ -1,0 +1,15 @@
+{
+  "declared_before_counts": true,
+  "height_definition": "h = n·p + d. n은 RANSAC 평면을 카메라 원점 쪽으로 맞춘 단위 법선이다. 지지면 위, 카메라 쪽이 양수다.",
+  "ransac_distance_m": 0.004,
+  "support_inlier_abs_height_m": 0.004,
+  "shoe_side_height_m": [0.004, 0.02],
+  "horizontal_near_m": 0.015,
+  "min_points_per_side": 100,
+  "contiguity_voxel_m": 0.01,
+  "contiguity_rule": "각 쪽의 가장 큰 10 mm 격자 성분이 100점 이상이면 경계가 이어진 것으로 본다.",
+  "plane_fit_window_px": {"u0": 150, "u1": 950, "v0": 250, "v1": 620},
+  "pixel_window": {"u0": 420, "u1": 660, "v0": 340, "v1": 540},
+  "pixel_window_rule": "color 격자를 본 뒤 신발과 바로 옆 나무면이 들어가는 창을 적었다. 점 수를 보기 전이다. 로봇 받침대와 전경의 검은 원판은 창 밖에 둔다.",
+  "not_reused": "R1H의 지지면 높이 ≤ 0.005 m 띠는 매트 두께에 묶여 있었다. 이번 띠는 노출된 지지 평면의 inlier 폭과 그 위 16 mm다."
+}

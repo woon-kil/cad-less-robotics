@@ -1,0 +1,15 @@
+{
+  "capture": "evidence/P-008/R1I/capture_dev/cloud.pcd",
+  "sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "frame": "camera_color_optical_frame",
+  "fields": [
+    "x",
+    "y",
+    "z",
+    "rgb"
+  ],
+  "finite_xyz": 756376,
+  "color_used_for_extraction": false,
+  "holdout": "NOT_USED",
+  "reference_polyline": "NOT_READ"
+}

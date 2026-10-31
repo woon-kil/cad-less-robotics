@@ -1,0 +1,82 @@
+{
+  "parameter_sensitivity": "FRAGILE",
+  "variants": [
+    {
+      "clearance_m": 0.005,
+      "radius": 2,
+      "angle_max_deg": 25.0,
+      "extent_m": 0.12024579547452824,
+      "safe_points": 4386,
+      "largest_points": 1169,
+      "pre_valid_ratio": 0.9938271604938271,
+      "pre_median_deg": 3.818782713582557,
+      "survives_0_10m": true
+    },
+    {
+      "clearance_m": 0.01,
+      "radius": 2,
+      "angle_max_deg": 25.0,
+      "extent_m": 0.07292528739883944,
+      "safe_points": 1613,
+      "largest_points": 809,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 3.150913484044616,
+      "survives_0_10m": false
+    },
+    {
+      "clearance_m": 0.015,
+      "radius": 2,
+      "angle_max_deg": 25.0,
+      "extent_m": 0.04512289773726411,
+      "safe_points": 304,
+      "largest_points": 304,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 2.66255749537613,
+      "survives_0_10m": false
+    },
+    {
+      "clearance_m": 0.01,
+      "radius": 1,
+      "angle_max_deg": 25.0,
+      "extent_m": 0.07292528739883944,
+      "safe_points": 1613,
+      "largest_points": 809,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 5.785715382653022,
+      "survives_0_10m": false
+    },
+    {
+      "clearance_m": 0.01,
+      "radius": 3,
+      "angle_max_deg": 25.0,
+      "extent_m": 0.07292528739883944,
+      "safe_points": 1609,
+      "largest_points": 809,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 2.3701624496506257,
+      "survives_0_10m": false
+    },
+    {
+      "clearance_m": 0.01,
+      "radius": 2,
+      "angle_max_deg": 15.0,
+      "extent_m": 0.07292528739883944,
+      "safe_points": 1613,
+      "largest_points": 809,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 3.150913484044616,
+      "survives_0_10m": false
+    },
+    {
+      "clearance_m": 0.01,
+      "radius": 2,
+      "angle_max_deg": 35.0,
+      "extent_m": 0.07292528739883944,
+      "safe_points": 1613,
+      "largest_points": 809,
+      "pre_valid_ratio": 1.0,
+      "pre_median_deg": 3.150913484044616,
+      "survives_0_10m": false
+    }
+  ]
+}

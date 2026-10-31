@@ -1,0 +1,24 @@
+{
+  "projected_point_count": 755248,
+  "in_bounds_count": 755248,
+  "in_bounds_ratio": 1.0,
+  "median_abs_channel": 0.0,
+  "passed": true,
+  "registration_accuracy": "NOT_CLAIMED",
+  "criteria": {
+    "in_bounds_ratio_min": 0.999,
+    "median_abs_channel_max": 15.0
+  },
+  "depth_frame": "camera_color_optical_frame",
+  "cloud_frame": "camera_color_optical_frame",
+  "color_shape": [
+    720,
+    1280,
+    3
+  ],
+  "depth_shape": [
+    720,
+    1280
+  ],
+  "same_resolution": true
+}

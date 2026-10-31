@@ -1,0 +1,22 @@
+{
+  "verdict": "NOT_EXECUTED",
+  "reason": "NO_INDEPENDENT_WITNESS_OF_JOINT_DIRECTION",
+  "joint_order_valid": "UNRESOLVED",
+  "joint_units_valid": "YES",
+  "joint_sign_convention_valid": "UNRESOLVED",
+  "base_frame_valid": "YES",
+  "fk_chain_valid": "UNRESOLVED",
+  "arm5_convention_resolved": false,
+  "arm5_physical_axis_matches": "UNRESOLVED",
+  "servo_zero_physical_alignment": "UNRESOLVED",
+  "robot_command_count": 0,
+  "servo_write_count": 0,
+  "max_command_delta_deg": 0,
+  "moveit_execution": false,
+  "camera_acquisition": false,
+  "hand_eye_calibration": "NOT_STARTED",
+  "t_base_camera": null,
+  "urdf_modified": false,
+  "pre_motion_servo_degree": [86, 152, 0, 18, 93, 178],
+  "next_action": "WITNESS_THEN_LIMITED_MOTION"
+}

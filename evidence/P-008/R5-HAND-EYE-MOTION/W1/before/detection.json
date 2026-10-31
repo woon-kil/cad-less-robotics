@@ -1,0 +1,172 @@
+{
+  "color_files": [
+    "00-color.png",
+    "01-color.png",
+    "02-color.png",
+    "03-color.png",
+    "04-color.png",
+    "05-color.png",
+    "06-color.png",
+    "07-color.png"
+  ],
+  "chessboard": [
+    {
+      "file": "00-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "00-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "01-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "01-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "02-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "02-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "03-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "03-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "04-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "04-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "05-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "05-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "06-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "06-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "07-color.png",
+      "pattern": [
+        6,
+        9
+      ],
+      "found": false,
+      "corner_count": 0
+    },
+    {
+      "file": "07-color.png",
+      "pattern": [
+        9,
+        6
+      ],
+      "found": false,
+      "corner_count": 0
+    }
+  ],
+  "mean_abs_channel_vs_first": [
+    43.40488815307617,
+    50.139530181884766,
+    54.612186431884766,
+    58.51376724243164,
+    63.1077766418457,
+    66.40093231201172,
+    70.12498474121094
+  ],
+  "image_shape": [
+    720,
+    1280,
+    3
+  ]
+}

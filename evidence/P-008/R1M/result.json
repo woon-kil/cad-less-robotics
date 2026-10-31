@@ -1,0 +1,17 @@
+{
+  "verdict": "FAIL_ADDITIONAL_VIEW_VALUE",
+  "view_a_sha256": "fb17400cca2871f001fac0cf6a7ecd23defba84e71d9fb7b13be681981eff82d",
+  "view_b_sha256": "f8fa1ca1ca7dc80ebcc9ba8b83006b5da28cc1e3a136ebbfa7222b19032e8d07",
+  "view_c_sha256": "b8949d2c3a7c40c49e1ee304479a8acc9ea0fe63858ba8cbbe942fb4384d7e1a",
+  "view_b_complementary": false,
+  "view_c_complementary": false,
+  "primary_view": null,
+  "primary_side_points": null,
+  "primary_side_valid_ratio": null,
+  "primary_side_median_deg": null,
+  "primary_side_p95_deg": null,
+  "primary_largest_side_voxels": null,
+  "registration_performed": false,
+  "fusion_performed": false,
+  "multiview_registration_justified": false
+}

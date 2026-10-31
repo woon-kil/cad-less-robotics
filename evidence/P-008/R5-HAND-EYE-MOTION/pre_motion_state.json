@@ -1,0 +1,29 @@
+{
+  "read_at": "2026-10-31",
+  "host": "jetson@192.168.0.94",
+  "hostname": "yahboom",
+  "method": "Arm_serial_servo_read id 1-6, 3 rounds",
+  "arm_lib_sha256": "edfcae726658ce9340208de03d836aabfc5ebc1754d14ce8720a7ba36e13ed5c",
+  "servo_degree_rounds": [
+    [86, 152, 0, 18, 93, 178],
+    [86, 152, 0, 18, 93, 178],
+    [86, 152, 0, 18, 93, 178]
+  ],
+  "servo_degree": [86, 152, 0, 18, 93, 178],
+  "q_ros_rad": {
+    "Arm1_Joint": -0.06981317007977318,
+    "Arm2_Joint": 1.0821041362364843,
+    "Arm3_Joint": -1.5707963267948966,
+    "Arm4_Joint": -1.2566370614359172,
+    "Arm5_Joint": 0.05235987755982988
+  },
+  "q_formula": "(library_degree - 90) * pi/180 for id 1-5",
+  "fk_translation_m_planning_urdf": {
+    "Arm1_Link": [0.0, 0.0, 0.0895],
+    "Arm2_Link": [0.0, 0.0, 0.1225],
+    "Arm5_Link": [0.002406, 0.043016, 0.223095],
+    "Gripping_point_Link": [0.008589, 0.131432, 0.207466]
+  },
+  "writes_before_this_record": 0,
+  "arm_driver_launched": false
+}

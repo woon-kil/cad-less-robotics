@@ -1,0 +1,20 @@
+{
+  "inventory_basis": "저장소에 이름이 있는 도구만 적는다. 없는 장비는 있는 것으로 두지 않는다.",
+  "confirmed_present": [],
+  "named_but_not_confirmed_on_bench": [
+    {
+      "tool": "직각자 또는 줄자",
+      "where": "evidence/P-006C-R2.5/anchor_definition.json",
+      "status": "이후 작업자가 맞추라는 문장이다. 이 게이트에서 보유를 확인하지 않았다."
+    }
+  ],
+  "not_in_repository": [
+    "digital caliper",
+    "engineer's square",
+    "digital angle gauge",
+    "machinist square",
+    "known spacer block",
+    "checkerboard fixture"
+  ],
+  "measurement_tools_available": false
+}

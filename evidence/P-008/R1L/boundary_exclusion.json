@@ -1,0 +1,10 @@
+{
+  "rule": "\uc791\uc5c5 \ub192\uc774 \uc810 \uc911 \ud3c9\uba74 \uacbd\uacc4 \uc140\uae4c\uc9c0 \uac70\ub9ac\uac00 \uba85\ubaa9 \uac04\uaca9 \ubbf8\ub9cc\uc778 \uc810, \uadf8\ub9ac\uace0 h \u2264 0.020 m \uc778 \uc811\ucd09 \ub760. \uae30\uc900 \uace1\uc120\uc740 \uc0ac\uc6a9\ud558\uc9c0 \uc54a\ub294\ub2e4.",
+  "nominal_clearance_m": 0.01,
+  "excluded_contact_points": 1115,
+  "excluded_clearance_points": 6989,
+  "uncertain_points": 0,
+  "unknown_interpolated": false,
+  "elevated_enclosed_hole_span_m": 0.0,
+  "safe_enclosed_hole_span_m": 0.0
+}

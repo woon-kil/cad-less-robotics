@@ -1,0 +1,21 @@
+{
+  "registration_performed": false,
+  "fusion_performed": false,
+  "known_exact_object_transform": false,
+  "r1l_100mm_retested": false,
+  "gap_fill_mm": "NOT_CLAIMED",
+  "decisions": {
+    "view_b": {
+      "side_rule": false,
+      "tilt_rule": false,
+      "complementary": false
+    },
+    "view_c": {
+      "side_rule": false,
+      "tilt_rule": false,
+      "complementary": false
+    }
+  },
+  "view_a_side_points": 5202,
+  "view_a_mean_support_angle_deg": 52.425214670142644
+}

@@ -1,0 +1,49 @@
+{
+  "id": "ADR-008",
+  "title": "Process Boundary Responsibility",
+  "status": "ACCEPTED",
+  "date": "2026-10-31",
+  "decision": "PROCESS_DEFINITION_SEPARATED_FROM_MEASURED_SURFACE_PROCESSPATH",
+  "r1_perception_investigation": "CLOSED",
+  "p008_r1n": "FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY",
+  "p008_r1n_state": "CLOSED",
+  "p009": "NOT_OPENED",
+  "p010": "NOT_OPENED",
+  "p011": "NOT_OPENED",
+  "automatic_shoe_segmentation": "UNSOLVED",
+  "automatic_process_boundary": "UNSOLVED",
+  "full_shoe_topology": "UNSOLVED",
+  "true_bonding_line_recovery": "UNSOLVED",
+  "multiview_reconstruction": "UNSOLVED",
+  "reference_geometry": "OPTIONAL_FUTURE_ADAPTER",
+  "p009_schema_fixed_by_this_adr": false,
+  "historical_evidence_modified": false,
+  "acceptance_criteria_lowered": false,
+  "preferred_description": "CAD-less measured-surface 6D ProcessPath generation",
+  "external_sources": [
+    {
+      "pattern": "vision_derived_process_trajectory",
+      "url": "https://ifr.org/case-studies/automation-of-glue-application-on-shoe-soles",
+      "classification": "EXTERNAL_CORROBORATED",
+      "use": "산업에서 점군에서 궤적까지 가는 사례가 있다. 이 프로젝트의 R1 결과가 그 방식의 일반적 불가능을 뜻하지는 않는다."
+    },
+    {
+      "pattern": "measured_gauge_line_then_trajectory",
+      "url": "https://www.dbpia.co.kr/journal/articleDetail?nodeId=NODE11616288",
+      "classification": "EXTERNAL_CORROBORATED",
+      "use": "3D 측정 gauge line과 position/orientation 생성을 나눈 사례."
+    },
+    {
+      "pattern": "model_target_points_then_trajectory",
+      "url": "https://www.kci.go.kr/kciportal/ci/sereArticleSearch/ciSereArtiView.kci?sereArticleSearchBean.artiId=ART002771990",
+      "classification": "EXTERNAL_CORROBORATED",
+      "use": "3D 모델의 target point와 Catmull-Rom trajectory 생성을 나눈 사례."
+    },
+    {
+      "pattern": "boundary_and_surface_normal_are_different_inputs",
+      "url": "https://www.mdpi.com/2076-3417/15/11/6365",
+      "classification": "EXTERNAL_CORROBORATED",
+      "use": "bonding line 정의와 surface normal 기반 orientation을 다른 정보로 쓰는 사례."
+    }
+  ]
+}

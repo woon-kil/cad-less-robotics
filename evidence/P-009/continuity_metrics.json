@@ -1,0 +1,8 @@
+{
+  "max_position_jump_m": 0.25510905766252756,
+  "orientation_step_median_deg": 30.146139257375644,
+  "orientation_step_p95_deg": 124.610970205624,
+  "orientation_step_max_deg": 158.99012779208215,
+  "unexplained_orientation_jumps": 83,
+  "bridged": false
+}

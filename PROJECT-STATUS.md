@@ -8,6 +8,7 @@
 
 - 최초 작성: 2026-10-27 14:06 (KST) — P-007C-R1 종료 직후, 사용자 요청으로 신설
 - 목표: CAD 없이 뎁스 카메라 포인트 클라우드에서 3D 작업 경로를 만들고 **DOFBOT Pro** 가 **MoveIt 2 Cartesian 궤적**으로 따라가는 PoC (`docs/261026-1255-CAD-less-ROS2-PoC-플랜.md`)
+- 2026-10-31 **ADR-008 `ACCEPTED`**: 공정 정의와 측정 표면 6D ProcessPath를 분리한다. R1 perception 조사는 `CLOSED`. 자동 공정 경계는 `UNSOLVED`. P-009는 열지 않는다 (`evidence/ADR-008/README.md`)
 - 실행 환경: p620 Docker / Ubuntu 22.04 / ROS 2 Humble (개발 Mac 은 `colcon` 불가 — P-000 에서 확정)
 - 로봇 실기: Jetson Orin Nano `yahboom` / 192.168.0.94, I2C `/dev/i2c-7` addr `0x15`
 
@@ -15,6 +16,33 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
+| **W-002E-R2** | **`PASS_PHYSICAL_GEOMETRY_METROLOGY` / `CLOSED`**. 검은 변 59 또는 60 mm. 평균 59.25 mm는 등록 크기 아님 | `evidence/W-002E-R2/result.json` |
+| **W-002E-R1** | **`PASS_DIAGNOSIS` / `CLOSED`**. 원인 미확정. W-002E 변환은 진단용. 등록 변환 없음 | `evidence/W-002E-R1/result.json` |
+| **W-002E** | **`FAIL_REPROJECTION` / `CLOSED`**. 4/4 PnP. 재투영 평균·p95 초과. 평면 `|z|`도 초과. 임계값 불변 | `evidence/W-002E/result.json` |
+| **W-002D-R1** | **`PASS_INSTALLED_LAYOUT_METROLOGY` / `CLOSED`**. 실측 중심. 1 mm 눈금 줄자. 정확도 ±1 mm 주장 아님. PnP 없음 | `evidence/W-002D-R1/result.json` |
+| **W-002D** | **`PASS_FIDUCIAL_INSTALLATION` / `CLOSED`**. ID 0~3 고정. 설치 후 4/4. 중심 mm는 미측정. PnP 없음 | `evidence/W-002D/result.json` |
+| **W-002C-R1** | **`PASS_NOMINAL_PRINT_GEOMETRY_ACCEPTANCE` / `CLOSED`**. 자 실측 없음. 명목 60 mm, quiet zone 10 mm 이상을 사용자가 승인 | `evidence/W-002C-R1/result.json` |
+| **W-002C** | **`BLOCKED_PRINT_METROLOGY` / `CLOSED`**. ID 0~3 한 프레임 4/4. 자 실측이 없어 설치 검증은 합격이 아님 | `evidence/W-002C/result.json` |
+| **W-002B** | **`PASS_REGISTRATION_CONTRACT` / `CLOSED`**. 후보 4점. 설치 동결 아님. 동시 가시 확인 전. PnP 하나. 기준은 실행 전 고정 | `evidence/W-002B/contract.json` |
+| **ADR-009** | **`ACCEPTED` / `CLOSED`**. `workboard`와 WorkpieceInstance를 장면 전체와 분리. 방식 미선택. 정합·설치·P-009-R1 없음 | `evidence/ADR-009/decision.json` |
+| **W-002A** | **`PASS_FIDUCIAL_OBSERVABILITY` / `CLOSED`**. 6개 이산 위치에서 ID 0 검출과 중심 depth. 연속 영역·정합·설치 좌표는 아님 | `evidence/W-002A/result.json` |
+| **W-002A-D1** | **`QUIET_ZONE_PROBLEM`**. `(150,0)` ID 0. 인쇄 PDF는 ID 0으로 읽힘. 현재 RGB는 미검출이고 rejected candidate도 아님. 마커가 y=719에 걸림. 이동·튜닝 없음 | `evidence/W-002A-D1/result.json` |
+| **W-001** | **`BLOCKED_WORKBOARD_OBSERVABILITY`**. Gemini 335L 현재 설치 1장. 나무 면은 depth에 보임. 801×400 모서리는 특정하지 않음. 정합 없음. P-009 불변 | `evidence/W-001/result.json` |
+| **P-009** | **`FAIL_SURFACE_ASSOCIATION`**. R1I 점군. 수락 121, 거절 90. 표면 거리 P95 4.6 mm, 최대 9.7 mm. 점프 0.255 m. 계약은 불변. P-010 미개방 | `evidence/P-009/result.json` |
+| **P-009-CONTRACT** | **`FROZEN`**. 12개 계약과 표면 연관 동결. 표면 거리는 `surface_anchor`. standoff는 법선 방향으로 작업물에서 멀어짐 | `evidence/P-009-CONTRACT/status.json` |
+| **ADR-008** | **`ACCEPTED`**. 공정 정의와 측정 표면 6D ProcessPath를 분리. R1 perception `CLOSED`. 자동 경계·위상·접착선·다시점은 `UNSOLVED`. P-009 미개방 | `evidence/ADR-008/decision.json` |
+| **P-008-R1N** | **`FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY` / `CLOSED`**. R1I 점군. 단면 16개 중 유효 11, 단일 특징 2. 세로 덮임 0.123. 민감 결과는 모두 실패로 같음. 접착선 아님 | `evidence/P-008/R1N/result.json` |
+| **P-008-R1M** | **`FAIL_ADDITIONAL_VIEW_VALUE`**. 카메라 고정, 신발만 회전. B 옆면은 A의 1.58배, 기울기 차 6.0°. 정합 없음 | `evidence/P-008/R1M/result.json` |
+| **P-008-R1L** | **`FAIL_PROCESS_SURFACE_FEASIBILITY`**. R1I 점군. 10 mm 안쪽 최장 경로 0.073 m. 법선 중앙값 3.15°. 5 mm만 0.120 m. 색 추출 없음. R1K 불변 | `evidence/P-008/R1L/result.json` |
+| **P-008-R1K** | **`FAIL_GEOMETRY_FEASIBILITY`**. R1I 점군. 신발 덩어리 9717점, 법선 각 3.7°. 둘레 덮임 0.714, 빈 구간 0.125 m. 3 mm에서 경계가 갈라짐. 색 추출 없음 | `evidence/P-008/R1K/result.json` |
+| **P-008-R1J** | **`NOT_ROBUSTLY_SEPARABLE`**. R1I 캡처. 내부 색은 HIGH, 접촉 색은 Lab 0.823 MEDIUM. 접촉 높이 0.978은 라벨 순환. 밑창 둘레 오분류 343점. R1H·R1I 불변 | `evidence/P-008/R1J/result.json` |
+| **P-008-R1I** | **`PASS_CONTACT_OBSERVABILITY`**. 매트 없이 나무면 위 신발. 접촉 신발 쪽 1178점, 지지면 쪽 5223점. Dataset v2·R1H 불변. segmentation 없음. robot 0 | `evidence/P-008/R1I/result.json` |
+| **P-008-R5-HAND-EYE-MOTION-W1** | **`BLOCKED_WITNESS_DETECTION`**. Gemini 정지 8장에서 체커보드 0/16. Arm1에 witness가 없다. `+5°` 없음. hand-eye 샘플 0 | `evidence/P-008/R5-HAND-EYE-MOTION/W1/result.json` |
+| **P-008-R5-HAND-EYE-MOTION** | **`NOT_EXECUTED`**. 쓰기 전 각도 `[86,152,0,18,93,178]`. 관절 방향을 볼 고정 시점이 없어 서보 명령 0. Gemini 없음 | `evidence/P-008/R5-HAND-EYE-MOTION/result.json` |
+| **P-008-R5-HAND-EYE-PRE** | **`BLOCKED_MOTION_VALIDATION_REQUIRED`**. 드라이버는 Arm5 부호를 뒤집지 않고 계획 축 `0 1 0`을 쓴다. 공식 파일은 `0 -1 0`. 손목의 실제 회전은 보지 않음. URDF 불변. 촬영 없음 | `evidence/P-008/R5-HAND-EYE-PRE/result.json` |
+| **P-008-R5-DATUM-SOURCE** | **`STOP_DATUM_METHOD`**. 공식 URDF의 Arm1은 계획 모델과 같다. z=0·+X·XY 중심은 실물 datum으로 닫히지 않음. STEP 본문은 받지 못함. 촬영 없음 | `evidence/P-008/R5-DATUM-SOURCE/result.json` |
+| **P-008-R5-PRE-DATUM** | **`PARTIALLY_RESOLVED`**. URDF `base_link` +Z는 Arm1 축이고 팔 쪽이다. XY 원점·z=0·+X는 실물과 닫지 못함. 판 가장자리는 +X가 아님. 촬영·로봇 명령 없음 | `evidence/P-008/R5-PRE-DATUM/result.json` |
+| **P-008-R5-PRE** | **`BLOCKED`**. `^B T_T` 없음. 체커보드 원점은 문서로만 고정. yaw·z=0은 채우지 않음. 촬영·solvePnP·로봇 명령 없음 | `evidence/P-008/R5-PRE/result.json` |
 | **P-008-R4** | **`PASS_TASK_CONTRACT`**. 비접촉 표면 추종. 45° 초과 첫 구간은 index 125. 실행 구간 0–124, 125점, 247 mm. 내부 hard discontinuity 0. clearance 20 mm, 표면에서 멀어짐. R3 불변. robot/servo 0 | `evidence/P-008/R4/result.json` |
 | **P-008-R3** | **`PASS_6D_WAYPOINT_GENERATION`**. R2 147점 XYZ 유지. k=20 PCA, 카메라 방향, tool Z=`-N`. 퇴화 0. 자세 변화 중앙값 7.2°, 최대 160.8°는 index 125. 기하 불연속 1. base 변환 없음. robot/servo 0 | `evidence/P-008/R3/result.json` |
 | **P-008-R2** | **`PASS_PATH_EXTRACTION`**. capture_01 신발 후보에서 장축 측면 3D path 147점, 간격 중앙값 2.0 mm. ordering 위반 0. 표면 거리 중앙값 1.7 mm. crest/boundary 없음. capture_02–05 미사용. 6D waypoint 미개방. robot/servo 0 | `evidence/P-008/R2/result.json` |
@@ -510,6 +538,33 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-008-R1E — polygonal prism extraction** — capture_01만. viewpoint prism이 신발 원판을 전부 유지. cluster 1은 매트와 연결. `FAIL_CLUSTERING`. height·tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1F — Euclidean connectivity diagnosis** — capture_01 prism만. 10 mm component 재현. 환경 합류 3.6 mm, 원판 전체 연결 26.7 mm. `PASS_DIAGNOSIS` / `NOT_FEASIBLE`. tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1G — RGB↔depth correspondence** — capture_01만. depth↔cloud는 중앙값 1.08 mm이나 사전 p95 0.005 m과 양수 depth 비율 0.99를 넘지 못함. 공식 extrinsic 행렬은 저장되지 않음. RGB 투영·segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **W-002E-R2 — fiducial physical geometry metrology** — 검은 변을 기록. `PASS_PHYSICAL_GEOMETRY_METROLOGY` / `CLOSED`. 59.25 mm와 58 mm는 등록 크기가 아님. PnP 없음. robot 0
+- [x] **W-002E-R1 — registration residual diagnosis** — 저장 프레임만 분석. `PASS_DIAGNOSIS` / `CLOSED`. 원인 `INCONCLUSIVE`. 등록 변환 없음. robot 0
+- [x] **W-002E — camera workboard registration** — 실측 중심으로 16점 PnP. `FAIL_REPROJECTION` / `CLOSED`. 평면 `|z|`도 초과. 임계값 불변. P-009-R1·P-010 없음. robot 0
+- [x] **W-002D-R1 — measured installed centers** — 실측 중심과 1 mm 눈금 줄자를 기록. `PASS_INSTALLED_LAYOUT_METROLOGY` / `CLOSED`. 눈금은 정확도 주장이 아님. 재배치·PnP 없음. robot 0
+- [x] **W-002D — fiducial physical installation** — ID 0~3을 고정한 뒤 한 프레임에서 4/4. 중심 mm는 미측정. `PASS_FIDUCIAL_INSTALLATION` / `CLOSED`. PnP·P-009-R1·P-010 없음. robot 0
+- [x] **W-002C-R1 — nominal print geometry acceptance** — 네 출력물의 60 mm와 quiet zone 10 mm 이상을 사용자가 승인. 실측이 아님. `PASS_NOMINAL_PRINT_GEOMETRY_ACCEPTANCE` / `CLOSED`. registration 면제 없음. robot 0
+- [x] **W-002C — fiducial layout physical validation** — 네 ID가 한 프레임에서 검출됨. 출력물 치수는 자로 재지 않음. `BLOCKED_PRINT_METROLOGY` / `CLOSED`. 영구 부착·PnP·P-009-R1·P-010 없음. robot 0
+- [x] **W-002B — fiducial layout and registration contract** — 원점·자세·`T_camera_workboard`·단일 PnP·합격 수치를 실행 전에 고정. 후보는 조사 모서리 4점이고 설치 동결은 아님. `PASS_REGISTRATION_CONTRACT` / `CLOSED`. 부착·정합 실행·P-009-R1·P-010 없음. robot 0
+- [x] **ADR-009 — workboard and workpiece instance** — 장면 geometry와 하나의 작업물을 분리. `ACCEPTED` / `CLOSED`. WorkpieceInstance 방식 미선택. fiducial 설치·정합·P-009-R1·P-010 없음. robot 0
+- [x] **W-002A — fiducial observability** — 6개 이산 위치에서 ID 0 검출과 중심 depth. `PASS_FIDUCIAL_OBSERVABILITY` / `CLOSED`. 연속 가시성·정합·마커 고정 설치 없음. P-009-R1·P-010 미개방. robot 0
+- [x] **W-002A-D1 — ArUco detection failure** — `(150,0)` ID 0. 인쇄 PDF는 검출, 현재 RGB는 미검출. 아래 quiet zone이 y=719에서 끊김. `QUIET_ZONE_PROBLEM`. 이동·파라미터 변경 없음
+- [x] **W-001 — workboard field of view** — 현재 Gemini 1장. 나무 면은 보임. 명명된 모서리는 특정하지 않음. `BLOCKED_WORKBOARD_OBSERVABILITY`. 정합·P-009 재실행 없음. robot 0
+- [x] **P-009 — robot-independent 6D ProcessPath** — 동결 계약 한 번 평가. 표면 거리와 연속이 기준에 못 미침. `FAIL_SURFACE_ASSOCIATION`. 계약 불변. P-010 미개방. robot 0
+- [x] **P-009-CONTRACT — process path contracts** — 12개 계약과 kNN 표면 연관을 `FROZEN`. 계약 파일은 그 뒤 평가에서 바꾸지 않음. robot 0
+- [x] **ADR-008 — process boundary responsibility** — 공정 정의와 측정 표면 ProcessPath를 분리. R1 perception `CLOSED`. P-009 스키마는 이 결정이 고정하지 않음. `ACCEPTED`. P-009 미개방. robot 0
+- [x] **P-008-R1N — cutting-plane feature feasibility** — R1I 점군만. 색 추출 없음. 고정한 기울기 전환 규칙은 단면 16개 중 2개만 단일 특징. `FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY`. 새 perception 변형은 열지 않음. robot 0
+- [x] **P-008-R1M — additional view observability** — 카메라 고정, 신발 3시선. 정합 없음. B 옆면 1.58배와 기울기 6°는 사전 기준에 미달. `FAIL_ADDITIONAL_VIEW_VALUE`. R1N 미개방. robot 0
+- [x] **P-008-R1L — process surface feasibility** — R1I 점군만. 색 추출 없음. 10 mm 간격을 둔 작업면의 최장 경로는 0.073 m. `FAIL_PROCESS_SURFACE_FEASIBILITY`. R1K 불변. R2/P-009 미개방. robot 0
+- [x] **P-008-R1K — geometry feasibility** — R1I 점군만. 색 추출 없음. 신발 표면과 법선은 모이나 둘레 연속과 3 mm 안정은 실패. `FAIL_GEOMETRY_FEASIBILITY`. R2/P-009 미개방. robot 0
+- [x] **P-008-R1J — post-fixture separability** — R1I 촬영만. R1H 점수 계약. 접촉 색은 MEDIUM이고 높이 점수는 순환. `NOT_ROBUSTLY_SEPARABLE`. R1_RETRY/R2/P-009 미개방. robot 0
+- [x] **P-008-R1I — contact observability** — 새 개발 캡처만. 매트 제거 뒤 접촉 양쪽이 보인다. R1H·Dataset v2 불변. holdout 미사용. segmentation/R1_RETRY/R2/P-009 미개방. robot 0
+- [x] **P-008-R5-HAND-EYE-MOTION-W1 — Arm1 static witness** — Gemini 335L 정지 화면만 저장. 체커보드는 팔에 없고 검출 0. 서보 쓰기 0. `+5°` 미실행
+- [x] **P-008-R5-HAND-EYE-MOTION — limited motion** — 현재 각도를 읽었다. 관절 회전을 볼 독립 시점이 없어 ±5° 명령을 보내지 않음. `SERVO_WRITE_COUNT=0`
+- [x] **P-008-R5-HAND-EYE-PRE — robot pose source** — 관절 단위는 `(degree-90)*pi/180`이다. Arm5 드라이버 부호는 +1이라 공식 axis `0 -1 0`을 상쇄하지 않는다. 실물 손목 방향은 미관측. URDF는 그대로. `MOTION_REQUIRED_FOR_FINAL_VALIDATION=YES`
+- [x] **P-008-R5-DATUM-SOURCE — manufacturer datum** — Yahboom Hardware_Info와 3D_Model_File을 확인. Arm1 숫자는 공식 URDF와 같다. z=0, +X, XY 중심은 재현 절차가 없다. STEP는 quota로 열지 못함. 이 datum 방법은 멈춤. `CAMERA_ACQUISITION_AUTHORIZED=NO`
+- [x] **P-008-R5-PRE-DATUM — base_link datum** — 계획 URDF에서 Arm1 축은 `base_link` +Z이고 XY 오프셋은 0이다. z=0과 +X는 실물 면으로 닫히지 않음. 사각판 변은 +X로 두지 않음. 체커보드·촬영·로봇 명령 없음. `CAMERA_ACQUISITION_AUTHORIZED=NO`
+- [x] **P-008-R5-PRE — checkerboard datum** — `base_link` 기준 6자유도를 만들지 못했다. 원점 규칙은 문서에만 있다. 작업판을 z=0으로, 눈맞춤을 yaw로 두지 않음. 촬영과 solvePnP 없음. `CAMERA_ACQUISITION_AUTHORIZED=NO`
 - [x] **P-008-R4 — task contract** — 비접촉 표면 추종. 45°를 넘는 첫 자세 변화 앞까지를 실행 구간으로 고정. index 0–124, 125점, 247 mm. 20 mm clearance는 표면 바깥. R3 파일은 바꾸지 않음. TCP 미검증. base 변환과 로봇 명령 없음. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R3 — 6D surface pose** — R2 147개 점 위치는 유지하고 tool frame만 붙였다. 법선은 k=20 국소 PCA, 부호는 카메라 방향. 퇴화 frame 0. 앞코 쪽 index 125에서 자세 변화가 160.8°이고 기하 불연속은 1건. quaternion 부호는 정렬. base 변환과 로봇 명령은 없음. 파라미터 동결. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R2 — shoe surface path** — capture_01 신발 후보만. 장축을 덮는 한쪽 측면의 위쪽 점을 2 mm 간격으로 이음. ordering 위반 0. crest와 boundary는 만들지 않음. 파라미터 동결. capture_02–05 미사용. 6D waypoint 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
@@ -715,6 +770,35 @@ operator channel        realtime visual observation
 | 61 | 2026-10-30 | **P-008-R2** — capture_01 신발 후보의 장축 측면을 따라 연속 3D path를 만들었다. 중심선은 칼라 개구라 쓰지 않음. normal과 로봇 명령은 없음. robot/servo 0 | `PASS_PATH_EXTRACTION — PARAMETERS_FROZEN=YES, CAPTURE_02_05_USED=NO, 6D_WAYPOINT=NOT_OPENED` |
 | 62 | 2026-10-30 | **P-008-R3** — R2의 147개 점에 카메라 방향 법선과 접선으로 tool frame을 붙였다. 점 위치는 바꾸지 않음. 앞코 쪽 큰 자세 변화는 기하 불연속으로 기록. robot/servo 0 | `PASS_6D_WAYPOINT_GENERATION — PARAMETERS_FROZEN=YES, ROBOT_EXECUTABLE=NO, CAMERA_TO_BASE=NOT_OPENED` |
 | 63 | 2026-10-31 | **P-008-R4** — 45°를 넘는 첫 자세 변화 앞의 연속 구간을 비접촉 작업 대상으로 정했다. 20 mm clearance는 표면 바깥이다. R3는 수정하지 않음. robot/servo 0 | `PASS_TASK_CONTRACT — EXECUTABLE=0-124, ROBOT_EXECUTABLE=NO, CAMERA_TO_BASE=NOT_OPENED` |
+| 64 | 2026-10-31 | **P-008-R5-PRE** — 체커보드의 base pose가 없어 R5 촬영을 열지 않음. 원점 규칙만 문서에 고정. yaw와 z=0은 비워 둠. robot/servo 0 | `BLOCKED — T_BASE_TARGET_NOT_DEFINED, CAMERA_ACQUISITION_AUTHORIZED=NO` |
+| 65 | 2026-10-31 | **P-008-R5-PRE-DATUM** — 계획 URDF의 `base_link`와 Arm1을 읽었다. +Z는 팔 쪽 축이다. z=0과 +X는 실물에 연결하지 못함. robot/servo 0 | `PARTIALLY_RESOLVED — Z_PLUS=ARM_SIDE, Z0=UNRESOLVED, X=UNRESOLVED, CAMERA_ACQUISITION_AUTHORIZED=NO` |
+| 66 | 2026-10-31 | **P-008-R5-DATUM-SOURCE** — Yahboom 공식 모델에서 base datum을 찾음. Arm1 높이는 공식 URDF와 같다. 실물 z=0, +X, XY 중심은 닫히지 않음. robot/servo 0 | `STOP_DATUM_METHOD — NEXT=CHANGE_EXTRINSIC_CALIBRATION_METHOD` |
+| 67 | 2026-10-31 | **P-008-R5-HAND-EYE-PRE** — 계획 URDF와 드라이버의 Arm5 부호를 비교. 런타임은 축을 뒤집지 않는다. 실물 회전은 확인하지 않음. robot/servo 0 | `BLOCKED_MOTION_VALIDATION_REQUIRED — ARM5_CONVENTION_RESOLVED=NO` |
+| 68 | 2026-10-31 | **P-008-R5-HAND-EYE-MOTION** — 제한 운동 전에 여섯 축을 읽었다. 방향을 볼 고정 카메라가 없어 명령을 보내지 않음. robot/servo 0 | `NOT_EXECUTED — WITNESS_ABSENT, SERVO_WRITE_COUNT=0` |
+| 69 | 2026-10-31 | **P-008-R5-HAND-EYE-MOTION-W1** — Gemini로 정지 8장을 저장했다. Arm1 witness 검출이 되지 않아 `86→91`을 보내지 않음. robot/servo 0 | `BLOCKED_WITNESS_DETECTION — HAND_EYE_SAMPLE_COUNT=0` |
+| 70 | 2026-10-31 | **P-008-R1I** — 검은 매트를 뺀 새 촬영에서 신발·지지면 접촉 양쪽을 세었다. Dataset v2와 R1H는 그대로. robot 0 | `PASS_CONTACT_OBSERVABILITY — R1H_BLOCKER_REMOVED=YES, NEXT=NOT_OPENED` |
+| 71 | 2026-10-31 | **P-008-R1J** — 매트를 뺀 촬영에서 R1H 점수로 내부와 접촉을 다시 쟀다. 접촉 색은 HIGH가 아니고 높이 점수는 라벨 순환. robot 0 | `NOT_ROBUSTLY_SEPARABLE — HEIGHT_LABEL_LEAKAGE=YES, NEXT=NOT_OPENED` |
+| 72 | 2026-10-31 | **P-008-R1K** — R1I 점군에서 평면 위 연결로 신발 표면을 보았다. 법선은 안정하고 둘레 연속과 허용 오차 민감은 실패. robot 0 | `FAIL_GEOMETRY_FEASIBILITY — TOPOLOGY_STABLE=NO, NEXT=NOT_OPENED` |
+| 73 | 2026-10-31 | **P-008-R1L** — R1I 점군에서 접촉 띠와 경계 10 mm를 뺀 분사 표면을 보았다. 법선은 안정하고 연속 길이는 0.10 m에 못 미친다. robot 0 | `FAIL_PROCESS_SURFACE_FEASIBILITY — EXTENT=0.073m, SENSITIVITY=FRAGILE, NEXT=NOT_OPENED` |
+| 74 | 2026-10-31 | **P-008-R1M** — Gemini를 고정하고 신발만 세 방향으로 찍었다. 점군은 맞추지 않았다. B의 옆면 증가와 기울기 차이가 사전 기준에 못 미친다. robot 0 | `FAIL_ADDITIONAL_VIEW_VALUE — REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 75 | 2026-10-31 | **P-008-R1N** — R1I 점군을 세로축 단면으로 나눠 기울기 전환을 보았다. 단일 특징은 16개 중 2개다. 이 조사의 새 perception 실험은 여기서 닫는다. robot 0 | `FAIL_CUTTING_PLANE_FEATURE_FEASIBILITY — UNIQUE=2/16, COVERAGE=0.123, NEXT=NOT_OPENED` |
+| 76 | 2026-10-31 | **ADR-008** — 공정 정의와 측정 표면 6D ProcessPath를 분리했다. R1 실패 기록은 유지한다. P-009는 열지 않는다. robot 0 | `ACCEPTED — R1=CLOSED, P-009=NOT_OPENED` |
+| 77 | 2026-10-31 | **P-009-CONTRACT** — 입력·출력·합격 수치를 검토 문서로 적었다. 표면 거리는 anchor에만 적용한다. 동결 전이다. robot 0 | `CONTRACT_REVIEW — P-009=NOT_OPENED, FROZEN=NO` |
+| 78 | 2026-10-31 | **P-009-CONTRACT** — anchor, command 위치, kNN 평면 투영, 합격 수치를 동결했다. P-009는 열지 않는다. robot 0 | `FROZEN — P-009=NOT_OPENED, IMPLEMENTATION=NO` |
+| 79 | 2026-10-31 | **P-009** — 동결 계약으로 R1I 점군의 6D ProcessPath를 한 번 만들었다. 표면 거리 P95 4.6 mm, 연속 점프 0.255 m. 기준은 그대로. robot 0 | `FAIL_SURFACE_ASSOCIATION — ALSO=FAIL_PATH_CONTINUITY, P-010=NOT_OPENED` |
+| 80 | 2026-10-31 | **W-001** — 현재 Gemini에서 작업판 시야 1장을 저장했다. 나무 면은 depth에 있고, 801×400 모서리는 정하지 않았다. robot 0 | `BLOCKED_WORKBOARD_OBSERVABILITY — REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 81 | 2026-10-31 | **W-002A-D1** — `(150,0)` 테스트 마커를 움직이지 않고 검출 실패만 봤다. 인쇄 PDF는 ID 0으로 읽히고, 현재 RGB는 기본 검출에서 0건이다. 마커가 마지막 행에 걸린다. robot 0 | `QUIET_ZONE_PROBLEM — NEXT=NOT_OPENED` |
+| 82 | 2026-10-31 | **W-002A** — 6개 이산 위치에서 60 mm ID 0의 RGB 검출과 중심 depth를 확인했다. 정합과 마커 고정 설치는 하지 않았다. robot 0 | `PASS_FIDUCIAL_OBSERVABILITY — CLOSED, REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 83 | 2026-10-31 | **ADR-009** — `workboard`와 WorkpieceInstance를 카메라 장면 전체와 분리했다. 지정 방식은 고르지 않았다. robot 0 | `ACCEPTED — CLOSED, MECHANISM=NOT_SELECTED, NEXT=NOT_OPENED` |
+| 84 | 2026-10-31 | **W-002B** — workboard 원점과 fiducial registration 계약을 실행 전에 고정했다. 조사 모서리 4점은 후보이고 설치 좌표는 아니다. robot 0 | `PASS_REGISTRATION_CONTRACT — LAYOUT=REQUIRES_VISIBILITY_VALIDATION, NEXT=NOT_OPENED` |
+| 85 | 2026-10-31 | **W-002C** — ID 0~3을 동시에 놓고 한 프레임에서 4/4를 읽었다. 자 실측이 없어 설치 검증은 합격이 아니다. robot 0 | `BLOCKED_PRINT_METROLOGY — CLOSED, LAYOUT=NOT_VALIDATED_FOR_INSTALL, NEXT=NOT_OPENED` |
+| 86 | 2026-10-31 | **W-002C-R1** — 네 출력물을 명목 60 mm, quiet zone 10 mm 이상으로 쓰는 것을 승인했다. 자로 재지는 않았다. robot 0 | `PASS_NOMINAL_PRINT_GEOMETRY_ACCEPTANCE — LAYOUT=VALIDATED_FOR_INSTALL_WITH_NOMINAL_GEOMETRY, NEXT=NOT_OPENED` |
+| 87 | 2026-10-31 | **W-002D** — ID 0~3을 작업판에 고정한 뒤 한 프레임에서 4/4를 읽었다. 중심 좌표는 자로 다시 재지 않았다. robot 0 | `PASS_FIDUCIAL_INSTALLATION — ACTUAL_POSITION_MEASURED=NO, REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 88 | 2026-10-31 | **W-002D-R1** — 설치된 검은 사각형 중심을 기록했다. 목표 좌표를 복사하지 않았다. 도구와 눈금은 아직 없다. robot 0 | `NOT_CLOSED — TOOL=UNKNOWN, RESOLUTION=UNKNOWN, NEXT=NOT_OPENED` |
+| 89 | 2026-10-31 | **W-002D-R1** — 측정 도구를 1 mm 눈금 줄자로 확정하고 설치 중심 실측을 닫았다. 눈금은 정확도 주장이 아니다. robot 0 | `PASS_INSTALLED_LAYOUT_METROLOGY — CLOSED, REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 90 | 2026-10-31 | **W-002E** — 실측 설치 중심으로 카메라-작업판 PnP를 10프레임 했다. 재투영과 평면 `|z|`가 동결 기준을 넘었다. robot 0 | `FAIL_REPROJECTION — CLOSED, PLANE=FAIL, REPEATABILITY=PASS, NEXT=NOT_OPENED` |
+| 91 | 2026-10-31 | **W-002E-R1** — 실패한 등록의 residual 패턴만 봤다. 원인은 확정하지 않았다. robot 0 | `PASS_DIAGNOSIS — ROOT_CAUSE=INCONCLUSIVE, VALIDATED_TRANSFORM=NONE, NEXT=NOT_OPENED` |
+| 92 | 2026-10-31 | **W-002E-R2** — 설치된 검은 사각형 변을 기록했다. 평균 59.25 mm는 등록 크기로 쓰지 않는다. robot 0 | `PASS_PHYSICAL_GEOMETRY_METROLOGY — CLOSED, SIZE_ADOPTED=NO, NEXT=NOT_OPENED` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 
@@ -723,6 +807,6 @@ operator channel        realtime visual observation
 - **게이트 판정 문자열은 재서술하지 않는다.** `acceptance.json` 의 값을 그대로 옮긴다
 - **운영자 관찰은 증거로 승격하지 않는다.** 관찰로만 기록한다 (P-007C 가 세운 기준)
 - **선행 게이트 증거는 불변이다.** 새 게이트는 자기 디렉터리에만 쓴다. `git diff --exit-code HEAD -- evidence/<선행>` 으로 착수·종료 시 확인
-- **플랜 검토는 advisor 가 한다** (codex 자문 대체 — 사용자 지시 2026-10-27)
+- **Codex 검토는 하지 않는다.** Cursor 결과물의 PASS/FAIL은 ChatGPT가 판단한다 (사용자 지시 2026-10-30). 2026-10-27의 advisor 대체 지시는 이 항목으로 갈음한다.
 - **가설 라벨은 분기까지 적는다** — `H-C6.learning_mode`(ELIMINATED)와 `H-C6.other_controller_state`(OPEN)는 다르다. 상위 라벨만 적어 범위를 넓게 읽히게 하지 않는다 (검수 세션 지적 2026-10-27)
 - 외부 수집 자료는 **gitignore 된 게이트 디렉터리 + 커밋되는 매니페스트**로 둔다. 스크래치패드 금지 (`docs/261027-1358-*-이슈보고서.md`)

@@ -1,0 +1,11 @@
+{
+  "coverage_within_0_025m": 0.7142857142857143,
+  "largest_gap_m": 0.12502648194091365,
+  "reference_median_distance_m": 0.002556296207026429,
+  "boundary_median_distance_m": 0.013870563392656698,
+  "largest_false_component_voxels": 15,
+  "boundary_points": 147,
+  "reference_samples": 36,
+  "reference_hits": 35,
+  "independent_of_extraction_threshold": true
+}

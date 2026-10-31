@@ -1,0 +1,7 @@
+{
+  "read_only": true,
+  "before_capture": [86, 152, 0, 18, 93, 178],
+  "after_capture": [86, 152, 0, 18, 93, 178],
+  "arm1_deg": 86,
+  "writes": 0
+}

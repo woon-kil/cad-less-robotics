@@ -1,0 +1,39 @@
+{
+  "name": "T_camera_workboard_FINAL",
+  "equation": "p_camera = T_camera_workboard * p_workboard",
+  "camera_frame": "camera_color_optical_frame",
+  "workboard_frame": "workboard",
+  "selection": "SE3_MEDOID",
+  "medoid_index": 7,
+  "matrix": [
+    [
+      0.76557371681,
+      -0.643339591819,
+      0.003324714756,
+      -0.221979986339
+    ],
+    [
+      -0.468856598853,
+      -0.561462846981,
+      -0.681859927824,
+      0.34510692147
+    ],
+    [
+      0.440534191456,
+      0.520455224836,
+      -0.731475211541,
+      0.398464522837
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "tvec_m": [
+    -0.221979986339,
+    0.34510692147,
+    0.398464522837
+  ]
+}

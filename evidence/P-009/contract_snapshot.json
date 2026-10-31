@@ -1,0 +1,20 @@
+{
+  "source": "evidence/P-009-CONTRACT",
+  "sha256": {
+    "status.json": "2eac6e9500534870936eae5ec05fa184abe92edf281fc2b990c542510c36157a",
+    "process_spec_contract.json": "cb0b0f3e44218663289f23f3c8f7806204c7dfd3ce011acff40b8be820e64abb",
+    "measured_surface_contract.json": "a61dd9d06c5bdb7bf60afd628e2422b9fad28bdcf2551715bfae1e66c839d4b6",
+    "process_path_contract.json": "1dea339cedc75dc25dbc3fb9e70a23992310738ed7e61f80f01e89858be7344b",
+    "frame_convention.json": "9ad4917ee5a17ffea3a2228ed599d7710607c70d4563a3baf90b91c650aa401e",
+    "normal_convention.json": "9d60a3b6569749f499bd9e5092c2883bb2cd5c1ede964e4fbe8e33b814de45d3",
+    "tangent_convention.json": "c38c63bb7166d3e9403fd8a04a87a419a6eb8a60327e1eb93d0feca512ba1e90",
+    "orientation_convention.json": "eca00f0dd2091fdb3816a72a87a66d315c30e4aa55f75eb758e6f94c7a53a9f3",
+    "surface_association_contract.json": "2c768d4a9d37be0d2ddc2320df2a8281c2539714f34fbac574da21d230bafb74",
+    "spacing_contract.json": "f9d62d7836f247790f676d13c49e7bad9fb52fa6f1d7f310c2c2f9d43f4ae1a1",
+    "smoothing_contract.json": "d33af772a71a49188a25d829bf41d4fc9cb9fc585b4dae6a097dd70b6f8f86c2",
+    "confidence_contract.json": "b77e71ce44dcfbaeac537ab9a93782e34b8abc673d31030162a7b3be6f374b45",
+    "continuity_contract.json": "440000ee5ff53cfe130762a584dc4c7346b78c6b7225cf0683960eae438fbda0",
+    "acceptance_metrics.json": "2f5ca50a23f4a64aa429f7b6ec84fc5cb9cfd8ccf585ba25324f1cb52df2797e"
+  },
+  "inconsistencies": []
+}

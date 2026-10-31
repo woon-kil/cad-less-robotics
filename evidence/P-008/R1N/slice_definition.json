@@ -1,0 +1,24 @@
+{
+  "fixed_before_scoring": true,
+  "slice_spacing_m": 0.01,
+  "slab_thickness_m": 0.008,
+  "min_points": 30,
+  "min_envelope_bins": 8,
+  "min_lateral_extent_m": 0.02,
+  "longitudinal_percentile": [5, 95],
+  "height_m": [0.004, 0.1],
+  "support_removal_m": 0.004,
+  "voxel_m": 0.005,
+  "envelope_bin_m": 0.002,
+  "valid_slice_ratio_min": 0.8,
+  "unique_feature_slice_ratio_min": 0.8,
+  "max_consecutive_missing_slices": 2,
+  "ordered_coverage_min": 0.8,
+  "jump_rule": "max(3 * slice_spacing_m, 0.020)",
+  "sensitivity": {
+    "slice_spacing_m": [0.008, 0.01, 0.012],
+    "slab_thickness_m": [0.006, 0.008, 0.01],
+    "neighborhood_m": [0.006, 0.008, 0.01]
+  },
+  "stable_rule": "명목이 합격이면 모든 민감 조합도 합격해야 STABLE. 명목이 불합격이고 민감 조합도 모두 불합격이면 결론은 STABLE. 합격 여부가 갈리면 FRAGILE. 민감 조합 중 합격한 값을 명목으로 바꾸지 않는다."
+}

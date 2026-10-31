@@ -1,0 +1,12 @@
+{
+  "fixed_before_scoring": true,
+  "name": "sidewall_to_upper_slope_transition",
+  "statement": "단면을 2 mm 가로 칸의 최대 높이 외곽선으로 만든다. 바깥에서 중심 쪽으로 가며 기울기 50° 이상을 본 뒤, 처음으로 25° 이하가 되는 점을 그 쪽의 후보로 한다. 기울기는 그 점 앞뒤 8 mm의 직선 기울기 절댓값이다. 양쪽 후보의 점수 차가 15° 미만이면 모호하다. 한쪽만 있으면 그 점을 쓴다. 없는 구간은 잇지 않는다.",
+  "neighborhood_m": 0.008,
+  "steep_deg": 50.0,
+  "shallow_deg": 25.0,
+  "dominance_margin_deg": 15.0,
+  "feature_point": "처음으로 얕아진 칸에서 높이가 최대인 실측 점",
+  "not_used": ["max_camera_z", "outermost_point", "R1K_reference_boundary", "manual_trace"],
+  "terminology": "ORDERED_PROCESS_FEATURE"
+}

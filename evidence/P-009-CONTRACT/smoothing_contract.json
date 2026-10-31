@@ -1,0 +1,20 @@
+{
+  "id": "P009_SMOOTHING_CONTRACT",
+  "status": "FROZEN",
+  "MAX_SMOOTHING_DISPLACEMENT_M": 0.003,
+  "purpose": "reduce measurement or path noise",
+  "must_not": [
+    "bridge missing geometry",
+    "create new surface",
+    "hide discontinuity",
+    "erase real curvature"
+  ],
+  "displacement_measured_on": "surface_anchor",
+  "reported_separately_from_surface_association": true,
+  "reports": [
+    "SMOOTHING_DISPLACEMENT_MEDIAN",
+    "SMOOTHING_DISPLACEMENT_P95",
+    "SMOOTHING_DISPLACEMENT_MAX"
+  ],
+  "industrial_glue_accuracy_claim": false
+}

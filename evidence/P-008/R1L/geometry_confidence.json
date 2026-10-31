@@ -1,0 +1,35 @@
+{
+  "declared_before_evaluation": true,
+  "predicate": "VALID_NORMAL AND NORMAL_STABLE AND DENSITY_OK AND BOUNDARY_CLEARANCE_OK AND HEIGHT_OK AND IN_CONTACT_BODY",
+  "valid_normal": {
+    "radius_voxels": 2,
+    "min_points": 8,
+    "eigen_ratio_max": 0.25,
+    "sign": "support_plane_positive",
+    "source": "scripts/p008r1k_analyze.py normals_for"
+  },
+  "normal_stable_max_deg": 25.0,
+  "normal_stable_meaning": "유효 법선을 가진 6-이웃과의 각 중앙값. 이웃이 없으면 안정으로 보지 않는다.",
+  "density_min_points": 8,
+  "density_meaning": "법선 이웃 반경 안의 점 수. 유효 법선의 최소 점 수와 같다. 별도 밀도 문턱은 두지 않았다.",
+  "boundary_clearance_m": 0.01,
+  "clearance_measurement": "평면 투영 셀 중심에서 경계 셀 중심까지의 거리",
+  "normal_acceptance_population": "각도 문턱을 적용하기 전의 작업 높이·간격·밀도 집합",
+  "normal_valid_ratio_min": 0.8,
+  "normal_median_max_deg": 15.0,
+  "normal_p95_max_deg": 25.0,
+  "unstable_angle_deg": 25.0,
+  "unstable_ratio_max": 0.05,
+  "spacing_median_max_m": 0.01,
+  "sensitivity": {
+    "boundary_clearance_m": [0.005, 0.01, 0.015],
+    "normal_voxel_radius": [1, 2, 3],
+    "normal_stable_max_deg": [15.0, 25.0, 35.0]
+  },
+  "stable_rule": "위 민감값마다, 다른 항목은 명목으로 두고, 그래프 경로 길이가 0.10 m 이상인 안전 성분이 남으면 STABLE. 하나라도 없으면 FRAGILE.",
+  "evidence_class": {
+    "clearance_0_010m": "이 Gate의 명목값",
+    "normal_median_max_15deg": "PROJECT_ADAPTATION. PCL region growing의 평활 각과 R1K의 25° 불안정 기준 사이에 둔 작업 방향 기준. 결과를 보고 정하지 않았다.",
+    "extent_graph": "26-연결 voxel의 유클리드 가중 최단 경로. 빈 칸은 가중치가 없다."
+  }
+}

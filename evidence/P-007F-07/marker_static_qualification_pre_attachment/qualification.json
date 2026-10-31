@@ -1,0 +1,72 @@
+{
+ "gate": "P-007F-07B Phase B4-B9",
+ "marker_id": 0,
+ "n_frames": 117,
+ "duration_s": 11.950954749,
+ "detection_rate": 0.3418803418803419,
+ "detection_rate_acceptance": 0.95,
+ "footprint_px": {
+  "mean_px": 25.207896745204927,
+  "min_px": 21.287155151367188,
+  "max_px": 41.95222759246826
+ },
+ "footprint_mean_acceptance_px": 35.0,
+ "valid_four_corner_rate": 0.3418803418803419,
+ "valid_four_corner_acceptance": 0.95,
+ "static_jitter": {
+  "center_x_px": {
+   "mean": 808.3128265380859,
+   "std": 14.920743161233414,
+   "peak_to_peak": 39.9495849609375,
+   "median": 815.1001586914062,
+   "mad": 0.2750244140625
+  },
+  "center_y_px": {
+   "mean": 349.2430150985718,
+   "std": 102.54666455639844,
+   "peak_to_peak": 270.39955139160156,
+   "median": 396.4057922363281,
+   "mad": 0.1644439697265625
+  },
+  "orientation_deg": {
+   "mean": -40.60854834726289,
+   "std": 3.8749509616482527,
+   "peak_to_peak": 13.877132719457116,
+   "median": -41.290204702212435,
+   "mad": 2.883320247941665
+  }
+ },
+ "raw_displacement_stats_px": {
+  "mean": 224.82453491101364,
+  "std": 103.34917886075107,
+  "peak_to_peak": 272.78752461095286,
+  "median": 272.3650124197422,
+  "mad": 0.18053639929527776
+ },
+ "raw_displacement_baseline_note": "first detected frame used as baseline (frame_index=6) -- NOT frames[0:3], since those were undetected",
+ "background_compensated_displacement_stats_px": null,
+ "marker_loss_count": 77,
+ "max_consecutive_loss": 8,
+ "clip_count": 0,
+ "corner_rejection_count": 2740,
+ "systematic_clipping": false,
+ "persistent_occlusion": false,
+ "background_compensation_operational": false,
+ "background_compensation_invalid_reason": "NO_VALID_BASELINE_FRAMES",
+ "baseline_b_unchanged": true,
+ "fail_inconclusive_reasons": [
+  "DETECTION_RATE_BELOW_95_PCT",
+  "MARKER_TOO_SMALL_IN_IMAGE",
+  "VALID_FOUR_CORNER_RATE_BELOW_95_PCT",
+  "BACKGROUND_COMPENSATION_NOT_OPERATIONAL: NO_VALID_BASELINE_FRAMES"
+ ],
+ "MARKER_STATIC_QUALIFICATION": "INCONCLUSIVE",
+ "module_shas": {
+  "marker_detector": "1361456f5b0d8c69d0e8e653d08753e9b3fe8ec307e9f7c365cb369f62862220",
+  "trajectory_classifier": "05b7a84a7691a5934bb56b39d30abef32e5aeb39b6eccbf5452c49f1a0aa701e",
+  "forensics": "457f6a810d08a91df116fa764c619c3410865e6ace74fea6a72f678d33ce72f1",
+  "wiring": "07713efc194e741149c5d2666939dcdc2dd766a4e9249a53d31f7fba13f638f6"
+ },
+ "robot_command_count": 0,
+ "servo_write_count": 0
+}

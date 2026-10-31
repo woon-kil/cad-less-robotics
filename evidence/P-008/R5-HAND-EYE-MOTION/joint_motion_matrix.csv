@@ -1,0 +1,7 @@
+joint,command_delta_deg,servo_delta_deg,ros_delta_rad,physical_joint,physical_direction_vs_planning_urdf,result
+Arm1,,,,,NOT_OBSERVED,NOT_RUN
+Arm2,,,,,NOT_OBSERVED,NOT_RUN
+Arm3,,,,,NOT_OBSERVED,NOT_RUN
+Arm4,,,,,NOT_OBSERVED,NOT_RUN
+Arm5,,,,,NOT_OBSERVED,NOT_RUN
+grip_joint,,,,,NOT_OBSERVED,NOT_RUN

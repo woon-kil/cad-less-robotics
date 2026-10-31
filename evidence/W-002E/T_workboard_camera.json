@@ -1,0 +1,32 @@
+{
+  "name": "T_workboard_camera_FINAL",
+  "equation": "p_workboard = T_workboard_camera * p_camera",
+  "inverse_of": "T_camera_workboard_FINAL",
+  "inverse_is_independent_calibration": false,
+  "matrix": [
+    [
+      0.76557371681,
+      -0.468856598853,
+      0.440534191456,
+      0.156210454248
+    ],
+    [
+      -0.643339591819,
+      -0.561462846981,
+      0.520455224836,
+      -0.156426741984
+    ],
+    [
+      0.003324714756,
+      -0.681859927824,
+      -0.731475211541,
+      0.527519521835
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ]
+}

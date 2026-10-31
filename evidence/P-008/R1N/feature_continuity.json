@@ -1,0 +1,12 @@
+{
+  "interpolation_used": false,
+  "spacing": {
+    "median_m": 0.12101350702927856,
+    "p95_m": 0.12101350702927856,
+    "max_m": 0.12101350702927856
+  },
+  "max_consecutive_missing": 6,
+  "coverage": 0.123190898628306,
+  "jump_limit_m": 0.03,
+  "unexplained_jumps": 1
+}

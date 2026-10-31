@@ -1,0 +1,13 @@
+{
+  "frame": "checkerboard_target_frame",
+  "status": "DOCUMENT_CONVENTION_ONLY",
+  "marked_on_physical_board": false,
+  "origin": "표시할 내부 코너 하나. OpenCV 점 (i, j) = (0, 0).",
+  "plus_x": "같은 행에서 i가 증가하는 방향. 내부 코너 6개, 간격 0.020 m.",
+  "plus_y": "다음 행으로 j가 증가하는 방향. 내부 코너 9개, 간격 0.020 m.",
+  "plus_z": "+X와 +Y의 오른손 외적. 보드를 바라볼 때 +X가 오른쪽, +Y가 아래이면 +Z는 그 면 바깥, 카메라 쪽이다.",
+  "object_points": "(i * 0.020, j * 0.020, 0), i = 0..5, j = 0..8",
+  "opencv_pattern_size": [6, 9],
+  "image_180_rule": "P-006 checkerboard.yaml의 180도 규칙은 영상에서 코너 순서를 고른다. 그 규칙을 base_link 원점으로 쓰지 않는다.",
+  "print_margin_assumed_m": null
+}

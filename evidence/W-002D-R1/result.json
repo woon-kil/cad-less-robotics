@@ -1,0 +1,50 @@
+{
+  "work_order": "W-002D-R1",
+  "status": "PASS_INSTALLED_LAYOUT_METROLOGY",
+  "closed": true,
+  "date": "2026-10-31",
+  "w002d_historical_status": "PASS_FIDUCIAL_INSTALLATION",
+  "w002d_historical_status_modified": false,
+  "target_values_copied_as_measured": false,
+  "markers_repositioned": false,
+  "measured_installed_layout_mm": {
+    "0": [148, 71],
+    "1": [500, 69],
+    "2": [500, 336],
+    "3": [149, 332]
+  },
+  "target_layout_mm": {
+    "0": [150, 70],
+    "1": [500, 70],
+    "2": [500, 330],
+    "3": [150, 330]
+  },
+  "delta_mm": {
+    "0": [-2, 1],
+    "1": [0, -1],
+    "2": [0, 6],
+    "3": [-1, 2]
+  },
+  "registration_layout": "MEASURED_INSTALLED_LAYOUT",
+  "derived_center_distance_mm": {
+    "ID0_ID1": 352.006,
+    "ID1_ID2": 267.0,
+    "ID2_ID3": 351.023,
+    "ID3_ID0": 261.002,
+    "ID0_ID2": 440.601,
+    "ID1_ID3": 438.6
+  },
+  "derived_distances_are_separate_measurements": false,
+  "positioning_measurement_tool": "1_MM_GRADUATED_TAPE_MEASURE",
+  "measurement_resolution_mm": 1,
+  "measurement_resolution_is_minimum_graduation": true,
+  "measurement_resolution_is_accuracy_claim": false,
+  "z_source": "NOMINAL_PLANAR_INSTALLATION",
+  "yaw_source": "INSTALLATION_CONTRACT",
+  "pnp_executed": false,
+  "registration_executed": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "historical_evidence_modified": false
+}

@@ -1,0 +1,12 @@
+{
+  "gate": "P-008-R1J",
+  "feature_separability": "NOT_ROBUSTLY_SEPARABLE",
+  "selected_feature_family": "NONE",
+  "input_sha256": "68b7b0a08164aeda291349be46dfbb3a6eacd66cd801d04d8b1a9a1025482377",
+  "height_label_leakage_contact": "YES",
+  "downstream_geometry_risk": true,
+  "holdout_touched": false,
+  "historical_evidence_modified": false,
+  "robot_moved": false,
+  "next_gate_opened": false
+}

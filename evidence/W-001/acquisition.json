@@ -1,0 +1,33 @@
+{
+  "identity": {
+    "device_name": "Orbbec Gemini 335L",
+    "serial": "CP263630009D",
+    "firmware": "1.4.60",
+    "ros_wrapper_version": "2.10.6",
+    "sdk_version": "2.10.6",
+    "align_log": true,
+    "frame_sync_log": true
+  },
+  "checks": {
+    "serial": true,
+    "firmware": true,
+    "wrapper": true,
+    "color_frame": true,
+    "depth_frame": true,
+    "cloud_frame": true,
+    "fields_rgb": true,
+    "stamp_span_sec": 2.002716064453125e-05,
+    "stamp_span_ok": true,
+    "depth_cloud_passed": true,
+    "color_correspondence_passed": true,
+    "extrinsic_ok": true,
+    "finite_xyz": 758234,
+    "registration_accuracy": "NOT_CLAIMED",
+    "topic": "/camera/depth_registered/points",
+    "color.png_sha256": "2ca05b6b40196804c939efbaef23888b0e40b4aa801aace2c04d3c5a746da57d",
+    "depth.png_sha256": "91c48de3c8d148d0734e167ddd0d2ac8ef0201461b71d073a4c0134b5dcbed27",
+    "cloud.pcd_sha256": "b8d007b71c4a9cfa32fa5b592980c3ce57070cb008bd4f0c6062ab50d3604c7a",
+    "contract_passed": true
+  },
+  "span_sec": 2.002716064453125e-05
+}

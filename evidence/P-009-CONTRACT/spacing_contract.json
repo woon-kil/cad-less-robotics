@@ -1,0 +1,12 @@
+{
+  "id": "P009_SPACING_CONTRACT",
+  "status": "FROZEN",
+  "TARGET_SPACING_M": 0.005,
+  "source": "ProcessSpecification.sampling.spacing_m",
+  "SPACING_RELATIVE_TOLERANCE": 0.20,
+  "non_terminal_interval_m": [0.004, 0.006],
+  "meaning": "ProcessPath sampling interval",
+  "not": "sensor accuracy",
+  "resample_along": "measured surface-associated geometry",
+  "straight_line_through_empty_space": false
+}

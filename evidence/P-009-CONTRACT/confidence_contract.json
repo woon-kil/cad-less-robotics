@@ -1,0 +1,27 @@
+{
+  "id": "P009_CONFIDENCE_CONTRACT",
+  "status": "FROZEN",
+  "eligible_only_when": [
+    "finite geometry",
+    "neighbor_count >= 12",
+    "kth_neighbor_distance <= 0.015 m",
+    "valid local PCA",
+    "association contract passes",
+    "normal valid"
+  ],
+  "normal_angle_stability_threshold_frozen": false,
+  "silent_repair": false,
+  "rejection": "REJECTED_UNSUPPORTED_GEOMETRY",
+  "unknown_rules": ["UNKNOWN != INTERPOLATE", "UNKNOWN != SAFE"],
+  "invalid_normal_becomes_pose": false,
+  "r1_forbidden_inside_p009": [
+    "automatic shoe segmentation",
+    "shoe/background classification",
+    "visible perimeter detection",
+    "sidewall transition discovery",
+    "bonding-line discovery",
+    "automatic optimal process-region discovery",
+    "multiview registration"
+  ],
+  "if_r1_responsibility_required": "FAIL_PROCESS_SPEC_CONTRACT"
+}
