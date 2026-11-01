@@ -1,0 +1,20 @@
+{
+  "gate": "P-010A",
+  "final_gate": "PASS_ARCHITECTURE_DECOUPLING",
+  "decision": "DECOUPLE_CAD_AND_FOOTWEAR_ASSETS",
+  "adr": "ADR-011",
+  "decision_recorded": "PASS",
+  "p010_evidence_referenced": "PASS",
+  "p010r_evidence_referenced": "PASS",
+  "ground_truth_policy": "PASS",
+  "responsibility_boundary": "PASS",
+  "registration_policy": "PASS",
+  "scope_boundary": "PASS",
+  "p011_entry_contract": "PASS",
+  "implementation": false,
+  "p011_opened": false,
+  "cad_primary_asset": "NONE",
+  "cad_ground_truth": "NONE",
+  "scan_ground_truth": "NONE",
+  "architecture_direction": "DECOUPLED"
+}
