@@ -1,0 +1,37 @@
+{
+  "unit": "mm",
+  "unit_source": "STEP SI_UNIT(.MILLI.,.METRE.)",
+  "bounding_box_mm": {
+    "unit": "mm",
+    "x_extent": 299.973073744823,
+    "y_extent": 98.465064776142,
+    "z_extent": 118.995816031623,
+    "min": [
+      -2.938574365223,
+      -53.54622043001,
+      2.158049123937
+    ],
+    "max": [
+      297.0344993796,
+      44.918844346132,
+      121.15386515556
+    ]
+  },
+  "coordinates_finite": true,
+  "dimension_plausible": true,
+  "plausibility_screen_mm": {
+    "x": [
+      150.0,
+      400.0
+    ],
+    "y": [
+      40.0,
+      180.0
+    ],
+    "z": [
+      40.0,
+      200.0
+    ],
+    "meaning": "Adult shoe-last order of magnitude. Not a manufacturing tolerance."
+  }
+}

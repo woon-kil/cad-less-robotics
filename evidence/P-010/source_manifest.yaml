@@ -1,0 +1,21 @@
+repository: https://github.com/peterzask/freecad-shoe-last-wb
+default_branch: master
+commit: 59d1db3b48b460634f1504ddab7d1a1f33be05d7
+commit_message: "girth_checks: fold sandbox_a.py planes in, add summary table; control_curves cleanup; minor fixes"
+commit_date: "2026-07-28T11:57:49-06:00"
+retrieval_date: "2026-11-01"
+github_owner: peterzask
+readme_author: Robert Grabbe
+readme_date: April 2026
+description: Parametric shoe last generator for FreeCAD. Foot measurements to STL/STEP using Koleff/Knoefel geometric construction.
+license: NOT_DECLARED
+license_file: ABSENT
+github_license_api: null
+redistribution_rights: UNKNOWN
+original_format: FreeCAD Python macros
+checked_in_step_or_stl: NO
+generation_entry: uv_0.py
+generated_step_sha256: 66bb1aa019a410634fa317065ee550d4f988e434ccc4e98c43b529736b5f3196
+generated_stl_sha256: fc6be622849eec4dd450f7827fd9c6ddd125f313034943586fb4f723eb6ac7d6
+role: CAD branch input
+ground_truth: NOT_ASSIGNED

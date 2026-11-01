@@ -1,0 +1,18 @@
+{
+  "gate": "P-010",
+  "question": "Is this public CAD asset valid and reproducible enough to use as the CAD-branch input?",
+  "role": "CAD reference asset",
+  "ground_truth": "NOT_ASSIGNED",
+  "final_gate": "FAIL_CAD_ASSET_QUALIFICATION",
+  "next_gate_opened": false,
+  "step_read": "PASS",
+  "cad_validity": "INVALID",
+  "face_count": 3,
+  "surface_query": "FAIL",
+  "normal_query": "FAIL",
+  "normal_failure_count": 0,
+  "dimension_plausible": true,
+  "reproducible": true,
+  "license": "NOT_DECLARED",
+  "license_recorded": true
+}

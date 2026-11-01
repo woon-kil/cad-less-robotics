@@ -1,0 +1,11 @@
+{
+  "step_read_status": "PASS",
+  "reader": "FreeCAD Part.Shape.read",
+  "opencascade_binding": "FreeCAD 1.1.4",
+  "shape_type": "Solid",
+  "solid_count": 1,
+  "shell_count": 1,
+  "face_count": 3,
+  "edge_count": 7,
+  "vertex_count": 4
+}
