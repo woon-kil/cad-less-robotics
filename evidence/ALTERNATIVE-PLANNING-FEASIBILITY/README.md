@@ -12,12 +12,12 @@ DECISION_OPTION = B
 P025_GATE_OPEN_REVIEW = PASS_GATE_OPEN
 P025_IMPLEMENTATION_PLAN_REVIEW = PASS_IMPLEMENTATION_PLAN
 P025_IMPLEMENTATION_PLAN = APPROVED
-NEXT_ALLOWED_WORK = P025_IMPLEMENTATION
+NEXT_ALLOWED_WORK = P025_VISUAL_RENDER_REVIEW
 P025_CONTRACT_REVIEW = PASS_CONTRACT_FROZEN
 P025_CONTRACT = FROZEN
 P025_CONTRACT_FROZEN = YES
 P025_GATE = OPEN
-P025_IMPLEMENTATION = STARTED
+P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW
 UPSTREAM_EVIDENCE = READ_ONLY
 P025_PASS = NOT_EVALUATED
 POST_FEASIBILITY_ROADMAP_DECISION_REVIEW = PASS_POST_FEASIBILITY_ROADMAP_DECISION
@@ -145,4 +145,4 @@ diagnostic benchmark는 741 waypoint acceptance가 아니다. 같은 UR5e, `base
 
 여섯 조건 대조는 `feasibility_final_review.md`다. YES가 여섯 칸인 후보는 없다. `FEASIBILITY_VERDICT = NO_JUSTIFIABLE_ALTERNATIVE`다. 범위는 동결된 P-022 문제와 이번 조사 후보다. 해가 없다거나 이 경로의 계획이 불가능하다는 뜻은 아니다. `KDL_SCALAR_CALLBACK = RECONSIDER`는 유지한다. 구현 Gate는 열지 않는다. IKFast 공식 생성은 OpenRave 자체 검사 wrong rate 0.996으로 끝났다. 그 표현은 이 환경에서 benchmark solver를 확보하지 못했다는 뜻이다. IKFast 기술 전체가 불가능하다는 뜻은 아니다.
 
-pick_ik 기본 설정은 적재와 seed consistency는 통과했고, pathological fixture는 KDL과 같은 `max_resolution`으로 끝났다. feasibility 검토는 닫혔다. `NEXT_ALLOWED_GATE = NONE`이다. 계약은 `PASS_CONTRACT_FROZEN`이다. `P025_IMPLEMENTATION = STARTED`다. `P025_PASS = NOT_EVALUATED`다.
+pick_ik 기본 설정은 적재와 seed consistency는 통과했고, pathological fixture는 KDL과 같은 `max_resolution`으로 끝났다. feasibility 검토는 닫혔다. `NEXT_ALLOWED_GATE = NONE`이다. 계약은 `PASS_CONTRACT_FROZEN`이다. `P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW`다. `P025_PASS = NOT_EVALUATED`다.

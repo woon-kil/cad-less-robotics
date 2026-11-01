@@ -30,10 +30,16 @@ P025_GATE = OPEN
 P025_SCOPE = VERIFIED_END_TO_END_ENGINEERING_EVIDENCE_VISUALIZATION
 P025_IMPLEMENTATION_PLAN_REVIEW = PASS_IMPLEMENTATION_PLAN
 P025_IMPLEMENTATION_PLAN = APPROVED
-P025_IMPLEMENTATION = STARTED
+P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW
+P025_V01_V10 = PASS
+P025_DATA_FIDELITY = PASS
+P025_UPSTREAM_IMMUTABILITY = PASS
+P025_VISUAL_RENDER_REVIEW = NOT_EXECUTED
+P025_RENDER_SCREENSHOTS = CAPTURED
+P025_AC01_AC10 = PENDING_REVIEWER
 P025_PASS = NOT_EVALUATED
 UPSTREAM_EVIDENCE = READ_ONLY
-NEXT_ALLOWED_WORK = P025_IMPLEMENTATION
+NEXT_ALLOWED_WORK = P025_VISUAL_RENDER_REVIEW
 BRANCH_CONTINUITY_ALTERNATIVE_REVIEW = NO_JUSTIFIABLE_CANDIDATE
 BRANCH_CONTINUITY_HYPOTHESIS = NOT_PROVEN
 DIAGNOSTIC_GATE_CANDIDATE = NONE_FROM_THIS_REVIEW
@@ -184,7 +190,7 @@ future producer                    PORTFOLIO_END_TO_END_VISUALIZATION
 
 ## 이후 Gate 제안
 
-P-014부터 P-020은 `DEFINED_NOT_OPENED` / `DEFERRED_OPTIONAL_EXTENSION`이다. P-021 검토는 PASS다. P-022는 `CLOSED_FAIL`이다. 최종 게이트는 `FAIL_CARTESIAN_API`다. `reviewer_closed`는 true다. P-022는 다시 열지 않는다. `SUCCESSOR_GATE_DECISION = ALTERNATIVE_PLANNING_FEASIBILITY_REVIEW`다. 이 선택은 구현 Gate가 아니다. `ALTERNATIVE_IMPLEMENTATION_GATE = NOT_OPENED`다. P-023과 P-024는 `NOT_OPENED`다. P-025 Gate는 `OPEN`이다. `P025_IMPLEMENTATION = STARTED`다. P-025는 frozen evidence를 읽는 downstream이다. 화면을 위해 앞 Gate의 수치나 datum을 재계산하지 않는다.
+P-014부터 P-020은 `DEFINED_NOT_OPENED` / `DEFERRED_OPTIONAL_EXTENSION`이다. P-021 검토는 PASS다. P-022는 `CLOSED_FAIL`이다. 최종 게이트는 `FAIL_CARTESIAN_API`다. `reviewer_closed`는 true다. P-022는 다시 열지 않는다. `SUCCESSOR_GATE_DECISION = ALTERNATIVE_PLANNING_FEASIBILITY_REVIEW`다. 이 선택은 구현 Gate가 아니다. `ALTERNATIVE_IMPLEMENTATION_GATE = NOT_OPENED`다. P-023과 P-024는 `NOT_OPENED`다. P-025 Gate는 `OPEN`이다. `P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW`다. P-025는 frozen evidence를 읽는 downstream이다. 화면을 위해 앞 Gate의 수치나 datum을 재계산하지 않는다.
 
 번호는 기존 `evidence/P-014` 이상이 없어서 비어 있는 번호를 썼다. 충돌하는 기존 Gate ID는 없다.
 
@@ -652,7 +658,7 @@ SUPERSESSION_EFFECTIVE = YES
 PROPOSED_CONTRACT = evidence/P-025/contract_redefinition.md
 ```
 
-아래 본문은 역사 정의다. 지우지 않는다. 동결된 계약은 `evidence/P-025/contract_redefinition.md`다. 대체는 효력이 있다. P-025 Gate는 `OPEN`이다. `P025_IMPLEMENTATION = STARTED`다. 역사 본문은 바꾸지 않는다.
+아래 본문은 역사 정의다. 지우지 않는다. 동결된 계약은 `evidence/P-025/contract_redefinition.md`다. 대체는 효력이 있다. P-025 Gate는 `OPEN`이다. `P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW`다. 역사 본문은 바꾸지 않는다.
 
 
 이 Gate는 새 robotics algorithm을 만들지 않는다. 검증된 upstream 결과를 새 기술 주장 없이 모아, 면접관과 검토자가 20~30초 안에 Robotics Software Pipeline을 볼 수 있는 시각 산출물을 만든다. 화면을 맞추려고 P-022부터 P-024의 evidence, datum, threshold를 바꾸지 않는다.
@@ -716,7 +722,7 @@ P026 = NOT_OPENED
 
 ## STOP
 
-- `NEXT_ALLOWED_GATE = ALTERNATIVE_PLANNING_FEASIBILITY_REVIEW`다. P-022는 `CLOSED_FAIL`이고 다시 열지 않는다. P-014부터 P-020, P-023, P-024, P-025, P-026은 열지 않는다. `ALTERNATIVE_IMPLEMENTATION_GATE = NOT_OPENED`다. P-025는 정의만 있다. feasibility 검토는 `CLOSED`다. `FEASIBILITY_VERDICT = NO_JUSTIFIABLE_ALTERNATIVE`이고 `JUSTIFIABLE_ALTERNATIVE_FOUND = NO`다. 범위는 동결 contract 안에서 구현 Gate를 열 대안이 없다는 뜻이다. 이 ProcessPath를 RobotTrajectory로 만드는 방법이 없다는 뜻은 아니다. `KDL_SCALAR_CALLBACK = RECONSIDER`는 유지한다. `NEXT_ALLOWED_GATE = NONE`이다. P-023, P-024, P-025, 구현 Gate는 열지 않는다. roadmap 선택은 B다. RobotTrajectory 연구는 현재 분기에서 멈춘다. P-025는 아직 열지 않고 기존 정의 본문도 바꾸지 않았다. 계약 검토는 `PASS_CONTRACT_FROZEN`이다. `P025_GATE = OPEN`이다. `P025_IMPLEMENTATION_PLAN = APPROVED`다. `P025_IMPLEMENTATION = STARTED`다. `P025_PASS = NOT_EVALUATED`다. 이 Gate는 frozen evidence를 소비한다. `0.606061`, 실패 run, datum, ProcessPath를 보기 좋게 재계산하지 않는다.
+- `NEXT_ALLOWED_GATE = ALTERNATIVE_PLANNING_FEASIBILITY_REVIEW`다. P-022는 `CLOSED_FAIL`이고 다시 열지 않는다. P-014부터 P-020, P-023, P-024, P-025, P-026은 열지 않는다. `ALTERNATIVE_IMPLEMENTATION_GATE = NOT_OPENED`다. P-025는 정의만 있다. feasibility 검토는 `CLOSED`다. `FEASIBILITY_VERDICT = NO_JUSTIFIABLE_ALTERNATIVE`이고 `JUSTIFIABLE_ALTERNATIVE_FOUND = NO`다. 범위는 동결 contract 안에서 구현 Gate를 열 대안이 없다는 뜻이다. 이 ProcessPath를 RobotTrajectory로 만드는 방법이 없다는 뜻은 아니다. `KDL_SCALAR_CALLBACK = RECONSIDER`는 유지한다. `NEXT_ALLOWED_GATE = NONE`이다. P-023, P-024, P-025, 구현 Gate는 열지 않는다. roadmap 선택은 B다. RobotTrajectory 연구는 현재 분기에서 멈춘다. P-025는 아직 열지 않고 기존 정의 본문도 바꾸지 않았다. 계약 검토는 `PASS_CONTRACT_FROZEN`이다. `P025_GATE = OPEN`이다. `P025_IMPLEMENTATION_PLAN = APPROVED`다. `P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW`다. `P025_PASS = NOT_EVALUATED`다. 이 Gate는 frozen evidence를 소비한다. `0.606061`, 실패 run, datum, ProcessPath를 보기 좋게 재계산하지 않는다.
 - P-022 정의 검수는 PASS다. `CLOSED_FAIL`은 `FAIL_CARTESIAN_API`를 PASS로 바꾸지 않는다. `NEXT_ALLOWED_GATE`를 P-023으로 바꾸지 않는다. 동결된 datum, `eef_step`, fraction threshold를 결과를 보고 바꾸지 않는다. 실물 실행과 RobotTrajectory 생성은 하지 않는다.
 - P-014 출력, Gemini 촬영, 등록, adaptive path를 이 변경으로 시작하지 않는다.
 - historical evidence와 ADR-011 본문을 현재 표에 맞춰 고치지 않는다.
@@ -724,4 +730,4 @@ P026 = NOT_OPENED
 
 ## AGENTS.md
 
-절차 복구 당시 `AGENTS.md`는 P-011을 열지 않는다고 적고, 공개 화형 primary와 Coupon을 한 문장에 두었다. 그 문장은 운영 규칙에서 빼었다. `AGENTS.md`는 Gate 개폐를 소유하지 않고 이 파일을 정본으로 가리킨다. `NEXT_ALLOWED_GATE`는 `P025`다. `P025_IMPLEMENTATION_PLAN_REVIEW = PASS_IMPLEMENTATION_PLAN`이다. `P025_IMPLEMENTATION = STARTED`다. `P025_PASS = NOT_EVALUATED`다. upstream evidence는 읽기 전용이다.
+절차 복구 당시 `AGENTS.md`는 P-011을 열지 않는다고 적고, 공개 화형 primary와 Coupon을 한 문장에 두었다. 그 문장은 운영 규칙에서 빼었다. `AGENTS.md`는 Gate 개폐를 소유하지 않고 이 파일을 정본으로 가리킨다. `NEXT_ALLOWED_GATE`는 `P025`다. `P025_IMPLEMENTATION_PLAN_REVIEW = PASS_IMPLEMENTATION_PLAN`이다. `P025_IMPLEMENTATION = IMPLEMENTED_PENDING_VISUAL_REVIEW`다. `P025_PASS = NOT_EVALUATED`다. upstream evidence는 읽기 전용이다.
