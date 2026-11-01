@@ -1,0 +1,13 @@
+# P-013 구현 파라미터. 동결 계약을 바꾸지 않는다.
+unit: mm
+frame_id: CAD_MODEL_FRAME
+target_spacing_mm: 5.0
+pass_pitch_mm: 5.0
+tool_standoff_mm: 20.0
+cad_x: [1.0, 0.0, 0.0]
+eps_tool_tangent: 1.0e-4
+process_surface_rule: BSpline and mean oriented Nz > 0.5
+quaternion_order: [x, y, z, w]
+confidence: NOT_DEFINED
+tool_tangent_degenerate: TOOL_TANGENT_DEGENERATE
+no_axis_fallback: true

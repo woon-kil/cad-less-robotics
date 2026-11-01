@@ -1,0 +1,57 @@
+# P-013 CAD 6D ProcessPath
+
+동결된 `processpath_contract.md`를 바꾸지 않고 경로를 만들었다. P-009, P-011 STEP, P-012 엔진은 수정하지 않았다. P-014는 열지 않았다.
+
+입력 SHA-256은 `2a791f83b37439ef59c425422599765c26d273b30d56f624dedfbd9a8d3bb3fa`와 같다.
+
+Process surface는 face index를 지정하지 않고 `BSpline`이면서 oriented normal의 평균 Nz가 0.5보다 큰 면을 골랐다. 결과는 F10, F11, F12, F13, 4개다. 네 면은 하나의 assembly이고, BREP 경계에서 경로를 끊지 않았다.
+
+`traversal_tangent`는 pass마다 반전된다. `tool_tangent`는 CAD +X를 tool Z에 수직인 평면에 투영한 값이고, pass 방향과 함께 뒤집지 않는다. 투영 길이가 `1e-4`보다 작으면 `TOOL_TANGENT_DEGENERATE`로 남기고 다른 축으로 바꾸지 않는다. 이번 Coupon에서는 그 경우가 0건이다.
+
+같은 입력과 같은 파라미터로 두 번 실행했다. 비교 허용차는 `1e-6`이다.
+
+## 측정
+
+```text
+PROCESS_SURFACE_COUNT = 4
+WAYPOINT_COUNT = 741
+PROCESS_SEGMENT_COUNT = 720
+TRANSITION_SEGMENT_COUNT = 20
+PROCESS_PATH_LENGTH_MM = 3581.6253307462
+
+SPACING_MEDIAN_MM = 4.9627588216
+SPACING_P95_ERROR_MM = 0.0596006252
+SPACING_MIN_MM = 4.8764677214
+SPACING_MAX_MM = 5.0585662665
+SPACING_OUT_OF_BAND_COUNT = 0
+
+SURFACE_DISTANCE_MEDIAN_MM = 0.0
+SURFACE_DISTANCE_P95_MM = 0.0
+SURFACE_DISTANCE_MAX_MM = 0.0
+
+NORMAL_DOT_MIN = 0.8638070614
+NORMAL_FLIP_COUNT = 0
+TOOL_TANGENT_DEGENERATE_COUNT = 0
+
+ORIENTATION_DELTA_MEDIAN_DEG = 2.3364027539
+ORIENTATION_DELTA_P95_DEG = 14.3639299787
+ORIENTATION_DELTA_MAX_DEG = 30.2532351261
+ORIENTATION_OVER_45_COUNT = 0
+
+QUATERNION_NORM_MIN = 0.9999999999
+QUATERNION_NORM_MAX = 1.0000000001
+FRAME_ORTHOGONALITY_MAX_ERROR = 0.0
+ROTATION_DET_MIN = 1.0
+ROTATION_DET_MAX = 1.0
+
+FACE_BOUNDARY_CROSSING_COUNT = 63
+FACE_BOUNDARY_CONTINUITY = PASS
+NONFINITE_COUNT = 0
+REPRODUCIBILITY = PASS
+```
+
+TRANSITION의 최대 orientation delta는 2.9821557972 deg다. PROCESS 45° 통계에는 넣지 않았다.
+
+## 판정
+
+위 수치는 동결된 PASS 조건을 만족한다. 구현 측 기록은 `PASS_CAD_6D_PROCESSPATH`다. 검토자의 닫힘은 이 문서가 대신하지 않는다.
