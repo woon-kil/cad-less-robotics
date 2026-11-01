@@ -1,0 +1,38 @@
+{
+  "gate": "W-002F-R3-R2",
+  "status": "CLOSED",
+  "capture_device": "PHONE_PHOTO",
+  "gemini_capture": false,
+  "board_moved": false,
+  "dictionary": "DICT_5X5_100",
+  "detector": "DetectorParameters_create with CORNER_REFINE_NONE",
+  "source_png_sha256": "dd37b453f71ccb86be32d506fad85bb1673c4240b3004889da6aa056f35d29d6",
+  "source_accepted_marker_ids": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+  "existing_workboard_aruco_dictionary": "DICT_4X4_50",
+  "existing_aruco_used_for_detection": false,
+  "existing_aruco_used_for_registration": false,
+  "stored_photo_resolution": [1024, 576],
+  "independent_accepted_marker_ids": {
+    "01_oblique": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "02_close": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+    "03_overhead": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+  },
+  "ids_outside_source_board": [],
+  "expected_cell_pattern_match": true,
+  "layout_median_residual_px": {
+    "01_oblique": 0.273,
+    "02_close": 0.354,
+    "03_overhead": 0.19
+  },
+  "layout_method": "ID-paired 2D homography from the source PNG centers to the photo centers. Not solvePnP and not a registration transform.",
+  "diagnostic_127_reader_hamming_is_identify": false,
+  "diagnostic_127_reader_note": "The fixed threshold reader does not match every accepted marker. OpenCV acceptance and the source layout agree, so that reader is not the match decision.",
+  "physical_print_payload_preserved": true,
+  "print_as_sole_cause": "NOT_SUPPORTED",
+  "gemini_decoding_status": "UNCHANGED_FROM_R3",
+  "reprint_required": false,
+  "solve_pnp_executed": false,
+  "registration_executed": false,
+  "validated_registration_transform": null,
+  "next_gate_opened": false
+}

@@ -1,0 +1,648 @@
+{
+  "opencv": "4.5.4",
+  "dictionary": "DICT_5X5_100",
+  "detector": "DetectorParameters_create with CORNER_REFINE_NONE",
+  "source_png_sha256": "dd37b453f71ccb86be32d506fad85bb1673c4240b3004889da6aa056f35d29d6",
+  "source_accepted_marker_ids": [
+    16,
+    15,
+    14,
+    13,
+    12,
+    11,
+    10,
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "source_accepted_marker_count": 17,
+  "existing_aruco_dictionary_queried": false,
+  "solve_pnp": false,
+  "photos": [
+    {
+      "file": "photos/01_oblique.jpg",
+      "sha256": "b480c7bcabe15db0ed10ec26e8db5bbc52b4d332f5dde38ebd79ada7237dd011",
+      "resolution": [
+        1024,
+        576
+      ],
+      "accepted_marker_ids": [
+        0,
+        3,
+        1,
+        4,
+        7,
+        10,
+        2,
+        5,
+        8,
+        11,
+        14,
+        6,
+        9,
+        12,
+        15,
+        13,
+        16
+      ],
+      "accepted_marker_count": 17,
+      "rejected_candidate_count": 32,
+      "ids_outside_source_board": [],
+      "source_ids_missing": [],
+      "layout": {
+        "shared_id_count": 17,
+        "median_residual_px": 0.273,
+        "max_residual_px": 0.758,
+        "method": "2D homography from source PNG centers to photo centers. Not solvePnP."
+      },
+      "markers": [
+        {
+          "id": 0,
+          "center_px": [
+            414.25,
+            331.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 12,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 3,
+          "center_px": [
+            496.0,
+            323.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 10,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 1,
+          "center_px": [
+            338.25,
+            283.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 11,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 4,
+          "center_px": [
+            415.5,
+            276.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 7,
+          "center_px": [
+            490.75,
+            270.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 6,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 10,
+          "center_px": [
+            566.0,
+            262.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 2,
+          "center_px": [
+            271.0,
+            241.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 5,
+          "center_px": [
+            343.5,
+            235.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 8,
+          "center_px": [
+            415.75,
+            229.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 11,
+          "center_px": [
+            486.0,
+            223.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 10,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 14,
+          "center_px": [
+            556.5,
+            216.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 7,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 6,
+          "center_px": [
+            280.5,
+            198.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 9,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 9,
+          "center_px": [
+            348.75,
+            193.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 10,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 12,
+          "center_px": [
+            415.5,
+            187.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 7,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 15,
+          "center_px": [
+            482.5,
+            182.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 5,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 13,
+          "center_px": [
+            352.5,
+            155.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 10,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 16,
+          "center_px": [
+            416.25,
+            151.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 11,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        }
+      ]
+    },
+    {
+      "file": "photos/02_close.jpg",
+      "sha256": "8f280a20d759662e139495d50eea6d48226b761bbdef038039e32c8444e885cb",
+      "resolution": [
+        1024,
+        576
+      ],
+      "accepted_marker_ids": [
+        2,
+        6,
+        1,
+        5,
+        9,
+        0,
+        13,
+        4,
+        8,
+        12,
+        3,
+        16,
+        7,
+        11,
+        15,
+        10,
+        14
+      ],
+      "accepted_marker_count": 17,
+      "rejected_candidate_count": 29,
+      "ids_outside_source_board": [],
+      "source_ids_missing": [],
+      "layout": {
+        "shared_id_count": 17,
+        "median_residual_px": 0.354,
+        "max_residual_px": 0.686,
+        "method": "2D homography from source PNG centers to photo centers. Not solvePnP."
+      },
+      "markers": [
+        {
+          "id": 2,
+          "center_px": [
+            568.5,
+            396.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 6,
+          "center_px": [
+            472.25,
+            370.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 1,
+          "center_px": [
+            690.0,
+            341.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 5,
+          "center_px": [
+            593.25,
+            318.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 9,
+          "center_px": [
+            504.0,
+            297.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 0,
+          "center_px": [
+            801.75,
+            291.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 13,
+          "center_px": [
+            419.25,
+            277.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 2,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 4,
+          "center_px": [
+            706.5,
+            270.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 8,
+          "center_px": [
+            616.0,
+            251.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 12,
+          "center_px": [
+            531.0,
+            233.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 3,
+          "center_px": [
+            809.75,
+            225.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 16,
+          "center_px": [
+            451.25,
+            216.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 7,
+          "center_px": [
+            720.5,
+            208.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 11,
+          "center_px": [
+            635.75,
+            192.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 15,
+          "center_px": [
+            555.25,
+            177.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 10,
+          "center_px": [
+            733.0,
+            153.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 14,
+          "center_px": [
+            652.75,
+            139.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        }
+      ]
+    },
+    {
+      "file": "photos/03_overhead.jpg",
+      "sha256": "8389c962180e382341504c9b1f80f298dd81efdd51f7880f70ff2fe112076d3f",
+      "resolution": [
+        1024,
+        576
+      ],
+      "accepted_marker_ids": [
+        2,
+        1,
+        6,
+        5,
+        4,
+        3,
+        8,
+        9,
+        7,
+        12,
+        13,
+        10,
+        11,
+        15,
+        16,
+        14
+      ],
+      "accepted_marker_count": 16,
+      "rejected_candidate_count": 21,
+      "ids_outside_source_board": [],
+      "source_ids_missing": [
+        0
+      ],
+      "layout": {
+        "shared_id_count": 16,
+        "median_residual_px": 0.19,
+        "max_residual_px": 0.413,
+        "method": "2D homography from source PNG centers to photo centers. Not solvePnP."
+      },
+      "markers": [
+        {
+          "id": 2,
+          "center_px": [
+            333.5,
+            404.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 3,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 1,
+          "center_px": [
+            398.5,
+            403.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 6,
+          "center_px": [
+            301.5,
+            372.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 7,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 5,
+          "center_px": [
+            366.75,
+            371.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 2,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 4,
+          "center_px": [
+            431.0,
+            370.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 2,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 3,
+          "center_px": [
+            494.5,
+            369.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 8,
+          "center_px": [
+            399.5,
+            339.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 9,
+          "center_px": [
+            335.0,
+            340.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 4,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 7,
+          "center_px": [
+            462.5,
+            338.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 12,
+          "center_px": [
+            368.0,
+            308.0
+          ],
+          "diagnostic_hamming_to_accepted_id": 3,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 13,
+          "center_px": [
+            304.0,
+            308.25
+          ],
+          "diagnostic_hamming_to_accepted_id": 7,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 10,
+          "center_px": [
+            493.5,
+            306.75
+          ],
+          "diagnostic_hamming_to_accepted_id": 1,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 11,
+          "center_px": [
+            431.5,
+            307.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 15,
+          "center_px": [
+            400.5,
+            276.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 2,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 16,
+          "center_px": [
+            337.0,
+            277.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 4,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        },
+        {
+          "id": 14,
+          "center_px": [
+            462.5,
+            276.5
+          ],
+          "diagnostic_hamming_to_accepted_id": 0,
+          "id_in_source_board": true,
+          "bit_reader_is_opencv_identify": false
+        }
+      ]
+    }
+  ]
+}
