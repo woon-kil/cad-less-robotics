@@ -1,0 +1,267 @@
+{
+  "opencv_version": "4.5.4",
+  "driver_version": "2.10.6",
+  "device": {
+    "serial": "CP263630009D",
+    "firmware": "1.4.60",
+    "source": "/tmp/w002a_gemini.log"
+  },
+  "observation_count": 10,
+  "color_topic": "/camera/color/image_raw",
+  "depth_topic": "/camera/depth/image_raw",
+  "color_camera_info_topic": "/camera/color/camera_info",
+  "solve_pnp_executed": false,
+  "failed_aruco_transform_used_as_ground_truth": false,
+  "frames": [
+    {
+      "index": 0,
+      "timestamp_sec": 1793444456.827219,
+      "depth_timestamp_sec": 1793444456.86061,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 1,
+      "timestamp_sec": 1793444457.060826,
+      "depth_timestamp_sec": 1793444457.060844,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 2,
+      "timestamp_sec": 1793444457.227688,
+      "depth_timestamp_sec": 1793444457.194335,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 3,
+      "timestamp_sec": 1793444457.394554,
+      "depth_timestamp_sec": 1793444457.394573,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 4,
+      "timestamp_sec": 1793444457.561464,
+      "depth_timestamp_sec": 1793444457.561483,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 5,
+      "timestamp_sec": 1793444457.728412,
+      "depth_timestamp_sec": 1793444457.728431,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 6,
+      "timestamp_sec": 1793444457.895377,
+      "depth_timestamp_sec": 1793444457.895396,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 7,
+      "timestamp_sec": 1793444458.062335,
+      "depth_timestamp_sec": 1793444458.062355,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 8,
+      "timestamp_sec": 1793444458.229263,
+      "depth_timestamp_sec": 1793444458.229283,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    },
+    {
+      "index": 9,
+      "timestamp_sec": 1793444458.396142,
+      "depth_timestamp_sec": 1793444458.396161,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "depth_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "depth_frame": "camera_color_optical_frame",
+      "distortion_model": "rational_polynomial",
+      "detected_aruco_marker_count": 0,
+      "detected_marker_ids": [],
+      "detected_charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "marker_corners_touch_image_border": true,
+      "charuco_depth_valid_pixel_count": 0,
+      "charuco_depth_total_pixel_count": 0,
+      "charuco_depth_valid_ratio": null,
+      "solve_pnp": false
+    }
+  ]
+}
