@@ -1,0 +1,21 @@
+{
+  "id": "ADR-011",
+  "title": "Decouple CAD and Footwear Assets",
+  "status": "ACCEPTED",
+  "closed": true,
+  "date": "2026-11-01",
+  "gate": "P-010A",
+  "decision": "DECOUPLE_CAD_AND_FOOTWEAR_ASSETS",
+  "design_only": true,
+  "requested_id_not_used": "ADR-010",
+  "requested_id_reason": "evidence/ADR-010 is the closed registration recovery decision",
+  "p010": "FAIL_CAD_ASSET_QUALIFICATION",
+  "p010r": "CANDIDATE_FOUND",
+  "primary_asset": "NONE",
+  "cad_ground_truth": "NONE",
+  "scan_ground_truth": "NONE",
+  "cad_role": "REFERENCE_GEOMETRY",
+  "scan_role": "MEASURED_GEOMETRY",
+  "p011_opened": false,
+  "p011_reserved": "COMPLEX_SURFACE_CAD_TEST_COUPON"
+}
