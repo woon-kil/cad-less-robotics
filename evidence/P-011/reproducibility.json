@@ -1,0 +1,11 @@
+{
+  "run_a_sha256": "2a791f83b37439ef59c425422599765c26d273b30d56f624dedfbd9a8d3bb3fa",
+  "run_b_sha256": "2a791f83b37439ef59c425422599765c26d273b30d56f624dedfbd9a8d3bb3fa",
+  "hash_equal": true,
+  "topology_equal": true,
+  "bounding_box_equal": true,
+  "sample_equal": true,
+  "run_b_bop": "PASS",
+  "result": "PASS",
+  "hash_note": "export metadata 때문에 hash가 달라도 geometry가 같으면 FAIL로 보지 않는다."
+}

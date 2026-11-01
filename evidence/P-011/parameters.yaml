@@ -1,0 +1,35 @@
+# P-011 생성 파라미터. scripts/p011_generate_coupon.py 와 같다.
+# 단위는 mm. 이 파일을 바꿔도 생성 코드가 바뀌지 않는다.
+
+unit: mm
+body_x_mm: 168.0
+body_y_mm: 100.0
+base_z_mm: 28.0
+patch_edges_mm: [0.0, 40.0, 82.0, 124.0, 168.0]
+poles_u: 6
+poles_v: 8
+degree_u: 3
+degree_v: 3
+flat_blend_start_mm: 156.0
+flat_edge_z_mm: 28.0
+low_curvature_mm: 0.00008
+convex:
+  center_mm: [64.0, 50.0]
+  sigma_mm: [11.0, 20.0]
+  amplitude_mm: 14.0
+saddle:
+  center_mm: [104.0, 50.0]
+  scale_mm: [16.0, 18.0]
+  amplitude_mm: 14.0
+concave:
+  center_mm: [146.0, 38.0]
+  sigma_mm: [10.0, 10.0]
+  amplitude_mm: 8.0
+landmark:
+  kind: cylinder
+  axis_origin_mm: [162.0, 84.0, 10.0]
+  direction: [1.0, 0.0, 0.0]
+  radius_mm: 5.0
+  length_mm: 18.0
+step_export:
+  write.surfacecurve.mode: 1

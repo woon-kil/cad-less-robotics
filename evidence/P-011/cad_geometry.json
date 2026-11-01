@@ -1,0 +1,30 @@
+{
+  "unit": "mm",
+  "bounding_box_mm": {
+    "x": 180.0,
+    "y": 100.0,
+    "z": 41.252357465702,
+    "xmin": 0.0,
+    "ymin": 0.0,
+    "zmin": 0.0
+  },
+  "regions": {
+    "low_curvature": 1,
+    "convex": 1,
+    "saddle": 1,
+    "concave": 1
+  },
+  "landmark_z_max_mm": 15.0,
+  "process_z_min_mm": 21.572170142373,
+  "landmark_outside_process_surface": true,
+  "surface_query_ok": 180,
+  "surface_query_fail": 0,
+  "normal_query_fail": 0,
+  "height_samples_mm": {
+    "offset_mm": 18.0,
+    "low_curvature": {"point": [20.0, 50.0, 28.02], "west": 28.01, "east": 28.81, "south": 28.04, "north": 28.04},
+    "convex": {"point": [61.0, 50.0, 39.46], "west": 30.74, "east": 35.85, "south": 36.0, "north": 36.0},
+    "saddle": {"point": [103.0, 50.0, 27.22], "west": 33.27, "east": 30.65, "south": 25.4, "north": 25.4, "x": "valley", "y": "ridge"},
+    "concave_minimum": [146.0, 38.05, 22.87]
+  }
+}

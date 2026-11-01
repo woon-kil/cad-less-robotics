@@ -1,0 +1,22 @@
+{
+  "gate": "P-011",
+  "status": "MEASURED",
+  "stage": "PARAMETRIC_GENERATION_AND_QUALIFICATION",
+  "generation": true,
+  "qualification": true,
+  "repository": "cad-less-robotics",
+  "repository_renamed": false,
+  "scan_pipeline_replaced": false,
+  "directory_restructured": false,
+  "source": "SELF_GENERATED",
+  "ground_truth": "NONE",
+  "role": "REFERENCE_GEOMETRY",
+  "primary_asset": "assets/cad/complex_surface_coupon.step",
+  "target_size_mm": {"x": 180, "y": 100, "z": [35, 50]},
+  "bounding_box_mm": {"x": 180.0, "y": 100.0, "z": 41.252357465702},
+  "meaningful_face_count": 20,
+  "curvature_in_p011_pass": false,
+  "final_gate": "PASS_COMPLEX_SURFACE_CAD_TEST_COUPON",
+  "next_gates_opened": false,
+  "p012_opened": false
+}

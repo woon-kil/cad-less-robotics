@@ -1,0 +1,30 @@
+{
+  "step_read": true,
+  "is_valid": true,
+  "bop_check": "PASS",
+  "bop_error": null,
+  "closed_shell": true,
+  "degenerate_edge_count": 0,
+  "null_face_count": 0,
+  "cad_validity": "PASS",
+  "checks": {
+    "step_read": true,
+    "unit_mm": true,
+    "solid_count": true,
+    "closed_shell": true,
+    "cad_validity": true,
+    "bounding_box": true,
+    "meaningful_face_count": true,
+    "low_curvature": true,
+    "convex": true,
+    "concave": true,
+    "saddle": true,
+    "landmark": true,
+    "landmark_outside": true,
+    "finite_geometry": true,
+    "surface_query": true,
+    "normal_query": true,
+    "reproducibility": true
+  },
+  "final_gate": "PASS_COMPLEX_SURFACE_CAD_TEST_COUPON"
+}
