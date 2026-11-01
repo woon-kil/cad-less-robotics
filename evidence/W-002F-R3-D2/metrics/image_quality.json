@@ -1,0 +1,1466 @@
+{
+  "summary": {
+    "black_cell_intensity_mean": 74.233,
+    "white_cell_intensity_mean": 173.102,
+    "black_white_separation": 80.439,
+    "laplacian_variance_mean": 3331.216,
+    "nearest_dictionary_hamming_median": 7.0,
+    "nearest_dictionary_hamming_min": 3,
+    "nearest_dictionary_hamming_max": 7,
+    "true_marker_bit_disagreement": "NOT_COMPARED",
+    "reason_not_compared": "Accepted IDs are absent, so a capture candidate is not tied to one source marker.",
+    "white_cell_mean_scope": "Only candidates that contain both diagnostic black and white cells. That is two small quads. It does not describe the larger candidates, whose payload cells stay within a few gray levels.",
+    "black_white_separation_scope": "Only candidates that contain both diagnostic black and white cells. That is two small quads. It does not describe the larger candidates, whose payload cells stay within a few gray levels."
+  },
+  "associations": {
+    "method": "Pearson correlation. Not a cause.",
+    "pixel_size_vs_nearest_hamming": 0.7010032079806261,
+    "contrast_vs_nearest_hamming": null,
+    "sharpness_vs_nearest_hamming": -0.8100866212103931,
+    "image_center_distance_vs_nearest_hamming": 0.10857718648245011
+  },
+  "candidates": [
+    {
+      "candidate_index": 0,
+      "center_px": [
+        432.5,
+        649.25
+      ],
+      "edge_01_px": 30.529,
+      "edge_12_px": 40.224,
+      "edge_23_px": 31.385,
+      "edge_30_px": 39.661,
+      "mean_edge_px": 35.45,
+      "min_edge_px": 30.529,
+      "max_edge_px": 40.224,
+      "polygon_area_px2": 1234.5,
+      "image_center_distance_px": 355.98,
+      "border_cell_mean": 78.348,
+      "payload_cell_means": [
+        [
+          75.953,
+          76.457,
+          78.555,
+          79.211,
+          80.633
+        ],
+        [
+          74.5,
+          77.09,
+          76.73,
+          78.078,
+          81.055
+        ],
+        [
+          75.875,
+          75.578,
+          77.836,
+          78.492,
+          79.41
+        ],
+        [
+          74.52,
+          76.715,
+          80.254,
+          80.305,
+          80.262
+        ],
+        [
+          74.797,
+          76.984,
+          79.973,
+          79.449,
+          81.492
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 78.008,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 1434.828,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 1,
+      "center_px": [
+        496.0,
+        602.0
+      ],
+      "edge_01_px": 26.401,
+      "edge_12_px": 37.802,
+      "edge_23_px": 29.682,
+      "edge_30_px": 35.511,
+      "mean_edge_px": 32.349,
+      "min_edge_px": 26.401,
+      "max_edge_px": 37.802,
+      "polygon_area_px2": 1026.0,
+      "image_center_distance_px": 281.603,
+      "border_cell_mean": 83.486,
+      "payload_cell_means": [
+        [
+          78.797,
+          81.219,
+          83.898,
+          82.793,
+          84.641
+        ],
+        [
+          76.07,
+          79.484,
+          82.316,
+          84.812,
+          87.152
+        ],
+        [
+          77.352,
+          80.484,
+          81.754,
+          84.684,
+          87.609
+        ],
+        [
+          79.531,
+          78.906,
+          84.164,
+          84.102,
+          87.852
+        ],
+        [
+          80.828,
+          81.141,
+          84.762,
+          84.145,
+          87.363
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 82.634,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 1445.422,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 2,
+      "center_px": [
+        553.25,
+        559.5
+      ],
+      "edge_01_px": 27.019,
+      "edge_12_px": 32.202,
+      "edge_23_px": 29.206,
+      "edge_30_px": 31.906,
+      "mean_edge_px": 30.083,
+      "min_edge_px": 27.019,
+      "max_edge_px": 32.202,
+      "polygon_area_px2": 898.0,
+      "image_center_distance_px": 217.545,
+      "border_cell_mean": 76.946,
+      "payload_cell_means": [
+        [
+          75.688,
+          77.293,
+          79.305,
+          84.121,
+          86.008
+        ],
+        [
+          74.68,
+          75.996,
+          79.547,
+          82.957,
+          84.738
+        ],
+        [
+          72.902,
+          74.605,
+          80.395,
+          84.387,
+          85.156
+        ],
+        [
+          75.633,
+          75.777,
+          77.961,
+          83.473,
+          85.613
+        ],
+        [
+          76.98,
+          77.324,
+          80.098,
+          83.543,
+          85.73
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 79.996,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 1750.681,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 3,
+      "center_px": [
+        475.25,
+        543.0
+      ],
+      "edge_01_px": 26.401,
+      "edge_12_px": 33.287,
+      "edge_23_px": 27.459,
+      "edge_30_px": 31.385,
+      "mean_edge_px": 29.633,
+      "min_edge_px": 26.401,
+      "max_edge_px": 33.287,
+      "polygon_area_px2": 868.5,
+      "image_center_distance_px": 246.235,
+      "border_cell_mean": 88.303,
+      "payload_cell_means": [
+        [
+          88.805,
+          89.129,
+          89.852,
+          90.078,
+          90.523
+        ],
+        [
+          90.27,
+          90.805,
+          89.238,
+          91.039,
+          91.238
+        ],
+        [
+          90.379,
+          89.57,
+          89.617,
+          89.328,
+          90.723
+        ],
+        [
+          90.625,
+          91.258,
+          89.613,
+          89.129,
+          92.219
+        ],
+        [
+          89.34,
+          89.488,
+          89.535,
+          89.852,
+          91.402
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 90.122,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2562.706,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 4,
+      "center_px": [
+        512.0,
+        485.5
+      ],
+      "edge_01_px": 12.042,
+      "edge_12_px": 14.318,
+      "edge_23_px": 10.817,
+      "edge_30_px": 12.53,
+      "mean_edge_px": 12.427,
+      "min_edge_px": 10.817,
+      "max_edge_px": 14.318,
+      "polygon_area_px2": 150.0,
+      "image_center_distance_px": 179.26,
+      "border_cell_mean": 109.804,
+      "payload_cell_means": [
+        [
+          148.059,
+          92.77,
+          85.652,
+          145.598,
+          207.969
+        ],
+        [
+          199.152,
+          107.68,
+          92.238,
+          137.758,
+          206.438
+        ],
+        [
+          158.816,
+          96.387,
+          114.398,
+          116.488,
+          113.031
+        ],
+        [
+          99.254,
+          107.223,
+          184.527,
+          140.094,
+          86.293
+        ],
+        [
+          158.477,
+          200.027,
+          181.062,
+          89.66,
+          111.621
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          0
+        ],
+        [
+          1,
+          1,
+          1,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 66,
+      "nearest_dictionary_hamming": 5,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 100.977,
+      "white_cell_intensity_mean": 172.331,
+      "black_white_separation": 71.355,
+      "local_contrast": 0.2611,
+      "laplacian_variance_raw_crop": 7192.002,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 5,
+      "center_px": [
+        651.5,
+        485.5
+      ],
+      "edge_01_px": 24.759,
+      "edge_12_px": 25.807,
+      "edge_23_px": 26.173,
+      "edge_30_px": 27.459,
+      "mean_edge_px": 26.049,
+      "min_edge_px": 24.759,
+      "max_edge_px": 27.459,
+      "polygon_area_px2": 666.0,
+      "image_center_distance_px": 126.026,
+      "border_cell_mean": 58.778,
+      "payload_cell_means": [
+        [
+          60.883,
+          61.777,
+          62.324,
+          62.988,
+          62.441
+        ],
+        [
+          61.609,
+          60.684,
+          62.188,
+          61.812,
+          64.027
+        ],
+        [
+          62.926,
+          62.91,
+          62.652,
+          63.848,
+          64.309
+        ],
+        [
+          64.508,
+          63.84,
+          64.469,
+          64.402,
+          66.379
+        ],
+        [
+          64.645,
+          65.711,
+          65.594,
+          66.496,
+          65.086
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 63.54,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2280.405,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 6,
+      "center_px": [
+        694.75,
+        453.25
+      ],
+      "edge_01_px": 22.627,
+      "edge_12_px": 23.854,
+      "edge_23_px": 24.042,
+      "edge_30_px": 24.187,
+      "mean_edge_px": 23.677,
+      "min_edge_px": 22.627,
+      "max_edge_px": 24.187,
+      "polygon_area_px2": 544.5,
+      "image_center_distance_px": 108.135,
+      "border_cell_mean": 51.354,
+      "payload_cell_means": [
+        [
+          50.551,
+          51.699,
+          76.562,
+          59.723,
+          57.355
+        ],
+        [
+          50.094,
+          55.102,
+          77.957,
+          57.715,
+          55.934
+        ],
+        [
+          53.684,
+          56.91,
+          65.73,
+          54.633,
+          57.707
+        ],
+        [
+          56.77,
+          55.367,
+          56.129,
+          56.797,
+          55.59
+        ],
+        [
+          56.609,
+          55.746,
+          56.961,
+          56.047,
+          57.941
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 57.812,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2756.898,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 7,
+      "center_px": [
+        375.75,
+        433.75
+      ],
+      "edge_01_px": 17.493,
+      "edge_12_px": 28.178,
+      "edge_23_px": 18.868,
+      "edge_30_px": 28.636,
+      "mean_edge_px": 23.294,
+      "min_edge_px": 17.493,
+      "max_edge_px": 28.636,
+      "polygon_area_px2": 514.0,
+      "image_center_distance_px": 274.349,
+      "border_cell_mean": 53.276,
+      "payload_cell_means": [
+        [
+          58.273,
+          56.93,
+          56.551,
+          56.531,
+          54.375
+        ],
+        [
+          58.383,
+          56.59,
+          56.301,
+          56.277,
+          55.598
+        ],
+        [
+          57.598,
+          56.363,
+          57.012,
+          55.484,
+          56.875
+        ],
+        [
+          58.195,
+          55.953,
+          55.707,
+          55.621,
+          57.895
+        ],
+        [
+          56.516,
+          57.047,
+          56.957,
+          54.48,
+          54.289
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 56.472,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2178.51,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 8,
+      "center_px": [
+        426.75,
+        405.25
+      ],
+      "edge_01_px": 16.401,
+      "edge_12_px": 26.833,
+      "edge_23_px": 17.804,
+      "edge_30_px": 27.313,
+      "mean_edge_px": 22.088,
+      "min_edge_px": 16.401,
+      "max_edge_px": 27.313,
+      "polygon_area_px2": 451.5,
+      "image_center_distance_px": 217.998,
+      "border_cell_mean": 53.676,
+      "payload_cell_means": [
+        [
+          58.215,
+          58.059,
+          55.605,
+          57.16,
+          56.898
+        ],
+        [
+          57.207,
+          57.227,
+          56.18,
+          57.359,
+          59.57
+        ],
+        [
+          56.438,
+          57.672,
+          57.863,
+          58.113,
+          58.164
+        ],
+        [
+          59.871,
+          58.113,
+          57.285,
+          57.27,
+          58.969
+        ],
+        [
+          60.148,
+          59.453,
+          58.5,
+          57.641,
+          56.301
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 57.811,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2436.785,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 9,
+      "center_px": [
+        474.0,
+        379.5
+      ],
+      "edge_01_px": 17.029,
+      "edge_12_px": 25.08,
+      "edge_23_px": 17.029,
+      "edge_30_px": 25.08,
+      "mean_edge_px": 21.055,
+      "min_edge_px": 17.029,
+      "max_edge_px": 25.08,
+      "polygon_area_px2": 409.0,
+      "image_center_distance_px": 167.141,
+      "border_cell_mean": 53.776,
+      "payload_cell_means": [
+        [
+          58.289,
+          56.52,
+          56.734,
+          57.289,
+          54.465
+        ],
+        [
+          56.453,
+          55.715,
+          54.98,
+          56.367,
+          57.23
+        ],
+        [
+          57.168,
+          56.156,
+          55.52,
+          55.531,
+          54.859
+        ],
+        [
+          57.066,
+          56.457,
+          55.754,
+          55.328,
+          55.934
+        ],
+        [
+          57.703,
+          57.676,
+          58.41,
+          56.52,
+          56.57
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 56.428,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2983.998,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 10,
+      "center_px": [
+        557.5,
+        377.0
+      ],
+      "edge_01_px": 18.385,
+      "edge_12_px": 23.324,
+      "edge_23_px": 19.849,
+      "edge_30_px": 22.361,
+      "mean_edge_px": 20.98,
+      "min_edge_px": 18.385,
+      "max_edge_px": 23.324,
+      "polygon_area_px2": 423.0,
+      "image_center_distance_px": 84.233,
+      "border_cell_mean": 75.648,
+      "payload_cell_means": [
+        [
+          83.18,
+          82.582,
+          82.582,
+          83.887,
+          84.617
+        ],
+        [
+          84.086,
+          83.379,
+          82.559,
+          82.621,
+          82.047
+        ],
+        [
+          83.754,
+          81.52,
+          82.277,
+          84.34,
+          82.738
+        ],
+        [
+          83.555,
+          82.445,
+          83.719,
+          84.785,
+          82.484
+        ],
+        [
+          85.066,
+          82.965,
+          85.676,
+          85.293,
+          82.012
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 83.367,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 5355.441,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 11,
+      "center_px": [
+        518.25,
+        354.75
+      ],
+      "edge_01_px": 16.279,
+      "edge_12_px": 22.361,
+      "edge_23_px": 17.692,
+      "edge_30_px": 22.847,
+      "mean_edge_px": 19.795,
+      "min_edge_px": 16.279,
+      "max_edge_px": 22.847,
+      "polygon_area_px2": 365.5,
+      "image_center_distance_px": 121.863,
+      "border_cell_mean": 54.714,
+      "payload_cell_means": [
+        [
+          60.062,
+          58.262,
+          60.188,
+          59.668,
+          56.566
+        ],
+        [
+          59.852,
+          58.039,
+          58.684,
+          58.199,
+          58.812
+        ],
+        [
+          57.945,
+          57.699,
+          57.344,
+          58.562,
+          58.695
+        ],
+        [
+          59.164,
+          58.809,
+          57.57,
+          57.055,
+          56.691
+        ],
+        [
+          57.363,
+          59.211,
+          58.16,
+          57.352,
+          55.285
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 27,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 58.21,
+      "white_cell_intensity_mean": null,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 2997.028,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 12,
+      "center_px": [
+        480.75,
+        448.0
+      ],
+      "edge_01_px": 10.63,
+      "edge_12_px": 13.416,
+      "edge_23_px": 10.0,
+      "edge_30_px": 12.53,
+      "mean_edge_px": 11.644,
+      "min_edge_px": 10.0,
+      "max_edge_px": 13.416,
+      "polygon_area_px2": 131.0,
+      "image_center_distance_px": 181.947,
+      "border_cell_mean": 101.868,
+      "payload_cell_means": [
+        [
+          178.867,
+          213.91,
+          182.109,
+          157.703,
+          208.168
+        ],
+        [
+          111.496,
+          188.277,
+          199.324,
+          212.109,
+          215.395
+        ],
+        [
+          72.215,
+          91.203,
+          126.043,
+          187.816,
+          212.512
+        ],
+        [
+          79.914,
+          116.555,
+          182.367,
+          179.031,
+          176.012
+        ],
+        [
+          143.977,
+          107.07,
+          110.516,
+          97.316,
+          84.172
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          0,
+          0,
+          0,
+          0
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 12,
+      "nearest_dictionary_hamming": 3,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": 99.65,
+      "white_cell_intensity_mean": 189.172,
+      "black_white_separation": 89.522,
+      "local_contrast": 0.31,
+      "laplacian_variance_raw_crop": 7351.625,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    },
+    {
+      "candidate_index": 13,
+      "center_px": [
+        707.25,
+        98.0
+      ],
+      "edge_01_px": 21.213,
+      "edge_12_px": 30.871,
+      "edge_23_px": 34.015,
+      "edge_30_px": 17.493,
+      "mean_edge_px": 25.898,
+      "min_edge_px": 17.493,
+      "max_edge_px": 34.015,
+      "polygon_area_px2": 324.0,
+      "image_center_distance_px": 270.493,
+      "border_cell_mean": 151.416,
+      "payload_cell_means": [
+        [
+          168.457,
+          152.492,
+          152.453,
+          153.621,
+          158.398
+        ],
+        [
+          153.383,
+          153.188,
+          154.152,
+          153.668,
+          154.875
+        ],
+        [
+          160.742,
+          154.504,
+          154.84,
+          154.719,
+          153.793
+        ],
+        [
+          162.82,
+          159.727,
+          154.012,
+          153.633,
+          153.828
+        ],
+        [
+          169.293,
+          167.746,
+          166.074,
+          163.68,
+          160.957
+        ]
+      ],
+      "capture_observed_bits": [
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        [
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      ],
+      "source_expected_bits": "NOT_COMPARED",
+      "bit_disagreement_count": "NOT_COMPARED",
+      "nearest_dictionary_id": 49,
+      "nearest_dictionary_hamming": 7,
+      "correspondence_to_source_marker": "NOT_ESTABLISHED",
+      "black_cell_intensity_mean": null,
+      "white_cell_intensity_mean": 157.802,
+      "black_white_separation": null,
+      "local_contrast": null,
+      "laplacian_variance_raw_crop": 3910.702,
+      "diagnostic_threshold": 127,
+      "bit_reader_is_opencv_identify": false
+    }
+  ]
+}
