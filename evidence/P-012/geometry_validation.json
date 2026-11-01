@@ -1,0 +1,85 @@
+{
+  "counts": {
+    "total": 1620,
+    "validity": {
+      "VALID": 1585,
+      "OUTSIDE_TRIM": 35
+    },
+    "classification": {
+      "LOW_CURVATURE": 1288,
+      "PARABOLIC_OR_TRANSITION": 100,
+      "SADDLE": 136,
+      "ELLIPTIC": 61
+    },
+    "k_min": -0.0011310794,
+    "k_max": 0.0017847765,
+    "negative_k": 144,
+    "positive_k": 61,
+    "near_zero_k": 1380,
+    "normal_length_min": 0.9999999999460213,
+    "normal_length_max": 1.0000000000512939
+  },
+  "post_validation": {
+    "low_curvature": {
+      "distance_mm": 0.00010570810000132269,
+      "classification": "LOW_CURVATURE",
+      "gaussian_per_mm2": 2.058e-07,
+      "position_mm": [
+        20.0,
+        50.0,
+        28.0198942919
+      ]
+    },
+    "convex": {
+      "distance_mm": 0.0027135525999995025,
+      "classification": "ELLIPTIC",
+      "gaussian_per_mm2": 0.0014969325,
+      "position_mm": [
+        61.0,
+        50.0,
+        39.4627135526
+      ]
+    },
+    "concave": {
+      "distance_mm": 3.0195563210081553,
+      "classification": "ELLIPTIC",
+      "gaussian_per_mm2": 0.0017847765,
+      "position_mm": [
+        146.0,
+        41.0691034226,
+        22.9222962655
+      ]
+    },
+    "saddle": {
+      "distance_mm": 0.0014384332999988203,
+      "classification": "SADDLE",
+      "gaussian_per_mm2": -0.0011310794,
+      "position_mm": [
+        103.0,
+        50.0,
+        27.2185615667
+      ]
+    }
+  },
+  "match_radius_mm": 20.0,
+  "checks": {
+    "input_integrity": true,
+    "face_traversal": true,
+    "uv_domain_handling": true,
+    "position_query": true,
+    "normal_query": true,
+    "curvature_query": true,
+    "nonfinite_count": true,
+    "normal_failure_count": true,
+    "face_orientation_handling": true,
+    "low_curvature_region_detected": true,
+    "positive_k_region_present": true,
+    "negative_k_region_present": true,
+    "saddle_post_validation": true,
+    "failure_taxonomy_recorded": true,
+    "reproducibility": true,
+    "convex_post_validation": true,
+    "concave_post_validation": true
+  },
+  "final_gate": "PASS_CAD_GEOMETRY_ENGINE"
+}

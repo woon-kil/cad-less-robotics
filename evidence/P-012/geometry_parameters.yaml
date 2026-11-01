@@ -1,0 +1,23 @@
+# P-012 geometry parameters. scripts/p012_geometry_engine.py 와 같다.
+# 분류는 곡률 수치만 사용한다. P-011 좌표는 없다.
+
+unit: mm
+curvature_unit: 1/mm
+gaussian_unit: 1/mm^2
+grid_n: 9
+classifier_tolerance: 1.0e-6
+derivative_resolution_mm: 1.0e-7
+degenerate_cross_mm2: 1.0e-8
+eps_principal_per_mm: 5.0e-3
+eps_gaussian_per_mm2: 1.0e-5
+normal_length_tolerance: 1.0e-6
+orientation_convention: >-
+  N_raw = Su × Sv. TopoDS_Face가 REVERSED이면 N = -N_raw이고
+  principal curvature의 부호를 바꾼다. Gaussian curvature는 곱이라 부호가 유지된다.
+  BRepLProp_SLProps의 normal은 이 빌드에서 face orientation을 뒤집지 않는다.
+classification: >-
+  |k1| < eps_principal and |k2| < eps_principal -> LOW_CURVATURE.
+  K < -eps_gaussian -> SADDLE.
+  K > eps_gaussian -> ELLIPTIC.
+  else PARABOLIC_OR_TRANSITION.
+  CONVEX와 CONCAVE는 곡률 부호만으로 정하지 않는다.

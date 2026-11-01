@@ -1,0 +1,12 @@
+{
+  "gate": "P-012",
+  "status": "MEASURED",
+  "stage": "CAD_GEOMETRY_ENGINE",
+  "input": "assets/cad/complex_surface_coupon.step",
+  "input_sha256": "2a791f83b37439ef59c425422599765c26d273b30d56f624dedfbd9a8d3bb3fa",
+  "input_modified": false,
+  "process_path_generated": false,
+  "final_gate": "PASS_CAD_GEOMETRY_ENGINE",
+  "next_gates_opened": false,
+  "p013_opened": false
+}
