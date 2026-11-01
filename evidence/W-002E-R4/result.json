@@ -1,0 +1,76 @@
+{
+  "work_order": "W-002E-R4",
+  "status": "PASS_RGB_GEOMETRY_AUDIT",
+  "closed": true,
+  "registration_pass": false,
+  "color_topic": "/camera/color/image_raw",
+  "color_camera_info_topic": "/camera/color/camera_info",
+  "color_image_domain": "RAW_DISTORTED",
+  "color_image_domain_basis": [
+    "enable_color_undistortion runtime parameter",
+    "w002e_register.py does not call undistort before detectMarkers",
+    "solvePnP and projectPoints receive CameraInfo K and D"
+  ],
+  "distortion_model": "rational_polynomial",
+  "distortion_coefficients": [
+    -0.03170262649655342,
+    0.0341622568666935,
+    7.964719407027587e-05,
+    -6.973547897359822e-06,
+    -0.01190638542175293,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "camera_matrix_source": "K",
+  "distortion_source": "D",
+  "image_pre_undistorted": false,
+  "undistort_points_used": false,
+  "image_calibration_domain_match": "PASS",
+  "double_correction": false,
+  "resolution_intrinsics_match": "PASS",
+  "image_resized": false,
+  "image_cropped": false,
+  "live_matches_w002e_k": true,
+  "live_matches_w002e_d": true,
+  "corner_ordering_audit": "PASS",
+  "opencv_version": "4.5.4",
+  "corner_refinement_method_baseline": "CORNER_REFINE_NONE",
+  "corner_localization_effect": "MATERIAL",
+  "distortion_domain_effect": "NONE",
+  "distortion_domain_effect_reason": "domain match PASS, so no alternate distortion model was invented",
+  "camera_geometry_audit": "PASS",
+  "root_cause": "INCONCLUSIVE",
+  "validated_registration_transform": null,
+  "diagnostic_transform": "FAILED_GATE_DIAGNOSTIC_TRANSFORM",
+  "markers_repositioned": false,
+  "camera_moved": false,
+  "robot_moved": false,
+  "workboard_moved": false,
+  "marker_geometry_changed": false,
+  "thresholds_changed": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "historical_evidence_modified": false,
+  "refinement": {
+    "CORNER_REFINE_NONE": {
+      "mean_px": 1.8437682288189243,
+      "p95_px": 2.7513810267323424,
+      "max_px": 2.7562668054802084,
+      "count": 16
+    },
+    "CORNER_REFINE_SUBPIX": {
+      "mean_px": 1.0381369358130046,
+      "p95_px": 1.874180252203573,
+      "max_px": 2.8517655133637363,
+      "count": 16
+    },
+    "CORNER_REFINE_CONTOUR": {
+      "mean_px": 1.5046111952220216,
+      "p95_px": 2.204556195623522,
+      "max_px": 2.316913996741536,
+      "count": 16
+    }
+  }
+}

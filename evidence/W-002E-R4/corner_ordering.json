@@ -1,0 +1,80 @@
+{
+  "rows": [
+    {
+      "id": 0,
+      "image_corner_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "object_corner_order": [
+        "TOP_LEFT",
+        "TOP_RIGHT",
+        "BOTTOM_RIGHT",
+        "BOTTOM_LEFT"
+      ],
+      "corner0_to_corner1_deg": -33.89616656336391,
+      "code_uses_same_index": true,
+      "corner_order_match": "YES"
+    },
+    {
+      "id": 1,
+      "image_corner_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "object_corner_order": [
+        "TOP_LEFT",
+        "TOP_RIGHT",
+        "BOTTOM_RIGHT",
+        "BOTTOM_LEFT"
+      ],
+      "corner0_to_corner1_deg": -37.64762064010765,
+      "code_uses_same_index": true,
+      "corner_order_match": "YES"
+    },
+    {
+      "id": 2,
+      "image_corner_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "object_corner_order": [
+        "TOP_LEFT",
+        "TOP_RIGHT",
+        "BOTTOM_RIGHT",
+        "BOTTOM_LEFT"
+      ],
+      "corner0_to_corner1_deg": -27.216111557307478,
+      "code_uses_same_index": true,
+      "corner_order_match": "YES"
+    },
+    {
+      "id": 3,
+      "image_corner_order": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "object_corner_order": [
+        "TOP_LEFT",
+        "TOP_RIGHT",
+        "BOTTOM_RIGHT",
+        "BOTTOM_LEFT"
+      ],
+      "corner0_to_corner1_deg": -25.301378625419723,
+      "code_uses_same_index": true,
+      "corner_order_match": "YES"
+    }
+  ],
+  "corner0_to_corner1_spread_deg": 12.346242014687924,
+  "rule": "PASS if all markers share corner0->corner1 direction within 20 deg and code index matches W-002B TL,TR,BR,BL",
+  "audit": "PASS",
+  "ordering_modified": false
+}

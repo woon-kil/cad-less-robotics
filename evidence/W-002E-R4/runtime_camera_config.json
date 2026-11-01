@@ -1,0 +1,85 @@
+{
+  "camera_model": "Orbbec Gemini 335L",
+  "camera_model_source": "running driver log serial matches the previously identified Gemini 335L unit",
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "sdk_version": "2.10.6",
+  "sdk_source": "/tmp/w002a_gemini.log",
+  "ros_wrapper": {
+    "version": "2.10.6",
+    "source": "/ws/cad-less-robotics/install/orbbec_camera/share/orbbec_camera/package.xml"
+  },
+  "parameters": {
+    "enable_color_undistortion": {
+      "name": "enable_color_undistortion",
+      "returncode": 0,
+      "text": "Boolean value is: False"
+    },
+    "enable_color": {
+      "name": "enable_color",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "enable_depth_undistortion": {
+      "name": "enable_depth_undistortion",
+      "returncode": 0,
+      "text": "Boolean value is: False"
+    },
+    "depth_registration": {
+      "name": "depth_registration",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "align_mode": {
+      "name": "align_mode",
+      "returncode": 0,
+      "text": "String value is: SW"
+    },
+    "align_target_stream": {
+      "name": "align_target_stream",
+      "returncode": 0,
+      "text": "String value is: COLOR"
+    },
+    "color_width": {
+      "name": "color_width",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "color_height": {
+      "name": "color_height",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "color_format": {
+      "name": "color_format",
+      "returncode": 0,
+      "text": "String value is: ANY"
+    },
+    "color_fps": {
+      "name": "color_fps",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "color_optical_frame_id": {
+      "name": "color_optical_frame_id",
+      "returncode": 0,
+      "text": "String value is: camera_color_optical_frame"
+    },
+    "enable_frame_sync": {
+      "name": "enable_frame_sync",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "camera_name": {
+      "name": "camera_name",
+      "returncode": 0,
+      "text": "String value is: camera"
+    }
+  },
+  "color_topic": "/camera/color/image_raw",
+  "color_camera_info_topic": "/camera/color/camera_info",
+  "published_width": 1280,
+  "published_height": 720,
+  "published_encoding": "rgb8",
+  "parameter_color_width_is_zero_means_driver_default": true
+}

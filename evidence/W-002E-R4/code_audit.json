@@ -1,0 +1,21 @@
+{
+  "file": "scripts/w002e_register.py",
+  "camera_info_topic": "/camera/color/camera_info",
+  "image_topic": "/camera/color/image_raw",
+  "k_source": "CameraInfo.k lines 249-262",
+  "d_source": "CameraInfo.d lines 250-263",
+  "distortion_model_stored": "CameraInfo.distortion_model, passed through as the D vector",
+  "solve_pnp": "cv2.solvePnP SOLVEPNP_SQPNP with K and D, lines 188-194",
+  "project_points": "cv2.projectPoints with the same K and D, line 200",
+  "image_points_source": "detectMarkers corners, no undistortPoints",
+  "undistort_points_used": false,
+  "image_pre_undistorted_by_script": false,
+  "resize": false,
+  "crop": false,
+  "detector": "Dictionary_get DICT_4X4_50, DetectorParameters_create defaults, lines 112-114",
+  "corner_refinement_method_baseline": 0,
+  "corner_refinement_win_size": 5,
+  "corner_refinement_max_iterations": 30,
+  "corner_refinement_min_accuracy": 0.1,
+  "opencv_version": "4.5.4"
+}
