@@ -16,6 +16,30 @@
 
 | 항목 | 값 | 근거 |
 | --- | --- | --- |
+| **P-013** | **`PASS_CAD_6D_PROCESSPATH`**. 동결 계약으로 CAD ProcessPath를 만들었다. 검토자 닫힘 전. P-014 미개방 | `evidence/P-013/P-013_REPORT.md` |
+| **P-012** | **`PASS_CAD_GEOMETRY_ENGINE` / `CLOSED`**. 동결 STEP에서 법선·곡률. K<0 144 | `evidence/P-012/P-012_REPORT.md` |
+| **P-011** | **`PASS_COMPLEX_SURFACE_CAD_TEST_COUPON` / `CLOSED`**. 자체 생성 STEP. 180×100×41.3 mm, face 20. STEP 동결 | `evidence/P-011/P-011_REPORT.md` |
+| **P-010A** | **`PASS_ARCHITECTURE_DECOUPLING` / `CLOSED`**. CAD 검증과 footwear 검증을 분리. ADR-011. primary 없음 | `evidence/P-010A/acceptance.json` |
+| **P-010R** | **`CANDIDATE_FOUND` / `CLOSED`**. 공개 화형 후보를 비교했다. 라이선스 있는 STEP/BREP primary는 없음. P-010B·P-011 미개방 | `evidence/P-010R/acceptance.json` |
+| **P-010** | **`FAIL_CAD_ASSET_QUALIFICATION` / `CLOSED`**. 공개 화형 STEP은 거절. 면 3개, BOP 검사 중단, 라이선스 미기재. 수리하지 않음 | `evidence/P-010/acceptance.json` |
+| **W-002F-R5** | **`NOT_CLOSED`**. 디지털 준비만 통과. 220×180 mm는 PDF 그림이며 backing이 아님. 출력·실측 전 | `evidence/W-002F-R5/result.json` |
+| **W-002F-R4** | **`PASS_REFERENCE_GEOMETRY_SELECTION` / `CLOSED`**. 후보 C 5×4, 40/30 mm를 선택. 추정 47 px. 인쇄·촬영 없음 | `evidence/W-002F-R4/result.json` |
+| **W-002F-R3-R2** | **`CLOSED`**. 스마트폰 사진에서 DICT_5X5_100 ID 0–16이 생성 PNG 배치와 맞다. Gemini 재촬영 없음 | `evidence/W-002F-R3-R2/result.json` |
+| **W-002F-R3-R1** | **`CLOSED`**. 보드만 가까이 옮긴 10장에서 수락 ID 0. 변 중앙값 23.5→25.3 px. PnP 없음 | `evidence/W-002F-R3-R1/result.json` |
+| **W-002F-R3-D2** | **`CLOSED`**. 저장된 RGB의 마커 변은 약 12–35 px. 칸 대비는 무너져 있다. 인쇄·광학·샘플링은 미분리. PnP 없음 | `evidence/W-002F-R3-D2/result.json` |
+| **W-002F-R3-D1** | **`CLOSED`**. 생성 PNG는 17개 검출. 촬영 RGB는 수락 0. 인쇄 원인은 미확정. PnP 없음 | `evidence/W-002F-R3-D1/result.json` |
+| **W-002F-R3** | **`BLOCKED_CHARUCO_DETECTION` / `CLOSED`**. 시트는 화면 안. 마커 수락 0/10. PnP·등록 없음 | `evidence/W-002F-R3/result.json` |
+| **W-002F-R2** | **`NOT_CLOSED`**. 인쇄는 A4 가로 PDF. PNG 100%는 잘려 확대됨. 실측·높이 없음. 촬영·PnP 없음 | `evidence/W-002F-R2/result.json` |
+| **W-002F-R1** | **`PASS_EXECUTION_CONTRACT` / `CLOSED`**. OpenCV 4.5.4. legacy pattern. 명목 7×5. 촬영·PnP·보드 생성 없음 | `evidence/W-002F-R1/contract.json` |
+| **W-002F** | **`PASS_INDEPENDENT_REFERENCE_CONTRACT` / `CLOSED`**. rigid ChArUco. 인쇄면은 z=0이 아님. 촬영·PnP 없음 | `evidence/W-002F/contract.json` |
+| **W-002E-R8** | **`FAIL_REGISTRATION_RECOVERY` / `CLOSED`**. NONE+SQPnP+60 mm. ID2 (450, 336). 재투영 평균 1.582 px. 변환 없음 | `evidence/W-002E-R8/result.json` |
+| **W-002E-R7-R1** | **`PASS_PHYSICAL_RECOVERY_COMPLETION` / `CLOSED`**. ID2 실측 (450, 336). 같은 시트. 등록 없음 | `evidence/W-002E-R7-R1/result.json` |
+| **W-002E-R7** | **`BLOCKED_ID2_CENTER_UNMEASURED_AND_SIDE_VIEW_ABSENT` / `CLOSED`**. 4/4 검출. 흡착판은 떨어져 보임. 줄자 중심과 재설치 측면 없음 | `evidence/W-002E-R7/result.json` |
+| **W-002E-R6** | **`PASS_PHYSICAL_PLANARITY_VIOLATION_CONFIRMED` / `CLOSED`**. ID2 시트 아래 틈이 보임. 코너 mm 미측정. 등록 원인 미확정 | `evidence/W-002E-R6/result.json` |
+| **ADR-010** | **`ACCEPTED` / `CLOSED`**. 회복은 독립 physical reference. ArUco 추가 fitting은 주 경로 아님. W-002F 미개방 | `evidence/ADR-010/decision.json` |
+| **W-002E-R5** | **`PASS_RGBD_PLANE_GEOMETRY_AUDIT` / `CLOSED`**. SW D2C depth. 간격 -2.34 mm는 재현. 원인은 미확정 | `evidence/W-002E-R5/result.json` |
+| **W-002E-R4** | **`PASS_RGB_GEOMETRY_AUDIT` / `CLOSED`**. color는 raw. K/D 일치. refinement는 잔차를 바꾸나 등록 합격 아님 | `evidence/W-002E-R4/result.json` |
+| **W-002E-R3** | **`PASS_PRECISION_PHYSICAL_METROLOGY` / `CLOSED`**. 캘리퍼스 0.01 mm 표시. 58 mm 가설은 지지되지 않음. 등록 합격 아님 | `evidence/W-002E-R3/result.json` |
 | **W-002E-R2** | **`PASS_PHYSICAL_GEOMETRY_METROLOGY` / `CLOSED`**. 검은 변 59 또는 60 mm. 평균 59.25 mm는 등록 크기 아님 | `evidence/W-002E-R2/result.json` |
 | **W-002E-R1** | **`PASS_DIAGNOSIS` / `CLOSED`**. 원인 미확정. W-002E 변환은 진단용. 등록 변환 없음 | `evidence/W-002E-R1/result.json` |
 | **W-002E** | **`FAIL_REPROJECTION` / `CLOSED`**. 4/4 PnP. 재투영 평균·p95 초과. 평면 `|z|`도 초과. 임계값 불변 | `evidence/W-002E/result.json` |
@@ -538,6 +562,31 @@ readback 152 는 보낸 target raw 의 **정확한 echo 가 아니다**(echo 면
 - [x] **P-008-R1E — polygonal prism extraction** — capture_01만. viewpoint prism이 신발 원판을 전부 유지. cluster 1은 매트와 연결. `FAIL_CLUSTERING`. height·tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1F — Euclidean connectivity diagnosis** — capture_01 prism만. 10 mm component 재현. 환경 합류 3.6 mm, 원판 전체 연결 26.7 mm. `PASS_DIAGNOSIS` / `NOT_FEASIBLE`. tolerance 불변. 파라미터 미동결. 재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
 - [x] **P-008-R1G — RGB↔depth correspondence** — capture_01만. depth↔cloud는 중앙값 1.08 mm이나 사전 p95 0.005 m과 양수 depth 비율 0.99를 넘지 못함. 공식 extrinsic 행렬은 저장되지 않음. RGB 투영·segmentation 없음. R1H/재시도/R2/P-009 미개방. robot/servo 0. `MOTION_AUTHORIZED=NO`
+- [x] **P-013 — CAD ProcessPath contract** — 경로 생성 없이 계약만 고정했다. `PASS_CONTRACT_FROZEN`. 구현 없음. P-014 미개방. robot 0
+- [x] **P-013 — CAD 6D ProcessPath** — 동결 계약으로 serpentine 경로를 만들었다. `PASS_CAD_6D_PROCESSPATH`. 검토자 닫힘 전. P-014 미개방. robot 0
+- [x] **P-012 — CAD geometry engine** — 동결 STEP에서 위치·법선·곡률을 읽었다. `PASS_CAD_GEOMETRY_ENGINE` / `CLOSED`. ProcessPath 없음. robot 0
+- [x] **P-011 — complex surface CAD test coupon** — 자체 STEP을 두 번 생성하고 다시 읽어 qualification했다. face 20, BOP 통과. `PASS_COMPLEX_SURFACE_CAD_TEST_COUPON` / `CLOSED`. robot 0
+- [x] **P-010A — CAD/footwear decoupling** — 구현 없이 ADR-011을 기록했다. `PASS_ARCHITECTURE_DECOUPLING` / `CLOSED`. robot 0
+- [x] **P-010R — CAD reference asset replacement** — 거절한 STEP을 고치지 않고 공개 후보만 비교했다. `CANDIDATE_FOUND`. primary 없음. P-010B·P-011 미개방. robot 0
+- [x] **P-010 — CAD reference asset** — 공개 FreeCAD 화형 STEP을 읽었다. solid 1, face 3, BOP 검사 중단. `FAIL_CAD_ASSET_QUALIFICATION`. ground truth 아님. P-011 미개방. robot 0
+- [ ] **W-002F-R5 — compact physical reference** — Candidate C PNG는 검출 통과, A4 가로 PDF만 준비. 출력·backing·실측·높이가 없어 `NOT_CLOSED`. Gemini 촬영·PnP 없음. robot 0
+- [x] **W-002F-R4 — Reference geometry selection** — OpenCV 4.5.4로 A/B/C를 만들고 C(5×4, 40/30 mm)를 선택. `PASS_REFERENCE_GEOMETRY_SELECTION` / `CLOSED`. 인쇄·촬영·PnP 없음. robot 0
+- [x] **W-002F-R3-R2 — Phone photo print payload** — 사진 3장에서 DICT_5X5_100 ID가 생성 PNG와 같은 자리에 수락된다. `CLOSED`. Gemini 재촬영·재출력·PnP 없음. robot 0
+- [x] **W-002F-R3-R1 — Marker sampling controlled recovery** — reference board만 옮긴 10장. 수락 ID 0, 변 중앙값 23.5→25.3 px. `CLOSED`. 기존 ArUco는 검출에 쓰지 않음. PnP·재출력 없음. robot 0
+- [x] **W-002F-R3-D2 — Captured marker image formation** — 저장된 프레임의 마커 변은 약 12–35 px이고 칸 밝기는 갈라지지 않는다. `CLOSED`. 원인은 미분리. PnP·재출력 없음. robot 0
+- [x] **W-002F-R3-D1 — ChArUco detection diagnosis** — 생성 PNG는 17개 검출, 촬영 RGB는 수락 0. `CLOSED`. 인쇄 원인은 미확정. PnP·재출력 없음. robot 0
+- [x] **W-002F-R3 — independent reference RGB-D observability** — 시트는 화면 안에 있으나 마커가 수락되지 않음. `BLOCKED_CHARUCO_DETECTION` / `CLOSED`. PnP·등록·이동 없음. robot 0
+- [ ] **W-002F-R2 — physical reference fabrication** — OpenCV 4.5.4 인쇄 원본만 생성. 출력 확인·backing·실측·높이가 없어 `NOT_CLOSED`. 촬영·PnP 없음. robot 0
+- [x] **W-002F-R1 — independent reference execution contract** — OpenCV 4.5.4와 ChArUco 7×5, 높이·TEST A/C 기준을 동결. `PASS_EXECUTION_CONTRACT` / `CLOSED`. 촬영·PnP·보드 생성 없음. robot 0
+- [x] **W-002F — independent reference contract** — rigid ChArUco와 총 높이 계측을 동결. `PASS_INDEPENDENT_REFERENCE_CONTRACT` / `CLOSED`. 촬영·PnP·다음 Gate 없음. robot 0
+- [x] **W-002E-R8 — registration recovery retest** — 복구 후 같은 baseline. `FAIL_REGISTRATION_RECOVERY` / `CLOSED`. 첫 실패는 재투영 평균. 효과는 MIXED. 변환 없음. robot 0
+- [x] **W-002E-R7-R1 — physical recovery completion** — ID2 실측 (450, 336). 같은 시트, 재인쇄 없음. `PASS_PHYSICAL_RECOVERY_COMPLETION` / `CLOSED`. R7 blocker는 소급하지 않음. 등록 없음. robot 0
+- [x] **W-002E-R7 — ID2 physical recovery** — 4/4 검출. 흡착판은 떨어져 보임. 줄자 중심과 재설치 측면이 없어 `BLOCKED_ID2_CENTER_UNMEASURED_AND_SIDE_VIEW_ABSENT` / `CLOSED`. PnP 없음. robot 0
+- [x] **W-002E-R6 — ID2 planarity inspection** — 측면 사진에서 시트 아래 틈. `PASS_PHYSICAL_PLANARITY_VIOLATION_CONFIRMED` / `CLOSED`. 코너 mm 없음. 원인 미확정. W-002F 미개방. robot 0
+- [x] **ADR-010 — registration recovery strategy** — 독립 physical reference를 주 회복으로 고름. `ACCEPTED` / `CLOSED`. 등록·이동·임계값 변경 없음. W-002F 미개방. robot 0
+- [x] **W-002E-R5 — RGB-D plane audit** — SW D2C depth 경로와 -2.34 mm 간격을 재현. `PASS_RGBD_PLANE_GEOMETRY_AUDIT` / `CLOSED`. 원인 미확정. 등록 변환 없음. robot 0
+- [x] **W-002E-R4 — RGB geometry audit** — raw color와 K/D가 맞다. `PASS_RGB_GEOMETRY_AUDIT` / `CLOSED`. SUBPIX도 재투영 기준 미달. 등록 변환 없음. robot 0
+- [x] **W-002E-R3 — precision fiducial metrology** — 캘리퍼스 측정을 별도 기록. `PASS_PRECISION_PHYSICAL_METROLOGY` / `CLOSED`. ID1 참값은 미확정. 58 mm 미채택. PnP 없음. robot 0
 - [x] **W-002E-R2 — fiducial physical geometry metrology** — 검은 변을 기록. `PASS_PHYSICAL_GEOMETRY_METROLOGY` / `CLOSED`. 59.25 mm와 58 mm는 등록 크기가 아님. PnP 없음. robot 0
 - [x] **W-002E-R1 — registration residual diagnosis** — 저장 프레임만 분석. `PASS_DIAGNOSIS` / `CLOSED`. 원인 `INCONCLUSIVE`. 등록 변환 없음. robot 0
 - [x] **W-002E — camera workboard registration** — 실측 중심으로 16점 PnP. `FAIL_REPROJECTION` / `CLOSED`. 평면 `|z|`도 초과. 임계값 불변. P-009-R1·P-010 없음. robot 0
@@ -799,6 +848,36 @@ operator channel        realtime visual observation
 | 90 | 2026-10-31 | **W-002E** — 실측 설치 중심으로 카메라-작업판 PnP를 10프레임 했다. 재투영과 평면 `|z|`가 동결 기준을 넘었다. robot 0 | `FAIL_REPROJECTION — CLOSED, PLANE=FAIL, REPEATABILITY=PASS, NEXT=NOT_OPENED` |
 | 91 | 2026-10-31 | **W-002E-R1** — 실패한 등록의 residual 패턴만 봤다. 원인은 확정하지 않았다. robot 0 | `PASS_DIAGNOSIS — ROOT_CAUSE=INCONCLUSIVE, VALIDATED_TRANSFORM=NONE, NEXT=NOT_OPENED` |
 | 92 | 2026-10-31 | **W-002E-R2** — 설치된 검은 사각형 변을 기록했다. 평균 59.25 mm는 등록 크기로 쓰지 않는다. robot 0 | `PASS_PHYSICAL_GEOMETRY_METROLOGY — CLOSED, SIZE_ADOPTED=NO, NEXT=NOT_OPENED` |
+| 93 | 2026-10-31 | **W-002E-R3** — 디지털 캘리퍼스로 검은 변을 다시 쟀다. ID1 반복 차이는 남기고 58 mm 가설은 지지하지 않는다. robot 0 | `PASS_PRECISION_PHYSICAL_METROLOGY — CLOSED, ROOT_CAUSE=INCONCLUSIVE, NEXT=NOT_OPENED` |
+| 94 | 2026-10-31 | **W-002E-R4** — 저장된 RGB와 실행 중 CameraInfo로 왜곡 영역과 코너 refinement를 감사했다. 등록은 승인하지 않았다. robot 0 | `PASS_RGB_GEOMETRY_AUDIT — CLOSED, DOMAIN=PASS, ROOT_CAUSE=INCONCLUSIVE, NEXT=NOT_OPENED` |
+| 95 | 2026-10-31 | **W-002E-R5** — 작업판 평면 잔차를 SW D2C depth 경로에서 다시 분해했다. -2.34 mm는 재현되고 원인은 남겼다. robot 0 | `PASS_RGBD_PLANE_GEOMETRY_AUDIT — CLOSED, OFFSET_DOMINANT, ROOT_CAUSE=INCONCLUSIVE, NEXT=NOT_OPENED` |
+| 96 | 2026-10-31 | **ADR-010** — camera↔workboard 회복은 독립 physical reference로 정했다. 기존 ArUco fitting은 주 경로가 아니다. robot 0 | `ACCEPTED — CLOSED, SELECT_B, W-002F=NOT_OPENED` |
+| 97 | 2026-10-31 | **W-002E-R6** — ID2 들뜸 의심을 기록했다. 사진 원본이 없어 검은 코너 높이는 정하지 않았다. robot 0 | `INCONCLUSIVE_PHYSICAL_INSPECTION — CLOSED, PHOTOS=ABSENT, ROOT_CAUSE=INCONCLUSIVE, NEXT=NOT_OPENED` |
+| 98 | 2026-10-31 | **W-002E-R6** — 도착한 ID2 원본에서 시트 아래 틈을 기록했다. 코너 높이와 등록 원인은 확정하지 않았다. robot 0 | `PASS_PHYSICAL_PLANARITY_VIOLATION_CONFIRMED — CLOSED, LIFT_MM=NOT_MEASURED, ROOT_CAUSE=INCONCLUSIVE, NEXT=NOT_OPENED` |
+| 99 | 2026-10-31 | **W-002E-R7** — ID2 설치 목표를 (450, 336)으로 고정했다. 실측 중심은 아직 없다. robot 0 | `NOT_CLOSED — TARGET_ONLY, MEASURED=NOT_MEASURED, REGISTRATION=NO` |
+| 100 | 2026-10-31 | **W-002E-R7** — 이동 후 color에서 ID 0~3이 모두 보였다. 줄자 중심은 아직 없다. robot 0 | `NOT_CLOSED — DETECTED=4, FLAT=UNRESOLVED, MEASURED=NOT_MEASURED` |
+| 101 | 2026-10-31 | **W-002E-R7** — 줄자 중심과 재설치 측면 사진이 없어 복구 합격을 주지 않았다. robot 0 | `BLOCKED_ID2_CENTER_UNMEASURED_AND_SIDE_VIEW_ABSENT — CLOSED, REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 102 | 2026-10-31 | **W-002E-R7-R1** — ID2 실측 중심을 (450, 336)으로 남겼다. R7 blocker는 고치지 않았다. robot 0 | `PASS_PHYSICAL_RECOVERY_COMPLETION — CLOSED, MEASURED=[450,336], REGISTRATION=NO, NEXT=NOT_OPENED` |
+| 103 | 2026-10-31 | **W-002E-R8** — 복구된 ID2 중심으로 W-002E와 같은 등록을 다시 했다. 재투영 평균이 기준을 넘었다. robot 0 | `FAIL_REGISTRATION_RECOVERY — CLOSED, FIRST=REPROJECTION_MEAN, EFFECT=MIXED, TRANSFORM=NONE` |
+| 104 | 2026-10-31 | **W-002F** — 독립 ChArUco 기준의 높이 관계와 RGB·depth 비교를 계약으로 고정했다. 촬영은 하지 않았다. robot 0 | `PASS_INDEPENDENT_REFERENCE_CONTRACT — CLOSED, HEIGHT=NOT_MEASURED, NEXT=NOT_OPENED` |
+| 105 | 2026-10-31 | **W-002F-R1** — 독립 ChArUco 실행 계약과 판정 기준을 결과 전에 고정했다. 보드는 만들지 않았다. robot 0 | `PASS_EXECUTION_CONTRACT — CLOSED, OPENCV=4.5.4, CAPTURE=NO, NEXT=NOT_OPENED` |
+| 106 | 2026-10-31 | **W-002F-R2** — OpenCV 4.5.4로 ChArUco 인쇄 원본을 만들었다. 물리 계측은 아직 없다. robot 0 | `NOT_CLOSED — BOARD_GENERATED, METROLOGY=ABSENT, CAPTURE=NO` |
+| 107 | 2026-10-31 | **W-002F-R2** — 해상도 없는 PNG가 A4에서 잘려 확대되어, 같은 픽셀을 A4 가로 PDF에 실제 크기로 놓았다. robot 0 | `NOT_CLOSED — PDF_A4_LANDSCAPE, SCALE_NOT_VERIFIED, CAPTURE=NO` |
+| 108 | 2026-10-31 | **W-002F-R3** — 현재 화면의 ChArUco를 열 장 기록했다. 마커 ID는 수락되지 않았다. robot 0 | `BLOCKED_CHARUCO_DETECTION — CLOSED, MARKERS=0, PNP=NO, NEXT=NOT_OPENED` |
+| 109 | 2026-10-31 | **W-002F-R3-D1** — 생성 PNG는 검출되고 촬영 RGB는 검출되지 않았다. 인쇄 원인은 확정하지 않았다. robot 0 | `CLOSED — PNG=17, CAPTURE=0, ROOT=UNRESOLVED, NEXT=NOT_OPENED` |
+| 110 | 2026-10-31 | **W-002F-R3-D2** — 저장된 RGB에서 마커 화소와 칸 밝기를 측정했다. 인쇄·광학·샘플링은 가르지 않았다. robot 0 | `CLOSED — EDGE_P50=23.5px, ROOT=UNRESOLVED, NEXT=NOT_OPENED` |
+| 111 | 2026-10-31 | **W-002F-R3-R1** — reference board만 옮기고 같은 검출기로 열 장을 읽었다. 마커 ID는 수락되지 않았다. robot 0 | `CLOSED — P50=25.3px, MARKERS=0, ROOT=UNRESOLVED, NEXT=NOT_OPENED` |
+| 112 | 2026-10-31 | **W-002F-R3-R2** — 스마트폰 사진에서 인쇄 마커 ID가 생성 PNG와 맞았다. Gemini는 다시 찍지 않았다. robot 0 | `CLOSED — PHONE_IDS=0..16, PRINT_PAYLOAD=PRESERVED, NEXT=NOT_OPENED` |
+| 113 | 2026-10-31 | **W-002F-R4** — Gemini용 ChArUco 후보를 비교하고 C를 골랐다. 보드는 만들지 않았다. robot 0 | `PASS_REFERENCE_GEOMETRY_SELECTION — CLOSED, C=5x4 40/30mm, NEXT=NOT_OPENED` |
+| 114 | 2026-10-31 | **W-002F-R5** — Candidate C 픽셀을 유지한 인쇄 PDF를 만들었다. 물리 계측은 아직 없다. robot 0 | `NOT_CLOSED — DIGITAL=PASS, METROLOGY=ABSENT, CAPTURE=NO` |
+| 115 | 2026-11-01 | **P-010** — 공개 화형 CAD를 branch input으로 검증했다. 면이 3개이고 BOP 검사가 중단됐다. robot 0 | `FAIL_CAD_ASSET_QUALIFICATION — GROUND_TRUTH=NOT_ASSIGNED, P-011=NO` |
+| 116 | 2026-11-01 | **P-010R** — 거절한 화형 STEP을 고치지 않고 공개 후보를 비교했다. primary는 없다. robot 0 | `CANDIDATE_FOUND — PRIMARY=NONE, P-010B=NO, P-011=NO` |
+| 117 | 2026-11-01 | **P-010A** — CAD 검증과 footwear 검증을 공개 화형 STEP 하나에 두지 않기로 기록했다. robot 0 | `PASS_ARCHITECTURE_DECOUPLING — ADR-011, P-011=NO` |
+| 118 | 2026-11-01 | **P-011** — 기존 저장소에 Coupon 형상 계약만 열었다. CAD는 만들지 않았다. robot 0 | `OPEN — CONTRACT_ONLY, GENERATION=NO` |
+| 119 | 2026-11-01 | **P-011** — 동결된 계약으로 Coupon STEP을 만들고 새 세션에서 qualification했다. robot 0 | `PASS_COMPLEX_SURFACE_CAD_TEST_COUPON — P-012=NO` |
+| 120 | 2026-11-01 | **P-012** — 동결 STEP에서 법선과 곡률을 읽었다. ProcessPath는 없다. robot 0 | `PASS_CAD_GEOMETRY_ENGINE — P-013=NO` |
+| 121 | 2026-11-01 | **P-013** — CAD ProcessPath 계약만 열었다. 경로는 만들지 않았다. robot 0 | `PASS_CONTRACT_FROZEN — IMPLEMENTATION=NO, P-014=NO` |
+| 122 | 2026-11-01 | **P-013** — 동결 계약으로 CAD ProcessPath를 만들었다. tool roll은 pass 방향과 분리했다. robot 0 | `PASS_CAD_6D_PROCESSPATH — REVIEWER=OPEN, P-014=NO` |
 
 > 🔴 **시계 주의**: Jetson 은 **+0800**, 이 표와 git 은 **KST(+0900)** 다. 증거 파일의 `commanded_at 17:49:06+0800` = KST 18:49:06.
 

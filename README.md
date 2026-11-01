@@ -2,7 +2,11 @@
 
 CAD 없이 측정한 표면에서 로봇에 묶이지 않은 6D ProcessPath를 만드는 ROS 2 Humble PoC다. 이 저장소 루트가 colcon 워크스페이스다.
 
-2026-10-31 ADR-008은 공정 정의와 측정 표면 경로 생성을 나눈다. Gemini 335L 한 장에서 공정 경계를 자동으로 찾는 일은 핵심의 필수 책임이 아니다. R1 조사는 그 자동 경계를 현재 촬영으로 입증하지 못했고, 기준은 결과를 본 뒤에 낮추지 않았다. 산업에서 점군에서 궤적까지 가는 사례가 있으므로, 그 방식을 불가능하다고 말하지 않는다. 결정 기록은 `evidence/ADR-008/README.md`다. P-009 평가는 `FAIL_SURFACE_ASSOCIATION`이고 P-010은 열지 않았다.
+2026-10-31 ADR-008은 공정 정의와 측정 표면 경로 생성을 나눈다. Gemini 335L 한 장에서 공정 경계를 자동으로 찾는 일은 핵심의 필수 책임이 아니다. R1 조사는 그 자동 경계를 현재 촬영으로 입증하지 못했고, 기준은 결과를 본 뒤에 낮추지 않았다. 산업에서 점군에서 궤적까지 가는 사례가 있으므로, 그 방식을 불가능하다고 말하지 않는다. 결정 기록은 `evidence/ADR-008/README.md`다. P-009 평가는 `FAIL_SURFACE_ASSOCIATION`이고, 그 다음 로봇 경로 계속은 열지 않았다.
+
+## P-010 — 거절한 CAD 후보
+
+`freecad-shoe-last-wb`에서 STEP 생성은 됐다. geometry를 검사한 뒤 거절했다. 이유는 라이선스 미기재, 적격 계약의 face 수 미달, 추가 topology 검사가 끝나지 않은 것이다. 통과시키려고 증거를 고치지 않는다. 대체 자산 조사는 `evidence/P-010R/candidate_matrix.md`이며, CAD branch input은 없다. P-010A는 그 결과를 근거로 CAD 기술 검증과 footwear 검증을 분리했고, 결정은 `evidence/ADR-011/README.md`다. 저장소 이름과 scan pipeline은 유지한다. CAD reference branch는 그 옆에 추가한다. P-011은 그 계약으로 만든 Coupon STEP이다. `assets/cad/complex_surface_coupon.step`. 측정 표면의 ground truth는 아니다. P-012는 그 STEP에서 법선과 곡률을 읽었다. P-013은 그 계약으로 CAD ProcessPath를 만들었다. 검토자가 닫기 전이다.
 
 하드웨어 드라이버, URDF, MoveIt 설정 패키지는 Yahboom DOFBOT Pro 워크스페이스를 그대로 쓴다. 여기서 만드는 것은 점군에서 웨이포인트를 뽑는 노드와, 그 포즈를 Cartesian 궤적으로 실행하는 노드다.
 
