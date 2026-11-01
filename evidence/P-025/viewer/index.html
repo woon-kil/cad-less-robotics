@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>P-025 verified evidence</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1c1915;
+      --muted: #5c564c;
+      --line: #d9d3c7;
+      --paper: #f7f4ee;
+      --card: #fffdf8;
+      --fail: #8c2f2f;
+      --ok: #2f5d45;
+      --mark: #8a5a12;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.45;
+    }
+    header, main { max-width: 980px; margin: 0 auto; padding: 28px 20px; }
+    header { padding-bottom: 0; }
+    h1 { font-size: 1.8rem; font-weight: 600; margin: 0 0 8px; }
+    h2 { font-size: 1.25rem; margin: 0 0 12px; }
+    p { margin: 0 0 10px; }
+    .status { color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.82rem; }
+    .pipeline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 16px 0; }
+    .stage, .boundary {
+      border: 1px solid var(--line);
+      background: var(--card);
+      padding: 10px 12px;
+    }
+    .boundary { border-color: var(--fail); color: var(--fail); }
+    .arrow { color: var(--muted); }
+    section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 18px;
+      margin: 14px 0;
+    }
+    dl { display: grid; grid-template-columns: 220px 1fr; gap: 6px 12px; margin: 0; }
+    dt { color: var(--muted); }
+    dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86rem; }
+    .strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
+    .cell {
+      width: 74px;
+      border: 1px solid var(--line);
+      padding: 6px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.75rem;
+    }
+    .cell.full { background: #e5f0e8; }
+    .cell.fail { background: #f8e4e4; }
+    .cell.partial { background: #f4ead4; }
+    canvas { width: 100%; height: 360px; background: #fbfaf6; border: 1px solid var(--line); }
+    nav a { margin-right: 12px; color: var(--ink); }
+    .note { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <header>
+    <p class="status">P025_PASS = NOT_EVALUATED · UPSTREAM_EVIDENCE = READ_ONLY</p>
+    <h1>검증된 CAD-to-robot evidence</h1>
+    <p>화면은 frozen evidence를 옮긴 것이다. 새 planning 결과가 아니다.</p>
+  </header>
+  <main>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#scene1">Scene 1</a>
+      <a href="#scene2">Scene 2</a>
+      <a href="#scene3">Scene 3</a>
+      <a href="#scene4">Scene 4</a>
+      <a href="#scene5">Scene 5</a>
+    </nav>
+
+    <section id="overview">
+      <h2>Overview</h2>
+      <div class="pipeline" id="pipeline"></div>
+      <p id="roles"></p>
+      <p><strong>6D ProcessPath</strong>는 측정·CAD 프레임의 공정 경로다.</p>
+      <p class="boundary" id="trajectory">RobotTrajectory NOT ACHIEVED</p>
+    </section>
+
+    <section id="scene1">
+      <h2>Scene 1 · CAD</h2>
+      <p>Complex Surface Coupon. footwear CAD가 아니고 ground truth가 아니다.</p>
+      <dl id="scene1-fields"></dl>
+    </section>
+
+    <section id="scene2">
+      <h2>Scene 2 · Geometry</h2>
+      <p>P-012에 저장된 surface, normal, curvature 집계만 보인다. 이 화면이 곡률을 다시 계산하지 않는다.</p>
+      <dl id="scene2-fields"></dl>
+    </section>
+
+    <section id="scene3">
+      <h2>Scene 3 · 6D ProcessPath</h2>
+      <p>저장된 surface anchor, command position, tool Z를 구분한다. tool Z는 저장된 surface normal의 반대 방향이다. IK goal이나 trajectory point가 아니다.</p>
+      <canvas id="path" width="920" height="360"></canvas>
+      <dl id="scene3-fields"></dl>
+      <dl id="callout"></dl>
+    </section>
+
+    <section id="scene4">
+      <h2>Scene 4 · Robot Adapter</h2>
+      <h3>P-021</h3>
+      <p>RobotPlanningInput contract. unit/frame conversion requirement. 변환은 실행하지 않았다.</p>
+      <dl id="p021-fields"></dl>
+      <h3>P-022</h3>
+      <p>configured simulation datum applied. CAD_MODEL_FRAME → base_link. MoveIt integration.</p>
+      <dl id="p022-fields"></dl>
+    </section>
+
+    <section id="scene5">
+      <h2>Scene 5 · Planning boundary</h2>
+      <p id="closed">P-022: CLOSED_FAIL</p>
+      <p id="counts"></p>
+      <div class="strip" id="strip"></div>
+      <p class="note">칸 번호는 run_id다. 0부터 20까지다. fraction = N/A는 0이 아니다.</p>
+      <p id="scope">동결된 P-022 계약과 검토 환경 내에서 구현을 정당화할 대안을 확보하지 못함. 계획 해법의 부재를 의미하지 않음.</p>
+      <p id="callback"></p>
+      <dl id="scene5-fields"></dl>
+    </section>
+
+    <section id="boundary">
+      <h2>주장하지 않음</h2>
+      <ul id="prohibited"></ul>
+    </section>
+  </main>
+  <script src="model.js"></script>
+  <script>
+    const model = window.P025_MODEL;
+    const pipeline = document.getElementById("pipeline");
+    model.overview.stages.forEach((stage, index) => {
+      if (index > 0) {
+        const arrow = document.createElement("span");
+        arrow.className = "arrow";
+        arrow.textContent = "→";
+        pipeline.appendChild(arrow);
+      }
+      const node = document.createElement("div");
+      node.className = "stage";
+      node.textContent = stage;
+      pipeline.appendChild(node);
+    });
+    const boundary = document.createElement("span");
+    boundary.className = "arrow";
+    boundary.textContent = "→";
+    pipeline.appendChild(boundary);
+    const box = document.createElement("div");
+    box.className = "boundary";
+    box.textContent = model.overview.verified_boundary;
+    pipeline.appendChild(box);
+
+    const roles = model.overview.geometry_roles;
+    document.getElementById("roles").textContent =
+      "CAD = " + roles.CAD + " · Scan = " + roles.Scan + " · GROUND_TRUTH = " + roles.GROUND_TRUTH;
+    document.getElementById("trajectory").textContent =
+      "RobotTrajectory " + model.overview.robot_trajectory;
+
+    function fill(id, pairs) {
+      const dl = document.getElementById(id);
+      pairs.forEach(([key, value]) => {
+        const dt = document.createElement("dt");
+        dt.textContent = key;
+        const dd = document.createElement("dd");
+        dd.textContent = value;
+        dl.appendChild(dt);
+        dl.appendChild(dd);
+      });
+    }
+
+    const s1 = model.scene1;
+    fill("scene1-fields", [
+      ["role", s1.role],
+      ["geometry_role", s1.geometry_role],
+      ["GROUND_TRUTH", s1.ground_truth],
+      ["final_gate", s1.final_gate],
+      ["unit", s1.unit],
+      ["solid_count", String(s1.solid_count)],
+      ["face_count", String(s1.face_count)],
+      ["edge_count", String(s1.edge_count)],
+      ["bounding_box_mm", s1.bounding_box_mm.X + " × " + s1.bounding_box_mm.Y + " × " + s1.bounding_box_mm.Z],
+      ["STEP SHA-256", s1.step_sha256]
+    ]);
+
+    const s2 = model.scene2;
+    fill("scene2-fields", [
+      ["final_gate", s2.final_gate],
+      ["face_count", String(s2.face_count)],
+      ["surface_types", s2.surface_types],
+      ["total_sample_count", String(s2.total_sample_count)],
+      ["valid_sample_count", String(s2.valid_sample_count)],
+      ["invalid_sample_count", String(s2.invalid_sample_count)],
+      ["normal_failure_count", String(s2.normal_failure_count)],
+      ["K_MIN", s2.k_min],
+      ["K_MAX", s2.k_max],
+      ["GROUND_TRUTH", s2.ground_truth]
+    ]);
+
+    const s3 = model.scene3;
+    fill("scene3-fields", [
+      ["waypoint_count", String(s3.waypoint_count)],
+      ["frame", s3.frame],
+      ["position_unit", s3.position_unit],
+      ["quaternion_order", s3.quaternion_order.join(", ")],
+      ["process_offset_mm", String(s3.process_offset_mm)],
+      ["tool_standoff_mm", s3.tool_standoff_mm_key],
+      ["residual_max_mm", s3.residual_max_mm],
+      ["residual_meaning", s3.residual_meaning],
+      ["surface_anchor", s3.distinctions.surface_anchor],
+      ["command_position", s3.distinctions.command_position],
+      ["tool Z", s3.distinctions.tool_z]
+    ]);
+    const first = s3.waypoints[0];
+    fill("callout", [
+      ["sequence_id", String(first.sequence_id)],
+      ["surface_anchor", JSON.stringify(first.surface_anchor)],
+      ["command_position", JSON.stringify(first.command_position)],
+      ["surface_normal", JSON.stringify(first.surface_normal)],
+      ["orientation_quaternion", JSON.stringify(first.orientation_quaternion)]
+    ]);
+
+    const canvas = document.getElementById("path");
+    const ctx = canvas.getContext("2d");
+    const points = s3.waypoints;
+    let minX = Infinity;
+    let minY = Infinity;
+    let maxX = -Infinity;
+    let maxY = -Infinity;
+    points.forEach((point) => {
+      [point.surface_anchor, point.command_position].forEach((xyz) => {
+        minX = Math.min(minX, xyz[0]);
+        maxX = Math.max(maxX, xyz[0]);
+        minY = Math.min(minY, xyz[1]);
+        maxY = Math.max(maxY, xyz[1]);
+      });
+    });
+    const pad = 24;
+    function mapX(x) { return pad + (x - minX) / (maxX - minX) * (canvas.width - pad * 2); }
+    function mapY(y) { return canvas.height - pad - (y - minY) / (maxY - minY) * (canvas.height - pad * 2); }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    points.forEach((point) => {
+      ctx.strokeStyle = "#b9b1a3";
+      ctx.beginPath();
+      ctx.moveTo(mapX(point.surface_anchor[0]), mapY(point.surface_anchor[1]));
+      ctx.lineTo(mapX(point.command_position[0]), mapY(point.command_position[1]));
+      ctx.stroke();
+    });
+    points.forEach((point) => {
+      ctx.fillStyle = "#6d675d";
+      ctx.fillRect(mapX(point.surface_anchor[0]) - 1.2, mapY(point.surface_anchor[1]) - 1.2, 2.4, 2.4);
+      ctx.fillStyle = "#245b78";
+      ctx.fillRect(mapX(point.command_position[0]) - 1.2, mapY(point.command_position[1]) - 1.2, 2.4, 2.4);
+    });
+
+    const s4 = model.scene4;
+    fill("p021-fields", [
+      ["label", s4.p021.label],
+      ["also", s4.p021.also],
+      ["input_frame", s4.p021.input_frame],
+      ["unit", s4.p021.unit],
+      ["formula", s4.p021.formula],
+      ["transform_executed", s4.p021.transform_executed],
+      ["RobotPlanningInput file", s4.p021.robot_planning_input_file_written]
+    ]);
+    fill("p022-fields", [
+      ["label", s4.p022.label],
+      ["also", s4.p022.also.join(" · ")],
+      ["frame_transform", s4.p022.frame_transform],
+      ["translation_m", s4.p022.translation_m.join(", ")],
+      ["datum_role", s4.p022.datum_role],
+      ["planning_group", s4.p022.planning_group],
+      ["tcp_frame", s4.p022.tcp_frame],
+      ["tcp_role", s4.p022.tcp_role]
+    ]);
+
+    const s5 = model.scene5;
+    document.getElementById("counts").textContent =
+      "17 runs: fraction = 1 · 3 runs: START_IK_FAILED · 1 run: partial, fraction = 0.606061";
+    document.getElementById("scope").textContent = s5.scope_text;
+    document.getElementById("callback").textContent =
+      "KDL_SCALAR_CALLBACK = " + s5.kdl_scalar_callback + ". " + s5.kdl_scalar_callback_meaning;
+    s5.runs.forEach((run) => {
+      const cell = document.createElement("div");
+      cell.className = "cell";
+      if (run.reason === "START_IK_FAILED") cell.classList.add("fail");
+      else if (run.run_id === 20) cell.classList.add("partial");
+      else cell.classList.add("full");
+      const mark = run.reason === "START_IK_FAILED" ? "×" : (run.run_id === 20 ? "▒" : "█");
+      cell.textContent = "run_id " + run.run_id + " " + mark + " fraction = " + run.fraction_display;
+      document.getElementById("strip").appendChild(cell);
+    });
+    fill("scene5-fields", [
+      ["process_runs", String(s5.process_runs)],
+      ["run_id", "0..20"],
+      ["full_fraction_runs", String(s5.full_fraction_runs)],
+      ["START_IK_FAILED", s5.start_ik_failed_runs.join(", ") + " · fraction = N/A"],
+      ["partial", "run_id " + s5.partial_run + " · fraction = " + s5.partial_fraction + " · " + s5.completed_intervals + " / " + s5.total_intervals],
+      ["final_gate", s5.final_gate],
+      ["P022_STATUS", s5.p022_status],
+      ["ROBOTTRAJECTORY_CREATED", s5.robottrajectory_created],
+      ["trajectory_written", s5.trajectory_written_note],
+      ["P023", s5.p023],
+      ["P024", s5.p024]
+    ]);
+
+    const prohibited = document.getElementById("prohibited");
+    model.claim_boundary.prohibited.forEach((phrase) => {
+      const item = document.createElement("li");
+      item.textContent = phrase;
+      prohibited.appendChild(item);
+    });
+  </script>
+</body>
+</html>
