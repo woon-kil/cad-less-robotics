@@ -1,0 +1,74 @@
+{
+  "opencv": "4.5.4",
+  "source_sha256": "c7c2d840aba38483831dde95f41b352bc6d15d4ca022017e9a4936807ddc1459",
+  "source_shape_px": [
+    2200,
+    1800
+  ],
+  "source_redrawn": false,
+  "dictionary": "DICT_5X5_100",
+  "squares": [
+    5,
+    4
+  ],
+  "square_length_mm": 39.999999,
+  "marker_length_mm": 29.999999,
+  "board_marker_count": 10,
+  "board_corner_count": 12,
+  "detected_marker_count": 10,
+  "detected_marker_ids": [
+    9,
+    8,
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    1,
+    0
+  ],
+  "detected_charuco_corner_count": 12,
+  "detected_charuco_corner_ids": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "digital_detection": "PASS",
+  "reference_distance_1": {
+    "axis": "board_x",
+    "corner_ids": [
+      0,
+      3
+    ],
+    "nominal_mm": 119.999997,
+    "measured_mm": null
+  },
+  "reference_distance_2": {
+    "axis": "board_y",
+    "corner_ids": [
+      0,
+      8
+    ],
+    "nominal_mm": 79.999998,
+    "measured_mm": null
+  },
+  "pdf_sha256": "f8ba4a4cc4d9ca6a376edb7d988119dfd292ec5c1039c52b6af2a12f4d976043",
+  "pdf_page": "A4 landscape",
+  "pdf_image_mm": [
+    220.0,
+    180.0
+  ],
+  "pdf_scaled_to_page": false,
+  "print_executed": false,
+  "physical_measurements": null
+}
