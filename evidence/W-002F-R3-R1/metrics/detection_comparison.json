@@ -1,0 +1,303 @@
+{
+  "opencv": "4.5.4",
+  "dictionary": "DICT_5X5_100",
+  "detector": "DetectorParameters_create with CORNER_REFINE_NONE",
+  "color_topic": "/camera/color/image_raw",
+  "observation_count": 10,
+  "baseline_marker_edge_p50_px": 23.486,
+  "baseline_detected_marker_count": 0,
+  "baseline_rejected_count": 14,
+  "frames": [
+    {
+      "index": 0,
+      "timestamp_sec": 1793449067.101256,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 19,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 19,
+        "marker_edge_mean_px": 25.65,
+        "marker_edge_min_px": 11.345,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.322
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 1,
+      "timestamp_sec": 1793449067.268122,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 19,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 19,
+        "marker_edge_mean_px": 26.296,
+        "marker_edge_min_px": 11.854,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.142
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 2,
+      "timestamp_sec": 1793449067.434989,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 19,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 19,
+        "marker_edge_mean_px": 27.042,
+        "marker_edge_min_px": 11.624,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.409
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 3,
+      "timestamp_sec": 1793449067.60186,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 17,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 17,
+        "marker_edge_mean_px": 27.901,
+        "marker_edge_min_px": 11.594,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 26.799
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 4,
+      "timestamp_sec": 1793449067.768768,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 18,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 18,
+        "marker_edge_mean_px": 27.023,
+        "marker_edge_min_px": 11.152,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.12
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 5,
+      "timestamp_sec": 1793449067.9357,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 17,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 17,
+        "marker_edge_mean_px": 27.132,
+        "marker_edge_min_px": 11.624,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.322
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 6,
+      "timestamp_sec": 1793449068.10264,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 21,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 21,
+        "marker_edge_mean_px": 25.657,
+        "marker_edge_min_px": 11.345,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.322
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 7,
+      "timestamp_sec": 1793449068.269572,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 18,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 18,
+        "marker_edge_mean_px": 27.372,
+        "marker_edge_min_px": 11.186,
+        "marker_edge_max_px": 51.058,
+        "marker_edge_p50_px": 26.924
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 8,
+      "timestamp_sec": 1793449068.436481,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 19,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 19,
+        "marker_edge_mean_px": 26.25,
+        "marker_edge_min_px": 11.534,
+        "marker_edge_max_px": 50.702,
+        "marker_edge_p50_px": 25.081
+      },
+      "solve_pnp": false
+    },
+    {
+      "index": 9,
+      "timestamp_sec": 1793449068.603354,
+      "color_resolution": [
+        1280,
+        720
+      ],
+      "color_frame": "camera_color_optical_frame",
+      "detected_marker_count": 0,
+      "detected_marker_ids": [],
+      "rejected_candidate_count": 21,
+      "charuco_corner_count": 0,
+      "charuco_corner_ids": [],
+      "accepted_marker_edges": {
+        "quad_count": 0,
+        "marker_edge_mean_px": null,
+        "marker_edge_min_px": null,
+        "marker_edge_max_px": null,
+        "marker_edge_p50_px": null
+      },
+      "rejected_candidate_edges": {
+        "quad_count": 21,
+        "marker_edge_mean_px": 25.696,
+        "marker_edge_min_px": 11.345,
+        "marker_edge_max_px": 51.058,
+        "marker_edge_p50_px": 25.254
+      },
+      "solve_pnp": false
+    }
+  ],
+  "solve_pnp_executed": false
+}
