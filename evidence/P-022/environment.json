@@ -1,0 +1,21 @@
+{
+  "host": "p620",
+  "os": "Ubuntu 24.04",
+  "ros_distro": "jazzy",
+  "compiler": "g++ 13.3.0",
+  "packages": {
+    "ros-jazzy-ur": "3.9.0-1noble.20261006.044441",
+    "ros-jazzy-ur-description": "3.5.1-1noble.20260920.234208",
+    "ros-jazzy-ur-moveit-config": "3.9.0-1noble.20261006.043609",
+    "ros-jazzy-moveit-core": "2.12.4-1noble.20260915.180823",
+    "ros-jazzy-moveit-ros-planning": "2.12.4-1noble.20260915.195310",
+    "ros-jazzy-moveit-msgs": "2.6.0-1noble.20260911.142759"
+  },
+  "model_source": [
+    "/opt/ros/jazzy/share/ur_description/urdf/ur.urdf.xacro",
+    "/opt/ros/jazzy/share/ur_moveit_config/srdf/ur.srdf.xacro"
+  ],
+  "ur_type": "ur5e",
+  "physical_robot_connected": false,
+  "driver_started": false
+}

@@ -1,0 +1,25 @@
+{
+  "runs": [
+    {"run_id": 0, "waypoint_count": 35, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 1, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 2, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 3, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 4, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 5, "waypoint_count": 34, "api_status": "FAIL_CARTESIAN_API", "reason": "START_IK_FAILED", "fraction": null},
+    {"run_id": 6, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 7, "waypoint_count": 35, "api_status": "FAIL_CARTESIAN_API", "reason": "START_IK_FAILED", "fraction": null},
+    {"run_id": 8, "waypoint_count": 35, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 9, "waypoint_count": 35, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 10, "waypoint_count": 35, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 11, "waypoint_count": 35, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 12, "waypoint_count": 35, "api_status": "FAIL_CARTESIAN_API", "reason": "START_IK_FAILED", "fraction": null},
+    {"run_id": 13, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 14, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 15, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 16, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 17, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 18, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 19, "waypoint_count": 34, "api_status": "OK", "fraction": 1, "trajectory_written": false},
+    {"run_id": 20, "waypoint_count": 34, "api_status": "OK", "fraction": 0.606061, "trajectory_written": false}
+  ]
+}

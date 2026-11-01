@@ -1,0 +1,53 @@
+{
+  "role": "DIAGNOSIS",
+  "replaces_baseline": false,
+  "final_gate_unchanged": "FAIL_CARTESIAN_API",
+  "frozen_configuration_changed": false,
+  "baseline_artifact": "evidence/P-022/cartesian_runs.json",
+  "baseline": {
+    "process_run_count": 21,
+    "fraction_one_count": 17,
+    "start_ik_failed_runs": [5, 7, 12],
+    "partial_fraction": {"run_id": 20, "fraction": 0.606061, "exact_ratio": "20/33"}
+  },
+  "classification": "NONDETERMINISTIC_TIME_BOUNDED_KDL_IK_FAILURE",
+  "geometric_unreachability_proven": false,
+  "all_poses_ik_feasible_proven": false,
+  "shoulder_distance_is_ik_evidence": false,
+  "evidence_class": "LOCAL_EVIDENCE",
+  "mechanism": {
+    "start_state": "RobotState::setToDefaultValues before each run",
+    "default_joints": "URDF limits include 0, SRDF home is not selected",
+    "solver": "kdl_kinematics_plugin/KDLKinematicsPlugin",
+    "solver_has_random_configuration": true,
+    "ik_seed_timeout_s": 0.005,
+    "ik_seed_timeout_source": "ur_moveit_config kinematics.yaml kinematics_solver_timeout",
+    "eef_step_m": 0.005,
+    "eef_rotation_step_rad": 0,
+    "jump_detection": "DISABLED",
+    "avoid_collisions": false
+  },
+  "geometry_screen": {
+    "geometric_unreachability_proven": false,
+    "run_20_fraction_0.606061": "20/33 of the Cartesian waypoint requests"
+  },
+  "repeats": [
+    {"id": 1, "start_ik_failed": [5, 15], "partial": {"6": 0.272727}},
+    {"id": 2, "start_ik_failed": [3, 6], "partial": {"5": 0.151515, "10": 0.205882}},
+    {"id": 3, "start_ik_failed": [5], "partial": {"7": 0.647059, "10": 0.205882, "12": 0.205882}}
+  ],
+  "repeat_outputs_not_acceptance": [
+    "/tmp/p022/cartesian_repeat_1.json",
+    "/tmp/p022/cartesian_repeat_2.json",
+    "/tmp/p022/cartesian_repeat_3.json"
+  ],
+  "not_shown": [
+    "pose unreachable",
+    "datum wrong",
+    "eef_step wrong",
+    "threshold wrong",
+    "collision",
+    "joint jump"
+  ],
+  "repair_not_selected": true
+}

@@ -1,0 +1,52 @@
+{
+  "input_artifact": "evidence/P-013/cad_process_path.json",
+  "input_waypoint_count": 741,
+  "failures": [],
+  "nonfinite_count": 0,
+  "unit_conversion": "position_m = position_mm * 0.001",
+  "length_conversion_excluded": [
+    "orientation_quaternion",
+    "surface_normal",
+    "traversal_tangent",
+    "tool_tangent"
+  ],
+  "transform_source": "CONFIGURED_SIMULATION_DATUM",
+  "transform_role": "SIMULATION_PLACEMENT",
+  "rotation": "identity",
+  "translation_m": [
+    0.3244333936553,
+    -0.0499999998932,
+    0.11133404082435
+  ],
+  "measured_transform": false,
+  "calibration_result": false,
+  "ground_truth": "NONE",
+  "output_pose_count": 741,
+  "process_run_count": 21,
+  "process_waypoint_count": 721,
+  "process_segment_count": 720,
+  "transition_segment_count": 20,
+  "transition_sequence_ids": [
+    35,
+    70,
+    105,
+    140,
+    175,
+    210,
+    245,
+    281,
+    317,
+    353,
+    389,
+    425,
+    461,
+    496,
+    531,
+    566,
+    601,
+    636,
+    671,
+    706
+  ],
+  "transition_motion_generation": "OUT_OF_SCOPE"
+}
