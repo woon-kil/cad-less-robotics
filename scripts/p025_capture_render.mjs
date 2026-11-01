@@ -8,7 +8,9 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const outDir = path.join(root, "evidence", "P-025", "visual_render");
+const outDir = process.argv[2]
+  ? path.resolve(root, process.argv[2])
+  : path.join(root, "evidence", "P-025", "visual_render");
 const pageUrl = "file://" + path.join(root, "evidence", "P-025", "viewer", "index.html");
 const chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
 const port = 9333;
@@ -137,6 +139,7 @@ async function main() {
 
   await load(1280, 800, false);
   await shot(ws, path.join(outDir, "VR-01b-overview-laptop-1280x800.png"));
+  await shot(ws, path.join(outDir, "VR-04c-scene5-laptop-1280x800.png"), await box(ws, "#scene5"));
 
   await load(390, 844, true);
   await shot(ws, path.join(outDir, "VR-01c-overview-mobile-390x844.png"));

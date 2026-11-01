@@ -44,9 +44,19 @@
       padding: 18px;
       margin: 14px 0;
     }
-    dl { display: grid; grid-template-columns: 220px 1fr; gap: 6px 12px; margin: 0; }
+    dl {
+      display: grid;
+      grid-template-columns: minmax(0, max-content) minmax(0, 1fr);
+      gap: 6px 16px;
+      margin: 0;
+    }
+    dt, dd { min-width: 0; overflow-wrap: anywhere; }
     dt { color: var(--muted); }
     dd { margin: 0; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.86rem; }
+    @media (max-width: 720px) {
+      dl { grid-template-columns: minmax(0, 1fr); }
+      dd { margin-bottom: 8px; }
+    }
     .strip { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; }
     .cell {
       width: 74px;
