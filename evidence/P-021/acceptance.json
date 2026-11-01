@@ -1,0 +1,21 @@
+{
+  "gate": "P-021",
+  "status": "CONTRACT_EVIDENCE_WRITTEN",
+  "stage": "CONTRACT",
+  "code_added": false,
+  "input_artifact": "evidence/P-013/cad_process_path.json",
+  "input_modified": false,
+  "p013_contract_modified": false,
+  "robotplanninginput_data_created": false,
+  "actual_waypoint_conversion_performed": false,
+  "actual_transform_performed": false,
+  "ros2_implemented": false,
+  "moveit_implemented": false,
+  "final_gate": "PASS_ROBOT_ADAPTER_CONTRACT",
+  "review": "PASS",
+  "reviewer_accepted": true,
+  "reviewer_closed": true,
+  "next_gates_opened": false,
+  "p022_opened": false,
+  "p014_opened": false
+}
