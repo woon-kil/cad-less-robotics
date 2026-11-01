@@ -1,0 +1,100 @@
+{
+  "id": "W-002F",
+  "title": "Independent Physical Reference Registration Contract",
+  "status": "PASS_INDEPENDENT_REFERENCE_CONTRACT",
+  "closed": true,
+  "date": "2026-10-31",
+  "design_only": true,
+  "question": "Can an independent physical reference separate whether the persistent about -2.4 mm offset is on the RGB fiducial pose, the registered-depth workboard plane, both, or the reference itself?",
+  "hypotheses_selected": false,
+  "hypotheses": ["H_RGB", "H_DEPTH", "H_BOTH", "H_REFERENCE"],
+  "reference_type": "RIGID_PLANAR_CHARUCO_TARGET",
+  "reference_role": "INDEPENDENT_CAMERA_GEOMETRY_REFERENCE",
+  "not_a": ["shoe_boundary", "workpiece_segmentation", "process_domain", "robot_calibration"],
+  "rigid_backing_required": true,
+  "loose_paper_on_wood_forbidden": true,
+  "requirements": {
+    "target_surface_planar": "PHYSICALLY_INSPECTABLE",
+    "target_dimensions_measurable": true,
+    "can_be_positioned_on_workboard": true,
+    "requires_robot_movement": false,
+    "visible_to_gemini_335l": true,
+    "existing_aruco_pose_as_ground_truth": false
+  },
+  "charuco_pattern": {
+    "dictionary": "NOT_FROZEN",
+    "squares_x": "NOT_FROZEN",
+    "squares_y": "NOT_FROZEN",
+    "square_length_mm": "NOT_FROZEN",
+    "marker_length_mm": "NOT_FROZEN",
+    "nominal_print_is_ground_truth": false,
+    "freeze_before_capture": true
+  },
+  "physical_metrology_method_defined": true,
+  "metrology": {
+    "preferred_tool": "DIGITAL_CALIPER",
+    "display_resolution_is_accuracy": false,
+    "measured_board_width_mm": "NOT_YET_MEASURED",
+    "measured_board_height_mm": "NOT_YET_MEASURED",
+    "measured_square_reference_distances_mm": "NOT_YET_MEASURED",
+    "unmeasured_equals_nominal": false
+  },
+  "planarity": {
+    "photo_is_not_precision_flatness": true,
+    "method": "STRAIGHTEDGE_OR_EQUIVALENT_PHYSICAL_CHECK",
+    "visible_warp": "NOT_YET_INSPECTED",
+    "visible_gap_on_flat_surface": "NOT_YET_INSPECTED",
+    "target_surface_planarity": "NOT_YET_INSPECTED"
+  },
+  "target_surface_z_equals_zero": false,
+  "reference_height_relation_defined": true,
+  "reference_height_measurement_method": "DIRECT_TOTAL_STACK_FROM_WORKBOARD_CONTACT_PLANE_TO_PRINTED_TARGET_PLANE",
+  "recommended_topology": "KNOWN_THICKNESS_RIGID_PLATE_RESTING_ON_WORKBOARD",
+  "layer_thicknesses_optional": ["backing", "print_media", "adhesive_or_tape"],
+  "reference_total_height_mm": "NOT_YET_MEASURED",
+  "observations": {
+    "rgb": "RAW_DISTORTED color, live K and D, measured target geometry, pose independent of ID0-ID3",
+    "depth_reference_surface": "registered depth plane of the same printed target surface, not fitted to the RGB pose",
+    "depth_bare_workboard": "registered depth plane of nearby bare wood, compared with the measured total height"
+  },
+  "rgb_reference_observation": "DEFINED",
+  "depth_reference_surface_observation": "DEFINED",
+  "depth_bare_workboard_observation": "DEFINED",
+  "failed_aruco_transform_used_as_ground_truth": false,
+  "forbidden": [
+    "compute reference placement from ID0-ID3 poses",
+    "use W-002E or W-002E-R8 transform as ground truth",
+    "apply -2.4 mm as a correction",
+    "fit ChArUco pose to the depth plane",
+    "fit depth to the ChArUco pose"
+  ],
+  "tests": {
+    "A_rgb_vs_depth_reference": "DEFINED",
+    "B_depth_reference_vs_bare_workboard": "DEFINED",
+    "C_physical_height_vs_depth_separation": "DEFINED",
+    "D_existing_aruco_vs_independent_relation": "DEFINED"
+  },
+  "conceptual_labels_not_metrics": [
+    "RGB_GEOMETRY_BIAS_SUSPECTED",
+    "DEPTH_GEOMETRY_BIAS_SUSPECTED",
+    "MULTI_SOURCE_DISAGREEMENT",
+    "INDEPENDENT_REFERENCE_INCONCLUSIVE"
+  ],
+  "numeric_reference_thresholds": "NOT_FROZEN",
+  "thresholds_set_after_seeing_results": false,
+  "w002b_thresholds_unchanged": true,
+  "subpix_not_adopted": true,
+  "capture_executed": false,
+  "target_built": false,
+  "pnp_executed": false,
+  "validated_registration_transform": "NONE",
+  "adr010_status": "ACCEPTED",
+  "adr010_modified": false,
+  "w002e_status": "FAIL_REPROJECTION",
+  "w002e_r8_status": "FAIL_REGISTRATION_RECOVERY",
+  "id2_nonplanarity_was_sole_root_cause": "NOT_ESTABLISHED",
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "historical_evidence_modified": false
+}
