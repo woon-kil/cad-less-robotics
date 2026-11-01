@@ -1,0 +1,42 @@
+{
+  "steps": [
+    {
+      "step": "depth_pixel",
+      "source_frame": "camera_color_optical_frame",
+      "unit": "pixel index and uint16"
+    },
+    {
+      "step": "z",
+      "formula": "raw/1000",
+      "unit": "meter",
+      "code": "w002e_register.py plane_from_depth"
+    },
+    {
+      "step": "camera_xyz",
+      "target_frame": "camera_color_optical_frame",
+      "formula": "x=(u-cx)*z/fx using color K",
+      "unit": "meter"
+    },
+    {
+      "step": "workboard_xyz",
+      "source_frame": "camera_color_optical_frame",
+      "target_frame": "workboard",
+      "formula": "p_workboard = T_workboard_camera * p_camera",
+      "unit": "meter"
+    }
+  ],
+  "p_camera_equation": "p_camera = T_camera_workboard * p_workboard",
+  "transform_used": "FAILED_GATE_DIAGNOSTIC_TRANSFORM",
+  "coordinate_chain_audit": "PASS",
+  "unit_consistency": "PASS",
+  "unit_basis": "uint16 divided by 1000 to meters; transform translation is meters; no second scale",
+  "roi_domain_match": "PASS",
+  "roi_u": [
+    480,
+    700
+  ],
+  "roi_v": [
+    430,
+    560
+  ]
+}

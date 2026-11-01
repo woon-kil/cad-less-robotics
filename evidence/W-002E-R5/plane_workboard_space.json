@@ -1,0 +1,15 @@
+{
+  "signed_z_mean_mm": -2.340355647823267,
+  "signed_z_median_mm": -2.327439775602791,
+  "signed_z_p05_mm": -4.018965442876921,
+  "signed_z_p95_mm": -0.7800922690884181,
+  "abs_z_mean_mm": 2.342894560247784,
+  "abs_z_p95_mm": 4.018965442876921,
+  "fitted_plane_offset_mm": 1.1008856709572956,
+  "plane_normal_angle_deg": 0.5915848148032851,
+  "signed_offset_mm": -2.340355647823267,
+  "tilt_rms_mm": 0.4523348697914362,
+  "local_plane_rms_mm": 0.8889520637230269,
+  "dz_dx_mm_per_m": -8.44754261473088,
+  "dz_dy_mm_per_m": -5.9299696069677745
+}

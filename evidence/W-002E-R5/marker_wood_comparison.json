@@ -1,0 +1,32 @@
+{
+  "status": "MEASURED",
+  "name": "OBSERVED_MARKER_TO_WOOD_DEPTH_DIFFERENCE_MM",
+  "not_paper_thickness": true,
+  "median_of_markers_mm": 1.2341133275765581,
+  "markers": [
+    {
+      "id": 0,
+      "ring_valid_count": 3693,
+      "surface": "PIXEL_RING_OUTSIDE_1.05_QUAD_INSIDE_1.35_QUAD",
+      "median_signed_distance_to_wood_plane_mm": 1.4069404405070984
+    },
+    {
+      "id": 1,
+      "ring_valid_count": 1672,
+      "surface": "PIXEL_RING_OUTSIDE_1.05_QUAD_INSIDE_1.35_QUAD",
+      "median_signed_distance_to_wood_plane_mm": 1.478993300418764
+    },
+    {
+      "id": 2,
+      "ring_valid_count": 901,
+      "surface": "PIXEL_RING_OUTSIDE_1.05_QUAD_INSIDE_1.35_QUAD",
+      "median_signed_distance_to_wood_plane_mm": 1.0612862146460178
+    },
+    {
+      "id": 3,
+      "ring_valid_count": 1779,
+      "surface": "PIXEL_RING_OUTSIDE_1.05_QUAD_INSIDE_1.35_QUAD",
+      "median_signed_distance_to_wood_plane_mm": -0.22509794583992077
+    }
+  ]
+}

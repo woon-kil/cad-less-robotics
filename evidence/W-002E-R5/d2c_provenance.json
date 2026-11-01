@@ -1,0 +1,20 @@
+{
+  "w002e_plane_input_topic": "/camera/depth/image_raw",
+  "w002e_plane_input_type": "DEPTH_IMAGE",
+  "w002e_plane_input_frame": "camera_color_optical_frame",
+  "w002e_code": "scripts/w002e_register.py subscriptions and plane_from_depth",
+  "w002e_required_same_frame_as_color": true,
+  "d2c_applied": "YES",
+  "d2c_mode": "SW_D2C",
+  "pointcloud_topic_observed": "/camera/depth_registered/points",
+  "pointcloud_frame_id": "camera_color_optical_frame",
+  "pointcloud_used_by_w002e_plane": false,
+  "unaligned_topic": "/camera/depth/image_unaligned",
+  "unaligned_frame_id": "camera_depth_optical_frame",
+  "unaligned_size": [
+    848,
+    480,
+    "16UC1"
+  ],
+  "basis": "depth_registration parameter plus image_raw header.frame_id, not the parameter alone"
+}

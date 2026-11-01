@@ -1,0 +1,6 @@
+{
+  "normal_angle_difference_deg": 0.5915848148008207,
+  "signed_plane_separation_at_centroid_mm": -2.3403556480331433,
+  "label": "OFFSET_DOMINANT",
+  "rule": "OFFSET_DOMINANT if angle<=1 deg and |separation|>=1.5 mm; CONSISTENT if both small; TILT if angle>1 and |separation|<1; MIXED if both large"
+}

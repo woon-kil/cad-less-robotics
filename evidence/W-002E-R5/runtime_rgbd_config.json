@@ -1,0 +1,98 @@
+{
+  "serial": "CP263630009D",
+  "firmware": "1.4.60",
+  "sdk_version": "2.10.6",
+  "sdk_source": "/tmp/w002a_gemini.log",
+  "ros_wrapper": {
+    "version": "2.10.6",
+    "source": "/ws/cad-less-robotics/install/orbbec_camera/share/orbbec_camera/package.xml"
+  },
+  "launch_file_seen_in_w002a": "gemini_330_series.launch.py",
+  "parameters": {
+    "enable_color_undistortion": {
+      "name": "enable_color_undistortion",
+      "returncode": 0,
+      "text": "Boolean value is: False"
+    },
+    "depth_registration": {
+      "name": "depth_registration",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "align_mode": {
+      "name": "align_mode",
+      "returncode": 0,
+      "text": "String value is: SW"
+    },
+    "align_target_stream": {
+      "name": "align_target_stream",
+      "returncode": 0,
+      "text": "String value is: COLOR"
+    },
+    "enable_colored_point_cloud": {
+      "name": "enable_colored_point_cloud",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "enable_point_cloud": {
+      "name": "enable_point_cloud",
+      "returncode": 0,
+      "text": "Boolean value is: True"
+    },
+    "depth_precision": {
+      "name": "depth_precision",
+      "returncode": 0,
+      "text": "String value is:"
+    },
+    "depth_width": {
+      "name": "depth_width",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "depth_height": {
+      "name": "depth_height",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "color_width": {
+      "name": "color_width",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    },
+    "color_height": {
+      "name": "color_height",
+      "returncode": 0,
+      "text": "Integer value is: 0"
+    }
+  },
+  "headers": {
+    "depth_image_frame": "camera_color_optical_frame",
+    "depth_image_size": [
+      1280,
+      720
+    ],
+    "unaligned_frame": "camera_depth_optical_frame",
+    "unaligned_size": [
+      848,
+      480,
+      "16UC1"
+    ],
+    "cloud_frame": "camera_color_optical_frame",
+    "cloud_size": [
+      766301,
+      1
+    ],
+    "color_info_frame": "camera_color_optical_frame",
+    "color_info_size": [
+      1280,
+      720
+    ],
+    "depth_info_frame": "camera_color_optical_frame",
+    "depth_info_size": [
+      1280,
+      720
+    ],
+    "color_info_model": "rational_polynomial"
+  },
+  "published_color_encoding_captured": true
+}
