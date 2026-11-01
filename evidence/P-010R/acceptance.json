@@ -1,0 +1,12 @@
+{
+  "gate": "P-010R",
+  "question": "Is there another public shoe-last asset that can replace the rejected P-010 candidate as a CAD branch input?",
+  "final_gate": "CANDIDATE_FOUND",
+  "primary_asset": "NONE",
+  "ready_for_p010b": false,
+  "p010_repaired": false,
+  "p010_requalified": false,
+  "p011_opened": false,
+  "cad_branch_input": "NONE",
+  "ground_truth": "NOT_ASSIGNED"
+}
