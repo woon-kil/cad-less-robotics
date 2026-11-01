@@ -1,0 +1,125 @@
+{
+  "id": "ADR-010",
+  "title": "Workboard Registration Recovery Strategy",
+  "status": "ACCEPTED",
+  "closed": true,
+  "date": "2026-10-31",
+  "decision": "SELECT_B_INDEPENDENT_PHYSICAL_REFERENCE",
+  "primary_recovery_strategy": "INDEPENDENT_PHYSICAL_REFERENCE",
+  "design_only": true,
+  "registration_executed": false,
+  "new_transform_created": false,
+  "validated_registration_transform": "NONE",
+  "w002e_status": "FAIL_REPROJECTION",
+  "w002e_closed": true,
+  "root_cause": "INCONCLUSIVE",
+  "immutable_evidence": {
+    "W-002E": "FAIL_REPROJECTION / CLOSED",
+    "W-002E-R1": "PASS_DIAGNOSIS / CLOSED",
+    "W-002E-R2": "PASS_PHYSICAL_GEOMETRY_METROLOGY / CLOSED",
+    "W-002E-R3": "PASS_PRECISION_PHYSICAL_METROLOGY / CLOSED",
+    "W-002E-R4": "PASS_RGB_GEOMETRY_AUDIT / CLOSED",
+    "W-002E-R5": "PASS_RGBD_PLANE_GEOMETRY_AUDIT / CLOSED"
+  },
+  "hypotheses_not_supported_as_primary_cause": {
+    "GLOBAL_58MM_PRINT_SCALE_HYPOTHESIS": "NOT_SUPPORTED",
+    "IMAGE_CALIBRATION_DOMAIN_MISMATCH": "NOT_SUPPORTED",
+    "RESOLUTION_INTRINSICS_MISMATCH": "NOT_SUPPORTED",
+    "CORNER_ORDERING_ERROR": "NOT_SUPPORTED",
+    "COORDINATE_CHAIN_ERROR": "NOT_SUPPORTED",
+    "UNIT_ERROR": "NOT_SUPPORTED",
+    "ROI_CONTAMINATION": "NOT_SUPPORTED",
+    "DEPTH_TEMPORAL_INSTABILITY": "NOT_SUPPORTED",
+    "absolute_impossibility_claimed": false
+  },
+  "remaining_rgb": {
+    "CORNER_LOCALIZATION_EFFECT": "MATERIAL",
+    "NONE_mean_px": 1.843768,
+    "NONE_p95_px": 2.751381,
+    "NONE_max_px": 2.756267,
+    "SUBPIX_mean_px": 1.038137,
+    "SUBPIX_p95_px": 1.874180,
+    "SUBPIX_max_px": 2.851766,
+    "SUBPIX_REGISTRATION_PASS": "NO"
+  },
+  "remaining_depth": {
+    "SIGNED_OFFSET_MM": -2.340356,
+    "TILT_RMS_MM": 0.452335,
+    "LOCAL_PLANE_RMS_MM": 0.888952,
+    "TEMPORAL_Z_STD_MM": 0.014421,
+    "PLANE_NORMAL_DIFFERENCE_DEG": 0.591585,
+    "RGB_PNP_VS_DEPTH_PLANE": "OFFSET_DOMINANT",
+    "ROOT_CAUSE": "INCONCLUSIVE"
+  },
+  "question": "RGB PnP plane과 RGB-D observed plane 중 어느 것이 physical workboard geometry에 더 가까운지 독립적으로 판정할 수 있는가?",
+  "strategies": {
+    "A_existing_aruco_pnp_further_optimization": {
+      "selected_as_primary": false,
+      "recommendation": "DO_NOT_SELECT_AS_PRIMARY_RECOVERY",
+      "independent_validation_strength": "LOW",
+      "overfitting_risk": "HIGH",
+      "additional_hardware": "LOW",
+      "root_cause_isolation": "LOW"
+    },
+    "B_independent_physical_reference": {
+      "selected_as_primary": true,
+      "independent_validation_strength": "HIGH",
+      "overfitting_risk": "LOW",
+      "additional_hardware_setup": "MEDIUM",
+      "root_cause_isolation": "HIGH",
+      "product_purchase_mandated": false,
+      "charuco_is_ground_truth": false,
+      "charuco_solves_registration": false,
+      "rgb_pnp_plane_used_as_depth_gt": false
+    },
+    "C_requirement_reframing": {
+      "selected_as_current_recovery": false,
+      "valid_architectural_option": true,
+      "current_registration_recovery": "NO",
+      "independent_validation_strength": "NONE",
+      "overfitting_risk": "LOW",
+      "architecture_relevance": "HIGH",
+      "root_cause_isolation": "NONE",
+      "w002b_thresholds_changed": false,
+      "w002e_rewritten_as_pass": false,
+      "requires_separate_future_adr": true
+    }
+  },
+  "sequence": [
+    "ADR-010 reference strategy",
+    "W-002F reference and metrology contract",
+    "later gate physical reference build and measurement",
+    "later gate RGB depth reference three-way comparison",
+    "registration recovery only after that comparison"
+  ],
+  "next_gate_candidate_not_opened": "W-002F",
+  "next_gate_candidate_goal": "Independent Physical Reference Design and Metrology Contract",
+  "w002f_opened": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_gate_opened": false,
+  "markers_moved": false,
+  "camera_moved": false,
+  "robot_moved": false,
+  "workboard_moved": false,
+  "thresholds_changed": false,
+  "depth_preset_changed": false,
+  "historical_evidence_modified": false,
+  "external_sources": [
+    {
+      "statement": "Depth accuracy는 ground truth 대비 systematic deviation이고, spatial precision은 fitted plane 주변의 spatial noise다. absolute accuracy에는 known-distance reference plane 같은 외부 GT가 필요하다.",
+      "url": "https://doc.orbbec.com/documentation/Orbbec%20Gemini%20330%20Series%20Documentation/Depth%20Quality%20Metrics",
+      "classification": "REVIEWER_SUPPLIED"
+    },
+    {
+      "statement": "Gemini 335L 공식 성능치는 특정 거리·ROI·환경의 typical performance이며 현재 workboard scene의 GT를 대신하지 않는다.",
+      "url": "https://orbbec.com/wp-content/uploads/2024/04/Gemini-330-series-Datasheet-V1.4_20250124.pdf",
+      "classification": "REVIEWER_SUPPLIED"
+    },
+    {
+      "statement": "High Accuracy depth preset은 object scanning 등에 권장되나, 원인 진단 전에 baseline을 바꾸지 않는다. 이번 ADR은 그 preset을 켜지 않는다.",
+      "url": "https://orbbec.github.io/OrbbecSDK_ROS1/en/source/camera_devices/5_advanced_guide/configuration/predefined_presets.html",
+      "classification": "REVIEWER_SUPPLIED"
+    }
+  ]
+}
