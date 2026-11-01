@@ -1,0 +1,20 @@
+{
+  "frame_count": 10,
+  "method": "SE3_MEDOID_MIN_SUM_TRANSLATION_MM_PLUS_ROTATION_DEG",
+  "tie_break": "LOWEST_INDEX",
+  "medoid_index": 6,
+  "medoid_scores": [
+    2.723355806367009,
+    3.387167123760732,
+    2.8263441554106254,
+    4.013299366202094,
+    3.5694636869412246,
+    2.8263441554106254,
+    2.723355806367008,
+    2.723355806367008,
+    3.5694636869412246,
+    2.7233558063670085
+  ],
+  "translation_repeatability_mm": 0.5025844166016705,
+  "rotation_repeatability_deg": 0.12030047618981413
+}

@@ -1,0 +1,43 @@
+{
+  "frame_id": "camera_color_optical_frame",
+  "width": 1280,
+  "height": 720,
+  "k": [
+    [
+      610.507385253906,
+      0.0,
+      641.791809082031
+    ],
+    [
+      0.0,
+      610.349853515625,
+      364.443328857422
+    ],
+    [
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "d": [
+    -0.03170262649655342,
+    0.0341622568666935,
+    7.964719407027587e-05,
+    -6.973547897359822e-06,
+    -0.01190638542175293,
+    0.0,
+    0.0,
+    0.0
+  ],
+  "match_to_w002e": {
+    "k_match": true,
+    "d_match": true,
+    "frame_match": true,
+    "size_match": true,
+    "pass": true
+  },
+  "color_image_domain": "RAW_DISTORTED",
+  "image_pre_undistorted": false,
+  "undistort_points_used": false,
+  "corner_refinement": "NONE"
+}

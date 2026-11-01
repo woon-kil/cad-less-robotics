@@ -1,0 +1,13 @@
+{
+  "delta_mean_px": -0.26154659726131824,
+  "delta_p95_px": -0.5258060583003061,
+  "delta_max_px": -0.4220731657712524,
+  "delta_abs_z_mean_mm": 0.10616015585215566,
+  "delta_abs_z_p95_mm": -0.05460925874803424,
+  "delta_abs_signed_z_mm": 0.10602871155275473,
+  "w002e_normal_angle_deg": 0.5915848148131425,
+  "r8_normal_angle_deg": 0.09499157922519093,
+  "effect_rule": "all six deltas negative IMPROVED; all positive DEGRADED; within 0.05 NO_MATERIAL_CHANGE; else MIXED",
+  "fiducial_recovery_package_effect": "MIXED",
+  "id2_nonplanarity_was_sole_root_cause": "NOT_ESTABLISHED"
+}

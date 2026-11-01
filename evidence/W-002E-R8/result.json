@@ -1,0 +1,64 @@
+{
+  "status": "FAIL_REGISTRATION_RECOVERY",
+  "closed": true,
+  "first_failure": "REPROJECTION_MEAN_PX",
+  "centers_mm": {
+    "0": [
+      148,
+      71,
+      0
+    ],
+    "1": [
+      500,
+      69,
+      0
+    ],
+    "2": [
+      450,
+      336,
+      0
+    ],
+    "3": [
+      149,
+      332,
+      0
+    ]
+  },
+  "marker_black_square_model_mm": 60,
+  "marker_size_model_changed_from_w002e": false,
+  "corner_refinement": "NONE",
+  "pnp_method": "SOLVEPNP_SQPNP",
+  "detected_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "detected_count": 4,
+  "reprojection_mean_px": 1.5822216315575512,
+  "reprojection_p95_px": 2.2255749684320008,
+  "reprojection_max_px": 2.334193639708474,
+  "delta_vs_w002e_mean_px": -0.26154659726131824,
+  "delta_vs_w002e_p95_px": -0.5258060583003061,
+  "delta_vs_w002e_max_px": -0.4220731657712524,
+  "workboard_plane_abs_z_mean_mm": 2.449054716118076,
+  "workboard_plane_abs_z_p95_mm": 3.9643561841772477,
+  "workboard_plane_normal_angle_deg": 0.09499157922519093,
+  "signed_z_mean_mm": -2.446384359376022,
+  "repeatability_translation_mm": 0.5025844166016705,
+  "repeatability_rotation_deg": 0.12030047618981413,
+  "rotation_validity": true,
+  "inverse_consistency": true,
+  "fiducial_recovery_package_effect": "MIXED",
+  "id2_nonplanarity_was_sole_root_cause": "NOT_ESTABLISHED",
+  "validated_registration_transform": "NONE",
+  "roi_visual": "BARE_WOOD",
+  "roi_domain_match": "PASS",
+  "w002e_historical_status": "FAIL_REPROJECTION",
+  "adr010_status": "ACCEPTED",
+  "thresholds_relaxed": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "w002f_opened": false,
+  "next_gate_opened": false
+}
