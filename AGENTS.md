@@ -43,6 +43,17 @@ GROUND_TRUTH = NONE
 
 공개 화형 CAD가 없다는 뜻과, 프로젝트가 만든 Coupon이 reference geometry라는 뜻을 한 상태로 섞지 않는다. Coupon은 측정 표면의 ground truth가 아니다.
 
+## Evidence vs Presentation (2026-11-02)
+
+```text
+Evidence   = immutable Gate/artifact (예: P-013 / P-022 / P-025). reopen 없이 설명력을 올리려면 Presentation을 쓴다.
+Presentation = evidence를 소비하는 downstream layer (예: presentation/concept_processpath/). RobotTrajectory 성공을 연출하지 않는다.
+```
+
+포트폴리오 시각 검수는 `DATA_VALIDATION`과 `COMMUNICATION_VALIDATION`을 분리한다. frozen 데이터가 맞아도 화면 전달(크기·대비·text-safe-area)이 FAIL일 수 있다.
+
+결함 대응: 원본에서 Observation → Impact → Acceptance를 고정한 뒤, 실패한 Criteria만 최소 repair scope로 연다. Hook/커밋 skip은 discard가 아니다.
+
 ## Evidence-First Engineering
 
 기술적 문제의 해결 방법을 정할 때 즉흥적인 실험법을 추가하지 않는다. 밖에서 검증된 방법을 먼저 찾고, 이 프로젝트 환경에 맞게 고친 부분만 따로 적는다.
