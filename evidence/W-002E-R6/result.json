@@ -1,0 +1,91 @@
+{
+  "id": "W-002E-R6",
+  "title": "ID2 Fiducial Planarity and Physical Interference Investigation",
+  "status": "PASS_PHYSICAL_PLANARITY_VIOLATION_CONFIRMED",
+  "closed": true,
+  "date": "2026-10-31",
+  "observation_only": true,
+  "prior_write_without_photos": "INCONCLUSIVE_PHYSICAL_INSPECTION",
+  "photo_originals_in_workspace": true,
+  "photos": {
+    "id2_oblique_original.jpg": "oblique view of ID 2 sheet and suction cup",
+    "id2_side_original.jpg": "side view of the same sheet"
+  },
+  "millimetres_estimated_from_photos": false,
+  "visual_inspection": {
+    "PAPER_FULLY_FLAT": "NO",
+    "BLACK_MARKER_REGION_FULLY_FLAT": "NO",
+    "WHITE_BORDER_FULLY_FLAT": "NO",
+    "SUCTION_CUP_CONTACTS_PAPER": "UNRESOLVED",
+    "SUCTION_CUP_CONTACTS_BLACK_MARKER_REGION": "NO",
+    "VISIBLE_GAP_BETWEEN_PAPER_AND_WORKBOARD": "YES",
+    "VISIBLE_PAPER_CURVATURE": "NO"
+  },
+  "visual_basis": "Side view shows a dark separation under the sheet. The black print is on that sheet. The sheet looks tilted, not bent. The oblique view shows the suction-cup disc under the white-border corner. The side view does not show the cup pressed against the paper edge, so contact stays unresolved. The cup is outside the black square.",
+  "sheet_state": "LIFTED_BUT_NOT_MEASURED",
+  "corner_convention": {
+    "source": "W-002E-R4 and scripts/w002e_register.py",
+    "order": ["TOP_LEFT", "TOP_RIGHT", "BOTTOM_RIGHT", "BOTTOM_LEFT"],
+    "indices": [0, 1, 2, 3],
+    "physical_corners_identified_in_photo": false
+  },
+  "corner_board_contact": {
+    "0": "UNRESOLVED",
+    "1": "UNRESOLVED",
+    "2": "UNRESOLVED",
+    "3": "UNRESOLVED"
+  },
+  "corner_lift_mm": {
+    "0": "NOT_MEASURED",
+    "1": "NOT_MEASURED",
+    "2": "NOT_MEASURED",
+    "3": "NOT_MEASURED"
+  },
+  "PAPER_EDGE_MAX_LIFT_MM": "NOT_MEASURED",
+  "BLACK_MARKER_CORNER_MAX_LIFT_MM": "NOT_MEASURED",
+  "measurement_tool": "NONE",
+  "INTERFERENCE_LOCATION": "UNRESOLVED",
+  "nearest_cup_region_without_confirmed_contact": "WHITE_BORDER",
+  "INTERFERENCE_DISTANCE_TO_NEAREST_BLACK_CORNER_MM": "NOT_MEASURED",
+  "model_audit": {
+    "source": "evidence/W-002E/installed_layout.json",
+    "z_source": "NOMINAL_PLANAR_INSTALLATION",
+    "id2_center_m": [0.5, 0.336, 0.0],
+    "ALL_CORNERS_Z_MM": 0
+  },
+  "ID2_PLANAR_MODEL_ASSUMPTION": "VIOLATED",
+  "violation_scope": "BLACK_REGION_ON_LIFTED_SHEET_CORNER_HEIGHTS_NOT_MEASURED",
+  "leave_one_marker_out_fit_mean_px_unchanged": {
+    "source": "evidence/W-002E-R1/leave_one_marker_out.json",
+    "exclude_id0": 1.851156374235303,
+    "exclude_id1": 1.9098697486359122,
+    "exclude_id2": 1.6292227804820911,
+    "exclude_id3": 1.6385649312622315,
+    "id2_root_cause_from_leave_one_out_alone": false
+  },
+  "r5_signed_offset_mm_not_equated": -2.340355647823267,
+  "PHYSICAL_ROOT_CAUSE_CANDIDATE": "ID2_NONPLANAR_INSTALLATION",
+  "ROOT_CAUSE_CONFIDENCE": "INCREASED",
+  "ROOT_CAUSE": "INCONCLUSIVE",
+  "W002E_ROOT_CAUSE": "NOT_YET_CONFIRMED",
+  "VALIDATED_REGISTRATION_TRANSFORM": "NONE",
+  "hypotheses": {
+    "H1_id2_lifted": "VISUALLY_SUPPORTED_HEIGHT_NOT_MEASURED",
+    "H2_suction_cup_contributes": "NOT_CONFIRMED",
+    "H3_affects_pnp": "NOT_CONFIRMED"
+  },
+  "markers_repositioned": false,
+  "id2_pressed": false,
+  "tape_changed": false,
+  "camera_moved": false,
+  "robot_moved": false,
+  "workboard_moved": false,
+  "pnp_rerun": false,
+  "thresholds_changed": false,
+  "adr010_modified": false,
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "w002f_opened": false,
+  "next_gate_opened": false,
+  "historical_evidence_modified": false
+}
