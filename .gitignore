@@ -26,3 +26,9 @@ evidence/P-007D-R2/official_extract/
 .cache/p007e_r2r4_ledger/
 .cache/p007e_r2r5_ledger/
 .cache/p007f05_ledger/
+
+# Concept ProcessPath visualization caches (not evidence)
+.cache/presentation/
+presentation/concept_processpath/frames/
+
+.venv-presentation/
