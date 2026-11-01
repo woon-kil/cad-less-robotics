@@ -1,0 +1,40 @@
+{
+  "frame_id": "camera_color_optical_frame",
+  "width": 1280,
+  "height": 720,
+  "detected_ids": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "detected_count": 4,
+  "per_marker": {
+    "0": {
+      "full_visible": true,
+      "corner0_to_corner1_deg": -33.48616881551299,
+      "min_side_px": 62.96824596572466
+    },
+    "1": {
+      "full_visible": true,
+      "corner0_to_corner1_deg": -37.64762064010765,
+      "min_side_px": 44.204072210600685
+    },
+    "2": {
+      "full_visible": true,
+      "corner0_to_corner1_deg": -27.181111085477223,
+      "min_side_px": 34.20526275297414
+    },
+    "3": {
+      "full_visible": true,
+      "corner0_to_corner1_deg": -25.301378625419723,
+      "min_side_px": 39.11521443121589
+    }
+  },
+  "all_markers_full_visible": true,
+  "id2_orientation_contract_match": "YES",
+  "id2_direction_delta_from_other_median_deg": 6.30505773003577,
+  "orientation_limit_deg": 20.0,
+  "corner_refinement": "CORNER_REFINE_NONE",
+  "solve_pnp": false
+}
