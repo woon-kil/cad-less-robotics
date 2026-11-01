@@ -1,0 +1,301 @@
+{
+  "id": "W-002F-R1",
+  "title": "Independent Reference Execution Contract",
+  "status": "PASS_EXECUTION_CONTRACT",
+  "closed": true,
+  "date": "2026-10-31",
+  "design_only": true,
+  "registration_pass": false,
+  "parent": "W-002F",
+  "parent_status": "PASS_INDEPENDENT_REFERENCE_CONTRACT",
+  "capture_executed": false,
+  "pnp_executed": false,
+  "registration_executed": false,
+  "target_generated": false,
+  "target_printed": false,
+  "target_built": false,
+  "validated_registration_transform": "NONE",
+  "hypotheses_selected": false,
+  "opencv": {
+    "version": "4.5.4",
+    "version_source": "LOCAL_EVIDENCE",
+    "host": "p620",
+    "container": "bytesize-robotics-camera",
+    "checked_on": "2026-10-31",
+    "aruco_api": "cv2.aruco 4.5 module functions",
+    "charuco_detector_class": "ABSENT",
+    "match_image_points": "ABSENT",
+    "set_legacy_pattern": "ABSENT",
+    "present_symbols": [
+      "CharucoBoard_create",
+      "interpolateCornersCharuco",
+      "estimatePoseCharucoBoard",
+      "DetectorParameters_create",
+      "Dictionary_get"
+    ],
+    "version_recorded": true,
+    "upgrade_in_this_gate": false,
+    "stop_if_runtime_version_differs": true
+  },
+  "charuco_legacy_pattern": "YES",
+  "charuco_legacy_pattern_meaning": "OpenCV 4.5.4 CharucoBoard_create has one pattern and no legacy flag. OpenCV 4.6+ names that pre-4.6 pattern legacyPattern=true. This target must be generated on this runtime. Do not treat an OpenCV >= 4.6 default board as the same pattern.",
+  "charuco_geometry_frozen": true,
+  "charuco": {
+    "dictionary": "DICT_5X5_100",
+    "squares_x": 7,
+    "squares_y": 5,
+    "square_length_nominal_mm": 30,
+    "marker_length_nominal_mm": 15,
+    "square_length_nominal_m": 0.03,
+    "marker_length_nominal_m": 0.015,
+    "max_charuco_corners": 24,
+    "internal_grid_x": 6,
+    "internal_grid_y": 4,
+    "corner_index_order": "row_major_x_then_y",
+    "nominal_pattern_width_mm": 210,
+    "nominal_pattern_height_mm": 150,
+    "nominal_pattern_size_is_backing_outer_size": false,
+    "nominal_is_physical_ground_truth": false,
+    "object_point_source": "chessboardCorners indexed by interpolated charucoIds",
+    "object_point_units": "meters",
+    "object_plane": "printed target plane z=0 in the board frame",
+    "object_plane_is_workboard": false,
+    "first_internal_corner_m": [0.03, 0.03, 0.0],
+    "corner_index_0_to_5_nominal_span_mm": 150,
+    "corner_index_0_to_18_nominal_span_mm": 90
+  },
+  "generation_not_executed": true,
+  "generation_contract": {
+    "generator": "CharucoBoard_create and draw on OpenCV 4.5.4",
+    "pixels_per_mm": 10,
+    "pattern_raster_px": [2100, 1500],
+    "margin_mm": 10,
+    "border_bits": 1,
+    "print_scale": "100_PERCENT_ACTUAL_SIZE",
+    "forbid_viewer_scale": ["FIT_TO_PAGE", "SCALE_TO_FIT", "SHRINK_OVERSIZED_PAGE"],
+    "save_at_generation": [
+      "opencv_version",
+      "dictionary",
+      "squares_x",
+      "squares_y",
+      "square_length",
+      "marker_length",
+      "image_pixel_dimensions",
+      "margin",
+      "border_bits",
+      "legacy_pattern",
+      "file_hash"
+    ]
+  },
+  "pose_correspondence": "CHARUCO_CHESSBOARD_CORNERS",
+  "aruco_marker_corners_as_final_pose": false,
+  "accepted_pose_path": [
+    "Dictionary_get(DICT_5X5_100)",
+    "CharucoBoard_create",
+    "detectMarkers with CORNER_REFINE_NONE",
+    "interpolateCornersCharuco",
+    "object points = chessboardCorners[charucoIds]",
+    "solvePnP with SOLVEPNP_ITERATIVE"
+  ],
+  "solve_pnp_flag": "SOLVEPNP_ITERATIVE",
+  "solve_pnp_flag_reason": "cv::solvePnP default when the contract names solvePnP and no flag",
+  "estimate_pose_charuco_board_is_accepted_path": false,
+  "corner_refine_method": "CORNER_REFINE_NONE",
+  "subpix_adopted": false,
+  "api_mapping": {
+    "evidence_class": "PROJECT_ADAPTATION",
+    "official_path": ["CharucoBoard", "CharucoDetector", "matchImagePoints", "solvePnP"],
+    "runtime_path": ["CharucoBoard_create", "detectMarkers", "interpolateCornersCharuco", "chessboardCorners", "solvePnP"],
+    "reason": "CharucoDetector and matchImagePoints are absent in OpenCV 4.5.4. The runtime path still uses ChArUco chessboard corners, not ArUco marker corners."
+  },
+  "rigid_backing": true,
+  "loose_paper_forbidden": true,
+  "backing_material": "NOT_YET_BUILT",
+  "backing_nominal_thickness_mm": "NOT_YET_RECORDED",
+  "backing_nominal_thickness_is_height_ground_truth": false,
+  "physical_metrology_defined": true,
+  "metrology": {
+    "required_after_print": [
+      "MEASURED_BOARD_PATTERN_WIDTH_MM",
+      "MEASURED_BOARD_PATTERN_HEIGHT_MM",
+      "MEASURED_REFERENCE_DISTANCE_X_MM",
+      "MEASURED_REFERENCE_DISTANCE_Y_MM"
+    ],
+    "reference_distance_x": "internal corners index 0 to 5, nominal 150 mm",
+    "reference_distance_y": "internal corners index 0 to 18, nominal 90 mm",
+    "tool": "DIGITAL_CALIPER_OR_INDEPENDENT_TOOL_FOR_THE_LENGTH",
+    "display_resolution_mm": "NOT_YET_RECORDED",
+    "display_resolution_is_accuracy": false,
+    "measured_values": "NOT_YET_MEASURED",
+    "unmeasured_equals_nominal": false,
+    "automatic_scale_fit": false
+  },
+  "print_scale_rule": {
+    "evidence_class": "PROJECT_ADAPTATION",
+    "basis": "The 2.0 mm physical budget already frozen for TEST C. Not an Orbbec datasheet conversion.",
+    "pass_requires": "every required |measured-nominal| <= 2.0 mm",
+    "fail_action": "BLOCKED_PHYSICAL_TARGET_METROLOGY",
+    "missing_measurement_action": "BLOCKED_PHYSICAL_TARGET_METROLOGY",
+    "object_geometry_on_pass": "nominal 30 mm and 15 mm",
+    "object_geometry_on_fail": "do not scale-fit"
+  },
+  "height_metrology_defined": true,
+  "reference_total_height_mm": "NOT_YET_MEASURED",
+  "reference_total_height_method": "DIRECT_TOTAL_STACK_FROM_WORKBOARD_CONTACT_PLANE_TO_PRINTED_TARGET_PLANE",
+  "layer_sum_is_not_preferred": true,
+  "height_repetition": {
+    "minimum_points": 4,
+    "fields": ["HEIGHT_H1_MM", "HEIGHT_H2_MM", "HEIGHT_H3_MM", "HEIGHT_H4_MM", "HEIGHT_MEAN_MM", "HEIGHT_RANGE_MM"],
+    "purpose": "detect gross stack non-planarity, not certify micrometre flatness"
+  },
+  "target_surface_z_equals_workboard_zero": false,
+  "planarity_before_capture": {
+    "visible_warp": "NO_REQUIRED",
+    "visible_gap": "NO_REQUIRED",
+    "current_inspection": "NOT_YET_INSPECTED",
+    "height_range_limit_mm": 2.0,
+    "height_range_limit_basis": "Same 2.0 mm physical budget as TEST C. A larger range cannot support that comparison.",
+    "fail_action": "BLOCKED_REFERENCE_PLANARITY",
+    "do_not_press_target_to_force_a_capture": true,
+    "photo_is_not_precision_flatness": true
+  },
+  "rgb_input": {
+    "color_domain": "RAW_DISTORTED",
+    "camera_frame": "camera_color_optical_frame",
+    "k": "CURRENT_ACTUAL_K",
+    "d": "CURRENT_ACTUAL_D",
+    "distortion_model": "CURRENT_ACTUAL_VALUE",
+    "compare_with": ["evidence/W-002E/camera_intrinsics.json", "evidence/W-002E-R8/camera_info.json"],
+    "mismatch_action": "stop and report configuration change"
+  },
+  "detection_record": ["DETECTED_ARUCO_IDS", "DETECTED_CHARUCO_IDS", "DETECTED_CHARUCO_COUNT"],
+  "visibility": {
+    "target_charuco_corners": 24,
+    "minimum_detected": 20,
+    "spatial_rule": "On the 6 by 4 row-major grid, min x index <= 1, max x index >= 4, min y index <= 1, max y index >= 2.",
+    "partial_cluster_rejected": true,
+    "minimum_pnp_count_is_not_quality": true
+  },
+  "rgb_quality_threshold_frozen": true,
+  "rgb_reprojection_thresholds_px": {
+    "mean": 0.5,
+    "p95": 1.0,
+    "max": 1.5,
+    "comparison": "independent reference quality, not a replacement of W-002B"
+  },
+  "w002b_thresholds_unchanged": {
+    "reprojection_mean_px": 1.0,
+    "reprojection_p95_px": 2.0,
+    "reprojection_max_px": 3.0,
+    "plane_abs_z_mean_mm": 2.0,
+    "plane_abs_z_p95_mm": 4.0,
+    "plane_normal_deg": 1.0,
+    "repeat_translation_mm": 2.0,
+    "repeat_rotation_deg": 0.4
+  },
+  "depth_reference_surface": {
+    "source": "registered depth of the printed ChArUco interior",
+    "exclude": ["marker_edge", "board_edge"],
+    "record": ["REFERENCE_DEPTH_VALID_POINT_COUNT", "REFERENCE_DEPTH_PLANE_RMS_MM", "REFERENCE_DEPTH_PLANE_NORMAL"],
+    "roi_pixels": "NOT_FROZEN_UNTIL_TARGET_IS_PLACED",
+    "roi_moved_after_metrics": false
+  },
+  "depth_bare_workboard": {
+    "same_frame": true,
+    "exclude": ["paper", "target", "robot", "marker", "object"],
+    "record": ["WORKBOARD_DEPTH_VALID_POINT_COUNT", "WORKBOARD_DEPTH_PLANE_RMS_MM", "WORKBOARD_DEPTH_PLANE_NORMAL"],
+    "roi_pixels": "NOT_FROZEN_UNTIL_TARGET_IS_PLACED",
+    "do_not_reuse_w002e_wood_roi_as_this_target_roi": true
+  },
+  "tests": {
+    "A": {
+      "name": "RGB ChArUco plane vs depth points on the same printed surface",
+      "fields": ["A_SIGNED_MEAN_MM", "A_MEDIAN_MM", "A_P95_ABS_MM", "A_NORMAL_ANGLE_DEG"],
+      "sign": "Board +Z from the RGB pose. Positive means the depth point is on the board +Z side of the RGB plane. Do not flip this sign after seeing the mean.",
+      "thresholds": {
+        "abs_signed_mean_mm": 2.0,
+        "p95_abs_mm": 4.0,
+        "normal_angle_deg": 1.0
+      },
+      "replaces_w002b": false
+    },
+    "B": {
+      "name": "Depth reference plane vs depth bare-workboard plane",
+      "field": "B_DEPTH_PLANE_SEPARATION_MM",
+      "sign": "Both normals point toward the camera origin. Positive means the reference surface lies toward the camera from the wood plane.",
+      "numeric_threshold": "NONE_SEPARATE_INPUT_TO_C"
+    },
+    "C": {
+      "name": "Measured total height vs depth separation",
+      "definition": "C_ERROR_MM = B_DEPTH_PLANE_SEPARATION_MM - REFERENCE_TOTAL_HEIGHT_MM",
+      "abs_error_threshold_mm": 2.0,
+      "pass_label": "DEPTH_HEIGHT_CONSISTENT_WITH_PHYSICAL_REFERENCE",
+      "uses_failed_aruco_transform_as_ground_truth": false,
+      "uncertainty_rule": "If the stated height uncertainty is missing or not strictly below 2.0 mm, the result is UNRESOLVED and the gate ends BLOCKED_INSUFFICIENT_PHYSICAL_REFERENCE_PRECISION. Display resolution is not that uncertainty."
+    },
+    "D": {
+      "name": "Existing ArUco discrepancy vs the independent reference",
+      "when": "only after A, B, and C are metrologically valid",
+      "role": "diagnostic classification only",
+      "w002e_transform_is_ground_truth": false,
+      "r8_transform_is_ground_truth": false
+    }
+  },
+  "test_a_threshold_frozen": true,
+  "test_c_threshold_frozen": true,
+  "no_post_hoc_threshold_tuning": true,
+  "threshold_precedence": "If physical metrology uncertainty is not finer than the 2.0 mm threshold, do not force PASS or FAIL.",
+  "diagnostic_classification_frozen": true,
+  "classification": {
+    "A_PASS_C_PASS": "RGB_DEPTH_REFERENCE_CONSISTENT",
+    "A_FAIL_C_PASS": "RGB_REFERENCE_GEOMETRY_OR_RGB_DEPTH_ALIGNMENT_SUSPECTED",
+    "A_PASS_C_FAIL": "DEPTH_ABSOLUTE_GEOMETRY_SUSPECTED",
+    "A_FAIL_C_FAIL": "MULTI_SOURCE_DISAGREEMENT",
+    "metrology_insufficient": "INDEPENDENT_REFERENCE_INCONCLUSIVE",
+    "B_role": "depth separation used by C",
+    "D_role": "relation to the existing ArUco discrepancy"
+  },
+  "forbidden_claims": [
+    "CAMERA_FACTORY_CALIBRATION_IS_WRONG",
+    "ORBBEC_DEPTH_IS_WRONG",
+    "RGB_INTRINSICS_ARE_WRONG"
+  ],
+  "uncertainty_budget": {
+    "false_precision_mm": 0.1,
+    "claim_0_1_mm": false,
+    "sources": [
+      "physical dimension measurement",
+      "reference total-height measurement",
+      "ChArUco corner localization",
+      "RGB intrinsic calibration",
+      "depth spatial noise",
+      "depth systematic accuracy",
+      "RGB-depth registration/alignment",
+      "plane fitting"
+    ]
+  },
+  "orbbec_rule": {
+    "spatial_precision_equals_absolute_depth_accuracy": false,
+    "do_not_convert_datasheet_spatial_precision_into_this_threshold": true,
+    "separate_signed_bias_from_local_plane_rms": true,
+    "local_plane_rms_alone_does_not_judge_the_offset": true
+  },
+  "execution_prerequisites": [
+    "ChArUco target generated on OpenCV 4.5.4",
+    "rigid backing built",
+    "recorded OpenCV version and legacy pattern YES",
+    "measured pattern dimensions and two reference distances",
+    "PRINT_SCALE_STATUS PASS",
+    "measured reference total height at four points",
+    "stated height uncertainty strictly below 2.0 mm",
+    "tool and display resolution recorded",
+    "visible warp NO and visible gap NO",
+    "height range <= 2.0 mm"
+  ],
+  "sample_count": "NOT_FROZEN",
+  "p009_r1_opened": false,
+  "p010_opened": false,
+  "next_execution_gate_opened": false,
+  "historical_evidence_modified": false,
+  "w002b_thresholds_modified": false
+}
