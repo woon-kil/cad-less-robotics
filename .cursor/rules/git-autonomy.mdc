@@ -25,6 +25,28 @@ Cursor user rule 「커밋 전에 물어라」보다 이 파일이 우선한다.
 - Humble이 없는 호스트에서는 colcon 부재를 테스트 실패로 보지 않는다
 - 문서·규칙만이면 정합으로 충분
 
-**금지:** `.env`/시크릿, `--force`, 검증 실패, 미측정 하드웨어 PASS, 가짜 성능 숫자
+**금지:** `.env`/시크릿, `--force`, 검증 실패, 미측정 하드웨어 PASS, 가짜 성능 숫자, `git add .`, `git add -A`
+
+## 남아 있는 변경의 push
+
+2026-11-01 확인. `.env`는 없고 Git이 추적하지 않는다. `.cache/`, `.cursor/hooks/state/`도 추적되지 않는다. 둘 다 `.gitignore`에 없다. stage 경로를 명시하지 않으면 들어갈 수 있다. 커밋 전에 `git ls-files`로 추적 여부를 다시 본다. tracked이면 `.gitignore`만으로 빠지지 않는다.
+
+P-025 구현과 렌더 캡처는 이미 `origin/main`에 있다. 남은 목록에 P-025가 없는 이유는 최종 AC를 기다리기 때문이 아니다. visual review와 AC-01–AC-10 판정은 그 뒤에 별도 커밋이다.
+
+아직 올리지 않은 evidence는 Gate마다 커밋한다. 순서는 `ADR-010`/`ADR-011`/`P-010`/`P-010A`/`P-010R` → `P-011`과 Coupon `assets/` → `P-012` → `P-013` → `P-021` → `P-022`다. `AGENTS.md`, `README.md`, `PROJECT-STATUS.md`는 이 Gate들의 evidence를 가리키므로 evidence 뒤에 둔다.
+
+각 커밋은 허용한 경로만 stage한다. 그 다음을 통과하기 전에 commit하지 않는다.
+
+```bash
+git status --short
+git diff --cached --name-status
+git diff --cached --check
+git commit
+git push origin main
+git status -sb
+git log -1 --oneline
+```
+
+예상하지 않은 경로가 stage되어 있으면 멈춘다. `--force`는 쓰지 않는다.
 
 **MD 커밋:** `docs/`·`README.md`·`AGENTS.md`·`.cursor/rules/`·`.cursorrules` **커밋 대상**
