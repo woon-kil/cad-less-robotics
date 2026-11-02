@@ -1,0 +1,19 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-CONNECT-R2",
+  "role": "THREAD_PRECHECK",
+  "threads": 24,
+  "precheck_match": true,
+  "edges": [
+    {"from": 0, "to": 0, "single_valid": true, "multi_valid": true, "single_cost": 0.00046702097408605022, "multi_cost": 0.00046702097408605022},
+    {"from": 0, "to": 1, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 1, "to": 0, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 5, "to": 7, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 7, "to": 5, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 10, "to": 20, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 3, "to": 255, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 100, "to": 200, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 128, "to": 64, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 255, "to": 255, "single_valid": true, "multi_valid": true, "single_cost": 0.00041947163286673703, "multi_cost": 0.00041947163286673703}
+  ],
+  "complete": true
+}

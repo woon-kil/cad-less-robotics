@@ -1,0 +1,24 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-CONNECT-R3",
+  "role": "THREAD_PRECHECK",
+  "precheck_edge": "run 6 first sub-edge, sequences 211-212, t 0 to 0.5",
+  "threads": 24,
+  "precheck_match": true,
+  "valid_edge_count": 2,
+  "invalid_edge_count": 8,
+  "absent_edge_count": 0,
+  "precheck_scope": "BOTH",
+  "edges": [
+    {"from": 0, "to": 0, "present": true, "single_valid": true, "multi_valid": true, "single_cost": 0.00011714863779294931, "multi_cost": 0.00011714863779294931},
+    {"from": 0, "to": 1, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 1, "to": 0, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 5, "to": 7, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 7, "to": 5, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 10, "to": 20, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 3, "to": 255, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 100, "to": 200, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 128, "to": 64, "present": true, "single_valid": false, "multi_valid": false, "single_cost": 0, "multi_cost": 0},
+    {"from": 255, "to": 255, "present": true, "single_valid": true, "multi_valid": true, "single_cost": 0.00010507369926001349, "multi_cost": 0.00010507369926001349}
+  ],
+  "complete": true
+}

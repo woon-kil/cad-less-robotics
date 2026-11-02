@@ -1,0 +1,70 @@
+[INFO] [1793589538.199009121] [moveit_1703223921.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589538.199088802] [moveit_1703223921.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+PRECHECK MATCH
+[INFO] [1793589538.412200171] [moveit_2252572103.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589538.412264092] [moveit_2252572103.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	24
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 6 NO_PATH NOT_EVALUATED edges 2162688 early 2155008 fk 2930880 elapsed 0.15453
+[INFO] [1793589538.777413189] [moveit_242122265.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589538.777470517] [moveit_242122265.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	8
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 7 NO_PATH NOT_EVALUATED edges 2228224 early 2220448 fk 3005952 elapsed 0.157033
+[INFO] [1793589539.144386516] [moveit_3299402586.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589539.144446851] [moveit_3299402586.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	24
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 8 NO_PATH NOT_EVALUATED edges 2228224 early 2220480 fk 3002624 elapsed 0.156865
+[INFO] [1793589539.509757736] [moveit_7198476.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589539.509817589] [moveit_7198476.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	8
+	12
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 9 NO_PATH NOT_EVALUATED edges 2228224 early 2220672 fk 2983424 elapsed 0.155398
+[INFO] [1793589539.876102559] [moveit_821933691.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589539.876160068] [moveit_821933691.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	20
+	24
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 10 NO_PATH NOT_EVALUATED edges 2228224 early 2220560 fk 2994656 elapsed 0.155648
+[INFO] [1793589540.241799615] [moveit_3577770749.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589540.241858847] [moveit_3577770749.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+Warning: Failed edges:
+	8
+
+         at line 48 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+Error:   LadderGraphSolver failed to build graph.
+         at line 222 in /tmp/descartes-light/src/descartes_light-49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf/descartes_light/core/include/descartes_light/solvers/ladder_graph/impl/ladder_graph_solver.hpp
+RUN 11 NO_PATH NOT_EVALUATED edges 2228224 early 2220544 fk 2996288 elapsed 0.155262
+[INFO] [1793589540.607391694] [moveit_3124508421.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793589540.607451948] [moveit_3124508421.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 12 FOUND SAMPLED_ACCURACY_PASS edges 2228224 early 2220432 fk 3007520 elapsed 0.159681
+PRECHECK_MATCH 0.21392424497753382
+PARENT 6 NO_PATH COMPLETED 0.3654957980616018
+PARENT 7 NO_PATH COMPLETED 0.36589819099754095
+PARENT 8 NO_PATH COMPLETED 0.36692106002010405
+PARENT 9 NO_PATH COMPLETED 0.3659243870060891
+PARENT 10 NO_PATH COMPLETED 0.3649394939420745
+PARENT 11 NO_PATH COMPLETED 0.3659158190712333
+PARENT 12 FOUND COMPLETED 0.36491465696599334

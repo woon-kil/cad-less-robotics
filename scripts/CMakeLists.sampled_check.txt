@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.16)
+project(ur_analytic_ik_sampled_path_check LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(moveit_core REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(urdf REQUIRED)
+find_package(srdfdom REQUIRED)
+add_executable(ur_analytic_ik_sampled_path_check ur_analytic_ik_sampled_path_check.cpp)
+target_link_libraries(ur_analytic_ik_sampled_path_check PRIVATE
+  moveit_core::moveit_robot_model
+  moveit_core::moveit_robot_state
+  rclcpp::rclcpp
+  urdf::urdf
+  srdfdom::srdfdom)

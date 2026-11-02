@@ -1,0 +1,32 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-CONNECT-R3",
+  "host": "p620",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "threads": 24,
+  "wall_s": 1800,
+  "address_space_bytes": 8589934592,
+  "retry": 0,
+  "binary_sha256": "1834a7141f8d910007948df876b165befb52f1120ac3608bec7c00a0d4942f6c",
+  "runs_bin_sha256": "4d51b28f0851114b8d36036d0fb96bb1681bf03f89ac31a47bf7d3a18eecfb26",
+  "inputs": {
+    "cad_process_path.json": "04dcd594f09a18d2d996166e9feb1bfe9f20c0282758e732e94ccf59faf28114",
+    "robot_planning_input.json": "23266fbcd5da565955378585fd38a893670465ca446c2ce10d0a8362bd0dd436",
+    "search_candidate_set.json": "4398eae94fb305380dea8cba3bb6485ca5a70452f1a26804b2288acd54016f62",
+    "ur5e.urdf": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+    "ur5e.srdf": "ee0d940b486bca52534d5b112c1020e0eaa542130c1301af8dc2fda28c757dbb"
+  },
+  "artifacts_sha256": {
+    "summary.json": "47a5461f41490afb4b2c229bea9be733992c6960f4650f8a8678a3543fb333ff",
+    "precheck.json": "ce2f91a5e37ea8befdf55b885994ac56ac4536db3515732d27979ce7dea210a9",
+    "r3-parent.log": "b48daa0bc302d03de5f6c47c3327e67358e43a85763fdf6090209dab923a01b1",
+    "run_06.json": "cda4368e5f6eb8fe1b289ffd509eb37b7e2f4933b9503780097bdf42e179bcb8",
+    "run_07.json": "973fa70e38412fe4e2bd952a898e2e35eda3186e207b08c4740f2641c024314a",
+    "run_08.json": "1e47b542549f3e40b9ee2b7202999047850dfc39d581cb08575be0bc2fdcd709",
+    "run_09.json": "ced6759a4b784877274b23a89b34442e485910347089d732555c8e2aa1cd9a86",
+    "run_10.json": "721fec3b096d0ae0c53d1890e4288b97319619f73bd506831d1aa7b9041ea975",
+    "run_11.json": "d513e81a72dd1acd7afae1bc73b12cfc4154c95cb61fa3f319badae85f8c6539",
+    "scripts/ur_analytic_ik_process_connect_r3.cpp": "64c84cc77caad961bde935355c78ef03efae7c5f335581ecb66883ddce76741c",
+    "scripts/ur_analytic_ik_process_connect_r3_parent.py": "5596a8b3915f4dc53ad6f6c1bb94693bc57dca2e0b2ef01451b3945e655cc716",
+    "selected_paths.json": "ebe7657b58774cd1a475d5a73cf782058c1a75234f9af4d457617ffe66f5e294"
+  }
+}

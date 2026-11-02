@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.16)
+project(ur_analytic_ik_process_connect LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(descartes_light REQUIRED)
+find_package(moveit_core REQUIRED)
+find_package(rclcpp REQUIRED)
+add_executable(ur_analytic_ik_process_connect
+  ${CMAKE_CURRENT_LIST_DIR}/ur_analytic_ik_process_connect.cpp)
+target_link_libraries(ur_analytic_ik_process_connect PRIVATE
+  descartes::descartes_light
+  moveit_core::moveit_robot_model
+  moveit_core::moveit_robot_state
+  rclcpp::rclcpp)

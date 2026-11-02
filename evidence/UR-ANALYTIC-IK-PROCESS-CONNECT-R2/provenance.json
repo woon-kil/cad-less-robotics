@@ -1,0 +1,20 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-CONNECT-R2",
+  "host": "p620",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "descartes_commit": "49e2ee3305b5d7ba5018f28cf706e0dc71ecf6cf",
+  "descartes_version": "0.4.11",
+  "libdescartes_light_sha256": "2fc8f830f1c35d1e5ec1fbb12c223cc6fa1de9b7ce7b2ec993270b8d66d79540",
+  "binary_sha256": "e59fa000dad52aa765679fd227b7d8f9de4ba1ffb1ff893190943665e0a7f244",
+  "source_sha256": "9c8ae77ec9e7ae7192b1daed1bf375c34f2e82a5cfd5334580e44e32be24fb6f",
+  "parent_sha256": "feeed39517fd6ed7df1f7851cf8d0963b415f1f29884a7978604bce309fedbe1",
+  "runs_bin_sha256": "4d51b28f0851114b8d36036d0fb96bb1681bf03f89ac31a47bf7d3a18eecfb26",
+  "first_connect_json_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+  "summary_sha256": "bf69713aecc21888a443292f566f1e6cdddae4562f15f62c72188853640b2f03",
+  "precheck_sha256": "a13cfd41c78972a6929e96c702ec756f1067334404a197f1a8284e093710274d",
+  "threads": 24,
+  "per_run_wall_s": 1800,
+  "address_space_bytes": 8589934592,
+  "retry": 0,
+  "equivalence_reuse": false
+}

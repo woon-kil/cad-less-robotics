@@ -1,0 +1,41 @@
+{
+  "gate": "UR-ANALYTIC-IK-FIT",
+  "scope": "MODEL_FIT_64_SAMPLES",
+  "waypoint_survey": false,
+  "descartes": false,
+  "source_commit": "b303c2948e715290ba7128f5739abbb4fef40546",
+  "source_tarball": "/tmp/tesseract-ur-ik/src.tar.gz",
+  "source_tarball_sha256": "df4a5e175b2e8b0308dd2a268be87e0cf76df836938921ca7681c6c4e5f85d66",
+  "source_tree": "/tmp/tesseract-ur-ik/tesseract-b303c2948e715290ba7128f5739abbb4fef40546",
+  "install_prefix": "/tmp/tesseract-ur-ik",
+  "jazzy_prefix_modified": false,
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "verification_source": "scripts/ur_analytic_ik_fit.cpp",
+  "verification_source_sha256": "8c723127306aff08fef33220e582172717f93cecadb149d8eff36807899c2439",
+  "result_sha256": "e161bffcb1f9f2a33e13d6eab231b3fff8e323251b699a05c8104e9a7ededf15",
+  "inputs": {
+    "urdf": "/tmp/p022/src/ur5e.urdf",
+    "urdf_sha256": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+    "srdf": "/tmp/p022/src/ur5e.srdf",
+    "srdf_sha256": "ee0d940b486bca52534d5b112c1020e0eaa542130c1301af8dc2fda28c757dbb"
+  },
+  "objects": {
+    "ur_inv_kin.o": "0be59d211717fee70e85470d09b490632f9715f940bd0f9f20d0851ac36f0b91",
+    "inverse_kinematics.o": "33e2e2363f9ce105efa1569090a20188705af22604b214b7528206cfa6d87e2d",
+    "types.o": "00767e2586d493c0cd6d9f4c6f5a723f60802b95864ff36c97d1b3ab4c0514a6",
+    "utils.o": "0da9e1cf1c65e0e7ecea2e4371ce25ac093ae3a41bfca70ee5234ad9ebe21d12",
+    "logging.o": "0be3842c4ef6770ee2aa52f4b56bfa9c2b2db6e7a45ecb287171c828232a37b7",
+    "ur_analytic_ik_fit": "6bc9323e4c7508e00f8f2d814add83301ff5ef60ef649571d710d15fa6d2f3f2"
+  },
+  "linked_libraries_sha256": {
+    "/lib/x86_64-linux-gnu/libfmt.so.9": "da008b908b32e428eaa1c09e36d6894c8f88362e254b503c7c2c6112b4ec9ed0",
+    "/lib/x86_64-linux-gnu/libspdlog.so.1.12": "62bb2fbc92edc05b35888e624882b78f5b38c0aca6a3df7ab7db32bb9c2629b6",
+    "/opt/ros/jazzy/lib/libmoveit_exceptions.so.2.12.4": "7318c1b7028ae9bf7422fe51be1a84c2ce0d0adce46ec61dbed720237bf483f9",
+    "/opt/ros/jazzy/lib/libmoveit_robot_model.so.2.12.4": "c83359ec67273df4fb5fa02bf1f8f918b0dfb0fce6eeeda09c7f5c278ba93e51",
+    "/opt/ros/jazzy/lib/libmoveit_robot_state.so.2.12.4": "c7d443d5dcfeb7d7623688ee56720c0e34a82b8e0abc4bc3f710609a2277c130",
+    "/opt/ros/jazzy/lib/libmoveit_transforms.so.2.12.4": "36732e8a0eb89b9222510880df9b939f150da468df4cc8451ee64a4edced1d18",
+    "/opt/ros/jazzy/lib/libmoveit_utils.so.2.12.4": "1dfd5c5003eed3ac9d4884b144a71d3db499aa7434cf0a3cbc18f7c6bb8c7188",
+    "/opt/ros/jazzy/lib/libsrdfdom.so.2.0.7": "5c86df9d5ed30ac96623540ff0ef8586352d54fa61b614a748635be40a0de1f2",
+    "/opt/ros/jazzy/lib/x86_64-linux-gnu/liburdfdom_model.so.4.0": "b36c6a9cedb0c31ec2adb3075a13dd623edc41cc9b6ea4add0cf5b572ee37d8a"
+  }
+}

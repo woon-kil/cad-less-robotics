@@ -1,0 +1,28 @@
+[INFO] [1793590411.789125113] [moveit_3177566600.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590411.789200225] [moveit_3177566600.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+PRECHECK MATCH BOTH
+[INFO] [1793590412.102988410] [moveit_2384703712.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590412.103063092] [moveit_2384703712.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 6 FOUND SAMPLED_ACCURACY_PASS inserts 33 edges 4325376 fk 6004000 elapsed 15.2969
+[INFO] [1793590427.789421691] [moveit_2147742380.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590427.789486433] [moveit_2147742380.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 7 FOUND SAMPLED_ACCURACY_PASS inserts 34 edges 4456448 fk 6165440 elapsed 15.3257
+[INFO] [1793590443.458971087] [moveit_2191388527.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590443.459041471] [moveit_2191388527.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 8 FOUND SAMPLED_ACCURACY_PASS inserts 34 edges 4456448 fk 6162240 elapsed 15.9344
+[INFO] [1793590459.751406020] [moveit_2815047174.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590459.751476733] [moveit_2815047174.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 9 FOUND SAMPLED_ACCURACY_PASS inserts 34 edges 4456448 fk 6162240 elapsed 15.4135
+[INFO] [1793590475.519088777] [moveit_961223963.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590475.519156425] [moveit_961223963.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 10 FOUND SAMPLED_ACCURACY_PASS inserts 34 edges 4456448 fk 6162240 elapsed 15.4478
+[INFO] [1793590491.282788286] [moveit_1324346970.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793590491.282880952] [moveit_1324346970.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+RUN 11 FOUND SAMPLED_ACCURACY_PASS inserts 34 edges 4456448 fk 6165440 elapsed 18.4786
+PRECHECK_MATCH BOTH 0.31413978105410933
+PARENT 6 FOUND COMPLETED 15.638779347063974
+PARENT 7 FOUND COMPLETED 15.640823615016416
+PARENT 8 FOUND COMPLETED 16.239383204025216
+PARENT 9 FOUND COMPLETED 15.739211417967454
+PARENT 10 FOUND COMPLETED 15.739107060013339
+PARENT 11 FOUND COMPLETED 18.795286493957974

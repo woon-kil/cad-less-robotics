@@ -1,0 +1,29 @@
+{
+  "gate": "UR-ANALYTIC-IK-WAYPOINT-SURVEY",
+  "revision": "R1",
+  "scope": "CANDIDATE_SET_PER_WAYPOINT",
+  "quaternion_normalization": "COMPUTATIONAL_COPY_ONLY",
+  "continuous_path": false,
+  "descartes": false,
+  "source_commit": "b303c2948e715290ba7128f5739abbb4fef40546",
+  "source_tarball_sha256": "df4a5e175b2e8b0308dd2a268be87e0cf76df836938921ca7681c6c4e5f85d66",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "verification_source": "scripts/ur_analytic_ik_survey.cpp",
+  "verification_source_sha256": "601bcbff70b1f085328bc1f6f0291fb0f7f855a5cf99ffe6abac0c2abe86c053",
+  "binary_sha256": "4fc80c56c4c9cfca72f0f04acfd226d38363c4b5698bd0d1ef106881b59901b0",
+  "survey_sha256": "4c5b6afbbaccacf4cd9ee89ac492aa354d1a366b9d1516b9a3862d19b6952edd",
+  "search_candidate_set_sha256": "4398eae94fb305380dea8cba3bb6485ca5a70452f1a26804b2288acd54016f62",
+  "preserved_inputs": {
+    "cad_process_path_sha256": "04dcd594f09a18d2d996166e9feb1bfe9f20c0282758e732e94ccf59faf28114",
+    "robot_planning_input_sha256": "23266fbcd5da565955378585fd38a893670465ca446c2ce10d0a8362bd0dd436",
+    "urdf_sha256": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+    "srdf_sha256": "ee0d940b486bca52534d5b112c1020e0eaa542130c1301af8dc2fda28c757dbb",
+    "previous_survey_sha256": "bbb65f141d78f5160317941d842d2973218d7e6d6dfbfa48c1652ba592af91fe",
+    "previous_search_sha256": "8db64fa3531d9caa11056b1201d738af2a6d50e48385d39647c011f6675c75b7"
+  },
+  "build": [
+    "source /opt/ros/jazzy/setup.bash",
+    "cmake --build /tmp/tesseract-ur-ik/build -j4 --target ur_analytic_ik_survey",
+    "/tmp/tesseract-ur-ik/build/ur_analytic_ik_survey /tmp/p022/src/ur5e.urdf /tmp/p022/src/ur5e.srdf /tmp/tesseract-ur-ik/ur_analytic_ik_poses.txt /tmp/tesseract-ur-ik/r1-survey.json /tmp/tesseract-ur-ik/r1-search.json"
+  ]
+}

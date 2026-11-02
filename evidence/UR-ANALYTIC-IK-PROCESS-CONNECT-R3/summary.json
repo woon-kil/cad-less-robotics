@@ -1,0 +1,204 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-CONNECT-R3",
+  "precheck_scope": "BOTH",
+  "precheck_valid_edge_count": 2,
+  "precheck_invalid_edge_count": 8,
+  "precheck_absent_edge_count": 0,
+  "insert_total": 203,
+  "insert_total_matches_203": true,
+  "runs": [
+    {
+      "run_id": 6,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 33,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4325376,
+      "early_reject_count": 4308592,
+      "fk_check_count": 6004000,
+      "verification_fk_count": 3333,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 15.296876465,
+      "parent_elapsed_s": 15.638779347063974,
+      "ladder_cost": 0.17198439603707588,
+      "max_position_error_m": 0.0003488094306742216,
+      "max_position_sequence_ids": [
+        235,
+        236
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0012150491779634245,
+      "max_orientation_sequence_ids": [
+        222,
+        223
+      ],
+      "max_orientation_t": 0.25,
+      "selected_count": 67,
+      "partial_used_as_pass": false
+    },
+    {
+      "run_id": 7,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 34,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4456448,
+      "early_reject_count": 4439360,
+      "fk_check_count": 6165440,
+      "verification_fk_count": 3434,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 15.325746975,
+      "parent_elapsed_s": 15.640823615016416,
+      "ladder_cost": 0.21712242129347417,
+      "max_position_error_m": 0.000472440796046371,
+      "max_position_sequence_ids": [
+        254,
+        255
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.002617209939145761,
+      "max_orientation_sequence_ids": [
+        254,
+        255
+      ],
+      "max_orientation_t": 0.75,
+      "selected_count": 69,
+      "partial_used_as_pass": false
+    },
+    {
+      "run_id": 8,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 34,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4456448,
+      "early_reject_count": 4439392,
+      "fk_check_count": 6162240,
+      "verification_fk_count": 3434,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 15.934365302,
+      "parent_elapsed_s": 16.239383204025216,
+      "ladder_cost": 0.24368450992501847,
+      "max_position_error_m": 0.0006049513600942168,
+      "max_position_sequence_ids": [
+        306,
+        307
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0030426224998856607,
+      "max_orientation_sequence_ids": [
+        306,
+        307
+      ],
+      "max_orientation_t": 0.25,
+      "selected_count": 69,
+      "partial_used_as_pass": false
+    },
+    {
+      "run_id": 9,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 34,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4456448,
+      "early_reject_count": 4439392,
+      "fk_check_count": 6162240,
+      "verification_fk_count": 3434,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 15.413503082,
+      "parent_elapsed_s": 15.739211417967454,
+      "ladder_cost": 0.25350285643688897,
+      "max_position_error_m": 0.0006911658383118799,
+      "max_position_sequence_ids": [
+        326,
+        327
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.0028726273663415287,
+      "max_orientation_sequence_ids": [
+        326,
+        327
+      ],
+      "max_orientation_t": 0.75,
+      "selected_count": 69,
+      "partial_used_as_pass": false
+    },
+    {
+      "run_id": 10,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 34,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4456448,
+      "early_reject_count": 4439392,
+      "fk_check_count": 6162240,
+      "verification_fk_count": 3434,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 15.447754413,
+      "parent_elapsed_s": 15.739107060013339,
+      "ladder_cost": 0.2540125696627172,
+      "max_position_error_m": 0.0006820921280772786,
+      "max_position_sequence_ids": [
+        378,
+        379
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0024985948928840855,
+      "max_orientation_sequence_ids": [
+        378,
+        379
+      ],
+      "max_orientation_t": 0.25,
+      "selected_count": 69,
+      "partial_used_as_pass": false
+    },
+    {
+      "run_id": 11,
+      "search": "FOUND",
+      "process_accuracy": "SAMPLED_ACCURACY_PASS",
+      "termination_reason": "COMPLETED",
+      "result_role": "GEOMETRIC_CANDIDATE_PATH",
+      "insert_count": 34,
+      "valid_count_min": 256,
+      "in_limit_fk_violation_total": 0,
+      "edge_evaluation_count": 4456448,
+      "early_reject_count": 4439360,
+      "fk_check_count": 6165440,
+      "verification_fk_count": 3434,
+      "nonfinite_reject_count": 0,
+      "elapsed_s": 18.478580548,
+      "parent_elapsed_s": 18.795286493957974,
+      "ladder_cost": 0.23332533098865466,
+      "max_position_error_m": 0.0005247509602627188,
+      "max_position_sequence_ids": [
+        398,
+        399
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.0026501867667035224,
+      "max_orientation_sequence_ids": [
+        398,
+        399
+      ],
+      "max_orientation_t": 0.75,
+      "selected_count": 69,
+      "partial_used_as_pass": false
+    }
+  ],
+  "complete": true
+}

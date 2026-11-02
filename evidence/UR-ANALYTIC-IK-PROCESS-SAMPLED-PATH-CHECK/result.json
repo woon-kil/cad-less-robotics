@@ -1,0 +1,627 @@
+{
+  "gate": "UR-ANALYTIC-IK-PROCESS-SAMPLED-PATH-CHECK",
+  "role": "INDEPENDENT_RESAMPLE",
+  "search": false,
+  "translation_max_m": 0.001,
+  "rotation_max_rad": 0.01,
+  "runs": [
+    {
+      "run_id": 0,
+      "piecewise": false,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 2.0176920922728478e-05,
+      "max_position_sequence_ids": [
+        10,
+        11
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00011136644590647117,
+      "max_orientation_sequence_ids": [
+        10,
+        11
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "f81a6bb4a352d634c736cc8a528d7219beb66e3caf7ba1e701e0fabb09ad3407",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 2.0176920922728478e-05,
+      "stored_max_orientation_error_rad": 0.0001113664379311924,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 7.975278776143138e-12
+    },
+    {
+      "run_id": 1,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 3.907081948714949e-05,
+      "max_position_sequence_ids": [
+        60,
+        61
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00018428686524164122,
+      "max_orientation_sequence_ids": [
+        57,
+        58
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "12c3613398b929804b538a3b99fd0e92c96c8367b7784f70747870229b9e8d8b",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 3.907081948714949e-05,
+      "stored_max_orientation_error_rad": 0.00018428686524164122,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 2,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 7.823963618357051e-05,
+      "max_position_sequence_ids": [
+        78,
+        79
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00043605291134392554,
+      "max_orientation_sequence_ids": [
+        82,
+        83
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "4a1f9c43baa00350ee372ac91b3a8ad20ca1d99aa4ac1d643aa0eac7d75f4aa7",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 7.823963618357051e-05,
+      "stored_max_orientation_error_rad": 0.00043605291134392554,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 3,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.00014227719796884448,
+      "max_position_sequence_ids": [
+        130,
+        131
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.000907744178804056,
+      "max_orientation_sequence_ids": [
+        126,
+        127
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "3d7729fab5e420823304beed8b8ebacad3699b2adb7e8834bb6bdaa1e894bfe4",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.00014227719796884448,
+      "stored_max_orientation_error_rad": 0.0009077441792932789,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 4.892229199873754e-13
+    },
+    {
+      "run_id": 4,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.00031524220108487594,
+      "max_position_sequence_ids": [
+        165,
+        166
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.001728168118251537,
+      "max_orientation_sequence_ids": [
+        152,
+        153
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "bd39c8fb25017d6cd6adf2954503add0c742381e8280c2b7953d5c452ad081e4",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.00031524220108487594,
+      "stored_max_orientation_error_rad": 0.001728168118251537,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 5,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0007333348437012095,
+      "max_position_sequence_ids": [
+        183,
+        184
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.0030376071317644543,
+      "max_orientation_sequence_ids": [
+        196,
+        197
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "378a1f9998379d61d3b934f81c9c89c9305146d121b1c6b3b56934101b089321",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.0007333348437012095,
+      "stored_max_orientation_error_rad": 0.003037607131837553,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 7.309864519244869e-14
+    },
+    {
+      "run_id": 6,
+      "piecewise": true,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0003488094306742216,
+      "max_position_sequence_ids": [
+        235,
+        236
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0012150491779634245,
+      "max_orientation_sequence_ids": [
+        222,
+        223
+      ],
+      "max_orientation_t": 0.25,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "d350c25e947b330613bcc461753510507d1c4768407256164eacfe9420d4b6d3",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_06.json",
+      "adopted_file_sha256": "cda4368e5f6eb8fe1b289ffd509eb37b7e2f4933b9503780097bdf42e179bcb8",
+      "stored_max_position_error_m": 0.0003488094306742216,
+      "stored_max_orientation_error_rad": 0.0012150491779634245,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 7,
+      "piecewise": true,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.000472440796046371,
+      "max_position_sequence_ids": [
+        254,
+        255
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.002617209939145761,
+      "max_orientation_sequence_ids": [
+        254,
+        255
+      ],
+      "max_orientation_t": 0.75,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "2e9fb95c99bdc33b8b9ed1aed572928fb0d2227dd8252734231db2db18f4ce41",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_07.json",
+      "adopted_file_sha256": "973fa70e38412fe4e2bd952a898e2e35eda3186e207b08c4740f2641c024314a",
+      "stored_max_position_error_m": 0.000472440796046371,
+      "stored_max_orientation_error_rad": 0.002617209939145761,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 8,
+      "piecewise": true,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0006049513600942168,
+      "max_position_sequence_ids": [
+        306,
+        307
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0030426224998856607,
+      "max_orientation_sequence_ids": [
+        306,
+        307
+      ],
+      "max_orientation_t": 0.25,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "cacf70924d8e4a74e133d6af66bc10eace832c197e24d2c3f832e1ddedc42889",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_08.json",
+      "adopted_file_sha256": "1e47b542549f3e40b9ee2b7202999047850dfc39d581cb08575be0bc2fdcd709",
+      "stored_max_position_error_m": 0.0006049513600942168,
+      "stored_max_orientation_error_rad": 0.0030426224998856607,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 9,
+      "piecewise": true,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0006911658383118799,
+      "max_position_sequence_ids": [
+        326,
+        327
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.0028726273663415287,
+      "max_orientation_sequence_ids": [
+        326,
+        327
+      ],
+      "max_orientation_t": 0.75,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "fead0c0d483b7c64169f988ca81738db64c782107c85216854e42eeeb9a5b54c",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_09.json",
+      "adopted_file_sha256": "ced6759a4b784877274b23a89b34442e485910347089d732555c8e2aa1cd9a86",
+      "stored_max_position_error_m": 0.0006911658383118799,
+      "stored_max_orientation_error_rad": 0.0028726273663415287,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 10,
+      "piecewise": true,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0006820921280772786,
+      "max_position_sequence_ids": [
+        378,
+        379
+      ],
+      "max_position_t": 0.75,
+      "max_orientation_error_rad": 0.0024985948928840855,
+      "max_orientation_sequence_ids": [
+        378,
+        379
+      ],
+      "max_orientation_t": 0.25,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "6a86c9196aec883698fc7ce80d63d08df41419bb5581624008c76e32aceefe96",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_10.json",
+      "adopted_file_sha256": "721fec3b096d0ae0c53d1890e4288b97319619f73bd506831d1aa7b9041ea975",
+      "stored_max_position_error_m": 0.0006820921280772786,
+      "stored_max_orientation_error_rad": 0.0024985948928840855,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 11,
+      "piecewise": true,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0005247509602627188,
+      "max_position_sequence_ids": [
+        398,
+        399
+      ],
+      "max_position_t": 0.25,
+      "max_orientation_error_rad": 0.0026501867667035224,
+      "max_orientation_sequence_ids": [
+        398,
+        399
+      ],
+      "max_orientation_t": 0.75,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "3d0460c468180c9816a86d118f83d86d736405bedd0d18d5de9bf374e0a4c118",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R3/run_11.json",
+      "adopted_file_sha256": "d513e81a72dd1acd7afae1bc73b12cfc4154c95cb61fa3f319badae85f8c6539",
+      "stored_max_position_error_m": 0.0005247509602627188,
+      "stored_max_orientation_error_rad": 0.0026501867667035224,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 12,
+      "piecewise": false,
+      "expected_check_count": 3434,
+      "actual_check_count": 3434,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0008636339651069177,
+      "max_position_sequence_ids": [
+        451,
+        452
+      ],
+      "max_position_t": 0.51,
+      "max_orientation_error_rad": 0.007625911618979101,
+      "max_orientation_sequence_ids": [
+        451,
+        452
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3434,
+      "selected_sha256": "27235251f09e9a9aa5f1819d1b874faaea9286da7c42189bad1a73b300da898c",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT-R2/run_12.json",
+      "adopted_file_sha256": "8f8ba32e395f9abe71da2dcd323d1c9d73f6fc2e01641119ca646b8828e15973",
+      "stored_max_position_error_m": 0.0008636339651069177,
+      "stored_max_orientation_error_rad": 0.007625911618979101,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 13,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0006713220070235642,
+      "max_position_sequence_ids": [
+        473,
+        474
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.005413683918296758,
+      "max_orientation_sequence_ids": [
+        469,
+        470
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "4707b7c035de9429853b9ad3611290cd2bea8075b209fbd3614fc13eefbe99f7",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.0006713220070235642,
+      "stored_max_orientation_error_rad": 0.005413683918296758,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 14,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0004947313725030135,
+      "max_position_sequence_ids": [
+        517,
+        518
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.0033528278125262235,
+      "max_orientation_sequence_ids": [
+        521,
+        522
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "72618c6f7e82b89ad7f182332e151d01f808fa2ec1e9562b3e3ca9c91dae8ce2",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.0004947313725030135,
+      "stored_max_orientation_error_rad": 0.0033528278125262235,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 15,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.0003795137082989568,
+      "max_position_sequence_ids": [
+        556,
+        557
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.0030455548595238005,
+      "max_orientation_sequence_ids": [
+        552,
+        553
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "43c0607f5863abcbd924c6bf9d947559416f95612df1382e9c2ee9b5c29e1e50",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.0003795137082989568,
+      "stored_max_orientation_error_rad": 0.0030455548595238005,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 16,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.00024040924730794072,
+      "max_position_sequence_ids": [
+        574,
+        575
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.0017320188733599585,
+      "max_orientation_sequence_ids": [
+        578,
+        579
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "09fed6d224dffb5deb9ee9b33a47778926fb37df2e2af7892d6de520f851524d",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.00024040924730794072,
+      "stored_max_orientation_error_rad": 0.0017320188733599585,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 17,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 0.00014208525391964035,
+      "max_position_sequence_ids": [
+        626,
+        627
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.0009087334610124816,
+      "max_orientation_sequence_ids": [
+        622,
+        623
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "434875b8b14073d9d3b3b9335ce5782899f847448a4bee8c7d44fc493d96836a",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 0.00014208525391964035,
+      "stored_max_orientation_error_rad": 0.0009087334610124816,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 18,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 7.821780699257963e-05,
+      "max_position_sequence_ids": [
+        644,
+        645
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00043618346772298494,
+      "max_orientation_sequence_ids": [
+        648,
+        649
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "00db46403df194ad8c051bd45b105a04289d8990f233732e45bfc4bbea318c05",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 7.821780699257963e-05,
+      "stored_max_orientation_error_rad": 0.00043618346772298494,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 19,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 3.9071464298958024e-05,
+      "max_position_sequence_ids": [
+        696,
+        697
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00018429065577302864,
+      "max_orientation_sequence_ids": [
+        693,
+        694
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "57b61db32f50ccee4d719c3cf4c168a89b1383e8d62ae0fb0151a01f4679f2eb",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 3.9071464298958024e-05,
+      "stored_max_orientation_error_rad": 0.00018429065577302864,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 0.0
+    },
+    {
+      "run_id": 20,
+      "piecewise": false,
+      "expected_check_count": 3333,
+      "actual_check_count": 3333,
+      "nonfinite_count": 0,
+      "violation_count": 0,
+      "max_position_error_m": 2.0176939005606514e-05,
+      "max_position_sequence_ids": [
+        716,
+        717
+      ],
+      "max_position_t": 0.5,
+      "max_orientation_error_rad": 0.00011136651170249936,
+      "max_orientation_sequence_ids": [
+        716,
+        717
+      ],
+      "max_orientation_t": 0.5,
+      "pass": true,
+      "expected_from_prepare": 3333,
+      "selected_sha256": "be544539759b139e59e2218f12cf8c33e4802dd9e67f6353d357c2acbc96ae65",
+      "adopted_file": "evidence/UR-ANALYTIC-IK-PROCESS-CONNECT/connect.json",
+      "adopted_file_sha256": "aa041aedea950c17d1ad299cf6e671a606f3eb2e81da8a100f10579677976ba3",
+      "stored_max_position_error_m": 2.0176939005606514e-05,
+      "stored_max_orientation_error_rad": 0.0001113665077148624,
+      "max_position_abs_delta_vs_stored": 0.0,
+      "max_orientation_abs_delta_vs_stored": 3.987636962169208e-12
+    }
+  ],
+  "all_pass": true,
+  "complete": true,
+  "manifest_sha256": "c999daa85992a4bd64c836b60fde48164763fd3699ae4075653901ec0e3ea232",
+  "planning_sha256": "23266fbcd5da565955378585fd38a893670465ca446c2ce10d0a8362bd0dd436",
+  "search_candidate_set_sha256": "4398eae94fb305380dea8cba3bb6485ca5a70452f1a26804b2288acd54016f62",
+  "check_input_sha256": "f089f2ffdf5eace6351b0ec7da58c95da626087e02fcb0c3f3ff9f2b9b2ce1a8",
+  "check_count_total": 70700,
+  "nonfinite_total": 0,
+  "violation_total": 0
+}

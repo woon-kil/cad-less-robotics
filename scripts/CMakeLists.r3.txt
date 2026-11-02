@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 3.16)
+project(ur_analytic_ik_process_connect_r3)
+set(CMAKE_CXX_STANDARD 17)
+if(NOT DEFINED TESSERACT_SRC OR NOT DEFINED TESSERACT_OBJECTS)
+  message(FATAL_ERROR "TESSERACT_SRC and TESSERACT_OBJECTS are required")
+endif()
+find_package(ament_cmake REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(urdf REQUIRED)
+find_package(srdfdom REQUIRED)
+find_package(moveit_core REQUIRED)
+find_package(descartes_light REQUIRED)
+find_package(OpenMP REQUIRED)
+add_executable(ur_analytic_ik_process_connect_r3
+  ${CMAKE_CURRENT_LIST_DIR}/ur_analytic_ik_process_connect_r3.cpp
+  ${TESSERACT_OBJECTS}/ur_inv_kin.o
+  ${TESSERACT_OBJECTS}/inverse_kinematics.o
+  ${TESSERACT_OBJECTS}/types.o
+  ${TESSERACT_OBJECTS}/utils.o
+  ${TESSERACT_OBJECTS}/logging.o)
+ament_target_dependencies(ur_analytic_ik_process_connect_r3 rclcpp urdf srdfdom moveit_core)
+target_include_directories(ur_analytic_ik_process_connect_r3 PRIVATE
+  ${TESSERACT_SRC}/kinematics/ur/include
+  ${TESSERACT_SRC}/kinematics/core/include
+  ${TESSERACT_SRC}/common/include
+  ${TESSERACT_SRC}/scene_graph/include
+  /usr/include/eigen3)
+target_link_libraries(ur_analytic_ik_process_connect_r3
+  descartes::descartes_light OpenMP::OpenMP_CXX fmt spdlog)

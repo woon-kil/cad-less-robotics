@@ -1,0 +1,28 @@
+{
+  "urdf": {
+    "path": "reproduction/inputs/ur5e.urdf",
+    "sha256": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+    "robot_name": "ur5e",
+    "generator": "xacro",
+    "generator_source": "/opt/ros/jazzy/share/ur_description/urdf/ur.urdf.xacro",
+    "xacro_argv": "NOT_STORED",
+    "package": "ros-jazzy-ur-description",
+    "package_version": "3.5.1-1noble.20260920.234208",
+    "upstream_version": "3.5.1",
+    "license": "BSD-3-Clause",
+    "upstream_source": "https://github.com/UniversalRobots/Universal_Robots_ROS2_Description",
+    "role": "EXECUTED_FLATTENED_MODEL"
+  },
+  "srdf": {
+    "path": "reproduction/inputs/ur5e.srdf",
+    "sha256": "ee0d940b486bca52534d5b112c1020e0eaa542130c1301af8dc2fda28c757dbb",
+    "generator": "xacro",
+    "generator_source": "/opt/ros/jazzy/share/ur_moveit_config/srdf/ur.srdf.xacro",
+    "xacro_argv": "NOT_STORED",
+    "package": "ros-jazzy-ur-moveit-config",
+    "package_version": "3.9.0-1noble.20261006.043609",
+    "license": "Apache-2.0",
+    "homepage": "https://docs.universal-robots.com/Universal_Robots_ROS_Documentation/",
+    "role": "EXECUTED_FLATTENED_MODEL"
+  }
+}
