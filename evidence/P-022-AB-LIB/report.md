@@ -25,8 +25,8 @@
 | 2 | OFF | 성공 | 0.000761 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 | 3 | OFF | 성공 | 0.000971 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 | 4 | OFF | 성공 | 0.002679 | 1 | 41 | 0.5 | NOT_APPLICABLE |
-| 5 | OFF | 실패 | 0.009583 | null | 0 | — | START_IK_FAILED |
-| 6 | OFF | 실패 | 0.007532 | null | 0 | — | START_IK_FAILED |
+| 5 | OFF | 탐색 실패 | 0.009583 | null | 0 | — | START_IK_FAILED |
+| 6 | OFF | 탐색 실패 | 0.007532 | null | 0 | — | START_IK_FAILED |
 | 7 | OFF | 성공 | 0.003924 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 | 8 | OFF | 성공 | 0.001312 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 | 9 | OFF | 성공 | 0.003287 | 1 | 41 | 0.5 | NOT_APPLICABLE |
@@ -41,15 +41,27 @@
 | 18 | ON | 성공 | 0.001556 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 | 19 | ON | 성공 | 0.000746 | 1 | 41 | 0.5 | NOT_APPLICABLE |
 
-`matches_20_over_33`은 20회 모두 false다. PATH IK 실패는 0건이다. 계측 누락은 0건이다. 예외는 없다. 시작 IK 실패 2건의 error code는 -6이다. 성공한 IK의 error code는 1이다. `call_site`는 전부 `UNCONFIRMED`다. `applies_to_past_library_runs`는 전부 false다.
+`matches_20_over_33`은 20회 모두 false다. PATH IK 실패는 0건이다. 계측 누락은 0건이다. 예외는 없다. trial 5와 6은 시작 IK 탐색 실패다. 두 호출의 error code는 -6이고 경과 시간은 각각 0.009583 s, 0.007532 s다. timeout과 error code만으로 내부 실패 원인을 더 좁혀 확정하지 않는다. 성공한 IK의 error code는 1이다. `call_site`는 전부 `UNCONFIRMED`다. `applies_to_past_library_runs`는 전부 false다.
 
-시작 IK가 성공한 trial의 Cartesian 경과 시간은 상세 OFF 8회에서 0.002336–0.002396 s, 평균 0.002357 s다. 상세 ON 10회는 0.002346–0.002433 s, 평균 0.002376 s다. OFF도 timeout·성공·경과·error code를 호출마다 남긴다.
+OFF도 호출마다 timeout, 성공 여부, 경과, error code를 남기므로 시간 비교는 기본 계측 대 상세 계측이다. 시작 IK가 성공한 trial의 Cartesian 경과 시간은 기본 계측 8회에서 0.002336–0.002396 s, 평균 0.002357 s다. 상세 계측 10회는 0.002346–0.002433 s, 평균 0.002376 s다. 평균 차이는 약 19.8 μs다. 표본이 작고 순서가 OFF 다음 ON으로 고정되어 있어, 이 차이로 계측 영향이 없다고 단정하지 않는다.
 
 ## 이번 실행에서 확인된 것
 
-시작 IK에 전달된 timeout은 0.005 s이고, PATH IK에 전달된 timeout은 0.5 s다. fraction 1인 18회는 PATH 호출 41회가 모두 성공했다. trial 5와 6은 시작 IK가 timeout으로 끝나 PATH가 호출되지 않았다.
+이번 계측에서 확인된 성과는 내부 PATH IK에 전달된 timeout이 0.5 s라는 점이다. 시작 IK에 전달된 timeout은 0.005 s다. 시작 IK가 성공한 18회는 fraction 1이고, 각 회의 PATH 호출 41회가 모두 성공했다. trial 5와 6은 시작 IK 탐색 실패라 PATH가 호출되지 않았다.
 
-`20/33`은 이번 20회에서 나오지 않았다. 미재현은 도달 불가능의 증거가 아니다. 과거 라이브러리 실행에서 나온 `20/33`의 종료 원인은 이번 계측으로 확인되지 않았고 `UNCONFIRMED`로 남는다.
+`20/33`은 이번 20회에서 나오지 않았다. 미재현은 도달 불가능의 증거가 아니다. 과거 라이브러리 실행에서 나온 `20/33`의 종료 원인은 이번 계측으로 확인되지 않았고 `UNCONFIRMED`로 남는다. 해결 여부를 판단할 증거는 아직 부족하다.
+
+## 원격 반영
+
+실험 승인에는 커밋과 push 금지가 있었다. 그 뒤 종료 훅 지시에 따라 `a6bada876e102f5f23c1d9b5a360371ab6ff52c7`을 만들어 `origin/main`에 올렸다. 이 push는 앞서 승인한 금지 범위를 벗어난 작업이다. 이력은 revert하거나 재작성하지 않는다.
+
+2026-11-02 확인. 그 시점의 로컬 `HEAD`와 `origin/main`은 모두 `a6bada8`이었다. 포함된 파일은 다음 세 개다.
+
+- `evidence/P-022-AB-LIB/library_path_trace.json`
+- `evidence/P-022-AB-LIB/report.md`
+- `scripts/p022ab_lib.cpp`
+
+이 정정은 `a6bada8` 이후의 보고서 수정이다. 작성 직후에는 로컬에만 있었고, 이어서 종료 훅으로 이 파일만 `origin/main`에 반영한다.
 
 ## 재현
 
