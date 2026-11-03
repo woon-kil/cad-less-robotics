@@ -1,0 +1,16 @@
+{
+  "recorded_before_exec": true,
+  "confirmed_before_exec": true,
+  "address_limit_bytes": 8589934592,
+  "overall_wall_s": 180,
+  "filter_abort_s": 90,
+  "inspection_abort_s": 50,
+  "leftover_transfer": false,
+  "retry": 0,
+  "filter_measured_s": 30.108318481,
+  "filter_measured_candidates": 241664,
+  "postcheck_measured_s": 5.143443074,
+  "postcheck_measured_samples": 93223,
+  "this_samples": 95223,
+  "abort_is_not_expected_success": true
+}

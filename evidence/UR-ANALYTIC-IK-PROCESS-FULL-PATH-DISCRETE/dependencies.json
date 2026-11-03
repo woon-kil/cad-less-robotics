@@ -1,0 +1,110 @@
+{
+  "recorded_at": "2026-11-03",
+  "host": "p620",
+  "os": "Ubuntu 24.04 x86_64",
+  "compiler": "g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "cmake": "3.28.3",
+  "ros_distro": "jazzy",
+  "ros_prefix": "/opt/ros/jazzy",
+  "packages": {
+    "moveit_core": "2.12.4",
+    "moveit_ros_planning": "2.12.4",
+    "geometric_shapes": "2.3.4",
+    "urdf": "2.10.1",
+    "srdfdom": "2.0.7",
+    "ur_description": "3.5.1",
+    "ur_moveit_config": "3.9.0",
+    "openssl": "3.0.13"
+  },
+  "descartes_prefix": "/tmp/descartes-light/prefix",
+  "descartes_library_sha256": "2fc8f830f1c35d1e5ec1fbb12c223cc6fa1de9b7ce7b2ec993270b8d66d79540",
+  "address_limit_bytes": 8589934592,
+  "historical_binary_sha256": "2587e76f8694a79c1bed8497604f742f100564d735c233b2bd41c1e86e7fd818",
+  "historical_binary_note": "과거 빌드 산출이다. 새 빌드의 바이트가 같을 필요는 없다.",
+  "sources": {
+    "full-graph-src.cpp": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-CORRESPONDENCE/full-graph-src.cpp",
+      "bytes": 124842,
+      "sha256": "0824af0a2d775a7db093ff47ba9ab2d9eeab1c66be0cb5a307f9e395b3111347"
+    },
+    "restore-src.cpp": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-RESTORE/restore-src.cpp",
+      "bytes": 150463,
+      "sha256": "a260f70938057a25643419ca6aefbb01e0ee515dfa3d2be214923f4eaa08cde1"
+    },
+    "full_graph_parent.py": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-CORRESPONDENCE/full_graph_parent.py",
+      "bytes": 4795,
+      "sha256": "b37e94974ffbf2544ec21570d266615cd30e1afd3f68676bf2f2af07a2dc12ea"
+    }
+  },
+  "inputs": {
+    "ur5e.urdf": {
+      "path": "reproduction/inputs/ur5e.urdf",
+      "bytes": 11870,
+      "sha256": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+      "tracked": true
+    },
+    "ur5e.srdf": {
+      "path": "reproduction/inputs/ur5e.srdf",
+      "bytes": 3950,
+      "sha256": "ee0d940b486bca52534d5b112c1020e0eaa542130c1301af8dc2fda28c757dbb",
+      "tracked": true
+    },
+    "mesh.bin": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-COLLISION-COUPON-R2/mesh.bin",
+      "bytes": 16700,
+      "sha256": "ea78058ca33866ef3c69764be48f90da4a6f2491455c9077c514ccecd6acbc16",
+      "tracked": false
+    },
+    "mesh_acceptance.json": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-COLLISION-COUPON-R2/mesh_acceptance.json",
+      "bytes": 5975,
+      "sha256": "97fa8c989cfae92fc998003ceb010e4c585642fe13b157330a04cb162e610e44",
+      "tracked": false
+    },
+    "transitions.bin": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-TRANSITION/transitions.bin",
+      "bytes": 274812,
+      "sha256": "cc21e6083a9ecb0c740382ccf3f9b8a7e3e9bdaea64017389525cbc04cd821c4",
+      "tracked": false
+    },
+    "runs.bin": {
+      "bytes": 9828849,
+      "sha256": "4d51b28f0851114b8d36036d0fb96bb1681bf03f89ac31a47bf7d3a18eecfb26",
+      "generated_by": "scripts/ur_analytic_ik_process_join.py",
+      "commit": false
+    },
+    "inserts.bin": {
+      "bytes": 2768164,
+      "sha256": "ff1f59d4275cdee2e41f5b8ef0da3182480204eb32d2372e1eb65ef4dd40f153",
+      "generated_by": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-CORRESPONDENCE/full_graph_parent.py:write_inserts",
+      "commit": false
+    },
+    "selected": {
+      "path": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH/fullgraph.json",
+      "sha256": "eac7465345b5601422bcaa0225a607e885be177f6c5da30d75cd6925e8b066f4",
+      "normalization": "json.dumps(selected, separators=(',', ':'))"
+    }
+  },
+  "robot_collision_mesh_sha256": {
+    "base.stl": "9a145e0d46f2130afdf2a2e8825a00a929870c4c3d6d8e4d1adc5f04db3aac1b",
+    "shoulder.stl": "ceb92532177daa77682f5fbd628e01c2137d168f949a7a706ce1dabe9f002387",
+    "upperarm.stl": "ee893044caf00075cb55b4cf666d1f1311c7979786212a501009f33bee945209",
+    "forearm.stl": "2e7423cab807c34160ec4f770daee5e747d70e777eb01b7beeace2b8c5751816",
+    "wrist1.stl": "f8c9f9337b6fd98c75f052e96de10e14a107ddb6874ba6b904e546f8a4e4f43a",
+    "wrist2.stl": "2964a63f60ce3e3cf3ad55bcf190d7876d50e373cb64b70a57cea5885eaf3c86",
+    "wrist3.stl": "83b3666b4ae2badd54af0d2c25a921682ecbc29e849eec646c3ed55fb74c78a3"
+  },
+  "generator_inputs_sha256": {
+    "cad_process_path.json": "04dcd594f09a18d2d996166e9feb1bfe9f20c0282758e732e94ccf59faf28114",
+    "robot_planning_input.json": "23266fbcd5da565955378585fd38a893670465ca446c2ce10d0a8362bd0dd436",
+    "search_candidate_set.json": "4398eae94fb305380dea8cba3bb6485ca5a70452f1a26804b2288acd54016f62",
+    "run_06.json": "cda4368e5f6eb8fe1b289ffd509eb37b7e2f4933b9503780097bdf42e179bcb8",
+    "run_07.json": "973fa70e38412fe4e2bd952a898e2e35eda3186e207b08c4740f2641c024314a",
+    "run_08.json": "1e47b542549f3e40b9ee2b7202999047850dfc39d581cb08575be0bc2fdcd709",
+    "run_09.json": "ced6759a4b784877274b23a89b34442e485910347089d732555c8e2aa1cd9a86",
+    "run_10.json": "721fec3b096d0ae0c53d1890e4288b97319619f73bd506831d1aa7b9041ea975",
+    "run_11.json": "d513e81a72dd1acd7afae1bc73b12cfc4154c95cb61fa3f319badae85f8c6539"
+  }
+}

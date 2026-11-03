@@ -1,0 +1,72 @@
+{
+  "name": "전체 기하 후보 경로의 고정 표본 이산 검사",
+  "gate": "UR-ANALYTIC-IK-PROCESS-FULL-PATH-DISCRETE",
+  "role": "SEPARATE_FULL_PATH_RECORD",
+  "claim": "전체 기하 후보 경로 확보 및 고정 표본 이산 검사 통과",
+  "verification_scope": "탐색과 분리된 저장 경로 재검사. 같은 공유 함수를 사용한다. 서로 다른 충돌 구현의 교차 검증이 아니다.",
+  "cross_implementation_check": false,
+  "contact_failure_branch": "NOT_EXECUTED",
+  "continuous_safety": "NOT_CLAIMED",
+  "tool_fixture_table": "NOT_CHECKED",
+  "time_parameterization": "NOT_CLAIMED",
+  "physical_execution": "NOT_CLAIMED",
+  "p022": "UNCHANGED",
+  "p022_status": "CLOSED_FAIL",
+  "historical_manifest": "evidence/UR-ANALYTIC-IK-PROCESS-COLLISION-ADOPTED/manifest.json",
+  "historical_manifest_modified": false,
+  "roadmap_gate_opened": false,
+  "result": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-RESTORE/restore.json",
+  "result_sha256": "35f72af9e3b23b9cb2a4e6133eb24623489ed00762f8ccf40000e618a0998943",
+  "source": {
+    "path_at_build": "/tmp/restore-check/src/ur_analytic_ik_process_connect_collision.cpp",
+    "archived": "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-RESTORE/restore-src.cpp",
+    "sha256": "a260f70938057a25643419ca6aefbb01e0ee515dfa3d2be214923f4eaa08cde1",
+    "source_matches_archive": true
+  },
+  "binary": {
+    "path": "/tmp/restore-check/build/ur_analytic_ik_process_connect_collision",
+    "sha256": "2587e76f8694a79c1bed8497604f742f100564d735c233b2bd41c1e86e7fd818",
+    "built_from_logged_source": "/tmp/restore-check/src/ur_analytic_ik_process_connect_collision.cpp",
+    "source_mtime": "2026-11-03T10:25:23+09:00",
+    "binary_mtime": "2026-11-03T10:25:34+09:00",
+    "result_mtime": "2026-11-03T10:26:15+09:00",
+    "note": "바이너리 안의 소스 해시는 실행 때 기록되지 않았다. 연결은 빌드 입력 파일의 바이트 일치, 빌드 로그의 그 파일 컴파일, 소스보다 뒤이고 결과보다 앞인 바이너리 시각이다."
+  },
+  "selection": {
+    "rungs": 944,
+    "candidate_index": 224,
+    "filter": "IN_SURVIVORS",
+    "earlier_equal_joints": 0,
+    "new_search": false,
+    "candidate_replacement": false
+  },
+  "coverage": {
+    "original_segments": 740,
+    "pairs": "0→1 through 739→740",
+    "process_segments": 720,
+    "process_unsplit": 517,
+    "process_split": 203,
+    "process_graph_edges": 923,
+    "transition_segments": 20,
+    "samples_per_edge": 101,
+    "parameter": "k/100, k=0..100"
+  },
+  "shared_functions": {
+    "frame": "tool0 pose in base_link, via base_link.inverse() * tool0",
+    "tcp": "tool0 is the planning reference TCP",
+    "process_target": "stored waypoint position linear, orientation slerp",
+    "transition_target": "process accuracy not applied",
+    "joint_interpolation": "raw linear",
+    "joint_limits": "URDF position bounds, outside by more than 1e-12 rad fails, nonfinite fails",
+    "collision_result": "new CollisionResult per call",
+    "self_check": "checkSelfCollision with startup ACM",
+    "coupon_check": "checkRobotCollision with the same ACM after self clear",
+    "acm_source": "PlanningScene(model).getAllowedCollisionMatrix() at startup, not edited afterward",
+    "datum_translation_m": [0.3244333936553, -0.0499999998932, 0.11133404082435],
+    "datum_rotation": "IDENTITY",
+    "runs_quaternion_max_abs_norm_deviation": 2.220446049250313e-16
+  },
+  "process_max_position_error_m": 0.0009275561673644112,
+  "process_max_orientation_error_rad": 0.007625911618979101,
+  "discrete_pass": true
+}

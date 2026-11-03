@@ -1,0 +1,3 @@
+[INFO] [1793666354.862367868] [moveit_2373594989.moveit.core.robot_model]: Loading robot model 'ur5e'...
+[INFO] [1793666354.862460132] [moveit_2373594989.moveit.core.robot_model]: No root/virtual joint specified in SRDF. Assuming fixed joint
+PARENT_DONE 0 343.7852756610373 False
