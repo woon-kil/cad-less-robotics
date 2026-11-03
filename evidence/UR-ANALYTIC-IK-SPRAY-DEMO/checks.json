@@ -1,0 +1,38 @@
+{
+  "baseline_commit": "fdfa9c9",
+  "restore_sha256": "35f72af9e3b23b9cb2a4e6133eb24623489ed00762f8ccf40000e618a0998943",
+  "urdf_sha256": "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8",
+  "frames": 944,
+  "process_graph_edges": 923,
+  "transition_graph_edges": 20,
+  "process_original_segments": 720,
+  "transition_original_segments": 20,
+  "final_spray_on": false,
+  "inserted_frames_keep_process": true,
+  "tool0_frame0_m": [
+    0.32443339011539574,
+    -0.049862860373622406,
+    0.1595335706377375
+  ],
+  "spray_axis_frame0": [
+    1.7774320622596963e-07,
+    -0.006856974446879043,
+    -0.9999764906743575
+  ],
+  "p022_modified": false,
+  "manifest_modified": false,
+  "coupon_display": "BOUNDING_BOX",
+  "robot_display": "STICK_KINEMATICS",
+  "button_click": {
+    "method": "CHROME_MOUSE_EVENT",
+    "start_pose": "0 / 943",
+    "pose_after_play": "5 / 943",
+    "pose_after_pause": "5 / 943",
+    "pose_after_pause_wait": "5 / 943",
+    "pose_after_reset": "0 / 943",
+    "time_after_reset": "0.00 s",
+    "coupon_label_visible": true,
+    "stick_label_visible": true,
+    "pass": true
+  }
+}
