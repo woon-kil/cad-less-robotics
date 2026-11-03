@@ -173,6 +173,54 @@ def load_coupon_mesh() -> list[list[list[float]]]:
     return triangles
 
 
+def first_mesh_hit(origin: list[float], direction: list[float], triangles: list[list[list[float]]]) -> list[float] | None:
+    """분사 축이 기존 mesh와 처음 만나는 점. 없으면 None."""
+    origin_v = np.asarray(origin, dtype=float)
+    direction_v = np.asarray(direction, dtype=float)
+    length = float(np.linalg.norm(direction_v))
+    if length == 0.0 or not np.isfinite(length):
+        return None
+    direction_v = direction_v / length
+    best = None
+    for triangle in triangles:
+        v0 = np.asarray(triangle[0], dtype=float)
+        v1 = np.asarray(triangle[1], dtype=float)
+        v2 = np.asarray(triangle[2], dtype=float)
+        edge_1 = v1 - v0
+        edge_2 = v2 - v0
+        pvec = np.cross(direction_v, edge_2)
+        det = float(np.dot(edge_1, pvec))
+        if abs(det) < 1e-12:
+            continue
+        inv = 1.0 / det
+        tvec = origin_v - v0
+        u = float(np.dot(tvec, pvec)) * inv
+        if u < -1e-8 or u > 1.0 + 1e-8:
+            continue
+        qvec = np.cross(tvec, edge_1)
+        v = float(np.dot(direction_v, qvec)) * inv
+        if v < -1e-8 or u + v > 1.0 + 1e-8:
+            continue
+        t = float(np.dot(edge_2, qvec)) * inv
+        if t <= 1e-6:
+            continue
+        if best is None or t < best:
+            best = t
+    if best is None:
+        return None
+    point = origin_v + direction_v * best
+    return [round(float(value), 6) for value in point]
+
+
+def segment_distance(point: np.ndarray, start: np.ndarray, end: np.ndarray) -> float:
+    delta = end - start
+    denom = float(np.dot(delta, delta))
+    if denom == 0.0:
+        return float(np.linalg.norm(point - start))
+    parameter = max(0.0, min(1.0, float(np.dot(point - start, delta)) / denom))
+    return float(np.linalg.norm(point - (start + parameter * delta)))
+
+
 def main() -> None:
     if sha256(RESTORE) != RESTORE_SHA or sha256(URDF) != URDF_SHA:
         raise SystemExit("BLOCKED_INPUT_INTEGRITY")
@@ -183,6 +231,7 @@ def main() -> None:
         raise SystemExit("BLOCKED_COUNT")
     by_pair = {(item["original_from"], item["original_to"]): item for item in segments}
     urdf = parse_urdf(URDF)
+    mesh_triangles = load_coupon_mesh()
     frames = []
     process_edges = 0
     transition_edges = 0
@@ -207,6 +256,7 @@ def main() -> None:
             kind = "END"
             pair = [rows[-1]["sequence_id"], rows[-1]["sequence_id"]]
             spray_on = False
+        spray_hit = first_mesh_hit(tool, spray_axis, mesh_triangles) if spray_on else None
         frames.append(
             {
                 "rung": row["rung"],
@@ -222,6 +272,7 @@ def main() -> None:
                 "original_from": pair[0],
                 "original_to": pair[1],
                 "spray_on": spray_on,
+                "spray_hit_m": spray_hit,
                 "playback_time_s": round(index * DT_S, 6),
             }
         )
@@ -231,6 +282,18 @@ def main() -> None:
         raise SystemExit(f"BLOCKED_PAIRS {len(process_pairs)} {len(transition_pairs)}")
     if frames[-1]["spray_on"] or any(not math.isfinite(v) for frame in frames for v in frame["tool0_m"]):
         raise SystemExit("BLOCKED_SPRAY")
+    tcp_on_path = 0.0
+    process_frames = 0
+    for index, frame in enumerate(frames[:-1]):
+        if frame["kind"] != "PROCESS":
+            continue
+        process_frames += 1
+        point = np.asarray(frame["tool0_m"], dtype=float)
+        nxt = np.asarray(frames[index + 1]["tool0_m"], dtype=float)
+        tcp_on_path = max(tcp_on_path, segment_distance(point, point, nxt))
+    joints_match_restore = all(frame["joints_rad"] == row["joints_rad"] for frame, row in zip(frames, rows))
+    if not joints_match_restore or len(frames) != 944:
+        raise SystemExit("BLOCKED_JOINTS")
     model = {
         "schema": "spray_demo_display",
         "baseline_commit": BASELINE,
@@ -250,7 +313,7 @@ def main() -> None:
         "coupon_local_m": {"min": [0.0, 0.0, 0.0], "max": [0.180, 0.100, 0.039819660146195091]},
         "coupon_display": "EXISTING_MESH",
         "mesh_sha256": MESH_SHA,
-        "mesh_triangles": load_coupon_mesh(),
+        "mesh_triangles": mesh_triangles,
         "link_names": [name for name, _joint in CHAIN],
         "frame_count": 944,
         "frames": frames,
@@ -280,6 +343,15 @@ def main() -> None:
         "mesh_triangles": 564,
         "robot_display": "STICK_KINEMATICS",
         "default_view": "CLOSE_TOOL_COUPON",
+        "process_frames": process_frames,
+        "process_tcp_on_orange_path_max_m": tcp_on_path,
+        "joints_match_restore": joints_match_restore,
+        "spray_hit_process": sum(frame["kind"] == "PROCESS" and frame["spray_hit_m"] is not None for frame in frames),
+        "spray_hidden_process_miss": sum(frame["kind"] == "PROCESS" and frame["spray_hit_m"] is None for frame in frames),
+        "spray_effect_transition": sum(frame["kind"] == "TRANSITION" and frame["spray_hit_m"] is not None for frame in frames),
+        "spray_effect_end": frames[-1]["spray_hit_m"] is not None,
+        "direction_arrow_m": 0.012,
+        "fixed_spray_length_m": None,
     }
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "demo_model.json").write_text(json.dumps(model, ensure_ascii=False))
@@ -305,6 +377,7 @@ def write_viewer(model: dict) -> None:
                     "original_from": frame["original_from"],
                     "original_to": frame["original_to"],
                     "spray_on": frame["spray_on"],
+                    "spray_hit_m": frame["spray_hit_m"],
                     "playback_time_s": frame["playback_time_s"],
                     "links_m": frame["links_m"],
                     "tool0_m": frame["tool0_m"],
@@ -323,6 +396,7 @@ VIEWER_HTML = r"""<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>표시용 분사 데모</title>
   <style>
     body { margin: 0; font-family: "Iowan Old Style", Palatino, Georgia, serif; background: #f7f4ee; color: #1c1915; }
@@ -332,12 +406,21 @@ VIEWER_HTML = r"""<!DOCTYPE html>
     h1 { font-size: 1.25rem; margin: 0 0 8px; }
     p, li { font-size: 0.92rem; line-height: 1.4; }
     .muted { color: #5c564c; }
-    button { margin: 0 6px 8px 0; padding: 6px 10px; }
+    button { margin: 0 6px 8px 0; padding: 6px 10px; min-height: 36px; }
     dl { display: grid; grid-template-columns: 92px 1fr; gap: 4px 8px; font-family: ui-monospace, Menlo, monospace; font-size: 0.78rem; }
     dt { color: #5c564c; }
     dd { margin: 0; }
     #sprayState.on { color: #2f5d45; }
     #sprayState.off { color: #8c2f2f; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    main, aside { max-width: 100%; min-width: 0; }
+    canvas { max-width: 100%; box-sizing: border-box; }
+    @media (max-width: 1100px) {
+      main { grid-template-columns: minmax(0, 1fr); min-height: auto; }
+      canvas { width: 100% !important; height: min(42vh, 340px); max-width: 100%; }
+      aside { border-left: none; border-top: 1px solid #d9d3c7; padding: 16px 14px 24px; }
+      dl { grid-template-columns: 88px minmax(0, 1fr); overflow-wrap: anywhere; }
+    }
   </style>
 </head>
 <body>
@@ -358,14 +441,18 @@ VIEWER_HTML = r"""<!DOCTYPE html>
         <dt>자세</dt><dd id="pose">0 / 943</dd>
         <dt>구간</dt><dd id="segment">-</dd>
         <dt>분사</dt><dd id="sprayState">OFF</dd>
-        <dt>tool0</dt><dd id="tool">-</dd>
+        <dt>공구 TCP</dt><dd id="tool">-</dd>
         <dt>분사 축</dt><dd id="axis">-</dd>
+        <dt>분사 효과</dt><dd id="sprayEffect">숨김</dd>
       </dl>
       <p id="selftest"></p>
       <ul>
         <li id="meshLabel">coupon은 기존 충돌 mesh 표시다.</li>
         <li>로봇은 막대 기구학 표시다.</li>
-        <li><span style="color:#1d6aa5">공구 방향</span>과 <span style="color:#c45c12">공정 경로</span>는 서로 다른 색이다.</li>
+        <li id="tcpLabel"><span style="color:#1d6aa5">파란 원</span>은 공구 TCP다.</li>
+        <li id="pathLabel"><span style="color:#c45c12">주황 선</span>은 TCP 경로 · 표면에서 명목 20 mm다.</li>
+        <li id="directionLabel"><span style="color:#1d6aa5">파란 화살표</span>는 공구 방향이다. 화살표 끝은 공구 끝이 아니다.</li>
+        <li id="sprayLabel"><span style="color:#1f7a6b">초록 점선</span>은 분사 효과다. 기존 mesh와 분사 축의 최초 교차점까지만 표시하고, 교차가 없으면 숨긴다.</li>
         <li>시간은 시각화용 재생 시간이다.</li>
         <li>분사는 시각 효과이며 실제 도포 품질 예측이 아니다.</li>
         <li>노즐은 표시용이다. 새 공구 형상의 충돌 검증은 하지 않았다.</li>
@@ -413,14 +500,35 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       return [canvas.width * 0.5 + x * s, canvas.height * 0.58 - y * s, z];
     }
 
-    function line(a, b, color, width) {
+    function line(a, b, color, width, dash) {
       const p = project(a);
       const q = project(b);
       ctx.strokeStyle = color;
       ctx.lineWidth = width;
+      ctx.setLineDash(dash || []);
       ctx.beginPath();
       ctx.moveTo(p[0], p[1]);
       ctx.lineTo(q[0], q[1]);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function arrow(a, b, color, width) {
+      line(a, b, color, width);
+      const p = project(a);
+      const q = project(b);
+      const dx = q[0] - p[0];
+      const dy = q[1] - p[1];
+      const len = Math.hypot(dx, dy) || 1;
+      const ux = dx / len;
+      const uy = dy / len;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = width;
+      ctx.beginPath();
+      ctx.moveTo(q[0], q[1]);
+      ctx.lineTo(q[0] - ux * 14 + uy * 6, q[1] - uy * 14 - ux * 6);
+      ctx.moveTo(q[0], q[1]);
+      ctx.lineTo(q[0] - ux * 14 - uy * 6, q[1] - uy * 14 + ux * 6);
       ctx.stroke();
     }
 
@@ -446,6 +554,58 @@ VIEWER_HTML = r"""<!DOCTYPE html>
         ctx.closePath();
         ctx.fill();
       }
+    }
+
+    function drawLegend() {
+      const rows = [
+        ["tcp", "공구 TCP"],
+        ["dir", "공구 방향 · 화살표 끝은 공구 끝이 아님"],
+        ["path", "TCP 경로 · 표면에서 명목 20 mm"],
+        ["spray", "분사 효과 · mesh 교차까지만, 없으면 숨김"]
+      ];
+      ctx.font = "15px sans-serif";
+      ctx.textBaseline = "middle";
+      rows.forEach((row, index) => {
+        const y = 22 + index * 24;
+        if (row[0] === "tcp") {
+          ctx.fillStyle = "#1d6aa5";
+          ctx.beginPath();
+          ctx.arc(22, y, 6, 0, Math.PI * 2);
+          ctx.fill();
+        } else if (row[0] === "dir") {
+          ctx.strokeStyle = "#1d6aa5";
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(8, y);
+          ctx.lineTo(36, y);
+          ctx.lineTo(28, y - 5);
+          ctx.moveTo(36, y);
+          ctx.lineTo(28, y + 5);
+          ctx.stroke();
+        } else if (row[0] === "path") {
+          ctx.strokeStyle = "#c45c12";
+          ctx.lineWidth = 4;
+          ctx.beginPath();
+          ctx.moveTo(8, y);
+          ctx.lineTo(36, y);
+          ctx.stroke();
+        } else {
+          ctx.strokeStyle = "#1f7a6b";
+          ctx.lineWidth = 2;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(8, y);
+          ctx.lineTo(36, y);
+          ctx.stroke();
+          ctx.setLineDash([]);
+        }
+        ctx.fillStyle = "#1c1915";
+        ctx.fillText(row[1], 46, y);
+      });
+      ctx.textBaseline = "alphabetic";
+      ctx.fillStyle = "#5c564c";
+      ctx.font = "14px sans-serif";
+      ctx.fillText("기존 충돌 mesh 표시 · 로봇은 막대 기구학 표시", 16, 128);
     }
 
     function drawPath() {
@@ -483,18 +643,22 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       const axis = frame.spray_axis;
       const back = [tool[0] - axis[0] * 0.018, tool[1] - axis[1] * 0.018, tool[2] - axis[2] * 0.018];
       line(back, tool, "#2f5d45", 5);
-      const reach = frame.spray_on ? 0.045 : 0.02;
-      const tip = [tool[0] + axis[0] * reach, tool[1] + axis[1] * reach, tool[2] + axis[2] * reach];
-      line(tool, tip, "#1d6aa5", viewName === "close" ? 6 : 3);
+      const sprayVisible = frame.spray_on && Array.isArray(frame.spray_hit_m);
+      if (sprayVisible) line(tool, frame.spray_hit_m, "#1f7a6b", viewName === "close" ? 3 : 2, [7, 5]);
+      const dirEnd = [tool[0] + axis[0] * 0.012, tool[1] + axis[1] * 0.012, tool[2] + axis[2] * 0.012];
+      arrow(tool, dirEnd, "#1d6aa5", viewName === "close" ? 4 : 2);
       const mark = project(tool);
       ctx.fillStyle = "#1d6aa5";
       ctx.beginPath();
-      ctx.arc(mark[0], mark[1], viewName === "close" ? 6 : 3, 0, Math.PI * 2);
+      ctx.arc(mark[0], mark[1], viewName === "close" ? 7 : 4, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = "#5c564c";
-      ctx.font = "16px sans-serif";
-      ctx.fillText("기존 충돌 mesh 표시", 16, 28);
-      ctx.fillText("로봇은 막대 기구학 표시", 16, 50);
+      ctx.fillStyle = "#fbfaf6";
+      ctx.beginPath();
+      ctx.arc(mark[0], mark[1], viewName === "close" ? 3 : 1.5, 0, Math.PI * 2);
+      ctx.fill();
+      drawLegend();
+      const effect = document.getElementById("sprayEffect");
+      effect.textContent = sprayVisible ? "표시" : "숨김";
       document.getElementById("time").textContent = frame.playback_time_s.toFixed(2) + " s";
       document.getElementById("pose").textContent = frame.rung + " / 943";
       const label = frame.kind === "END" ? "종료" : frame.kind + " " + frame.original_from + "→" + frame.original_to;
@@ -635,49 +799,94 @@ def click_buttons() -> None:
                     {"type": kind, "x": box["x"], "y": box["y"], "button": "left", "clickCount": 1},
                 )
 
+        def snapshot() -> dict:
+            return {
+                "pose": shown("pose"),
+                "segment": shown("segment"),
+                "spray": shown("sprayState"),
+                "effect": shown("sprayEffect"),
+                "time": shown("time"),
+            }
+
+        def pose_index(item: dict) -> int:
+            return int(item["pose"].split(" / ")[0])
+
+        def wait_until(predicate, timeout: float) -> dict:
+            deadline = time.time() + timeout
+            last = snapshot()
+            while time.time() < deadline:
+                last = snapshot()
+                if predicate(last):
+                    return last
+                time.sleep(0.1)
+            raise SystemExit("WAIT_TIMEOUT " + json.dumps(last, ensure_ascii=False))
+
         for _ in range(30):
             if shown("pose") == "0 / 943":
                 break
             time.sleep(0.1)
-        start = shown("pose")
-        press("play")
-        time.sleep(0.25)
-        moved = shown("pose")
-        press("pause")
-        held = shown("pose")
-        time.sleep(0.3)
-        held_later = shown("pose")
         press("reset")
         time.sleep(0.05)
-        back = shown("pose")
-        back_time = shown("time")
+        start = snapshot()
+        press("play")
+        progress = wait_until(
+            lambda item: pose_index(item) >= 400
+            and item["segment"].startswith("PROCESS")
+            and item["spray"] == "ON"
+            and item["effect"] == "표시",
+            30,
+        )
+        press("pause")
+        time.sleep(0.3)
+        progress_held = snapshot()
+        press("reset")
+        time.sleep(0.05)
+        press("play")
+        transition = wait_until(
+            lambda item: item["segment"].startswith("TRANSITION")
+            and item["spray"] == "OFF"
+            and item["effect"] == "숨김",
+            8,
+        )
+        press("pause")
+        press("play")
+        end = wait_until(
+            lambda item: item["pose"] == "943 / 943" and item["spray"] == "OFF" and item["effect"] == "숨김",
+            50,
+        )
         labels = cdp.call(
             "Runtime.evaluate",
             {"expression": "document.body.innerText", "returnByValue": True},
         )["result"]["result"]["value"]
+        required = (
+            "공구 TCP",
+            "화살표 끝은 공구 끝이 아니다",
+            "TCP 경로 · 표면에서 명목 20 mm",
+            "분사는 시각 효과이며 실제 도포 품질 예측이 아니다",
+            "기존 충돌 mesh 표시",
+            "로봇은 막대 기구학 표시",
+        )
         record = {
             "method": "CHROME_MOUSE_EVENT",
-            "start_pose": start,
-            "pose_after_play": moved,
-            "pose_after_pause": held,
-            "pose_after_pause_wait": held_later,
-            "pose_after_reset": back,
-            "time_after_reset": back_time,
-            "coupon_label_visible": "기존 충돌 mesh 표시" in labels,
-            "stick_label_visible": "로봇은 막대 기구학 표시" in labels,
-            "tool_direction_visible": "공구 방향" in labels,
-            "process_path_visible": "공정 경로" in labels,
+            "start": start,
+            "progress": progress,
+            "progress_held": progress_held,
+            "transition": transition,
+            "end": end,
+            "labels_visible": all(text in labels for text in required),
             "pass": (
-                start == "0 / 943"
-                and int(moved.split(" / ")[0]) > 0
-                and held_later == held
-                and int(held.split(" / ")[0]) >= int(moved.split(" / ")[0])
-                and back == "0 / 943"
-                and back_time == "0.00 s"
-                and "기존 충돌 mesh 표시" in labels
-                and "로봇은 막대 기구학 표시" in labels
-                and "공구 방향" in labels
-                and "공정 경로" in labels
+                start["pose"] == "0 / 943"
+                and start["segment"].startswith("PROCESS")
+                and start["spray"] == "ON"
+                and start["effect"] == "표시"
+                and progress_held["pose"] == progress["pose"]
+                and pose_index(progress) >= 400
+                and transition["spray"] == "OFF"
+                and transition["effect"] == "숨김"
+                and end["pose"] == "943 / 943"
+                and end["spray"] == "OFF"
+                and end["effect"] == "숨김"
+                and all(text in labels for text in required)
             ),
         }
         checks = json.loads((OUT_DIR / "checks.json").read_text())
