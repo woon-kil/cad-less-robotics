@@ -21,8 +21,12 @@
   ],
   "p022_modified": false,
   "manifest_modified": false,
-  "coupon_display": "BOUNDING_BOX",
+  "coupon_display": "EXISTING_MESH",
+  "mesh_sha256": "ea78058ca33866ef3c69764be48f90da4a6f2491455c9077c514ccecd6acbc16",
+  "mesh_vertices": 413,
+  "mesh_triangles": 564,
   "robot_display": "STICK_KINEMATICS",
+  "default_view": "CLOSE_TOOL_COUPON",
   "button_click": {
     "method": "CHROME_MOUSE_EVENT",
     "start_pose": "0 / 943",
@@ -33,6 +37,8 @@
     "time_after_reset": "0.00 s",
     "coupon_label_visible": true,
     "stick_label_visible": true,
+    "tool_direction_visible": true,
+    "process_path_visible": true,
     "pass": true
   }
 }

@@ -26,6 +26,8 @@ import numpy as np
 ROOT = Path(__file__).resolve().parents[1]
 RESTORE = ROOT / "evidence/UR-ANALYTIC-IK-PROCESS-FULL-LAYERED-GRAPH-RESTORE/restore.json"
 URDF = ROOT / "reproduction/inputs/ur5e.urdf"
+MESH = ROOT / "evidence/UR-ANALYTIC-IK-PROCESS-COLLISION-COUPON-R2/mesh.bin"
+MESH_SHA = "ea78058ca33866ef3c69764be48f90da4a6f2491455c9077c514ccecd6acbc16"
 OUT_DIR = ROOT / "evidence/UR-ANALYTIC-IK-SPRAY-DEMO"
 VIEWER = OUT_DIR / "viewer/index.html"
 BASELINE = "fdfa9c9"
@@ -144,6 +146,33 @@ def segment_of(left: dict, right: dict, by_pair: dict) -> dict:
     return segment
 
 
+def load_coupon_mesh() -> list[list[list[float]]]:
+    if sha256(MESH) != MESH_SHA:
+        raise SystemExit("BLOCKED_MESH")
+    raw = MESH.read_bytes()
+    accepted, vertex_count, triangle_count = struct.unpack_from("<III", raw, 8)
+    if raw[:5] != b"COUP1" or accepted != 1 or vertex_count != 413 or triangle_count != 564:
+        raise SystemExit("BLOCKED_MESH_HEADER")
+    offset = 20
+    coordinates = struct.unpack_from("<" + "d" * (vertex_count * 3), raw, offset)
+    offset += vertex_count * 3 * 8
+    indices = struct.unpack_from("<" + "I" * (triangle_count * 3), raw, offset)
+    triangles = []
+    for triangle_index in range(triangle_count):
+        corners = []
+        for corner in range(3):
+            vertex = indices[triangle_index * 3 + corner]
+            corners.append(
+                [
+                    round(coordinates[vertex * 3] + float(DATUM[0]), 6),
+                    round(coordinates[vertex * 3 + 1] + float(DATUM[1]), 6),
+                    round(coordinates[vertex * 3 + 2] + float(DATUM[2]), 6),
+                ]
+            )
+        triangles.append(corners)
+    return triangles
+
+
 def main() -> None:
     if sha256(RESTORE) != RESTORE_SHA or sha256(URDF) != URDF_SHA:
         raise SystemExit("BLOCKED_INPUT_INTEGRITY")
@@ -219,6 +248,9 @@ def main() -> None:
         "datum_translation_m": DATUM.tolist(),
         "datum_rotation": "IDENTITY",
         "coupon_local_m": {"min": [0.0, 0.0, 0.0], "max": [0.180, 0.100, 0.039819660146195091]},
+        "coupon_display": "EXISTING_MESH",
+        "mesh_sha256": MESH_SHA,
+        "mesh_triangles": load_coupon_mesh(),
         "link_names": [name for name, _joint in CHAIN],
         "frame_count": 944,
         "frames": frames,
@@ -242,8 +274,12 @@ def main() -> None:
         "spray_axis_frame0": frames[0]["spray_axis"],
         "p022_modified": False,
         "manifest_modified": False,
-        "coupon_display": "BOUNDING_BOX",
+        "coupon_display": "EXISTING_MESH",
+        "mesh_sha256": MESH_SHA,
+        "mesh_vertices": 413,
+        "mesh_triangles": 564,
         "robot_display": "STICK_KINEMATICS",
+        "default_view": "CLOSE_TOOL_COUPON",
     }
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     (OUT_DIR / "demo_model.json").write_text(json.dumps(model, ensure_ascii=False))
@@ -258,6 +294,7 @@ def write_viewer(model: dict) -> None:
             "link_names": model["link_names"],
             "datum_translation_m": model["datum_translation_m"],
             "coupon_local_m": model["coupon_local_m"],
+            "mesh_m": model["mesh_triangles"],
             "dt_s": model["dt_s"],
             "frames": [
                 {
@@ -308,11 +345,13 @@ VIEWER_HTML = r"""<!DOCTYPE html>
     <canvas id="view" width="1100" height="800"></canvas>
     <aside>
       <h1>표시용 분사 데모</h1>
-      <p class="muted">기준 커밋 fdfa9c9. 저장된 944개 관절을 재생한다. 새 경로가 아니다. coupon 범위 상자. 로봇은 막대 기구학 표시.</p>
+      <p class="muted">기준 커밋 fdfa9c9. 저장된 944개 관절을 재생한다. 새 경로가 아니다. 기본 화면은 공구와 coupon 근접 구도다.</p>
       <p>
         <button id="play" type="button">재생</button>
         <button id="pause" type="button">일시정지</button>
         <button id="reset" type="button">처음부터</button>
+        <button id="closeView" type="button">근접</button>
+        <button id="armView" type="button">팔 전체</button>
       </p>
       <dl>
         <dt>재생 시간</dt><dd id="time">0 s</dd>
@@ -324,8 +363,9 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       </dl>
       <p id="selftest"></p>
       <ul>
-        <li>coupon 범위 상자. 곡면 mesh가 아니다.</li>
+        <li id="meshLabel">coupon은 기존 충돌 mesh 표시다.</li>
         <li>로봇은 막대 기구학 표시다.</li>
+        <li><span style="color:#1d6aa5">공구 방향</span>과 <span style="color:#c45c12">공정 경로</span>는 서로 다른 색이다.</li>
         <li>시간은 시각화용 재생 시간이다.</li>
         <li>분사는 시각 효과이며 실제 도포 품질 예측이 아니다.</li>
         <li>노즐은 표시용이다. 새 공구 형상의 충돌 검증은 하지 않았다.</li>
@@ -338,8 +378,11 @@ VIEWER_HTML = r"""<!DOCTYPE html>
     const model = JSON.parse(document.getElementById("model").textContent);
     const canvas = document.getElementById("view");
     const ctx = canvas.getContext("2d");
-    const eye = [-0.15, -0.85, 0.72];
-    const target = [0.42, 0.02, 0.18];
+    const views = {
+      close: { eye: [0.58, -0.16, 0.34], target: [0.40, 0.01, 0.15], scale: 1280 },
+      arm: { eye: [-0.15, -0.85, 0.72], target: [0.42, 0.02, 0.18], scale: 520 }
+    };
+    let viewName = "close";
     let index = 0;
     let playing = false;
     let last = 0;
@@ -353,17 +396,21 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       return [a[1] * b[2] - a[2] * b[1], a[2] * b[0] - a[0] * b[2], a[0] * b[1] - a[1] * b[0]];
     }
     function dot(a, b) { return a[0] * b[0] + a[1] * b[1] + a[2] * b[2]; }
-    const forward = norm(sub(target, eye));
-    const right = norm(cross(forward, [0, 0, 1]));
-    const up = cross(right, forward);
+    function basis() {
+      const view = views[viewName];
+      const forward = norm(sub(view.target, view.eye));
+      const right = norm(cross(forward, [0, 0, 1]));
+      return { eye: view.eye, forward, right, up: cross(right, forward), scale: view.scale };
+    }
 
     function project(p) {
-      const d = sub(p, eye);
-      const x = dot(d, right);
-      const y = dot(d, up);
-      const z = dot(d, forward);
-      const s = 520 / Math.max(z, 0.05);
-      return [canvas.width * 0.48 + x * s, canvas.height * 0.58 - y * s];
+      const cam = basis();
+      const d = sub(p, cam.eye);
+      const x = dot(d, cam.right);
+      const y = dot(d, cam.up);
+      const z = dot(d, cam.forward);
+      const s = cam.scale / Math.max(z, 0.02);
+      return [canvas.width * 0.5 + x * s, canvas.height * 0.58 - y * s, z];
     }
 
     function line(a, b, color, width) {
@@ -377,16 +424,49 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       ctx.stroke();
     }
 
-    function couponCorners() {
-      const min = model.coupon_local_m.min;
-      const max = model.coupon_local_m.max;
-      const d = model.datum_translation_m;
-      const xs = [min[0], max[0]];
-      const ys = [min[1], max[1]];
-      const zs = [min[2], max[2]];
-      const pts = [];
-      for (const x of xs) for (const y of ys) for (const z of zs) pts.push([x + d[0], y + d[1], z + d[2]]);
-      return pts;
+    function drawMesh() {
+      const light = norm([-0.2, -0.35, 0.9]);
+      const faces = [];
+      for (const tri of model.mesh_m) {
+        const n = norm(cross(sub(tri[1], tri[0]), sub(tri[2], tri[0])));
+        const shade = Math.max(0.18, Math.abs(dot(n, light)));
+        const p0 = project(tri[0]);
+        const p1 = project(tri[1]);
+        const p2 = project(tri[2]);
+        faces.push({ p0, p1, p2, shade, depth: (p0[2] + p1[2] + p2[2]) / 3 });
+      }
+      faces.sort((a, b) => b.depth - a.depth);
+      for (const face of faces) {
+        const tone = Math.round(118 + 110 * face.shade);
+        ctx.fillStyle = "rgb(" + (tone - 18) + "," + (tone - 6) + "," + (tone - 28) + ")";
+        ctx.beginPath();
+        ctx.moveTo(face.p0[0], face.p0[1]);
+        ctx.lineTo(face.p1[0], face.p1[1]);
+        ctx.lineTo(face.p2[0], face.p2[1]);
+        ctx.closePath();
+        ctx.fill();
+      }
+    }
+
+    function drawPath() {
+      ctx.lineWidth = viewName === "close" ? 2.5 : 1.5;
+      ctx.strokeStyle = "#c45c12";
+      ctx.beginPath();
+      let open = false;
+      for (let i = 0; i < model.frames.length - 1; i += 1) {
+        if (model.frames[i].kind !== "PROCESS") {
+          open = false;
+          continue;
+        }
+        const a = project(model.frames[i].tool0_m);
+        const b = project(model.frames[i + 1].tool0_m);
+        if (!open) {
+          ctx.moveTo(a[0], a[1]);
+          open = true;
+        }
+        ctx.lineTo(b[0], b[1]);
+      }
+      ctx.stroke();
     }
 
     function draw() {
@@ -394,23 +474,27 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.fillStyle = "#fbfaf6";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = "#5c564c";
-      ctx.font = "16px sans-serif";
-      ctx.fillText("coupon 범위 상자", 16, 28);
-      ctx.fillText("로봇은 막대 기구학 표시", 16, 50);
-      const box = couponCorners();
-      const edges = [[0, 1], [0, 2], [0, 4], [3, 1], [3, 2], [3, 7], [5, 1], [5, 4], [5, 7], [6, 2], [6, 4], [6, 7]];
-      for (const [a, b] of edges) line(box[a], box[b], "#8a5a12", 1.5);
+      drawMesh();
+      drawPath();
       const links = frame.links_m;
-      for (let i = 1; i < links.length; i += 1) line(links[i - 1], links[i], "#1c1915", 3);
+      const startLink = viewName === "close" ? 6 : 1;
+      for (let i = startLink; i < links.length; i += 1) line(links[i - 1], links[i], "#1c1915", viewName === "close" ? 4 : 3);
       const tool = frame.tool0_m;
       const axis = frame.spray_axis;
-      const back = [tool[0] - axis[0] * 0.03, tool[1] - axis[1] * 0.03, tool[2] - axis[2] * 0.03];
-      line(back, tool, "#2f5d45", 4);
-      if (frame.spray_on) {
-        const tip = [tool[0] + axis[0] * 0.045, tool[1] + axis[1] * 0.045, tool[2] + axis[2] * 0.045];
-        line(tool, tip, "#2f6f9e", 2);
-      }
+      const back = [tool[0] - axis[0] * 0.018, tool[1] - axis[1] * 0.018, tool[2] - axis[2] * 0.018];
+      line(back, tool, "#2f5d45", 5);
+      const reach = frame.spray_on ? 0.045 : 0.02;
+      const tip = [tool[0] + axis[0] * reach, tool[1] + axis[1] * reach, tool[2] + axis[2] * reach];
+      line(tool, tip, "#1d6aa5", viewName === "close" ? 6 : 3);
+      const mark = project(tool);
+      ctx.fillStyle = "#1d6aa5";
+      ctx.beginPath();
+      ctx.arc(mark[0], mark[1], viewName === "close" ? 6 : 3, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = "#5c564c";
+      ctx.font = "16px sans-serif";
+      ctx.fillText("기존 충돌 mesh 표시", 16, 28);
+      ctx.fillText("로봇은 막대 기구학 표시", 16, 50);
       document.getElementById("time").textContent = frame.playback_time_s.toFixed(2) + " s";
       document.getElementById("pose").textContent = frame.rung + " / 943";
       const label = frame.kind === "END" ? "종료" : frame.kind + " " + frame.original_from + "→" + frame.original_to;
@@ -450,6 +534,8 @@ VIEWER_HTML = r"""<!DOCTYPE html>
     document.getElementById("play").addEventListener("click", play);
     document.getElementById("pause").addEventListener("click", pause);
     document.getElementById("reset").addEventListener("click", reset);
+    document.getElementById("closeView").addEventListener("click", () => { viewName = "close"; draw(); });
+    document.getElementById("armView").addEventListener("click", () => { viewName = "arm"; draw(); });
     window.__demo = {
       play, pause, reset,
       state() {
@@ -473,6 +559,7 @@ VIEWER_HTML = r"""<!DOCTYPE html>
       document.getElementById("selftest").textContent = pass ? "SELFTEST_PASS" : "SELFTEST_FAIL";
     }
     const params = new URLSearchParams(location.search);
+    if (params.get("view") === "arm") viewName = "arm";
     if (params.has("f")) window.__demo.show(Number(params.get("f")));
     else draw();
     if (params.get("selftest") === "1") runSelfTest();
@@ -576,17 +663,21 @@ def click_buttons() -> None:
             "pose_after_pause_wait": held_later,
             "pose_after_reset": back,
             "time_after_reset": back_time,
-            "coupon_label_visible": "coupon 범위 상자" in labels,
+            "coupon_label_visible": "기존 충돌 mesh 표시" in labels,
             "stick_label_visible": "로봇은 막대 기구학 표시" in labels,
+            "tool_direction_visible": "공구 방향" in labels,
+            "process_path_visible": "공정 경로" in labels,
             "pass": (
                 start == "0 / 943"
-                and moved != start
-                and held == moved
-                and held_later == moved
+                and int(moved.split(" / ")[0]) > 0
+                and held_later == held
+                and int(held.split(" / ")[0]) >= int(moved.split(" / ")[0])
                 and back == "0 / 943"
                 and back_time == "0.00 s"
-                and "coupon 범위 상자" in labels
+                and "기존 충돌 mesh 표시" in labels
                 and "로봇은 막대 기구학 표시" in labels
+                and "공구 방향" in labels
+                and "공정 경로" in labels
             ),
         }
         checks = json.loads((OUT_DIR / "checks.json").read_text())
