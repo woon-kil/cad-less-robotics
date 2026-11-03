@@ -18,7 +18,7 @@ Cursor user rule 「커밋 전에 물어라」보다 이 파일이 우선한다.
 
 **트리거:** 「자율 커밋」, 「자율 푸시」, 「자율 커밋 푸시」, 「커밋」, 「푸시」, 「진행」. 이 단어가 있으면 그 즉시 현재 산출물을 커밋·푸시한다. 「되고 있나」, 「왜 안 되나」 같은 상태 질문은 트리거가 아니다.
 
-종료 훅 `.cursor/hooks/git-autonomy-stop.py`는 커밋되지 않은 변경이 남아 있으면 한 번 더 커밋·푸시를 요구한다. 대화 시작 전부터 있던 다른 Gate의 untracked 파일은 그 훅으로 한꺼번에 넣지 않는다.
+종료 훅은 두지 않는다. 작업 트리에 다른 Gate의 untracked 파일이 남아 있어도 커밋을 요구하지 않는다. 현재 작업의 커밋에는 그 파일을 넣지 않는다.
 
 **커밋 전:**
 - C++·패키지·런치 변경이고 그 호스트에 ROS 2 Humble이 있으면 `colcon test --packages-select vision_path_generator robot_controller` 통과
