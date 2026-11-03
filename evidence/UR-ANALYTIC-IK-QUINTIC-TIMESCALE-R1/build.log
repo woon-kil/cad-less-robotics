@@ -1,0 +1,7 @@
+host: p620
+compiler: GNU 13.3.0
+moveit_core: 2.12.4
+cmake: configured /tmp/quintic-ts-r1/build
+target: ur_analytic_ik_quintic_timescale
+result: built
+warnings: OpenSSL 3.0 SHA256_* deprecated declarations

@@ -1,0 +1,13 @@
+{
+  "rule": "DIRECT_CHORD_INDEX",
+  "nearest_assignment": false,
+  "auto_correction": false,
+  "cartesian_path_impossibility": "NOT_CLAIMED",
+  "status": "PASS",
+  "path_deviation": 0,
+  "missing_chord": 0,
+  "samples": 94301,
+  "failures": [],
+  "failures_recorded": 0,
+  "failures_total": 0
+}
