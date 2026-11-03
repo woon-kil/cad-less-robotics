@@ -1,0 +1,1 @@
+ur_analytic_ik_totg_trajectory /tmp/totg-r1/inputs/ur5e.urdf /tmp/totg-r1/inputs/ur5e.srdf /tmp/totg-r1/inputs/runs.bin /tmp/totg-r1/inputs/transitions.bin /tmp/totg-r1/inputs/inserts.bin /tmp/totg-r1/inputs/mesh.bin /tmp/totg-r1/inputs/mesh_acceptance.json /tmp/totg-r1/inputs/restore.json /tmp/totg-r1/out

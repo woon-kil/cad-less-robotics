@@ -1,0 +1,51 @@
+{
+  "totg_message_check": "FAIL",
+  "compute_time_stamps_calls": 1,
+  "totg_returned": true,
+  "generate_s": 1.3515004429999999,
+  "point_count": 689,
+  "budget_points": false,
+  "verify_capped": false,
+  "message_shape": true,
+  "time_monotonic_from_zero": true,
+  "endpoint_gap_rad": 2.2204460492503131e-16,
+  "interpolation": "PER_JOINT_QUINTIC_HERMITE",
+  "controller_interpolation": "NOT_CLAIMED",
+  "continuous_collision": "NOT_CLAIMED",
+  "jerk_limit": "NOT_CHECKED",
+  "quintic_interior_limits": {
+    "status": "FAIL",
+    "finite": true,
+    "root_fail": false,
+    "position_fail": false,
+    "velocity_fail": false,
+    "acceleration_fail": true,
+    "max_abs_velocity_rad_s": 2.0280006557273045,
+    "max_abs_acceleration_rad_s2": 8.5440780728983761
+  },
+  "process_accuracy": {
+    "status": "FAIL",
+    "samples_checked": 67337,
+    "fail_count": 55,
+    "max_position_error_m": 0.0014662786040477603,
+    "max_orientation_error_rad": 0.011423133684061663,
+    "position_limit_m": 0.001,
+    "orientation_limit_rad": 0.01
+  },
+  "collision": {
+    "status": "FAIL",
+    "samples": 68801,
+    "self_hit": 0,
+    "coupon_hit": 0,
+    "error": 0
+  },
+  "correspondence": {
+    "status": "FAIL",
+    "absent": 0,
+    "ambiguous": 1,
+    "reversal": 0,
+    "boundary_skip": 0,
+    "missing_chord": 0,
+    "cartesian_path_impossibility": "NOT_CLAIMED"
+  }
+}
