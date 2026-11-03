@@ -35,45 +35,5 @@
   "spray_effect_transition": 0,
   "spray_effect_end": false,
   "direction_arrow_m": 0.012,
-  "fixed_spray_length_m": null,
-  "button_click": {
-    "method": "CHROME_MOUSE_EVENT",
-    "start": {
-      "pose": "0 / 943",
-      "segment": "PROCESS 0\u21921",
-      "spray": "ON",
-      "effect": "\ud45c\uc2dc",
-      "time": "0.00 s"
-    },
-    "progress": {
-      "pose": "400 / 943",
-      "segment": "PROCESS 307\u2192308 \uc911\uac04",
-      "spray": "ON",
-      "effect": "\ud45c\uc2dc",
-      "time": "16.00 s"
-    },
-    "progress_held": {
-      "pose": "400 / 943",
-      "segment": "PROCESS 307\u2192308 \uc911\uac04",
-      "spray": "ON",
-      "effect": "\ud45c\uc2dc",
-      "time": "16.00 s"
-    },
-    "transition": {
-      "pose": "34 / 943",
-      "segment": "TRANSITION 34\u219235",
-      "spray": "OFF",
-      "effect": "\uc228\uae40",
-      "time": "1.36 s"
-    },
-    "end": {
-      "pose": "943 / 943",
-      "segment": "\uc885\ub8cc",
-      "spray": "OFF",
-      "effect": "\uc228\uae40",
-      "time": "37.72 s"
-    },
-    "labels_visible": true,
-    "pass": true
-  }
+  "fixed_spray_length_m": null
 }

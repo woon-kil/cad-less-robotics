@@ -34,7 +34,7 @@ BASELINE = "fdfa9c9"
 RESTORE_SHA = "35f72af9e3b23b9cb2a4e6133eb24623489ed00762f8ccf40000e618a0998943"
 URDF_SHA = "a21bf5fb70b3a1745bf2e4816e0f43654539737ba7f2585939ec773d159778d8"
 DATUM = np.array([0.3244333936553, -0.0499999998932, 0.11133404082435])
-DT_S = 0.04
+DT_S = 0.20
 JOINTS = [
     "shoulder_pan_joint",
     "shoulder_lift_joint",
@@ -834,7 +834,7 @@ def click_buttons() -> None:
             and item["segment"].startswith("PROCESS")
             and item["spray"] == "ON"
             and item["effect"] == "표시",
-            30,
+            100,
         )
         press("pause")
         time.sleep(0.3)
@@ -846,13 +846,13 @@ def click_buttons() -> None:
             lambda item: item["segment"].startswith("TRANSITION")
             and item["spray"] == "OFF"
             and item["effect"] == "숨김",
-            8,
+            20,
         )
         press("pause")
         press("play")
         end = wait_until(
             lambda item: item["pose"] == "943 / 943" and item["spray"] == "OFF" and item["effect"] == "숨김",
-            50,
+            220,
         )
         labels = cdp.call(
             "Runtime.evaluate",
